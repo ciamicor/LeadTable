@@ -1,0 +1,58 @@
+/*-| Variables |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+$column-number:  12;
+$max-page-width: 1600px;
+$row-gap:        $sp-4;
+$col-gap:        $sp-4;
+
+/*-| Breakpoints |-*/
+$xs:             300;
+$sm:             600;
+$md:             900;
+$xl:             1500;
+$lg:             1200;
+
+$breakpoints:    (
+                   $xs,
+                   $sm,
+                   $md,
+                   $xl,
+                   $lg,
+                 );
+
+/*-| Setup |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+
+/*-| Breakpoints |-*/
+/*---+----+---+----+---+----+---+----+---*/
+@mixin breakpoint($breakpoint) {
+  @media (min-width: #{$breakpoint}px) {
+    @content
+  }
+}
+
+/*-| Layout |-*/
+/*---+----+---+----+---+----+---+----+---*/
+.row {
+  display:   flex;
+  flex:      1 1 auto;
+  flex-flow: row wrap;
+  gap:       $row-gap;
+  max-width: $max-page-width;
+  padding:   $sp-5;
+  margin: $sp-4 auto;
+  .--full {
+    max-width: 100%;
+  }
+}
+
+@for $i from 1 through $column-number {
+  .col-#{$i} {
+    width:     calc((100% * ($i / $column-number)) - $row-gap);
+    min-width: 275px;
+    display:   flex;
+    flex-flow: column nowrap;
+    flex:      1 1 auto;
+    gap:       $col-gap;
+  }
+}

@@ -1,0 +1,53 @@
+button, .button {
+  color:           $font-primary;
+  font-size:       $font-sm;
+  font-weight:     500;
+  text-align:      center;
+  text-decoration: none;
+  padding:         $sp-4 $sp-8;
+  cursor:          pointer;
+  border:          1px solid $grey-8;
+  border-radius:   $item-border;
+  background:      $grey-11;
+  transition:      background $trans-0;
+  &:hover {
+    background: $grey-10;
+  }
+
+  &.--primary {
+    color:      $font-primary;
+    border:     1px solid $color-primary-3;
+    background: $color-primary-6;
+    &:hover {
+      color:      $color-primary-10;
+      background: $color-primary-3;
+    }
+  }
+  &.--secondary {
+    color:      $font-primary;
+    border:     1px solid $color-secondary-3;
+    background: $color-secondary-6;
+    &:hover {
+      color:      $color-secondary-10;
+      background: $color-secondary-3;
+    }
+  }
+  &.--success {
+    color:      $font-primary;
+    border:     1px solid $color-success-3;
+    background: $color-success-6;
+    &:hover {
+      color:      $color-success-10;
+      background: $color-success-3;
+    }
+  }
+  &.--warn {
+    color:      $font-primary;
+    border:     1px solid $color-warn-3;
+    background: $color-warn-6;
+    &:hover {
+      color:      $color-warn-10;
+      background: $color-warn-3;
+    }
+  }
+}

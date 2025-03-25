@@ -1,0 +1,224 @@
+@import "normalize.css";
+:root {
+  --font-primary: hsl(215, 15%, 15%);
+  --font-contrast: white;
+  --color-primary-hs: 215, 100%;
+  --color-secondary-hs: 265, 65%;
+  --color-success-hs: 115, 65%;
+  --color-warn-hs: 15, 85%;
+  --grey-1-hsl: 215, 25%, 8%;
+  --grey-2-hsl: 215, 25%, 16%;
+  --grey-3-hsl: 215, 25%, 24%;
+  --grey-4-hsl: 215, 25%, 32%;
+  --grey-5-hsl: 215, 25%, 40%;
+  --grey-6-hsl: 215, 25%, 48%;
+  --grey-7-hsl: 215, 25%, 56%;
+  --grey-8-hsl: 215, 25%, 64%;
+  --grey-9-hsl: 215, 25%, 72%;
+  --grey-10-hsl: 215, 25%, 80%;
+  --grey-11-hsl: 215, 25%, 88%;
+  --grey-12-hsl: 215, 25%, 96%;
+}
+
+/*-| SCSS |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| General |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Constant |-*/
+/*---+----+---+----+---+----+---+----+---*/
+/*-| Variable |-*/
+/*---+----+---+----+---+----+---+----+---*/
+/*-| Borders |-*/
+/*---+----+---+----+---+----+---+----+---*/
+:root {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+
+p, button, li, label {
+  font-size: 18px;
+}
+
+/*-| Variables |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Breakpoints |-*/
+/*-| Setup |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Breakpoints |-*/
+/*---+----+---+----+---+----+---+----+---*/
+/*-| Layout |-*/
+/*---+----+---+----+---+----+---+----+---*/
+.row {
+  display: flex;
+  flex: 1 1 auto;
+  flex-flow: row wrap;
+  gap: 8px;
+  max-width: 1600px;
+  padding: 12px;
+  margin: 8px auto;
+}
+.row .--full {
+  max-width: 100%;
+}
+
+.col-1 {
+  width: calc(8.3333333333% - 8px);
+  min-width: 275px;
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 1 auto;
+  gap: 8px;
+}
+
+.col-2 {
+  width: calc(16.6666666667% - 8px);
+  min-width: 275px;
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 1 auto;
+  gap: 8px;
+}
+
+.col-3 {
+  width: calc(25% - 8px);
+  min-width: 275px;
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 1 auto;
+  gap: 8px;
+}
+
+.col-4 {
+  width: calc(33.3333333333% - 8px);
+  min-width: 275px;
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 1 auto;
+  gap: 8px;
+}
+
+.col-5 {
+  width: calc(41.6666666667% - 8px);
+  min-width: 275px;
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 1 auto;
+  gap: 8px;
+}
+
+.col-6 {
+  width: calc(50% - 8px);
+  min-width: 275px;
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 1 auto;
+  gap: 8px;
+}
+
+.col-7 {
+  width: calc(58.3333333333% - 8px);
+  min-width: 275px;
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 1 auto;
+  gap: 8px;
+}
+
+.col-8 {
+  width: calc(66.6666666667% - 8px);
+  min-width: 275px;
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 1 auto;
+  gap: 8px;
+}
+
+.col-9 {
+  width: calc(75% - 8px);
+  min-width: 275px;
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 1 auto;
+  gap: 8px;
+}
+
+.col-10 {
+  width: calc(83.3333333333% - 8px);
+  min-width: 275px;
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 1 auto;
+  gap: 8px;
+}
+
+.col-11 {
+  width: calc(91.6666666667% - 8px);
+  min-width: 275px;
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 1 auto;
+  gap: 8px;
+}
+
+.col-12 {
+  width: calc(100% - 8px);
+  min-width: 275px;
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1 1 auto;
+  gap: 8px;
+}
+
+button, .button {
+  color: var(--font-primary);
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  padding: 8px 24px;
+  cursor: pointer;
+  border: 1px solid hsl(var(--grey-8-hsl));
+  border-radius: 4px;
+  background: hsl(var(--grey-11-hsl));
+  transition: background 200ms ease-out;
+}
+button:hover, .button:hover {
+  background: hsl(var(--grey-10-hsl));
+}
+button.--primary, .button.--primary {
+  color: var(--font-primary);
+  border: 1px solid hsl(var(--color-primary-hs), 24%);
+  background: hsl(var(--color-primary-hs), 48%);
+}
+button.--primary:hover, .button.--primary:hover {
+  color: hsl(var(--color-primary-hs), 80%);
+  background: hsl(var(--color-primary-hs), 24%);
+}
+button.--secondary, .button.--secondary {
+  color: var(--font-primary);
+  border: 1px solid hsl(var(--color-secondary-hs), 24%);
+  background: hsl(var(--color-secondary-hs), 48%);
+}
+button.--secondary:hover, .button.--secondary:hover {
+  color: hsl(var(--color-secondary-hs), 80%);
+  background: hsl(var(--color-secondary-hs), 24%);
+}
+button.--success, .button.--success {
+  color: var(--font-primary);
+  border: 1px solid hsl(var(--color-success-hs), 24%);
+  background: hsl(var(--color-success-hs), 48%);
+}
+button.--success:hover, .button.--success:hover {
+  color: hsl(var(--color-success-hs), 80%);
+  background: hsl(var(--color-success-hs), 24%);
+}
+button.--warn, .button.--warn {
+  color: var(--font-primary);
+  border: 1px solid hsl(var(--color-warn-hs), 24%);
+  background: hsl(var(--color-warn-hs), 48%);
+}
+button.--warn:hover, .button.--warn:hover {
+  color: hsl(var(--color-warn-hs), 80%);
+  background: hsl(var(--color-warn-hs), 24%);
+}
+
+/*# sourceMappingURL=main.css.map */
