@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "iami411",
+    "password": "+akWQ).ken1z",
+    "database": "iami411_leadTable",
+    "host": "iami411.org",
+    "dialect": "mariadb"
+  },
+  "test": {
+    "username": "iami411",
+    "password": "+akWQ).ken1z",
+    "database": "iami411_leadTable",
+    "host": "iami411.org",
+    "dialect": "mariadb"
+  },
+  "production": {
+    "username": "iami411",
+    "password": "+akWQ).ken1z",
+    "database": "iami411_leadTable",
+    "host": "iami411.org",
+    "dialect": "mariadb"
+  }
+}

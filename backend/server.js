@@ -1,45 +1,19 @@
-const express = require("express");
-const cors = require("cors");
-
+const express = require( 'express' );
 const app = express();
+const db = require( './config/db.config' );
+const leadRoutes = require( './routes/lead.routes' );
 
-let corsOptions = {
-    origin: "http://localhost:8081"
-};
+// Connect to the database
+db.authenticate()
+    .then( () => console.log( 'Database connected' ) )
+    .catch( ( err ) => console.error( 'Error connecting to database:', err ) );
 
-app.use(cors(corsOptions));
+// Middleware to parse JSON requests
+app.use( express.json() );
 
-// parse requests of content-type - application/json
-app.use(express.json());
-
-// parse requests of content-type - application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: true }));
-
-// simple route
-app.get("/", (req, res) => {
-    res.json({ message: "Welcome to Leadtable." });
-});
-
-
-require("./app/routes/lead.routes")(app);
-
-// set port, listen for requests
+// Routes
+app.use( '/leads', leadRoutes );
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
-});
-
-const db = require("./app/models");
-db.sequelize.sync()
-    .then(() => {
-        console.log("Synced db.");
-    })
-    .catch((err) => {
-        console.log("Failed to sync db: " + err.message);
-    });
-
-
-// DEV: DROP ENTIRE DATABASE
-// db.sequelize.sync({ force: true }).then(() => {
-   // console.log("Drop and re-sync db.");
-// })
+app.listen( PORT, () => {
+    console.log( `Server is running on port ${ PORT }` );
+} );
