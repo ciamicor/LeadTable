@@ -2,30 +2,30 @@ import http from '../http-common'
 
 export default class LeadDataService {
   getAll() {
-    return http.get('/leads')
+    return http.get('/lead')
   }
 
   get(id: any) {
-    return http.get(`/leads/${id}`)
+    return http.get(`/lead/${id}`)
   }
 
   create(data: any) {
-    return http.post(`/leads/${data}`)
+    return http.post(`/lead/${data}`)
   }
 
   update(id: any, data: any) {
-    return http.put(`/leads/${id}`, data)
+    return http.put(`/lead/${id}`, data)
   }
 
   delete(id: any) {
-    return http.delete(`/leads/${id}`)
+    return http.delete(`/lead/${id}`)
   }
 
   deleteAll() {
-    return http.delete(`/leads`)
+    return http.delete(`/lead`)
   }
 
   findByTitle(title: any) {
-    return http.get(`/leads?title=${title}`)
+    return http.get(`/lead?title=${title}`)
   }
 }

@@ -17,7 +17,7 @@
   --grey-9-hsl: 215, 25%, 72%;
   --grey-10-hsl: 215, 25%, 80%;
   --grey-11-hsl: 215, 25%, 88%;
-  --grey-12-hsl: 215, 25%, 96%;
+  --grey-12-hsl: 215, 25%, 94%;
 }
 
 /*-| SCSS |-*/
@@ -53,8 +53,8 @@ p, button, li, label {
   flex-flow: row wrap;
   gap: 8px;
   max-width: 1600px;
-  padding: 12px;
   margin: 8px auto;
+  padding: clamp(24px, 16%, 24px * 2);
 }
 .row .--full {
   max-width: 100%;
@@ -166,6 +166,33 @@ p, button, li, label {
   flex-flow: column nowrap;
   flex: 1 1 auto;
   gap: 8px;
+}
+
+table {
+  text-align: left;
+  padding: 8px;
+  border-collapse: collapse;
+  border: 1px solid hsl(var(--grey-8-hsl));
+}
+table th {
+  padding: 8px 12px;
+  border: 1px solid hsl(var(--grey-9-hsl));
+}
+table tbody tr {
+  border: 1px solid hsl(var(--grey-9-hsl));
+  transition: background 200ms ease-in;
+}
+table tbody tr td {
+  padding: 8px 12px;
+  border-right: 1px solid hsl(var(--grey-11-hsl));
+  outline: 2px solid hsla(0, 0%, 0%, 0);
+  transition: outline 200ms ease-out;
+}
+table tbody tr td:hover {
+  outline: 1px solid hsl(var(--color-secondary-hs), 40%);
+}
+table tbody tr:hover {
+  background: hsl(var(--grey-12-hsl));
 }
 
 button, .button {

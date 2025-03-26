@@ -1,29 +1,24 @@
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
-
 module.exports = {
     async up( queryInterface, Sequelize ) {
-        await queryInterface.createTable( 'leads', {
+        await queryInterface.createTable( 'Scans', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            lead_FName: {
-                type: Sequelize.STRING
-            },
-            lead_LName: {
-                type: Sequelize.STRING
-            },
-            lead_Rating: {
+            scannedBy_CompanyId: {
                 type: Sequelize.INTEGER
             },
-            scannedBy_Company: {
+            lead_id: {
+                type: Sequelize.INTEGER
+            },
+            expo_Year: {
                 type: Sequelize.INTEGER
             },
             createdAt: {
-                allowNull: false,
                 type: Sequelize.DATE
             },
             updatedAt: {
@@ -33,6 +28,6 @@ module.exports = {
         } );
     },
     async down( queryInterface, Sequelize ) {
-        await queryInterface.dropTable( 'leads' );
+        await queryInterface.dropTable( 'Scans' );
     }
 };

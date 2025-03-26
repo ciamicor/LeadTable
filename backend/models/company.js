@@ -2,7 +2,7 @@
 const { Model, DataTypes } = require( 'sequelize' );
 const sequelize = require( '../config/config' );
 
-class Lead extends Model {
+class Company extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,16 +13,15 @@ class Lead extends Model {
     }
 }
 
-Lead.init( {
+Company.init( {
     // expo_Id // foreign key
-    name_First: DataTypes.STRING,
-    name_Last: DataTypes.STRING,
-    contact_Email: DataTypes.STRING,
-    contact_Phone: DataTypes.STRING,
-    // contact_Employer: DataTypes.STRING,
+    company_Name: DataTypes.STRING,
+    company_Email: DataTypes.STRING,
+    company_Web: DataTypes.STRING,
+    company_Phone: DataTypes.STRING
 }, {
     sequelize,
-    modelName: 'Lead',
+    modelName: 'Company',
 } );
 
-module.exports = Lead;
+module.exports = Company;

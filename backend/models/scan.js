@@ -2,7 +2,7 @@
 const { Model, DataTypes } = require( 'sequelize' );
 const sequelize = require( '../config/config' );
 
-class Lead extends Model {
+class Scan extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,16 +13,18 @@ class Lead extends Model {
     }
 }
 
-Lead.init( {
-    // expo_Id // foreign key
-    name_First: DataTypes.STRING,
-    name_Last: DataTypes.STRING,
-    contact_Email: DataTypes.STRING,
-    contact_Phone: DataTypes.STRING,
-    // contact_Employer: DataTypes.STRING,
+Scan.init( {
+    // expo_Id      // foreign key
+    // company_Id   // foreign key
+    // lead_Id      // foreign key
+    lead_Score: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
+    },
+    company_Comments: DataTypes.STRING,
 }, {
     sequelize,
-    modelName: 'Lead',
+    modelName: 'Scan',
 } );
 
-module.exports = Lead;
+module.exports = Scan;

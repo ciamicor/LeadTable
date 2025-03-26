@@ -8,9 +8,6 @@ router.get( '/', leadController.getAllLeads );
 // Route to create a new lead
 router.post( '/', leadController.createLead );
 
-// Route to get a lead by Rating
-router.get( '/ratings/:rating', leadController.getLeadByRating );
-
 // Route to get a lead by ID
 router.get( '/:id', leadController.getLeadById );
 
