@@ -12,10 +12,10 @@ exports.getAllCompanies = async ( req, res ) => {
 
 // Controller method to create a new company
 exports.createCompany = async ( req, res ) => {
-    const { expo_Id, company_Name, company_Email, company_Web, company_Phone } = req.body;
+    const { expo_Year, company_Name, company_Email, company_Web, company_Phone } = req.body;
     try {
         const newCompany = await Company.create( {
-            expo_Id,
+            expo_Year,
             company_Name,
             company_Email,
             company_Web,

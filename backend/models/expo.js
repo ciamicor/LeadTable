@@ -15,7 +15,12 @@ class Expo extends Model {
 
 Expo.init( {
     expo_Active: DataTypes.BOOLEAN,
-    expo_Year: DataTypes.INTEGER,
+    expo_Year: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        
+    },
 }, {
     sequelize,
     modelName: 'Expo',

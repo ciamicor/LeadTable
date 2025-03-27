@@ -1,3 +1,7 @@
+.table-container {
+  overflow-x: auto;
+}
+
 table {
   text-align:      left;
   padding:         $sp-4;
@@ -13,15 +17,24 @@ table {
       transition: background 200ms ease-in;
       td {
         padding:      $sp-4 $sp-5;
-        border-right: 1px solid $grey-11;
+        //border-right: 1px solid $grey-11;
         outline:      2px solid hsla(0, 0%, 0%, 0);
         transition:   outline 200ms ease-out;
         &:hover {
           outline: 1px solid $color-secondary-5;
         }
+        &:has(input) {
+          padding: $sp-2;
+        }
       }
       &:hover {
         background: $grey-12;
+      }
+      input {
+        width:      100%;
+        max-width:  15ch;
+        border:     none;
+        background: hsla(0, 0%, 100%, .65);
       }
     }
   }

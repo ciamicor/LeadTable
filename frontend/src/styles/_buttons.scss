@@ -1,19 +1,27 @@
 button, .button {
-  color:           $font-primary;
+  display:         flex;
+  place-content:   center;
+  place-self:      center;
+  color:           $grey-4;
   font-size:       $font-sm;
-  font-weight:     500;
+  font-weight:     450;
   text-align:      center;
   text-decoration: none;
-  padding:         $sp-4 $sp-8;
+  padding:         $sp-4 $sp-6;
   cursor:          pointer;
   border:          1px solid $grey-8;
   border-radius:   $item-border;
-  background:      $grey-11;
+  background:      $grey-12;
   transition:      background $trans-0;
   &:hover {
+    color:      $grey-2;
     background: $grey-10;
   }
-
+  &.--square {
+    aspect-ratio: 1 / 1;
+    line-height:  0;
+    padding:      $sp-4;
+  }
   &.--primary {
     color:      $font-primary;
     border:     1px solid $color-primary-3;
@@ -24,30 +32,30 @@ button, .button {
     }
   }
   &.--secondary {
-    color:      $font-primary;
-    border:     1px solid $color-secondary-3;
-    background: $color-secondary-6;
+    color:      $color-secondary-3;
+    border:     1px solid $color-secondary-8;
+    background: $color-secondary-12;
     &:hover {
-      color:      $color-secondary-10;
-      background: $color-secondary-3;
+      color:      $color-secondary-4;
+      background: $color-secondary-10;
     }
   }
   &.--success {
-    color:      $font-primary;
-    border:     1px solid $color-success-3;
-    background: $color-success-6;
+    color:      $color-success-4;
+    border:     1px solid $color-success-6;
+    background: $color-success-12;
     &:hover {
-      color:      $color-success-10;
-      background: $color-success-3;
+      color:      $color-success-4;
+      background: $color-success-10;
     }
   }
   &.--warn {
-    color:      $font-primary;
-    border:     1px solid $color-warn-3;
-    background: $color-warn-6;
+    color:      $color-warn-6;
+    border:     1px solid $color-warn-8;
+    background: $color-warn-12;
     &:hover {
-      color:      $color-warn-10;
-      background: $color-warn-3;
+      color:      $color-warn-4;
+      background: $color-warn-10;
     }
   }
 }

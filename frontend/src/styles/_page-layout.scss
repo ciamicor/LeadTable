@@ -29,14 +29,24 @@ $breakpoints:    (
 
 /*-| Layout |-*/
 /*---+----+---+----+---+----+---+----+---*/
+.section {
+  display:   flex;
+  flex:      1 1 auto;
+  flex-flow: row wrap;
+  gap:       $row-gap;
+  max-width: $max-page-width;
+  margin:    0;
+  padding:   $sp-v-8;
+}
+
 .row {
   display:   flex;
   flex:      1 1 auto;
   flex-flow: row wrap;
   gap:       $row-gap;
   max-width: $max-page-width;
-  margin:    $sp-4 auto;
-  padding:   $sp-v-8;
+  margin:    0 auto;
+  padding:   $sp-v-4;
   .--full {
     max-width: 100%;
   }

@@ -6,7 +6,11 @@ export default class ScanDataService {
     return http.get('/scan')
   }
 
+  get(id: any) {
+    return http.get("/scan/" + id)
+  }
+
   create(data: any) {
-    return http.post(`/scan/${data}`)
+    return http.post("/scan", data)
   }
 }

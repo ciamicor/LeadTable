@@ -14,7 +14,7 @@ class Lead extends Model {
 }
 
 Lead.init( {
-    // expo_Id // foreign key
+    // expo_Year // foreign key
     name_First: DataTypes.STRING,
     name_Last: DataTypes.STRING,
     contact_Email: DataTypes.STRING,

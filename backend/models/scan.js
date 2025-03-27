@@ -14,7 +14,7 @@ class Scan extends Model {
 }
 
 Scan.init( {
-    // expo_Id      // foreign key
+    // expo_Year      // foreign key
     // company_Id   // foreign key
     // lead_Id      // foreign key
     lead_Score: {

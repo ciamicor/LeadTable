@@ -64,7 +64,7 @@ async function initPlaceholdData() {
     } )
 
     const newCompany = await Company.create( {
-        expo_Id: 1,
+        expo_Year: 2025,
         company_Name: "IAMI",
         company_Email: "iami@iami411.org",
         company_Web: "https://www.iami411.org",
@@ -72,7 +72,7 @@ async function initPlaceholdData() {
     } )
 
     const newCompany2 = await Company.create( {
-        expo_Id: 1,
+        expo_Year: 2025,
         company_Name: "ICOR",
         company_Email: "icor@icor.org",
         company_Web: "https://www.icor.org",
@@ -80,7 +80,7 @@ async function initPlaceholdData() {
     } )
 
     const newCompany3 = await Company.create( {
-        expo_Id: 1,
+        expo_Year: 2025,
         company_Name: "NYIFT",
         company_Email: "nyift@nyift.org",
         company_Web: "https://www.nyift.org",
@@ -88,7 +88,7 @@ async function initPlaceholdData() {
     } )
 
     const newLead = await Lead.create( {
-        expo_Id: 1,
+        expo_Year: 2025,
         name_First: "Claire",
         name_Last: "Mooney",
         contact_Email: "claire@gmail.com",
@@ -97,7 +97,7 @@ async function initPlaceholdData() {
     } )
 
     const newLead2 = await Lead.create( {
-        expo_Id: 1,
+        expo_Year: 2025,
         name_First: "Kate",
         name_Last: "Mooney",
         contact_Email: "Kate@aol.com",
@@ -106,7 +106,7 @@ async function initPlaceholdData() {
     } )
 
     const newLead3 = await Lead.create( {
-        expo_Id: 1,
+        expo_Year: 2025,
         name_First: "Val",
         name_Last: "Mooney",
         contact_Email: "val@yahoo.com",
@@ -115,7 +115,7 @@ async function initPlaceholdData() {
     } )
 
     const newScan = await Scan.create( {
-        expo_Id: 1,
+        expo_Year: 2025,
         company_Id: 2,
         lead_Id: 3,
         lead_Score: 2,
@@ -123,7 +123,7 @@ async function initPlaceholdData() {
     } )
 
     const newScan2 = await Scan.create( {
-        expo_Id: 1,
+        expo_Year: 2025,
         company_Id: 2,
         lead_Id: 2,
         lead_Score: 1,
@@ -131,7 +131,7 @@ async function initPlaceholdData() {
     } )
 
     const newScan3 = await Scan.create( {
-        expo_Id: 1,
+        expo_Year: 2025,
         company_Id: 3,
         lead_Id: 1,
         lead_Score: 5,

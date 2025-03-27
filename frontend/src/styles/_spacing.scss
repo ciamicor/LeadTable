@@ -18,20 +18,88 @@ $sp-12:        40px;
 
 /*-| Variable |-*/
 /*---+----+---+----+---+----+---+----+---*/
-$sp-v-1:       clamp(#{ $sp-1}, 2%, calc(#{ $sp-1} * 2));
-$sp-v-2:       clamp(#{ $sp-2}, 4%, calc(#{ $sp-2} * 2));
-$sp-v-3:       clamp(#{ $sp-3}, 6%, calc(#{ $sp-3} * 2));
-$sp-v-4:       clamp(#{ $sp-4}, 8%, calc(#{ $sp-4} * 2));
-$sp-v-5:       clamp(#{ $sp-5}, 10%, calc(#{ $sp-5} * 2));
-$sp-v-6:       clamp(#{ $sp-6}, 12%, calc(#{ $sp-6} * 2));
-$sp-v-7:       clamp(#{ $sp-7}, 14%, calc(#{ $sp-7} * 2));
-$sp-v-8:       clamp(#{ $sp-8}, 16%, calc(#{ $sp-8} * 2));
-$sp-v-9:       clamp(#{ $sp-9}, 18%, calc(#{ $sp-9} * 2));
-$sp-v-10:      clamp(#{ $sp-10}, 20%, (calc#{ $sp-10} * 2));
-$sp-v-11:      clamp(#{ $sp-11}, 22%, (calc#{ $sp-11} * 2));
-$sp-v-12:      clamp(#{ $sp-12}, 24%, (calc#{ $sp-12} * 2));
+$sp-v-1:       clamp($sp-1, 2%, calc($sp-1 * 2));
+$sp-v-2:       clamp($sp-2, 4%, calc($sp-2 * 2));
+$sp-v-3:       clamp($sp-3, 6%, calc($sp-3 * 2));
+$sp-v-4:       clamp($sp-4, 8%, calc($sp-4 * 2));
+$sp-v-5:       clamp($sp-5, 10%, calc($sp-5 * 2));
+$sp-v-6:       clamp($sp-6, 12%, calc($sp-6 * 2));
+$sp-v-7:       clamp($sp-7, 14%, calc($sp-7 * 2));
+$sp-v-8:       clamp($sp-8, 16%, calc($sp-8 * 2));
+$sp-v-9:       clamp($sp-9, 18%, calc($sp-9 * 2));
+$sp-v-10:      clamp($sp-10, 20%, calc($sp-10 * 2));
+$sp-v-11:      clamp($sp-11, 22%, calc($sp-11 * 2));
+$sp-v-12:      clamp($sp-12, 24%, calc($sp-12 * 2));
 
-/*-| Borders |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+/*-| Items, Borders |-*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 $item-border:  $sp-2;
 $panel-border: $sp-4;
+
+/*-| Generate |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+@for $i from 1 through 24 {
+  /*-| All |-*/
+  /*---+----+---+----+---+----+---+----+---*/
+  .--p-#{$i} {
+    padding: calc(2px * $i) !important;
+  }
+  .--m-#{$i} {
+    margin: calc(2px * $i) !important;
+  }
+  .--gap-#{$i} {
+    gap: calc(2px * $i) !important;
+  }
+
+  /*-| Axis |-*/
+  /*---+----+---+----+---+----+---+----+---*/
+  /*-| Vert |-*/
+  .--p-v-#{$i} {
+    padding-top: calc(2px * $i) !important;
+    padding-bottom: calc(2px * $i) !important;
+  }
+  .--m-v-#{$i} {
+    margin-top: calc(2px * $i) !important;
+    margin-bottom: calc(2px * $i) !important;
+  }
+  /*-| Horz |-*/
+  .--p-h-#{$i} {
+    padding-left: calc(2px * $i) !important;
+    padding-right: calc(2px * $i) !important;
+  }
+  .--m-h-#{$i} {
+    margin-left: calc(2px * $i) !important;
+    margin-right: calc(2px * $i) !important;
+  }
+  /*-| Individual |-*/
+  /*---+----+---+----+---+----+---+----+---*/
+  /*-| Top |-*/
+  .--p-t-#{$i} {
+    padding-top: calc(2px * $i) !important;
+  }
+  .--m-t-#{$i} {
+    margin-top: calc(2px * $i) !important;
+  }
+  /*-| Right |-*/
+  .--p-r-#{$i} {
+    padding-right: calc(2px * $i) !important;
+  }
+  .--m-r-#{$i} {
+    margin-right: calc(2px * $i) !important;
+  }
+  /*-| Bottom |-*/
+  .--p-b-#{$i} {
+    padding-bottom: calc(2px * $i) !important;
+  }
+  .--m-b-#{$i} {
+    margin-bottom: calc(2px * $i) !important;
+  }
+  /*-| Left |-*/
+  .--p-l-#{$i} {
+    padding-left: calc(2px * $i) !important;
+  }
+  .--m-l-#{$i} {
+    margin-left: calc(2px * $i) !important;
+  }
+}

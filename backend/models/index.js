@@ -4,19 +4,19 @@ const Company = require( './company' );
 const Scan = require( './scan' );
 
 Expo.hasMany( Lead, {
-    foreignKey: 'expo_Id',
+    foreignKey: 'expo_Year',
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 } )
 
 Expo.hasMany( Company, {
-    foreignKey: 'expo_Id',
+    foreignKey: 'expo_Year',
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 } )
 
 Expo.hasMany( Scan, {
-    foreignKey: 'expo_Id',
+    foreignKey: 'expo_Year',
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 } )

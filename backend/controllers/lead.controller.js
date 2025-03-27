@@ -12,10 +12,10 @@ exports.getAllLeads = async ( req, res ) => {
 
 // Controller method to create a new lead
 exports.createLead = async ( req, res ) => {
-    const { expo_Id, name_First, name_Last, contact_Email, contact_Phone, contact_Employer } = req.body;
+    const { expo_Year, name_First, name_Last, contact_Email, contact_Phone, contact_Employer } = req.body;
     try {
         const newLead = await Lead.create( {
-            expo_Id,
+            expo_Year,
             name_First,
             name_Last,
             contact_Email,

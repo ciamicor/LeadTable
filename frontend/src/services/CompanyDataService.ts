@@ -6,7 +6,11 @@ export default class CompanyDataService {
     return http.get('/company')
   }
 
+  get(id: any) {
+    return http.get("/company/" + id)
+  }
+
   create(data: any) {
-    return http.post(`/company/${data}`)
+    return http.post("/company", data)
   }
 }

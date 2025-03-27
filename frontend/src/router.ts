@@ -1,7 +1,7 @@
 import {createWebHistory, createRouter} from 'vue-router'
 import LeadsList from "@/components/LeadsList.vue";
-import LeadEdit from "@/components/LeadEdit.vue";
-import AddLead from "@/components/AddLead.vue";
+import ScanLead from "@/components/ScanLead.vue";
+import FloorPlan from "@/components/FloorPlan.vue";
 
 const routes = [
   {
@@ -10,14 +10,14 @@ const routes = [
     component: LeadsList,
   },
   {
-    path: '/lead-edit',
-    name: 'lead-edit',
-    component: LeadEdit,
+    path: '/scan-lead',
+    name: 'scan-lead',
+    component: ScanLead,
   },
   {
-    path: '/add-lead',
-    name: 'add-lead',
-    component: AddLead,
+    path: '/floor-plan',
+    name: 'floor-plan',
+    component: FloorPlan,
   },
 ]
 
