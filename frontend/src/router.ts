@@ -1,9 +1,15 @@
 import {createWebHistory, createRouter} from 'vue-router'
 import LeadsList from "@/components/LeadsList.vue";
-import ScanLead from "@/components/ScanLead.vue";
+import ScanLead from "@/components/AddLead.vue";
 import FloorPlan from "@/components/FloorPlan.vue";
+import CompanyProfile from "@/components/CompanyProfile.vue";
 
 const routes = [
+  {
+    path: '/',
+    name: '',
+    component: FloorPlan,
+  },
   {
     path: '/leads-list',
     name: 'leads-list',
@@ -19,6 +25,11 @@ const routes = [
     name: 'floor-plan',
     component: FloorPlan,
   },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: CompanyProfile,
+  }
 ]
 
 const router = createRouter({

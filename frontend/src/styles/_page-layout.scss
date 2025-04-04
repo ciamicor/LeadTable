@@ -34,6 +34,7 @@ $breakpoints:    (
   flex:      1 1 auto;
   flex-flow: row wrap;
   gap:       $row-gap;
+  width:     100dvw;
   max-width: $max-page-width;
   margin:    0;
   padding:   $sp-v-8;
@@ -46,7 +47,7 @@ $breakpoints:    (
   gap:       $row-gap;
   max-width: $max-page-width;
   margin:    0 auto;
-  padding:   $sp-v-4;
+  padding:   $sp-v-4 $sp-v-5;
   .--full {
     max-width: 100%;
   }
@@ -55,10 +56,13 @@ $breakpoints:    (
 @for $i from 1 through $column-number {
   .col-#{$i} {
     width:     calc((100% * ($i / $column-number)) - $row-gap);
-    min-width: 275px;
+    min-width: 200px;
     display:   flex;
     flex-flow: column nowrap;
-    flex:      1 1 auto;
+    flex:      1 1 calc((100% * ($i / $column-number)) - $row-gap);
     gap:       $col-gap;
+    & > button {
+      margin: $sp-4;
+    }
   }
 }

@@ -2,11 +2,11 @@ const express = require( 'express' );
 const router = express.Router();
 const leadController = require( '../controllers/lead.controller' );
 
-// Route to get all leads
-router.get( '/', leadController.getAllLeads );
-
 // Route to create a new lead
 router.post( '/', leadController.createLead );
+
+// Route to get all leads
+router.get( '/', leadController.getAllLeads );
 
 // Route to get a lead by ID
 router.get( '/:id', leadController.getLeadById );

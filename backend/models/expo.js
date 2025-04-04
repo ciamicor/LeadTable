@@ -15,11 +15,14 @@ class Expo extends Model {
 
 Expo.init( {
     expo_Active: DataTypes.BOOLEAN,
+    expo_Client: DataTypes.STRING,
     expo_Year: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        
+    },
+    expoFp_Id: {
+        type: DataTypes.INTEGER,
     },
 }, {
     sequelize,

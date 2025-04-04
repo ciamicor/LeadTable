@@ -16,25 +16,35 @@ table {
       border:     1px solid $grey-9;
       transition: background 200ms ease-in;
       td {
-        padding:      $sp-4 $sp-5;
-        //border-right: 1px solid $grey-11;
+        line-height:  1;
+        white-space:  nowrap;
+        width:        5%;
+        padding:      $sp-4 $sp-4;
+        border-right: 1px solid $grey-11;
         outline:      2px solid hsla(0, 0%, 0%, 0);
         transition:   outline 200ms ease-out;
-        &:hover {
-          outline: 1px solid $color-secondary-5;
-        }
         &:has(input) {
           padding: $sp-2;
+        }
+        &#comment {
+          white-space: wrap;
         }
       }
       &:hover {
         background: $grey-12;
       }
       input {
-        width:      100%;
+        width:      calc(100% - $sp-8);
         max-width:  15ch;
-        border:     none;
+        height:     calc(100% - $sp-8);
+        padding:    $sp-4;
         background: hsla(0, 0%, 100%, .65);
+        &:active, &:focus {
+          background: $grey-12;
+        }
+      }
+      &:last-child {
+        background: $grey-12;
       }
     }
   }

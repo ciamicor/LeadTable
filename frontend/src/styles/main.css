@@ -1837,10 +1837,10 @@
 :root {
   --font-primary: hsl(215, 15%, 15%);
   --font-contrast: white;
-  --color-primary-hs: 215, 100%;
-  --color-secondary-hs: 265, 65%;
-  --color-success-hs: 115, 65%;
-  --color-warn-hs: 15, 85%;
+  --color-primary-hs: 85, 65%;
+  --color-secondary-hs: 35, 85%;
+  --color-success-hs: 235, 85%;
+  --color-warn-hs: 10, 85%;
   --grey-1-hsl: 215, 25%, 8%;
   --grey-2-hsl: 215, 25%, 16%;
   --grey-3-hsl: 215, 25%, 24%;
@@ -1858,6 +1858,10 @@
 /*-| SCSS |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 /*-| Reset |-*/
+* {
+  text-wrap: pretty;
+}
+
 p, li, h1, h2, h3, h4, h5 {
   margin: 0 0 4px 0;
 }
@@ -1884,6 +1888,7 @@ p, button, li, label {
   flex: 1 1 auto;
   flex-flow: row wrap;
   gap: 8px;
+  width: 100dvw;
   max-width: 1600px;
   margin: 0;
   padding: clamp(24px, 16%, 48px);
@@ -1896,7 +1901,7 @@ p, button, li, label {
   gap: 8px;
   max-width: 1600px;
   margin: 0 auto;
-  padding: clamp(8px, 8%, 16px);
+  padding: clamp(8px, 8%, 16px) clamp(12px, 10%, 24px);
 }
 .row .--full {
   max-width: 100%;
@@ -1904,110 +1909,146 @@ p, button, li, label {
 
 .col-1 {
   width: calc(8.3333333333% - 8px);
-  min-width: 275px;
+  min-width: 200px;
   display: flex;
   flex-flow: column nowrap;
-  flex: 1 1 auto;
+  flex: 1 1 calc(8.3333333333% - 8px);
   gap: 8px;
+}
+.col-1 > button {
+  margin: 8px;
 }
 
 .col-2 {
   width: calc(16.6666666667% - 8px);
-  min-width: 275px;
+  min-width: 200px;
   display: flex;
   flex-flow: column nowrap;
-  flex: 1 1 auto;
+  flex: 1 1 calc(16.6666666667% - 8px);
   gap: 8px;
+}
+.col-2 > button {
+  margin: 8px;
 }
 
 .col-3 {
   width: calc(25% - 8px);
-  min-width: 275px;
+  min-width: 200px;
   display: flex;
   flex-flow: column nowrap;
-  flex: 1 1 auto;
+  flex: 1 1 calc(25% - 8px);
   gap: 8px;
+}
+.col-3 > button {
+  margin: 8px;
 }
 
 .col-4 {
   width: calc(33.3333333333% - 8px);
-  min-width: 275px;
+  min-width: 200px;
   display: flex;
   flex-flow: column nowrap;
-  flex: 1 1 auto;
+  flex: 1 1 calc(33.3333333333% - 8px);
   gap: 8px;
+}
+.col-4 > button {
+  margin: 8px;
 }
 
 .col-5 {
   width: calc(41.6666666667% - 8px);
-  min-width: 275px;
+  min-width: 200px;
   display: flex;
   flex-flow: column nowrap;
-  flex: 1 1 auto;
+  flex: 1 1 calc(41.6666666667% - 8px);
   gap: 8px;
+}
+.col-5 > button {
+  margin: 8px;
 }
 
 .col-6 {
   width: calc(50% - 8px);
-  min-width: 275px;
+  min-width: 200px;
   display: flex;
   flex-flow: column nowrap;
-  flex: 1 1 auto;
+  flex: 1 1 calc(50% - 8px);
   gap: 8px;
+}
+.col-6 > button {
+  margin: 8px;
 }
 
 .col-7 {
   width: calc(58.3333333333% - 8px);
-  min-width: 275px;
+  min-width: 200px;
   display: flex;
   flex-flow: column nowrap;
-  flex: 1 1 auto;
+  flex: 1 1 calc(58.3333333333% - 8px);
   gap: 8px;
+}
+.col-7 > button {
+  margin: 8px;
 }
 
 .col-8 {
   width: calc(66.6666666667% - 8px);
-  min-width: 275px;
+  min-width: 200px;
   display: flex;
   flex-flow: column nowrap;
-  flex: 1 1 auto;
+  flex: 1 1 calc(66.6666666667% - 8px);
   gap: 8px;
+}
+.col-8 > button {
+  margin: 8px;
 }
 
 .col-9 {
   width: calc(75% - 8px);
-  min-width: 275px;
+  min-width: 200px;
   display: flex;
   flex-flow: column nowrap;
-  flex: 1 1 auto;
+  flex: 1 1 calc(75% - 8px);
   gap: 8px;
+}
+.col-9 > button {
+  margin: 8px;
 }
 
 .col-10 {
   width: calc(83.3333333333% - 8px);
-  min-width: 275px;
+  min-width: 200px;
   display: flex;
   flex-flow: column nowrap;
-  flex: 1 1 auto;
+  flex: 1 1 calc(83.3333333333% - 8px);
   gap: 8px;
+}
+.col-10 > button {
+  margin: 8px;
 }
 
 .col-11 {
   width: calc(91.6666666667% - 8px);
-  min-width: 275px;
+  min-width: 200px;
   display: flex;
   flex-flow: column nowrap;
-  flex: 1 1 auto;
+  flex: 1 1 calc(91.6666666667% - 8px);
   gap: 8px;
+}
+.col-11 > button {
+  margin: 8px;
 }
 
 .col-12 {
   width: calc(100% - 8px);
-  min-width: 275px;
+  min-width: 200px;
   display: flex;
   flex-flow: column nowrap;
-  flex: 1 1 auto;
+  flex: 1 1 calc(100% - 8px);
   gap: 8px;
+}
+.col-12 > button {
+  margin: 8px;
 }
 
 .table-container {
@@ -2029,36 +2070,66 @@ table tbody tr {
   transition: background 200ms ease-in;
 }
 table tbody tr td {
-  padding: 8px 12px;
+  line-height: 1;
+  white-space: nowrap;
+  width: 5%;
+  padding: 8px 8px;
+  border-right: 1px solid hsl(var(--grey-11-hsl));
   outline: 2px solid hsla(0, 0%, 0%, 0);
   transition: outline 200ms ease-out;
 }
-table tbody tr td:hover {
-  outline: 1px solid hsl(var(--color-secondary-hs), 40%);
-}
 table tbody tr td:has(input) {
   padding: 4px;
+}
+table tbody tr td#comment {
+  white-space: wrap;
 }
 table tbody tr:hover {
   background: hsl(var(--grey-12-hsl));
 }
 table tbody tr input {
-  width: 100%;
+  width: calc(100% - 24px);
   max-width: 15ch;
-  border: none;
+  height: calc(100% - 24px);
+  padding: 8px;
   background: hsla(0, 0%, 100%, 0.65);
+}
+table tbody tr input:active, table tbody tr input:focus {
+  background: hsl(var(--grey-12-hsl));
+}
+table tbody tr:last-child {
+  background: hsl(var(--grey-12-hsl));
+}
+
+label {
+  margin: 16px 0 0 0;
+  padding: 0 4px;
+}
+
+input {
+  padding: 12px 16px;
+  border: 2px solid hsl(var(--grey-10-hsl));
+  border-radius: 4px;
+  transition: box-shadow 200ms ease-out, border 200ms ease-out;
+}
+input:focus, input:focus-visible {
+  border: 2px solid hsl(var(--color-secondary-hs), 64%);
+  outline: none;
+  box-shadow: 0 0 8px 0 hsl(var(--color-secondary-hs), 80%), inset 0 0 8px 0 hsl(var(--color-secondary-hs), 80%);
 }
 
 button, .button {
   display: flex;
   place-content: center;
+  place-items: center;
   place-self: center;
   color: hsl(var(--grey-4-hsl));
   font-size: 18px;
   font-weight: 450;
+  line-height: 1;
   text-align: center;
   text-decoration: none;
-  padding: 8px 16px;
+  padding: 12px 16px;
   cursor: pointer;
   border: 1px solid hsl(var(--grey-8-hsl));
   border-radius: 4px;
@@ -2072,21 +2143,29 @@ button:hover, .button:hover {
 button.--square, .button.--square {
   aspect-ratio: 1/1;
   line-height: 0;
+  height: min-content;
   padding: 8px;
 }
+button.--float, .button.--float {
+  position: absolute;
+}
+button.--float.--top-r, .button.--float.--top-r {
+  top: 16px;
+  right: 16px;
+}
 button.--primary, .button.--primary {
-  color: var(--font-primary);
-  border: 1px solid hsl(var(--color-primary-hs), 24%);
-  background: hsl(var(--color-primary-hs), 48%);
+  color: hsl(var(--color-primary-hs), 32%);
+  border: 1px solid hsl(var(--color-primary-hs), 64%);
+  background: hsl(var(--color-primary-hs), 80%);
 }
 button.--primary:hover, .button.--primary:hover {
   color: hsl(var(--color-primary-hs), 80%);
   background: hsl(var(--color-primary-hs), 24%);
 }
 button.--secondary, .button.--secondary {
-  color: hsl(var(--color-secondary-hs), 24%);
+  color: hsl(var(--color-secondary-hs), 16%);
   border: 1px solid hsl(var(--color-secondary-hs), 64%);
-  background: hsl(var(--color-secondary-hs), 94%);
+  background: hsl(var(--color-secondary-hs), 80%);
 }
 button.--secondary:hover, .button.--secondary:hover {
   color: hsl(var(--color-secondary-hs), 32%);
@@ -2094,7 +2173,7 @@ button.--secondary:hover, .button.--secondary:hover {
 }
 button.--success, .button.--success {
   color: hsl(var(--color-success-hs), 32%);
-  border: 1px solid hsl(var(--color-success-hs), 48%);
+  border: 1px solid hsl(var(--color-success-hs), 64%);
   background: hsl(var(--color-success-hs), 94%);
 }
 button.--success:hover, .button.--success:hover {
@@ -2115,7 +2194,7 @@ button.--warn:hover, .button.--warn:hover {
   position: relative;
   display: grid;
   overflow: hidden;
-  grid-template-rows: 1fr 60px;
+  grid-template-rows: 1fr 92px;
   width: 100dvw;
   height: 100dvh;
 }
@@ -2130,10 +2209,10 @@ button.--warn:hover, .button.--warn:hover {
   flex-flow: row nowrap;
   place-content: center;
   place-items: center;
-  gap: 24px;
+  gap: 16px;
   height: 60px;
   padding: 16px;
-  background-color: hsl(var(--color-secondary-hs), 48%);
+  background-color: hsl(var(--color-primary-hs), 40%);
 }
 .nav-bar .button {
   display: grid;
@@ -2141,7 +2220,9 @@ button.--warn:hover, .button.--warn:hover {
   place-items: center;
   gap: 4px;
   font-size: 16px;
-  width: 85px;
+  width: 20%;
+  min-width: 65px;
+  max-width: 120px;
   height: 100%;
   padding: 0;
   opacity: 65%;
@@ -2154,17 +2235,19 @@ button.--warn:hover, .button.--warn:hover {
 .view-mask {
   overflow: scroll;
   width: 100dvw;
-  height: calc(100dvh - 60px - 32px);
+  max-width: 100dvw;
+  height: calc(100dvh - 92px);
 }
 .view-container {
-  height: auto;
+  min-height: calc(100dvh - 92px);
 }
 
 /*-| Views |-*/
 /*---+----+---+----+---+----+---+----+---*/
 .view-floor-plan {
   width: 100dvw;
-  height: calc(100dvh - 60px - 32px);
+  height: calc(100dvh - 92px - 4px);
+  border: none !important;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,13 +1,17 @@
-$app-height:  100dvh;
-$app-width:   100dvw;
-$nav-height:  calc(60px);
-$nav-padding: $sp-6;
+$app-height:        100dvh;
+$app-width:         100dvw;
+
+$nav-height:        calc(60px);
+$nav-padding:       $sp-6;
+$nav-height-actual: calc($nav-height + ($nav-padding * 2));
+
+$view-height:       calc($app-height - $nav-height-actual);
 
 #app {
   position:           relative;
   display:            grid;
   overflow:           hidden;
-  grid-template-rows: 1fr $nav-height;
+  grid-template-rows: 1fr $nav-height-actual;
   width:              100dvw;
   height:             $app-height;
 }
@@ -22,10 +26,10 @@ $nav-padding: $sp-6;
   flex-flow:        row nowrap;
   place-content:    center;
   place-items:      center;
-  gap:              $sp-8;
+  gap:              $sp-6;
   height:           $nav-height;
   padding:          $nav-padding;
-  background-color: $color-secondary-6;
+  background-color: $color-primary-5;
 
   .button {
     display:       grid;
@@ -33,7 +37,9 @@ $nav-padding: $sp-6;
     place-items:   center;
     gap:           $sp-2;
     font-size:     $font-xs;
-    width:         85px;
+    width:         20%;
+    min-width:     65px;
+    max-width:     120px;
     height:        100%;
     padding:       0;
     opacity:       65%;
@@ -46,12 +52,13 @@ $nav-padding: $sp-6;
 
 .view {
   &-mask {
-    overflow: scroll;
-    width:    $app-width;
-    height:   calc($app-height - $nav-height - calc($nav-padding * 2));
+    overflow:  scroll;
+    width:     $app-width;
+    max-width: $app-width;
+    height:    $view-height;
   }
   &-container {
-    height: auto;
+    min-height: $view-height;
   }
 }
 
@@ -59,5 +66,6 @@ $nav-padding: $sp-6;
 /*---+----+---+----+---+----+---+----+---*/
 .view-floor-plan {
   width:  $app-width;
-  height: calc($app-height - $nav-height - calc($nav-padding * 2));
+  height: calc($view-height - 4px);
+  border: none !important;
 }

@@ -9,24 +9,31 @@
           <th>Phone</th>
           <th>Employer</th>
           <th>Expo</th>
-          <th>ID</th>
+          <th>Score</th>
+          <th>Comment</th>
+          <th>Edit/Add</th>
         </tr>
         </thead>
         <tbody>
         <tr v-for="(lead, index) in leadsList"
-            :key="index">
-          <td>{{ lead.name_First }}</td>
-          <td>{{ lead.name_Last }}</td>
-          <td>{{ lead.contact_Email }}</td>
-          <td>{{ lead.contact_Phone }}</td>
-          <td>{{ lead.contact_Employer }}</td>
-          <td>{{ lead.expo_Year }}</td>
+            :key="index"
+            :data-attendee-id="lead.attendee_Id"
+            :data-company-scan="lead.scan_Company_Id"
+        >
+          <td id="name_First">{{ lead.name_First }}</td>
+          <td id="name_Last">{{ lead.name_Last }}</td>
+          <td id="email">{{ lead.email }}</td>
+          <td id="phone">{{ lead.phone }}</td>
+          <td id="employer">{{ lead.employer }}</td>
+          <td id="expo_Year">{{ lead.expo_Year }}</td>
+          <td id="score">{{ lead.score }}</td>
+          <td id="comment">{{ lead.comment }}</td>
           <td>
             <button class="--square --warn"
                     @click="deleteLead(lead.id)">
               <svg
                 fill="none"
-                height="24"
+                height="20"
                 stroke="currentColor"
                 stroke-width="1.5"
                 viewBox="0 0 24 24"
@@ -41,7 +48,7 @@
         </tr>
 
         <tr>
-          <td class="--p-12">
+          <td>
             <input v-model="lead.name_First"
                    name="nameFirst"
                    type="text">
@@ -52,17 +59,17 @@
                    type="text">
           </td>
           <td>
-            <input v-model="lead.contact_Email"
+            <input v-model="lead.email"
                    name="email"
                    type="email">
           </td>
           <td>
-            <input v-model="lead.contact_Phone"
+            <input v-model="lead.phone"
                    name="phone"
                    type="tel">
           </td>
           <td>
-            <input v-model="lead.contact_Employer"
+            <input v-model="lead.employer"
                    name="employer"
                    type="text">
           </td>
@@ -72,11 +79,21 @@
                    type="text">
           </td>
           <td>
+            <input v-model="lead.score"
+                   name="score"
+                   type="text">
+          </td>
+          <td>
+            <input v-model="lead.comment"
+                   name="comment"
+                   type="text">
+          </td>
+          <td>
             <button class="--square --success"
-                    @click="createLead(lead)">
+                    @click="createLead(lead); addDbLead()">
               <svg
                 fill="none"
-                height="24"
+                height="20"
                 stroke="currentColor"
                 stroke-width="1.5"
                 viewBox="0 0 24 24"
@@ -95,7 +112,7 @@
 
     <div class="row --gap-24">
       <button class="col-4"
-              @click="getAllLeads()">Refresh Leads
+              @click="getAllLeads(leadsList)">Refresh Leads
       </button>
       <p class="col-4">{{ lead }}</p>
     </div>
@@ -103,74 +120,110 @@
     <QrCode :url-value="'2'"
             class="col-6"/>
   </div>
+
 </template>
 
 <script setup>
-import LeadDataService from '../services/LeadDataService.js'
-import { onMounted, ref } from "vue";
+import { db } from "../db"
+import {
+  createLead_Service, deleteLead_Service,
+  getAllLeads_Service
+} from '../services/LeadDataService.js'
+import { onMounted, ref, inject } from "vue";
 import QrCode from "@/components/QrCode.vue";
 
-/*-| Variables |-*/
-/*---+----+---+----+---+----+---+----+---*/
-const leadService = new LeadDataService()
-let leadsList = ref( [] )
+const expoYearGlobal = inject( 'expoYear' )
+
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+/*-| DB |-*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+const status = ref()
+
+async function addDbLead() {
+  try {
+    const id = await db.leads.add( {
+      expo_Year: lead.value.expo_Year,
+      attendee_Id: lead.value.attendee_Id,
+      scan_Company_Id: lead.value.scan_Company_Id,
+      name_First: lead.value.name_First,
+      name_Last: lead.value.name_Last,
+      email: lead.value.email,
+      phone: lead.value.phone,
+      employer: lead.value.employer,
+      score: lead.value.score,
+      comment: lead.value.comment,
+    } );
+
+    status.value = `${ lead.value.name_First }
+          successfully added. Got id ${ id }`;
+
+  } catch ( error ) {
+    status.value = `Failed to add
+          ${ lead.value.name }: ${ error }`;
+  }
+  // Reset form
+  resetLeadVal()
+}
+
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+/*-| Leads List |-*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+
+let leadsList = ref()
 
 let lead = ref(
   {
-    expo_Year: 2025,
-    name_First: "Bella",
-    name_Last: "Castellino",
-    contact_Email: "bc@yahoo.com",
-    contact_Phone: "6066066066",
-    contact_Employer: 1
+    expo_Year: expoYearGlobal,
+    attendee_Id: null,
+    scan_Company_Id: 832387,
+    name_First: "Claire",
+    name_Last: "Mooney",
+    email: "claire@iami411.org",
+    phone: "6066066066",
+    employer: "IAMI",
+    score: 5,
+    comment: "I would do anything for her.",
   }
 )
 
-/*-| Functions |-*/
-/*---+----+---+----+---+----+---+----+---*/
-async function getAllLeads() {
-  await leadService.getAll()
-    .then( ( response ) => {
-      leadsList.value = response.data
-      console.log( response.data )
-    } )
-    .catch( ( e ) => {
-      console.log( e )
-    } )
+function resetLeadVal() {
+  lead.value.expo_Year = expoYearGlobal
+  lead.value.attendee_Id = null
+  lead.value.scan_Company_Id = null
+  lead.value.name_First = null
+  lead.value.name_Last = null
+  lead.value.email = null
+  lead.value.phone = null
+  lead.value.employer = null
+  lead.value.score = 5
+  lead.value.comment = ""
 }
 
-async function createLead( lead ) {
-  const data = {
-    expo_Year: lead.expo_Year,
-    name_First: lead.name_First,
-    name_Last: lead.name_Last,
-    contact_Email: lead.contact_Email,
-    contact_Phone: lead.contact_Phone,
-    contact_Employer: lead.contact_Employer
-  }
-  await leadService.create( data )
-    .then( ( response ) => {
-      lead.value.id = response.data.id
-      console.log( response.data )
-    } )
-    .catch( ( e ) => {
-      console.log( e )
-    } )
-  await getAllLeads()
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+/*-| Edit Leads |-*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+
+async function getAllLeads( l ) {
+  await getAllLeads_Service( l )
+  console.log( "leads", l )
+}
+
+async function createLead( l ) {
+  await createLead_Service( l )
+  await getAllLeads( leadsList )
 }
 
 async function deleteLead( id ) {
-  await leadService.delete( id )
-    .then( ( response ) => {
-      console.log( response.data )
-    } )
-    .catch( ( e ) => {
-      console.log( e )
-    } )
-  await getAllLeads()
+  await deleteLead_Service( id )
+  await getAllLeads( leadsList )
 }
 
-onMounted( getAllLeads )
+/*-| Hooks |-*/
+/*---+----+---+----+---+----+---+----+---*/
+onMounted( () => {
+    getAllLeads( leadsList )
+  }
+)
 
 </script>
 

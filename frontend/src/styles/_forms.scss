@@ -1,1 +1,21 @@
+label {
+  margin:  $sp-6 0 0 0;
+  padding: 0 $sp-2;
+}
 
+input {
+  padding:       $sp-5 $sp-6;
+  border:        2px solid $grey-10;
+  border-radius: $item-border;
+  transition:    box-shadow $trans-0, border $trans-0;
+  &:focus, &:focus-visible {
+    border:     2px solid $color-secondary-8;
+    outline:    none;
+    box-shadow: 0 0 8px -0 $color-secondary-10, inset 0 0 8px 0 $color-secondary-10;
+  }
+}
+
+datalist {
+  option {
+  }
+}

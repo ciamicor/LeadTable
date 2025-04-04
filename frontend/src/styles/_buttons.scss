@@ -1,13 +1,15 @@
 button, .button {
   display:         flex;
   place-content:   center;
+  place-items:     center;
   place-self:      center;
   color:           $grey-4;
   font-size:       $font-sm;
   font-weight:     450;
+  line-height:     1;
   text-align:      center;
   text-decoration: none;
-  padding:         $sp-4 $sp-6;
+  padding:         $sp-5 $sp-6;
   cursor:          pointer;
   border:          1px solid $grey-8;
   border-radius:   $item-border;
@@ -20,21 +22,29 @@ button, .button {
   &.--square {
     aspect-ratio: 1 / 1;
     line-height:  0;
+    height:       min-content;
     padding:      $sp-4;
   }
+  &.--float {
+    position: absolute;
+    &.--top-r {
+      top:   $sp-6;
+      right: $sp-6;
+    }
+  }
   &.--primary {
-    color:      $font-primary;
-    border:     1px solid $color-primary-3;
-    background: $color-primary-6;
+    color:      $color-primary-4;
+    border:     1px solid $color-primary-8;
+    background: $color-primary-10;
     &:hover {
       color:      $color-primary-10;
       background: $color-primary-3;
     }
   }
   &.--secondary {
-    color:      $color-secondary-3;
+    color:      $color-secondary-2;
     border:     1px solid $color-secondary-8;
-    background: $color-secondary-12;
+    background: $color-secondary-10;
     &:hover {
       color:      $color-secondary-4;
       background: $color-secondary-10;
@@ -42,7 +52,7 @@ button, .button {
   }
   &.--success {
     color:      $color-success-4;
-    border:     1px solid $color-success-6;
+    border:     1px solid $color-success-8;
     background: $color-success-12;
     &:hover {
       color:      $color-success-4;

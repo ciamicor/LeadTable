@@ -1,28 +1,43 @@
 const { Lead } = require( "../models" )
 
-// Controller method to get all leads
-exports.getAllLeads = async ( req, res ) => {
+// Controller method to create a new lead
+exports.createLead = async ( req, res ) => {
+    const {
+        expo_Year,
+        attendee_Id,
+        scan_Company_Id,
+        name_First,
+        name_Last,
+        email,
+        phone,
+        employer,
+        score,
+        comment
+    } = req.body;
     try {
-        const leads = await Lead.findAll();
-        res.json( leads );
+        const newLead = await Lead.create( {
+            expo_Year,
+            attendee_Id,
+            scan_Company_Id,
+            name_First,
+            name_Last,
+            email,
+            phone,
+            employer,
+            score,
+            comment
+        } );
+        res.status( 201 ).json( newLead );
     } catch ( error ) {
         res.status( 500 ).json( { error: 'Internal Server Error' + error.message } );
     }
 };
 
-// Controller method to create a new lead
-exports.createLead = async ( req, res ) => {
-    const { expo_Year, name_First, name_Last, contact_Email, contact_Phone, contact_Employer } = req.body;
+// Controller method to get all leads
+exports.getAllLeads = async ( req, res ) => {
     try {
-        const newLead = await Lead.create( {
-            expo_Year,
-            name_First,
-            name_Last,
-            contact_Email,
-            contact_Phone,
-            contact_Employer
-        } );
-        res.status( 201 ).json( newLead );
+        const leads = await Lead.findAll();
+        res.json( leads );
     } catch ( error ) {
         res.status( 500 ).json( { error: 'Internal Server Error' + error.message } );
     }

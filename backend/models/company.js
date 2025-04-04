@@ -15,10 +15,24 @@ class Company extends Model {
 
 Company.init( {
     // expo_Year // foreign key
-    company_Name: DataTypes.STRING,
-    company_Email: DataTypes.STRING,
-    company_Web: DataTypes.STRING,
-    company_Phone: DataTypes.STRING
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: false,
+    },
+    /*
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+    },
+    ex_Id: {
+        type: DataTypes.INTEGER,
+        unique: true
+    },
+    */
+    login_URL: DataTypes.STRING,
+    name: DataTypes.STRING
 }, {
     sequelize,
     modelName: 'Company',
