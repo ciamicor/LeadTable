@@ -5,7 +5,7 @@ const attendeeController = require( '../controllers/attendee.controller' );
 // Route to create a new lead
 router.post( '/', attendeeController.createAttendee );
 
-// Route to get all leads
+// Route to get all Attendees
 router.get( '/', attendeeController.getAllAttendees );
 
 // Route to get a lead by ID

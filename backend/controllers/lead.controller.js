@@ -1,4 +1,5 @@
 const { Lead } = require( "../models" )
+const { where } = require( "sequelize" );
 
 // Controller method to create a new lead
 exports.createLead = async ( req, res ) => {
@@ -36,8 +37,12 @@ exports.createLead = async ( req, res ) => {
 // Controller method to get all leads
 exports.getAllLeads = async ( req, res ) => {
     try {
-        const leads = await Lead.findAll();
-        res.json( leads );
+        const leads = await Lead.findAll( {} )
+        if ( leads ) {
+            res.json( leads )
+        } else {
+            res.status( 404 ).json( { error: 'No leads found?' } );
+        }
     } catch ( error ) {
         res.status( 500 ).json( { error: 'Internal Server Error' + error.message } );
     }

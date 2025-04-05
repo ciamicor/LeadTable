@@ -4,6 +4,8 @@
     <div class="row">
       <div class="col-6">
         <h1>Scan a Lead</h1>
+        <p><span>Company: </span>{{ activeCompName }}, {{ lead.scan_Company_Id }}</p>
+        <p><span>Year: </span>{{ attendee.expo_Year }}</p>
         <p><span>Name: </span>{{ attendee.name_First }} {{ attendee.name_Last }}</p>
         <p><span>Email: </span>{{ attendee.contact_Email }}</p>
         <p><span>Phone: </span>{{ attendee.contact_Phone }}</p>
@@ -49,7 +51,9 @@ import { getCompanyById_Service } from "@/services/CompanyDataService.js";
 
 /*-| Variables |-*/
 /*---+----+---+----+---+----+---+----+---*/
-const expoYearGlobal = inject( 'expoYear' )
+const expoYear = inject( 'expoYear_Global' )
+const activeCompId = inject( 'activeCompId_Global' )
+const activeCompName = inject( 'activeCompName_Global' )
 
 /*-| General |-*/
 let ratings = [ 1, 2, 3, 4, 5 ];
@@ -66,7 +70,7 @@ const getUrlId = new URL( location.href ).searchParams.get( 'id' )
 const attendeeService = new AttendeeDataService()
 let attendee = ref(
   {
-    expo_Year: expoYearGlobal,
+    expo_Year: expoYear,
     name_First: null,
     name_Last: null,
     contact_Email: null,
@@ -80,12 +84,9 @@ let attendee = ref(
 /*-| Company Service |-*/
 let company = ref(
   {
-    id: null,
-    expo_Year: expoYearGlobal,
-    company_Name: null,
-    company_Email: null,
-    company_Web: null,
-    company_Phone: null
+    id: activeCompId,
+    expo_Year: expoYear,
+    company_Name: activeCompName,
   }
 )
 
@@ -93,9 +94,9 @@ let company = ref(
 let lead = ref(
   {
     id: null,
-    expo_Year: expoYearGlobal,
+    expo_Year: expoYear,
     attendee_Id: attendee.value.id,
-    scan_Company_Id: company.value.id,
+    scan_Company_Id: activeCompId,
     name_First: attendee.value.name_First,
     name_Last: attendee.value.name_Last,
     email: attendee.value.contact_Email,

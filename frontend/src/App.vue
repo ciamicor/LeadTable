@@ -87,15 +87,61 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, provide, onBeforeMount } from "vue";
+import { db } from "@/db.js";
 
+/*-| Varibles |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+
+/*-| REF |-*/
+/*---+----+---+----+---+----+---+----+---*/
 const activeView = ref( '' )
+
+let expoYear_Ref = ref( '' )
+let activeCompId_Ref = ref( '' )
+let activeCompLeadRet_Ref = ref( '' )
+let activeCompUrl_Ref = ref( '' )
+let activeCompName_Ref = ref( '' )
+
+/*-| Get Company from Local |-*/
+/*---+----+---+----+---+----+---+----+---*/
+async function updateCompany() {
+  await db.profile.get( 1 ).then( ( res ) => {
+    console.log( "res:", res.name )
+
+    expoYear_Ref.value = res.expo_Year
+    activeCompId_Ref.value = res.ex_Id
+    activeCompLeadRet_Ref.value = res.lead_Ret
+    activeCompUrl_Ref.value = res.login_Url.toString()
+    activeCompName_Ref.value = res.name.toString()
+
+    console.log( "UPDATE RESULT",
+      expoYear_Ref.value,
+      activeCompId_Ref.value,
+      activeCompLeadRet_Ref.value,
+      activeCompUrl_Ref.value,
+      activeCompName_Ref.value,
+    )
+  } )
+}
+
+provide( 'expoYear_Global', expoYear_Ref )
+provide( 'activeCompId_Global', activeCompId_Ref )
+provide( 'activeCompLeadRet_Global', activeCompLeadRet_Ref )
+provide( 'activeCompUrl_Global', activeCompUrl_Ref )
+provide( 'activeCompName_Global', activeCompName_Ref )
 
 function setActiveView( view ) {
   activeView.value = view
 }
 
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+/*-| Hooks |-*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 
+onBeforeMount( () => {
+  updateCompany()
+} )
 </script>
 
 <style>

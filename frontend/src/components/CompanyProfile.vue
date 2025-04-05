@@ -48,7 +48,7 @@
              name="profileUrl"
              type="text">
       <button class="--success"
-              @click="checkExLink(exData.autoLoginUrl); checkLeadExtra()">
+              @click="login()">
         Portal Login
       </button>
     </div>
@@ -74,6 +74,8 @@
         <p class="col-5">Lead retrieval: {{ extraMatch }}</p>
       </div>
       <h2>Link</h2>
+      <p>ABRAZIL Link:</p>
+      <span>/exhibitors/details/edit?uid=73accba5-0b60-488c-acde-30f9d295edcb&token=fF7PY%252B1nPloFunSt0DmsGTHw8L1oa6Sf</span>
       <p>{{ loginUrl }}</p>
       <p>{{ exData ? exData.autoLoginUrl : null }}</p>
       <h2>Extras</h2>
@@ -93,8 +95,7 @@ import {
   getExhibExtras
 } from "../services/ExpoFpDataService.ts"
 import {createCompany_Service} from "@/services/CompanyDataService.ts";
-import {inject, onBeforeMount, ref} from "vue";
-import {liveQuery} from "dexie";
+import {onBeforeMount, ref} from "vue";
 import {db} from "@/db.ts";
 
 /*-| Variables |-*/
@@ -109,10 +110,10 @@ const exData = ref()
 const exExtras = ref()
 const linkMatch = ref(false)
 const extraMatch = ref(false)
-const expoYearGlobal = inject('expoYear')
+const expoYear = ref()
 const exhibProfileData = ref()
 
-const loginUrl = ref('/exhibitors/details/edit?uid=73accba5-0b60-488c-acde-30f9d295edcb&token=fF7PY%252B1nPloFunSt0DmsGTHw8L1oa6Sf')
+const loginUrl = ref('')
 const loggedIn = ref(false)
 
 /*-| Lifecycle |-*/
@@ -138,6 +139,7 @@ async function getProfile() {
     linkMatch.value = true
     extraMatch.value = true
     loggedIn.value = true
+
   }
 }
 
@@ -148,7 +150,7 @@ async function saveDbLogin() {
       name: exData.value.name,
       login_Url: exData.value.autoLoginUrl,
       lead_Ret: !!extraMatch.value,
-      expo_Year: expoYearGlobal
+      expo_Year: expoYear.value
     });
     status.value = `${exData.value.name}
           successfully added. Got id ${id}`;
@@ -173,7 +175,10 @@ function matchUrlParams(u: string) {
 }
 
 async function getAllEx() {
-  exList.value = await getAllExhibitors()
+  const hold = await getAllExhibitors()
+  exList.value = hold.filter((c: any) => {
+    return c.booths.length > 0
+  }).sort()
   console.log("exList: ", exList.value)
   // return fp.getAllExhibitors(exList)
 }
@@ -190,8 +195,8 @@ async function getExtras(id: any) {
 
 async function checkExLink(li: string) {
   console.log("checking link")
-  let l = matchUrlParams(loginUrl.value)
-  let d = matchUrlParams(li)
+  let l: any = matchUrlParams(loginUrl.value)
+  let d: any = matchUrlParams(li)
   console.log("l:", l, "d:", d)
   if (l[0] === d[0]) {
     console.log("linkmatch!")
@@ -216,7 +221,8 @@ async function searchExhib() {
 }
 
 async function getSelectedId(e: any) {
-  const list = document.getElementById('searchList')
+  let list: any
+  list = document.getElementById('searchList')
   for (let i = 0; i < list.childElementCount; i++) {
     console.log(list.children[i].attributes["data-exid"].value)
     exSearchObj.value.id = list.children[i].attributes["data-exid"].value
@@ -232,11 +238,24 @@ async function updateSearch(e: any) {
   await checkExLink(exData.value.autoLoginUrl)
   await checkLeadExtra()
 
+  // TODO Add better global pull
+
+  console.log(expoYear.value)
+
   console.log(extraMatch.value)
   if (extraMatch.value && linkMatch.value) {
-    await saveDbLogin()
-    await createCompany_Service(exData, expoYearGlobal)
-    loggedIn.value = true
+
   }
+}
+
+async function login() {
+  expoYear.value = parseInt(exData.value.updatedAt.slice(0, 4))
+  await checkExLink(exData.value.autoLoginUrl)
+  await checkLeadExtra()
+  await saveDbLogin()
+  await createCompany_Service(exData, expoYear.value)
+  loggedIn.value = true
+
+  window.location.reload();
 }
 </script>

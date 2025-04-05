@@ -4,6 +4,8 @@
       <table>
         <thead>
         <tr>
+          <th>id</th>
+          <th>c_Id</th>
           <th colspan="2">Name</th>
           <th>Email</th>
           <th>Phone</th>
@@ -20,6 +22,8 @@
             :data-attendee-id="lead.attendee_Id"
             :data-company-scan="lead.scan_Company_Id"
         >
+          <td id="name_First">{{ lead.attendee_Id }}</td>
+          <td id="name_Last">{{ lead.scan_Company_Id }}</td>
           <td id="name_First">{{ lead.name_First }}</td>
           <td id="name_Last">{{ lead.name_Last }}</td>
           <td id="email">{{ lead.email }}</td>
@@ -49,6 +53,15 @@
 
         <tr>
           <td>
+            {{ lead.id }}
+          </td>
+          <td>
+            {{ lead.scan_Company_Id }}
+          </td>
+          <td>
+            {{ lead.expo_Year }}
+          </td>
+          <td>
             <input v-model="lead.name_First"
                    name="nameFirst"
                    type="text">
@@ -74,11 +87,6 @@
                    type="text">
           </td>
           <td>
-            <input v-model="lead.expo_Year"
-                   name="expo"
-                   type="text">
-          </td>
-          <td>
             <input v-model="lead.score"
                    name="score"
                    type="text">
@@ -90,7 +98,7 @@
           </td>
           <td>
             <button class="--square --success"
-                    @click="createLead(lead); addDbLead()">
+                    @click="createLead(lead)">
               <svg
                 fill="none"
                 height="20"
@@ -111,14 +119,13 @@
     </div>
 
     <div class="row --gap-24">
+      <QrCode :url-value="'2'"
+              class="col-6"/>
       <button class="col-4"
               @click="getAllLeads(leadsList)">Refresh Leads
       </button>
-      <p class="col-4">{{ lead }}</p>
     </div>
 
-    <QrCode :url-value="'2'"
-            class="col-6"/>
   </div>
 
 </template>
@@ -129,11 +136,21 @@ import {
   createLead_Service, deleteLead_Service,
   getAllLeads_Service
 } from '../services/LeadDataService.js'
-import { onMounted, ref, inject } from "vue";
+import { ref, inject, onBeforeMount } from "vue";
 import QrCode from "@/components/QrCode.vue";
 
-const expoYearGlobal = inject( 'expoYear' )
+const expoYear = inject( 'expoYear_Global' )
+const activeCompId = inject( 'activeCompId_Global' )
+const activeCompLeadRet = inject( 'activeCompLeadRet_Global' )
+const activeCompUrl = inject( 'activeCompUrl_Global' )
+const activeCompName = inject( 'activeCompName_Global' )
 
+console.log( "loggedCompany: ",
+  expoYear.value,
+  activeCompId.value,
+  activeCompLeadRet.value,
+  activeCompUrl.value,
+  activeCompName.value )
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| DB |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
@@ -162,7 +179,6 @@ async function addDbLead() {
           ${ lead.value.name }: ${ error }`;
   }
   // Reset form
-  resetLeadVal()
 }
 
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
@@ -173,9 +189,9 @@ let leadsList = ref()
 
 let lead = ref(
   {
-    expo_Year: expoYearGlobal,
+    expo_Year: expoYear,
     attendee_Id: null,
-    scan_Company_Id: 832387,
+    scan_Company_Id: activeCompId,
     name_First: "Claire",
     name_Last: "Mooney",
     email: "claire@iami411.org",
@@ -186,10 +202,10 @@ let lead = ref(
   }
 )
 
-function resetLeadVal() {
-  lead.value.expo_Year = expoYearGlobal
+async function resetLeadVal() {
+  lead.value.expo_Year = expoYear;
   lead.value.attendee_Id = null
-  lead.value.scan_Company_Id = null
+  lead.value.scan_Company_Id = activeCompId
   lead.value.name_First = null
   lead.value.name_Last = null
   lead.value.email = null
@@ -206,11 +222,16 @@ function resetLeadVal() {
 async function getAllLeads( l ) {
   await getAllLeads_Service( l )
   console.log( "leads", l )
+  leadsList.value = leadsList.value.filter( ( l ) => {
+    return l.scan_Company_Id === activeCompId.value
+  } )
 }
 
 async function createLead( l ) {
   await createLead_Service( l )
   await getAllLeads( leadsList )
+  await addDbLead()
+  await resetLeadVal()
 }
 
 async function deleteLead( id ) {
@@ -220,7 +241,7 @@ async function deleteLead( id ) {
 
 /*-| Hooks |-*/
 /*---+----+---+----+---+----+---+----+---*/
-onMounted( () => {
+onBeforeMount( () => {
     getAllLeads( leadsList )
   }
 )

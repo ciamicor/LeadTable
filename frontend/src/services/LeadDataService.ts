@@ -15,7 +15,7 @@ export default class LeadDataService {
   }
 
   update(id: any, data: any) {
-    return http.put("/lead/${id}", data)
+    return http.put("/lead/", data)
   }
 
   delete(id: any) {
