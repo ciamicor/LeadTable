@@ -12,6 +12,7 @@ const {
 } = require( './models' )
 
 // Connect to the database
+const { DataTypes } = require( 'sequelize' )
 Sequelize.authenticate()
   .then( () => console.log( 'Database connected' ) )
   .catch( ( err ) => console.error( 'Error connecting to database:', err ) )
@@ -30,7 +31,6 @@ const app = express()
 
 // Add CORS
 const cors = require( 'cors' )
-const { DataTypes } = require( 'sequelize' )
 app.use( cors() )
 
 // Middleware to parse JSON requests
@@ -41,10 +41,6 @@ const leadRoutes = require( './routes/lead.routes' )
 const attendeeRoutes = require( './routes/attendee.routes' )
 const companyRoutes = require( './routes/company.routes' )
 const scanRoutes = require( './routes/scan.routes' )
-app.use( '/lead', leadRoutes )
-app.use( '/company', companyRoutes )
-app.use( '/scan', scanRoutes )
-app.use( '/attendee', attendeeRoutes )
 
 const PORT = process.env.PORT || 'localhost'
 const HOST = process.env.HOST || 8080
@@ -55,6 +51,10 @@ app.use( express.static( staticPath ) )
   .listen( PORT, () => {
     console.log( `Server ${ HOST } is running on port ${ PORT }` )
   } )
+app.use( '/lead', leadRoutes )
+app.use( '/company', companyRoutes )
+app.use( '/scan', scanRoutes )
+app.use( '/attendee', attendeeRoutes )
 
 //
 //
