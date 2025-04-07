@@ -111,7 +111,7 @@ let lead = ref(
 /*---+----+---+----+---+----+---+----+---*/
 onBeforeMount( () => {
   getAttendee( getUrlId )
-  getCompany( 456453, company )
+  getCompany( activeCompName, company )
 } )
 
 /*-| Functions |-*/

@@ -59,9 +59,6 @@
             {{ lead.scan_Company_Id }}
           </td>
           <td>
-            {{ lead.expo_Year }}
-          </td>
-          <td>
             <input v-model="lead.name_First"
                    name="nameFirst"
                    type="text">
@@ -85,6 +82,9 @@
             <input v-model="lead.employer"
                    name="employer"
                    type="text">
+          </td>
+          <td>
+            {{ lead.expo_Year }}
           </td>
           <td>
             <input v-model="lead.score"
@@ -151,6 +151,7 @@ console.log( "loggedCompany: ",
   activeCompLeadRet.value,
   activeCompUrl.value,
   activeCompName.value )
+
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| DB |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
@@ -186,7 +187,6 @@ async function addDbLead() {
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 
 let leadsList = ref()
-
 let lead = ref(
   {
     expo_Year: expoYear,
@@ -228,15 +228,20 @@ async function getAllLeads( l ) {
 }
 
 async function createLead( l ) {
+  console.log( "Create lead: ", l.name_First )
   await createLead_Service( l )
-  await getAllLeads( leadsList )
   await addDbLead()
+  await getAllLeads( leadsList )
   await resetLeadVal()
 }
 
 async function deleteLead( id ) {
   await deleteLead_Service( id )
   await getAllLeads( leadsList )
+}
+
+async function checkLeadFields() {
+  
 }
 
 /*-| Hooks |-*/

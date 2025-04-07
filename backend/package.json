@@ -1,7 +1,7 @@
 {
   "name": "leadtable-backend",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,7 +14,8 @@
     "express": "^4.21.2",
     "mariadb": "^3.4.0",
     "mysql2": "^3.12.0",
-    "sequelize": "^6.37.6"
+    "sequelize": "^6.37.6",
+    "serve-static": "^2.2.0"
   },
   "devDependencies": {
     "sequelize-cli": "^6.6.2"
