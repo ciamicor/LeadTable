@@ -4,15 +4,15 @@
       <table>
         <thead>
         <tr>
-          <th>id</th>
-          <th>c_Id</th>
           <th colspan="2">Name</th>
           <th>Email</th>
           <th>Phone</th>
           <th>Employer</th>
-          <th>Expo</th>
+          <th>Title</th>
           <th>Score</th>
           <th>Comment</th>
+          <th>Expo</th>
+          <th>c_Id</th>
           <th>Edit/Add</th>
         </tr>
         </thead>
@@ -22,16 +22,16 @@
             :data-attendee-id="lead.attendee_Id"
             :data-company-scan="lead.scan_Company_Id"
         >
-          <td id="attendee_Id">{{ lead.attendee_Id }}</td>
-          <td id="company_Id">{{ lead.scan_Company_Id }}</td>
           <td id="name_First">{{ lead.name_First }}</td>
           <td id="name_Last">{{ lead.name_Last }}</td>
           <td id="email">{{ lead.email }}</td>
           <td id="phone">{{ lead.phone }}</td>
           <td id="employer">{{ lead.employer }}</td>
-          <td id="expo_Year">{{ lead.expo_Year }}</td>
+          <td id="employer">{{ lead.title }}</td>
           <td id="score">{{ lead.score }}</td>
           <td id="comment">{{ lead.comment }}</td>
+          <td id="expo_Year">{{ lead.expo_Year }}</td>
+          <td id="company_Id">{{ lead.scan_Company_Id }}</td>
           <td>
             <button class="--square --warn"
                     @click="deleteLead(lead.id)">
@@ -52,12 +52,6 @@
         </tr>
 
         <tr>
-          <td>
-            {{ lead.id }}
-          </td>
-          <td>
-            {{ lead.scan_Company_Id }}
-          </td>
           <td>
             <input v-model="lead.name_First"
                    name="nameFirst"
@@ -84,7 +78,9 @@
                    type="text">
           </td>
           <td>
-            {{ lead.expo_Year }}
+            <input v-model="lead.title"
+                   name="employer"
+                   type="text">
           </td>
           <td>
             <input v-model="lead.score"
@@ -95,6 +91,12 @@
             <input v-model="lead.comment"
                    name="comment"
                    type="text">
+          </td>
+          <td>
+            {{ lead.expo_Year }}
+          </td>
+          <td>
+            {{ lead.scan_Company_Id }}
           </td>
           <td>
             <button class="--square --success"
@@ -117,20 +119,18 @@
         </tbody>
       </table>
     </div>
-
-    <div class="row --gap-24">
-      <QrCode :url-value="'2'"
-              class="col-6" />
-      <button class="col-4"
-              @click="getAllLeads(leadsList)">Refresh Leads
-      </button>
-    </div>
-
+    <router-link
+      class="button --stacked --float --bottom-r --success"
+      to="/scan-lead">
+      <i class="bi-qr-code-scan"></i>
+      Scan
+    </router-link>
   </div>
 
 </template>
 
 <script setup>
+import router from '@/router.js'
 import { db } from '../db'
 import {
   createLead_Service, deleteLead_Service,
@@ -194,6 +194,7 @@ let lead = ref(
     scan_Company_Id: activeCompId,
     name_First: 'Clara',
     name_Last: 'Mooney',
+    title: 'Developer',
     email: 'claire@iami411.org',
     phone: '6066066066',
     employer: 'IAMI',
@@ -208,6 +209,7 @@ async function resetLeadVal() {
   lead.value.scan_Company_Id = activeCompId
   lead.value.name_First = null
   lead.value.name_Last = null
+  lead.value.title = null
   lead.value.email = null
   lead.value.phone = null
   lead.value.employer = null
@@ -241,7 +243,6 @@ async function deleteLead( id ) {
 }
 
 async function checkLeadFields() {
-
 }
 
 /*-| Hooks |-*/

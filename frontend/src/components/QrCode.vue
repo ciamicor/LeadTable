@@ -14,15 +14,14 @@
 </template>
 <script lang="ts"
         setup>
-import {ref} from 'vue'
+import { ref } from 'vue'
 import QrcodeVue from 'qrcode.vue'
-import type {Level, RenderAs, GradientType, ImageSettings} from 'qrcode.vue'
+import type { Level, RenderAs, GradientType, ImageSettings } from 'qrcode.vue'
 
-
-const {urlValue} = defineProps({
+const { urlValue } = defineProps({
   urlValue: String
 })
-const value = ref("http://localhost:8081/scan-lead?id=" + urlValue)
+const value = ref('http://localhost:8081/scan-lead?id=' + urlValue)
 const level = ref<Level>('M')
 const renderAs = ref<RenderAs>('svg')
 const background = ref('#ffffff')
@@ -31,11 +30,11 @@ const margin = ref(0)
 
 const imageSettings = ref<ImageSettings>({
   src: 'https://nyift.org/wp-content/uploads/2025/01/New-York_Central-Jersey-Sections__Horizontal__RGB.jpg',
-  width: 20,
-  height: 10,
+  width: 25,
+  height: 15,
   // x: 10,
   // y: 10,
-  excavate: true,
+  excavate: true
 })
 
 const gradient = ref(false)

@@ -22,6 +22,7 @@ Lead.init( {
   scan_Company_Id: DataTypes.INTEGER, // foreign key
   name_First: DataTypes.STRING,
   name_Last: DataTypes.STRING,
+  title: DataTypes.STRING,
   email: DataTypes.STRING,
   phone: DataTypes.STRING,
   employer: DataTypes.STRING,

@@ -18,7 +18,7 @@ const { DataTypes } = require( 'sequelize' )
 Sequelize.authenticate()
   .then( () => console.log( `Database ${ process.env.DB_NAME } connected` ) )
   .catch( ( err ) => console.error( 'Error connecting to database:', err ) )
-Sequelize.sync( /*{ force: true }*/ )
+Sequelize.sync( { /*force: true*/ } )
   .then( async () => {
     // await initPlaceholdData()
   } )
@@ -137,6 +137,7 @@ async function initPlaceholdData() {
     contact_Email: 'katy@iami411.org',
     contact_Phone: '323587468',
     contact_Employer: 'IAMI',
+    title: 'Employee',
     reg_Type: 'Exhibitor',
     tech_Sem: true
   } )
@@ -148,6 +149,19 @@ async function initPlaceholdData() {
     contact_Email: 'lynnda@iami411.org',
     contact_Phone: '323587468',
     contact_Employer: 'ICOR',
+    title: 'Employee',
+    reg_Type: 'Attendee',
+    tech_Sem: true
+  } )
+
+  const newAttendee1 = await Attendee.create( {
+    expo_Year: 2025,
+    name_First: 'Kate',
+    name_Last: 'Valentine',
+    contact_Email: 'kate@icor.org',
+    contact_Phone: '323587468',
+    contact_Employer: 'ICOR',
+    title: 'Employee',
     reg_Type: 'Attendee',
     tech_Sem: true
   } )

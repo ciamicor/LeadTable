@@ -27,9 +27,11 @@ button,
     color:      $grey-2;
     background: $grey-10;
   }
+  /*-| Alternatives |-*/
+  /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
   &.--square {
     aspect-ratio: 1 / 1;
-    line-height:  0;
+    line-height:  1;
     height:       min-content;
     padding:      $sp-4;
   }
@@ -37,26 +39,44 @@ button,
     z-index:  10;
     position: absolute;
     &.--top-r {
-      top:   $sp-6;
-      right: $sp-6;
+      top:   $sp-8;
+      right: $sp-8;
     }
     &.--top-l {
-      top:  $sp-6;
-      left: $sp-6;
+      top:  $sp-8;
+      left: $sp-8;
     }
     &.--bottom-r {
-      right:  $sp-6;
-      bottom: $sp-6;
+      right:  $sp-8;
+      bottom: calc($sp-8 + $nav-height-actual);
     }
     &.--bottom-l {
-      bottom: $sp-6;
-      left:   $sp-6;
+      bottom: calc($sp-8 + $nav-height-actual);
+      left:   $sp-8;
+    }
+    &.--bottom-c {
+      bottom:    calc($sp-8 + $nav-height-actual);
+      left:      50%;
+      transform: -50% 0;
     }
   }
   &.--disable {
     pointer-events: none;
     opacity:        0.5;
   }
+  &.--stacked {
+    display:       grid;
+    place-content: center;
+    place-items:   center;
+    gap:           $sp-3;
+    font-size:     $font-sm;
+    border-radius: $panel-border;
+    & i {
+      font-size: $font-lg;
+    }
+  }
+  /*-| Colors |-*/
+  /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
   &.--primary {
     color:         $color-primary-3;
     border:        $button-border $color-primary-5;

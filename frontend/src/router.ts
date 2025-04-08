@@ -3,6 +3,7 @@ import LeadsList from '@/components/LeadsList.vue'
 import ScanLead from '@/components/AddLead.vue'
 import FloorPlan from '@/components/FloorPlan.vue'
 import CompanyProfile from '@/components/CompanyProfile.vue'
+import QrCodes from './components/QrCodes.vue'
 
 const routes = [
   {
@@ -29,6 +30,11 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: CompanyProfile
+  },
+  {
+    path: '/qr-codes',
+    name: 'qrcodes',
+    component: QrCodes
   }
 ]
 

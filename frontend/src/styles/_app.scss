@@ -1,12 +1,9 @@
 $app-height:        100dvh;
 $app-width:         100dvw;
-
 $nav-height:        calc(60px);
 $nav-padding:       $sp-6;
 $nav-height-actual: calc($nav-height + ($nav-padding * 2));
-
 $view-height:       calc($app-height - $nav-height-actual);
-
 #app {
   position:           relative;
   display:            grid;
@@ -30,20 +27,13 @@ $view-height:       calc($app-height - $nav-height-actual);
   height:           $nav-height;
   padding:          $nav-padding;
   background-color: $color-primary-5;
-
   .button {
-    display:       grid;
-    place-content: center;
-    place-items:   center;
-    gap:           $sp-2;
-    font-size:     $font-xs;
-    width:         20%;
-    min-width:     65px;
-    max-width:     120px;
-    height:        100%;
-    padding:       0;
-    opacity:       65%;
-    border-radius: $panel-border;
+    width:     20%;
+    min-width: 65px;
+    max-width: 120px;
+    height:    100%;
+    padding:   0;
+    opacity:   65%;
     &.--secondary {
       opacity: 100% !important;
     }

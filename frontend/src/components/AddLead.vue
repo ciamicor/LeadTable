@@ -5,7 +5,7 @@
     <qrcode-stream
       class="scanner-camera-wrap"
       @detect="getQrId($event)"
-      @paused="scanCodeFound"
+      @paused="scanCodeFound.value"
       @camera-on="scanTarget = 'Scanning'"
     ></qrcode-stream>
     <div class="row --items qr-float-container">
@@ -37,6 +37,7 @@
       <p><span>Email: </span>{{ attendee.contact_Email }}</p>
       <p><span>Phone: </span>{{ attendee.contact_Phone }}</p>
       <p><span>Employer: </span>{{ attendee.contact_Employer }}</p>
+      <p><span>Title: </span>{{ attendee.title }}</p>
       <form action=""
             class="col-6">
         <fieldset>
@@ -68,15 +69,15 @@
         </button>
         <button
           class="--success"
-          @click="createLead(lead)">Add {{ lead.name_First }}
+          @click="createLead(lead)">Add & Scan Another
+        </button>
+        <button
+          class="--success"
+          @click="createLead(lead); router.push('/leads-list')">Add {{ lead.name_First }}
         </button>
       </div>
     </div>
   </div>
-  {{ scanConfirm }} {{ scanCodeFound }}
-
-  <button @click="scanConfirm = !scanConfirm">Swap View</button>
-
   <div v-if="debug"
        class="row">
     <div class="col-6">
@@ -95,6 +96,7 @@ import { QrcodeStream } from 'vue-qrcode-reader'
 import { createLead_Service } from '@/services/LeadDataService.js'
 import AttendeeDataService from '@/services/AttendeeDataService.ts'
 import { inject, onBeforeMount, onMounted, ref } from 'vue'
+import router from '@/router.js'
 
 /*-| Variables |-*/
 /*---+----+---+----+---+----+---+----+---*/
@@ -122,6 +124,7 @@ let attendee = ref(
     contact_Email: null,
     contact_Phone: null,
     contact_Employer: null,
+    title: null,
     reg_Type: null,
     tech_Sem: null
   }
@@ -148,6 +151,7 @@ let lead = ref(
     email: attendee.value.contact_Email,
     phone: attendee.value.contact_Phone,
     employer: attendee.value.contact_Employer,
+    title: attendee.value.title,
     score: 5,
     comment: null
   }
@@ -197,6 +201,7 @@ async function resetLead() {
   lead.value.email = null
   lead.value.phone = null
   lead.value.employer = null
+  lead.value.title = null
 }
 
 async function loadLead() {
@@ -207,6 +212,7 @@ async function loadLead() {
   lead.value.email = attendee.value.contact_Email
   lead.value.phone = attendee.value.contact_Phone
   lead.value.employer = attendee.value.contact_Employer
+  lead.value.title = attendee.value.title
 }
 
 /*-| Get ID from QR Code |-*/
@@ -226,7 +232,6 @@ async function createLead( l ) {
   await createLead_Service( l )
   await resetLead()
   resetScanning()
-  console.log( 'Lead reset to: ', lead.value )
 }
 
 </script>
