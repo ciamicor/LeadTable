@@ -66,7 +66,10 @@
        profile.</p>
   </div>
 
-  <div class="row">
+  <p>{{ loginUrl }}</p>
+
+  <div v-if="debug"
+       class="row">
     <div class="col-12">
       <div class="row">
         <p class="col-12">{{ exSearchObj }}</p>
@@ -100,11 +103,16 @@ import { db } from '@/db.ts'
 
 /*-| Variables |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+const debug = ref(false)
+
 const exList = ref()
 const exSearchObj = ref({
   name: '',
   id: ''
 })
+
+const searchListHold = ref()
+
 const exSearchResult = ref()
 const exData = ref()
 const exExtras = ref()
@@ -213,9 +221,12 @@ async function checkLeadExtra() {
 
 async function searchExhib() {
   exSearchObj.value.id = ''
-  exSearchResult.value = exList.value.filter((e: any) =>
+  searchListHold.value = exList.value.filter((e: any) =>
     e.name.toLowerCase().includes(exSearchObj.value.name.toLowerCase())
-  ) // console.log("search: ", exSearchResult.value)
+  )
+  console.log('S HOLD: ', searchListHold.value)
+  exSearchResult.value = searchListHold.value
+  console.log('search: ', exSearchResult.value)
   return exSearchResult.value
 }
 

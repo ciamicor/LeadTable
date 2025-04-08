@@ -1,5 +1,5 @@
 <template>
-  <div class="row --gap-20">
+  <div class="row --gap-24">
     <div
       v-for="(lead, index) in attendeeList"
       :key="index"
