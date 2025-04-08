@@ -6,7 +6,11 @@ exports.getAllAttendees = async ( req, res ) => {
     const attendees = await Attendee.findAll()
     res.json( attendees )
   } catch ( error ) {
-    res.status( 500 ).json( { error: 'Internal Server Error' + error.message + error.response.data } )
+    console.error( 'error in controller getAllAttendees: ', error )
+    res.status( 500 ).json( {
+      error: 'Something went wrong with controller: getAllAttendees.',
+      details: error?.message || 'Unknown error'
+    } )
   }
 }
 
@@ -35,7 +39,11 @@ exports.createAttendee = async ( req, res ) => {
     } )
     res.status( 201 ).json( newAttendee )
   } catch ( error ) {
-    res.status( 500 ).json( { error: 'Internal Server Error' + error.message + error.response.data } )
+    console.error( 'error in controller createAttendee: ', error )
+    res.status( 500 ).json( {
+      error: 'Something went wrong with controller: createAttendee.',
+      details: error?.message || 'Unknown error'
+    } )
   }
 }
 
@@ -50,7 +58,11 @@ exports.getAttendeeById = async ( req, res ) => {
       res.status( 404 ).json( { error: 'Attendee not found' } )
     }
   } catch ( error ) {
-    res.status( 500 ).json( { error: 'Internal Server Error' + error.message + error.response.data } )
+    console.error( 'error in controller getAttendeeById: ', error )
+    res.status( 500 ).json( {
+      error: 'Something went wrong with controller: getAttendeeById.',
+      details: error?.message || 'Unknown error'
+    } )
   }
 }
 
@@ -72,7 +84,11 @@ exports.updateAttendee = async ( req, res ) => {
       res.status( 404 ).json( { error: 'Attendee not found' } )
     }
   } catch ( error ) {
-    res.status( 500 ).json( { error: 'Internal Server Error' + error.message + error.response.data } )
+    console.error( 'error in controller updateAttendee: ', error )
+    res.status( 500 ).json( {
+      error: 'Something went wrong with controller: updateAttendee.',
+      details: error?.message || 'Unknown error'
+    } )
   }
 }
 
@@ -88,6 +104,10 @@ exports.deleteAttendee = async ( req, res ) => {
       res.status( 404 ).json( { error: 'Attendee not found' } )
     }
   } catch ( error ) {
-    res.status( 500 ).json( { error: 'Internal Server Error' + error.message + error.response.data } )
+    console.error( 'error in controller deleteAttendee: ', error )
+    res.status( 500 ).json( {
+      error: 'Something went wrong with controller: deleteAttendee.',
+      details: error?.message || 'Unknown error'
+    } )
   }
 }

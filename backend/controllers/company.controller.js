@@ -17,7 +17,11 @@ exports.createCompany = async ( req, res ) => {
     } )
     res.status( 201 ).json( newCompany )
   } catch ( error ) {
-    res.status( 500 ).json( { error: 'Internal Server Error' + error.message + error.response.data } )
+    console.error( 'error in controller createCompany: ', error )
+    res.status( 500 ).json( {
+      error: 'Something went wrong while creating a company.',
+      details: error?.message || 'Unknown error'
+    } )
   }
 }
 
@@ -27,7 +31,11 @@ exports.getAllCompanies = async ( req, res ) => {
     const companies = await Company.findAll()
     res.json( companies )
   } catch ( error ) {
-    res.status( 500 ).json( { error: 'Internal Server Error' + error.message + error.response.data } )
+    console.error( 'error in controller getAllCompanies: ', error )
+    res.status( 500 ).json( {
+      error: 'Something went wrong while getting all companies.',
+      details: error?.message || 'Unknown error'
+    } )
   }
 }
 
@@ -42,6 +50,10 @@ exports.getCompanyById = async ( req, res ) => {
       res.status( 404 ).json( { error: 'Company not found' } )
     }
   } catch ( error ) {
-    res.status( 500 ).json( { error: 'Internal Server Error' + error.message + error.response.data } )
+    console.error( 'error in controller getCompanyById: ', error )
+    res.status( 500 ).json( {
+      error: 'Something went wrong while getting a company.',
+      details: error?.message || 'Unknown error'
+    } )
   }
 }

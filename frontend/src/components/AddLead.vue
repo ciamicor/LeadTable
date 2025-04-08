@@ -1,5 +1,8 @@
 <template>
   <div class="row">
+    <qrcode-stream @detect="getQrId($event)"
+    ></qrcode-stream>
+
 
     <div class="row">
       <div class="col-6">
@@ -44,10 +47,11 @@
 </template>
 
 <script setup>
-import { createLead_Service } from "@/services/LeadDataService.js";
-import AttendeeDataService from "@/services/AttendeeDataService.ts";
-import { inject, onBeforeMount, onMounted, ref } from "vue";
-import { getCompanyById_Service } from "@/services/CompanyDataService.js";
+import { QrcodeStream } from 'vue-qrcode-reader'
+import { createLead_Service } from '@/services/LeadDataService.js'
+import AttendeeDataService from '@/services/AttendeeDataService.ts'
+import { inject, onBeforeMount, onMounted, ref } from 'vue'
+import { getCompanyById_Service } from '@/services/CompanyDataService.js'
 
 /*-| Variables |-*/
 /*---+----+---+----+---+----+---+----+---*/
@@ -56,15 +60,22 @@ const activeCompId = inject( 'activeCompId_Global' )
 const activeCompName = inject( 'activeCompName_Global' )
 
 /*-| General |-*/
-let ratings = [ 1, 2, 3, 4, 5 ];
-const commentRef = ref( null );
+let ratings = [ 1, 2, 3, 4, 5 ]
+const commentRef = ref( null )
 
 /*-| URL |-*/
 let paramTestUrl = new URL(
-  "http://localhost:8081/add-lead/?first=Jonathan&last=Smith&email=js@yahoo.com&phone=645865485"
-).searchParams;
-let getParam = new URL( location.href ).searchParams;
+  'http://localhost:8081/add-lead/?first=Jonathan&last=Smith&email=js@yahoo.com&phone=645865485'
+).searchParams
+let getParam = new URL( location.href ).searchParams
 const getUrlId = new URL( location.href ).searchParams.get( 'id' )
+
+function getQrId( e ) {
+  let url = e[0].rawValue
+  let id = new URL( url ).searchParams.get( 'id' )
+  console.log( 'id scanned is: ', id )
+  getAttendee( id )
+}
 
 /*-| Lead Service |-*/
 const attendeeService = new AttendeeDataService()
@@ -86,7 +97,7 @@ let company = ref(
   {
     id: activeCompId,
     expo_Year: expoYear,
-    company_Name: activeCompName,
+    company_Name: activeCompName
   }
 )
 
@@ -111,7 +122,7 @@ let lead = ref(
 /*---+----+---+----+---+----+---+----+---*/
 onBeforeMount( () => {
   getAttendee( getUrlId )
-  getCompany( activeCompName, company )
+  getCompany( activeCompId.value, company.value )
 } )
 
 /*-| Functions |-*/
@@ -124,7 +135,7 @@ async function getAttendee( id ) {
   await attendeeService.get( id )
     .then( ( response ) => {
       attendee.value = response.data
-      console.log( "attendee: ", attendee.value )
+      console.log( 'attendee: ', attendee.value )
     } )
     .catch( ( e ) => {
       console.log( e )

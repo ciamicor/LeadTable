@@ -2,7 +2,7 @@ import http from '../http-common'
 
 export default class CompanyDataService {
   create(data: any) {
-    return http.post("/company", data)
+    return http.post('/company', data)
   }
 
   getAll() {
@@ -10,7 +10,7 @@ export default class CompanyDataService {
   }
 
   get(id: any) {
-    return http.get("/company/" + id)
+    return http.get('/company/' + id)
   }
 }
 
@@ -28,9 +28,9 @@ async function createCompany_Service(companyObject: any, year: number) {
     id: companyObject.value.id,
     login_URL: companyObject.value.autoLoginUrl,
     name: companyObject.value.name,
-    expo_Year: year,
+    expo_Year: year
   }
-  console.log(data);
+  console.log(data)
   await companyService.create(data)
     .then((response: any) => {
       companyObject.id = response.data.id
@@ -49,11 +49,11 @@ async function getCompanyById_Service(id: any, companyObject: any) {
   await companyService.get(id)
     .then((response) => {
       companyObject.value = response.data
-      console.log("company: ", companyObject)
+      console.log('company: ', companyObject.value)
     })
     .catch((e) => {
       console.log(e)
     })
 }
 
-export {getCompanyById_Service, createCompany_Service}
+export { getCompanyById_Service, createCompany_Service }

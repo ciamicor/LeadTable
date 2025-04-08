@@ -93,17 +93,17 @@ import {
   getAllExhibitors,
   getExhibitor,
   getExhibExtras
-} from "../services/ExpoFpDataService.ts"
-import {createCompany_Service} from "@/services/CompanyDataService.ts";
-import {onBeforeMount, ref} from "vue";
-import {db} from "@/db.ts";
+} from '../services/ExpoFpDataService.ts'
+import { createCompany_Service } from '@/services/CompanyDataService.ts'
+import { onBeforeMount, ref } from 'vue'
+import { db } from '@/db.ts'
 
 /*-| Variables |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const exList = ref()
 const exSearchObj = ref({
-  name: "",
-  id: ""
+  name: '',
+  id: ''
 })
 const exSearchResult = ref()
 const exData = ref()
@@ -130,7 +130,7 @@ const status = ref()
 
 async function getProfile() {
   exhibProfileData.value = await db.profile.get(1)
-  console.log("profile data ", exhibProfileData.value)
+  console.log('profile data ', exhibProfileData.value)
   exSearchObj.value.name = exhibProfileData.value.name
   exSearchObj.value.id = exhibProfileData.value.ex_Id
   loginUrl.value = exhibProfileData.value.login_Url
@@ -139,7 +139,6 @@ async function getProfile() {
     linkMatch.value = true
     extraMatch.value = true
     loggedIn.value = true
-
   }
 }
 
@@ -151,21 +150,21 @@ async function saveDbLogin() {
       login_Url: exData.value.autoLoginUrl,
       lead_Ret: !!extraMatch.value,
       expo_Year: expoYear.value
-    });
+    })
     status.value = `${exData.value.name}
-          successfully added. Got id ${id}`;
+          successfully added. Got id ${id}`
   } catch (error) {
     status.value = `Failed to add
-          ${exData.value.name}: ${error}`;
+          ${exData.value.name}: ${error}`
   }
 }
 
 async function signOut() {
-  db.delete({disableAutoOpen: false});
+  db.delete({ disableAutoOpen: false })
   linkMatch.value = false
   extraMatch.value = false
   loggedIn.value = false
-  window.location.reload();
+  // window.location.reload();
 }
 
 /*-| Function |-*/
@@ -179,41 +178,41 @@ async function getAllEx() {
   exList.value = hold.filter((c: any) => {
     return c.booths.length > 0
   }).sort()
-  console.log("exList: ", exList.value)
+  console.log('exList: ', exList.value)
   // return fp.getAllExhibitors(exList)
 }
 
 async function getEx(id: any) {
   exData.value = await getExhibitor(id)
-  console.log("exData: ", exData.value)
+  console.log('exData: ', exData.value)
 }
 
 async function getExtras(id: any) {
   exExtras.value = await getExhibExtras(id)
-  console.log("Extras: ", exExtras.value)
+  console.log('Extras: ', exExtras.value)
 }
 
 async function checkExLink(li: string) {
-  console.log("checking link")
+  console.log('checking link')
   let l: any = matchUrlParams(loginUrl.value)
   let d: any = matchUrlParams(li)
-  console.log("l:", l, "d:", d)
+  console.log('l:', l, 'd:', d)
   if (l[0] === d[0]) {
-    console.log("linkmatch!")
+    console.log('linkmatch!')
     linkMatch.value = true
   }
 }
 
 async function checkLeadExtra() {
-  console.log("checking lead retrieval purchase")
+  console.log('checking lead retrieval purchase')
   extraMatch.value = await exExtras.value.some((e: any) =>
-    e.name.toLowerCase().includes("lead retrieval")
+    e.name.toLowerCase().includes('lead retrieval')
   )
-  console.log("lead retrieval purchased: ", extraMatch.value)
+  console.log('lead retrieval purchased: ', extraMatch.value)
 }
 
 async function searchExhib() {
-  exSearchObj.value.id = ""
+  exSearchObj.value.id = ''
   exSearchResult.value = exList.value.filter((e: any) =>
     e.name.toLowerCase().includes(exSearchObj.value.name.toLowerCase())
   ) // console.log("search: ", exSearchResult.value)
@@ -224,8 +223,8 @@ async function getSelectedId(e: any) {
   let list: any
   list = document.getElementById('searchList')
   for (let i = 0; i < list.childElementCount; i++) {
-    console.log(list.children[i].attributes["data-exid"].value)
-    exSearchObj.value.id = list.children[i].attributes["data-exid"].value
+    console.log(list.children[i].attributes['data-exid'].value)
+    exSearchObj.value.id = list.children[i].attributes['data-exid'].value
   }
 }
 
@@ -233,8 +232,8 @@ async function updateSearch(e: any) {
   if (exSearchObj.value.name) {
     await getSelectedId(e)
   }
-  await getEx(exSearchObj.value.id);
-  await getExtras(exSearchObj.value.id);
+  await getEx(exSearchObj.value.id)
+  await getExtras(exSearchObj.value.id)
   await checkExLink(exData.value.autoLoginUrl)
   await checkLeadExtra()
 
@@ -256,6 +255,6 @@ async function login() {
   await createCompany_Service(exData, expoYear.value)
   loggedIn.value = true
 
-  window.location.reload();
+  // window.location.reload();
 }
 </script>
