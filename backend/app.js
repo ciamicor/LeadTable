@@ -1,6 +1,8 @@
-require( '@dotenvx/dotenvx' )
-  .config( { path: '../.env' } )
-// require( '@dotenvx/dotenvx' ).config()
+require( '@dotenvx/dotenvx' ).config()
+
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+/*-| Init DB |-*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 
 const Sequelize = require( './config/config' )
 const {
@@ -14,19 +16,20 @@ const {
 // Connect to the database
 const { DataTypes } = require( 'sequelize' )
 Sequelize.authenticate()
-  .then( () => console.log( 'Database connected' ) )
+  .then( () => console.log( `Database ${ process.env.DB_NAME } connected` ) )
   .catch( ( err ) => console.error( 'Error connecting to database:', err ) )
-
-Sequelize.sync( { force: true } )
+Sequelize.sync( /*{ force: true }*/ )
   .then( async () => {
-    await initPlaceholdData()
+    // await initPlaceholdData()
   } )
 //
 //
 
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+/*-| Init App |-*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 const express = require( 'express' )
 let path = require( 'path' )
-let serveStatic = require( 'serve-static' )
 const app = express()
 
 // Add CORS
@@ -42,19 +45,47 @@ const attendeeRoutes = require( './routes/attendee.routes' )
 const companyRoutes = require( './routes/company.routes' )
 const scanRoutes = require( './routes/scan.routes' )
 
-const PORT = process.env.PORT || 'localhost'
-const HOST = process.env.HOST || 8080
+const PORT = process.env.PORT || 8080
+const HOST = process.env.HOST || 'localhost'
+const frontend_root = '../frontend/dist'
 
-const staticPath = '../frontend/dist'
+app.use( '/api/lead', leadRoutes )
+app.use( '/api/company', companyRoutes )
+app.use( '/api/scan', scanRoutes )
+app.use( '/api/attendee', attendeeRoutes )
 
-app.use( express.static( staticPath ) )
-  .listen( PORT, () => {
-    console.log( `Server ${ HOST } is running on port ${ PORT }` )
+app.use( express.static( path.join( __dirname, frontend_root ) ) )
+app.get( '*', ( req, res ) => {
+  res.sendFile( path.join( __dirname, frontend_root, 'index.html' ) )
+} )
+
+/*-| Handle Errors |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+app.use( ( req, res, next ) => {
+  const error = new Error( `🔍 Not Found - ${ req.originalUrl }` )
+  error.status = 404
+  next( error )
+} )
+app.use( ( err, req, res, next ) => {
+  console.error( '🔥 Uncaught Error:', {
+    message: err.message,
+    stack: err.stack,
+    route: req.originalUrl,
+    method: req.method,
+    body: req.body
   } )
-app.use( '/lead', leadRoutes )
-app.use( '/company', companyRoutes )
-app.use( '/scan', scanRoutes )
-app.use( '/attendee', attendeeRoutes )
+
+  res.status( err.status || 500 ).json( {
+    error: '🔥 Internal Server Error',
+    message: err.message
+  } )
+} )
+
+/*app.listen( PORT, () => {
+  console.log( `Server ${ HOST } is running on port ${ PORT }` )
+} )*/
+
+module.exports = app
 
 //
 //
@@ -74,6 +105,12 @@ async function initPlaceholdData() {
     expoFp_Id: 23706,
     expo_Client: 'NYIFT'
   } )
+  const newCompany1 = await Company.create( {
+    id: 6150790,
+    expo_Year: 2025,
+    login_URL: '/exhibitors/details/edit?uid=73accba5-0b60-488c-acde-30f9d295edcb&token=fF7PY%252B1nPloFunSt0DmsGTHw8L1oa6Sf',
+    name: 'ABRAZIL LLC'
+  } )
   const newCompany2 = await Company.create( {
     id: 456453,
     expo_Year: 2025,
@@ -83,7 +120,6 @@ async function initPlaceholdData() {
     web: 'https://www.icor.org',
     phone: '654754538'
   } )
-
   const newCompany3 = await Company.create( {
     id: 832387,
     expo_Year: 2025,
@@ -176,6 +212,7 @@ async function initPlaceholdData() {
   console.log( newScan )
   console.log( newScan2 )
   console.log( newScan3 )
+  console.log( newCompany1 )
   console.log( newCompany2 )
   console.log( newCompany3 )
 }

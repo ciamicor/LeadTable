@@ -1,12 +1,11 @@
 import axios from 'axios'
 
-// baseURL: 'https://leadtable.iami411.org',
-// baseURL: 'http://127.0.0.1:3000/',
+axios.defaults.baseURL = import.meta.env.VITE_BASE_URL
 
 export default axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL || 'http://localhost:8080/',
+  baseURL: '/api/',
   headers: {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': 'https://leadtable.iami411.org'
+    'Content-Type': 'application/json'
+    // 'Access-Control-Allow-Origin': 'https://leadtable.iami411.org/'
   }
 })

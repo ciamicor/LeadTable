@@ -3,31 +3,31 @@ import http from '../http-common'
 export default class LeadDataService {
 
   create(data: any) {
-    return http.post("/lead", data)
+    return http.post('/lead', data)
   }
 
   getAll() {
-    return http.get("/lead")
+    return http.get('/lead')
   }
 
   get(id: any) {
-    return http.get("/lead/" + id)
+    return http.get('/lead/' + id)
   }
 
   update(id: any, data: any) {
-    return http.put("/lead/", data)
+    return http.put('/lead/', data)
   }
 
   delete(id: any) {
-    return http.delete("/lead/" + id)
+    return http.delete('/lead/' + id)
   }
 
   deleteAll() {
-    return http.delete("/lead")
+    return http.delete('/lead')
   }
 
   findByTitle(title: any) {
-    return http.get("/lead?title=${title}")
+    return http.get('/lead?title=${title}')
   }
 }
 
@@ -40,7 +40,7 @@ const leadService = new LeadDataService()
 
 /*---+----+---+----+---+----+---+----+---*/
 async function createLead_Service(lead: any) {
-  console.log("Lead Service: ", lead)
+  console.log('Lead Service: ', lead)
   const data = {
     expo_Year: lead.expo_Year,
     attendee_Id: lead.attendee_Id,
@@ -53,7 +53,7 @@ async function createLead_Service(lead: any) {
     score: lead.score,
     comment: lead.comment
   }
-  console.log(data);
+  console.log(data)
   await leadService.create(data)
     .then((response: any) => {
       lead.id = response.data.id
@@ -92,4 +92,4 @@ async function deleteLead_Service(id: any) {
     })
 }
 
-export {createLead_Service, getAllLeads_Service, deleteLead_Service}
+export { createLead_Service, getAllLeads_Service, deleteLead_Service }
