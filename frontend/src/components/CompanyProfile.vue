@@ -225,9 +225,11 @@ async function searchExhib() {
     e.name.toLowerCase().includes(exSearchObj.value.name.toLowerCase())
   )
   console.log('S HOLD: ', searchListHold.value)
-  exSearchResult.value = searchListHold.value
-  console.log('search: ', exSearchResult.value)
-  return exSearchResult.value
+  setTimeout(() => {
+    exSearchResult.value = searchListHold.value
+    console.log('search: ', exSearchResult.value)
+    return exSearchResult.value
+  }, 300)
 }
 
 async function getSelectedId(e: any) {
