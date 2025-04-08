@@ -1,4 +1,5 @@
 @import "normalize.css";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 /*-| General |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 /*-| Constant |-*/
@@ -1906,6 +1907,9 @@ p, button, li, label {
 .row .--full {
   max-width: 100%;
 }
+.row .--items {
+  padding: 8px;
+}
 
 .col-1 {
   width: calc(8.3333333333% - 8px);
@@ -2051,6 +2055,116 @@ p, button, li, label {
   margin: 8px;
 }
 
+/*-| Placement |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+.--place-self-start {
+  place-self: start;
+}
+
+.--place-self-center {
+  place-self: center;
+}
+
+.--place-self-end {
+  place-self: end;
+}
+
+.--place-items-start {
+  place-items: start;
+}
+
+.--place-items-center {
+  place-items: center;
+}
+
+.--place-items-end {
+  place-items: end;
+}
+
+.--place-content-start {
+  place-content: start;
+}
+
+.--place-content-center {
+  place-content: center;
+}
+
+.--place-content-end {
+  place-content: end;
+}
+
+.--justify-self-start {
+  justify-self: start;
+}
+
+.--justify-self-center {
+  justify-self: center;
+}
+
+.--justify-self-end {
+  justify-self: end;
+}
+
+.--justify-items-start {
+  justify-items: start;
+}
+
+.--justify-items-center {
+  justify-items: center;
+}
+
+.--justify-items-end {
+  justify-items: end;
+}
+
+.--justify-content-start {
+  justify-content: start;
+}
+
+.--justify-content-center {
+  justify-content: center;
+}
+
+.--justify-content-end {
+  justify-content: end;
+}
+
+.--align-self-start {
+  align-self: start;
+}
+
+.--align-self-center {
+  align-self: center;
+}
+
+.--align-self-end {
+  align-self: end;
+}
+
+.--align-items-start {
+  align-items: start;
+}
+
+.--align-items-center {
+  align-items: center;
+}
+
+.--align-items-end {
+  align-items: end;
+}
+
+.--align-content-start {
+  align-content: start;
+}
+
+.--align-content-center {
+  align-content: center;
+}
+
+.--align-content-end {
+  align-content: end;
+}
+
 .table-container {
   overflow-x: auto;
 }
@@ -2118,7 +2232,8 @@ input:focus, input:focus-visible {
   box-shadow: 0 0 8px 0 hsl(var(--color-secondary-hs), 80%), inset 0 0 8px 0 hsl(var(--color-secondary-hs), 80%);
 }
 
-button, .button {
+button,
+.button {
   display: flex;
   place-content: center;
   place-items: center;
@@ -2132,60 +2247,103 @@ button, .button {
   padding: 12px 16px;
   cursor: pointer;
   border: 1px solid hsl(var(--grey-8-hsl));
+  border-bottom: 3px solid hsl(var(--grey-8-hsl));
   border-radius: 4px;
   background: hsl(var(--grey-12-hsl));
   transition: background 200ms ease-out;
 }
-button:hover, .button:hover {
+button i,
+.button i {
+  color: inherit;
+  font-size: inherit;
+}
+button:hover,
+.button:hover {
   color: hsl(var(--grey-2-hsl));
   background: hsl(var(--grey-10-hsl));
 }
-button.--square, .button.--square {
+button.--square,
+.button.--square {
   aspect-ratio: 1/1;
   line-height: 0;
   height: min-content;
   padding: 8px;
 }
-button.--float, .button.--float {
+button.--float,
+.button.--float {
+  z-index: 10;
   position: absolute;
 }
-button.--float.--top-r, .button.--float.--top-r {
+button.--float.--top-r,
+.button.--float.--top-r {
   top: 16px;
   right: 16px;
 }
-button.--primary, .button.--primary {
-  color: hsl(var(--color-primary-hs), 32%);
-  border: 1px solid hsl(var(--color-primary-hs), 64%);
+button.--float.--top-l,
+.button.--float.--top-l {
+  top: 16px;
+  left: 16px;
+}
+button.--float.--bottom-r,
+.button.--float.--bottom-r {
+  right: 16px;
+  bottom: 16px;
+}
+button.--float.--bottom-l,
+.button.--float.--bottom-l {
+  bottom: 16px;
+  left: 16px;
+}
+button.--disable,
+.button.--disable {
+  pointer-events: none;
+  opacity: 0.5;
+}
+button.--primary,
+.button.--primary {
+  color: hsl(var(--color-primary-hs), 24%);
+  border: 1px solid hsl(var(--color-primary-hs), 40%);
+  border-bottom: 3px solid hsl(var(--color-primary-hs), 40%);
   background: hsl(var(--color-primary-hs), 80%);
 }
-button.--primary:hover, .button.--primary:hover {
-  color: hsl(var(--color-primary-hs), 80%);
-  background: hsl(var(--color-primary-hs), 24%);
+button.--primary:hover,
+.button.--primary:hover {
+  color: hsl(var(--color-primary-hs), 16%);
+  background: hsl(var(--color-primary-hs), 64%);
 }
-button.--secondary, .button.--secondary {
+button.--secondary,
+.button.--secondary {
   color: hsl(var(--color-secondary-hs), 16%);
   border: 1px solid hsl(var(--color-secondary-hs), 64%);
+  border-bottom: 3px solid hsl(var(--color-secondary-hs), 64%);
   background: hsl(var(--color-secondary-hs), 80%);
 }
-button.--secondary:hover, .button.--secondary:hover {
+button.--secondary:hover,
+.button.--secondary:hover {
   color: hsl(var(--color-secondary-hs), 32%);
   background: hsl(var(--color-secondary-hs), 80%);
 }
-button.--success, .button.--success {
+button.--success,
+.button.--success {
   color: hsl(var(--color-success-hs), 32%);
   border: 1px solid hsl(var(--color-success-hs), 64%);
+  border-bottom: 3px solid hsl(var(--color-success-hs), 64%);
   background: hsl(var(--color-success-hs), 94%);
 }
-button.--success:hover, .button.--success:hover {
+button.--success:hover,
+.button.--success:hover {
   color: hsl(var(--color-success-hs), 32%);
   background: hsl(var(--color-success-hs), 80%);
 }
-button.--warn, .button.--warn {
+button.--warn,
+.button.--warn {
   color: hsl(var(--color-warn-hs), 48%);
   border: 1px solid hsl(var(--color-warn-hs), 64%);
+  border-bottom: 3px solid hsl(var(--color-warn-hs), 64%);
   background: hsl(var(--color-warn-hs), 94%);
 }
-button.--warn:hover, .button.--warn:hover {
+button.--warn:hover,
+.button.--warn:hover {
   color: hsl(var(--color-warn-hs), 32%);
   background: hsl(var(--color-warn-hs), 80%);
 }
@@ -2248,6 +2406,57 @@ button.--warn:hover, .button.--warn:hover {
   width: 100dvw;
   height: calc(100dvh - 92px - 4px);
   border: none !important;
+}
+
+.scanner-camera-container {
+  height: calc(100dvh - 92px) !important;
+}
+
+.scanner-camera-wrap {
+  flex: 1 1 70%;
+}
+
+.qr-float-container {
+  position: absolute;
+  right: 16px;
+  bottom: 96px;
+  left: 16px;
+  place-content: space-between;
+  align-items: stretch;
+}
+
+.qr-float-target-text {
+  display: flex;
+  overflow-x: scroll;
+  flex: 1 0 auto;
+  place-content: center;
+  place-items: center;
+  color: hsl(var(--grey-12-hsl));
+  font-size: 22px;
+  font-weight: 500;
+  padding: 24px;
+  border-radius: 8px;
+  background: hsla(0, 0%, 0%, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.scan-placement-container {
+  z-index: 10;
+  position: absolute;
+  bottom: calc(60% + 92px);
+  left: 50%;
+  aspect-ratio: 1;
+  width: 65%;
+  max-width: 500px;
+  max-height: 80%;
+  border: 4px solid hsl(var(--color-secondary-hs), 64%);
+  border-radius: 8px;
+  box-shadow: 0 0 8px hsl(var(--color-secondary-hs), 48%), inset 0 0 8px hsl(var(--color-secondary-hs), 48%);
+  transform: translate(-50%, 60%);
+}
+
+.qr-float-confirm i {
+  font-size: 22px;
 }
 
 /*# sourceMappingURL=main.css.map */

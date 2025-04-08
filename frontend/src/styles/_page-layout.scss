@@ -51,6 +51,9 @@ $breakpoints:    (
   .--full {
     max-width: 100%;
   }
+  .--items {
+    padding: $sp-4;
+  }
 }
 
 @for $i from 1 through $column-number {
@@ -63,6 +66,33 @@ $breakpoints:    (
     gap:       $col-gap;
     & > button {
       margin: $sp-4;
+    }
+  }
+}
+
+/*-| Placement |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+$align-type:     (
+                   "place",
+                   "justify",
+                   "align"
+                 );
+$align-subject:  (
+                   "self",
+                   "items",
+                   "content"
+                 );
+$align-area:     (
+                   "start",
+                   "center",
+                   "end"
+                 );
+@each $type in $align-type {
+  @each $subject in $align-subject {
+    @each $area in $align-area {
+      .--#{$type}-#{$subject}-#{$area} {
+        #{$type}-#{$subject}: #{$area}
+      }
     }
   }
 }

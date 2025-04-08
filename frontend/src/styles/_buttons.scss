@@ -1,4 +1,7 @@
-button, .button {
+$button-border-bottom: 3px solid;
+$button-border:        1px solid;
+button,
+.button {
   display:         flex;
   place-content:   center;
   place-items:     center;
@@ -11,10 +14,15 @@ button, .button {
   text-decoration: none;
   padding:         $sp-5 $sp-6;
   cursor:          pointer;
-  border:          1px solid $grey-8;
+  border:          $button-border $grey-8;
+  border-bottom:   $button-border-bottom $grey-8;
   border-radius:   $item-border;
   background:      $grey-12;
   transition:      background $trans-0;
+  & i {
+    color:     inherit;
+    font-size: inherit;
+  }
   &:hover {
     color:      $grey-2;
     background: $grey-10;
@@ -26,43 +34,64 @@ button, .button {
     padding:      $sp-4;
   }
   &.--float {
+    z-index:  10;
     position: absolute;
     &.--top-r {
       top:   $sp-6;
       right: $sp-6;
     }
+    &.--top-l {
+      top:  $sp-6;
+      left: $sp-6;
+    }
+    &.--bottom-r {
+      right:  $sp-6;
+      bottom: $sp-6;
+    }
+    &.--bottom-l {
+      bottom: $sp-6;
+      left:   $sp-6;
+    }
+  }
+  &.--disable {
+    pointer-events: none;
+    opacity:        0.5;
   }
   &.--primary {
-    color:      $color-primary-4;
-    border:     1px solid $color-primary-8;
-    background: $color-primary-10;
+    color:         $color-primary-3;
+    border:        $button-border $color-primary-5;
+    border-bottom: $button-border-bottom $color-primary-5;
+    background:    $color-primary-10;
     &:hover {
-      color:      $color-primary-10;
-      background: $color-primary-3;
+      color:      $color-primary-2;
+      background: $color-primary-8;
     }
   }
   &.--secondary {
-    color:      $color-secondary-2;
-    border:     1px solid $color-secondary-8;
-    background: $color-secondary-10;
+    color:         $color-secondary-2;
+    border:        $button-border $color-secondary-8;
+    border-bottom: $button-border-bottom $color-secondary-8;
+    background:    $color-secondary-10;
     &:hover {
       color:      $color-secondary-4;
       background: $color-secondary-10;
     }
   }
   &.--success {
-    color:      $color-success-4;
-    border:     1px solid $color-success-8;
-    background: $color-success-12;
+    color:         $color-success-4;
+    border:        $button-border $color-success-8;
+    border-bottom: $button-border-bottom $color-success-8;
+    background:    $color-success-12;
     &:hover {
       color:      $color-success-4;
       background: $color-success-10;
     }
   }
   &.--warn {
-    color:      $color-warn-6;
-    border:     1px solid $color-warn-8;
-    background: $color-warn-12;
+    color:         $color-warn-6;
+    border:        $button-border $color-warn-8;
+    border-bottom: $button-border-bottom $color-warn-8;
+    background:    $color-warn-12;
     &:hover {
       color:      $color-warn-4;
       background: $color-warn-10;

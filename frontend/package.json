@@ -17,6 +17,7 @@
   "dependencies": {
     "@dotenvx/dotenvx": "^1.39.1",
     "axios": "^1.8.2",
+    "bootstrap-icons": "^1.11.3",
     "dexie": "^4.0.11",
     "express": "^5.1.0",
     "pdfmake": "^0.2.18",

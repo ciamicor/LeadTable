@@ -1,40 +1,84 @@
 <template>
-  <div class="row">
-    <qrcode-stream @detect="getQrId($event)"
+  <div v-if="!scanConfirm"
+       class="scanner-camera-container">
+    <div class="scan-placement-container"></div>
+    <qrcode-stream
+      class="scanner-camera-wrap"
+      @detect="getQrId($event)"
+      @paused="scanCodeFound"
+      @camera-on="scanTarget = 'Scanning'"
     ></qrcode-stream>
+    <div class="row --items qr-float-container">
+      <span class="col-10 qr-float-target-text">{{ scanTarget }}</span>
 
-
-    <div class="row">
-      <div class="col-6">
-        <h1>Scan a Lead</h1>
-        <p><span>Company: </span>{{ activeCompName }}, {{ lead.scan_Company_Id }}</p>
-        <p><span>Year: </span>{{ attendee.expo_Year }}</p>
-        <p><span>Name: </span>{{ attendee.name_First }} {{ attendee.name_Last }}</p>
-        <p><span>Email: </span>{{ attendee.contact_Email }}</p>
-        <p><span>Phone: </span>{{ attendee.contact_Phone }}</p>
-        <p><span>Employer: </span>{{ attendee.contact_Employer }}</p>
-        <form action=""
-              class="col-6">
-          <p>Rating</p>
-          <span v-for="(rating, index) in ratings"
-                :key="index">
-              <label :for="'r-'+ rating">{{ rating }}
-              </label>
-              <input :id="'r-'+ rating"
-                     :name="'r-'+ rating"
-                     type="radio"
-                     @change="updateScore(rating)">
-            </span>
-          <textarea v-model="commentRef"
-                    @change="updateComment( commentRef )">
-                  name="leadComments"></textarea>
-        </form>
-        <button @click="createLead(lead)">Submit Lead</button>
+      <div v-if="scanCodeFound"
+           class="row --justify-content-center">
+        <button
+          class="--warn qr-float-cancel"
+          @click="resetScanning"
+        >Reset
+        </button>
+        <button
+          class="qr-float-confirm --primary"
+          @click="scanConfirm = true">
+          Continue
+        </button>
       </div>
     </div>
-
   </div>
   <div class="row">
+
+    <div v-if="scanConfirm"
+         class="col-12">
+      <h1>Confirm Lead</h1>
+      <p><span>Company: </span>{{ activeCompName }}, {{ lead.scan_Company_Id }}</p>
+      <p><span>Year: </span>{{ attendee.expo_Year }}</p>
+      <p><span>Name: </span>{{ attendee.name_First }} {{ attendee.name_Last }}</p>
+      <p><span>Email: </span>{{ attendee.contact_Email }}</p>
+      <p><span>Phone: </span>{{ attendee.contact_Phone }}</p>
+      <p><span>Employer: </span>{{ attendee.contact_Employer }}</p>
+      <form action=""
+            class="col-6">
+        <fieldset>
+          <legend>Rating</legend>
+          <div
+            v-for="(rating, index) in ratings"
+            :key="index"
+          >
+            <input
+              :id="'r-'+ rating"
+              :name="'r-'+ rating"
+              type="radio"
+              @change="updateScore(rating)"
+            />
+            <label :for="'r-'+ rating">{{ rating }}</label>
+          </div>
+        </fieldset>
+        <label for="comment">Comments</label>
+        <textarea v-model="commentRef"
+                  name="comment"
+                  @change="updateComment( commentRef )">
+                  name="leadComments"></textarea>
+      </form>
+      <div class="row --items">
+        <button
+          class="--warn"
+          @click="resetScanning">
+          Go Back
+        </button>
+        <button
+          class="--success"
+          @click="createLead(lead)">Add {{ lead.name_First }}
+        </button>
+      </div>
+    </div>
+  </div>
+  {{ scanConfirm }} {{ scanCodeFound }}
+
+  <button @click="scanConfirm = !scanConfirm">Swap View</button>
+
+  <div v-if="debug"
+       class="row">
     <div class="col-6">
       <h3>Lead</h3>
       <p>{{ lead }}</p>
@@ -51,31 +95,22 @@ import { QrcodeStream } from 'vue-qrcode-reader'
 import { createLead_Service } from '@/services/LeadDataService.js'
 import AttendeeDataService from '@/services/AttendeeDataService.ts'
 import { inject, onBeforeMount, onMounted, ref } from 'vue'
-import { getCompanyById_Service } from '@/services/CompanyDataService.js'
 
 /*-| Variables |-*/
 /*---+----+---+----+---+----+---+----+---*/
+const debug = false
 const expoYear = inject( 'expoYear_Global' )
 const activeCompId = inject( 'activeCompId_Global' )
 const activeCompName = inject( 'activeCompName_Global' )
 
+/*-| Scanning |-*/
+const scanConfirm = ref( false )
+const scanCodeFound = ref( false )
+const scanTarget = ref( 'Loading' )
+
 /*-| General |-*/
 let ratings = [ 1, 2, 3, 4, 5 ]
 const commentRef = ref( null )
-
-/*-| URL |-*/
-let paramTestUrl = new URL(
-  'http://localhost:8081/add-lead/?first=Jonathan&last=Smith&email=js@yahoo.com&phone=645865485'
-).searchParams
-let getParam = new URL( location.href ).searchParams
-const getUrlId = new URL( location.href ).searchParams.get( 'id' )
-
-function getQrId( e ) {
-  let url = e[0].rawValue
-  let id = new URL( url ).searchParams.get( 'id' )
-  console.log( 'id scanned is: ', id )
-  getAttendee( id )
-}
 
 /*-| Lead Service |-*/
 const attendeeService = new AttendeeDataService()
@@ -121,16 +156,10 @@ let lead = ref(
 /*-| Lifecycle |-*/
 /*---+----+---+----+---+----+---+----+---*/
 onBeforeMount( () => {
-  getAttendee( getUrlId )
-  getCompany( activeCompId.value, company.value )
 } )
 
-/*-| Functions |-*/
+/*-| Manage Related Data |-*/
 /*---+----+---+----+---+----+---+----+---*/
-async function getCompany( id, c ) {
-  await getCompanyById_Service( id, c )
-}
-
 async function getAttendee( id ) {
   await attendeeService.get( id )
     .then( ( response ) => {
@@ -143,12 +172,31 @@ async function getAttendee( id ) {
   await loadLead()
 }
 
+/*-| Manage Scan Data |-*/
+/*---+----+---+----+---+----+---+----+---*/
 function updateComment( c ) {
   lead.value.comment = c
 }
 
 function updateScore( r ) {
   lead.value.score = r
+}
+
+/*-| Manage Lead Data |-*/
+/*---+----+---+----+---+----+---+----+---*/
+function resetScanning() {
+  scanTarget.value = 'Scanning'
+  scanConfirm.value = false
+  scanCodeFound.value = false
+}
+
+async function resetLead() {
+  lead.value.attendee_Id = null
+  lead.value.name_First = null
+  lead.value.name_Last = null
+  lead.value.email = null
+  lead.value.phone = null
+  lead.value.employer = null
 }
 
 async function loadLead() {
@@ -161,8 +209,24 @@ async function loadLead() {
   lead.value.employer = attendee.value.contact_Employer
 }
 
+/*-| Get ID from QR Code |-*/
+async function getQrId( e ) {
+  let url = e[0].rawValue
+  let id = new URL( url ).searchParams.get( 'id' )
+  console.log( 'id scanned is: ', id )
+  if ( id ) {
+    await getAttendee( id )
+    scanCodeFound.value = true
+    scanTarget.value = attendee.value.name_First + ' ' + attendee.value.name_Last
+  }
+}
+
+/*-| Create Lead |-*/
 async function createLead( l ) {
   await createLead_Service( l )
+  await resetLead()
+  resetScanning()
+  console.log( 'Lead reset to: ', lead.value )
 }
 
 </script>

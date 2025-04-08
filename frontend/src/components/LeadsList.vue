@@ -22,8 +22,8 @@
             :data-attendee-id="lead.attendee_Id"
             :data-company-scan="lead.scan_Company_Id"
         >
-          <td id="name_First">{{ lead.attendee_Id }}</td>
-          <td id="name_Last">{{ lead.scan_Company_Id }}</td>
+          <td id="attendee_Id">{{ lead.attendee_Id }}</td>
+          <td id="company_Id">{{ lead.scan_Company_Id }}</td>
           <td id="name_First">{{ lead.name_First }}</td>
           <td id="name_Last">{{ lead.name_Last }}</td>
           <td id="email">{{ lead.email }}</td>
