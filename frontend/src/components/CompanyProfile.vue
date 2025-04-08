@@ -52,6 +52,7 @@
         Portal Login
       </button>
     </div>
+    <p>{{ exData ? exData.autoLoginUrl : null }}</p>
   </div>
 
   <div v-if="(linkMatch === false) && loginUrl && exData"
@@ -65,8 +66,6 @@
     <p>You'll need to purchase lead retrieval to access. Purchase in your ExpoFP exhibitor
        profile.</p>
   </div>
-
-  <p>{{ loginUrl }}</p>
 
   <div v-if="debug"
        class="row">
@@ -229,7 +228,7 @@ async function searchExhib() {
     exSearchResult.value = searchListHold.value
     console.log('search: ', exSearchResult.value)
     return exSearchResult.value
-  }, 300)
+  }, 500)
 }
 
 async function getSelectedId(e: any) {
