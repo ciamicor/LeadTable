@@ -47,7 +47,7 @@ const scanRoutes = require( './routes/scan.routes' )
 
 const PORT = process.env.PORT || 8080
 const HOST = process.env.HOST || 'localhost'
-const frontend_root = '../frontend/dist'
+const frontend_root = 'dist'
 
 app.use( '/api/lead', leadRoutes )
 app.use( '/api/company', companyRoutes )
