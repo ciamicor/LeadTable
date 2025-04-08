@@ -201,6 +201,7 @@ async function resetLead() {
   lead.value.phone = null
   lead.value.employer = null
   lead.value.title = null
+  lead.value.comment = null
 }
 
 async function loadLead() {
