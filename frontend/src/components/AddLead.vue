@@ -233,5 +233,4 @@ async function createLead( l ) {
   await resetLead()
   resetScanning()
 }
-
 </script>

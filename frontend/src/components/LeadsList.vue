@@ -5,14 +5,14 @@
         <thead>
         <tr>
           <th colspan="2">Name</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>Employer</th>
-          <th>Title</th>
-          <th>Score</th>
-          <th>Comment</th>
-          <th>Expo</th>
-          <th>c_Id</th>
+          <th id="email">Email</th>
+          <th id="phone">Phone</th>
+          <th id="employer">Employer</th>
+          <th id="employer">Title</th>
+          <th id="score">Score</th>
+          <th id="comment">Comment</th>
+          <th id="expo_Year">Expo</th>
+          <th id="company_Id">c_Id</th>
           <th>Edit/Add</th>
         </tr>
         </thead>
