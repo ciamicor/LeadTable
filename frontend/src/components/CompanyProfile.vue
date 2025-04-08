@@ -6,7 +6,7 @@
   </button>
 
   <iframe
-    v-if="linkMatch && extraMatch"
+    v-if="loginIdMatch && extraMatch"
     :src="'https://app.expofp.com' + loginUrl"
     allow="clipboard-read; clipboard-write"
     class="view-floor-plan"
@@ -17,76 +17,78 @@
 
     <div class="col-12">
       <h2>Lead Retrieval Login</h2>
-      <label for="searchExhib">Select your Company</label>
-      <input id="searchExhib"
-             v-model.trim="exSearchObj.name"
-             list="searchList"
-             name="searchExhib"
-             placeholder="Enter Company Name"
-             type="text"
-             @change="updateSearch($event)"
-             @input="searchExhib()">
-      <datalist id="searchList">
-        <option v-for="(s, i) in exSearchResult"
-                :key="i"
-                :data-exid="s.id"
-                :value="s.name"
-        >
-          {{ s.name }}
-        </option>
-      </datalist>
+      <!--      <label for="searchExhib">Find your Company</label>
+            <input id="searchExhib"
+                   v-model.trim="exSearchObj.name"
+                   list="searchList"
+                   name="searchExhib"
+                   placeholder="Type Your Company Name"
+                   type="text"
+                   @change="updateSearch($event)"
+                   @input="searchExhib()">
+            <datalist id="searchList">
+              <option v-for="(s, i) in exList"
+                      :key="i"
+                      :data-exid="s.id"
+                      :value="s.name"
+              >
+                {{ s.name }}
+              </option>
+            </datalist>-->
     </div>
 
-    <div v-if="exSearchObj.id"
-         class="col-12">
+    <div
+      class="col-12">
       <label
         for="profileUrl">
-        Profile Url
+        Login ID
       </label>
-      <input id="profileUrl"
-             v-model="loginUrl"
-             name="profileUrl"
+      <input id="loginId"
+             v-model="loginId"
+             name="loginId"
+             placeholder="Enter your login ID"
              type="text">
       <button class="--success"
               @click="login()">
         Portal Login
       </button>
     </div>
-    <p>{{ exData ? exData.autoLoginUrl : null }}</p>
+    <p>{{ selectedCompanyData ? selectedCompanyData.id : null }}</p>
+    <p>{{ loginUrl }}</p>
   </div>
 
-  <div v-if="(linkMatch === false) && loginUrl && exData"
-       class="row">
-    <p>Incorrect URL. You can find your exhibitor portal URL in the confirmation email from
-       ExpoFP.</p>
-  </div>
+  <!--
+    <div v-if="(loginIdMatch === false) && loginId && selectedCompanyData"
+         class="row">
+      <p>Incorrect URL. You can find your exhibitor portal URL in the confirmation email from
+         ExpoFP.</p>
+    </div>
 
-  <div v-if="!extraMatch && linkMatch"
-       class="row">
-    <p>You'll need to purchase lead retrieval to access. Purchase in your ExpoFP exhibitor
-       profile.</p>
-  </div>
+    <div v-if="!extraMatch && loginIdMatch"
+         class="row">
+      <p>You'll need to purchase lead retrieval to access. Purchase in your ExpoFP exhibitor
+         profile.</p>
+    </div>
+  -->
 
   <div v-if="debug"
        class="row">
     <div class="col-12">
       <div class="row">
         <p class="col-12">{{ exSearchObj }}</p>
-        <p class="col-5">Link match: {{ linkMatch }}</p>
+        <p class="col-5">Link match: {{ loginIdMatch }}</p>
         <p class="col-5">Lead retrieval: {{ extraMatch }}</p>
       </div>
-      <h2>Link</h2>
-      <p>ABRAZIL Link:</p>
-      <span>/exhibitors/details/edit?uid=73accba5-0b60-488c-acde-30f9d295edcb&token=fF7PY%252B1nPloFunSt0DmsGTHw8L1oa6Sf</span>
-      <p>{{ loginUrl }}</p>
-      <p>{{ exData ? exData.autoLoginUrl : null }}</p>
+      <h2>Login Id</h2>
+      <p>{{ loginId }}</p>
+      <p>{{ selectedCompanyData ? selectedCompanyData.id : null }}</p>
       <h2>Extras</h2>
-      {{ exExtras }}
+      {{ companyExtras }}
       <h2>exData</h2>
-      {{ exData }}
+      {{ selectedCompanyData }}
     </div>
+    {{ companyProfileData }}
   </div>
-  {{ exhibProfileData }}
 </template>
 
 <script lang="ts"
@@ -112,14 +114,15 @@ const exSearchObj = ref({
 
 const searchListHold = ref()
 
-const exSearchResult = ref()
-const exData = ref()
-const exExtras = ref()
-const linkMatch = ref(false)
+const searchResult = ref()
+const selectedCompanyData = ref()
+const companyExtras = ref()
+const loginIdMatch = ref(false)
 const extraMatch = ref(false)
 const expoYear = ref()
-const exhibProfileData = ref()
+const companyProfileData = ref()
 
+const loginId = ref('')
 const loginUrl = ref('')
 const loggedIn = ref(false)
 
@@ -128,6 +131,7 @@ const loggedIn = ref(false)
 onBeforeMount(() => {
     getProfile()
     getAllEx()
+    // searchExhib()
   }
 )
 
@@ -136,14 +140,17 @@ onBeforeMount(() => {
 const status = ref()
 
 async function getProfile() {
-  exhibProfileData.value = await db.profile.get(1)
-  console.log('profile data ', exhibProfileData.value)
-  exSearchObj.value.name = exhibProfileData.value.name
-  exSearchObj.value.id = exhibProfileData.value.ex_Id
-  loginUrl.value = exhibProfileData.value.login_Url
+  companyProfileData.value = await db.profile.get(1)
+  console.log('profile data ', companyProfileData.value)
+  exSearchObj.value.name = companyProfileData.value.name
+  exSearchObj.value.id = companyProfileData.value.ex_Id
+  loginId.value = companyProfileData.value.ex_Id
+  loginUrl.value = companyProfileData.value.login_Url
 
-  if (exhibProfileData.value) {
-    linkMatch.value = true
+  console.log('profile loginUrl: ', loginUrl.value)
+
+  if (companyProfileData.value) {
+    loginIdMatch.value = true
     extraMatch.value = true
     loggedIn.value = true
   }
@@ -152,23 +159,23 @@ async function getProfile() {
 async function saveDbLogin() {
   try {
     const id = await db.profile.add({
-      ex_Id: exData.value.id,
-      name: exData.value.name,
-      login_Url: exData.value.autoLoginUrl,
+      ex_Id: selectedCompanyData.value.id,
+      name: selectedCompanyData.value.name,
+      login_Url: selectedCompanyData.value.autoLoginUrl,
       lead_Ret: !!extraMatch.value,
       expo_Year: expoYear.value
     })
-    status.value = `${exData.value.name}
+    status.value = `${selectedCompanyData.value.name}
           successfully added. Got id ${id}`
   } catch (error) {
     status.value = `Failed to add
-          ${exData.value.name}: ${error}`
+          ${selectedCompanyData.value.name}: ${error}`
   }
 }
 
 async function signOut() {
   db.delete({ disableAutoOpen: false })
-  linkMatch.value = false
+  loginIdMatch.value = false
   extraMatch.value = false
   loggedIn.value = false
   // window.location.reload();
@@ -190,29 +197,29 @@ async function getAllEx() {
 }
 
 async function getEx(id: any) {
-  exData.value = await getExhibitor(id)
-  console.log('exData: ', exData.value)
+  selectedCompanyData.value = await getExhibitor(id)
+  console.log('exData: ', selectedCompanyData.value)
 }
 
 async function getExtras(id: any) {
-  exExtras.value = await getExhibExtras(id)
-  console.log('Extras: ', exExtras.value)
+  companyExtras.value = await getExhibExtras(id)
+  console.log('Extras: ', companyExtras.value)
 }
 
-async function checkExLink(li: string) {
+async function checkExLink(li: number) {
   console.log('checking link')
-  let l: any = matchUrlParams(loginUrl.value)
-  let d: any = matchUrlParams(li)
+  let l: any = matchUrlParams(loginId.value)
+  let d: any = matchUrlParams(li.toString())
   console.log('l:', l, 'd:', d)
-  if (l[0] === d[0]) {
+  if (l === d) {
     console.log('linkmatch!')
-    linkMatch.value = true
+    loginIdMatch.value = true
   }
 }
 
 async function checkLeadExtra() {
   console.log('checking lead retrieval purchase')
-  extraMatch.value = await exExtras.value.some((e: any) =>
+  extraMatch.value = await companyExtras.value.some((e: any) =>
     e.name.toLowerCase().includes('lead retrieval')
   )
   console.log('lead retrieval purchased: ', extraMatch.value)
@@ -225,13 +232,15 @@ async function searchExhib() {
   )
   console.log('S HOLD: ', searchListHold.value)
   setTimeout(() => {
-    exSearchResult.value = searchListHold.value
-    console.log('search: ', exSearchResult.value)
-    return exSearchResult.value
+    searchResult.value = searchListHold.value
+    console.log('search: ', searchResult.value)
+    return searchResult.value
   }, 500)
 }
 
 async function getSelectedId(e: any) {
+  /*let id = e.target.getAttribute('data-exid')
+  console.log('selected ID:', id) // 1*/
   let list: any
   list = document.getElementById('searchList')
   for (let i = 0; i < list.childElementCount; i++) {
@@ -241,12 +250,12 @@ async function getSelectedId(e: any) {
 }
 
 async function updateSearch(e: any) {
+  await getSelectedId(e)
   if (exSearchObj.value.name) {
-    await getSelectedId(e)
   }
   await getEx(exSearchObj.value.id)
   await getExtras(exSearchObj.value.id)
-  await checkExLink(exData.value.autoLoginUrl)
+  await checkExLink(selectedCompanyData.value.id)
   await checkLeadExtra()
 
   // TODO Add better global pull
@@ -254,19 +263,28 @@ async function updateSearch(e: any) {
   console.log(expoYear.value)
 
   console.log(extraMatch.value)
-  if (extraMatch.value && linkMatch.value) {
-
+  if (extraMatch.value && loginIdMatch.value) {
   }
 }
 
 async function login() {
-  expoYear.value = parseInt(exData.value.updatedAt.slice(0, 4))
-  await checkExLink(exData.value.autoLoginUrl)
-  await checkLeadExtra()
+  await getEx(loginId.value)
+  console.log('company login is: ', selectedCompanyData.value.autoLoginUrl)
+
+  loginUrl.value = selectedCompanyData.value.autoLoginUrl
+
+  console.log('loginURL: ', loginUrl.value)
+
+  loginIdMatch.value = true
+  extraMatch.value = true
+
+  expoYear.value = parseInt(selectedCompanyData.value.updatedAt.slice(0, 4))
+  await checkExLink(selectedCompanyData.value.id)
   await saveDbLogin()
-  await createCompany_Service(exData, expoYear.value)
+  // await checkLeadExtra()
+  await createCompany_Service(selectedCompanyData, expoYear.value)
   loggedIn.value = true
 
-  // window.location.reload();
+  window.location.reload()
 }
 </script>
