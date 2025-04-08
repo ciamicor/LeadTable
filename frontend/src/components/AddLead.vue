@@ -5,7 +5,6 @@
     <qrcode-stream
       class="scanner-camera-wrap"
       @detect="getQrId($event)"
-      @paused="scanCodeFound.value"
       @camera-on="scanTarget = 'Scanning'"
     ></qrcode-stream>
     <div class="row --items qr-float-container">
