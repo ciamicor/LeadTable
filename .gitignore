@@ -3,3 +3,5 @@
 /frontend/.env.development
 /frontend/.env.production
 /backend/.env
+/backend/package-lock.json
+/frontend/package-lock.json

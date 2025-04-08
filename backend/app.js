@@ -81,9 +81,9 @@ app.use( ( err, req, res, next ) => {
   } )
 } )
 
-/*app.listen( PORT, () => {
+app.listen( PORT, () => {
   console.log( `Server ${ HOST } is running on port ${ PORT }` )
-} )*/
+} )
 
 module.exports = app
 
