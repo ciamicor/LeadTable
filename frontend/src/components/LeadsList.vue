@@ -29,10 +29,17 @@
           <th id="employer">Title</th>
           <th id="score">Score</th>
           <th id="comment">Comment</th>
-          <th id="expo_Year">Expo</th>
-          <th id="expo_Client">Client</th>
-          <th id="company_Id">c_Id</th>
-          <th>Edit/Add</th>
+          <th v-if="debug"
+              id="expo_Year">Expo
+          </th>
+          <th v-if="debug"
+              id="expo_Client">Client
+          </th>
+          <th v-if="debug"
+              id="company_Id">c_Id
+          </th>
+          <th v-if="debug">Edit/Add
+          </th>
         </tr>
         </thead>
         <tbody>
@@ -49,10 +56,16 @@
           <td id="employer">{{ lead.title }}</td>
           <td id="score">{{ lead.score }}</td>
           <td id="comment">{{ lead.comment }}</td>
-          <td id="expo_Year">{{ lead.expo_Year }}</td>
-          <td id="expo_Client">{{ lead.expo_Client }}</td>
-          <td id="company_Id">{{ lead.scan_Company_Id }}</td>
-          <td>
+          <td v-if="debug"
+              id="expo_Year">{{ lead.expo_Year }}
+          </td>
+          <td v-if="debug"
+              id="expo_Client">{{ lead.expo_Client }}
+          </td>
+          <td v-if="debug"
+              id="company_Id">{{ lead.scan_Company_Id }}
+          </td>
+          <td v-if="debug">
             <button class="--square --warn--invert"
                     @click="deleteLead(lead.id)">
               <svg
