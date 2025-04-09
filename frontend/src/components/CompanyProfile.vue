@@ -1,6 +1,6 @@
 <template>
   <button v-if="loggedIn"
-          class="--float --top-r --warn"
+          class="--float --top-l --warn--invert"
           @click="logOut">
     Sign Out
   </button>
@@ -29,7 +29,7 @@
              name="loginId"
              placeholder="Enter your login ID"
              type="text">
-      <button class="--success"
+      <button class="--primary--invert"
               @click="login()">
         Exhibitor Portal Login
       </button>
@@ -64,10 +64,13 @@ import {
   getExhibitor,
   getExhibExtras
 } from '../services/ExpoFpDataService.ts'
-import { createCompany_Service, getProfile_Service } from '@/services/CompanyDataService.ts'
+import {
+  createCompany_Service,
+  getLocalCompanyData_Service
+} from '@/services/CompanyDataService.ts'
 import { onBeforeMount, ref } from 'vue'
 import { db } from '@/db.ts'
-import { companyLocalStore } from '@/main.ts'
+import { useCompanyLocalStore } from '@/main.ts'
 
 /*-| Variables |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
@@ -84,7 +87,7 @@ const loginId = ref()
 const loginUrl = ref()
 const loggedIn = ref(false)
 
-const companyLocalData = companyLocalStore()
+const companyLocalData = useCompanyLocalStore()
 
 /*-| Lifecycle |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
@@ -99,7 +102,7 @@ onBeforeMount(() => {
 const status = ref()
 
 async function getProfile() {
-  await getProfile_Service(companyLocalData)
+  await getLocalCompanyData_Service(companyLocalData)
 
   loginId.value = companyLocalData.id
   loginUrl.value = companyLocalData.login_Url
@@ -172,7 +175,7 @@ async function login() {
   loginUrl.value = selectedCompanyData.value.autoLoginUrl
   console.log('loginURL: ', loginUrl.value)
 
-  if (companyLocalData.name === null) {
+  if (companyLocalData.name === '') {
     console.log('saving to db')
     await saveDbLogin()
     await createCompany_Service(selectedCompanyData, companyLocalData.expo_Year)

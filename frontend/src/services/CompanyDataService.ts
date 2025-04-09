@@ -60,23 +60,25 @@ async function getCompanyById_Service(id: any, companyObject: any) {
 /*-| Get Profiles from DB |-*/
 
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-async function getProfile_Service(p: any) {
-  let companyLocalHold: any = await db.profile.get(1)
-  console.log('company local hold ', companyLocalHold)
+async function getLocalCompanyData_Service(p: any) {
+  await db.profile.get(1)
+    .then((res) => {
+      let companyLocalHold: any = res
+      console.log('company local data service: ', p)
 
-  p.id = companyLocalHold.ex_Id
-  p.name = companyLocalHold.name
-  p.login_Url = companyLocalHold.login_Url
-  p.lead_Ret = companyLocalHold.lead_Ret
+      p.id = companyLocalHold.ex_Id
+      p.name = companyLocalHold.name
+      p.login_Url = companyLocalHold.login_Url
+      p.lead_Ret = companyLocalHold.lead_Ret
 
-  console.log('id: ', p.id)
-  console.log('name: ', p.name)
-  console.log('login_Url: ', p.login_Url)
-  console.log('lead_Ret: ', p.lead_Ret)
-  console.log('expo_Year: ', p.expo_Year)
-  console.log('expo_Client: ', p.expo_Client)
-
-  return p
+      console.log('id: ', p.id)
+      console.log('name: ', p.name)
+      console.log('login_Url: ', p.login_Url)
+      console.log('lead_Ret: ', p.lead_Ret)
+      console.log('expo_Year: ', p.expo_Year)
+      console.log('expo_Client: ', p.expo_Client)
+      return p
+    })
 }
 
-export { getCompanyById_Service, createCompany_Service, getProfile_Service }
+export { getCompanyById_Service, createCompany_Service, getLocalCompanyData_Service }

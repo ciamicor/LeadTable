@@ -18,12 +18,12 @@ interface Lead {
 
 interface Profile {
   id: number
-  expo_Year: number
-  expo_Client: string
-  name: string
   ex_Id: number
+  name: string
   login_Url: string
   lead_Ret: boolean
+  expo_Year: number
+  expo_Client: string
 }
 
 const db = new Dexie('LeadsDB') as Dexie & {

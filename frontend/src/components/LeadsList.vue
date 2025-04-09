@@ -1,8 +1,8 @@
 <template>
   <div
-    class="row --place-items-center --place-content-center">
+    class="row --justify-content-center">
     <div v-if="!companyLocalData.lead_Ret"
-         class="col-10-300">
+         class="col-10-300 --place-self-center">
       <h1>Looking for Leads?</h1>
       <p>To access or purchase lead retrieval, you'll first need to login.</p>
       <p>In "Booths & Extras" click "Reserve More", then scroll down to find the option for lead
@@ -53,7 +53,7 @@
           <td id="expo_Client">{{ lead.expo_Client }}</td>
           <td id="company_Id">{{ lead.scan_Company_Id }}</td>
           <td>
-            <button class="--square --warn"
+            <button class="--square --warn--invert"
                     @click="deleteLead(lead.id)">
               <svg
                 fill="none"
@@ -70,8 +70,7 @@
             </button>
           </td>
         </tr>
-
-        <tr>
+        <tr v-if="debug">
           <td>
             <input v-model="lead.name_First"
                    name="nameFirst"
@@ -144,7 +143,7 @@
     </div>
     <router-link
       v-if="companyLocalData.lead_Ret"
-      class="button --stacked --float --bottom-r --success"
+      class="button --stacked --float --bottom-r --success--invert"
       to="/scan-lead">
       <i class="bi-qr-code-scan"></i>
       Scan
@@ -154,7 +153,8 @@
 </template>
 
 <script setup>
-import { companyLocalStore } from '@/main.ts'
+import { useCompanyLocalStore } from '@/main.ts'
+import { storeToRefs } from 'pinia'
 import { db } from '../db'
 import {
   createLead_Service, deleteLead_Service,
@@ -162,8 +162,27 @@ import {
 } from '../services/LeadDataService.js'
 import { ref, inject, onBeforeMount, onMounted } from 'vue'
 import { getProfile_Service } from '@/services/CompanyDataService.js'
+import { ref, onMounted } from 'vue'
+  login_Url,
+  lead_Ret,
+  expo_Year,
+  expo_Client
+} = storeToRefs( companyLocalData )
 
-const companyLocalData = companyLocalStore()
+/*-| Hooks |-*/
+/*---+----+---+----+---+----+---+----+---*/
+onMounted( () => {
+    getAllLeads( leadsList )
+    getProfile()
+    console.log( 'loggedCompany: ',
+      companyLocalData.expo_Year,
+      companyLocalData.expo_Client,
+      companyLocalData.id,
+      companyLocalData.lead_Ret,
+      companyLocalData.login_Url,
+      companyLocalData.name )
+  }
+)
 
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| DB |-*/
@@ -171,7 +190,7 @@ const companyLocalData = companyLocalStore()
 const status = ref()
 
 async function getProfile() {
-  await getProfile_Service( companyLocalData )
+  await getLocalCompanyData_Service( companyLocalData )
 }
 
 async function addDbLead() {
@@ -264,25 +283,6 @@ async function deleteLead( id ) {
 
 async function checkLeadFields() {
 }
-
-/*-| Hooks |-*/
-/*---+----+---+----+---+----+---+----+---*/
-onBeforeMount( () => {
-    getProfile()
-    getAllLeads( leadsList )
-    console.log( 'loggedCompany: ',
-      companyLocalData.expo_Year,
-      companyLocalData.expo_Client,
-      companyLocalData.id,
-      companyLocalData.lead_Ret,
-      companyLocalData.login_Url,
-      companyLocalData.name )
-  }
-)
-onMounted( () => {
-    getAllLeads( leadsList )
-  }
-)
 
 </script>
 

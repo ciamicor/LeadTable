@@ -40,7 +40,7 @@ $color-light:        (
                      );
 $color-hues:         (
                        "primary": "85",
-                       "secondary": "35",
+                       "secondary": "45",
                        "success": "235",
                        "warn": "10",
                      );
@@ -48,7 +48,7 @@ $grey-hue:           "215";
 :root {
   @for $c from 1 through 12 {
     @each $type, $hue in $color-hues {
-      --color-#{$type}-#{$c}: hsl(#{$hue}, #{75 + "%"}, #{(0 + (8 *$c)) + "%"});
+      --color-#{$type}-#{$c}: hsl(#{$hue}, #{80 + "%"}, #{(0 + (8 *$c)) + "%"});
     }
     --grey-#{$c}: hsl(#{$grey-hue}, 20%, #{(0 + (8 *$c)) + "%"});
   }

@@ -6,19 +6,19 @@ import { createPinia, defineStore } from 'pinia'
 /*-| Stores |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 
-export const companyLocalStore = defineStore('companyLocal', () => {
-  const id = ref(null)
-  const name = ref(null)
-  const login_Url = ref(null)
-  const lead_Ret = ref(null)
+export const useCompanyLocalStore = defineStore('companyLocal', () => {
+  const id = ref(0)
+  const name = ref('')
+  const login_Url = ref('')
+  const lead_Ret = ref(false)
   const expo_Year = ref(2025)
-  const expo_Client = ref('NYIFT')
+  const expo_Client = ref('NYIFT') //ref<String>('NYIFT')
 
   function $reset() {
-    id.value = null
-    name.value = null
-    login_Url.value = null
-    lead_Ret.value = null
+    id.value = 0
+    name.value = ''
+    login_Url.value = ''
+    lead_Ret.value = false
     expo_Year.value = 0
     expo_Client.value = ''
   }

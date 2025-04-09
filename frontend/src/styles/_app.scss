@@ -23,15 +23,14 @@ $view-height:       calc($app-height - $nav-height-actual);
   flex-flow:        row nowrap;
   place-content:    center;
   place-items:      center;
-  gap:              $sp-6;
+  gap:              $sp-4;
   height:           $nav-height;
   padding:          $nav-padding;
   background-color: $color-primary-5;
   .button {
     width:     20%;
     min-width: 65px;
-    max-width: 120px;
-    height:    100%;
+    max-width: 85px;
     padding:   0;
     opacity:   65%;
     &.--secondary {

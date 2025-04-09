@@ -8,7 +8,7 @@
       @camera-on="scanTarget = 'Scanning'"
     ></qrcode-stream>
     <div class="row --items qr-float-container">
-      <span class="col-10 qr-float-target-text">{{ scanTarget }}</span>
+      <span class="col-10-300 qr-float-target-text">{{ scanTarget }}</span>
 
       <div v-if="scanCodeFound"
            class="row --justify-content-center">
@@ -25,12 +25,12 @@
       </div>
     </div>
   </div>
-  <div class="row">
-
-    <div v-if="scanConfirm"
-         class="col-12">
+  <div v-if="scanConfirm"
+       class="row">
+    <div
+      class="col-12">
       <h1>Confirm Lead</h1>
-      <p><span>Company: </span>{{ activeCompName }}, {{ lead.scan_Company_Id }}</p>
+      <p><span>Company: </span>{{ companyLocalData.name }}, {{ lead.scan_Company_Id }}</p>
       <p><span>Year: </span>{{ attendee.expo_Year }}</p>
       <p><span>Name: </span>{{ attendee.name_First }} {{ attendee.name_Last }}</p>
       <p><span>Email: </span>{{ attendee.contact_Email }}</p>
@@ -96,17 +96,13 @@ import { createLead_Service } from '@/services/LeadDataService.js'
 import AttendeeDataService from '@/services/AttendeeDataService.ts'
 import { inject, onBeforeMount, onMounted, ref } from 'vue'
 import router from '@/router.js'
-import { companyLocalStore } from '@/main.ts'
+import { useCompanyLocalStore } from '@/main.ts'
 
 /*-| Variables |-*/
 /*---+----+---+----+---+----+---+----+---*/
 const debug = false
 
-const companyLocalData = companyLocalStore()
-
-const expoYear = inject( 'expoYear_Global' )
-const activeCompId = inject( 'activeCompId_Global' )
-const activeCompName = inject( 'activeCompName_Global' )
+const companyLocalData = useCompanyLocalStore()
 
 /*-| Scanning |-*/
 const scanConfirm = ref( false )
@@ -149,7 +145,7 @@ let lead = ref(
     expo_Year: companyLocalData.expo_Year,
     expo_Client: companyLocalData.expo_Client,
     attendee_Id: attendee.value.id,
-    scan_Company_Id: activeCompId,
+    scan_Company_Id: companyLocalData.id,
     name_First: attendee.value.name_First,
     name_Last: attendee.value.name_Last,
     email: attendee.value.contact_Email,

@@ -73,23 +73,29 @@
 
 <script
   setup>
-import { ref, provide, onBeforeMount } from 'vue'
+import { ref, provide, onBeforeMount, onMounted } from 'vue'
 import { db } from '@/db.js'
-import { companyLocalStore } from '@/main.ts'
+import { useCompanyLocalStore } from '@/main.ts'
+import { storeToRefs } from 'pinia'
 
 /*-| Variables |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-const companyLocalData = companyLocalStore()
+const companyLocalData = useCompanyLocalStore()
 
 /*-| REF |-*/
 /*---+----+---+----+---+----+---+----+---*/
-const activeView = ref( '' )
-
-let expoYear_Ref = ref( '' )
 let activeCompId_Ref = ref()
 let activeCompLeadRet_Ref = ref()
 let activeCompUrl_Ref = ref( '' )
 let activeCompName_Ref = ref( '' )
+
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+/*-| Hooks |-*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+
+onBeforeMount( () => {
+  updateCompany()
+} )
 
 /*-| Get Company from Local |-*/
 /*---+----+---+----+---+----+---+----+---*/
@@ -98,20 +104,25 @@ async function updateCompany() {
     if ( res ) {
       console.log( 'Response - Company Name:', res.name )
       // companyLocalData.expo_Year = res.expo_Year
-      companyLocalData.id = res.ex_Id
-      companyLocalData.lead_Ret = res.lead_Ret
-      companyLocalData.login_Url = res.login_Url.toString()
-      companyLocalData.name = res.name.toString()
+      companyLocalData.$patch( {
+        id: res.ex_Id,
+        lead_Ret: res.lead_Ret,
+        login_Url: res.login_Url.toString(),
+        name: res.name.toString()
+      } )
 
       console.log( 'UPDATE RESULT',
         companyLocalData.expo_Client,
         companyLocalData.expo_Year,
-        activeCompId_Ref.value,
-        activeCompLeadRet_Ref.value,
-        activeCompUrl_Ref.value,
-        activeCompName_Ref.value
+        companyLocalData.id,
+        companyLocalData.lead_Ret,
+        companyLocalData.login_Url,
+        companyLocalData.name,
+        'Company Data: ',
+        companyLocalData
       )
     }
+    return companyLocalData
   } )
 }
 
@@ -121,17 +132,6 @@ provide( 'activeCompLeadRet_Global', activeCompLeadRet_Ref )
 provide( 'activeCompUrl_Global', activeCompUrl_Ref )
 provide( 'activeCompName_Global', activeCompName_Ref )
 
-function setActiveView( view ) {
-  activeView.value = view
-}
-
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-/*-| Hooks |-*/
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-
-onBeforeMount( () => {
-  updateCompany()
-} )
 </script>
 
 <style>
