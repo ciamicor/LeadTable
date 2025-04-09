@@ -160,9 +160,14 @@ import {
   createLead_Service, deleteLead_Service,
   getAllLeads_Service
 } from '../services/LeadDataService.js'
-import { ref, inject, onBeforeMount, onMounted } from 'vue'
-import { getProfile_Service } from '@/services/CompanyDataService.js'
 import { ref, onMounted } from 'vue'
+import { getLocalCompanyData_Service } from '@/services/CompanyDataService.js'
+
+const debug = false
+const companyLocalData = useCompanyLocalStore()
+const {
+  id,
+  name,
   login_Url,
   lead_Ret,
   expo_Year,
