@@ -79,10 +79,9 @@ const selectedCompanyData = ref()
 const companyExtras = ref()
 const loginIdMatch = ref(false)
 const extraMatch = ref(false)
-const expoYear = ref()
 
-const loginId = ref('')
-const loginUrl = ref('')
+const loginId = ref()
+const loginUrl = ref()
 const loggedIn = ref(false)
 
 const companyLocalData = companyLocalStore()
@@ -102,7 +101,7 @@ const status = ref()
 async function getProfile() {
   await getProfile_Service(companyLocalData)
 
-  loginId.value = companyLocalData.ex_Id
+  loginId.value = companyLocalData.id
   loginUrl.value = companyLocalData.login_Url
 
   console.log('profile loginUrl: ', loginUrl.value)
@@ -112,40 +111,16 @@ async function getProfile() {
   }
 }
 
-/*async function getProfile() {
-  let companyLocalHold: any = await db.profile.get(1)
-  console.log('company local hold ', companyLocalHold)
-
-  companyLocalData.ex_Id = companyLocalHold.ex_Id
-  companyLocalData.name = companyLocalHold.name
-  companyLocalData.login_Url = companyLocalHold.login_Url
-  companyLocalData.lead_Ret = companyLocalHold.lead_Ret
-  companyLocalData.expo_Year = companyLocalHold.expo_Year
-
-  console.log('ex_Id: ', companyLocalData.ex_Id)
-  console.log('name: ', companyLocalData.name)
-  console.log('login_Url: ', companyLocalData.login_Url)
-  console.log('lead_Ret: ', companyLocalData.lead_Ret)
-  console.log('expo_Year: ', companyLocalData.expo_Year)
-
-  loginId.value = companyLocalData.ex_Id
-  loginUrl.value = companyLocalData.login_Url
-
-  console.log('profile loginUrl: ', loginUrl.value)
-
-  if (companyLocalData) {
-    loggedIn.value = true
-  }
-}*/
-
 async function saveDbLogin() {
   try {
     const id = await db.profile.add({
+      id: 1,
       ex_Id: selectedCompanyData.value.id,
       name: selectedCompanyData.value.name,
       login_Url: selectedCompanyData.value.autoLoginUrl,
       lead_Ret: !!extraMatch.value,
-      expo_Year: expoYear.value
+      expo_Client: companyLocalData.expo_Client,
+      expo_Year: companyLocalData.expo_Year
     })
     status.value = `${selectedCompanyData.value.name}
           successfully added. Got id ${id}`
@@ -185,14 +160,11 @@ async function checkLeadExtra(id: any) {
   extraMatch.value = await companyExtras.value.some((e: any) =>
     e.name.toLowerCase().includes('lead retrieval')
   )
-  if (extraMatch.value) {
-    alert(selectedCompanyData.value.name + ': Lead Retrieval purchased')
-  } else if (!extraMatch.value) {
-    alert(selectedCompanyData.value.name + ' has not purchased Lead Retrieval.')
-  }
-  console.log('lead retrieval purchased: ', extraMatch.value)
+  console.log('Lead retrieval: ', extraMatch.value)
 }
 
+/*-| Login/Out |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 async function login() {
   await getEx(loginId.value)
   await checkLeadExtra(loginId.value)
@@ -200,16 +172,18 @@ async function login() {
   loginUrl.value = selectedCompanyData.value.autoLoginUrl
   console.log('loginURL: ', loginUrl.value)
 
-  expoYear.value = parseInt(selectedCompanyData.value.updatedAt.slice(0, 4))
-  await saveDbLogin()
-  await createCompany_Service(selectedCompanyData, expoYear.value)
+  if (companyLocalData.name === null) {
+    console.log('saving to db')
+    await saveDbLogin()
+    await createCompany_Service(selectedCompanyData, companyLocalData.expo_Year)
+  }
   loggedIn.value = true
-
-  // window.location.reload()
+  window.location.reload()
 }
 
 async function logOut() {
-  db.delete({ disableAutoOpen: false })
+  // db.delete({ disableAutoOpen: false })
+  db.profile.delete(1)
   loginIdMatch.value = false
   extraMatch.value = false
   loggedIn.value = false

@@ -97,14 +97,15 @@ async function updateCompany() {
   await db.profile.get( 1 ).then( ( res ) => {
     if ( res ) {
       console.log( 'Response - Company Name:', res.name )
-      companyLocalData.expo_Year = res.expo_Year
-      companyLocalData.ex_Id = res.ex_Id
+      // companyLocalData.expo_Year = res.expo_Year
+      companyLocalData.id = res.ex_Id
       companyLocalData.lead_Ret = res.lead_Ret
       companyLocalData.login_Url = res.login_Url.toString()
       companyLocalData.name = res.name.toString()
 
       console.log( 'UPDATE RESULT',
-        companyLocalData.expo_Year.value,
+        companyLocalData.expo_Client,
+        companyLocalData.expo_Year,
         activeCompId_Ref.value,
         activeCompLeadRet_Ref.value,
         activeCompUrl_Ref.value,

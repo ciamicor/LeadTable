@@ -10,16 +10,54 @@ $lightness-9:        72%;
 $lightness-10:       80%;
 $lightness-11:       88%;
 $lightness-12:       94%;
-
+$color-saturate:     (
+                       94,
+                       88,
+                       80,
+                       72,
+                       64,
+                       56,
+                       48,
+                       40,
+                       32,
+                       24,
+                       16,
+                       8,
+                     );
+$color-light:        (
+                       8,
+                       16,
+                       24,
+                       32,
+                       40,
+                       48,
+                       56,
+                       64,
+                       72,
+                       80,
+                       88,
+                       94
+                     );
+$color-hues:         (
+                       "primary": "85",
+                       "secondary": "35",
+                       "success": "235",
+                       "warn": "10",
+                     );
+$grey-hue:           "215";
 :root {
+  @for $c from 1 through 12 {
+    @each $type, $hue in $color-hues {
+      --color-#{$type}-#{$c}: hsl(#{$hue}, #{75 + "%"}, #{(0 + (8 *$c)) + "%"});
+    }
+    --grey-#{$c}: hsl(#{$grey-hue}, 20%, #{(0 + (8 *$c)) + "%"});
+  }
   --font-primary:       hsl(215, 15%, 15%);
   --font-contrast:      white;
-
   --color-primary-hs:   85, 65%;
   --color-secondary-hs: 35, 85%;
   --color-success-hs:   235, 85%;
   --color-warn-hs:      10, 85%;
-
   --grey-1-hsl:         215, 25%, #{$lightness-1};
   --grey-2-hsl:         215, 25%, #{$lightness-2};
   --grey-3-hsl:         215, 25%, #{$lightness-3};
@@ -38,69 +76,64 @@ $lightness-12:       94%;
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 $font-primary:       var(--font-primary);
 $font-contrast:      var(--font-contrast);
-
-$color-primary-1:    hsl(var(--color-primary-hs), #{ $lightness-1 });
-$color-primary-2:    hsl(var(--color-primary-hs), #{ $lightness-2 });
-$color-primary-3:    hsl(var(--color-primary-hs), #{ $lightness-3 });
-$color-primary-4:    hsl(var(--color-primary-hs), #{ $lightness-4 });
-$color-primary-5:    hsl(var(--color-primary-hs), #{ $lightness-5 });
-$color-primary-6:    hsl(var(--color-primary-hs), #{ $lightness-6 });
-$color-primary-7:    hsl(var(--color-primary-hs), #{ $lightness-7 });
-$color-primary-8:    hsl(var(--color-primary-hs), #{ $lightness-8 });
-$color-primary-9:    hsl(var(--color-primary-hs), #{ $lightness-9 });
-$color-primary-10:   hsl(var(--color-primary-hs), #{ $lightness-10 });
-$color-primary-11:   hsl(var(--color-primary-hs), #{ $lightness-11});
-$color-primary-12:   hsl(var(--color-primary-hs), #{ $lightness-12});
-
-$color-secondary-1:  hsl(var(--color-secondary-hs), #{ $lightness-1 });
-$color-secondary-2:  hsl(var(--color-secondary-hs), #{ $lightness-2 });
-$color-secondary-3:  hsl(var(--color-secondary-hs), #{ $lightness-3 });
-$color-secondary-4:  hsl(var(--color-secondary-hs), #{ $lightness-4 });
-$color-secondary-5:  hsl(var(--color-secondary-hs), #{ $lightness-5 });
-$color-secondary-6:  hsl(var(--color-secondary-hs), #{ $lightness-6 });
-$color-secondary-7:  hsl(var(--color-secondary-hs), #{ $lightness-7 });
-$color-secondary-8:  hsl(var(--color-secondary-hs), #{ $lightness-8 });
-$color-secondary-9:  hsl(var(--color-secondary-hs), #{ $lightness-9 });
-$color-secondary-10: hsl(var(--color-secondary-hs), #{ $lightness-10 });
-$color-secondary-11: hsl(var(--color-secondary-hs), #{ $lightness-11});
-$color-secondary-12: hsl(var(--color-secondary-hs), #{ $lightness-12});
-
-$color-success-1:    hsl(var(--color-success-hs), #{ $lightness-1 });
-$color-success-2:    hsl(var(--color-success-hs), #{ $lightness-2 });
-$color-success-3:    hsl(var(--color-success-hs), #{ $lightness-3 });
-$color-success-4:    hsl(var(--color-success-hs), #{ $lightness-4 });
-$color-success-5:    hsl(var(--color-success-hs), #{ $lightness-5 });
-$color-success-6:    hsl(var(--color-success-hs), #{ $lightness-6 });
-$color-success-7:    hsl(var(--color-success-hs), #{ $lightness-7 });
-$color-success-8:    hsl(var(--color-success-hs), #{ $lightness-8 });
-$color-success-9:    hsl(var(--color-success-hs), #{ $lightness-9 });
-$color-success-10:   hsl(var(--color-success-hs), #{ $lightness-10 });
-$color-success-11:   hsl(var(--color-success-hs), #{ $lightness-11});
-$color-success-12:   hsl(var(--color-success-hs), #{ $lightness-12});
-
-$color-warn-1:       hsl(var(--color-warn-hs), #{ $lightness-1 });
-$color-warn-2:       hsl(var(--color-warn-hs), #{ $lightness-2 });
-$color-warn-3:       hsl(var(--color-warn-hs), #{ $lightness-3 });
-$color-warn-4:       hsl(var(--color-warn-hs), #{ $lightness-4 });
-$color-warn-5:       hsl(var(--color-warn-hs), #{ $lightness-5 });
-$color-warn-6:       hsl(var(--color-warn-hs), #{ $lightness-6 });
-$color-warn-7:       hsl(var(--color-warn-hs), #{ $lightness-7 });
-$color-warn-8:       hsl(var(--color-warn-hs), #{ $lightness-8 });
-$color-warn-9:       hsl(var(--color-warn-hs), #{ $lightness-9 });
-$color-warn-10:      hsl(var(--color-warn-hs), #{ $lightness-10 });
-$color-warn-11:      hsl(var(--color-warn-hs), #{ $lightness-11});
-$color-warn-12:      hsl(var(--color-warn-hs), #{ $lightness-12});
-
-$grey-1:             hsl(var(--grey-1-hsl));
-$grey-2:             hsl(var(--grey-2-hsl));
-$grey-3:             hsl(var(--grey-3-hsl));
-$grey-4:             hsl(var(--grey-4-hsl));
-$grey-5:             hsl(var(--grey-5-hsl));
-$grey-6:             hsl(var(--grey-6-hsl));
-$grey-7:             hsl(var(--grey-7-hsl));
-$grey-8:             hsl(var(--grey-8-hsl));
-$grey-9:             hsl(var(--grey-9-hsl));
-$grey-10:            hsl(var(--grey-10-hsl));
-$grey-11:            hsl(var(--grey-11-hsl));
-$grey-12:            hsl(var(--grey-12-hsl));
+$color-primary-1:    var(--color-primary-1);
+$color-primary-2:    var(--color-primary-2);
+$color-primary-3:    var(--color-primary-3);
+$color-primary-4:    var(--color-primary-4);
+$color-primary-5:    var(--color-primary-5);
+$color-primary-6:    var(--color-primary-6);
+$color-primary-7:    var(--color-primary-7);
+$color-primary-8:    var(--color-primary-8);
+$color-primary-9:    var(--color-primary-9);
+$color-primary-10:   var(--color-primary-10);
+$color-primary-11:   var(--color-primary-11);
+$color-primary-12:   var(--color-primary-12);
+$color-secondary-1:  var(--color-secondary-1);
+$color-secondary-2:  var(--color-secondary-2);
+$color-secondary-3:  var(--color-secondary-3);
+$color-secondary-4:  var(--color-secondary-4);
+$color-secondary-5:  var(--color-secondary-5);
+$color-secondary-6:  var(--color-secondary-6);
+$color-secondary-7:  var(--color-secondary-7);
+$color-secondary-8:  var(--color-secondary-8);
+$color-secondary-9:  var(--color-secondary-9);
+$color-secondary-10: var(--color-secondary-10);
+$color-secondary-11: var(--color-secondary-11);
+$color-secondary-12: var(--color-secondary-12);
+$color-success-1:    var(--color-success-1);
+$color-success-2:    var(--color-success-2);
+$color-success-3:    var(--color-success-3);
+$color-success-4:    var(--color-success-4);
+$color-success-5:    var(--color-success-5);
+$color-success-6:    var(--color-success-6);
+$color-success-7:    var(--color-success-7);
+$color-success-8:    var(--color-success-8);
+$color-success-9:    var(--color-success-9);
+$color-success-10:   var(--color-success-10);
+$color-success-11:   var(--color-success-11);
+$color-success-12:   var(--color-success-12);
+$color-warn-1:       var(--color-warn-1);
+$color-warn-2:       var(--color-warn-2);
+$color-warn-3:       var(--color-warn-3);
+$color-warn-4:       var(--color-warn-4);
+$color-warn-5:       var(--color-warn-5);
+$color-warn-6:       var(--color-warn-6);
+$color-warn-7:       var(--color-warn-7);
+$color-warn-8:       var(--color-warn-8);
+$color-warn-9:       var(--color-warn-9);
+$color-warn-10:      var(--color-warn-10);
+$color-warn-11:      var(--color-warn-11);
+$color-warn-12:      var(--color-warn-12);
+$grey-1:             var(--grey-1);
+$grey-2:             var(--grey-2);
+$grey-3:             var(--grey-3);
+$grey-4:             var(--grey-4);
+$grey-5:             var(--grey-5);
+$grey-6:             var(--grey-6);
+$grey-7:             var(--grey-7);
+$grey-8:             var(--grey-8);
+$grey-9:             var(--grey-9);
+$grey-10:            var(--grey-10);
+$grey-11:            var(--grey-11);
+$grey-12:            var(--grey-12);
 

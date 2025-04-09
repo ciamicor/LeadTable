@@ -3,9 +3,9 @@ $button-border:        1px solid;
 button,
 .button {
   display:         flex;
+  flex:            1 1 auto;
   place-content:   center;
   place-items:     center;
-  place-self:      center;
   color:           $grey-4;
   font-size:       $font-sm;
   font-weight:     450;

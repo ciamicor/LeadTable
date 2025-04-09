@@ -7,11 +7,31 @@ import { createPinia, defineStore } from 'pinia'
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 
 export const companyLocalStore = defineStore('companyLocal', () => {
-  const ex_Id = ref(null)
+  const id = ref(null)
   const name = ref(null)
   const login_Url = ref(null)
   const lead_Ret = ref(null)
-  const expo_Year = ref(null)
+  const expo_Year = ref(2025)
+  const expo_Client = ref('NYIFT')
+
+  function $reset() {
+    id.value = null
+    name.value = null
+    login_Url.value = null
+    lead_Ret.value = null
+    expo_Year.value = 0
+    expo_Client.value = ''
+  }
+
+  return {
+    id,
+    name,
+    login_Url,
+    lead_Ret,
+    expo_Year,
+    expo_Client,
+    $reset
+  }
 })
 
 /*-| App |-*/
@@ -23,6 +43,4 @@ const app = createApp(App)
 app.use(pinia)
 app.use(router)
 app.mount('#app')
-
-console.log('BASE_URL', import.meta.env.BASE_URL)
 

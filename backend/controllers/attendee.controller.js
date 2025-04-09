@@ -18,6 +18,7 @@ exports.getAllAttendees = async ( req, res ) => {
 exports.createAttendee = async ( req, res ) => {
   const {
     expo_Year,
+    expo_Client,
     name_First,
     name_Last,
     contact_Email,
@@ -29,6 +30,7 @@ exports.createAttendee = async ( req, res ) => {
   try {
     const newAttendee = await Attendee.create( {
       expo_Year,
+      expo_Client,
       name_First,
       name_Last,
       contact_Email,

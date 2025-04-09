@@ -41,6 +41,7 @@ const leadService = new LeadDataService()
 async function createLead_Service(lead: any) {
   console.log('Lead Service: ', lead)
   const data = {
+    expo_Client: lead.expo_Client,
     expo_Year: lead.expo_Year,
     attendee_Id: lead.attendee_Id,
     scan_Company_Id: lead.scan_Company_Id,

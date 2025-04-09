@@ -64,17 +64,17 @@ async function getProfile_Service(p: any) {
   let companyLocalHold: any = await db.profile.get(1)
   console.log('company local hold ', companyLocalHold)
 
-  p.ex_Id = companyLocalHold.ex_Id
+  p.id = companyLocalHold.ex_Id
   p.name = companyLocalHold.name
   p.login_Url = companyLocalHold.login_Url
   p.lead_Ret = companyLocalHold.lead_Ret
-  p.expo_Year = companyLocalHold.expo_Year
 
-  console.log('ex_Id: ', p.ex_Id)
+  console.log('id: ', p.id)
   console.log('name: ', p.name)
   console.log('login_Url: ', p.login_Url)
   console.log('lead_Ret: ', p.lead_Ret)
   console.log('expo_Year: ', p.expo_Year)
+  console.log('expo_Client: ', p.expo_Client)
 
   return p
 }

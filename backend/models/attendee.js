@@ -14,7 +14,8 @@ class Attendee extends Model {
 }
 
 Attendee.init( {
-  // expo_Year // foreign key
+  expo_Year: DataTypes.INTEGER, // foreign key
+  expo_Client: DataTypes.STRING, // foreign key
   name_First: DataTypes.STRING,
   name_Last: DataTypes.STRING,
   title: DataTypes.STRING,

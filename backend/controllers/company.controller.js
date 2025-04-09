@@ -6,14 +6,16 @@ exports.createCompany = async ( req, res ) => {
     id,
     login_URL,
     name,
-    expo_Year
+    expo_Year,
+    expo_Client
   } = req.body
   try {
     const newCompany = await Company.create( {
       id,
       login_URL,
       name,
-      expo_Year
+      expo_Year,
+      expo_Client
     } )
     res.status( 201 ).json( newCompany )
   } catch ( error ) {

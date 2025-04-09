@@ -17,6 +17,30 @@ $font-md:  22px;
 $font-lg:  26px;
 $font-xl:  30px;
 $font-xxl: 34px;
+.--font-xs {
+  font-size: $font-xs;
+}
+
+.--font-sm {
+  font-size: $font-sm;
+}
+
+.--font-md {
+  font-size: $font-md;
+}
+
+.--font-lg {
+  font-size: $font-lg;
+}
+
+.--font-xl {
+  font-size: $font-xl;
+}
+
+.--font-xxl {
+  font-size: $font-xxl;
+}
+
 p, button, li, label {
   font-size: $font-sm;
 }

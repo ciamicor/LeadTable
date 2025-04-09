@@ -4,6 +4,7 @@ const { where } = require( 'sequelize' )
 // Controller method to create a new lead
 exports.createLead = async ( req, res ) => {
   const {
+    expo_Client,
     expo_Year,
     attendee_Id,
     scan_Company_Id,
@@ -19,6 +20,7 @@ exports.createLead = async ( req, res ) => {
   console.log( 'Creating Lead: ', req.body )
   try {
     const newLead = await Lead.create( {
+      expo_Client,
       expo_Year,
       attendee_Id,
       scan_Company_Id,

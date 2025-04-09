@@ -1,14 +1,24 @@
 <template>
   <div
-    class="row">
+    class="row --place-items-center --place-content-center">
     <div v-if="!companyLocalData.lead_Ret"
-         class="col-10-300 --place-self-center">
-      <h1>Have you purchased Lead Retrieval?</h1>
-      <p>To access lead retrieval, tap "Profile" & login.</p>
+         class="col-10-300">
+      <h1>Looking for Leads?</h1>
+      <p>To access or purchase lead retrieval, you'll first need to login.</p>
+      <p>In "Booths & Extras" click "Reserve More", then scroll down to find the option for lead
+         retrieval.</p>
+      <router-link
+        class="button --primary"
+        to="/profile"
+      >
+        Go to Profile
+      </router-link>
+      <p class="--font-xs">You may need to logout, then login again to have the purchase
+                           register.</p>
 
     </div>
     <div v-if="companyLocalData.lead_Ret"
-         class="table-container">
+         class="table-container --m-b-24">
       <table>
         <thead>
         <tr>
@@ -20,6 +30,7 @@
           <th id="score">Score</th>
           <th id="comment">Comment</th>
           <th id="expo_Year">Expo</th>
+          <th id="expo_Client">Client</th>
           <th id="company_Id">c_Id</th>
           <th>Edit/Add</th>
         </tr>
@@ -39,6 +50,7 @@
           <td id="score">{{ lead.score }}</td>
           <td id="comment">{{ lead.comment }}</td>
           <td id="expo_Year">{{ lead.expo_Year }}</td>
+          <td id="expo_Client">{{ lead.expo_Client }}</td>
           <td id="company_Id">{{ lead.scan_Company_Id }}</td>
           <td>
             <button class="--square --warn"
@@ -104,6 +116,9 @@
             {{ lead.expo_Year }}
           </td>
           <td>
+            {{ lead.expo_Client }}
+          </td>
+          <td>
             {{ lead.scan_Company_Id }}
           </td>
           <td>
@@ -163,6 +178,7 @@ async function addDbLead() {
   try {
     const id = await db.leads.add( {
       expo_Year: lead.value.expo_Year,
+      expo_Client: lead.value.expo_Client,
       attendee_Id: lead.value.attendee_Id,
       scan_Company_Id: lead.value.scan_Company_Id,
       name_First: lead.value.name_First,
@@ -191,9 +207,10 @@ async function addDbLead() {
 const leadsList = ref()
 const lead = ref(
   {
+    expo_Client: companyLocalData.expo_Client,
     expo_Year: companyLocalData.expo_Year,
     attendee_Id: null,
-    scan_Company_Id: companyLocalData.ex_Id,
+    scan_Company_Id: companyLocalData.id,
     name_First: 'Clara',
     name_Last: 'Mooney',
     title: 'Developer',
@@ -206,9 +223,10 @@ const lead = ref(
 )
 
 async function resetLeadVal() {
+  lead.value.expo_Client = companyLocalData.expo_Client
   lead.value.expo_Year = companyLocalData.expo_Year
   lead.value.attendee_Id = null
-  lead.value.scan_Company_Id = companyLocalData.ex_Id
+  lead.value.scan_Company_Id = companyLocalData.id
   lead.value.name_First = null
   lead.value.name_Last = null
   lead.value.title = null
@@ -227,12 +245,12 @@ async function getAllLeads( l ) {
   await getAllLeads_Service( l )
   console.log( 'leads', l )
   leadsList.value = leadsList.value.filter( ( l ) => {
-    return l.scan_Company_Id === companyLocalData.ex_Id
+    return l.scan_Company_Id === companyLocalData.id
   } )
 }
 
 async function createLead( l ) {
-  console.log( 'Create lead: ', l.name_First )
+  console.log( 'Create lead: ', l )
   await createLead_Service( l )
   await addDbLead()
   await getAllLeads( leadsList )
@@ -254,7 +272,8 @@ onBeforeMount( () => {
     getAllLeads( leadsList )
     console.log( 'loggedCompany: ',
       companyLocalData.expo_Year,
-      companyLocalData.ex_Id,
+      companyLocalData.expo_Client,
+      companyLocalData.id,
       companyLocalData.lead_Ret,
       companyLocalData.login_Url,
       companyLocalData.name )

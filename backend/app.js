@@ -6,7 +6,6 @@ require( '@dotenvx/dotenvx' ).config()
 
 const Sequelize = require( './config/config' )
 const {
-  Scan,
   Lead,
   Company,
   Expo,
@@ -20,7 +19,7 @@ Sequelize.authenticate()
   .catch( ( err ) => console.error( 'Error connecting to database:', err ) )
 Sequelize.sync( { /*force: true*/ } )
   .then( async () => {
-    // await initPlaceholdData()
+    /*await initPlaceholdData()*/
   } )
 //
 //
@@ -43,7 +42,7 @@ app.use( express.json() )
 const leadRoutes = require( './routes/lead.routes' )
 const attendeeRoutes = require( './routes/attendee.routes' )
 const companyRoutes = require( './routes/company.routes' )
-const scanRoutes = require( './routes/scan.routes' )
+// const scanRoutes = require( './routes/scan.routes' )
 
 const PORT = process.env.PORT || 8080
 const HOST = process.env.HOST || 'localhost'
@@ -51,8 +50,8 @@ const frontend_root = 'dist'
 
 app.use( '/api/lead', leadRoutes )
 app.use( '/api/company', companyRoutes )
-app.use( '/api/scan', scanRoutes )
 app.use( '/api/attendee', attendeeRoutes )
+// app.use( '/api/scan', scanRoutes )
 
 app.use( express.static( path.join( __dirname, frontend_root ) ) )
 app.get( '*', ( req, res ) => {
@@ -109,25 +108,22 @@ async function initPlaceholdData() {
     id: 6150790,
     expo_Year: 2025,
     login_URL: '/exhibitors/details/edit?uid=73accba5-0b60-488c-acde-30f9d295edcb&token=fF7PY%252B1nPloFunSt0DmsGTHw8L1oa6Sf',
-    name: 'ABRAZIL LLC'
+    name: 'ABRAZIL LLC',
+    expo_Client: 'NYIFT'
   } )
   const newCompany2 = await Company.create( {
     id: 456453,
     expo_Year: 2025,
     login_URL: 'https://www.icor.org',
     name: 'ICOR',
-    email: 'icor@icor.org',
-    web: 'https://www.icor.org',
-    phone: '654754538'
+    expo_Client: 'NYIFT'
   } )
   const newCompany3 = await Company.create( {
     id: 832387,
     expo_Year: 2025,
     login_URL: 'https://www.nyift.org',
     name: 'NYIFT',
-    email: 'nyift@nyift.org',
-    web: 'https://www.nyift.org',
-    phone: '7777777777'
+    expo_Client: 'NYIFT'
   } )
 
   const newAttendee2 = await Attendee.create( {
@@ -139,7 +135,8 @@ async function initPlaceholdData() {
     contact_Employer: 'IAMI',
     title: 'Employee',
     reg_Type: 'Exhibitor',
-    tech_Sem: true
+    tech_Sem: true,
+    expo_Client: 'NYIFT'
   } )
 
   const newAttendee3 = await Attendee.create( {
@@ -151,7 +148,8 @@ async function initPlaceholdData() {
     contact_Employer: 'ICOR',
     title: 'Employee',
     reg_Type: 'Attendee',
-    tech_Sem: true
+    tech_Sem: true,
+    expo_Client: 'NYIFT'
   } )
 
   const newAttendee1 = await Attendee.create( {
@@ -163,7 +161,8 @@ async function initPlaceholdData() {
     contact_Employer: 'ICOR',
     title: 'Employee',
     reg_Type: 'Attendee',
-    tech_Sem: true
+    tech_Sem: true,
+    expo_Client: 'NYIFT'
   } )
 
   const newLead2 = await Lead.create( {
@@ -177,7 +176,8 @@ async function initPlaceholdData() {
     phone: '323587468',
     employer: 'IAMI',
     score: 5,
-    comment: 'She\'s so cool.'
+    comment: 'She\'s so cool.',
+    expo_Client: 'NYIFT'
   } )
 
   const newLead3 = await Lead.create( {
@@ -191,41 +191,16 @@ async function initPlaceholdData() {
     phone: '6068545684',
     employer: 'IAMI',
     score: 5,
-    comment: 'She\'s so cool.'
-  } )
-
-  const newScan = await Scan.create( {
-    expo_Year: 2025,
-    company_Id: 2,
-    lead_Id: 1,
-    lead_Score: 2,
-    company_Comments: 'She\'s really good at what she does.'
-  } )
-
-  const newScan2 = await Scan.create( {
-    expo_Year: 2025,
-    company_Id: 2,
-    lead_Id: 2,
-    lead_Score: 1,
-    company_Comments: 'Literally the best.'
-  } )
-
-  const newScan3 = await Scan.create( {
-    expo_Year: 2025,
-    company_Id: 3,
-    lead_Id: 1,
-    lead_Score: 5,
-    company_Comments: 'She\'s amazing.'
+    comment: 'She\'s so cool.',
+    expo_Client: 'NYIFT'
   } )
 
   console.log( newExpo )
   console.log( newLead2 )
   console.log( newLead3 )
+  console.log( newAttendee1 )
   console.log( newAttendee2 )
   console.log( newAttendee3 )
-  console.log( newScan )
-  console.log( newScan2 )
-  console.log( newScan3 )
   console.log( newCompany1 )
   console.log( newCompany2 )
   console.log( newCompany3 )
