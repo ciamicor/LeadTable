@@ -1,35 +1,35 @@
 import http from '../http-common'
 
-export default class CompanyDataService {
+export default class ExpoDataService {
   create(data: any) {
-    return http.post("/company", data)
+    return http.post('/expo', data)
   }
 
   getAll() {
-    return http.get('/company')
+    return http.get('/expo')
   }
 
   get(id: any) {
-    return http.get("/company/" + id)
+    return http.get('/expo/' + id)
   }
 }
 
 /*-| Functions |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-const companyService = new CompanyDataService()
+const expoService = new ExpoDataService()
 
 /*-| Get by ID |-*/
 
 /*---+----+---+----+---+----+---+----+---*/
-async function getCompanyById_Service(id: any, companyObject: any) {
-  await companyService.get(id)
+async function getExpo_Service(id: any, expoObject: any) {
+  await expoService.get(id)
     .then((response) => {
-      companyObject.value = response.data
-      console.log("company: ", companyObject)
+      expoObject.value = response.data
+      console.log('company: ', expoObject)
     })
     .catch((e) => {
       console.log(e)
     })
 }
 
-export {getCompanyById_Service}
+export { getExpo_Service }

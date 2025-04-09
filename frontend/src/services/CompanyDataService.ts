@@ -1,4 +1,5 @@
 import http from '../http-common'
+import { db } from '@/db.ts'
 
 export default class CompanyDataService {
   create(data: any) {
@@ -56,4 +57,26 @@ async function getCompanyById_Service(id: any, companyObject: any) {
     })
 }
 
-export { getCompanyById_Service, createCompany_Service }
+/*-| Get Profiles from DB |-*/
+
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+async function getProfile_Service(p: any) {
+  let companyLocalHold: any = await db.profile.get(1)
+  console.log('company local hold ', companyLocalHold)
+
+  p.ex_Id = companyLocalHold.ex_Id
+  p.name = companyLocalHold.name
+  p.login_Url = companyLocalHold.login_Url
+  p.lead_Ret = companyLocalHold.lead_Ret
+  p.expo_Year = companyLocalHold.expo_Year
+
+  console.log('ex_Id: ', p.ex_Id)
+  console.log('name: ', p.name)
+  console.log('login_Url: ', p.login_Url)
+  console.log('lead_Ret: ', p.lead_Ret)
+  console.log('expo_Year: ', p.expo_Year)
+
+  return p
+}
+
+export { getCompanyById_Service, createCompany_Service, getProfile_Service }

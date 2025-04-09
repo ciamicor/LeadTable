@@ -48,6 +48,7 @@ $view-height:       calc($app-height - $nav-height-actual);
     height:    $view-height;
   }
   &-container {
+    display:    flex;
     min-height: $view-height;
   }
 }

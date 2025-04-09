@@ -12,9 +12,10 @@
     </div>
   </div>
   <nav class="nav-bar">
-    <router-link active-class="--secondary"
-                 class="button --stacked"
-                 to="/floor-plan">
+    <router-link
+      active-class="--secondary"
+      class="button --stacked"
+      to="/floor-plan">
       <svg
         fill="none"
         height="24"
@@ -29,9 +30,10 @@
       </svg>
       Map
     </router-link>
-    <router-link active-class="--secondary"
-                 class="button --stacked"
-                 to="/leads-list">
+    <router-link
+      active-class="--secondary"
+      class="button --stacked"
+      to="/leads-list">
       <svg
         fill="none"
         height="24"
@@ -46,9 +48,10 @@
       </svg>
       Leads
     </router-link>
-    <router-link active-class="--secondary"
-                 class="button --stacked"
-                 to="/profile">
+    <router-link
+      active-class="--secondary"
+      class="button --stacked"
+      to="/profile">
       <svg
         fill="none"
         height="24"
@@ -63,23 +66,28 @@
       </svg>
       Profile
     </router-link>
+
+
   </nav>
 </template>
 
-<script setup>
+<script
+  setup>
 import { ref, provide, onBeforeMount } from 'vue'
 import { db } from '@/db.js'
+import { companyLocalStore } from '@/main.ts'
 
-/*-| Varibles |-*/
+/*-| Variables |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+const companyLocalData = companyLocalStore()
 
 /*-| REF |-*/
 /*---+----+---+----+---+----+---+----+---*/
 const activeView = ref( '' )
 
 let expoYear_Ref = ref( '' )
-let activeCompId_Ref = ref( '' )
-let activeCompLeadRet_Ref = ref( '' )
+let activeCompId_Ref = ref()
+let activeCompLeadRet_Ref = ref()
 let activeCompUrl_Ref = ref( '' )
 let activeCompName_Ref = ref( '' )
 
@@ -87,25 +95,26 @@ let activeCompName_Ref = ref( '' )
 /*---+----+---+----+---+----+---+----+---*/
 async function updateCompany() {
   await db.profile.get( 1 ).then( ( res ) => {
-    console.log( 'Response - Company Name:', res.name )
+    if ( res ) {
+      console.log( 'Response - Company Name:', res.name )
+      companyLocalData.expo_Year = res.expo_Year
+      companyLocalData.ex_Id = res.ex_Id
+      companyLocalData.lead_Ret = res.lead_Ret
+      companyLocalData.login_Url = res.login_Url.toString()
+      companyLocalData.name = res.name.toString()
 
-    expoYear_Ref.value = res.expo_Year
-    activeCompId_Ref.value = res.ex_Id
-    activeCompLeadRet_Ref.value = res.lead_Ret
-    activeCompUrl_Ref.value = res.login_Url.toString()
-    activeCompName_Ref.value = res.name.toString()
-
-    console.log( 'UPDATE RESULT',
-      expoYear_Ref.value,
-      activeCompId_Ref.value,
-      activeCompLeadRet_Ref.value,
-      activeCompUrl_Ref.value,
-      activeCompName_Ref.value
-    )
+      console.log( 'UPDATE RESULT',
+        companyLocalData.expo_Year.value,
+        activeCompId_Ref.value,
+        activeCompLeadRet_Ref.value,
+        activeCompUrl_Ref.value,
+        activeCompName_Ref.value
+      )
+    }
   } )
 }
 
-provide( 'expoYear_Global', expoYear_Ref )
+provide( 'expoYear_Global', companyLocalData.expo_Year )
 provide( 'activeCompId_Global', activeCompId_Ref )
 provide( 'activeCompLeadRet_Global', activeCompLeadRet_Ref )
 provide( 'activeCompUrl_Global', activeCompUrl_Ref )

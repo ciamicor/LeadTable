@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios'
 
-const baseUrl = "https://app.expofp.com/api/v1/"
-const fpToken = "12593l56be89a73a1d79031b6f6fd7fdc621adc60ee8d52fb2211a2a2891ed8948ae46"
+const baseUrl = 'https://app.expofp.com/api/v1/'
+const fpToken = '12593l56be89a73a1d79031b6f6fd7fdc621adc60ee8d52fb2211a2a2891ed8948ae46'
 
 /*-| Get All Exhibitors |-*/
 /*---+----+---+----+---+----+---+----+---*/
@@ -9,12 +9,12 @@ export const getAllExhibitors = () => axios({
   method: 'post',
   url: baseUrl + 'list-exhibitors',
   data: {
-    "token": fpToken,
-    "eventId": 23706
+    'token': fpToken,
+    'eventId': 23706
   }
 })
   .then((res) => {
-    console.log("all exhibitors response: ", res.data)
+    // console.log("all exhibitors response: ", res.data)
     return res.data
   })
 
@@ -24,12 +24,12 @@ export const getExhibitor = (id: any) => axios({
   method: 'post',
   url: baseUrl + 'get-exhibitor',
   data: {
-    "token": fpToken,
-    "id": id
+    'token': fpToken,
+    'id': id
   }
 })
   .then((res) => {
-    console.log("exhibitor response: ", res.data)
+    // console.log("exhibitor response: ", res.data)
     return res.data
   })
 
@@ -39,12 +39,12 @@ export const getExhibExtras = (id: any) => axios({
   method: 'post',
   url: baseUrl + 'list-exhibitor-extras',
   data: {
-    "token": fpToken,
-    "exhibitorId": id
+    'token': fpToken,
+    'exhibitorId': id
   }
 })
   .then((res) => {
-    console.log("extras response: ", res.data)
+    // console.log("extras response: ", res.data)
     return res.data
   })
 

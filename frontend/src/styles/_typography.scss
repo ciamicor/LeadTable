@@ -4,7 +4,7 @@
 }
 
 p, li, h1, h2, h3, h4, h5 {
-  margin: 0 0 4px 0;
+  margin: 0 0 8px 0;
 }
 
 :root {
@@ -17,7 +17,6 @@ $font-md:  22px;
 $font-lg:  26px;
 $font-xl:  30px;
 $font-xxl: 34px;
-
 p, button, li, label {
   font-size: $font-sm;
 }

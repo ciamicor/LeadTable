@@ -1,44 +1,25 @@
 <template>
   <button v-if="loggedIn"
           class="--float --top-r --warn"
-          @click="signOut">
+          @click="logOut">
     Sign Out
   </button>
 
   <iframe
-    v-if="loginIdMatch && extraMatch"
+    v-if="loggedIn"
     :src="'https://app.expofp.com' + loginUrl"
     allow="clipboard-read; clipboard-write"
     class="view-floor-plan"
   >
   </iframe>
   <div v-else
-       class="row">
-
-    <div class="col-12">
-      <h2>Lead Retrieval Login</h2>
-      <!--      <label for="searchExhib">Find your Company</label>
-            <input id="searchExhib"
-                   v-model.trim="exSearchObj.name"
-                   list="searchList"
-                   name="searchExhib"
-                   placeholder="Type Your Company Name"
-                   type="text"
-                   @change="updateSearch($event)"
-                   @input="searchExhib()">
-            <datalist id="searchList">
-              <option v-for="(s, i) in exList"
-                      :key="i"
-                      :data-exid="s.id"
-                      :value="s.name"
-              >
-                {{ s.name }}
-              </option>
-            </datalist>-->
-    </div>
-
+       class="row --place-content-center --place-items-center">
     <div
-      class="col-12">
+      class="col-10-300 col-7-700">
+      <h1>Company Login</h1>
+      <p>If you've already purchased lead retrieval, login here to access it.</p>
+      <p>To purchase lead retrieval, login to your ExpoFP Exhibitor profile here, and add it as a
+         booth extra.</p>
       <label
         for="profileUrl">
         Login ID
@@ -50,32 +31,17 @@
              type="text">
       <button class="--success"
               @click="login()">
-        Portal Login
+        Exhibitor Portal Login
       </button>
     </div>
-    <p>{{ selectedCompanyData ? selectedCompanyData.id : null }}</p>
-    <p>{{ loginUrl }}</p>
   </div>
-
-  <!--
-    <div v-if="(loginIdMatch === false) && loginId && selectedCompanyData"
-         class="row">
-      <p>Incorrect URL. You can find your exhibitor portal URL in the confirmation email from
-         ExpoFP.</p>
-    </div>
-
-    <div v-if="!extraMatch && loginIdMatch"
-         class="row">
-      <p>You'll need to purchase lead retrieval to access. Purchase in your ExpoFP exhibitor
-         profile.</p>
-    </div>
-  -->
 
   <div v-if="debug"
        class="row">
+    <p>{{ selectedCompanyData ? selectedCompanyData.id : null }}</p>
+    <p>{{ loginUrl }}</p>
     <div class="col-12">
       <div class="row">
-        <p class="col-12">{{ exSearchObj }}</p>
         <p class="col-5">Link match: {{ loginIdMatch }}</p>
         <p class="col-5">Lead retrieval: {{ extraMatch }}</p>
       </div>
@@ -87,7 +53,7 @@
       <h2>exData</h2>
       {{ selectedCompanyData }}
     </div>
-    {{ companyProfileData }}
+    {{ companyLocalData }}
   </div>
 </template>
 
@@ -98,40 +64,34 @@ import {
   getExhibitor,
   getExhibExtras
 } from '../services/ExpoFpDataService.ts'
-import { createCompany_Service } from '@/services/CompanyDataService.ts'
+import { createCompany_Service, getProfile_Service } from '@/services/CompanyDataService.ts'
 import { onBeforeMount, ref } from 'vue'
 import { db } from '@/db.ts'
+import { companyLocalStore } from '@/main.ts'
 
 /*-| Variables |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const debug = ref(false)
 
 const exList = ref()
-const exSearchObj = ref({
-  name: '',
-  id: ''
-})
 
-const searchListHold = ref()
-
-const searchResult = ref()
 const selectedCompanyData = ref()
 const companyExtras = ref()
 const loginIdMatch = ref(false)
 const extraMatch = ref(false)
 const expoYear = ref()
-const companyProfileData = ref()
 
 const loginId = ref('')
 const loginUrl = ref('')
 const loggedIn = ref(false)
+
+const companyLocalData = companyLocalStore()
 
 /*-| Lifecycle |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 onBeforeMount(() => {
     getProfile()
     getAllEx()
-    // searchExhib()
   }
 )
 
@@ -140,21 +100,43 @@ onBeforeMount(() => {
 const status = ref()
 
 async function getProfile() {
-  companyProfileData.value = await db.profile.get(1)
-  console.log('profile data ', companyProfileData.value)
-  exSearchObj.value.name = companyProfileData.value.name
-  exSearchObj.value.id = companyProfileData.value.ex_Id
-  loginId.value = companyProfileData.value.ex_Id
-  loginUrl.value = companyProfileData.value.login_Url
+  await getProfile_Service(companyLocalData)
+
+  loginId.value = companyLocalData.ex_Id
+  loginUrl.value = companyLocalData.login_Url
 
   console.log('profile loginUrl: ', loginUrl.value)
 
-  if (companyProfileData.value) {
-    loginIdMatch.value = true
-    extraMatch.value = true
+  if (companyLocalData) {
     loggedIn.value = true
   }
 }
+
+/*async function getProfile() {
+  let companyLocalHold: any = await db.profile.get(1)
+  console.log('company local hold ', companyLocalHold)
+
+  companyLocalData.ex_Id = companyLocalHold.ex_Id
+  companyLocalData.name = companyLocalHold.name
+  companyLocalData.login_Url = companyLocalHold.login_Url
+  companyLocalData.lead_Ret = companyLocalHold.lead_Ret
+  companyLocalData.expo_Year = companyLocalHold.expo_Year
+
+  console.log('ex_Id: ', companyLocalData.ex_Id)
+  console.log('name: ', companyLocalData.name)
+  console.log('login_Url: ', companyLocalData.login_Url)
+  console.log('lead_Ret: ', companyLocalData.lead_Ret)
+  console.log('expo_Year: ', companyLocalData.expo_Year)
+
+  loginId.value = companyLocalData.ex_Id
+  loginUrl.value = companyLocalData.login_Url
+
+  console.log('profile loginUrl: ', loginUrl.value)
+
+  if (companyLocalData) {
+    loggedIn.value = true
+  }
+}*/
 
 async function saveDbLogin() {
   try {
@@ -173,14 +155,6 @@ async function saveDbLogin() {
   }
 }
 
-async function signOut() {
-  db.delete({ disableAutoOpen: false })
-  loginIdMatch.value = false
-  extraMatch.value = false
-  loggedIn.value = false
-  // window.location.reload();
-}
-
 /*-| Function |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 function matchUrlParams(u: string) {
@@ -191,9 +165,8 @@ async function getAllEx() {
   const hold = await getAllExhibitors()
   exList.value = hold.filter((c: any) => {
     return c.booths.length > 0
-  }).sort()
-  console.log('exList: ', exList.value)
-  // return fp.getAllExhibitors(exList)
+  })
+  // console.log('exList: ', exList.value)
 }
 
 async function getEx(id: any) {
@@ -206,85 +179,41 @@ async function getExtras(id: any) {
   console.log('Extras: ', companyExtras.value)
 }
 
-async function checkExLink(li: number) {
-  console.log('checking link')
-  let l: any = matchUrlParams(loginId.value)
-  let d: any = matchUrlParams(li.toString())
-  console.log('l:', l, 'd:', d)
-  if (l === d) {
-    console.log('linkmatch!')
-    loginIdMatch.value = true
-  }
-}
-
-async function checkLeadExtra() {
+async function checkLeadExtra(id: any) {
   console.log('checking lead retrieval purchase')
+  await getExtras(id)
   extraMatch.value = await companyExtras.value.some((e: any) =>
     e.name.toLowerCase().includes('lead retrieval')
   )
+  if (extraMatch.value) {
+    alert(selectedCompanyData.value.name + ': Lead Retrieval purchased')
+  } else if (!extraMatch.value) {
+    alert(selectedCompanyData.value.name + ' has not purchased Lead Retrieval.')
+  }
   console.log('lead retrieval purchased: ', extraMatch.value)
-}
-
-async function searchExhib() {
-  exSearchObj.value.id = ''
-  searchListHold.value = exList.value.filter((e: any) =>
-    e.name.toLowerCase().includes(exSearchObj.value.name.toLowerCase())
-  )
-  console.log('S HOLD: ', searchListHold.value)
-  setTimeout(() => {
-    searchResult.value = searchListHold.value
-    console.log('search: ', searchResult.value)
-    return searchResult.value
-  }, 500)
-}
-
-async function getSelectedId(e: any) {
-  /*let id = e.target.getAttribute('data-exid')
-  console.log('selected ID:', id) // 1*/
-  let list: any
-  list = document.getElementById('searchList')
-  for (let i = 0; i < list.childElementCount; i++) {
-    console.log(list.children[i].attributes['data-exid'].value)
-    exSearchObj.value.id = list.children[i].attributes['data-exid'].value
-  }
-}
-
-async function updateSearch(e: any) {
-  await getSelectedId(e)
-  if (exSearchObj.value.name) {
-  }
-  await getEx(exSearchObj.value.id)
-  await getExtras(exSearchObj.value.id)
-  await checkExLink(selectedCompanyData.value.id)
-  await checkLeadExtra()
-
-  // TODO Add better global pull
-
-  console.log(expoYear.value)
-
-  console.log(extraMatch.value)
-  if (extraMatch.value && loginIdMatch.value) {
-  }
 }
 
 async function login() {
   await getEx(loginId.value)
-  console.log('company login is: ', selectedCompanyData.value.autoLoginUrl)
-
+  await checkLeadExtra(loginId.value)
+  console.log('company logging in is: ', selectedCompanyData.value.autoLoginUrl)
   loginUrl.value = selectedCompanyData.value.autoLoginUrl
-
   console.log('loginURL: ', loginUrl.value)
 
-  loginIdMatch.value = true
-  extraMatch.value = true
-
   expoYear.value = parseInt(selectedCompanyData.value.updatedAt.slice(0, 4))
-  await checkExLink(selectedCompanyData.value.id)
   await saveDbLogin()
-  // await checkLeadExtra()
   await createCompany_Service(selectedCompanyData, expoYear.value)
   loggedIn.value = true
 
+  // window.location.reload()
+}
+
+async function logOut() {
+  db.delete({ disableAutoOpen: false })
+  loginIdMatch.value = false
+  extraMatch.value = false
+  loggedIn.value = false
+  companyLocalData.$reset()
   window.location.reload()
 }
 </script>

@@ -1,6 +1,14 @@
 <template>
-  <div class="row">
-    <div class="table-container">
+  <div
+    class="row">
+    <div v-if="!companyLocalData.lead_Ret"
+         class="col-10-300 --place-self-center">
+      <h1>Have you purchased Lead Retrieval?</h1>
+      <p>To access lead retrieval, tap "Profile" & login.</p>
+
+    </div>
+    <div v-if="companyLocalData.lead_Ret"
+         class="table-container">
       <table>
         <thead>
         <tr>
@@ -120,6 +128,7 @@
       </table>
     </div>
     <router-link
+      v-if="companyLocalData.lead_Ret"
       class="button --stacked --float --bottom-r --success"
       to="/scan-lead">
       <i class="bi-qr-code-scan"></i>
@@ -130,32 +139,25 @@
 </template>
 
 <script setup>
-import router from '@/router.js'
+import { companyLocalStore } from '@/main.ts'
 import { db } from '../db'
 import {
   createLead_Service, deleteLead_Service,
   getAllLeads_Service
 } from '../services/LeadDataService.js'
-import { ref, inject, onBeforeMount } from 'vue'
-import QrCode from '@/components/QrCode.vue'
+import { ref, inject, onBeforeMount, onMounted } from 'vue'
+import { getProfile_Service } from '@/services/CompanyDataService.js'
 
-const expoYear = inject( 'expoYear_Global' )
-const activeCompId = inject( 'activeCompId_Global' )
-const activeCompLeadRet = inject( 'activeCompLeadRet_Global' )
-const activeCompUrl = inject( 'activeCompUrl_Global' )
-const activeCompName = inject( 'activeCompName_Global' )
-
-console.log( 'loggedCompany: ',
-  expoYear.value,
-  activeCompId.value,
-  activeCompLeadRet.value,
-  activeCompUrl.value,
-  activeCompName.value )
+const companyLocalData = companyLocalStore()
 
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| DB |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 const status = ref()
+
+async function getProfile() {
+  await getProfile_Service( companyLocalData )
+}
 
 async function addDbLead() {
   try {
@@ -186,12 +188,12 @@ async function addDbLead() {
 /*-| Leads List |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 
-let leadsList = ref()
-let lead = ref(
+const leadsList = ref()
+const lead = ref(
   {
-    expo_Year: expoYear,
+    expo_Year: companyLocalData.expo_Year,
     attendee_Id: null,
-    scan_Company_Id: activeCompId,
+    scan_Company_Id: companyLocalData.ex_Id,
     name_First: 'Clara',
     name_Last: 'Mooney',
     title: 'Developer',
@@ -204,9 +206,9 @@ let lead = ref(
 )
 
 async function resetLeadVal() {
-  lead.value.expo_Year = expoYear
+  lead.value.expo_Year = companyLocalData.expo_Year
   lead.value.attendee_Id = null
-  lead.value.scan_Company_Id = activeCompId
+  lead.value.scan_Company_Id = companyLocalData.ex_Id
   lead.value.name_First = null
   lead.value.name_Last = null
   lead.value.title = null
@@ -225,7 +227,7 @@ async function getAllLeads( l ) {
   await getAllLeads_Service( l )
   console.log( 'leads', l )
   leadsList.value = leadsList.value.filter( ( l ) => {
-    return l.scan_Company_Id === activeCompId.value
+    return l.scan_Company_Id === companyLocalData.ex_Id
   } )
 }
 
@@ -248,6 +250,17 @@ async function checkLeadFields() {
 /*-| Hooks |-*/
 /*---+----+---+----+---+----+---+----+---*/
 onBeforeMount( () => {
+    getProfile()
+    getAllLeads( leadsList )
+    console.log( 'loggedCompany: ',
+      companyLocalData.expo_Year,
+      companyLocalData.ex_Id,
+      companyLocalData.lead_Ret,
+      companyLocalData.login_Url,
+      companyLocalData.name )
+  }
+)
+onMounted( () => {
     getAllLeads( leadsList )
   }
 )
