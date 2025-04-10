@@ -4,7 +4,7 @@
   grid-template-rows: repeat(auto-fill, 3in);
   width:                 8.5in;
   height:                calc(11in - 2px);
-  // padding:               0.25in;
+  padding-top:           1in;
   border:                1px dashed $grey-11;
   .badge-wrapper {
     display:            grid;
@@ -18,7 +18,8 @@
     gap:                $sp-4;
     width:              100%;
     * {
-      margin: 0;
+      line-height: 1.15;
+      margin:      0;
     }
   }
   .badge--images-container {

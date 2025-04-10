@@ -3,7 +3,7 @@ import LeadsList from '@/components/LeadsList.vue'
 import ScanLead from '@/components/AddLead.vue'
 import FloorPlan from '@/components/FloorPlan.vue'
 import CompanyProfile from '@/components/CompanyProfile.vue'
-import QrCodes from './components/QrCodes.vue'
+import BadgePrint from '@/components/BadgePrint.vue'
 
 const routes = [
   {
@@ -34,7 +34,7 @@ const routes = [
   {
     path: '/print-badges',
     name: 'print-badges',
-    component: QrCodes
+    component: BadgePrint
   }
 ]
 

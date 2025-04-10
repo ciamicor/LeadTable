@@ -39,14 +39,14 @@ $breakpoints:    (
 }
 
 .row {
-  display:   flex;
-  flex:      1 1 auto;
-  flex-flow: row wrap;
+  display:       flex;
+  flex:          1 1 auto;
+  flex-flow:     row wrap;
   place-content: center;
-  gap:       $row-gap;
-  max-width: $max-page-width;
-  margin:    0 auto;
-  padding:   $sp-v-4 $sp-v-5;
+  gap:           $row-gap;
+  max-width:     $max-page-width;
+  margin:        0 auto;
+  padding:       $sp-v-4 $sp-v-5;
   .--full {
     max-width: 100%;
   }
@@ -63,8 +63,13 @@ $breakpoints:    (
       display:   flex;
       flex-flow: column nowrap;
       gap:       $col-gap;
-      & > button {
-        margin-top: $sp-8;
+      & *:not(.button,button) + .button,
+      & *:not(.button,button) + button {
+        margin-top: $sp-4;
+      }
+      & .button:has( + *:not(.button, button)),
+      & button:has( + *:not(.button, button)) {
+        margin-bottom: $sp-6;
       }
       @include breakpoint($size) {
         flex:  0 1 calc((100% * ($i / $column-number)) - $row-gap);

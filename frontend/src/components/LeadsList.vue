@@ -2,7 +2,7 @@
   <div
     class="row --justify-content-center">
     <div v-if="!companyLocalData.lead_Ret"
-         class="col-10-300 --place-self-center">
+         class="col-12-300 col-10-500 col-4-900  --place-self-center">
       <h1>Looking for Leads?</h1>
       <p>To access or purchase lead retrieval, you'll first need to login.</p>
       <p>In "Booths & Extras" click "Reserve More", then scroll down to find the option for lead

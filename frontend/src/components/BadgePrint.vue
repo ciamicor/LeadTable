@@ -33,8 +33,6 @@
         </div>
       </div>
     </div>
-
-
   </div>
 </template>
 
@@ -49,6 +47,7 @@ import { getAllAttendees_Service } from '@/services/AttendeeDataService.ts'
 
 const attendeeList = ref( {} )
 const attendeeListGrouped = ref( [] )
+
 /*-| Print Component |-*/
 const componentRef = ref()
 
@@ -78,13 +77,16 @@ async function chunkArray() {
   // console.log( typeof attendeeList )
   const attendeeNum = Object.keys( attendeeList.value ).length
   // console.log( 'Attendee amount', attendeeNum )
-  // console.log( 'Attendee amount', attendeeList.value[0] )
+  // console.log( 'Attendee #1', attendeeList.value[0] )
 
   while ( indexCount < attendeeNum ) {
     while ( countPushTotal < groupSize ) {
       // console.log( 'index: ', countTotal + indexCount )
       // console.log( 'pushed: ', countPushTotal + indexCount )
-      tempGroup.push( attendeeList.value[countPushTotal + indexCount] )
+      if ( attendeeList.value[countPushTotal + indexCount] !== undefined ) {
+        // console.log( 'value found!' )
+        tempGroup.push( await attendeeList.value[countPushTotal + indexCount] )
+      }
       countPushTotal++
       // console.log( tempGroup )
     }
