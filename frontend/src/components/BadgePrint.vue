@@ -62,7 +62,7 @@ onBeforeMount( () => {
 /*-| Get All |-*/
 async function getAllAttendees( l ) {
   await getAllAttendees_Service( l )
-  console.log( 'attendees', l )
+  await console.log( 'attendees', l )
   await chunkArray()
 }
 
@@ -73,10 +73,10 @@ const groupSize = 6
 let tempGroup = []
 
 async function chunkArray() {
-  console.log( typeof attendeeList )
+  console.log( typeof await attendeeList )
   const attendeeNum = Object.keys( await attendeeList.value ).length
-  console.log( 'Attendee amount', attendeeNum )
-  console.log( 'Attendee #1', attendeeList.value[0] )
+  console.log( 'Attendee amount', await attendeeNum )
+  console.log( 'Attendee #1', await attendeeList.value[0] )
 
   while ( indexCount < attendeeNum ) {
     while ( countPushTotal < groupSize ) {
@@ -88,13 +88,13 @@ async function chunkArray() {
       countPushTotal++
       console.log( tempGroup )
     }
-    attendeeListGrouped.value.push( tempGroup )
+    await attendeeListGrouped.value.push( tempGroup )
     tempGroup = []
     indexCount += groupSize
     countPushTotal = 0
     console.log( indexCount )
   }
-  console.log( attendeeListGrouped.value )
+  console.log( await attendeeListGrouped.value )
 }
 
 /*-| Printing |-*/
