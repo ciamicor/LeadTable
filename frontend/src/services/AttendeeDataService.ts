@@ -55,7 +55,6 @@ async function createAttendee_Service(attendee: any) {
     })
     .catch((e: any) => {
       console.log(e)
-
       window.alert('Attendee with email ' + attendee.contact_Email + ' already exists.')
     })
 }
@@ -67,7 +66,7 @@ async function getAllAttendees_Service(list: any) {
   await attendeeService.getAll()
     .then((response) => {
       list.value = response.data
-      console.log(response.data)
+      // console.log(response.data)
     })
     .catch((e) => {
       console.log(e)

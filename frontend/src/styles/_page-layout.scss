@@ -63,12 +63,12 @@ $breakpoints:    (
       display:   flex;
       flex-flow: column nowrap;
       gap:       $col-gap;
-      & *:not(.button,button) + .button,
-      & *:not(.button,button) + button {
+      & > *:not(.button,button) + .button,
+      & > *:not(.button,button) + button {
         margin-top: $sp-4;
       }
-      & .button:has( + *:not(.button, button)),
-      & button:has( + *:not(.button, button)) {
+      & > .button:has(+ *:not(.button, button)),
+      & > button:has(+ *:not(.button, button)) {
         margin-bottom: $sp-6;
       }
       @include breakpoint($size) {

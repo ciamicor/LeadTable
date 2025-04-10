@@ -12,6 +12,10 @@ input, select {
   border:        2px solid $grey-10;
   border-radius: $item-border;
   transition:    box-shadow $trans-0, border $trans-0;
+  &::placeholder {
+    color:      $grey-8;
+    font-style: italic;
+  }
   &:focus, &:focus-visible {
     border:     2px solid $color-secondary-8;
     outline:    none;
@@ -19,3 +23,23 @@ input, select {
   }
 }
 
+.search-wrapper {
+  position: relative;
+  button {
+    position:      absolute;
+    top:           50%;
+    right:         $sp-7;
+    border-radius: 65px;
+    transition:    opacity $trans-0;
+    translate:     0 -50%;
+    scale:         .65;
+  }
+  input.search {
+    padding:       $sp-5 $sp-7;
+    border-radius: 65px;
+    transition:    border-radius $trans-0;
+    &:focus, &:focus-visible {
+      border-radius: $item-border;
+    }
+  }
+}

@@ -1,12 +1,27 @@
 <template>
   <div class="row --gap-24">
     <div class="col-12-300">
-      <div class="row --place-items-center">
-        <button class="--warn col-5-300"
+      <div class="row --full">
+        <div class="search-wrapper --place-self-center">
+          <button
+            v-show="searchTerm !== ''"
+            class="--square"
+            @click="resetSearch">
+            <i class="bi-x-lg"></i>
+          </button>
+          <input id="searchAttendees"
+                 v-model="searchTerm"
+                 class="search --m-h-7"
+                 name="searchAttendees"
+                 placeholder="Search Attendees"
+                 type="text"
+                 @change="searchNames(attendeeList, searchTerm, searchResult)">
+        </div>
+        <button class="--warn"
                 @click="handlePrint">Print All Badges
         </button>
         <router-link
-          class="button --primary col-5-300"
+          class="button --primary"
           to="/create-badge">
           Create Badge
         </router-link>
@@ -17,32 +32,10 @@
            :key="i"
            class="badges-grid-container"
       >
-        <div v-for="(attendee, ind) in group"
-             :key="ind"
-             class="badge-wrapper"
-        >
-          <div class="--attendee-info-container">
-            <p class="--employer"
-               style="width: 100%">
-              {{ attendee.contact_Employer }}
-            </p>
-            <h1 class="--name">
-              {{ attendee.name_First }}
-              {{ attendee.name_Last }}
-            </h1>
-            <p class="--title">
-              {{ attendee.title }}
-            </p>
-          </div>
-          <div class="badge--images-container">
-            <QrCode
-              :size="215"
-              :url-value="attendee.id.toString()"
-              class="badge--qr"
-            ></QrCode>
-            <img alt=""
-                 src="../assets/logos/nyift/nyift-vert-rgb.jpeg">
-          </div>
+        <div
+          v-for="(attendee, ind) in group"
+          :key="ind">
+          <BadgeSingle :attendee="attendee" />
         </div>
       </div>
     </div>
@@ -53,14 +46,19 @@
 <script lang="js"
         setup>
 // TODO Convert to TS
+import BadgeSingle from '@/components/BadgeSingle.vue'
+
 import { useVueToPrint } from 'vue-to-print'
-import QrCode from '@/components/QrCode.vue'
 import { onBeforeMount, ref } from 'vue'
 import { getAllAttendees_Service } from '@/services/AttendeeDataService.ts'
+import { sortFName_Service } from '@/services/SortService.js'
+import { searchAttendeeName_Service } from '@/services/SearchService.js'
 
+/*-| Variables |-*/
 const attendeeList = ref( {} )
 const attendeeListGrouped = ref( [] )
-
+const searchTerm = ref( '' )
+const searchResult = ref( {} )
 /*-| Print Component |-*/
 const componentRef = ref()
 
@@ -75,39 +73,53 @@ onBeforeMount( () => {
 /*-| Get All |-*/
 async function getAllAttendees( l ) {
   await getAllAttendees_Service( l )
-  console.log( 'attendees', l )
-  await chunkArray()
+  await sortFName_Service( l.value )
+  console.log( 'Attendees: ', l, typeof l )
+  await chunkObject( l )
+}
+
+/*-| Search |-*/
+async function searchNames( a, s, r ) {
+  await searchAttendeeName_Service( a, s, r )
+  console.log( 'Search Result: ', r, typeof r )
+  await chunkObject( r )
+}
+
+async function resetSearch() {
+  searchTerm.value = ''
+  await searchNames( attendeeList.value, '', searchResult.value )
 }
 
 /*-| Chunk array for printing |-*/
-let countPushTotal = 0
-let indexCount = 0
-const groupSize = 6
-let tempGroup = []
-
-async function chunkArray() {
+async function chunkObject( a ) {
+  let countPushTotal = 0
+  let indexCount = 0
+  const groupSize = 6
+  let tempGroup = []
+  attendeeListGrouped.value = []
   // console.log( typeof attendeeList )
-  const attendeeNum = Object.keys( attendeeList.value ).length
+  const attendeeNum = Object.keys( a.value ).length
+  console.log( attendeeNum )
   // console.log( 'Attendee amount', attendeeNum )
   // console.log( 'Attendee #1', attendeeList.value[0] )
 
   while ( indexCount < attendeeNum ) {
     while ( countPushTotal < groupSize ) {
-      // console.log( 'pushed: ', countPushTotal + indexCount )
-      if ( attendeeList.value[countPushTotal + indexCount] !== undefined ) {
-        // console.log( 'value found!' )
-        tempGroup.push( await attendeeList.value[countPushTotal + indexCount] )
+      console.log( 'pushed: ', countPushTotal + indexCount )
+      if ( a.value[countPushTotal + indexCount] !== undefined ) {
+        console.log( 'value found!' )
+        tempGroup.push( await a.value[countPushTotal + indexCount] )
       }
       countPushTotal++
-      // console.log( tempGroup )
+      console.log( tempGroup )
     }
     attendeeListGrouped.value.push( tempGroup )
     tempGroup = []
     indexCount += groupSize
     countPushTotal = 0
-    // console.log( indexCount )
+    console.log( indexCount )
   }
-  // console.log( attendeeListGrouped.value )
+  console.log( 'Grouped List: ', attendeeListGrouped.value )
 }
 
 /*-| Printing |-*/

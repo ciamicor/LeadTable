@@ -2018,10 +2018,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-1-300 *:not(.button, button) + .button, .col-1-300 *:not(.button, button) + button {
+.col-1-300 > *:not(.button, button) + .button, .col-1-300 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-1-300 .button:has(+ *:not(.button, button)), .col-1-300 button:has(+ *:not(.button, button)) {
+.col-1-300 > .button:has(+ *:not(.button, button)), .col-1-300 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 300px) {
@@ -2037,10 +2037,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-2-300 *:not(.button, button) + .button, .col-2-300 *:not(.button, button) + button {
+.col-2-300 > *:not(.button, button) + .button, .col-2-300 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-2-300 .button:has(+ *:not(.button, button)), .col-2-300 button:has(+ *:not(.button, button)) {
+.col-2-300 > .button:has(+ *:not(.button, button)), .col-2-300 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 300px) {
@@ -2056,10 +2056,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-3-300 *:not(.button, button) + .button, .col-3-300 *:not(.button, button) + button {
+.col-3-300 > *:not(.button, button) + .button, .col-3-300 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-3-300 .button:has(+ *:not(.button, button)), .col-3-300 button:has(+ *:not(.button, button)) {
+.col-3-300 > .button:has(+ *:not(.button, button)), .col-3-300 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 300px) {
@@ -2075,10 +2075,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-4-300 *:not(.button, button) + .button, .col-4-300 *:not(.button, button) + button {
+.col-4-300 > *:not(.button, button) + .button, .col-4-300 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-4-300 .button:has(+ *:not(.button, button)), .col-4-300 button:has(+ *:not(.button, button)) {
+.col-4-300 > .button:has(+ *:not(.button, button)), .col-4-300 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 300px) {
@@ -2094,10 +2094,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-5-300 *:not(.button, button) + .button, .col-5-300 *:not(.button, button) + button {
+.col-5-300 > *:not(.button, button) + .button, .col-5-300 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-5-300 .button:has(+ *:not(.button, button)), .col-5-300 button:has(+ *:not(.button, button)) {
+.col-5-300 > .button:has(+ *:not(.button, button)), .col-5-300 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 300px) {
@@ -2113,10 +2113,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-6-300 *:not(.button, button) + .button, .col-6-300 *:not(.button, button) + button {
+.col-6-300 > *:not(.button, button) + .button, .col-6-300 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-6-300 .button:has(+ *:not(.button, button)), .col-6-300 button:has(+ *:not(.button, button)) {
+.col-6-300 > .button:has(+ *:not(.button, button)), .col-6-300 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 300px) {
@@ -2132,10 +2132,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-7-300 *:not(.button, button) + .button, .col-7-300 *:not(.button, button) + button {
+.col-7-300 > *:not(.button, button) + .button, .col-7-300 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-7-300 .button:has(+ *:not(.button, button)), .col-7-300 button:has(+ *:not(.button, button)) {
+.col-7-300 > .button:has(+ *:not(.button, button)), .col-7-300 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 300px) {
@@ -2151,10 +2151,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-8-300 *:not(.button, button) + .button, .col-8-300 *:not(.button, button) + button {
+.col-8-300 > *:not(.button, button) + .button, .col-8-300 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-8-300 .button:has(+ *:not(.button, button)), .col-8-300 button:has(+ *:not(.button, button)) {
+.col-8-300 > .button:has(+ *:not(.button, button)), .col-8-300 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 300px) {
@@ -2170,10 +2170,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-9-300 *:not(.button, button) + .button, .col-9-300 *:not(.button, button) + button {
+.col-9-300 > *:not(.button, button) + .button, .col-9-300 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-9-300 .button:has(+ *:not(.button, button)), .col-9-300 button:has(+ *:not(.button, button)) {
+.col-9-300 > .button:has(+ *:not(.button, button)), .col-9-300 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 300px) {
@@ -2189,10 +2189,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-10-300 *:not(.button, button) + .button, .col-10-300 *:not(.button, button) + button {
+.col-10-300 > *:not(.button, button) + .button, .col-10-300 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-10-300 .button:has(+ *:not(.button, button)), .col-10-300 button:has(+ *:not(.button, button)) {
+.col-10-300 > .button:has(+ *:not(.button, button)), .col-10-300 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 300px) {
@@ -2208,10 +2208,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-11-300 *:not(.button, button) + .button, .col-11-300 *:not(.button, button) + button {
+.col-11-300 > *:not(.button, button) + .button, .col-11-300 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-11-300 .button:has(+ *:not(.button, button)), .col-11-300 button:has(+ *:not(.button, button)) {
+.col-11-300 > .button:has(+ *:not(.button, button)), .col-11-300 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 300px) {
@@ -2227,10 +2227,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-12-300 *:not(.button, button) + .button, .col-12-300 *:not(.button, button) + button {
+.col-12-300 > *:not(.button, button) + .button, .col-12-300 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-12-300 .button:has(+ *:not(.button, button)), .col-12-300 button:has(+ *:not(.button, button)) {
+.col-12-300 > .button:has(+ *:not(.button, button)), .col-12-300 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 300px) {
@@ -2246,10 +2246,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-1-400 *:not(.button, button) + .button, .col-1-400 *:not(.button, button) + button {
+.col-1-400 > *:not(.button, button) + .button, .col-1-400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-1-400 .button:has(+ *:not(.button, button)), .col-1-400 button:has(+ *:not(.button, button)) {
+.col-1-400 > .button:has(+ *:not(.button, button)), .col-1-400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 400px) {
@@ -2265,10 +2265,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-2-400 *:not(.button, button) + .button, .col-2-400 *:not(.button, button) + button {
+.col-2-400 > *:not(.button, button) + .button, .col-2-400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-2-400 .button:has(+ *:not(.button, button)), .col-2-400 button:has(+ *:not(.button, button)) {
+.col-2-400 > .button:has(+ *:not(.button, button)), .col-2-400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 400px) {
@@ -2284,10 +2284,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-3-400 *:not(.button, button) + .button, .col-3-400 *:not(.button, button) + button {
+.col-3-400 > *:not(.button, button) + .button, .col-3-400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-3-400 .button:has(+ *:not(.button, button)), .col-3-400 button:has(+ *:not(.button, button)) {
+.col-3-400 > .button:has(+ *:not(.button, button)), .col-3-400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 400px) {
@@ -2303,10 +2303,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-4-400 *:not(.button, button) + .button, .col-4-400 *:not(.button, button) + button {
+.col-4-400 > *:not(.button, button) + .button, .col-4-400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-4-400 .button:has(+ *:not(.button, button)), .col-4-400 button:has(+ *:not(.button, button)) {
+.col-4-400 > .button:has(+ *:not(.button, button)), .col-4-400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 400px) {
@@ -2322,10 +2322,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-5-400 *:not(.button, button) + .button, .col-5-400 *:not(.button, button) + button {
+.col-5-400 > *:not(.button, button) + .button, .col-5-400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-5-400 .button:has(+ *:not(.button, button)), .col-5-400 button:has(+ *:not(.button, button)) {
+.col-5-400 > .button:has(+ *:not(.button, button)), .col-5-400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 400px) {
@@ -2341,10 +2341,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-6-400 *:not(.button, button) + .button, .col-6-400 *:not(.button, button) + button {
+.col-6-400 > *:not(.button, button) + .button, .col-6-400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-6-400 .button:has(+ *:not(.button, button)), .col-6-400 button:has(+ *:not(.button, button)) {
+.col-6-400 > .button:has(+ *:not(.button, button)), .col-6-400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 400px) {
@@ -2360,10 +2360,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-7-400 *:not(.button, button) + .button, .col-7-400 *:not(.button, button) + button {
+.col-7-400 > *:not(.button, button) + .button, .col-7-400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-7-400 .button:has(+ *:not(.button, button)), .col-7-400 button:has(+ *:not(.button, button)) {
+.col-7-400 > .button:has(+ *:not(.button, button)), .col-7-400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 400px) {
@@ -2379,10 +2379,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-8-400 *:not(.button, button) + .button, .col-8-400 *:not(.button, button) + button {
+.col-8-400 > *:not(.button, button) + .button, .col-8-400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-8-400 .button:has(+ *:not(.button, button)), .col-8-400 button:has(+ *:not(.button, button)) {
+.col-8-400 > .button:has(+ *:not(.button, button)), .col-8-400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 400px) {
@@ -2398,10 +2398,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-9-400 *:not(.button, button) + .button, .col-9-400 *:not(.button, button) + button {
+.col-9-400 > *:not(.button, button) + .button, .col-9-400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-9-400 .button:has(+ *:not(.button, button)), .col-9-400 button:has(+ *:not(.button, button)) {
+.col-9-400 > .button:has(+ *:not(.button, button)), .col-9-400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 400px) {
@@ -2417,10 +2417,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-10-400 *:not(.button, button) + .button, .col-10-400 *:not(.button, button) + button {
+.col-10-400 > *:not(.button, button) + .button, .col-10-400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-10-400 .button:has(+ *:not(.button, button)), .col-10-400 button:has(+ *:not(.button, button)) {
+.col-10-400 > .button:has(+ *:not(.button, button)), .col-10-400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 400px) {
@@ -2436,10 +2436,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-11-400 *:not(.button, button) + .button, .col-11-400 *:not(.button, button) + button {
+.col-11-400 > *:not(.button, button) + .button, .col-11-400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-11-400 .button:has(+ *:not(.button, button)), .col-11-400 button:has(+ *:not(.button, button)) {
+.col-11-400 > .button:has(+ *:not(.button, button)), .col-11-400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 400px) {
@@ -2455,10 +2455,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-12-400 *:not(.button, button) + .button, .col-12-400 *:not(.button, button) + button {
+.col-12-400 > *:not(.button, button) + .button, .col-12-400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-12-400 .button:has(+ *:not(.button, button)), .col-12-400 button:has(+ *:not(.button, button)) {
+.col-12-400 > .button:has(+ *:not(.button, button)), .col-12-400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 400px) {
@@ -2474,10 +2474,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-1-500 *:not(.button, button) + .button, .col-1-500 *:not(.button, button) + button {
+.col-1-500 > *:not(.button, button) + .button, .col-1-500 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-1-500 .button:has(+ *:not(.button, button)), .col-1-500 button:has(+ *:not(.button, button)) {
+.col-1-500 > .button:has(+ *:not(.button, button)), .col-1-500 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 500px) {
@@ -2493,10 +2493,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-2-500 *:not(.button, button) + .button, .col-2-500 *:not(.button, button) + button {
+.col-2-500 > *:not(.button, button) + .button, .col-2-500 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-2-500 .button:has(+ *:not(.button, button)), .col-2-500 button:has(+ *:not(.button, button)) {
+.col-2-500 > .button:has(+ *:not(.button, button)), .col-2-500 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 500px) {
@@ -2512,10 +2512,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-3-500 *:not(.button, button) + .button, .col-3-500 *:not(.button, button) + button {
+.col-3-500 > *:not(.button, button) + .button, .col-3-500 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-3-500 .button:has(+ *:not(.button, button)), .col-3-500 button:has(+ *:not(.button, button)) {
+.col-3-500 > .button:has(+ *:not(.button, button)), .col-3-500 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 500px) {
@@ -2531,10 +2531,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-4-500 *:not(.button, button) + .button, .col-4-500 *:not(.button, button) + button {
+.col-4-500 > *:not(.button, button) + .button, .col-4-500 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-4-500 .button:has(+ *:not(.button, button)), .col-4-500 button:has(+ *:not(.button, button)) {
+.col-4-500 > .button:has(+ *:not(.button, button)), .col-4-500 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 500px) {
@@ -2550,10 +2550,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-5-500 *:not(.button, button) + .button, .col-5-500 *:not(.button, button) + button {
+.col-5-500 > *:not(.button, button) + .button, .col-5-500 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-5-500 .button:has(+ *:not(.button, button)), .col-5-500 button:has(+ *:not(.button, button)) {
+.col-5-500 > .button:has(+ *:not(.button, button)), .col-5-500 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 500px) {
@@ -2569,10 +2569,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-6-500 *:not(.button, button) + .button, .col-6-500 *:not(.button, button) + button {
+.col-6-500 > *:not(.button, button) + .button, .col-6-500 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-6-500 .button:has(+ *:not(.button, button)), .col-6-500 button:has(+ *:not(.button, button)) {
+.col-6-500 > .button:has(+ *:not(.button, button)), .col-6-500 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 500px) {
@@ -2588,10 +2588,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-7-500 *:not(.button, button) + .button, .col-7-500 *:not(.button, button) + button {
+.col-7-500 > *:not(.button, button) + .button, .col-7-500 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-7-500 .button:has(+ *:not(.button, button)), .col-7-500 button:has(+ *:not(.button, button)) {
+.col-7-500 > .button:has(+ *:not(.button, button)), .col-7-500 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 500px) {
@@ -2607,10 +2607,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-8-500 *:not(.button, button) + .button, .col-8-500 *:not(.button, button) + button {
+.col-8-500 > *:not(.button, button) + .button, .col-8-500 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-8-500 .button:has(+ *:not(.button, button)), .col-8-500 button:has(+ *:not(.button, button)) {
+.col-8-500 > .button:has(+ *:not(.button, button)), .col-8-500 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 500px) {
@@ -2626,10 +2626,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-9-500 *:not(.button, button) + .button, .col-9-500 *:not(.button, button) + button {
+.col-9-500 > *:not(.button, button) + .button, .col-9-500 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-9-500 .button:has(+ *:not(.button, button)), .col-9-500 button:has(+ *:not(.button, button)) {
+.col-9-500 > .button:has(+ *:not(.button, button)), .col-9-500 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 500px) {
@@ -2645,10 +2645,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-10-500 *:not(.button, button) + .button, .col-10-500 *:not(.button, button) + button {
+.col-10-500 > *:not(.button, button) + .button, .col-10-500 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-10-500 .button:has(+ *:not(.button, button)), .col-10-500 button:has(+ *:not(.button, button)) {
+.col-10-500 > .button:has(+ *:not(.button, button)), .col-10-500 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 500px) {
@@ -2664,10 +2664,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-11-500 *:not(.button, button) + .button, .col-11-500 *:not(.button, button) + button {
+.col-11-500 > *:not(.button, button) + .button, .col-11-500 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-11-500 .button:has(+ *:not(.button, button)), .col-11-500 button:has(+ *:not(.button, button)) {
+.col-11-500 > .button:has(+ *:not(.button, button)), .col-11-500 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 500px) {
@@ -2683,10 +2683,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-12-500 *:not(.button, button) + .button, .col-12-500 *:not(.button, button) + button {
+.col-12-500 > *:not(.button, button) + .button, .col-12-500 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-12-500 .button:has(+ *:not(.button, button)), .col-12-500 button:has(+ *:not(.button, button)) {
+.col-12-500 > .button:has(+ *:not(.button, button)), .col-12-500 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 500px) {
@@ -2702,10 +2702,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-1-700 *:not(.button, button) + .button, .col-1-700 *:not(.button, button) + button {
+.col-1-700 > *:not(.button, button) + .button, .col-1-700 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-1-700 .button:has(+ *:not(.button, button)), .col-1-700 button:has(+ *:not(.button, button)) {
+.col-1-700 > .button:has(+ *:not(.button, button)), .col-1-700 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 700px) {
@@ -2721,10 +2721,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-2-700 *:not(.button, button) + .button, .col-2-700 *:not(.button, button) + button {
+.col-2-700 > *:not(.button, button) + .button, .col-2-700 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-2-700 .button:has(+ *:not(.button, button)), .col-2-700 button:has(+ *:not(.button, button)) {
+.col-2-700 > .button:has(+ *:not(.button, button)), .col-2-700 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 700px) {
@@ -2740,10 +2740,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-3-700 *:not(.button, button) + .button, .col-3-700 *:not(.button, button) + button {
+.col-3-700 > *:not(.button, button) + .button, .col-3-700 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-3-700 .button:has(+ *:not(.button, button)), .col-3-700 button:has(+ *:not(.button, button)) {
+.col-3-700 > .button:has(+ *:not(.button, button)), .col-3-700 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 700px) {
@@ -2759,10 +2759,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-4-700 *:not(.button, button) + .button, .col-4-700 *:not(.button, button) + button {
+.col-4-700 > *:not(.button, button) + .button, .col-4-700 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-4-700 .button:has(+ *:not(.button, button)), .col-4-700 button:has(+ *:not(.button, button)) {
+.col-4-700 > .button:has(+ *:not(.button, button)), .col-4-700 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 700px) {
@@ -2778,10 +2778,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-5-700 *:not(.button, button) + .button, .col-5-700 *:not(.button, button) + button {
+.col-5-700 > *:not(.button, button) + .button, .col-5-700 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-5-700 .button:has(+ *:not(.button, button)), .col-5-700 button:has(+ *:not(.button, button)) {
+.col-5-700 > .button:has(+ *:not(.button, button)), .col-5-700 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 700px) {
@@ -2797,10 +2797,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-6-700 *:not(.button, button) + .button, .col-6-700 *:not(.button, button) + button {
+.col-6-700 > *:not(.button, button) + .button, .col-6-700 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-6-700 .button:has(+ *:not(.button, button)), .col-6-700 button:has(+ *:not(.button, button)) {
+.col-6-700 > .button:has(+ *:not(.button, button)), .col-6-700 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 700px) {
@@ -2816,10 +2816,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-7-700 *:not(.button, button) + .button, .col-7-700 *:not(.button, button) + button {
+.col-7-700 > *:not(.button, button) + .button, .col-7-700 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-7-700 .button:has(+ *:not(.button, button)), .col-7-700 button:has(+ *:not(.button, button)) {
+.col-7-700 > .button:has(+ *:not(.button, button)), .col-7-700 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 700px) {
@@ -2835,10 +2835,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-8-700 *:not(.button, button) + .button, .col-8-700 *:not(.button, button) + button {
+.col-8-700 > *:not(.button, button) + .button, .col-8-700 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-8-700 .button:has(+ *:not(.button, button)), .col-8-700 button:has(+ *:not(.button, button)) {
+.col-8-700 > .button:has(+ *:not(.button, button)), .col-8-700 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 700px) {
@@ -2854,10 +2854,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-9-700 *:not(.button, button) + .button, .col-9-700 *:not(.button, button) + button {
+.col-9-700 > *:not(.button, button) + .button, .col-9-700 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-9-700 .button:has(+ *:not(.button, button)), .col-9-700 button:has(+ *:not(.button, button)) {
+.col-9-700 > .button:has(+ *:not(.button, button)), .col-9-700 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 700px) {
@@ -2873,10 +2873,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-10-700 *:not(.button, button) + .button, .col-10-700 *:not(.button, button) + button {
+.col-10-700 > *:not(.button, button) + .button, .col-10-700 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-10-700 .button:has(+ *:not(.button, button)), .col-10-700 button:has(+ *:not(.button, button)) {
+.col-10-700 > .button:has(+ *:not(.button, button)), .col-10-700 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 700px) {
@@ -2892,10 +2892,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-11-700 *:not(.button, button) + .button, .col-11-700 *:not(.button, button) + button {
+.col-11-700 > *:not(.button, button) + .button, .col-11-700 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-11-700 .button:has(+ *:not(.button, button)), .col-11-700 button:has(+ *:not(.button, button)) {
+.col-11-700 > .button:has(+ *:not(.button, button)), .col-11-700 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 700px) {
@@ -2911,10 +2911,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-12-700 *:not(.button, button) + .button, .col-12-700 *:not(.button, button) + button {
+.col-12-700 > *:not(.button, button) + .button, .col-12-700 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-12-700 .button:has(+ *:not(.button, button)), .col-12-700 button:has(+ *:not(.button, button)) {
+.col-12-700 > .button:has(+ *:not(.button, button)), .col-12-700 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 700px) {
@@ -2930,10 +2930,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-1-900 *:not(.button, button) + .button, .col-1-900 *:not(.button, button) + button {
+.col-1-900 > *:not(.button, button) + .button, .col-1-900 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-1-900 .button:has(+ *:not(.button, button)), .col-1-900 button:has(+ *:not(.button, button)) {
+.col-1-900 > .button:has(+ *:not(.button, button)), .col-1-900 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 900px) {
@@ -2949,10 +2949,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-2-900 *:not(.button, button) + .button, .col-2-900 *:not(.button, button) + button {
+.col-2-900 > *:not(.button, button) + .button, .col-2-900 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-2-900 .button:has(+ *:not(.button, button)), .col-2-900 button:has(+ *:not(.button, button)) {
+.col-2-900 > .button:has(+ *:not(.button, button)), .col-2-900 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 900px) {
@@ -2968,10 +2968,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-3-900 *:not(.button, button) + .button, .col-3-900 *:not(.button, button) + button {
+.col-3-900 > *:not(.button, button) + .button, .col-3-900 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-3-900 .button:has(+ *:not(.button, button)), .col-3-900 button:has(+ *:not(.button, button)) {
+.col-3-900 > .button:has(+ *:not(.button, button)), .col-3-900 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 900px) {
@@ -2987,10 +2987,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-4-900 *:not(.button, button) + .button, .col-4-900 *:not(.button, button) + button {
+.col-4-900 > *:not(.button, button) + .button, .col-4-900 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-4-900 .button:has(+ *:not(.button, button)), .col-4-900 button:has(+ *:not(.button, button)) {
+.col-4-900 > .button:has(+ *:not(.button, button)), .col-4-900 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 900px) {
@@ -3006,10 +3006,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-5-900 *:not(.button, button) + .button, .col-5-900 *:not(.button, button) + button {
+.col-5-900 > *:not(.button, button) + .button, .col-5-900 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-5-900 .button:has(+ *:not(.button, button)), .col-5-900 button:has(+ *:not(.button, button)) {
+.col-5-900 > .button:has(+ *:not(.button, button)), .col-5-900 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 900px) {
@@ -3025,10 +3025,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-6-900 *:not(.button, button) + .button, .col-6-900 *:not(.button, button) + button {
+.col-6-900 > *:not(.button, button) + .button, .col-6-900 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-6-900 .button:has(+ *:not(.button, button)), .col-6-900 button:has(+ *:not(.button, button)) {
+.col-6-900 > .button:has(+ *:not(.button, button)), .col-6-900 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 900px) {
@@ -3044,10 +3044,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-7-900 *:not(.button, button) + .button, .col-7-900 *:not(.button, button) + button {
+.col-7-900 > *:not(.button, button) + .button, .col-7-900 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-7-900 .button:has(+ *:not(.button, button)), .col-7-900 button:has(+ *:not(.button, button)) {
+.col-7-900 > .button:has(+ *:not(.button, button)), .col-7-900 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 900px) {
@@ -3063,10 +3063,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-8-900 *:not(.button, button) + .button, .col-8-900 *:not(.button, button) + button {
+.col-8-900 > *:not(.button, button) + .button, .col-8-900 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-8-900 .button:has(+ *:not(.button, button)), .col-8-900 button:has(+ *:not(.button, button)) {
+.col-8-900 > .button:has(+ *:not(.button, button)), .col-8-900 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 900px) {
@@ -3082,10 +3082,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-9-900 *:not(.button, button) + .button, .col-9-900 *:not(.button, button) + button {
+.col-9-900 > *:not(.button, button) + .button, .col-9-900 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-9-900 .button:has(+ *:not(.button, button)), .col-9-900 button:has(+ *:not(.button, button)) {
+.col-9-900 > .button:has(+ *:not(.button, button)), .col-9-900 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 900px) {
@@ -3101,10 +3101,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-10-900 *:not(.button, button) + .button, .col-10-900 *:not(.button, button) + button {
+.col-10-900 > *:not(.button, button) + .button, .col-10-900 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-10-900 .button:has(+ *:not(.button, button)), .col-10-900 button:has(+ *:not(.button, button)) {
+.col-10-900 > .button:has(+ *:not(.button, button)), .col-10-900 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 900px) {
@@ -3120,10 +3120,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-11-900 *:not(.button, button) + .button, .col-11-900 *:not(.button, button) + button {
+.col-11-900 > *:not(.button, button) + .button, .col-11-900 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-11-900 .button:has(+ *:not(.button, button)), .col-11-900 button:has(+ *:not(.button, button)) {
+.col-11-900 > .button:has(+ *:not(.button, button)), .col-11-900 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 900px) {
@@ -3139,10 +3139,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-12-900 *:not(.button, button) + .button, .col-12-900 *:not(.button, button) + button {
+.col-12-900 > *:not(.button, button) + .button, .col-12-900 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-12-900 .button:has(+ *:not(.button, button)), .col-12-900 button:has(+ *:not(.button, button)) {
+.col-12-900 > .button:has(+ *:not(.button, button)), .col-12-900 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 900px) {
@@ -3158,10 +3158,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-1-1100 *:not(.button, button) + .button, .col-1-1100 *:not(.button, button) + button {
+.col-1-1100 > *:not(.button, button) + .button, .col-1-1100 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-1-1100 .button:has(+ *:not(.button, button)), .col-1-1100 button:has(+ *:not(.button, button)) {
+.col-1-1100 > .button:has(+ *:not(.button, button)), .col-1-1100 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1100px) {
@@ -3177,10 +3177,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-2-1100 *:not(.button, button) + .button, .col-2-1100 *:not(.button, button) + button {
+.col-2-1100 > *:not(.button, button) + .button, .col-2-1100 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-2-1100 .button:has(+ *:not(.button, button)), .col-2-1100 button:has(+ *:not(.button, button)) {
+.col-2-1100 > .button:has(+ *:not(.button, button)), .col-2-1100 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1100px) {
@@ -3196,10 +3196,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-3-1100 *:not(.button, button) + .button, .col-3-1100 *:not(.button, button) + button {
+.col-3-1100 > *:not(.button, button) + .button, .col-3-1100 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-3-1100 .button:has(+ *:not(.button, button)), .col-3-1100 button:has(+ *:not(.button, button)) {
+.col-3-1100 > .button:has(+ *:not(.button, button)), .col-3-1100 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1100px) {
@@ -3215,10 +3215,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-4-1100 *:not(.button, button) + .button, .col-4-1100 *:not(.button, button) + button {
+.col-4-1100 > *:not(.button, button) + .button, .col-4-1100 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-4-1100 .button:has(+ *:not(.button, button)), .col-4-1100 button:has(+ *:not(.button, button)) {
+.col-4-1100 > .button:has(+ *:not(.button, button)), .col-4-1100 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1100px) {
@@ -3234,10 +3234,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-5-1100 *:not(.button, button) + .button, .col-5-1100 *:not(.button, button) + button {
+.col-5-1100 > *:not(.button, button) + .button, .col-5-1100 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-5-1100 .button:has(+ *:not(.button, button)), .col-5-1100 button:has(+ *:not(.button, button)) {
+.col-5-1100 > .button:has(+ *:not(.button, button)), .col-5-1100 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1100px) {
@@ -3253,10 +3253,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-6-1100 *:not(.button, button) + .button, .col-6-1100 *:not(.button, button) + button {
+.col-6-1100 > *:not(.button, button) + .button, .col-6-1100 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-6-1100 .button:has(+ *:not(.button, button)), .col-6-1100 button:has(+ *:not(.button, button)) {
+.col-6-1100 > .button:has(+ *:not(.button, button)), .col-6-1100 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1100px) {
@@ -3272,10 +3272,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-7-1100 *:not(.button, button) + .button, .col-7-1100 *:not(.button, button) + button {
+.col-7-1100 > *:not(.button, button) + .button, .col-7-1100 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-7-1100 .button:has(+ *:not(.button, button)), .col-7-1100 button:has(+ *:not(.button, button)) {
+.col-7-1100 > .button:has(+ *:not(.button, button)), .col-7-1100 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1100px) {
@@ -3291,10 +3291,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-8-1100 *:not(.button, button) + .button, .col-8-1100 *:not(.button, button) + button {
+.col-8-1100 > *:not(.button, button) + .button, .col-8-1100 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-8-1100 .button:has(+ *:not(.button, button)), .col-8-1100 button:has(+ *:not(.button, button)) {
+.col-8-1100 > .button:has(+ *:not(.button, button)), .col-8-1100 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1100px) {
@@ -3310,10 +3310,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-9-1100 *:not(.button, button) + .button, .col-9-1100 *:not(.button, button) + button {
+.col-9-1100 > *:not(.button, button) + .button, .col-9-1100 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-9-1100 .button:has(+ *:not(.button, button)), .col-9-1100 button:has(+ *:not(.button, button)) {
+.col-9-1100 > .button:has(+ *:not(.button, button)), .col-9-1100 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1100px) {
@@ -3329,10 +3329,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-10-1100 *:not(.button, button) + .button, .col-10-1100 *:not(.button, button) + button {
+.col-10-1100 > *:not(.button, button) + .button, .col-10-1100 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-10-1100 .button:has(+ *:not(.button, button)), .col-10-1100 button:has(+ *:not(.button, button)) {
+.col-10-1100 > .button:has(+ *:not(.button, button)), .col-10-1100 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1100px) {
@@ -3348,10 +3348,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-11-1100 *:not(.button, button) + .button, .col-11-1100 *:not(.button, button) + button {
+.col-11-1100 > *:not(.button, button) + .button, .col-11-1100 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-11-1100 .button:has(+ *:not(.button, button)), .col-11-1100 button:has(+ *:not(.button, button)) {
+.col-11-1100 > .button:has(+ *:not(.button, button)), .col-11-1100 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1100px) {
@@ -3367,10 +3367,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-12-1100 *:not(.button, button) + .button, .col-12-1100 *:not(.button, button) + button {
+.col-12-1100 > *:not(.button, button) + .button, .col-12-1100 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-12-1100 .button:has(+ *:not(.button, button)), .col-12-1100 button:has(+ *:not(.button, button)) {
+.col-12-1100 > .button:has(+ *:not(.button, button)), .col-12-1100 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1100px) {
@@ -3386,10 +3386,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-1-1400 *:not(.button, button) + .button, .col-1-1400 *:not(.button, button) + button {
+.col-1-1400 > *:not(.button, button) + .button, .col-1-1400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-1-1400 .button:has(+ *:not(.button, button)), .col-1-1400 button:has(+ *:not(.button, button)) {
+.col-1-1400 > .button:has(+ *:not(.button, button)), .col-1-1400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1400px) {
@@ -3405,10 +3405,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-2-1400 *:not(.button, button) + .button, .col-2-1400 *:not(.button, button) + button {
+.col-2-1400 > *:not(.button, button) + .button, .col-2-1400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-2-1400 .button:has(+ *:not(.button, button)), .col-2-1400 button:has(+ *:not(.button, button)) {
+.col-2-1400 > .button:has(+ *:not(.button, button)), .col-2-1400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1400px) {
@@ -3424,10 +3424,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-3-1400 *:not(.button, button) + .button, .col-3-1400 *:not(.button, button) + button {
+.col-3-1400 > *:not(.button, button) + .button, .col-3-1400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-3-1400 .button:has(+ *:not(.button, button)), .col-3-1400 button:has(+ *:not(.button, button)) {
+.col-3-1400 > .button:has(+ *:not(.button, button)), .col-3-1400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1400px) {
@@ -3443,10 +3443,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-4-1400 *:not(.button, button) + .button, .col-4-1400 *:not(.button, button) + button {
+.col-4-1400 > *:not(.button, button) + .button, .col-4-1400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-4-1400 .button:has(+ *:not(.button, button)), .col-4-1400 button:has(+ *:not(.button, button)) {
+.col-4-1400 > .button:has(+ *:not(.button, button)), .col-4-1400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1400px) {
@@ -3462,10 +3462,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-5-1400 *:not(.button, button) + .button, .col-5-1400 *:not(.button, button) + button {
+.col-5-1400 > *:not(.button, button) + .button, .col-5-1400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-5-1400 .button:has(+ *:not(.button, button)), .col-5-1400 button:has(+ *:not(.button, button)) {
+.col-5-1400 > .button:has(+ *:not(.button, button)), .col-5-1400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1400px) {
@@ -3481,10 +3481,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-6-1400 *:not(.button, button) + .button, .col-6-1400 *:not(.button, button) + button {
+.col-6-1400 > *:not(.button, button) + .button, .col-6-1400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-6-1400 .button:has(+ *:not(.button, button)), .col-6-1400 button:has(+ *:not(.button, button)) {
+.col-6-1400 > .button:has(+ *:not(.button, button)), .col-6-1400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1400px) {
@@ -3500,10 +3500,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-7-1400 *:not(.button, button) + .button, .col-7-1400 *:not(.button, button) + button {
+.col-7-1400 > *:not(.button, button) + .button, .col-7-1400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-7-1400 .button:has(+ *:not(.button, button)), .col-7-1400 button:has(+ *:not(.button, button)) {
+.col-7-1400 > .button:has(+ *:not(.button, button)), .col-7-1400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1400px) {
@@ -3519,10 +3519,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-8-1400 *:not(.button, button) + .button, .col-8-1400 *:not(.button, button) + button {
+.col-8-1400 > *:not(.button, button) + .button, .col-8-1400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-8-1400 .button:has(+ *:not(.button, button)), .col-8-1400 button:has(+ *:not(.button, button)) {
+.col-8-1400 > .button:has(+ *:not(.button, button)), .col-8-1400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1400px) {
@@ -3538,10 +3538,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-9-1400 *:not(.button, button) + .button, .col-9-1400 *:not(.button, button) + button {
+.col-9-1400 > *:not(.button, button) + .button, .col-9-1400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-9-1400 .button:has(+ *:not(.button, button)), .col-9-1400 button:has(+ *:not(.button, button)) {
+.col-9-1400 > .button:has(+ *:not(.button, button)), .col-9-1400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1400px) {
@@ -3557,10 +3557,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-10-1400 *:not(.button, button) + .button, .col-10-1400 *:not(.button, button) + button {
+.col-10-1400 > *:not(.button, button) + .button, .col-10-1400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-10-1400 .button:has(+ *:not(.button, button)), .col-10-1400 button:has(+ *:not(.button, button)) {
+.col-10-1400 > .button:has(+ *:not(.button, button)), .col-10-1400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1400px) {
@@ -3576,10 +3576,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-11-1400 *:not(.button, button) + .button, .col-11-1400 *:not(.button, button) + button {
+.col-11-1400 > *:not(.button, button) + .button, .col-11-1400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-11-1400 .button:has(+ *:not(.button, button)), .col-11-1400 button:has(+ *:not(.button, button)) {
+.col-11-1400 > .button:has(+ *:not(.button, button)), .col-11-1400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1400px) {
@@ -3595,10 +3595,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-12-1400 *:not(.button, button) + .button, .col-12-1400 *:not(.button, button) + button {
+.col-12-1400 > *:not(.button, button) + .button, .col-12-1400 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-12-1400 .button:has(+ *:not(.button, button)), .col-12-1400 button:has(+ *:not(.button, button)) {
+.col-12-1400 > .button:has(+ *:not(.button, button)), .col-12-1400 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1400px) {
@@ -3614,10 +3614,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-1-1600 *:not(.button, button) + .button, .col-1-1600 *:not(.button, button) + button {
+.col-1-1600 > *:not(.button, button) + .button, .col-1-1600 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-1-1600 .button:has(+ *:not(.button, button)), .col-1-1600 button:has(+ *:not(.button, button)) {
+.col-1-1600 > .button:has(+ *:not(.button, button)), .col-1-1600 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1600px) {
@@ -3633,10 +3633,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-2-1600 *:not(.button, button) + .button, .col-2-1600 *:not(.button, button) + button {
+.col-2-1600 > *:not(.button, button) + .button, .col-2-1600 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-2-1600 .button:has(+ *:not(.button, button)), .col-2-1600 button:has(+ *:not(.button, button)) {
+.col-2-1600 > .button:has(+ *:not(.button, button)), .col-2-1600 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1600px) {
@@ -3652,10 +3652,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-3-1600 *:not(.button, button) + .button, .col-3-1600 *:not(.button, button) + button {
+.col-3-1600 > *:not(.button, button) + .button, .col-3-1600 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-3-1600 .button:has(+ *:not(.button, button)), .col-3-1600 button:has(+ *:not(.button, button)) {
+.col-3-1600 > .button:has(+ *:not(.button, button)), .col-3-1600 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1600px) {
@@ -3671,10 +3671,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-4-1600 *:not(.button, button) + .button, .col-4-1600 *:not(.button, button) + button {
+.col-4-1600 > *:not(.button, button) + .button, .col-4-1600 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-4-1600 .button:has(+ *:not(.button, button)), .col-4-1600 button:has(+ *:not(.button, button)) {
+.col-4-1600 > .button:has(+ *:not(.button, button)), .col-4-1600 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1600px) {
@@ -3690,10 +3690,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-5-1600 *:not(.button, button) + .button, .col-5-1600 *:not(.button, button) + button {
+.col-5-1600 > *:not(.button, button) + .button, .col-5-1600 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-5-1600 .button:has(+ *:not(.button, button)), .col-5-1600 button:has(+ *:not(.button, button)) {
+.col-5-1600 > .button:has(+ *:not(.button, button)), .col-5-1600 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1600px) {
@@ -3709,10 +3709,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-6-1600 *:not(.button, button) + .button, .col-6-1600 *:not(.button, button) + button {
+.col-6-1600 > *:not(.button, button) + .button, .col-6-1600 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-6-1600 .button:has(+ *:not(.button, button)), .col-6-1600 button:has(+ *:not(.button, button)) {
+.col-6-1600 > .button:has(+ *:not(.button, button)), .col-6-1600 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1600px) {
@@ -3728,10 +3728,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-7-1600 *:not(.button, button) + .button, .col-7-1600 *:not(.button, button) + button {
+.col-7-1600 > *:not(.button, button) + .button, .col-7-1600 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-7-1600 .button:has(+ *:not(.button, button)), .col-7-1600 button:has(+ *:not(.button, button)) {
+.col-7-1600 > .button:has(+ *:not(.button, button)), .col-7-1600 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1600px) {
@@ -3747,10 +3747,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-8-1600 *:not(.button, button) + .button, .col-8-1600 *:not(.button, button) + button {
+.col-8-1600 > *:not(.button, button) + .button, .col-8-1600 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-8-1600 .button:has(+ *:not(.button, button)), .col-8-1600 button:has(+ *:not(.button, button)) {
+.col-8-1600 > .button:has(+ *:not(.button, button)), .col-8-1600 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1600px) {
@@ -3766,10 +3766,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-9-1600 *:not(.button, button) + .button, .col-9-1600 *:not(.button, button) + button {
+.col-9-1600 > *:not(.button, button) + .button, .col-9-1600 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-9-1600 .button:has(+ *:not(.button, button)), .col-9-1600 button:has(+ *:not(.button, button)) {
+.col-9-1600 > .button:has(+ *:not(.button, button)), .col-9-1600 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1600px) {
@@ -3785,10 +3785,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-10-1600 *:not(.button, button) + .button, .col-10-1600 *:not(.button, button) + button {
+.col-10-1600 > *:not(.button, button) + .button, .col-10-1600 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-10-1600 .button:has(+ *:not(.button, button)), .col-10-1600 button:has(+ *:not(.button, button)) {
+.col-10-1600 > .button:has(+ *:not(.button, button)), .col-10-1600 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1600px) {
@@ -3804,10 +3804,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-11-1600 *:not(.button, button) + .button, .col-11-1600 *:not(.button, button) + button {
+.col-11-1600 > *:not(.button, button) + .button, .col-11-1600 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-11-1600 .button:has(+ *:not(.button, button)), .col-11-1600 button:has(+ *:not(.button, button)) {
+.col-11-1600 > .button:has(+ *:not(.button, button)), .col-11-1600 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1600px) {
@@ -3823,10 +3823,10 @@ p, button, li, label {
   flex-flow: column nowrap;
   gap: 8px;
 }
-.col-12-1600 *:not(.button, button) + .button, .col-12-1600 *:not(.button, button) + button {
+.col-12-1600 > *:not(.button, button) + .button, .col-12-1600 > *:not(.button, button) + button {
   margin-top: 8px;
 }
-.col-12-1600 .button:has(+ *:not(.button, button)), .col-12-1600 button:has(+ *:not(.button, button)) {
+.col-12-1600 > .button:has(+ *:not(.button, button)), .col-12-1600 > button:has(+ *:not(.button, button)) {
   margin-bottom: 16px;
 }
 @media (min-width: 1600px) {
@@ -4050,10 +4050,35 @@ input, select {
   border-radius: 8px;
   transition: box-shadow 200ms ease-out, border 200ms ease-out;
 }
+input::placeholder, select::placeholder {
+  color: var(--grey-8);
+  font-style: italic;
+}
 input:focus, input:focus-visible, select:focus, select:focus-visible {
   border: 2px solid var(--color-secondary-8);
   outline: none;
   box-shadow: 0 0 8px 0 var(--color-secondary-10), inset 0 0 8px 0 var(--color-secondary-10);
+}
+
+.search-wrapper {
+  position: relative;
+}
+.search-wrapper button {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  border-radius: 65px;
+  transition: opacity 200ms ease-out;
+  translate: 0 -50%;
+  scale: 0.65;
+}
+.search-wrapper input.search {
+  padding: 12px 20px;
+  border-radius: 65px;
+  transition: border-radius 200ms ease-out;
+}
+.search-wrapper input.search:focus, .search-wrapper input.search:focus-visible {
+  border-radius: 8px;
 }
 
 #app {
@@ -4355,7 +4380,7 @@ button.--warn--invert:hover,
   width: 8.5in;
   height: 10.0104166667in;
   padding-top: 1in;
-  border: 1px dashed white;
+  border: 1px dashed var(--grey-11);
 }
 .badges-grid-container .badge-wrapper {
   display: grid;

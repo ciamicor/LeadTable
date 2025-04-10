@@ -5,7 +5,7 @@
   width:                 8.5in;
   height:                calc(10in + 1px);
   padding-top:           1in;
-  border:                1px dashed white;
+  border:                1px dashed $grey-11;
   & .badge-wrapper {
     display:            grid;
     grid-template-rows: 1fr 1fr;
