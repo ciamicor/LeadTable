@@ -28,7 +28,7 @@
              v-model="loginId"
              name="loginId"
              placeholder="Enter your login ID"
-             type="text">
+             type="number">
       <button class="--primary--invert"
               @click="login()">
         Exhibitor Portal Login
