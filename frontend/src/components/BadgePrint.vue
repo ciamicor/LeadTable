@@ -42,7 +42,7 @@
 // TODO Convert to TS
 import { useVueToPrint } from 'vue-to-print'
 import QrCode from '@/components/QrCode.vue'
-import { onBeforeMount, onMounted, ref } from 'vue'
+import { onBeforeMount, ref } from 'vue'
 import { getAllAttendees_Service } from '@/services/AttendeeDataService.ts'
 
 const attendeeList = ref( {} )
@@ -67,7 +67,6 @@ async function getAllAttendees( l ) {
 }
 
 /*-| Chunk array for printing |-*/
-let countTotal = 0
 let countPushTotal = 0
 let indexCount = 0
 const groupSize = 6
@@ -81,9 +80,8 @@ async function chunkArray() {
 
   while ( indexCount < attendeeNum ) {
     while ( countPushTotal < groupSize ) {
-      // console.log( 'index: ', countTotal + indexCount )
       // console.log( 'pushed: ', countPushTotal + indexCount )
-      if ( attendeeList.value[countPushTotal + indexCount] !== undefined ) {
+      if ( await attendeeList.value[countPushTotal + indexCount] !== undefined ) {
         // console.log( 'value found!' )
         tempGroup.push( await attendeeList.value[countPushTotal + indexCount] )
       }

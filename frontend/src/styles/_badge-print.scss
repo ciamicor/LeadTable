@@ -3,7 +3,7 @@
   grid-template-columns: 4in 4in;
   grid-template-rows: repeat(auto-fill, 3in);
   width:                 8.5in;
-  height:                calc(11in - 2px);
+  height:                calc(10in + 1px);
   padding-top:           1in;
   border:                1px dashed $grey-11;
   .badge-wrapper {
