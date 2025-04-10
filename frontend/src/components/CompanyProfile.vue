@@ -26,9 +26,9 @@
       </label>
       <input id="loginId"
              v-model="loginId"
-             inputmode="numeric"
+             inputmode="tel"
              name="loginId"
-             pattern="[0-9]*"
+             pattern="\d*"
              placeholder="Enter your login ID"
              type="number">
       <button class="--primary--invert"
