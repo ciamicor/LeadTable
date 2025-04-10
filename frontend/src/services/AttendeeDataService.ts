@@ -28,6 +28,38 @@ export default class AttendeeDataService {
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 const attendeeService = new AttendeeDataService()
 
+/*-| Create Attendees |-*/
+
+/*---+----+---+----+---+----+---+----+---*/
+async function createAttendee_Service(attendee: any) {
+  console.log('Create Attendee Service: ', attendee)
+  const data = {
+    expo_Client: attendee.expo_Client,
+    expo_Year: attendee.expo_Year,
+    name_First: attendee.name_First,
+    name_Last: attendee.name_Last,
+    contact_Email: attendee.contact_Email,
+    contact_Phone: attendee.contact_Phone,
+    contact_Employer: attendee.contact_Employer,
+    title: attendee.title,
+    reg_Type: attendee.reg_Type,
+    tech_Sem: attendee.tech_Sem
+  }
+  console.log(data)
+  await attendeeService.create(data)
+    .then((response: any) => {
+      attendee.id = response.data.id
+      console.log(response.data)
+      // attendee = null
+      attendee = response.data
+    })
+    .catch((e: any) => {
+      console.log(e)
+
+      window.alert('Attendee with email ' + attendee.contact_Email + ' already exists.')
+    })
+}
+
 /*-| Get All Attendees |-*/
 
 /*---+----+---+----+---+----+---+----+---*/
@@ -42,5 +74,5 @@ async function getAllAttendees_Service(list: any) {
     })
 }
 
-export { getAllAttendees_Service }
+export { getAllAttendees_Service, createAttendee_Service }
 

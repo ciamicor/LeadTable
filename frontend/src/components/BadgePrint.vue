@@ -1,9 +1,14 @@
 <template>
   <div class="row --gap-24">
-    <div class="col-8-300">
-      <button class="--secondary"
+    <div class="row">
+      <button class="--warn"
               @click="handlePrint">Print All Badges
       </button>
+      <router-link
+        class="button --primary"
+        to="/create-badge">
+        Create Badge
+      </router-link>
     </div>
     <div ref="componentRef">
       <div v-for="(group, i) in attendeeListGrouped"
@@ -14,12 +19,18 @@
              :key="ind"
              class="badge-wrapper"
         >
-          <div class="badge--attendee-info-container">
-            <p class="--font-md"
-               style="width: 100%">{{ attendee.contact_Employer }}</p>
-            <h1 class="">{{ attendee.name_First }}
-                         {{ attendee.name_Last }}</h1>
-            <p class="--font-sm">{{ attendee.title }}</p>
+          <div class="--attendee-info-container">
+            <p class="--employer"
+               style="width: 100%">
+              {{ attendee.contact_Employer }}
+            </p>
+            <h1 class="--name">
+              {{ attendee.name_First }}
+              {{ attendee.name_Last }}
+            </h1>
+            <p class="--title">
+              {{ attendee.title }}
+            </p>
           </div>
           <div class="badge--images-container">
             <QrCode

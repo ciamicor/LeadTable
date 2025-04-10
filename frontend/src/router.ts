@@ -4,6 +4,7 @@ import ScanLead from '@/components/AddLead.vue'
 import FloorPlan from '@/components/FloorPlan.vue'
 import CompanyProfile from '@/components/CompanyProfile.vue'
 import BadgePrint from '@/components/BadgePrint.vue'
+import CreateBadge from '@/components/CreateBadge.vue'
 
 const routes = [
   {
@@ -35,6 +36,11 @@ const routes = [
     path: '/print-badges',
     name: 'print-badges',
     component: BadgePrint
+  },
+  {
+    path: '/create-badge',
+    name: 'create-badge',
+    component: CreateBadge
   }
 ]
 

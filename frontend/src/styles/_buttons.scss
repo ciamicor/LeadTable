@@ -98,13 +98,13 @@ button,
     }
   }
   &.--secondary {
-    color:         $color-secondary-2;
+    color:         $color-secondary-3;
     border:        $button-border $color-secondary-7;
     border-bottom: $button-border-bottom $color-secondary-7;
     background:    $color-secondary-10;
     &:hover {
-      color:      $color-secondary-4;
-      background: $color-secondary-10;
+      color:      $color-secondary-2;
+      background: $color-secondary-9;
     }
     &--invert {
       color:         $color-secondary-12;
@@ -144,7 +144,7 @@ button,
     background:    $color-warn-12;
     &:hover {
       color:      $color-warn-4;
-      background: $color-warn-10;
+      background: $color-warn-11;
     }
     &--invert {
       color:         $color-warn-12;

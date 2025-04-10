@@ -24,6 +24,7 @@ exports.createAttendee = async ( req, res ) => {
     contact_Email,
     contact_Phone,
     contact_Employer,
+    title,
     reg_Type,
     tech_Sem
   } = req.body
@@ -36,15 +37,26 @@ exports.createAttendee = async ( req, res ) => {
       contact_Email,
       contact_Phone,
       contact_Employer,
+      title,
       reg_Type,
       tech_Sem
     } )
     res.status( 201 ).json( newAttendee )
   } catch ( error ) {
-    console.error( 'error in controller createAttendee: ', error )
+    console.error( 'Error while creating lead: ', error )
+
+    if ( error.name === 'SequelizeUniqueConstraintError' ) {
+      return res.status( 400 ).json( {
+        error: 'Cannot create attendee',
+        message: 'Attendee with email ' + contact_Email + ' already exists.'
+
+      } )
+    }
+
     res.status( 500 ).json( {
-      error: 'Something went wrong with controller: createAttendee.',
-      details: error?.message || 'Unknown error'
+      error: 'Something went wrong on the server.',
+      details: error?.message || 'Unknown error',
+      stack: error.stack
     } )
   }
 }

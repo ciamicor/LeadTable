@@ -1,9 +1,13 @@
 label {
-  margin:  $sp-6 0 0 0;
+  display: flex;
+  margin:  $sp-4 0 0 0;
   padding: 0 $sp-2;
+  & input, select, textarea {
+    flex: 1 1 auto;
+  }
 }
 
-input {
+input, select {
   padding:       $sp-5 $sp-6;
   border:        2px solid $grey-10;
   border-radius: $item-border;
@@ -15,7 +19,3 @@ input {
   }
 }
 
-datalist {
-  option {
-  }
-}

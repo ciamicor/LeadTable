@@ -1,0 +1,63 @@
+.badges-grid-container {
+  display:               grid;
+  grid-template-columns: 4in 4in;
+  grid-template-rows: repeat(auto-fill, 3in);
+  width:                 8.5in;
+  height:                calc(10in + 1px);
+  padding-top:           1in;
+  border:                1px dashed white;
+  & .badge-wrapper {
+    display:            grid;
+    grid-template-rows: 1fr 1fr;
+    width:              calc(4in - (0.165in * 2));
+    height:             calc(3in - 0.165in - 0.325in);
+    padding:            0.165in 0.165in 0.325in;
+    border:             1px dashed $grey-11;
+    & .--attendee-info-container {
+      display:            grid;
+      grid-template-rows: repeat(3, min-content );
+      gap:                $sp-4;
+      width:              100%;
+      * {
+        line-height:    1;
+        text-transform: capitalize;
+        margin:         0;
+      }
+      & input {
+        padding: 0 !important;
+        border:  none;
+      }
+      & .--employer {
+        color:                   $color-primary-4;
+        font-size:               1.25rem;
+        font-variation-settings: "wght" 300, "wdth" 100, "opsz" 15;
+      }
+      & .--name {
+        font-size:               $font-xl;
+        font-variation-settings: "wght" 600, "wdth" 100, "opsz" 15;
+      }
+      & .--title {
+        color:                   $grey-5;
+        font-size:               1.25rem;
+        font-style:              italic;
+        font-variation-settings: "wght" 300, "wdth" 100, "opsz" 15;
+      }
+    }
+    & .badge--images-container {
+      display:               grid;
+      grid-template-columns: .65fr 1fr;
+      grid-template-rows: 1.175in;
+      place-content:         center;
+      place-items:           center start;
+      .badge--qr {
+        width:      115px;
+        height:     115px;
+        background: $grey-10;
+      }
+      img {
+        width:  185px;
+        height: auto;
+      }
+    }
+  }
+}

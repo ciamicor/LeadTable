@@ -15,7 +15,7 @@
   <div v-else
        class="row --place-content-center --place-items-center">
     <div
-      class="col-12-300 col-10-500 col-4-900">
+      class="col-12-300 col-9-500 col-5-900">
       <h1>Exhibitor Profile Login</h1>
       <p>If you've already purchased lead retrieval, login here to access it.</p>
       <p>To purchase lead retrieval, login to your ExpoFP Exhibitor profile here, and add it as a
