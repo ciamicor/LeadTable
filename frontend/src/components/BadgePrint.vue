@@ -1,14 +1,16 @@
 <template>
   <div class="row --gap-24">
-    <div class="row">
-      <button class="--warn"
-              @click="handlePrint">Print All Badges
-      </button>
-      <router-link
-        class="button --primary"
-        to="/create-badge">
-        Create Badge
-      </router-link>
+    <div class="col-12-300">
+      <div class="row --place-items-center">
+        <button class="--warn col-5-300"
+                @click="handlePrint">Print All Badges
+        </button>
+        <router-link
+          class="button --primary col-5-300"
+          to="/create-badge">
+          Create Badge
+        </router-link>
+      </div>
     </div>
     <div ref="componentRef">
       <div v-for="(group, i) in attendeeListGrouped"

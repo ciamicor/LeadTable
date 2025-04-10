@@ -1,6 +1,6 @@
 <template>
   <div class="row --gap-24">
-    <div class="row">
+    <div class="col-12-300 --place-items-center">
       <router-link
         class="button --primary"
         to="/print-badges">
