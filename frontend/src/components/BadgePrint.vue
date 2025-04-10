@@ -73,28 +73,28 @@ const groupSize = 6
 let tempGroup = []
 
 async function chunkArray() {
-  // console.log( typeof attendeeList )
-  const attendeeNum = Object.keys( attendeeList.value ).length
-  // console.log( 'Attendee amount', attendeeNum )
-  // console.log( 'Attendee #1', attendeeList.value[0] )
+  console.log( typeof attendeeList )
+  const attendeeNum = Object.keys( await attendeeList.value ).length
+  console.log( 'Attendee amount', attendeeNum )
+  console.log( 'Attendee #1', attendeeList.value[0] )
 
   while ( indexCount < attendeeNum ) {
     while ( countPushTotal < groupSize ) {
-      // console.log( 'pushed: ', countPushTotal + indexCount )
+      console.log( 'pushed: ', countPushTotal + indexCount )
       if ( await attendeeList.value[countPushTotal + indexCount] !== undefined ) {
-        // console.log( 'value found!' )
+        console.log( 'value found!' )
         tempGroup.push( await attendeeList.value[countPushTotal + indexCount] )
       }
       countPushTotal++
-      // console.log( tempGroup )
+      console.log( tempGroup )
     }
     attendeeListGrouped.value.push( tempGroup )
     tempGroup = []
     indexCount += groupSize
     countPushTotal = 0
-    // console.log( indexCount )
+    console.log( indexCount )
   }
-  // console.log( attendeeListGrouped.value )
+  console.log( attendeeListGrouped.value )
 }
 
 /*-| Printing |-*/
