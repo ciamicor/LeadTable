@@ -13,6 +13,82 @@
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 /*-| All |-*/
 /*---+----+---+----+---+----+---+----+---*/
+.--p-0 {
+  padding: 0px !important;
+}
+
+.--m-0 {
+  margin: 0px !important;
+}
+
+.--gap-0 {
+  gap: 0px !important;
+}
+
+/*-| Axis |-*/
+/*---+----+---+----+---+----+---+----+---*/
+/*-| Vert |-*/
+.--p-v-0 {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.--m-v-0 {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+/*-| Horz |-*/
+.--p-h-0 {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.--m-h-0 {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+/*-| Individual |-*/
+/*---+----+---+----+---+----+---+----+---*/
+/*-| Top |-*/
+.--p-t-0 {
+  padding-top: 0px !important;
+}
+
+.--m-t-0 {
+  margin-top: 0px !important;
+}
+
+/*-| Right |-*/
+.--p-r-0 {
+  padding-right: 0px !important;
+}
+
+.--m-r-0 {
+  margin-right: 0px !important;
+}
+
+/*-| Bottom |-*/
+.--p-b-0 {
+  padding-bottom: 0px !important;
+}
+
+.--m-b-0 {
+  margin-bottom: 0px !important;
+}
+
+/*-| Left |-*/
+.--p-l-0 {
+  padding-left: 0px !important;
+}
+
+.--m-l-0 {
+  margin-left: 0px !important;
+}
+
+/*-| All |-*/
+/*---+----+---+----+---+----+---+----+---*/
 .--p-1 {
   padding: 2px !important;
 }
@@ -2008,7 +2084,8 @@ p, button, li, label {
   max-width: 100%;
 }
 .row .--items {
-  padding: 8px;
+  margin: 0;
+  padding: 0;
 }
 
 /*-| Columns by Breakpoint |-*/
@@ -2696,6 +2773,234 @@ p, button, li, label {
   }
 }
 
+.col-1-600 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-1-600 > *:not(.button, button) + .button, .col-1-600 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-1-600 > .button:has(+ *:not(.button, button)), .col-1-600 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 600px) {
+  .col-1-600 {
+    flex: 0 1 calc(8.3333333333% - 8px);
+    width: calc(8.3333333333% - 8px);
+  }
+}
+
+.col-2-600 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-2-600 > *:not(.button, button) + .button, .col-2-600 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-2-600 > .button:has(+ *:not(.button, button)), .col-2-600 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 600px) {
+  .col-2-600 {
+    flex: 0 1 calc(16.6666666667% - 8px);
+    width: calc(16.6666666667% - 8px);
+  }
+}
+
+.col-3-600 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-3-600 > *:not(.button, button) + .button, .col-3-600 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-3-600 > .button:has(+ *:not(.button, button)), .col-3-600 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 600px) {
+  .col-3-600 {
+    flex: 0 1 calc(25% - 8px);
+    width: calc(25% - 8px);
+  }
+}
+
+.col-4-600 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-4-600 > *:not(.button, button) + .button, .col-4-600 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-4-600 > .button:has(+ *:not(.button, button)), .col-4-600 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 600px) {
+  .col-4-600 {
+    flex: 0 1 calc(33.3333333333% - 8px);
+    width: calc(33.3333333333% - 8px);
+  }
+}
+
+.col-5-600 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-5-600 > *:not(.button, button) + .button, .col-5-600 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-5-600 > .button:has(+ *:not(.button, button)), .col-5-600 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 600px) {
+  .col-5-600 {
+    flex: 0 1 calc(41.6666666667% - 8px);
+    width: calc(41.6666666667% - 8px);
+  }
+}
+
+.col-6-600 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-6-600 > *:not(.button, button) + .button, .col-6-600 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-6-600 > .button:has(+ *:not(.button, button)), .col-6-600 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 600px) {
+  .col-6-600 {
+    flex: 0 1 calc(50% - 8px);
+    width: calc(50% - 8px);
+  }
+}
+
+.col-7-600 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-7-600 > *:not(.button, button) + .button, .col-7-600 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-7-600 > .button:has(+ *:not(.button, button)), .col-7-600 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 600px) {
+  .col-7-600 {
+    flex: 0 1 calc(58.3333333333% - 8px);
+    width: calc(58.3333333333% - 8px);
+  }
+}
+
+.col-8-600 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-8-600 > *:not(.button, button) + .button, .col-8-600 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-8-600 > .button:has(+ *:not(.button, button)), .col-8-600 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 600px) {
+  .col-8-600 {
+    flex: 0 1 calc(66.6666666667% - 8px);
+    width: calc(66.6666666667% - 8px);
+  }
+}
+
+.col-9-600 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-9-600 > *:not(.button, button) + .button, .col-9-600 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-9-600 > .button:has(+ *:not(.button, button)), .col-9-600 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 600px) {
+  .col-9-600 {
+    flex: 0 1 calc(75% - 8px);
+    width: calc(75% - 8px);
+  }
+}
+
+.col-10-600 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-10-600 > *:not(.button, button) + .button, .col-10-600 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-10-600 > .button:has(+ *:not(.button, button)), .col-10-600 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 600px) {
+  .col-10-600 {
+    flex: 0 1 calc(83.3333333333% - 8px);
+    width: calc(83.3333333333% - 8px);
+  }
+}
+
+.col-11-600 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-11-600 > *:not(.button, button) + .button, .col-11-600 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-11-600 > .button:has(+ *:not(.button, button)), .col-11-600 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 600px) {
+  .col-11-600 {
+    flex: 0 1 calc(91.6666666667% - 8px);
+    width: calc(91.6666666667% - 8px);
+  }
+}
+
+.col-12-600 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-12-600 > *:not(.button, button) + .button, .col-12-600 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-12-600 > .button:has(+ *:not(.button, button)), .col-12-600 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 600px) {
+  .col-12-600 {
+    flex: 0 1 calc(100% - 8px);
+    width: calc(100% - 8px);
+  }
+}
+
 .col-1-700 {
   min-width: 200px;
   display: flex;
@@ -2919,6 +3224,234 @@ p, button, li, label {
 }
 @media (min-width: 700px) {
   .col-12-700 {
+    flex: 0 1 calc(100% - 8px);
+    width: calc(100% - 8px);
+  }
+}
+
+.col-1-800 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-1-800 > *:not(.button, button) + .button, .col-1-800 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-1-800 > .button:has(+ *:not(.button, button)), .col-1-800 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 800px) {
+  .col-1-800 {
+    flex: 0 1 calc(8.3333333333% - 8px);
+    width: calc(8.3333333333% - 8px);
+  }
+}
+
+.col-2-800 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-2-800 > *:not(.button, button) + .button, .col-2-800 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-2-800 > .button:has(+ *:not(.button, button)), .col-2-800 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 800px) {
+  .col-2-800 {
+    flex: 0 1 calc(16.6666666667% - 8px);
+    width: calc(16.6666666667% - 8px);
+  }
+}
+
+.col-3-800 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-3-800 > *:not(.button, button) + .button, .col-3-800 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-3-800 > .button:has(+ *:not(.button, button)), .col-3-800 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 800px) {
+  .col-3-800 {
+    flex: 0 1 calc(25% - 8px);
+    width: calc(25% - 8px);
+  }
+}
+
+.col-4-800 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-4-800 > *:not(.button, button) + .button, .col-4-800 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-4-800 > .button:has(+ *:not(.button, button)), .col-4-800 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 800px) {
+  .col-4-800 {
+    flex: 0 1 calc(33.3333333333% - 8px);
+    width: calc(33.3333333333% - 8px);
+  }
+}
+
+.col-5-800 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-5-800 > *:not(.button, button) + .button, .col-5-800 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-5-800 > .button:has(+ *:not(.button, button)), .col-5-800 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 800px) {
+  .col-5-800 {
+    flex: 0 1 calc(41.6666666667% - 8px);
+    width: calc(41.6666666667% - 8px);
+  }
+}
+
+.col-6-800 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-6-800 > *:not(.button, button) + .button, .col-6-800 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-6-800 > .button:has(+ *:not(.button, button)), .col-6-800 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 800px) {
+  .col-6-800 {
+    flex: 0 1 calc(50% - 8px);
+    width: calc(50% - 8px);
+  }
+}
+
+.col-7-800 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-7-800 > *:not(.button, button) + .button, .col-7-800 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-7-800 > .button:has(+ *:not(.button, button)), .col-7-800 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 800px) {
+  .col-7-800 {
+    flex: 0 1 calc(58.3333333333% - 8px);
+    width: calc(58.3333333333% - 8px);
+  }
+}
+
+.col-8-800 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-8-800 > *:not(.button, button) + .button, .col-8-800 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-8-800 > .button:has(+ *:not(.button, button)), .col-8-800 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 800px) {
+  .col-8-800 {
+    flex: 0 1 calc(66.6666666667% - 8px);
+    width: calc(66.6666666667% - 8px);
+  }
+}
+
+.col-9-800 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-9-800 > *:not(.button, button) + .button, .col-9-800 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-9-800 > .button:has(+ *:not(.button, button)), .col-9-800 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 800px) {
+  .col-9-800 {
+    flex: 0 1 calc(75% - 8px);
+    width: calc(75% - 8px);
+  }
+}
+
+.col-10-800 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-10-800 > *:not(.button, button) + .button, .col-10-800 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-10-800 > .button:has(+ *:not(.button, button)), .col-10-800 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 800px) {
+  .col-10-800 {
+    flex: 0 1 calc(83.3333333333% - 8px);
+    width: calc(83.3333333333% - 8px);
+  }
+}
+
+.col-11-800 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-11-800 > *:not(.button, button) + .button, .col-11-800 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-11-800 > .button:has(+ *:not(.button, button)), .col-11-800 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 800px) {
+  .col-11-800 {
+    flex: 0 1 calc(91.6666666667% - 8px);
+    width: calc(91.6666666667% - 8px);
+  }
+}
+
+.col-12-800 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-12-800 > *:not(.button, button) + .button, .col-12-800 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-12-800 > .button:has(+ *:not(.button, button)), .col-12-800 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 800px) {
+  .col-12-800 {
     flex: 0 1 calc(100% - 8px);
     width: calc(100% - 8px);
   }
@@ -3152,6 +3685,234 @@ p, button, li, label {
   }
 }
 
+.col-1-1000 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-1-1000 > *:not(.button, button) + .button, .col-1-1000 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-1-1000 > .button:has(+ *:not(.button, button)), .col-1-1000 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1000px) {
+  .col-1-1000 {
+    flex: 0 1 calc(8.3333333333% - 8px);
+    width: calc(8.3333333333% - 8px);
+  }
+}
+
+.col-2-1000 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-2-1000 > *:not(.button, button) + .button, .col-2-1000 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-2-1000 > .button:has(+ *:not(.button, button)), .col-2-1000 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1000px) {
+  .col-2-1000 {
+    flex: 0 1 calc(16.6666666667% - 8px);
+    width: calc(16.6666666667% - 8px);
+  }
+}
+
+.col-3-1000 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-3-1000 > *:not(.button, button) + .button, .col-3-1000 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-3-1000 > .button:has(+ *:not(.button, button)), .col-3-1000 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1000px) {
+  .col-3-1000 {
+    flex: 0 1 calc(25% - 8px);
+    width: calc(25% - 8px);
+  }
+}
+
+.col-4-1000 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-4-1000 > *:not(.button, button) + .button, .col-4-1000 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-4-1000 > .button:has(+ *:not(.button, button)), .col-4-1000 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1000px) {
+  .col-4-1000 {
+    flex: 0 1 calc(33.3333333333% - 8px);
+    width: calc(33.3333333333% - 8px);
+  }
+}
+
+.col-5-1000 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-5-1000 > *:not(.button, button) + .button, .col-5-1000 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-5-1000 > .button:has(+ *:not(.button, button)), .col-5-1000 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1000px) {
+  .col-5-1000 {
+    flex: 0 1 calc(41.6666666667% - 8px);
+    width: calc(41.6666666667% - 8px);
+  }
+}
+
+.col-6-1000 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-6-1000 > *:not(.button, button) + .button, .col-6-1000 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-6-1000 > .button:has(+ *:not(.button, button)), .col-6-1000 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1000px) {
+  .col-6-1000 {
+    flex: 0 1 calc(50% - 8px);
+    width: calc(50% - 8px);
+  }
+}
+
+.col-7-1000 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-7-1000 > *:not(.button, button) + .button, .col-7-1000 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-7-1000 > .button:has(+ *:not(.button, button)), .col-7-1000 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1000px) {
+  .col-7-1000 {
+    flex: 0 1 calc(58.3333333333% - 8px);
+    width: calc(58.3333333333% - 8px);
+  }
+}
+
+.col-8-1000 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-8-1000 > *:not(.button, button) + .button, .col-8-1000 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-8-1000 > .button:has(+ *:not(.button, button)), .col-8-1000 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1000px) {
+  .col-8-1000 {
+    flex: 0 1 calc(66.6666666667% - 8px);
+    width: calc(66.6666666667% - 8px);
+  }
+}
+
+.col-9-1000 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-9-1000 > *:not(.button, button) + .button, .col-9-1000 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-9-1000 > .button:has(+ *:not(.button, button)), .col-9-1000 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1000px) {
+  .col-9-1000 {
+    flex: 0 1 calc(75% - 8px);
+    width: calc(75% - 8px);
+  }
+}
+
+.col-10-1000 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-10-1000 > *:not(.button, button) + .button, .col-10-1000 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-10-1000 > .button:has(+ *:not(.button, button)), .col-10-1000 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1000px) {
+  .col-10-1000 {
+    flex: 0 1 calc(83.3333333333% - 8px);
+    width: calc(83.3333333333% - 8px);
+  }
+}
+
+.col-11-1000 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-11-1000 > *:not(.button, button) + .button, .col-11-1000 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-11-1000 > .button:has(+ *:not(.button, button)), .col-11-1000 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1000px) {
+  .col-11-1000 {
+    flex: 0 1 calc(91.6666666667% - 8px);
+    width: calc(91.6666666667% - 8px);
+  }
+}
+
+.col-12-1000 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-12-1000 > *:not(.button, button) + .button, .col-12-1000 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-12-1000 > .button:has(+ *:not(.button, button)), .col-12-1000 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1000px) {
+  .col-12-1000 {
+    flex: 0 1 calc(100% - 8px);
+    width: calc(100% - 8px);
+  }
+}
+
 .col-1-1100 {
   min-width: 200px;
   display: flex;
@@ -3380,6 +4141,462 @@ p, button, li, label {
   }
 }
 
+.col-1-1200 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-1-1200 > *:not(.button, button) + .button, .col-1-1200 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-1-1200 > .button:has(+ *:not(.button, button)), .col-1-1200 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1200px) {
+  .col-1-1200 {
+    flex: 0 1 calc(8.3333333333% - 8px);
+    width: calc(8.3333333333% - 8px);
+  }
+}
+
+.col-2-1200 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-2-1200 > *:not(.button, button) + .button, .col-2-1200 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-2-1200 > .button:has(+ *:not(.button, button)), .col-2-1200 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1200px) {
+  .col-2-1200 {
+    flex: 0 1 calc(16.6666666667% - 8px);
+    width: calc(16.6666666667% - 8px);
+  }
+}
+
+.col-3-1200 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-3-1200 > *:not(.button, button) + .button, .col-3-1200 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-3-1200 > .button:has(+ *:not(.button, button)), .col-3-1200 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1200px) {
+  .col-3-1200 {
+    flex: 0 1 calc(25% - 8px);
+    width: calc(25% - 8px);
+  }
+}
+
+.col-4-1200 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-4-1200 > *:not(.button, button) + .button, .col-4-1200 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-4-1200 > .button:has(+ *:not(.button, button)), .col-4-1200 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1200px) {
+  .col-4-1200 {
+    flex: 0 1 calc(33.3333333333% - 8px);
+    width: calc(33.3333333333% - 8px);
+  }
+}
+
+.col-5-1200 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-5-1200 > *:not(.button, button) + .button, .col-5-1200 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-5-1200 > .button:has(+ *:not(.button, button)), .col-5-1200 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1200px) {
+  .col-5-1200 {
+    flex: 0 1 calc(41.6666666667% - 8px);
+    width: calc(41.6666666667% - 8px);
+  }
+}
+
+.col-6-1200 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-6-1200 > *:not(.button, button) + .button, .col-6-1200 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-6-1200 > .button:has(+ *:not(.button, button)), .col-6-1200 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1200px) {
+  .col-6-1200 {
+    flex: 0 1 calc(50% - 8px);
+    width: calc(50% - 8px);
+  }
+}
+
+.col-7-1200 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-7-1200 > *:not(.button, button) + .button, .col-7-1200 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-7-1200 > .button:has(+ *:not(.button, button)), .col-7-1200 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1200px) {
+  .col-7-1200 {
+    flex: 0 1 calc(58.3333333333% - 8px);
+    width: calc(58.3333333333% - 8px);
+  }
+}
+
+.col-8-1200 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-8-1200 > *:not(.button, button) + .button, .col-8-1200 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-8-1200 > .button:has(+ *:not(.button, button)), .col-8-1200 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1200px) {
+  .col-8-1200 {
+    flex: 0 1 calc(66.6666666667% - 8px);
+    width: calc(66.6666666667% - 8px);
+  }
+}
+
+.col-9-1200 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-9-1200 > *:not(.button, button) + .button, .col-9-1200 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-9-1200 > .button:has(+ *:not(.button, button)), .col-9-1200 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1200px) {
+  .col-9-1200 {
+    flex: 0 1 calc(75% - 8px);
+    width: calc(75% - 8px);
+  }
+}
+
+.col-10-1200 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-10-1200 > *:not(.button, button) + .button, .col-10-1200 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-10-1200 > .button:has(+ *:not(.button, button)), .col-10-1200 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1200px) {
+  .col-10-1200 {
+    flex: 0 1 calc(83.3333333333% - 8px);
+    width: calc(83.3333333333% - 8px);
+  }
+}
+
+.col-11-1200 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-11-1200 > *:not(.button, button) + .button, .col-11-1200 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-11-1200 > .button:has(+ *:not(.button, button)), .col-11-1200 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1200px) {
+  .col-11-1200 {
+    flex: 0 1 calc(91.6666666667% - 8px);
+    width: calc(91.6666666667% - 8px);
+  }
+}
+
+.col-12-1200 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-12-1200 > *:not(.button, button) + .button, .col-12-1200 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-12-1200 > .button:has(+ *:not(.button, button)), .col-12-1200 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1200px) {
+  .col-12-1200 {
+    flex: 0 1 calc(100% - 8px);
+    width: calc(100% - 8px);
+  }
+}
+
+.col-1-1300 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-1-1300 > *:not(.button, button) + .button, .col-1-1300 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-1-1300 > .button:has(+ *:not(.button, button)), .col-1-1300 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1300px) {
+  .col-1-1300 {
+    flex: 0 1 calc(8.3333333333% - 8px);
+    width: calc(8.3333333333% - 8px);
+  }
+}
+
+.col-2-1300 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-2-1300 > *:not(.button, button) + .button, .col-2-1300 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-2-1300 > .button:has(+ *:not(.button, button)), .col-2-1300 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1300px) {
+  .col-2-1300 {
+    flex: 0 1 calc(16.6666666667% - 8px);
+    width: calc(16.6666666667% - 8px);
+  }
+}
+
+.col-3-1300 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-3-1300 > *:not(.button, button) + .button, .col-3-1300 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-3-1300 > .button:has(+ *:not(.button, button)), .col-3-1300 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1300px) {
+  .col-3-1300 {
+    flex: 0 1 calc(25% - 8px);
+    width: calc(25% - 8px);
+  }
+}
+
+.col-4-1300 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-4-1300 > *:not(.button, button) + .button, .col-4-1300 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-4-1300 > .button:has(+ *:not(.button, button)), .col-4-1300 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1300px) {
+  .col-4-1300 {
+    flex: 0 1 calc(33.3333333333% - 8px);
+    width: calc(33.3333333333% - 8px);
+  }
+}
+
+.col-5-1300 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-5-1300 > *:not(.button, button) + .button, .col-5-1300 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-5-1300 > .button:has(+ *:not(.button, button)), .col-5-1300 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1300px) {
+  .col-5-1300 {
+    flex: 0 1 calc(41.6666666667% - 8px);
+    width: calc(41.6666666667% - 8px);
+  }
+}
+
+.col-6-1300 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-6-1300 > *:not(.button, button) + .button, .col-6-1300 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-6-1300 > .button:has(+ *:not(.button, button)), .col-6-1300 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1300px) {
+  .col-6-1300 {
+    flex: 0 1 calc(50% - 8px);
+    width: calc(50% - 8px);
+  }
+}
+
+.col-7-1300 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-7-1300 > *:not(.button, button) + .button, .col-7-1300 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-7-1300 > .button:has(+ *:not(.button, button)), .col-7-1300 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1300px) {
+  .col-7-1300 {
+    flex: 0 1 calc(58.3333333333% - 8px);
+    width: calc(58.3333333333% - 8px);
+  }
+}
+
+.col-8-1300 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-8-1300 > *:not(.button, button) + .button, .col-8-1300 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-8-1300 > .button:has(+ *:not(.button, button)), .col-8-1300 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1300px) {
+  .col-8-1300 {
+    flex: 0 1 calc(66.6666666667% - 8px);
+    width: calc(66.6666666667% - 8px);
+  }
+}
+
+.col-9-1300 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-9-1300 > *:not(.button, button) + .button, .col-9-1300 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-9-1300 > .button:has(+ *:not(.button, button)), .col-9-1300 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1300px) {
+  .col-9-1300 {
+    flex: 0 1 calc(75% - 8px);
+    width: calc(75% - 8px);
+  }
+}
+
+.col-10-1300 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-10-1300 > *:not(.button, button) + .button, .col-10-1300 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-10-1300 > .button:has(+ *:not(.button, button)), .col-10-1300 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1300px) {
+  .col-10-1300 {
+    flex: 0 1 calc(83.3333333333% - 8px);
+    width: calc(83.3333333333% - 8px);
+  }
+}
+
+.col-11-1300 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-11-1300 > *:not(.button, button) + .button, .col-11-1300 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-11-1300 > .button:has(+ *:not(.button, button)), .col-11-1300 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1300px) {
+  .col-11-1300 {
+    flex: 0 1 calc(91.6666666667% - 8px);
+    width: calc(91.6666666667% - 8px);
+  }
+}
+
+.col-12-1300 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-12-1300 > *:not(.button, button) + .button, .col-12-1300 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-12-1300 > .button:has(+ *:not(.button, button)), .col-12-1300 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1300px) {
+  .col-12-1300 {
+    flex: 0 1 calc(100% - 8px);
+    width: calc(100% - 8px);
+  }
+}
+
 .col-1-1400 {
   min-width: 200px;
   display: flex;
@@ -3603,6 +4820,234 @@ p, button, li, label {
 }
 @media (min-width: 1400px) {
   .col-12-1400 {
+    flex: 0 1 calc(100% - 8px);
+    width: calc(100% - 8px);
+  }
+}
+
+.col-1-1500 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-1-1500 > *:not(.button, button) + .button, .col-1-1500 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-1-1500 > .button:has(+ *:not(.button, button)), .col-1-1500 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1500px) {
+  .col-1-1500 {
+    flex: 0 1 calc(8.3333333333% - 8px);
+    width: calc(8.3333333333% - 8px);
+  }
+}
+
+.col-2-1500 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-2-1500 > *:not(.button, button) + .button, .col-2-1500 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-2-1500 > .button:has(+ *:not(.button, button)), .col-2-1500 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1500px) {
+  .col-2-1500 {
+    flex: 0 1 calc(16.6666666667% - 8px);
+    width: calc(16.6666666667% - 8px);
+  }
+}
+
+.col-3-1500 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-3-1500 > *:not(.button, button) + .button, .col-3-1500 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-3-1500 > .button:has(+ *:not(.button, button)), .col-3-1500 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1500px) {
+  .col-3-1500 {
+    flex: 0 1 calc(25% - 8px);
+    width: calc(25% - 8px);
+  }
+}
+
+.col-4-1500 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-4-1500 > *:not(.button, button) + .button, .col-4-1500 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-4-1500 > .button:has(+ *:not(.button, button)), .col-4-1500 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1500px) {
+  .col-4-1500 {
+    flex: 0 1 calc(33.3333333333% - 8px);
+    width: calc(33.3333333333% - 8px);
+  }
+}
+
+.col-5-1500 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-5-1500 > *:not(.button, button) + .button, .col-5-1500 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-5-1500 > .button:has(+ *:not(.button, button)), .col-5-1500 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1500px) {
+  .col-5-1500 {
+    flex: 0 1 calc(41.6666666667% - 8px);
+    width: calc(41.6666666667% - 8px);
+  }
+}
+
+.col-6-1500 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-6-1500 > *:not(.button, button) + .button, .col-6-1500 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-6-1500 > .button:has(+ *:not(.button, button)), .col-6-1500 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1500px) {
+  .col-6-1500 {
+    flex: 0 1 calc(50% - 8px);
+    width: calc(50% - 8px);
+  }
+}
+
+.col-7-1500 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-7-1500 > *:not(.button, button) + .button, .col-7-1500 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-7-1500 > .button:has(+ *:not(.button, button)), .col-7-1500 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1500px) {
+  .col-7-1500 {
+    flex: 0 1 calc(58.3333333333% - 8px);
+    width: calc(58.3333333333% - 8px);
+  }
+}
+
+.col-8-1500 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-8-1500 > *:not(.button, button) + .button, .col-8-1500 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-8-1500 > .button:has(+ *:not(.button, button)), .col-8-1500 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1500px) {
+  .col-8-1500 {
+    flex: 0 1 calc(66.6666666667% - 8px);
+    width: calc(66.6666666667% - 8px);
+  }
+}
+
+.col-9-1500 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-9-1500 > *:not(.button, button) + .button, .col-9-1500 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-9-1500 > .button:has(+ *:not(.button, button)), .col-9-1500 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1500px) {
+  .col-9-1500 {
+    flex: 0 1 calc(75% - 8px);
+    width: calc(75% - 8px);
+  }
+}
+
+.col-10-1500 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-10-1500 > *:not(.button, button) + .button, .col-10-1500 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-10-1500 > .button:has(+ *:not(.button, button)), .col-10-1500 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1500px) {
+  .col-10-1500 {
+    flex: 0 1 calc(83.3333333333% - 8px);
+    width: calc(83.3333333333% - 8px);
+  }
+}
+
+.col-11-1500 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-11-1500 > *:not(.button, button) + .button, .col-11-1500 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-11-1500 > .button:has(+ *:not(.button, button)), .col-11-1500 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1500px) {
+  .col-11-1500 {
+    flex: 0 1 calc(91.6666666667% - 8px);
+    width: calc(91.6666666667% - 8px);
+  }
+}
+
+.col-12-1500 {
+  min-width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.col-12-1500 > *:not(.button, button) + .button, .col-12-1500 > *:not(.button, button) + button {
+  margin-top: 8px;
+}
+.col-12-1500 > .button:has(+ *:not(.button, button)), .col-12-1500 > button:has(+ *:not(.button, button)) {
+  margin-bottom: 16px;
+}
+@media (min-width: 1500px) {
+  .col-12-1500 {
     flex: 0 1 calc(100% - 8px);
     width: calc(100% - 8px);
   }
@@ -3982,6 +5427,12 @@ p, button, li, label {
   align-content: stretch;
 }
 
+/*-| Position |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+.--pos-fixed {
+  position: fixed;
+}
+
 /*-| Sizing |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 .--h-100 {
@@ -4036,9 +5487,12 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 
 label {
-  display: flex;
+  display: grid;
+  gap: 8px;
+  font-size: 16px;
   margin: 8px 0 0 0;
   padding: 0 4px;
+  flex: 1 1 auto;
 }
 label input, label select, label textarea {
   flex: 1 1 auto;
@@ -4066,14 +5520,14 @@ input:focus, input:focus-visible, select:focus, select:focus-visible {
 .search-wrapper button {
   position: absolute;
   top: 50%;
-  right: 20px;
+  right: 24px;
+  border: 1px solid var(--grey-8);
   border-radius: 65px;
-  transition: opacity 200ms ease-out;
   translate: 0 -50%;
-  scale: 0.65;
+  scale: 0.85;
 }
 .search-wrapper input.search {
-  padding: 12px 20px;
+  padding: 16px 24px;
   border-radius: 65px;
   transition: border-radius 200ms ease-out;
 }
@@ -4373,66 +5827,72 @@ button.--warn--invert:hover,
   font-size: 22px;
 }
 
-.badges-grid-container {
+.badges-page-container {
+  z-index: -1;
+  position: absolute;
+}
+
+.badge-grid-container {
   display: grid;
   grid-template-columns: 4in 4in;
   grid-template-rows: repeat(auto-fill, 3in);
-  width: 8.5in;
-  height: 10.0104166667in;
+  width: 8.375in;
+  height: 10in;
   padding-top: 1in;
-  border: 1px dashed var(--grey-11);
+  padding-left: 0.125in;
+  outline: 1px dashed black;
 }
-.badges-grid-container .badge-wrapper {
+.badge-grid-container .badge-wrapper {
   display: grid;
   grid-template-rows: 1fr 1fr;
-  width: 3.67in;
-  height: 2.51in;
+  /*width:              4in;
+  height:             3in;*/
   padding: 0.165in 0.165in 0.325in;
-  border: 1px dashed var(--grey-11);
+  outline: 1px dashed var(--grey-11);
 }
-.badges-grid-container .badge-wrapper .--attendee-info-container {
+.badge-grid-container .badge-wrapper .--attendee-info-container {
   display: grid;
   grid-template-rows: repeat(3, min-content);
   gap: 8px;
   width: 100%;
 }
-.badges-grid-container .badge-wrapper .--attendee-info-container * {
+.badge-grid-container .badge-wrapper .--attendee-info-container * {
   line-height: 1;
   text-transform: capitalize;
   margin: 0;
 }
-.badges-grid-container .badge-wrapper .--attendee-info-container input {
+.badge-grid-container .badge-wrapper .--attendee-info-container input {
   padding: 0 !important;
   border: none;
 }
-.badges-grid-container .badge-wrapper .--attendee-info-container .--employer {
+.badge-grid-container .badge-wrapper .--attendee-info-container .--employer {
   color: var(--color-primary-4);
   font-size: 1.25rem;
   font-variation-settings: "wght" 300, "wdth" 100, "opsz" 15;
 }
-.badges-grid-container .badge-wrapper .--attendee-info-container .--name {
+.badge-grid-container .badge-wrapper .--attendee-info-container .--name {
   font-size: 30px;
   font-variation-settings: "wght" 600, "wdth" 100, "opsz" 15;
 }
-.badges-grid-container .badge-wrapper .--attendee-info-container .--title {
+.badge-grid-container .badge-wrapper .--attendee-info-container .--title {
   color: var(--grey-5);
   font-size: 1.25rem;
   font-style: italic;
   font-variation-settings: "wght" 300, "wdth" 100, "opsz" 15;
 }
-.badges-grid-container .badge-wrapper .badge--images-container {
+.badge-grid-container .badge-wrapper .badge--images-container {
   display: grid;
   grid-template-columns: 0.65fr 1fr;
   grid-template-rows: 1.175in;
   place-content: center;
   place-items: center start;
 }
-.badges-grid-container .badge-wrapper .badge--images-container .badge--qr {
+.badge-grid-container .badge-wrapper .badge--images-container .badge--qr {
   width: 115px;
   height: 115px;
   background: var(--grey-10);
 }
-.badges-grid-container .badge-wrapper .badge--images-container img {
+.badge-grid-container .badge-wrapper .badge--images-container img {
   width: 185px;
   height: auto;
 }

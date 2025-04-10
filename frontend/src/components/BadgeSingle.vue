@@ -1,5 +1,6 @@
 <template>
   <div
+    v-show="showBadge"
     class="badge-wrapper"
   >
     <div class="--attendee-info-container">
@@ -30,7 +31,8 @@
 import QrCode from '@/components/QrCode.vue'
 
 defineProps( {
-  attendee: Object
+  attendee: Object,
+  showBadge: { type: Boolean, default: true }
 } )
 
 </script>

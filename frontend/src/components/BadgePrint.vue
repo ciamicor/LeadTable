@@ -1,6 +1,6 @@
 <template>
   <div class="row --gap-24">
-    <div class="col-12-300">
+    <div class="col-12-300 --pos-fixed">
       <div class="row --full">
         <div class="search-wrapper --place-self-center">
           <button
@@ -27,16 +27,16 @@
         </router-link>
       </div>
     </div>
-    <div ref="componentRef">
+    <div
+      ref="componentRef"
+      class="badges-page-container">
       <div v-for="(group, i) in attendeeListGrouped"
            :key="i"
-           class="badges-grid-container"
+           class="badge-grid-container"
       >
-        <div
-          v-for="(attendee, ind) in group"
-          :key="ind">
-          <BadgeSingle :attendee="attendee" />
-        </div>
+        <BadgeSingle v-for="(attendee, ind) in group"
+                     :key="ind"
+                     :attendee="attendee" />
       </div>
     </div>
   </div>
@@ -71,16 +71,16 @@ onBeforeMount( () => {
 /*-| Attendees |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 /*-| Get All |-*/
-async function getAllAttendees( l ) {
-  await getAllAttendees_Service( l )
-  await sortFName_Service( l.value )
-  console.log( 'Attendees: ', l, typeof l )
-  await chunkObject( l )
+async function getAllAttendees( o ) {
+  await getAllAttendees_Service( o )
+  await sortFName_Service( o.value )
+  console.log( 'Attendees: ', o, typeof o )
+  await chunkObject( o )
 }
 
 /*-| Search |-*/
-async function searchNames( a, s, r ) {
-  await searchAttendeeName_Service( a, s, r )
+async function searchNames( o, s, r ) {
+  await searchAttendeeName_Service( o, s, r )
   console.log( 'Search Result: ', r, typeof r )
   await chunkObject( r )
 }
@@ -99,27 +99,27 @@ async function chunkObject( a ) {
   attendeeListGrouped.value = []
   // console.log( typeof attendeeList )
   const attendeeNum = Object.keys( a.value ).length
-  console.log( attendeeNum )
+  // console.log( attendeeNum )
   // console.log( 'Attendee amount', attendeeNum )
   // console.log( 'Attendee #1', attendeeList.value[0] )
 
   while ( indexCount < attendeeNum ) {
     while ( countPushTotal < groupSize ) {
-      console.log( 'pushed: ', countPushTotal + indexCount )
+      // console.log( 'pushed: ', countPushTotal + indexCount )
       if ( a.value[countPushTotal + indexCount] !== undefined ) {
-        console.log( 'value found!' )
+        // console.log( 'value found!' )
         tempGroup.push( await a.value[countPushTotal + indexCount] )
       }
       countPushTotal++
-      console.log( tempGroup )
+      // console.log( tempGroup )
     }
     attendeeListGrouped.value.push( tempGroup )
     tempGroup = []
     indexCount += groupSize
     countPushTotal = 0
-    console.log( indexCount )
+    // console.log( indexCount )
   }
-  console.log( 'Grouped List: ', attendeeListGrouped.value )
+  // console.log( 'Grouped List: ', attendeeListGrouped.value )
 }
 
 /*-| Printing |-*/

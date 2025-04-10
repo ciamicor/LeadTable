@@ -1,15 +1,112 @@
 <template>
   <div class="row --gap-24">
-    <div class="col-12-300 --place-items-center">
-      <router-link
-        class="button --primary"
-        to="/print-badges">
-        View All Badges
-      </router-link>
+    <!--    <div class="col-12-300 &#45;&#45;place-items-center">
+          <router-link
+            class="button &#45;&#45;primary"
+            to="/print-badges">
+            View All Badges
+          </router-link>
+        </div>-->
+    <div
+      class="col-12-300 col-10-600 col-8-900 --p-b-24 --p-t-12"
+      style="grid-row: span 3;"
+    >
+      <h1>Attendee Registration</h1>
+      <p>Register for the {{ companyLocalData.expo_Client }} {{ companyLocalData.expo_Year }}
+         Supplier's Day. All fields are required.</p>
+      <div class="row --items">
+        <label>
+          First Name
+          <input
+            v-model="attendee.name_First"
+            name="name-first"
+            placeholder="First Name"
+            type="text">
+        </label>
+        <label>
+          Last Name
+          <input
+            v-model="attendee.name_Last"
+            aria-required="true"
+            name="name-last"
+            placeholder="Last Name"
+            required
+            type="text">
+        </label>
+      </div>
+      <div class="row --items">
+        <label>
+          Employer
+          <input
+            v-model="attendee.contact_Employer"
+            name="employer"
+            placeholder="Employer"
+            type="text"></label>
+        <label>
+          Position/Title
+          <input
+            v-model="attendee.title"
+            name="title"
+            placeholder="Position/Title"
+            type="text">
+        </label>
+      </div>
+      <div class="row --items">
+        <label>
+          Email Address
+          <input
+            v-model="attendee.contact_Email"
+            name="title"
+            placeholder="Email Address"
+            type="email">
+        </label>
+        <label>
+          Phone Number
+          <input
+            v-model="attendee.contact_Phone"
+            name="phone"
+            placeholder="Phone Number"
+            type="tel">
+        </label>
+      </div>
+      <label>
+        Choose Registration Type
+        <select
+          v-model="attendee.reg_Type"
+          name="reg-type"
+        >
+          <option value="Attendee">Attendee</option>
+          <option value="Exhibitor">Exhibitor</option>
+          <option value="Both">Both</option>
+        </select>
+      </label>
+      <label>
+        Choose Tech Seminars
+        <select
+          v-model="attendee.tech_Sem"
+          name="reg-type"
+        >
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+      </label>
+
+      <button v-if="!showQr"
+              class="--success --m-t-12"
+              @click="createAttendee(attendee)">
+        Submit Registration
+      </button>
+      <button v-if="showQr"
+              class="--secondary"
+              @click="handlePrint">
+        Print
+      </button>
     </div>
-    <div ref="componentRef">
+
+    <div ref="componentRef"
+         class="badges-page-container">
       <div
-        class="badges-grid-container"
+        class="badge-grid-container"
       >
         <div
           class="badge-wrapper"
@@ -43,93 +140,6 @@
             <img alt=""
                  src="../assets/logos/nyift/nyift-vert-rgb.jpeg">
           </div>
-        </div>
-
-        <div
-          class="col-12-300 --p-h-16"
-          style="grid-row: span 3;"
-        >
-          <h2>Attendee Information</h2>
-          <p>All fields are required.</p>
-          <label for="name-first">
-            <input id="name-first "
-                   v-model="attendee.name_First"
-                   name="name-first"
-                   placeholder="First Name"
-                   type="text">
-          </label>
-          <label for="name-last">
-            <input id="name-last"
-                   v-model="attendee.name_Last"
-                   name="name-last"
-                   placeholder="Last Name"
-                   type="text">
-          </label>
-          <label for="employer">
-            <input id="employer"
-                   v-model="attendee.contact_Employer"
-                   name="employer"
-                   placeholder="Employer"
-                   type="text"></label>
-          <label for="title">
-            <input id="title"
-                   v-model="attendee.title"
-                   name="title"
-                   placeholder="Position/Title"
-                   type="text">
-          </label>
-          <label for="title">
-            <input id="title"
-                   v-model="attendee.contact_Email"
-                   name="title"
-                   placeholder="Email Address"
-                   type="email">
-          </label>
-          <label for="phone">
-            <input id="phone"
-                   v-model="attendee.contact_Phone"
-                   name="phone"
-                   placeholder="Phone Number"
-                   type="tel">
-          </label>
-          <label for="reg-type">
-            <select id="reg-type"
-                    v-model="attendee.reg_Type"
-                    name="reg-type"
-            >
-              <option disabled="disabled"
-                      selected
-                      value="">Choose Registration Type
-              </option>
-              <option value="Attendee">Attendee</option>
-              <option value="Exhibitor">Exhibitor</option>
-              <option value="Both">Both</option>
-            </select>
-          </label>
-          <label for="reg-type">
-            <select id="reg-type"
-                    v-model="attendee.tech_Sem"
-                    name="reg-type"
-            >
-              <option disabled="disabled"
-                      selected
-                      value="">Chose Tech Seminars
-              </option>
-              <option value="1">Yes</option>
-              <option value="0">No</option>
-            </select>
-          </label>
-
-          <button v-if="!showQr"
-                  class="--success"
-                  @click="createAttendee(attendee)">
-            Generate QR Code
-          </button>
-          <button v-if="showQr"
-                  class="--secondary"
-                  @click="handlePrint">
-            Print
-          </button>
         </div>
       </div>
     </div>

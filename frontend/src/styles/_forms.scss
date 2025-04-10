@@ -1,7 +1,10 @@
 label {
-  display: flex;
-  margin:  $sp-4 0 0 0;
-  padding: 0 $sp-2;
+  display:   grid;
+  gap:       $sp-4;
+  font-size: $font-xs;
+  margin:    $sp-4 0 0 0;
+  padding:   0 $sp-2;
+    flex: 1 1 auto;
   & input, select, textarea {
     flex: 1 1 auto;
   }
@@ -28,14 +31,14 @@ input, select {
   button {
     position:      absolute;
     top:           50%;
-    right:         $sp-7;
+    right:         $sp-8;
+    border:        1px solid $grey-8;
     border-radius: 65px;
-    transition:    opacity $trans-0;
     translate:     0 -50%;
-    scale:         .65;
+    scale:         .85;
   }
   input.search {
-    padding:       $sp-5 $sp-7;
+    padding:       $sp-6 $sp-8;
     border-radius: 65px;
     transition:    border-radius $trans-0;
     &:focus, &:focus-visible {
