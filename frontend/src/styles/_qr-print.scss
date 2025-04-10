@@ -1,0 +1,33 @@
+.badges-grid-container {
+  display:               grid;
+  grid-template-columns: 4in 4in;
+  grid-template-rows: repeat(auto-fill, 3in);
+  width:                 8.5in;
+  height:                calc(11in - 2px);
+  // padding:               0.25in;
+  border:                1px dashed $grey-11;
+  .badge-wrapper {
+    display:            grid;
+    grid-template-rows: 1fr 1fr;
+    padding:            0.165in 0.165in 0.325in;
+    border:             1px dashed $grey-11;
+  }
+  .badge--attendee-info-container {
+    display:            grid;
+    grid-template-rows: repeat(3, min-content );
+    gap:                $sp-4;
+    width:              100%;
+    * {
+      margin: 0;
+    }
+  }
+  .badge--images-container {
+    display:               grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1.175in;
+    .badge--qr, img {
+      width:  min-content;
+      height: 100%;
+    }
+  }
+}

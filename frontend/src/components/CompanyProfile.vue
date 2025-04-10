@@ -178,10 +178,10 @@ async function login() {
   if (companyLocalData.name === '') {
     console.log('saving to db')
     await saveDbLogin()
-    await createCompany_Service(selectedCompanyData, companyLocalData.expo_Year)
+    await createCompany_Service(selectedCompanyData, companyLocalData.expo_Year, companyLocalData.expo_Client)
   }
   loggedIn.value = true
-  window.location.reload()
+  // window.location.reload()
 }
 
 async function logOut() {

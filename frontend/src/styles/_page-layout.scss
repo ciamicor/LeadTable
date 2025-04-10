@@ -42,6 +42,7 @@ $breakpoints:    (
   display:   flex;
   flex:      1 1 auto;
   flex-flow: row wrap;
+  place-content: center;
   gap:       $row-gap;
   max-width: $max-page-width;
   margin:    0 auto;

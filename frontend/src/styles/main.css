@@ -1983,6 +1983,7 @@ p, button, li, label {
   display: flex;
   flex: 1 1 auto;
   flex-flow: row wrap;
+  place-content: center;
   gap: 8px;
   max-width: 1600px;
   margin: 0 auto;
@@ -3805,7 +3806,7 @@ input:focus, input:focus-visible {
 button,
 .button {
   display: flex;
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   place-content: center;
   place-items: center;
   color: var(--grey-4);
@@ -4038,6 +4039,39 @@ button.--warn--invert:hover,
 
 .qr-float-confirm i {
   font-size: 22px;
+}
+
+.badges-grid-container {
+  display: grid;
+  grid-template-columns: 4in 4in;
+  grid-template-rows: repeat(auto-fill, 3in);
+  width: 8.5in;
+  height: 10.9791666667in;
+  border: 1px dashed var(--grey-11);
+}
+.badges-grid-container .badge-wrapper {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  padding: 0.165in 0.165in 0.325in;
+  border: 1px dashed var(--grey-11);
+}
+.badges-grid-container .badge--attendee-info-container {
+  display: grid;
+  grid-template-rows: repeat(3, min-content);
+  gap: 8px;
+  width: 100%;
+}
+.badges-grid-container .badge--attendee-info-container * {
+  margin: 0;
+}
+.badges-grid-container .badge--images-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1.175in;
+}
+.badges-grid-container .badge--images-container .badge--qr, .badges-grid-container .badge--images-container img {
+  width: min-content;
+  height: 100%;
 }
 
 /*# sourceMappingURL=main.css.map */

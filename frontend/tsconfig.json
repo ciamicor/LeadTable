@@ -1,4 +1,13 @@
 {
+  "compilerOptions": {
+    "allowJs": true,
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "types": [
+      "pdfmake"
+    ]
+  },
   "files": [],
   "references": [
     {

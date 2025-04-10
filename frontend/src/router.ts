@@ -32,8 +32,8 @@ const routes = [
     component: CompanyProfile
   },
   {
-    path: '/qr-codes',
-    name: 'qrcodes',
+    path: '/print-badges',
+    name: 'print-badges',
     component: QrCodes
   }
 ]

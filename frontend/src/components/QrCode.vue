@@ -6,11 +6,11 @@
     :gradient-end-color="gradientEndColor"
     :gradient-start-color="gradientStartColor"
     :gradient-type="gradientType"
-    :image-settings='imageSettings'
     :level="level"
     :render-as="renderAs"
     :value="value"
   />
+  <!--    :image-settings='imageSettings'-->
 </template>
 <script lang="ts"
         setup>

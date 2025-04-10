@@ -23,13 +23,14 @@ const companyService = new CompanyDataService()
 /*-| Create |-*/
 
 /*---+----+---+----+---+----+---+----+---*/
-async function createCompany_Service(companyObject: any, year: number) {
+async function createCompany_Service(companyObject: any, year: number, client: string) {
   console.log(companyObject.value)
   const data = {
     id: companyObject.value.id,
     login_URL: companyObject.value.autoLoginUrl,
     name: companyObject.value.name,
-    expo_Year: year
+    expo_Year: year,
+    expo_Client: client
   }
   console.log(data)
   await companyService.create(data)
