@@ -95,8 +95,8 @@
           v-model="attendee.tech_Sem"
           name="reg-type"
         >
-          <option value="1">Yes</option>
-          <option value="0">No</option>
+          <option value="Attending">Yes</option>
+          <option value="">No</option>
         </select>
       </label>
 
@@ -110,10 +110,10 @@
               @click="">
         Print
       </button>
-      <button>
+      <button
         class="--secondary"
-        @click="badgePdf.save">
-        Print
+        @click="printBadge">
+        printBadge
       </button>
     </div>
 
@@ -190,7 +190,7 @@ const attendee = ref( {
   address: 'Claire Test',
   title: 'Claire Test',
   reg_Type: 'Attendee',
-  tech_Sem: '1'
+  tech_Sem: 'Attending'
 } )
 
 async function createAttendee( a ) {
@@ -210,11 +210,10 @@ const badgePdf = new jsPDF( {
 } )
 
 async function printBadge() {
-
+  HTMLCanvasElement
+  badgePdf.text( 'Employer', 0.125, 0.25 )
+  badgePdf.save( 'two-by-four.pdf' )
 }
-
-badgePdf.text( 'Employer', 0.125, 0.25 )
-badgePdf.save( 'two-by-four.pdf' )
 
 
 </script>

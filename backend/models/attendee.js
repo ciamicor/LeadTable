@@ -24,7 +24,7 @@ Attendee.init( {
   contact_Employer: DataTypes.STRING,
   address: DataTypes.STRING,
   reg_Type: DataTypes.STRING,
-  tech_Sem: DataTypes.BOOLEAN
+  tech_Sem: DataTypes.STRING
 }, {
   sequelize,
   modelName: 'Attendee'

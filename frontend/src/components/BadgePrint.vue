@@ -70,7 +70,7 @@ import AttendeeBadgeRow from '@/components/AttendeeBadgeRow.vue'
 import { useVueToPrint } from 'vue-to-print'
 import { onBeforeMount, ref } from 'vue'
 import { getAllAttendees_Service } from '@/services/AttendeeDataService.ts'
-import { sortFName_Service } from '@/services/SortService.js'
+import { sortLName_Service } from '@/services/SortService.js'
 
 /*-| Variables |-*/
 const attendeeList = ref( {} )
@@ -91,7 +91,7 @@ onBeforeMount( () => {
 /*-| Get All |-*/
 async function getAllAttendees( o ) {
   await getAllAttendees_Service( o )
-  await sortFName_Service( o.value )
+  await sortLName_Service( o.value )
   console.log( 'Attendees: ', o, typeof o )
   // await chunkObject( o )
 }

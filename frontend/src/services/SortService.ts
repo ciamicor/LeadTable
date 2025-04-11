@@ -22,4 +22,24 @@ async function sortFName_Service(i: Array<{}>) {
   })
 }
 
-export { sortFName_Service }
+// By first name
+async function sortLName_Service(i: Array<{}>) {
+
+  i.sort((
+    a: any,
+    b: any
+  ) => {
+    const nameA = a.name_Last.toUpperCase() // ignore upper and lowercase
+    const nameB = b.name_Last.toUpperCase() // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1
+    }
+    if (nameA > nameB) {
+      return 1
+    }
+    // names must be equal
+    return 0
+  })
+}
+
+export { sortFName_Service, sortLName_Service }
