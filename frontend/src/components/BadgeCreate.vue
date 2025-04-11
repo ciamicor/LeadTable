@@ -235,7 +235,8 @@ async function printBadge() {
   badgePdf.text( 'Employer', 0.125, 0.3 )
   badgePdf.text( 'My Name', 0.125, 0.875 )
   badgePdf.text( 'Position', 0.125, 2.875 )
-  badgePdf.save( 'two-by-four.pdf' )
+  badgePdf.output( 'dataurlnewwindow' )
+  // badgePdf.save( `${ attendee.value.name_First }-${ attendee.value.name_Last }-Badge-${ companyLocalData.expo_Client }-${ companyLocalData.expo_Year }.pdf` )
 }
 
 
