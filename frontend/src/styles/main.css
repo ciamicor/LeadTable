@@ -2542,6 +2542,8 @@ p, li, h1, h2, h3, h4, h5 {
   padding: 0;
 }
 
+/*-| Grid |-*/
+/*---+----+---+----+---+----+---+----+---*/
 .adapt-grid, .lead-cards-container, .badge-select-grid {
   display: grid;
   grid-template-rows: auto;
@@ -2567,6 +2569,14 @@ p, li, h1, h2, h3, h4, h5 {
   .adapt-grid, .lead-cards-container, .badge-select-grid {
     grid-template-columns: repeat(4, minmax(400px, 1fr));
   }
+}
+.adapt-grid .grid-card, .adapt-grid .lead-card, .lead-cards-container .grid-card, .lead-cards-container .lead-card, .badge-select-grid .grid-card, .badge-select-grid .lead-card, .badge-select-grid .badge-select-wrap {
+  display: grid;
+  grid-template-rows: min-content;
+  align-items: start;
+  padding: 20px 20px;
+  border: 1px solid var(--grey-8);
+  border-radius: 8px;
 }
 
 /*-| Columns by Breakpoint |-*/
@@ -9178,11 +9188,8 @@ button.--warn--invert:hover,
   margin: 86px 0 0 0;
 }
 .badge-select-grid .badge-select-wrap {
-  display: grid;
-  grid-template-columns: 0.25fr 1fr;
-  gap: 24px;
-  padding: 16px;
-  border: 1px solid var(--color-success-8);
+  grid-template-columns: min-content 1fr;
+  gap: 16px;
 }
 .badge-select-grid .badge-select-wrap * {
   margin: 0;
@@ -9298,14 +9305,6 @@ button.--warn--invert:hover,
   backdrop-filter: blur(80px);
 }
 
-.lead-card {
-  display: grid;
-  grid-template-rows: min-content;
-  align-items: start;
-  padding: 20px 20px;
-  border: 1px solid var(--grey-8);
-  border-radius: 8px;
-}
 .lead-card .card-label {
   color: var(--grey-1);
   font-size: 14px;

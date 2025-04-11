@@ -1,6 +1,6 @@
 <template>
 
-  <div class="--p-8 row --pos-fixed --bg-blur-8 --top-0 --top-r --right-0 --left-0">
+  <div class="--p-4 row --pos-fixed --bg-blur-8 --top-0 --top-r --right-0 --left-0">
     <div class="search-wrap --place-self-center">
       <button
         v-show="searchTerm !== ''"
@@ -10,11 +10,10 @@
       </button>
       <input id="searchAttendees"
              v-model="searchTerm"
-             class="search --m-h-8"
+             class="search"
              name="searchAttendees"
              placeholder="Search Attendees"
-             type="text"
-             @change="searchNames(attendeeList, searchTerm)">
+             type="text">
     </div>
     <button class="--warn"
             @click="printBadges">
@@ -68,19 +67,16 @@
 // TODO Convert to TS
 import BadgeSingle from '@/components/BadgeSingle.vue'
 import AttendeeBadgeRow from '@/components/AttendeeBadgeRow.vue'
-
 import { useVueToPrint } from 'vue-to-print'
-import { onBeforeMount, onMounted, ref } from 'vue'
+import { onBeforeMount, ref } from 'vue'
 import { getAllAttendees_Service } from '@/services/AttendeeDataService.ts'
 import { sortFName_Service } from '@/services/SortService.js'
-import { searchAttendeeName_Service } from '@/services/SearchService.js'
 
 /*-| Variables |-*/
 const attendeeList = ref( {} )
 const attendeeListSelected = ref( [] )
 const attendeeListGrouped = ref( [] )
 const searchTerm = ref( '' )
-const searchResult = ref( {} )
 /*-| Print Component |-*/
 const componentRef = ref()
 
@@ -101,15 +97,8 @@ async function getAllAttendees( o ) {
 }
 
 /*-| Search |-*/
-async function searchNames( o, s, r ) {
-  searchResult.value = await searchAttendeeName_Service( o, s, r )
-  console.log( 'Search Result: ', searchResult.value )
-  // await chunkObject( r )
-}
-
 async function resetSearch() {
   searchTerm.value = ''
-  await searchNames( attendeeList.value, '', searchResult.value )
 }
 
 /*-| Chunk array for printing |-*/

@@ -57,6 +57,8 @@ $breakpoints:         (
   }
 }
 
+/*-| Grid |-*/
+/*---+----+---+----+---+----+---+----+---*/
 $grid-card-min-width: 400;
 $grid-card-h-padding: 20;
 .adapt-grid {
@@ -70,6 +72,14 @@ $grid-card-h-padding: 20;
     @include breakpoint(calc($bp + (($grid-card-h-padding * 2) * $c))) {
       grid-template-columns: repeat($c, minmax(#{$grid-card-min-width + "px" }, 1fr));
     }
+  }
+  .grid-card {
+    display:            grid;
+    grid-template-rows: min-content;
+    align-items:        start;
+    padding:            $sp-7 #{$grid-card-h-padding + "px"};
+    border:             1px solid $grey-8;
+    border-radius:      $item-border;
   }
 }
 

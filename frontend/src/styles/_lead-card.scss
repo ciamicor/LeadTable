@@ -4,12 +4,7 @@
 }
 
 .lead-card {
-  display:            grid;
-  grid-template-rows: min-content;
-  align-items:        start;
-  padding:            $sp-7 #{$grid-card-h-padding + "px"};
-  border:             1px solid $grey-8;
-  border-radius:      $item-border;
+@extend .grid-card;
   .card-label {
     color:          $grey-1;
     font-size:      $font-xs - 2px;

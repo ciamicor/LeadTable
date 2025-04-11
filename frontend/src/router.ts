@@ -5,6 +5,7 @@ import FloorPlan from '@/components/FloorPlan.vue'
 import CompanyProfile from '@/components/CompanyProfile.vue'
 import BadgePrint from '@/components/BadgePrint.vue'
 import CreateBadge from '@/components/BadgeCreate.vue'
+import UploadAttendees from '@/components/UploadAttendees.vue'
 
 const routes = [
   {
@@ -41,6 +42,11 @@ const routes = [
     path: '/create-badge',
     name: 'create-badge',
     component: CreateBadge
+  },
+  {
+    path: '/upload-attendees',
+    name: 'upload-attendees',
+    component: UploadAttendees
   }
 ]
 
