@@ -17,134 +17,138 @@
                            register.</p>
 
     </div>
-    <div v-if="companyLocalData.name"
-         class="col-12-300 col-10-800">
-      <p class="--m-0">{{ companyLocalData.expo_Client }} {{ companyLocalData.expo_Year }}
-                       Supplier's Day</p>
-      <h2>{{ companyLocalData.name }}</h2>
-    </div>
-    <div v-if="companyLocalData.lead_Ret"
-         class="lead-cards-container">
-      <div v-for="(lead, index) in leadsList"
-           :key="index"
-           :data-attendee-id="lead.attendee_Id"
-           :data-company-scan="lead.scan_Company_Id"
-           class="lead-card"
-      >
-        <LeadCard :lead="lead" />
+    <div v-if="companyLocalData.lead_Ret">
+      <div class="row --p-4">
+        <div v-if="companyLocalData.name"
+             class="col-12-300 col-10-800">
+          <p class="--m-0">{{ companyLocalData.expo_Client }} {{ companyLocalData.expo_Year }}
+                           Supplier's Day</p>
+          <h2>{{ companyLocalData.name }}</h2>
+        </div>
       </div>
+      <div class="lead-cards-container">
+        <div v-for="(lead, index) in leadsList"
+             :key="index"
+             :data-attendee-id="lead.attendee_Id"
+             :data-company-scan="lead.scan_Company_Id"
+             class="lead-card"
+        >
+          <LeadCard :lead="lead" />
+        </div>
+      </div>
+      <!--    <div v-if="companyLocalData.lead_Ret"
+               class="table-container &#45;&#45;m-b-24">
+            <table>
+              <thead>
+              <tr>
+                <th colspan="2">Name</th>
+                <th id="email">Email</th>
+                <th id="phone">Phone</th>
+                <th id="employer">Employer</th>
+                <th id="employer">Title</th>
+                <th id="score">Score</th>
+                <th id="comment">Comment</th>
+                <th v-if="debug"
+                    id="expo_Year">Expo
+                </th>
+                <th v-if="debug"
+                    id="expo_Client">Client
+                </th>
+                <th v-if="debug"
+                    id="company_Id">c_Id
+                </th>
+                <th v-if="debug">Edit/Add
+                </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr v-for="(lead, index) in leadsList"
+                  :key="index"
+                  :data-attendee-id="lead.attendee_Id"
+                  :data-company-scan="lead.scan_Company_Id"
+              >
+                <LeadCard :lead="lead" />
+              </tr>
+              <tr v-if="debug">
+                <td>
+                  <input v-model="lead.name_First"
+                         name="nameFirst"
+                         type="text">
+                </td>
+                <td>
+                  <input v-model="lead.name_Last"
+                         name="nameLast"
+                         type="text">
+                </td>
+                <td>
+                  <input v-model="lead.email"
+                         name="email"
+                         type="email">
+                </td>
+                <td>
+                  <input v-model="lead.phone"
+                         name="phone"
+                         type="tel">
+                </td>
+                <td>
+                  <input v-model="lead.employer"
+                         name="employer"
+                         type="text">
+                </td>
+                <td>
+                  <input v-model="lead.title"
+                         name="employer"
+                         type="text">
+                </td>
+                <td>
+                  <input v-model="lead.score"
+                         name="score"
+                         type="text">
+                </td>
+                <td>
+                  <input v-model="lead.comment"
+                         name="comment"
+                         type="text">
+                </td>
+                <td>
+                  {{ lead.expo_Year }}
+                </td>
+                <td>
+                  {{ lead.expo_Client }}
+                </td>
+                <td>
+                  {{ lead.scan_Company_Id }}
+                </td>
+                <td>
+                  <button class="&#45;&#45;square &#45;&#45;success"
+                          @click="createLead(lead)">
+                    <svg
+                      fill="none"
+                      height="20"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                            stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>-->
+      <router-link
+        v-if="companyLocalData.lead_Ret"
+        class="button --stacked --float --bottom-r --success--invert"
+        to="/scan-lead">
+        <i class="bi-qr-code-scan"></i>
+        Scan
+      </router-link>
     </div>
-    <!--    <div v-if="companyLocalData.lead_Ret"
-             class="table-container &#45;&#45;m-b-24">
-          <table>
-            <thead>
-            <tr>
-              <th colspan="2">Name</th>
-              <th id="email">Email</th>
-              <th id="phone">Phone</th>
-              <th id="employer">Employer</th>
-              <th id="employer">Title</th>
-              <th id="score">Score</th>
-              <th id="comment">Comment</th>
-              <th v-if="debug"
-                  id="expo_Year">Expo
-              </th>
-              <th v-if="debug"
-                  id="expo_Client">Client
-              </th>
-              <th v-if="debug"
-                  id="company_Id">c_Id
-              </th>
-              <th v-if="debug">Edit/Add
-              </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="(lead, index) in leadsList"
-                :key="index"
-                :data-attendee-id="lead.attendee_Id"
-                :data-company-scan="lead.scan_Company_Id"
-            >
-              <LeadCard :lead="lead" />
-            </tr>
-            <tr v-if="debug">
-              <td>
-                <input v-model="lead.name_First"
-                       name="nameFirst"
-                       type="text">
-              </td>
-              <td>
-                <input v-model="lead.name_Last"
-                       name="nameLast"
-                       type="text">
-              </td>
-              <td>
-                <input v-model="lead.email"
-                       name="email"
-                       type="email">
-              </td>
-              <td>
-                <input v-model="lead.phone"
-                       name="phone"
-                       type="tel">
-              </td>
-              <td>
-                <input v-model="lead.employer"
-                       name="employer"
-                       type="text">
-              </td>
-              <td>
-                <input v-model="lead.title"
-                       name="employer"
-                       type="text">
-              </td>
-              <td>
-                <input v-model="lead.score"
-                       name="score"
-                       type="text">
-              </td>
-              <td>
-                <input v-model="lead.comment"
-                       name="comment"
-                       type="text">
-              </td>
-              <td>
-                {{ lead.expo_Year }}
-              </td>
-              <td>
-                {{ lead.expo_Client }}
-              </td>
-              <td>
-                {{ lead.scan_Company_Id }}
-              </td>
-              <td>
-                <button class="&#45;&#45;square &#45;&#45;success"
-                        @click="createLead(lead)">
-                  <svg
-                    fill="none"
-                    height="20"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                          stroke-linecap="round"
-                          stroke-linejoin="round" />
-                  </svg>
-                </button>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </div>-->
-    <router-link
-      v-if="companyLocalData.lead_Ret"
-      class="button --stacked --float --bottom-r --success--invert"
-      to="/scan-lead">
-      <i class="bi-qr-code-scan"></i>
-      Scan
-    </router-link>
+
   </div>
 
 </template>
