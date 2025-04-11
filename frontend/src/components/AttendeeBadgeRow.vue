@@ -1,10 +1,10 @@
 <template>
   <div class="badge-select-wrap">
     <div class="select-toggle">
-      <button :class="!badgeSelected ? 'bi-x-lg --warn' :  'bi-check-lg --success --invert'"
+      <button :class="!badgeSelected ? 'bi-x-lg bi-circle' :  'bi-check-lg --success --invert'"
               class=""
               @click="selectBadge(attendee)">
-        {{ attendee.id }}
+        <!--        {{ attendee.id }}-->
       </button>
     </div>
     <div class="col-10-300">
