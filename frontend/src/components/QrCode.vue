@@ -21,6 +21,7 @@ import type { Level, RenderAs, GradientType, ImageSettings } from 'qrcode.vue'
 const { urlValue } = defineProps({
   urlValue: String
 })
+
 const value = ref('http://leadtable.iami411.org/scan-lead?id=' + urlValue)
 const level = ref<Level>('M')
 const renderAs = ref<RenderAs>('svg')
