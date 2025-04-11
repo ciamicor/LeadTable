@@ -213,6 +213,7 @@ async function addDbLead() {
       email: lead.value.email,
       phone: lead.value.phone,
       employer: lead.value.employer,
+      address: lead.value.address,
       score: lead.value.score,
       comment: lead.value.comment
     } )
@@ -238,12 +239,13 @@ const lead = ref(
     expo_Year: companyLocalData.expo_Year,
     attendee_Id: null,
     scan_Company_Id: companyLocalData.id,
-    name_First: 'Clara',
-    name_Last: 'Mooney',
-    title: 'Developer',
-    email: 'claire@iami411.org',
-    phone: '6066066066',
-    employer: 'IAMI',
+    name_First: '',
+    name_Last: '',
+    title: '',
+    email: '',
+    phone: '',
+    address: '',
+    employer: '',
     score: 5,
     comment: 'I would do anything for her.'
   }
@@ -259,6 +261,7 @@ async function resetLeadVal() {
   lead.value.title = null
   lead.value.email = null
   lead.value.phone = null
+  lead.value.address = null
   lead.value.employer = null
   lead.value.score = 5
   lead.value.comment = ''

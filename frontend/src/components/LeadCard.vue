@@ -16,6 +16,14 @@
         {{ lead.phone }}</a>
     </div>
   </div>
+  <div id="address">
+    <div>
+      <span id="address">
+        <i class="bi-map --p-r-2" />
+        {{ lead.address }}
+      </span>
+    </div>
+  </div>
   <div id="score">
     <i v-for="n in lead.score"
        class="bi-star-fill">

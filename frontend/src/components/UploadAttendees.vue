@@ -31,6 +31,4 @@ async function handleFileAsync(e: any) {
     createAttendee_Service(e)
   })
 }
-
-
 </script>

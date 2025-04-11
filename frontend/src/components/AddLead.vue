@@ -37,6 +37,7 @@
       <p><span>Phone: </span>{{ attendee.contact_Phone }}</p>
       <p><span>Employer: </span>{{ attendee.contact_Employer }}</p>
       <p><span>Title: </span>{{ attendee.title }}</p>
+      <p><span>Address: </span>{{ attendee.address }}</p>
       <form action=""
             class="col-6">
         <fieldset>
@@ -151,6 +152,7 @@ let lead = ref(
     email: attendee.value.contact_Email,
     phone: attendee.value.contact_Phone,
     employer: attendee.value.contact_Employer,
+    address: attendee.value.address,
     title: attendee.value.title,
     score: 5,
     comment: null
@@ -202,6 +204,7 @@ async function resetLead() {
   lead.value.phone = null
   lead.value.employer = null
   lead.value.title = null
+  lead.value.address = null
   lead.value.comment = null
 }
 
@@ -214,6 +217,7 @@ async function loadLead() {
   lead.value.phone = attendee.value.contact_Phone
   lead.value.employer = attendee.value.contact_Employer
   lead.value.title = attendee.value.title
+  lead.value.address = attendee.value.address
 }
 
 /*-| Get ID from QR Code |-*/

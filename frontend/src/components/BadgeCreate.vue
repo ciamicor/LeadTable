@@ -107,12 +107,17 @@
       </button>
       <button v-if="showQr"
               class="--secondary"
-              @click="handlePrint">
+              @click="">
+        Print
+      </button>
+      <button>
+        class="--secondary"
+        @click="badgePdf.save">
         Print
       </button>
     </div>
 
-    <div ref="componentRef"
+    <div ref=""
          class="badges-page-container">
       <div
         class="badge-grid-container"
@@ -158,16 +163,17 @@
 <script lang="js"
         setup>
 // TODO Convert to TS
-import { useVueToPrint } from 'vue-to-print'
+// import { useVueToPrint } from 'vue-to-print'
+import { jsPDF } from 'jspdf'
 import QrCode from '@/components/QrCode.vue'
-import { onBeforeMount, ref } from 'vue'
+import { ref } from 'vue'
 import { createAttendee_Service } from '@/services/AttendeeDataService.ts'
 import { useCompanyLocalStore } from '@/main.js'
 
 const companyLocalData = useCompanyLocalStore()
 
 /*-| Print Component |-*/
-const componentRef = ref()
+
 
 /*-| Attendees |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
@@ -176,15 +182,15 @@ const attendeeId = ref()
 const attendee = ref( {
   expo_Year: companyLocalData.expo_Year,
   expo_Client: companyLocalData.expo_Client,
-  name_First: '',
-  name_Last: '',
-  contact_Email: '',
-  contact_Phone: '',
-  contact_Employer: '',
-  address: '',
-  title: '',
-  reg_Type: '',
-  tech_Sem: ''
+  name_First: 'Claire Test',
+  name_Last: 'Claire Test',
+  contact_Email: 'Claire Test',
+  contact_Phone: 'Claire Test',
+  contact_Employer: 'Claire Test',
+  address: 'Claire Test',
+  title: 'Claire Test',
+  reg_Type: 'Attendee',
+  tech_Sem: '1'
 } )
 
 async function createAttendee( a ) {
@@ -197,10 +203,18 @@ async function createAttendee( a ) {
 
 /*-| Printing |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-const { handlePrint } = useVueToPrint( {
-  content: componentRef,
-  documentTitle: 'Badges'
+const badgePdf = new jsPDF( {
+  orientation: 'landscape',
+  unit: 'in',
+  format: [ 4, 3 ]
 } )
+
+async function printBadge() {
+
+}
+
+badgePdf.text( 'Employer', 0.125, 0.25 )
+badgePdf.save( 'two-by-four.pdf' )
 
 
 </script>
