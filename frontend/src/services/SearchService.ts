@@ -3,7 +3,7 @@
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 
 // By first name
-async function searchAttendeeName_Service(o: Array<{}>, s: String, r: any) {
+async function searchAttendeeName_Service(o: any, s: String) {
   /*let searchTerms = s.split(' ')
   let searchHold: object[] = []
   console.log(searchTerms)
@@ -14,7 +14,6 @@ async function searchAttendeeName_Service(o: Array<{}>, s: String, r: any) {
         ||
         a.name_Last.trim().toUpperCase().includes(searchTerms[x].trim().toUpperCase())
     })
-
     searchHold.push(f)
     console.log('searchHold:', searchHold)
     console.log('o:', o)
@@ -25,9 +24,15 @@ async function searchAttendeeName_Service(o: Array<{}>, s: String, r: any) {
   console.log('Search Service ', r)*/
 
   /*-| Single Term Search |-*/
-  r.value = o.filter((a: any) => {
-    return a.name_First.trim().toUpperCase().includes(s.trim().toUpperCase()) || a.name_Last.trim().toUpperCase().includes(s.trim().toUpperCase())
-  })
+  console.log(typeof o)
+  console.log('o: ', o[3].name_First)
+
+  return o.filter((a: any) => {
+      // console.log(a.name_First.includes('Abhay'))
+      return a.name_First.trim().toUpperCase().includes(s.trim().toUpperCase()) || a.name_Last.trim().toUpperCase().includes(s.trim().toUpperCase())
+    }
+  )
+
 }
 
 export { searchAttendeeName_Service }

@@ -9,7 +9,6 @@
         </div>-->
     <div
       class="col-12-300 col-10-600 col-8-900 --p-b-24 --p-t-12"
-      style="grid-row: span 3;"
     >
       <h1>Attendee Registration</h1>
       <p>Register for the {{ companyLocalData.expo_Client }} {{ companyLocalData.expo_Year }}
@@ -109,7 +108,7 @@
         class="badge-grid-container"
       >
         <div
-          class="badge-wrapper"
+          class="badge-wrap"
         >
           <div class="--attendee-info-container">
             <div class="--attendee-info-container">

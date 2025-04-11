@@ -18,7 +18,7 @@
 
     </div>
     <div v-if="companyLocalData.name"
-         class="col-12-300">
+         class="col-12-300 col-10-800">
       <p class="--m-0">{{ companyLocalData.expo_Client }} {{ companyLocalData.expo_Year }}
                        Supplier's Day</p>
       <h2>{{ companyLocalData.name }}</h2>

@@ -1,20 +1,20 @@
 /*-| Variables |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-$column-number:  12;
-$max-page-width: 1600px;
-$row-gap:        $sp-4;
-$col-gap:        $sp-4;
+$column-number:       12;
+$max-page-width:      1600px;
+$row-gap:             $sp-4;
+$col-gap:             $sp-4;
 /*-| Breakpoints |-*/
-$breakpoints:    (
-                   xxxs: 300,
-                   xxs: 400,
-                   xs: 500,
-                   sm: 700,
-                   md: 900,
-                   lg: 1100,
-                   xl: 1400,
-                   xxl: 1600,
-                 );
+$breakpoints:         (
+                        xxxs: 300,
+                        xxs: 400,
+                        xs: 500,
+                        sm: 700,
+                        md: 900,
+                        lg: 1100,
+                        xl: 1400,
+                        xxl: 1600,
+                      );
 /*-| Setup |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 /*-| Breakpoints |-*/
@@ -47,13 +47,29 @@ $breakpoints:    (
   max-width:     $max-page-width;
   margin:        0 auto;
   padding:       $sp-v-2 $sp-v-2;
-  .--full {
+  &.--full {
     max-width: 100%;
-    margin:    0;
+    margin:    0 !important;
   }
-  .--items {
+  &.--items {
     margin:  0;
     padding: 0;
+  }
+}
+
+$grid-card-min-width: 400;
+$grid-card-h-padding: 20;
+.adapt-grid {
+  display:            grid;
+  grid-template-rows: auto;
+  gap:                min(24px, 2vw);
+  padding:            0 0 $sp-v-14;
+  @for $c from 1 through 4 {
+    $gap-base: 8;
+    $bp:       $c * $grid-card-min-width;
+    @include breakpoint(calc($bp + (($grid-card-h-padding * 2) * $c))) {
+      grid-template-columns: repeat($c, minmax(#{$grid-card-min-width + "px" }, 1fr));
+    }
   }
 }
 
@@ -108,22 +124,22 @@ $breakpoints:    (
 
 /*-| Placement |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-$align-type:     (
-                   "place",
-                   "justify",
-                   "align"
-                 );
-$align-subject:  (
-                   "self",
-                   "items",
-                   "content"
-                 );
-$align-area:     (
-                   "start",
-                   "center",
-                   "end",
-                   "stretch"
-                 );
+$align-type:          (
+                        "place",
+                        "justify",
+                        "align"
+                      );
+$align-subject:       (
+                        "self",
+                        "items",
+                        "content"
+                      );
+$align-area:          (
+                        "start",
+                        "center",
+                        "end",
+                        "stretch"
+                      );
 @each $type in $align-type {
   @each $subject in $align-subject {
     @each $area in $align-area {

@@ -2468,30 +2468,6 @@
   font-family: InterVariable, Arial, sans-serif;
 }
 
-.--font-xs {
-  font-size: 16px;
-}
-
-.--font-sm {
-  font-size: 18px;
-}
-
-.--font-md {
-  font-size: 22px;
-}
-
-.--font-lg {
-  font-size: 26px;
-}
-
-.--font-xl {
-  font-size: 30px;
-}
-
-.--font-xxl {
-  font-size: 34px;
-}
-
 p, button, li, label {
   font-size: 18px;
 }
@@ -2513,12 +2489,13 @@ h3 {
 
 h4 {
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 h5 {
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 p, li, h1, h2, h3, h4, h5 {
@@ -2556,13 +2533,40 @@ p, li, h1, h2, h3, h4, h5 {
   margin: 0 auto;
   padding: max(4vw, 8px) max(4vw, 8px);
 }
-.row .--full, .lead-card #contact .--full {
+.row.--full, .lead-card .--full#contact {
   max-width: 100%;
-  margin: 0;
+  margin: 0 !important;
 }
-.row .--items, .lead-card #contact .--items {
+.row.--items, .lead-card .--items#contact {
   margin: 0;
   padding: 0;
+}
+
+.adapt-grid, .lead-cards-container, .badge-select-grid {
+  display: grid;
+  grid-template-rows: auto;
+  gap: min(24px, 2vw);
+  padding: 0 0 max(32vw, 96px);
+}
+@media (min-width: 440px) {
+  .adapt-grid, .lead-cards-container, .badge-select-grid {
+    grid-template-columns: repeat(1, minmax(400px, 1fr));
+  }
+}
+@media (min-width: 880px) {
+  .adapt-grid, .lead-cards-container, .badge-select-grid {
+    grid-template-columns: repeat(2, minmax(400px, 1fr));
+  }
+}
+@media (min-width: 1320px) {
+  .adapt-grid, .lead-cards-container, .badge-select-grid {
+    grid-template-columns: repeat(3, minmax(400px, 1fr));
+  }
+}
+@media (min-width: 1760px) {
+  .adapt-grid, .lead-cards-container, .badge-select-grid {
+    grid-template-columns: repeat(4, minmax(400px, 1fr));
+  }
 }
 
 /*-| Columns by Breakpoint |-*/
@@ -8829,11 +8833,11 @@ table tbody tr input:active, table tbody tr input:focus {
 
 label {
   display: grid;
+  flex: 1 1 auto;
   gap: 8px;
   font-size: 16px;
   margin: 8px 0 0 0;
   padding: 0 4px;
-  flex: 1 1 auto;
 }
 label input, label select, label textarea {
   flex: 1 1 auto;
@@ -8855,10 +8859,10 @@ input:focus, input:focus-visible, select:focus, select:focus-visible {
   box-shadow: 0 0 8px 0 var(--color-secondary-10), inset 0 0 8px 0 var(--color-secondary-10);
 }
 
-.search-wrapper {
+.search-wrap {
   position: relative;
 }
-.search-wrapper button {
+.search-wrap button {
   position: absolute;
   top: 50%;
   right: 24px;
@@ -8867,12 +8871,12 @@ input:focus, input:focus-visible, select:focus, select:focus-visible {
   translate: 0 -50%;
   scale: 0.85;
 }
-.search-wrapper input.search {
+.search-wrap input.search {
   padding: 16px 24px;
   border-radius: 65px;
   transition: border-radius 200ms ease-in-out;
 }
-.search-wrapper input.search:focus, .search-wrapper input.search:focus-visible {
+.search-wrap input.search:focus, .search-wrap input.search:focus-visible {
   border-radius: 8px;
 }
 
@@ -8916,6 +8920,7 @@ input:focus, input:focus-visible, select:focus, select:focus-visible {
   width: 100dvw;
   max-width: 100dvw;
   height: calc(100dvh - 92px);
+  background: var(--grey-12);
 }
 .view-container {
   display: flex;
@@ -9085,7 +9090,7 @@ button.--success:hover,
 button.--success--invert,
 .button.--success--invert {
   color: var(--color-success-12);
-  border-color: var(--color-success-8);
+  border-color: var(--color-success-4);
   background: var(--color-success-6);
 }
 button.--success--invert:hover,
@@ -9167,6 +9172,24 @@ button.--warn--invert:hover,
   font-size: 22px;
 }
 
+/*-| Badges for Selecting |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+.badge-select-grid {
+  margin: 86px 0 0 0;
+}
+.badge-select-grid .badge-select-wrap {
+  display: grid;
+  grid-template-columns: 0.25fr 1fr;
+  gap: 24px;
+  padding: 16px;
+  border: 1px solid var(--color-success-8);
+}
+.badge-select-grid .badge-select-wrap * {
+  margin: 0;
+}
+
+/*-| Badges for Printing |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 .badges-page-container {
   z-index: -1;
   position: absolute;
@@ -9181,56 +9204,56 @@ button.--warn--invert:hover,
   padding-top: 1in;
   padding-left: 0.125in;
 }
-.badge-grid-container .badge-wrapper {
+.badge-grid-container .badge-wrap {
   display: grid;
   grid-template-rows: 1fr 1fr;
   /*width:              4in;
   height:             3in;*/
   padding: 0.165in 0.165in 0.325in;
 }
-.badge-grid-container .badge-wrapper .--attendee-info-container {
+.badge-grid-container .badge-wrap .--attendee-info-container {
   display: grid;
   grid-template-rows: repeat(3, min-content);
   gap: 8px;
   width: 100%;
 }
-.badge-grid-container .badge-wrapper .--attendee-info-container * {
+.badge-grid-container .badge-wrap .--attendee-info-container * {
   line-height: 1;
   text-transform: capitalize;
   margin: 0;
 }
-.badge-grid-container .badge-wrapper .--attendee-info-container input {
+.badge-grid-container .badge-wrap .--attendee-info-container input {
   padding: 0 !important;
   border: none;
 }
-.badge-grid-container .badge-wrapper .--attendee-info-container .--employer {
+.badge-grid-container .badge-wrap .--attendee-info-container .--employer {
   color: var(--color-primary-4);
   font-size: 1.25rem;
   font-variation-settings: "wght" 300, "wdth" 100, "opsz" 15;
 }
-.badge-grid-container .badge-wrapper .--attendee-info-container .--name {
+.badge-grid-container .badge-wrap .--attendee-info-container .--name {
   font-size: 30px;
   font-variation-settings: "wght" 600, "wdth" 100, "opsz" 15;
 }
-.badge-grid-container .badge-wrapper .--attendee-info-container .--title {
+.badge-grid-container .badge-wrap .--attendee-info-container .--title {
   color: var(--grey-5);
   font-size: 1.25rem;
   font-style: italic;
   font-variation-settings: "wght" 300, "wdth" 100, "opsz" 15;
 }
-.badge-grid-container .badge-wrapper .badge--images-container {
+.badge-grid-container .badge-wrap .badge--images-container {
   display: grid;
   grid-template-columns: 0.65fr 1fr;
   grid-template-rows: 1.175in;
   place-content: center;
   place-items: center start;
 }
-.badge-grid-container .badge-wrapper .badge--images-container .badge--qr {
+.badge-grid-container .badge-wrap .badge--images-container .badge--qr {
   width: 115px;
   height: 115px;
   background: var(--grey-10);
 }
-.badge-grid-container .badge-wrapper .badge--images-container img {
+.badge-grid-container .badge-wrap .badge--images-container img {
   width: 185px;
   height: auto;
 }
@@ -9275,36 +9298,6 @@ button.--warn--invert:hover,
   backdrop-filter: blur(80px);
 }
 
-.lead-cards-container {
-  display: grid;
-  grid-template-rows: auto;
-  padding: 0 0 max(48vw, 172px);
-}
-@media (min-width: 440px) {
-  .lead-cards-container {
-    grid-template-columns: repeat(1, minmax(400px, 1fr));
-    gap: min(24px, 2vw);
-  }
-}
-@media (min-width: 880px) {
-  .lead-cards-container {
-    grid-template-columns: repeat(2, minmax(400px, 1fr));
-    gap: min(24px, 2vw);
-  }
-}
-@media (min-width: 1320px) {
-  .lead-cards-container {
-    grid-template-columns: repeat(3, minmax(400px, 1fr));
-    gap: min(24px, 2vw);
-  }
-}
-@media (min-width: 1760px) {
-  .lead-cards-container {
-    grid-template-columns: repeat(4, minmax(400px, 1fr));
-    gap: min(24px, 2vw);
-  }
-}
-
 .lead-card {
   display: grid;
   grid-template-rows: min-content;
@@ -9335,6 +9328,7 @@ button.--warn--invert:hover,
   font-size: 16px;
   font-weight: 300;
   min-width: max-content;
+  transition: background 100ms ease-in-out;
   text-decoration-line: underline;
   text-underline-offset: 2px;
   text-decoration-color: var(--color-success-11);
@@ -9343,6 +9337,9 @@ button.--warn--invert:hover,
 .lead-card #phone i, .lead-card #email i {
   color: var(--color-success-8);
   font-size: 18px;
+}
+.lead-card #phone:hover, .lead-card #email:hover {
+  background: var(--color-success-12);
 }
 .lead-card #score {
   display: grid;

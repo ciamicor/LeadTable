@@ -1,3 +1,22 @@
+/*-| Badges for Selecting |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+.badge-select-grid {
+  @extend .adapt-grid;
+  margin: $sp-18 0 0 0;
+  .badge-select-wrap {
+    display:               grid;
+    grid-template-columns: .25fr 1fr;
+    gap:                   $sp-8;
+    padding:               $sp-6;
+    border:                1px solid $color-success-8;
+    & * {
+      margin: 0;
+    }
+  }
+}
+
+/*-| Badges for Printing |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 .badges-page-container {
   z-index:  -1;
   position: absolute;
@@ -12,7 +31,7 @@
   padding-top:           1in;
   padding-left:          0.125in;
   //outline:               1px dashed black;
-  & .badge-wrapper {
+  & .badge-wrap {
     display:            grid;
     grid-template-rows: 1fr 1fr;
     /*width:              4in;

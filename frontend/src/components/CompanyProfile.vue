@@ -30,7 +30,7 @@
              name="loginId"
              pattern="\d*"
              placeholder="Enter your login ID"
-             type="number">
+             type="tel">
       <button class="--primary--invert"
               @click="login()">
         Exhibitor Portal Login

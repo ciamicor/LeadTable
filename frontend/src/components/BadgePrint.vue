@@ -1,47 +1,62 @@
 <template>
-  <div class="row --gap-24">
-    <div class="col-12-300 --pos-fixed --bg-blur-8 --top-0 --top-r --right-0 --left-0">
-      <div class="row --full">
-        <div class="search-wrapper --place-self-center">
-          <button
-            v-show="searchTerm !== ''"
-            class="--square"
-            @click="resetSearch">
-            <i class="bi-x-lg"></i>
-          </button>
-          <input id="searchAttendees"
-                 v-model="searchTerm"
-                 class="search --m-h-7"
-                 name="searchAttendees"
-                 placeholder="Search Attendees"
-                 type="text"
-                 @change="searchNames(attendeeList, searchTerm, searchResult)">
-        </div>
-        <button class="--warn"
-                @click="handlePrint">Print All Badges
-        </button>
-        <router-link
-          class="button --primary"
-          to="/create-badge">
-          Create Badge
-        </router-link>
-      </div>
+
+  <div class="--p-8 row --pos-fixed --bg-blur-8 --top-0 --top-r --right-0 --left-0">
+    <div class="search-wrap --place-self-center">
+      <button
+        v-show="searchTerm !== ''"
+        class="--square"
+        @click="resetSearch">
+        <i class="bi-x-lg"></i>
+      </button>
+      <input id="searchAttendees"
+             v-model="searchTerm"
+             class="search --m-h-8"
+             name="searchAttendees"
+             placeholder="Search Attendees"
+             type="text"
+             @change="searchNames(attendeeList, searchTerm)">
     </div>
+    <button class="--warn"
+            @click="printBadges">
+      Print {{ attendeeListSelected.length > 0 ? 'Selected' : 'All' }}
+    </button>
+    <router-link
+      class="button --primary"
+      to="/create-badge">
+      Create
+    </router-link>
+  </div>
+
+  <div class="row">
     <div
-      ref="componentRef"
-      class="badges-page-container">
-      <div v-for="(group, i) in attendeeListGrouped"
-           :key="i"
-           class="badge-grid-container"
+      class="badge-select-grid"
+    >
+      <AttendeeBadgeRow
+        v-for="(attendee, ind) in attendeeList"
+        v-show="mergeSearchTerm(attendee.name_First, attendee.name_Last)"
+        :key="ind"
+        :attendee="attendee"
+        class="badge-select-wrap"
+        @add-badge="addBadge"
+        @remove-badge="removeBadge"
+      />
+    </div>
+  </div>
+
+  <div
+    ref="componentRef"
+    class="badges-page-container">
+    <div v-for="(group, i) in attendeeListGrouped"
+         :key="i"
+         class="badge-grid-container"
+    >
+      <div
+        v-for="(attendee, ind) in group"
+        :key="ind"
+        class="badge-wrap"
       >
-        <div
-          v-for="(attendee, ind) in group"
-          :key="ind"
-          class="badge-wrapper"
-        >
-          <BadgeSingle
-            :attendee="attendee" />
-        </div>
+        <BadgeSingle
+          :attendee="attendee" />
       </div>
     </div>
   </div>
@@ -52,15 +67,17 @@
         setup>
 // TODO Convert to TS
 import BadgeSingle from '@/components/BadgeSingle.vue'
+import AttendeeBadgeRow from '@/components/AttendeeBadgeRow.vue'
 
 import { useVueToPrint } from 'vue-to-print'
-import { onBeforeMount, ref } from 'vue'
+import { onBeforeMount, onMounted, ref } from 'vue'
 import { getAllAttendees_Service } from '@/services/AttendeeDataService.ts'
 import { sortFName_Service } from '@/services/SortService.js'
 import { searchAttendeeName_Service } from '@/services/SearchService.js'
 
 /*-| Variables |-*/
 const attendeeList = ref( {} )
+const attendeeListSelected = ref( [] )
 const attendeeListGrouped = ref( [] )
 const searchTerm = ref( '' )
 const searchResult = ref( {} )
@@ -80,14 +97,14 @@ async function getAllAttendees( o ) {
   await getAllAttendees_Service( o )
   await sortFName_Service( o.value )
   console.log( 'Attendees: ', o, typeof o )
-  await chunkObject( o )
+  // await chunkObject( o )
 }
 
 /*-| Search |-*/
 async function searchNames( o, s, r ) {
-  await searchAttendeeName_Service( o, s, r )
-  console.log( 'Search Result: ', r, typeof r )
-  await chunkObject( r )
+  searchResult.value = await searchAttendeeName_Service( o, s, r )
+  console.log( 'Search Result: ', searchResult.value )
+  // await chunkObject( r )
 }
 
 async function resetSearch() {
@@ -102,29 +119,48 @@ async function chunkObject( a ) {
   const groupSize = 6
   let tempGroup = []
   attendeeListGrouped.value = []
-  // console.log( typeof attendeeList )
   const attendeeNum = Object.keys( a.value ).length
-  // console.log( attendeeNum )
-  // console.log( 'Attendee amount', attendeeNum )
-  // console.log( 'Attendee #1', attendeeList.value[0] )
-
   while ( indexCount < attendeeNum ) {
     while ( countPushTotal < groupSize ) {
-      // console.log( 'pushed: ', countPushTotal + indexCount )
       if ( a.value[countPushTotal + indexCount] !== undefined ) {
-        // console.log( 'value found!' )
         tempGroup.push( await a.value[countPushTotal + indexCount] )
       }
       countPushTotal++
-      // console.log( tempGroup )
     }
     attendeeListGrouped.value.push( tempGroup )
     tempGroup = []
     indexCount += groupSize
     countPushTotal = 0
-    // console.log( indexCount )
   }
-  // console.log( 'Grouped List: ', attendeeListGrouped.value )
+}
+
+function mergeSearchTerm( f, l ) {
+  let fullName = f + l
+  return fullName.replace( ' ', '' ).toUpperCase().includes( searchTerm.value.replace( ' ', '' ).toUpperCase() )
+
+}
+
+/*-| List Functions |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+async function addBadge( i ) {
+  attendeeListSelected.value.push( i )
+  await sortFName_Service( attendeeListSelected.value )
+  await chunkObject( attendeeListSelected )
+}
+
+async function removeBadge( i ) {
+  attendeeListGrouped.value.forEach( ( g ) => {
+    let sliceGrouped = g.findIndex( a => a.id === i )
+    if ( sliceGrouped > -1 ) {
+      return g.splice( sliceGrouped, 1 )
+    }
+  } )
+  let sliceSelected = attendeeListSelected.value.findIndex( ( a ) => {
+    return a.id === i
+  } )
+  if ( sliceSelected > -1 ) {
+    return attendeeListSelected.value.splice( sliceSelected, 1 )
+  }
 }
 
 /*-| Printing |-*/
@@ -133,6 +169,15 @@ const { handlePrint } = useVueToPrint( {
   content: componentRef,
   documentTitle: 'Badges'
 } )
+
+async function printBadges() {
+  if ( attendeeListSelected.value.length === 0 ) {
+    attendeeListSelected.value = attendeeList.value
+  }
+  await chunkObject( attendeeListSelected )
+  handlePrint()
+  attendeeListSelected.value = []
+}
 
 
 </script>

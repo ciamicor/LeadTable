@@ -45,7 +45,7 @@ $view-height:       calc($app-height - $nav-height-actual);
     width:     $app-width;
     max-width: $app-width;
     height:    $view-height;
-    // background: $grey-12;
+    background: $grey-12;
   }
   &-container {
     display:    flex;
