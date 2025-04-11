@@ -52,7 +52,7 @@ $grey-hue:           "215";
     }
     --grey-#{$c}: hsl(#{$grey-hue}, 20%, #{(0 + (8 *$c)) + "%"});
   }
-  --font-primary:       hsl(215, 15%, 15%);
+  --font-primary:       $grey-2;
   --font-contrast:      white;
   --color-primary-hs:   85, 65%;
   --color-secondary-hs: 35, 85%;

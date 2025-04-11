@@ -49,6 +49,7 @@ $breakpoints:    (
   padding:       $sp-v-4 $sp-v-5;
   .--full {
     max-width: 100%;
+    margin:    0;
   }
   .--items {
     margin:  0;
@@ -61,7 +62,6 @@ $breakpoints:    (
 @for $size from 3 through 16 {
   @for $i from 1 through $column-number {
     .col-#{$i}-#{$size * 100} {
-      min-width: 200px;
       display:   flex;
       flex-flow: column nowrap;
       gap:       $col-gap;
@@ -78,7 +78,32 @@ $breakpoints:    (
         width: calc((100% * ($i / $column-number)) - $row-gap);
       }
     }
+    .row-#{$i}-#{$size * 100} {
+      display:   flex;
+      flex-flow: row wrap;
+      gap:       $col-gap;
+      & > *:not(.button,button) + .button,
+      & > *:not(.button,button) + button {
+        margin-top: $sp-4;
+      }
+      & > .button:has(+ *:not(.button, button)),
+      & > button:has(+ *:not(.button, button)) {
+        margin-bottom: $sp-6;
+      }
+      @include breakpoint($size * 100) {
+        flex:  0 1 calc((100% * ($i / $column-number)) - $row-gap);
+        width: calc((100% * ($i / $column-number)) - $row-gap);
+      }
+    }
   }
+}
+
+.--f-grow {
+  flex-grow: 1;
+}
+
+.--f-shrink {
+  flex-shrink: 1;
 }
 
 /*-| Placement |-*/

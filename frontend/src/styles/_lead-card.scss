@@ -1,0 +1,68 @@
+$lead-card-min-width: 400;
+$lead-card-h-padding: 20;
+.lead-cards-container {
+  display:            grid;
+  grid-template-rows: auto;
+  gap:                $sp-8;
+  padding:            0 0 $sp-v-18;
+  @for $c from 1 through 4 {
+    $bp: $c * $lead-card-min-width;
+    @include breakpoint(calc($bp + (($lead-card-h-padding * 2) * $c))) {
+      grid-template-columns: repeat($c, minmax(#{$lead-card-min-width + "px" }, 1fr));
+      gap:                   #{8 * $c + "px"};
+    }
+  }
+}
+
+.lead-card {
+  display:            grid;
+  grid-template-rows: min-content;
+  align-items:        start;
+  padding:            $sp-7 #{$lead-card-h-padding + "px"};
+  border:             1px solid $grey-8;
+  border-radius:      $item-border;
+  .card-label {
+    color:          $grey-1;
+    font-size:      $font-xs - 2px;
+    font-weight:    400;
+    text-transform: uppercase;
+  }
+  #name {
+    font-size:     $font-md;
+    font-weight:   500;
+    line-height:   1;
+    margin-bottom: $sp-2;
+  }
+  #contact {
+    @extend .row;
+    justify-content: space-between;
+    margin:          $sp-5 0 0 0;
+    padding:         0;
+  }
+  #phone, #email {
+    color:                     $color-success-4;
+    font-size:                 $font-xs;
+    font-weight:               300;
+    min-width:                 max-content;
+    text-decoration-line:      underline;
+    text-underline-offset:     $sp-1;
+    text-decoration-color:     $color-success-11;
+    text-decoration-thickness: 2px;
+    & i {
+      color:     $color-success-8;
+      font-size: $font-sm;
+    }
+  }
+  #score {
+    display:               grid;
+    grid-template-columns: repeat(5, 28px);
+    margin-top:            $sp-6;
+    & i {
+      color:     $color-secondary-7;
+      font-size: $font-md;
+    }
+  }
+  #comment {
+    margin-top: $sp-6;
+  }
+}

@@ -14,7 +14,7 @@ input, select {
   padding:       $sp-5 $sp-6;
   border:        2px solid $grey-10;
   border-radius: $item-border;
-  transition:    box-shadow $trans-0, border $trans-0;
+  transition:    box-shadow $trans-200, border $trans-200;
   &::placeholder {
     color:      $grey-8;
     font-style: italic;
@@ -40,7 +40,7 @@ input, select {
   input.search {
     padding:       $sp-6 $sp-8;
     border-radius: 65px;
-    transition:    border-radius $trans-0;
+    transition:    border-radius $trans-200;
     &:focus, &:focus-visible {
       border-radius: $item-border;
     }

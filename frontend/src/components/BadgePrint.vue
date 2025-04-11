@@ -1,6 +1,6 @@
 <template>
   <div class="row --gap-24">
-    <div class="col-12-300 --pos-fixed">
+    <div class="col-12-300 --pos-fixed --bg-blur-8 --top-0 --top-r --right-0 --left-0">
       <div class="row --full">
         <div class="search-wrapper --place-self-center">
           <button
@@ -34,9 +34,14 @@
            :key="i"
            class="badge-grid-container"
       >
-        <BadgeSingle v-for="(attendee, ind) in group"
-                     :key="ind"
-                     :attendee="attendee" />
+        <div
+          v-for="(attendee, ind) in group"
+          :key="ind"
+          class="badge-wrapper"
+        >
+          <BadgeSingle
+            :attendee="attendee" />
+        </div>
       </div>
     </div>
   </div>
