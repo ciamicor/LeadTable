@@ -13,6 +13,7 @@ exports.createLead = async ( req, res ) => {
     email,
     phone,
     employer,
+    address,
     title,
     score,
     comment
@@ -29,6 +30,7 @@ exports.createLead = async ( req, res ) => {
       email,
       phone,
       employer,
+      address,
       title,
       score,
       comment

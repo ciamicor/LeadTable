@@ -41,6 +41,7 @@ async function createAttendee_Service(attendee: any) {
     contact_Email: attendee.contact_Email,
     contact_Phone: attendee.contact_Phone,
     contact_Employer: attendee.contact_Employer,
+    address: attendee.address,
     title: attendee.title,
     reg_Type: attendee.reg_Type,
     tech_Sem: attendee.tech_Sem

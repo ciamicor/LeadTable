@@ -24,6 +24,7 @@ exports.createAttendee = async ( req, res ) => {
     contact_Email,
     contact_Phone,
     contact_Employer,
+    address,
     title,
     reg_Type,
     tech_Sem
@@ -37,6 +38,7 @@ exports.createAttendee = async ( req, res ) => {
       contact_Email,
       contact_Phone,
       contact_Employer,
+      address,
       title,
       reg_Type,
       tech_Sem

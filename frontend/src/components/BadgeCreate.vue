@@ -68,6 +68,16 @@
             type="tel">
         </label>
       </div>
+      <div class="row --items">
+        <label>
+          Your Address
+          <input
+            v-model="attendee.address"
+            name="address"
+            placeholder="Enter your address"
+            type="text">
+        </label>
+      </div>
       <label>
         Choose Registration Type
         <select
@@ -171,6 +181,7 @@ const attendee = ref( {
   contact_Email: '',
   contact_Phone: '',
   contact_Employer: '',
+  address: '',
   title: '',
   reg_Type: '',
   tech_Sem: ''

@@ -50,6 +50,7 @@ async function createLead_Service(lead: any) {
     email: lead.email,
     phone: lead.phone,
     employer: lead.employer,
+    address: lead.address,
     title: lead.title,
     score: lead.score,
     comment: lead.comment

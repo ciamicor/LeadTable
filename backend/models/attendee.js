@@ -22,6 +22,7 @@ Attendee.init( {
   contact_Email: DataTypes.STRING,
   contact_Phone: DataTypes.STRING,
   contact_Employer: DataTypes.STRING,
+  address: DataTypes.STRING,
   reg_Type: DataTypes.STRING,
   tech_Sem: DataTypes.BOOLEAN
 }, {

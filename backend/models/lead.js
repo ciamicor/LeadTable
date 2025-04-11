@@ -27,6 +27,7 @@ Lead.init( {
   email: DataTypes.STRING,
   phone: DataTypes.STRING,
   employer: DataTypes.STRING,
+  address: DataTypes.STRING,
   score: {
     type: DataTypes.INTEGER,
     defaultValue: 0

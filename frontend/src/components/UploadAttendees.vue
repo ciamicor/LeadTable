@@ -30,7 +30,6 @@ async function handleFileAsync(e: any) {
   jsonData.forEach(e => {
     createAttendee_Service(e)
   })
-
 }
 
 
