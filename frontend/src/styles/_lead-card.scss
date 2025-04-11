@@ -3,13 +3,13 @@ $lead-card-h-padding: 20;
 .lead-cards-container {
   display:            grid;
   grid-template-rows: auto;
-  gap:                $sp-8;
   padding:            0 0 $sp-v-18;
   @for $c from 1 through 4 {
-    $bp: $c * $lead-card-min-width;
+    $gap-base: 8;
+    $bp:       $c * $lead-card-min-width;
     @include breakpoint(calc($bp + (($lead-card-h-padding * 2) * $c))) {
       grid-template-columns: repeat($c, minmax(#{$lead-card-min-width + "px" }, 1fr));
-      gap:                   #{8 * $c + "px"};
+      gap:                   min(24px, 2vw);
     }
   }
 }

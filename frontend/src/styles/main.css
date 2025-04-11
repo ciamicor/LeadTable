@@ -2543,7 +2543,7 @@ p, li, h1, h2, h3, h4, h5 {
   width: 100dvw;
   max-width: 1600px;
   margin: 0;
-  padding: clamp(24px, 16%, 48px);
+  padding: max(16vw, 48px);
 }
 
 .row, .lead-card #contact {
@@ -2554,7 +2554,7 @@ p, li, h1, h2, h3, h4, h5 {
   gap: 8px;
   max-width: 1600px;
   margin: 0 auto;
-  padding: clamp(8px, 8%, 16px) clamp(12px, 10%, 24px);
+  padding: max(4vw, 8px) max(4vw, 8px);
 }
 .row .--full, .lead-card #contact .--full {
   max-width: 100%;
@@ -9278,31 +9278,30 @@ button.--warn--invert:hover,
 .lead-cards-container {
   display: grid;
   grid-template-rows: auto;
-  gap: 24px;
-  padding: 0 0 clamp(86px, 48%, 172px);
+  padding: 0 0 max(48vw, 172px);
 }
 @media (min-width: 440px) {
   .lead-cards-container {
     grid-template-columns: repeat(1, minmax(400px, 1fr));
-    gap: 8px;
+    gap: min(24px, 2vw);
   }
 }
 @media (min-width: 880px) {
   .lead-cards-container {
     grid-template-columns: repeat(2, minmax(400px, 1fr));
-    gap: 16px;
+    gap: min(24px, 2vw);
   }
 }
 @media (min-width: 1320px) {
   .lead-cards-container {
     grid-template-columns: repeat(3, minmax(400px, 1fr));
-    gap: 24px;
+    gap: min(24px, 2vw);
   }
 }
 @media (min-width: 1760px) {
   .lead-cards-container {
     grid-template-columns: repeat(4, minmax(400px, 1fr));
-    gap: 32px;
+    gap: min(24px, 2vw);
   }
 }
 

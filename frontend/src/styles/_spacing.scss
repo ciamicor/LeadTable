@@ -22,24 +22,24 @@ $sp-17:        72px;
 $sp-18:        86px;
 /*-| Variable |-*/
 /*---+----+---+----+---+----+---+----+---*/
-$sp-v-1:       clamp($sp-1, 2%, calc($sp-1 * 2));
-$sp-v-2:       clamp($sp-2, 4%, calc($sp-2 * 2));
-$sp-v-3:       clamp($sp-3, 6%, calc($sp-3 * 2));
-$sp-v-4:       clamp($sp-4, 8%, calc($sp-4 * 2));
-$sp-v-5:       clamp($sp-5, 10%, calc($sp-5 * 2));
-$sp-v-6:       clamp($sp-6, 12%, calc($sp-6 * 2));
-$sp-v-7:       clamp($sp-7, 14%, calc($sp-7 * 2));
-$sp-v-8:       clamp($sp-8, 16%, calc($sp-8 * 2));
-$sp-v-9:       clamp($sp-9, 18%, calc($sp-9 * 2));
-$sp-v-10:      clamp($sp-10, 20%, calc($sp-10 * 2));
-$sp-v-11:      clamp($sp-11, 22%, calc($sp-11 * 2));
-$sp-v-12:      clamp($sp-12, 24%, calc($sp-12 * 2));
-$sp-v-13:      clamp($sp-13, 28%, calc($sp-13 * 2));
-$sp-v-14:      clamp($sp-14, 32%, calc($sp-14 * 2));
-$sp-v-15:      clamp($sp-15, 36%, calc($sp-15 * 2));
-$sp-v-16:      clamp($sp-16, 40%, calc($sp-16 * 2));
-$sp-v-17:      clamp($sp-17, 44%, calc($sp-17 * 2));
-$sp-v-18:      clamp($sp-18, 48%, calc($sp-18 * 2));
+$sp-v-1:       max(2vw, calc($sp-1 * 2));
+$sp-v-2:       max(4vw, calc($sp-2 * 2));
+$sp-v-3:       max(6vw, calc($sp-3 * 2));
+$sp-v-4:       max(8vw, calc($sp-4 * 2));
+$sp-v-5:       max(10vw, calc($sp-5 * 2));
+$sp-v-6:       max(12vw, calc($sp-6 * 2));
+$sp-v-7:       max(14vw, calc($sp-7 * 2));
+$sp-v-8:       max(16vw, calc($sp-8 * 2));
+$sp-v-9:       max(18vw, calc($sp-9 * 2));
+$sp-v-10:      max(20vw, calc($sp-10 * 2));
+$sp-v-11:      max(22vw, calc($sp-11 * 2));
+$sp-v-12:      max(24vw, calc($sp-12 * 2));
+$sp-v-13:      max(28vw, calc($sp-13 * 2));
+$sp-v-14:      max(32vw, calc($sp-14 * 2));
+$sp-v-15:      max(36vw, calc($sp-15 * 2));
+$sp-v-16:      max(40vw, calc($sp-16 * 2));
+$sp-v-17:      max(44vw, calc($sp-17 * 2));
+$sp-v-18:      max(48vw, calc($sp-18 * 2));
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Items, Borders |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
