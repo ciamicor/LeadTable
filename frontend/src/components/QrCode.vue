@@ -24,7 +24,7 @@ const { urlValue } = defineProps({
 
 const value = ref('http://leadtable.iami411.org/scan-lead?id=' + urlValue)
 const level = ref<Level>('M')
-const renderAs = ref<RenderAs>('svg')
+const renderAs = ref<RenderAs>('canvas')
 const background = ref('#ffffff')
 const foreground = ref('#000000')
 const margin = ref(0)

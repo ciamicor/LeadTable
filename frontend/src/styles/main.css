@@ -9256,8 +9256,8 @@ button.--warn--invert:hover,
   place-items: center start;
 }
 .badge-grid-container .badge-wrap .badge--images-container .badge--qr {
-  width: 115px;
-  height: 115px;
+  width: 115px !important;
+  height: 115px !important;
   background: var(--grey-10);
 }
 .badge-grid-container .badge-wrap .badge--images-container img {

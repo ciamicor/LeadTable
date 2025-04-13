@@ -73,8 +73,8 @@
       place-content:         center;
       place-items:           center start;
       .badge--qr {
-        width:      115px;
-        height:     115px;
+        width:      115px !important;
+        height:     115px !important;
         background: $grey-10;
       }
       img {
