@@ -208,19 +208,19 @@ async function printBadge() {
   } )
 
   /*-| Boundary |-*/
-  badgePdf.setLineWidth( .001 )
-  badgePdf.rect( dim.p, dim.p, dim.h - (dim.p * 2), dim.w - (dim.p * 2) )
+  badgePdf.setLineWidth( .1 )
+  badgePdf.rect( 0, 0, dim.h, dim.w )
   /*-| Add QR Code |-*/
-  badgePdf.addImage( qrData.value, 'PNG', dim.p, dim.h - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot )
+  // badgePdf.addImage( qrData.value, 'PNG', dim.p, dim.h - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot )
   /*-| Add Logo |-*/
-  badgePdf.addImage( qrLogo.value, 'PNG', dim.w - dim.imgW - dim.p, dim.h - dim.imgH - dim.p, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot )
+  // badgePdf.addImage( qrLogo.value, 'PNG', dim.w - dim.imgW - dim.p, dim.h - dim.imgH - dim.p, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot )
   /*-| Text |-*/
-  badgePdf.setFontSize( 18 )
-  badgePdf.text( attendee.value.contact_Employer, dim.p, 0.4125, null, dim.rot )
-  badgePdf.setFontSize( 22 )
-  badgePdf.text( `${ attendee.value.name_First } ${ attendee.value.name_Last }`, dim.p, .875, dim.rot )
-  badgePdf.setFontSize( 18 )
-  badgePdf.text( attendee.value.title, dim.p, 1.3125, dim.rot )
+  // badgePdf.setFontSize( 18 )
+  // badgePdf.text( attendee.value.contact_Employer, dim.p, 0.4125, null, dim.rot )
+  // badgePdf.setFontSize( 22 )
+  // badgePdf.text( `${ attendee.value.name_First } ${ attendee.value.name_Last }`, dim.p, .875, dim.rot )
+  // badgePdf.setFontSize( 18 )
+  // badgePdf.text( attendee.value.title, dim.p, 1.3125, dim.rot )
   setTimeout( () => {
     badgePdf.output( 'dataurlnewwindow' )
   }, 300 )
