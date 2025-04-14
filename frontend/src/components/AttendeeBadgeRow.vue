@@ -4,10 +4,10 @@
       <button :class="!badgeSelected ? 'bi-x-lg bi-circle' :  'bi-check-lg --success --invert'"
               class=""
               @click="selectBadge(attendee)">
-        <!--        {{ attendee.id }}-->
       </button>
     </div>
     <div class="col-10-300">
+      <span class="--font-size-14">{{ formatDateTime( attendee.createdAt ) }}</span>
       <h3>
         {{ attendee.name_First }}
         {{ attendee.name_Last }}
@@ -42,6 +42,21 @@ function selectBadge( i ) {
     console.log( 'remove' )
     emit( 'removeBadge', i.id )
   }
+}
+
+function formatDateTime( dt ) {
+  let d = dt.slice( 0, 10 )
+  let t = dt.slice( -13, -8 )
+  let h = parseInt( t.slice( -5, -3 ) )
+  /*-| Get Hour |-*/
+  if ( h > 12 ) {
+    h = h - 12
+    t = h.toString() + t.slice( 2 ) + ' PM'
+  } else if ( h <= 12 ) {
+    t = t + ' AM'
+  }
+
+  return 'Created: ' + d + ' at ' + t
 }
 
 </script>

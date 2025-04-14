@@ -73,6 +73,7 @@ import { getAllAttendees_Service } from '@/services/AttendeeDataService.ts'
 import { sortLName_Service } from '@/services/SortService.js'
 
 /*-| Variables |-*/
+const attendeeListRenderLength = ref( 5 )
 const attendeeList = ref( {} )
 const attendeeListSelected = ref( [] )
 const attendeeListGrouped = ref( [] )
@@ -133,7 +134,7 @@ function mergeSearchTerm( f, l ) {
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 async function addBadge( i ) {
   attendeeListSelected.value.push( i )
-  await sortFName_Service( attendeeListSelected.value )
+  await sortLName_Service( attendeeListSelected.value )
   await chunkObject( attendeeListSelected )
 }
 

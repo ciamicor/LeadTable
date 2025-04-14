@@ -95,11 +95,11 @@
         </select>
       </label>
 
-      <button v-if="!showQr"
-              class="--success --m-t-12"
-              @click="createAttendee(attendee)">
-        Submit Registration
-      </button>
+      <!--      <button v-if="!showQr"
+                    class="&#45;&#45;success &#45;&#45;m-t-12"
+                    @click="createAttendee(attendee)">
+              Submit Registration
+            </button>-->
       <button v-if="showQr"
               class="--secondary"
               @click="">

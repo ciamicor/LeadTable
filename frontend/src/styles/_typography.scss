@@ -24,12 +24,24 @@
   font-family: InterVariable, Arial, sans-serif;
 }
 
+/*-| Generate |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 $font-xs:  16px;
 $font-sm:  18px;
 $font-md:  22px;
 $font-lg:  26px;
 $font-xl:  30px;
 $font-xxl: 34px;
+/*-| Font Size Classes |-*/
+@for $f from 0 through 16 {
+  $add: #{14 + (2 * $f)};
+  .--font-size-#{$add} {
+    font-size: #{$add + "px"};
+  }
+}
+
+/*-| Elements |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 p, button, li, label {
   font-size: $font-sm;
 }
