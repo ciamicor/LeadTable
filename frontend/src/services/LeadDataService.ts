@@ -67,6 +67,20 @@ async function createLead_Service(lead: any) {
     })
 }
 
+/*-| Get Single Leads |-*/
+
+/*---+----+---+----+---+----+---+----+---*/
+async function getLead_Service(id: any) {
+  await leadService.get(id)
+    .then((response) => {
+      id.value = response.data
+      console.log(response.data)
+    })
+    .catch((e) => {
+      console.log(e)
+    })
+}
+
 /*-| Get All Leads |-*/
 
 /*---+----+---+----+---+----+---+----+---*/

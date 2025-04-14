@@ -95,11 +95,11 @@
         </select>
       </label>
 
-      <!--      <button v-if="!showQr"
-                    class="&#45;&#45;success &#45;&#45;m-t-12"
-                    @click="createAttendee(attendee)">
-              Submit Registration
-            </button>-->
+      <button v-if="!showQr"
+              class="--success --m-t-12"
+              @click="createAttendee(attendee)">
+        Submit Registration
+      </button>
       <button v-if="showQr"
               class="--secondary"
               @click="">
@@ -120,7 +120,7 @@
       <QrCode
         id="qr-code"
         :size="215"
-        :url-value="'4638'"
+        :url-value="attendeeId"
         class="badge--qr"
       ></QrCode>
     </div>
@@ -166,7 +166,7 @@ async function createAttendee( a ) {
   await createAttendee_Service( a )
   console.log( attendee )
   attendeeId.value = attendee.value.id.toString()
-  console.log( typeof attendeeId.value )
+  console.log( typeof attendeeId.value, attendeeId.value )
   showQr.value = true
 }
 
@@ -184,11 +184,11 @@ async function select2Canvas( s, d ) {
     d.value = canvas.toDataURL(
       'image/png' )
     console.log( canvas )
-    // document.body.querySelector( '#renderspot' ).appendChild( canvas )
   } )
 }
 
 async function printBadge() {
+
   await select2Canvas( '#qr-code', qrData )
   await select2Canvas( '#badge-logo', qrLogo )
   /*-| Store Badge Dimensions, Placement |-*/
@@ -202,27 +202,25 @@ async function printBadge() {
   }
   /*-| Declare Badge |-*/
   const badgePdf = new jsPDF( {
-    orientation: 'landscape',
+    orientation: 'portrait',
     unit: 'in',
     format: [ dim.w, dim.h ]
   } )
 
   /*-| Boundary |-*/
   badgePdf.setLineWidth( .001 )
-  // badgePdf.rect( dim.p, dim.p, dim.w - (dim.p * 2), dim.h - (dim.p * 2) )
+  badgePdf.rect( dim.p, dim.p, dim.h - (dim.p * 2), dim.w - (dim.p * 2) )
   /*-| Add QR Code |-*/
   badgePdf.addImage( qrData.value, 'PNG', dim.p, dim.h - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot )
   /*-| Add Logo |-*/
   badgePdf.addImage( qrLogo.value, 'PNG', dim.w - dim.imgW - dim.p, dim.h - dim.imgH - dim.p, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot )
   /*-| Text |-*/
-  // addFont(postScriptName, id, fontStyle, fontWeight, encoding) → {string}
-  // badgePdf.setFont( undefined, 'bold' )
-  badgePdf.setFontSize( 20 )
-  badgePdf.text( attendee.value.contact_Employer, dim.p, 0.375, null, dim.rot )
-  badgePdf.setFontSize( 24 )
-  badgePdf.text( `${ attendee.value.name_First } ${ attendee.value.name_Last }`, dim.p, .75, dim.rot )
-  badgePdf.setFontSize( 20 )
-  badgePdf.text( attendee.value.title, dim.p, 1.125, dim.rot )
+  badgePdf.setFontSize( 18 )
+  badgePdf.text( attendee.value.contact_Employer, dim.p, 0.4125, null, dim.rot )
+  badgePdf.setFontSize( 22 )
+  badgePdf.text( `${ attendee.value.name_First } ${ attendee.value.name_Last }`, dim.p, .875, dim.rot )
+  badgePdf.setFontSize( 18 )
+  badgePdf.text( attendee.value.title, dim.p, 1.3125, dim.rot )
   setTimeout( () => {
     badgePdf.output( 'dataurlnewwindow' )
   }, 300 )

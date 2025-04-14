@@ -15,10 +15,20 @@
              placeholder="Search Attendees"
              type="text">
     </div>
-    <button class="--warn"
+    <button v-show="attendeeListSelected.length === 0 || attendeeListSelected.length > 1"
+            class="--warn"
             @click="printBadges">
       Print {{ attendeeListSelected.length > 0 ? 'Selected' : 'All' }}
     </button>
+
+    <!-- SINGLE BADGE -->
+    <!--  TODO Polish Single Badge Code, merge with BadgeCreate or BadgeService  -->
+    <button v-show="attendeeListSelected.length === 1"
+            class="--warn"
+            @click="printBadge(attendeeListSelected[0])">
+      Print Single
+    </button>
+
     <router-link
       class="button --primary"
       to="/create-badge">
@@ -42,7 +52,14 @@
     </div>
   </div>
 
+
   <div
+    v-if="attendeeListSelected.length === 1">
+
+  </div>
+
+  <div
+    v-if="attendeeListSelected.length !== 1"
     ref="componentRef"
     class="badges-page-container">
     <div v-for="(group, i) in attendeeListGrouped"
@@ -59,6 +76,18 @@
       </div>
     </div>
   </div>
+  <div class="badges-page-container">
+    <img id="badge-logo"
+         alt="nyift-logo"
+         src="../assets/logos/nyift/nyift-vert-rgb.jpeg"
+    >
+    <QrCode
+      id="qr-code"
+      :size="215"
+      :url-value="attendeeListSelected[0].id"
+      class="badge--qr"
+    ></QrCode>
+  </div>
 </template>
 
 
@@ -71,6 +100,9 @@ import { useVueToPrint } from 'vue-to-print'
 import { onBeforeMount, ref } from 'vue'
 import { getAllAttendees_Service } from '@/services/AttendeeDataService.ts'
 import { sortLName_Service } from '@/services/SortService.js'
+import html2canvas from 'html2canvas'
+import { jsPDF } from 'jspdf'
+import QrCode from '@/components/QrCode.vue'
 
 /*-| Variables |-*/
 const attendeeListRenderLength = ref( 5 )
@@ -153,8 +185,10 @@ async function removeBadge( i ) {
   }
 }
 
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Printing |-*/
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+
 const { handlePrint } = useVueToPrint( {
   content: componentRef,
   documentTitle: 'Badges'
@@ -169,5 +203,59 @@ async function printBadges() {
   attendeeListSelected.value = []
 }
 
+/*-| Print Single |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+const qrData = ref()
+const qrLogo = ref()
+
+async function select2Canvas( s, d ) {
+  const selector = document.querySelector( s )
+  await html2canvas( selector, {
+    allowTaint: true,
+    useCORS: true
+  } ).then( canvas => {
+    d.value = canvas.toDataURL(
+      'image/png' )
+    console.log( canvas )
+  } )
+}
+
+async function printBadge( a ) {
+  console.log( typeof a, 'a: ', a )
+  await select2Canvas( '#qr-code', qrData )
+  await select2Canvas( '#badge-logo', qrLogo )
+  /*-| Store Badge Dimensions, Placement |-*/
+  const dim = {
+    h: 3,
+    w: 4,
+    p: 0.1875,
+    imgW: 1.875,
+    imgH: 1.125,
+    rot: 0
+  }
+  /*-| Declare Badge |-*/
+  const badgePdf = new jsPDF( {
+    orientation: 'landscape',
+    unit: 'in',
+    format: [ dim.w, dim.h ]
+  } )
+
+  /*-| Boundary |-*/
+  badgePdf.setLineWidth( .001 )
+  /*-| Add QR Code |-*/
+  badgePdf.addImage( qrData.value, 'PNG', dim.p, dim.h - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot )
+  /*-| Add Logo |-*/
+  badgePdf.addImage( qrLogo.value, 'PNG', dim.w - dim.imgW - dim.p, dim.h - dim.imgH - dim.p, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot )
+  /*-| Text |-*/
+  badgePdf.setFontSize( 18 )
+  badgePdf.text( a.contact_Employer.toLowerCase(), dim.p, 0.4125, null, dim.rot )
+  badgePdf.setFontSize( 22 )
+  badgePdf.text( `${ a.name_First } ${ a.name_Last }`, dim.p, .875, dim.rot )
+  badgePdf.setFontSize( 18 )
+  badgePdf.text( a.title.toLowerCase(), dim.p, 1.3125, dim.rot )
+  setTimeout( () => {
+    badgePdf.output( 'dataurlnewwindow' )
+  }, 300 )
+}
 
 </script>

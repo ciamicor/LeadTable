@@ -42,9 +42,8 @@ async function sortLName_Service(i: Array<{}>) {
   })
 }
 
-// By first name
+// By Created Date
 async function sortCreatedDate_Service(i: Array<{}>) {
-
   i.sort((
     a: any,
     b: any
