@@ -193,33 +193,36 @@ async function printBadge() {
   await select2Canvas( '#badge-logo', qrLogo )
   /*-| Store Badge Dimensions, Placement |-*/
   const dim = {
-    H: 3,
-    W: 4,
-    P: 0.1875,
-    iW: 1.875,
-    iH: 1.125
+    h: 3,
+    w: 4,
+    p: 0.1875,
+    imgW: 1.875,
+    imgH: 1.125,
+    rot: 0
   }
   /*-| Declare Badge |-*/
   const badgePdf = new jsPDF( {
-    orientation: 'portrait',
+    orientation: 'landscape',
     unit: 'in',
-    format: [ dim.W, dim.H ]
+    format: [ dim.w, dim.h ]
   } )
 
   /*-| Boundary |-*/
   badgePdf.setLineWidth( .001 )
-  badgePdf.rect( dim.P, dim.P, dim.H - (dim.P * 2), dim.W - (dim.P * 2) )
+  // badgePdf.rect( dim.p, dim.p, dim.w - (dim.p * 2), dim.h - (dim.p * 2) )
   /*-| Add QR Code |-*/
-  badgePdf.addImage( qrData.value, 'PNG', dim.H - dim.P, dim.W - dim.P - 1.125, dim.iH, dim.iH, 'qr', 'FAST', 90 )
+  badgePdf.addImage( qrData.value, 'PNG', dim.p, dim.h - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot )
   /*-| Add Logo |-*/
-  badgePdf.addImage( qrLogo.value, 'PNG', dim.H - dim.P, dim.P + 0.75, dim.iW, dim.iH, 'logo', 'FAST', 90 )
+  badgePdf.addImage( qrLogo.value, 'PNG', dim.w - dim.imgW - dim.p, dim.h - dim.imgH - dim.p, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot )
   /*-| Text |-*/
+  // addFont(postScriptName, id, fontStyle, fontWeight, encoding) → {string}
+  // badgePdf.setFont( undefined, 'bold' )
   badgePdf.setFontSize( 20 )
-  badgePdf.text( attendee.value.contact_Employer, 0.3875, dim.W - dim.P, null, 90 )
+  badgePdf.text( attendee.value.contact_Employer, dim.p, 0.375, null, dim.rot )
   badgePdf.setFontSize( 24 )
-  badgePdf.text( `${ attendee.value.name_First } ${ attendee.value.name_Last }`, 0.875, dim.W - dim.P, 90 )
+  badgePdf.text( `${ attendee.value.name_First } ${ attendee.value.name_Last }`, dim.p, .75, dim.rot )
   badgePdf.setFontSize( 20 )
-  badgePdf.text( attendee.value.title, 1.3875, dim.W - dim.P, 90 )
+  badgePdf.text( attendee.value.title, dim.p, 1.125, dim.rot )
   setTimeout( () => {
     badgePdf.output( 'dataurlnewwindow' )
   }, 300 )
