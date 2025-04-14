@@ -101,7 +101,7 @@
         Submit Registration
       </button>
       <button
-        v-if="!showQr"
+        v-if="showQr"
         class="--secondary"
         @click="printBadge(attendee)">
         Print {{ attendee.name_First }}'s Badge
