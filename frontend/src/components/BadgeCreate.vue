@@ -100,15 +100,11 @@
               @click="createAttendee(attendee)">
         Submit Registration
       </button>
-      <button v-if="showQr"
-              class="--secondary"
-              @click="">
-        Print
-      </button>
       <button
+        v-if="!showQr"
         class="--secondary"
-        @click="printBadge">
-        printBadge
+        @click="printBadge(attendee)">
+        Print {{ attendee.name_First }}'s Badge
       </button>
     </div>
 
@@ -118,6 +114,7 @@
            src="../assets/logos/nyift/nyift-vert-rgb.jpeg"
       >
       <QrCode
+        v-if="showQr"
         id="qr-code"
         :size="215"
         :url-value="attendeeId"
@@ -125,8 +122,6 @@
       ></QrCode>
     </div>
   </div>
-
-
 </template>
 
 <script lang="js"
@@ -151,13 +146,13 @@ const attendeeId = ref()
 const attendee = ref( {
   expo_Year: companyLocalData.expo_Year,
   expo_Client: companyLocalData.expo_Client,
-  name_First: 'Christopher',
-  name_Last: 'Zanferrari',
-  contact_Email: 'Claire Test',
-  contact_Phone: 'Claire Test',
-  contact_Employer: 'International IAMI',
-  address: 'Claire Test',
-  title: 'Developer',
+  name_First: '',
+  name_Last: '',
+  contact_Email: '',
+  contact_Phone: '',
+  contact_Employer: '',
+  address: '',
+  title: '',
   reg_Type: 'Attendee',
   tech_Sem: 'Attending'
 } )
@@ -173,7 +168,7 @@ async function createAttendee( a ) {
 /*-| Printing |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const qrData = ref()
-const qrLogo = ref()
+const logoData = ref()
 
 async function select2Canvas( s, d ) {
   const selector = document.querySelector( s )
@@ -187,10 +182,10 @@ async function select2Canvas( s, d ) {
   } )
 }
 
-async function printBadge() {
+async function printBadge( a ) {
 
   await select2Canvas( '#qr-code', qrData )
-  await select2Canvas( '#badge-logo', qrLogo )
+  await select2Canvas( '#badge-logo', logoData )
   /*-| Store Badge Dimensions, Placement |-*/
   const dim = {
     h: 3,
@@ -213,14 +208,14 @@ async function printBadge() {
   /*-| Add QR Code |-*/
   badgePdf.addImage( qrData.value, 'PNG', dim.h - dim.p, dim.w - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot )
   /*-| Add Logo |-*/
-  badgePdf.addImage( qrLogo.value, 'PNG', dim.h - dim.p, dim.p * 4, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot )
+  badgePdf.addImage( logoData.value, 'PNG', dim.h - dim.p, dim.p * 4, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot )
   /*-| Text |-*/
   badgePdf.setFontSize( 18 )
-  badgePdf.text( attendee.value.contact_Employer, dim.p * 2, dim.w - dim.p, null, dim.rot )
+  badgePdf.text( a.contact_Employer, dim.p * 2, dim.w - dim.p, dim.rot )
   badgePdf.setFontSize( 22 )
-  badgePdf.text( `${ attendee.value.name_First } ${ attendee.value.name_Last }`, dim.p * 4, dim.w - dim.p, dim.rot )
+  badgePdf.text( `${ a.name_First } ${ a.name_Last }`, dim.p * 4, dim.w - dim.p, dim.rot )
   badgePdf.setFontSize( 18 )
-  badgePdf.text( attendee.value.title, dim.p * 6, dim.w - dim.p, dim.rot )
+  badgePdf.text( a.title, dim.p * 6, dim.w - dim.p, dim.rot )
   setTimeout( () => {
     badgePdf.output( 'dataurlnewwindow' )
   }, 300 )

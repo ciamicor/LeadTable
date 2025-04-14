@@ -79,12 +79,13 @@
   <div class="badges-page-container">
     <img id="badge-logo"
          alt="nyift-logo"
-         src="../assets/logos/nyift/nyift-vert-rgb.jpeg"
+         src="../assets/logos/nyift/nyift-vert-black.jpeg"
     >
     <QrCode
+      v-if="attendeeListSelected.length === 1"
       id="qr-code"
       :size="215"
-      :url-value="attendeeListSelected[0].id"
+      :url-value="attendeeListSelected.length === 1 ? attendeeListSelected[0].id.toString() : ''"
       class="badge--qr"
     ></QrCode>
   </div>
@@ -221,7 +222,8 @@ async function select2Canvas( s, d ) {
 }
 
 async function printBadge( a ) {
-  console.log( typeof a, 'a: ', a )
+  console.log( attendeeListSelected.value )
+  console.log( a.id )
   await select2Canvas( '#qr-code', qrData )
   await select2Canvas( '#badge-logo', qrLogo )
   /*-| Store Badge Dimensions, Placement |-*/
@@ -231,28 +233,28 @@ async function printBadge( a ) {
     p: 0.1875,
     imgW: 1.875,
     imgH: 1.125,
-    rot: 0
+    rot: 90
   }
   /*-| Declare Badge |-*/
   const badgePdf = new jsPDF( {
-    orientation: 'landscape',
+    orientation: 'portrait',
     unit: 'in',
     format: [ dim.w, dim.h ]
   } )
 
-  /*-| Boundary |-*/
-  badgePdf.setLineWidth( .001 )
-  /*-| Add QR Code |-*/
-  badgePdf.addImage( qrData.value, 'PNG', dim.p, dim.h - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot )
-  /*-| Add Logo |-*/
-  badgePdf.addImage( qrLogo.value, 'PNG', dim.w - dim.imgW - dim.p, dim.h - dim.imgH - dim.p, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot )
   /*-| Text |-*/
   badgePdf.setFontSize( 18 )
-  badgePdf.text( a.contact_Employer.toLowerCase(), dim.p, 0.4125, null, dim.rot )
+  badgePdf.text( a.contact_Employer, dim.p * 2, dim.w - dim.p, null, dim.rot )
   badgePdf.setFontSize( 22 )
-  badgePdf.text( `${ a.name_First } ${ a.name_Last }`, dim.p, .875, dim.rot )
+  badgePdf.text( `${ a.name_First } ${ a.name_Last }`, dim.p * 4, dim.w - dim.p, dim.rot )
   badgePdf.setFontSize( 18 )
-  badgePdf.text( a.title.toLowerCase(), dim.p, 1.3125, dim.rot )
+  badgePdf.text( a.title, dim.p * 6, dim.w - dim.p, dim.rot )
+
+  /*-| Add QR Code |-*/
+  badgePdf.addImage( qrData.value, 'PNG', dim.h - dim.p, dim.w - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot )
+  /*-| Add Logo |-*/
+  badgePdf.addImage( qrLogo.value, 'PNG', dim.h - dim.p, dim.p * 4, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot )
+
   setTimeout( () => {
     badgePdf.output( 'dataurlnewwindow' )
   }, 300 )
