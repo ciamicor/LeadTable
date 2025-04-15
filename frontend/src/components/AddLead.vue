@@ -1,31 +1,31 @@
 <template>
-  <!--  <div v-if="!scanConfirm"
-         class="scanner-camera-container">
-      <div class="scan-placement-container"></div>
-      <qrcode-stream
-        class="scanner-camera-wrap"
-        @detect="getQrId($event)"
-        @camera-on="scanTarget = 'Scanning'"
-      ></qrcode-stream>
-      <div class="row &#45;&#45;items qr-float-container">
-        <span class="col-10-300 qr-float-target-text">{{ scanTarget }}</span>
-
-        <div v-if="scanCodeFound"
-             class="row &#45;&#45;justify-content-center">
-          <button
-            class="&#45;&#45;warn qr-float-cancel"
-            @click="resetScanning"
-          >Reset
-          </button>
-          <button
-            class="qr-float-confirm &#45;&#45;primary"
-            @click="scanConfirm = true">
-            Continue
-          </button>
-        </div>
-      </div>
-    </div>-->
   <div v-if="!scanConfirm"
+       class="scanner-camera-container">
+    <div class="scan-placement-container"></div>
+    <qrcode-stream
+      class="scanner-camera-wrap"
+      @detect="getQrId($event)"
+      @camera-on="scanTarget = 'Scanning'"
+    ></qrcode-stream>
+    <div class="row --items qr-float-container">
+      <span class="col-10-300 qr-float-target-text">{{ scanTarget }}</span>
+
+      <div v-if="scanCodeFound"
+           class="row --justify-content-center">
+        <button
+          class="--warn qr-float-cancel"
+          @click="resetScanning"
+        >Reset
+        </button>
+        <button
+          class="qr-float-confirm --primary"
+          @click="scanConfirm = true">
+          Continue
+        </button>
+      </div>
+    </div>
+  </div>
+  <div v-if="scanConfirm"
        class="row">
     <div
       class="col-12">
