@@ -133,6 +133,7 @@ import QrCode from '@/components/QrCode.vue'
 import { ref } from 'vue'
 import { createAttendee_Service } from '@/services/AttendeeDataService.ts'
 import { useCompanyLocalStore } from '@/main.js'
+import { toTitleCase_Service } from '@/services/TextContentService.js'
 
 const companyLocalData = useCompanyLocalStore()
 
@@ -211,11 +212,11 @@ async function printBadge( a ) {
   badgePdf.addImage( logoData.value, 'PNG', dim.h - dim.p, dim.p * 4, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot )
   /*-| Text |-*/
   badgePdf.setFontSize( 18 )
-  badgePdf.text( a.contact_Employer, dim.p * 2, dim.w - dim.p, dim.rot )
+  badgePdf.text( toTitleCase_Service( a.contact_Employer ), dim.p * 2, dim.w - dim.p, dim.rot )
   badgePdf.setFontSize( 22 )
-  badgePdf.text( `${ a.name_First } ${ a.name_Last }`, dim.p * 4, dim.w - dim.p, dim.rot )
+  badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ), dim.p * 4, dim.w - dim.p, dim.rot )
   badgePdf.setFontSize( 18 )
-  badgePdf.text( a.title, dim.p * 6, dim.w - dim.p, dim.rot )
+  badgePdf.text( toTitleCase_Service( a.title ), dim.p * 6, dim.w - dim.p, dim.rot )
   setTimeout( () => {
     badgePdf.output( 'dataurlnewwindow' )
   }, 300 )

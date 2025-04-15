@@ -248,11 +248,11 @@ async function printBadge_Brother4300( a ) {
 
   /*-| Text |-*/
   badgePdf.setFontSize( 18 )
-  badgePdf.text( a.contact_Employer, dim.p * 2, dim.w - dim.p, null, dim.rot )
+  badgePdf.text( toTitleCase_Service( a.contact_Employer ), dim.p * 2, dim.w - dim.p, null, dim.rot )
   badgePdf.setFontSize( 22 )
-  badgePdf.text( `${ a.name_First } ${ a.name_Last }`, dim.p * 4, dim.w - dim.p, dim.rot )
+  badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ), dim.p * 4, dim.w - dim.p, dim.rot )
   badgePdf.setFontSize( 18 )
-  badgePdf.text( a.title, dim.p * 6, dim.w - dim.p, dim.rot )
+  badgePdf.text( toTitleCase_Service( a.title ), dim.p * 6, dim.w - dim.p, dim.rot )
 
   /*-| Add QR Code |-*/
   badgePdf.addImage( qrData.value, 'PNG', dim.h - dim.p, dim.w - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot )
