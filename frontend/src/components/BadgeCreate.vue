@@ -1,13 +1,13 @@
 <template>
 
   <div class="row --gap-24">
-    <form
+    <div
       class="col-12-300 col-10-600 col-8-900 --p-b-24 --p-t-12"
     >
       <h1 id="attendee-reg">Attendee Registration</h1>
       <p>Register for the {{ companyLocalData.expo_Client }} {{ companyLocalData.expo_Year }}
-         Supplier's Day. All fields are required.</p>
 
+         Supplier's Day. All fields are.</p>
       <div class="row --items">
         <label>
           First Name
@@ -15,18 +15,17 @@
             v-model="attendee.name_First"
             name="name-first"
             placeholder="First Name"
-            required
             type="text">
+
         </label>
         <label>
           Last Name
           <input
             v-model="attendee.name_Last"
-            aria-required="true"
             name="name-last"
             placeholder="Last Name"
-            required
             type="text">
+
         </label>
       </div>
       <div class="row --items">
@@ -36,16 +35,16 @@
             v-model="attendee.contact_Employer"
             name="employer"
             placeholder="Employer"
-            required
             type="text"></label>
+
         <label>
           Position/Title
           <input
             v-model="attendee.title"
             name="title"
             placeholder="Position/Title"
-            required
             type="text">
+
         </label>
       </div>
       <div class="row --items">
@@ -55,8 +54,8 @@
             v-model="attendee.contact_Email"
             name="title"
             placeholder="Email Address"
-            required
             type="email" />
+
         </label>
         <label>
           Phone Number
@@ -64,8 +63,8 @@
             v-model="attendee.contact_Phone"
             name="phone"
             placeholder="Phone Number"
-            required
             type="tel" />
+
         </label>
       </div>
       <div class="row --items">
@@ -75,8 +74,8 @@
             v-model="attendee.address"
             name="address"
             placeholder="Enter your address"
-            required
             type="text" />
+
         </label>
       </div>
       <label>
@@ -95,7 +94,6 @@
         <select
           v-model="attendee.tech_Sem"
           name="reg-type"
-          required
         >
           <option value="Attending">Yes</option>
           <option value="">No</option>
@@ -104,9 +102,9 @@
 
       <button v-if="!showQr"
               class="--success --m-t-12"
-              type="submit"
+              @click="createAttendee(attendee)"
       >
-        <!--        @click="createAttendee(attendee)"-->
+        <!--              type="submit"-->
         Submit Registration
       </button>
       <button
@@ -115,7 +113,7 @@
         @click="printBadge(attendee)">
         Print {{ attendee.name_First }}'s Badge
       </button>
-    </form>
+    </div>
 
     <div class="badges-page-container">
       <img id="badge-logo"
@@ -193,7 +191,6 @@ async function select2Canvas( s, d ) {
 }
 
 async function printBadge( a ) {
-
   await select2Canvas( '#qr-code', qrData )
   await select2Canvas( '#badge-logo', logoData )
   /*-| Store Badge Dimensions, Placement |-*/

@@ -1,37 +1,35 @@
 <template>
-  <div v-if="!scanConfirm"
-       class="scanner-camera-container">
-    <div class="scan-placement-container"></div>
-    <qrcode-stream
-      class="scanner-camera-wrap"
-      @detect="getQrId($event)"
-      @camera-on="scanTarget = 'Scanning'"
-    ></qrcode-stream>
-    <div class="row --items qr-float-container">
-      <span class="col-10-300 qr-float-target-text">{{ scanTarget }}</span>
+  <!--  <div v-if="!scanConfirm"
+         class="scanner-camera-container">
+      <div class="scan-placement-container"></div>
+      <qrcode-stream
+        class="scanner-camera-wrap"
+        @detect="getQrId($event)"
+        @camera-on="scanTarget = 'Scanning'"
+      ></qrcode-stream>
+      <div class="row &#45;&#45;items qr-float-container">
+        <span class="col-10-300 qr-float-target-text">{{ scanTarget }}</span>
 
-      <div v-if="scanCodeFound"
-           class="row --justify-content-center">
-        <button
-          class="--warn qr-float-cancel"
-          @click="resetScanning"
-        >Reset
-        </button>
-        <button
-          class="qr-float-confirm --primary"
-          @click="scanConfirm = true">
-          Continue
-        </button>
+        <div v-if="scanCodeFound"
+             class="row &#45;&#45;justify-content-center">
+          <button
+            class="&#45;&#45;warn qr-float-cancel"
+            @click="resetScanning"
+          >Reset
+          </button>
+          <button
+            class="qr-float-confirm &#45;&#45;primary"
+            @click="scanConfirm = true">
+            Continue
+          </button>
+        </div>
       </div>
-    </div>
-  </div>
-  <div v-if="scanConfirm"
+    </div>-->
+  <div v-if="!scanConfirm"
        class="row">
     <div
       class="col-12">
       <h1>Confirm Lead</h1>
-      <p><span>Company: </span>{{ companyLocalData.name }}, {{ lead.scan_Company_Id }}</p>
-      <p><span>Year: </span>{{ attendee.expo_Year }}</p>
       <p><span>Name: </span>{{ attendee.name_First }} {{ attendee.name_Last }}</p>
       <p><span>Email: </span>{{ attendee.contact_Email }}</p>
       <p><span>Phone: </span>{{ attendee.contact_Phone }}</p>
@@ -40,7 +38,7 @@
       <p><span>Address: </span>{{ attendee.address }}</p>
       <form action=""
             class="col-6">
-        <fieldset>
+        <fieldset class="--m-t-12">
           <legend>Rating</legend>
           <div
             v-for="(rating, index) in ratings"
@@ -55,13 +53,20 @@
             <label :for="'r-'+ rating">{{ rating }}</label>
           </div>
         </fieldset>
-        <label for="comment">Comments</label>
+        <label class="--m-t-16"
+               for="comment">Comments</label>
         <textarea v-model="commentRef"
+                  class="--w-100"
                   name="comment"
+                  rows="3"
                   @change="updateComment( commentRef )">
                   name="leadComments"></textarea>
       </form>
-      <div class="row --items">
+      <div class="row --items --m-t-16">
+        <button
+          class="--success --flex-basis-100"
+          @click="createLead(lead); router.push('/leads-list')">Add {{ lead.name_First }}
+        </button>
         <button
           class="--warn"
           @click="resetScanning">
@@ -70,10 +75,6 @@
         <button
           class="--success"
           @click="createLead(lead)">Add & Scan Another
-        </button>
-        <button
-          class="--success"
-          @click="createLead(lead); router.push('/leads-list')">Add {{ lead.name_First }}
         </button>
       </div>
     </div>

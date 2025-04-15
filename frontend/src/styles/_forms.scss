@@ -26,6 +26,22 @@ input, select {
   }
 }
 
+/*-| Radio Buttons |-*/
+/*---+----+---+----+---+----+---+----+---*/
+fieldset {
+  display:   flex;
+  flex-flow: row wrap;
+  gap:       $sp-4;
+  div:has( > input[type="radio"]) {
+    input[type="radio"] {
+      width:  $sp-8;
+      height: $sp-8;
+    }
+  }
+}
+
+/*-| Search |-*/
+/*---+----+---+----+---+----+---+----+---*/
 .search-wrap {
   position: relative;
   button {
