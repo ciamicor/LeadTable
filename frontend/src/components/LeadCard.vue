@@ -30,21 +30,6 @@
     </i>
   </div>
   <div id="comment">{{ lead.comment }}</div>
-  <!--    -->
-  <!--    -->
-  <!--    -->
-  <!--    -->
-  <!--    -->
-  <div v-if="debug"
-       id="expo_Year">{{ lead.expo_Year }}
-  </div>
-  <div v-if="debug"
-       id="expo_Client">{{ lead.expo_Client }}
-  </div>
-  <div v-if="debug"
-       id="company_Id">{{ lead.scan_Company_Id }}
-  </div>
-
 
 </template>
 <script>

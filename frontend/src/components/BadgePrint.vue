@@ -15,25 +15,34 @@
              placeholder="Search Attendees"
              type="text">
     </div>
-    <button v-show="attendeeListSelected.length === 0 || attendeeListSelected.length > 1"
-            class="--warn"
-            @click="printBadges">
-      Print {{ attendeeListSelected.length > 0 ? 'Selected' : 'All' }}
-    </button>
 
     <!-- SINGLE BADGE -->
     <!--  TODO Polish Single Badge Code, merge with BadgeCreate or BadgeService  -->
-    <button v-show="attendeeListSelected.length === 1"
-            class="--warn"
-            @click="printBadge(attendeeListSelected[0])">
-      Print Single
-    </button>
+    <div class="row-12-300 row-6-600 --justify-content-end --align-items-center">
+      <button v-show="attendeeListSelected.length === 0 || attendeeListSelected.length > 1"
+              class="--secondary --p-4"
+              @click="printBadges">
+        Print {{ attendeeListSelected.length > 0 ? attendeeListSelected.length : 'All' }} Badges
+      </button>
+      <button
+        v-show="attendeeListSelected.length === 1"
+        class="--secondary --p-4"
+        @click="printBadge_Brother4300(attendeeListSelected[0])">
+        Print 1: Brother 4300
+      </button>
+      <button
+        v-show="attendeeListSelected.length === 1"
+        class="--secondary --p-4"
+        @click="printBadge2(attendeeListSelected[0])">
+        Print 1: Other
+      </button>
+      <router-link
+        class="button --primary --p-4"
+        to="/create-badge">
+        New Badge
+      </router-link>
+    </div>
 
-    <router-link
-      class="button --primary"
-      to="/create-badge">
-      Create
-    </router-link>
   </div>
 
   <div class="row">
@@ -50,12 +59,6 @@
         @remove-badge="removeBadge"
       />
     </div>
-  </div>
-
-
-  <div
-    v-if="attendeeListSelected.length === 1">
-
   </div>
 
   <div
@@ -104,6 +107,7 @@ import { sortLName_Service } from '@/services/SortService.js'
 import html2canvas from 'html2canvas'
 import { jsPDF } from 'jspdf'
 import QrCode from '@/components/QrCode.vue'
+import { toTitleCase_Service } from '@/services/TextContentService.js'
 
 /*-| Variables |-*/
 const attendeeListRenderLength = ref( 5 )
@@ -221,7 +225,7 @@ async function select2Canvas( s, d ) {
   } )
 }
 
-async function printBadge( a ) {
+async function printBadge_Brother4300( a ) {
   console.log( attendeeListSelected.value )
   console.log( a.id )
   await select2Canvas( '#qr-code', qrData )
@@ -254,6 +258,45 @@ async function printBadge( a ) {
   badgePdf.addImage( qrData.value, 'PNG', dim.h - dim.p, dim.w - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot )
   /*-| Add Logo |-*/
   badgePdf.addImage( qrLogo.value, 'PNG', dim.h - dim.p, dim.p * 4, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot )
+
+  setTimeout( () => {
+    badgePdf.output( 'dataurlnewwindow' )
+  }, 300 )
+}
+
+async function printBadge2( a ) {
+  console.log( attendeeListSelected.value )
+  console.log( a.id )
+  await select2Canvas( '#qr-code', qrData )
+  await select2Canvas( '#badge-logo', qrLogo )
+  /*-| Store Badge Dimensions, Placement |-*/
+  const dim = {
+    h: 4,
+    w: 3,
+    p: 0.1875,
+    imgW: 1.875,
+    imgH: 1.125,
+    rot: 90
+  }
+  /*-| Declare Badge |-*/
+  const badgePdf = new jsPDF( {
+    orientation: 'portrait',
+    unit: 'in',
+    format: [ dim.w, dim.h ]
+  } )
+
+  /*-| Text |-*/
+  badgePdf.setFontSize( 18 )
+  badgePdf.text( toTitleCase_Service( a.contact_Employer ), dim.p * 2, dim.h - dim.p, null, dim.rot )
+  badgePdf.setFontSize( 22 )
+  badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ), dim.p * 4, dim.h - dim.p, dim.rot )
+  badgePdf.setFontSize( 18 )
+  badgePdf.text( toTitleCase_Service( a.title ), dim.p * 6, dim.h - dim.p, dim.rot )
+
+  /*-| Add QR Code |-*/
+  badgePdf.addImage( qrData.value, 'PNG', dim.w - dim.p, dim.h - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot )
+  /*-| Add Logo |-*/
+  badgePdf.addImage( qrLogo.value, 'PNG', dim.w - dim.p, dim.p * 4, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot )
 
   setTimeout( () => {
     badgePdf.output( 'dataurlnewwindow' )

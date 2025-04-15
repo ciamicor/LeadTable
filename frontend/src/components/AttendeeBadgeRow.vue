@@ -6,7 +6,7 @@
               @click="selectBadge(attendee)">
       </button>
     </div>
-    <div class="col-10-300">
+    <div>
       <span class="--font-size-14">{{ formatDateTime( attendee.createdAt ) }}</span>
       <h3>
         {{ attendee.name_First }}

@@ -8,6 +8,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 export default defineConfig({
   base: process.env.BASEURL,
   server: {
+    allowedHosts: ['1847-2601-1c2-200-13-947c-3ef-5b7d-3bc1.ngrok-free.app'],
     port: 8081,
     proxy: {
       '/api': {

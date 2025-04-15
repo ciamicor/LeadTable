@@ -102,7 +102,7 @@ onBeforeMount( () => {
 async function updateCompany() {
   await db.profile.get( 1 ).then( ( res ) => {
     if ( res ) {
-      console.log( 'Response - Company Name:', res.name )
+      // console.log( 'Response - Company Name:', res.name )
       // companyLocalData.expo_Year = res.expo_Year
       companyLocalData.$patch( {
         id: res.ex_Id,
@@ -110,17 +110,6 @@ async function updateCompany() {
         login_Url: res.login_Url.toString(),
         name: res.name.toString()
       } )
-
-      console.log( 'UPDATE RESULT',
-        companyLocalData.expo_Client,
-        companyLocalData.expo_Year,
-        companyLocalData.id,
-        companyLocalData.lead_Ret,
-        companyLocalData.login_Url,
-        companyLocalData.name,
-        'Company Data: ',
-        companyLocalData
-      )
     }
     return companyLocalData
   } )

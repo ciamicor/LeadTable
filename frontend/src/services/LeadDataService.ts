@@ -84,11 +84,13 @@ async function getLead_Service(id: any) {
 /*-| Get All Leads |-*/
 
 /*---+----+---+----+---+----+---+----+---*/
+
+// TODO Get Lead by Company ID here, instead of filtering in LeadsList view
 async function getAllLeads_Service(list: any) {
   await leadService.getAll()
     .then((response) => {
       list.value = response.data
-      console.log(response.data)
+      // console.log('Get all leads service: ', response.data)
     })
     .catch((e) => {
       console.log(e)
