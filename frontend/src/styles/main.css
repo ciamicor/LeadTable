@@ -9518,7 +9518,7 @@ button.--warn--invert:hover,
   margin: 86px 0 0 0;
 }
 .badge-select-grid .badge-select-wrap {
-  grid-template-columns: 1fr min-content;
+  grid-template-columns: min-content 1fr;
   gap: 16px;
 }
 .badge-select-grid .badge-select-wrap * {
