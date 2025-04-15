@@ -1,7 +1,7 @@
 <template>
 
   <div class="row --gap-24">
-    <div
+    <form
       class="col-12-300 col-10-600 col-8-900 --p-b-24 --p-t-12"
     >
       <h1 id="attendee-reg">Attendee Registration</h1>
@@ -15,6 +15,7 @@
             v-model="attendee.name_First"
             name="name-first"
             placeholder="First Name"
+            required
             type="text">
         </label>
         <label>
@@ -35,6 +36,7 @@
             v-model="attendee.contact_Employer"
             name="employer"
             placeholder="Employer"
+            required
             type="text"></label>
         <label>
           Position/Title
@@ -42,6 +44,7 @@
             v-model="attendee.title"
             name="title"
             placeholder="Position/Title"
+            required
             type="text">
         </label>
       </div>
@@ -52,7 +55,8 @@
             v-model="attendee.contact_Email"
             name="title"
             placeholder="Email Address"
-            type="email">
+            required
+            type="email" />
         </label>
         <label>
           Phone Number
@@ -60,7 +64,8 @@
             v-model="attendee.contact_Phone"
             name="phone"
             placeholder="Phone Number"
-            type="tel">
+            required
+            type="tel" />
         </label>
       </div>
       <div class="row --items">
@@ -70,7 +75,8 @@
             v-model="attendee.address"
             name="address"
             placeholder="Enter your address"
-            type="text">
+            required
+            type="text" />
         </label>
       </div>
       <label>
@@ -89,6 +95,7 @@
         <select
           v-model="attendee.tech_Sem"
           name="reg-type"
+          required
         >
           <option value="Attending">Yes</option>
           <option value="">No</option>
@@ -97,7 +104,9 @@
 
       <button v-if="!showQr"
               class="--success --m-t-12"
-              @click="createAttendee(attendee)">
+              type="submit"
+      >
+        <!--        @click="createAttendee(attendee)"-->
         Submit Registration
       </button>
       <button
@@ -106,7 +115,7 @@
         @click="printBadge(attendee)">
         Print {{ attendee.name_First }}'s Badge
       </button>
-    </div>
+    </form>
 
     <div class="badges-page-container">
       <img id="badge-logo"
