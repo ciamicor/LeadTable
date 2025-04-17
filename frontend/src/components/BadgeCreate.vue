@@ -5,7 +5,7 @@
       class="col-12-300 col-10-600 col-8-900 --p-b-24 --p-t-12"
     >
       <h1 id="attendee-reg">Attendee Registration</h1>
-      <p>Register for the {{ companyLocalData.expo_Client }} {{ companyLocalData.expo_Year }}
+      <p>Register for the {{ companyLocalData.expo_Client }} {{ companyLocalData.year }}
 
          Supplier's Day. All fields are.</p>
       <div class="row --items">
@@ -139,7 +139,7 @@ import html2canvas from 'html2canvas'
 import QrCode from '@/components/QrCode.vue'
 import { ref } from 'vue'
 import { createAttendee_Service } from '@/services/AttendeeDataService.ts'
-import { useCompanyLocalStore } from '@/main.js'
+import { useCompanyLocalStore } from '@/stores.js'
 import { toTitleCase_Service } from '@/services/TextContentService.js'
 
 const companyLocalData = useCompanyLocalStore()
@@ -152,7 +152,7 @@ const companyLocalData = useCompanyLocalStore()
 const showQr = ref( false )
 const attendeeId = ref()
 const attendee = ref( {
-  expo_Year: companyLocalData.expo_Year,
+  year: companyLocalData.year,
   expo_Client: companyLocalData.expo_Client,
   name_First: '',
   name_Last: '',

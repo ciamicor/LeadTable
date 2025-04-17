@@ -75,7 +75,7 @@
   setup>
 import { ref, provide, onBeforeMount, onMounted } from 'vue'
 import { db } from '@/db.js'
-import { useCompanyLocalStore } from '@/main.ts'
+import { useCompanyLocalStore } from '@/stores.js'
 import { storeToRefs } from 'pinia'
 
 /*-| Variables |-*/
@@ -103,7 +103,7 @@ async function updateCompany() {
   await db.profile.get( 1 ).then( ( res ) => {
     if ( res ) {
       // console.log( 'Response - Company Name:', res.name )
-      // companyLocalData.expo_Year = res.expo_Year
+      // companyLocalData.year = res.year
       companyLocalData.$patch( {
         id: res.ex_Id,
         lead_Ret: res.lead_Ret,
@@ -115,7 +115,7 @@ async function updateCompany() {
   } )
 }
 
-provide( 'expoYear_Global', companyLocalData.expo_Year )
+provide( 'expoYear_Global', companyLocalData.year )
 provide( 'activeCompId_Global', activeCompId_Ref )
 provide( 'activeCompLeadRet_Global', activeCompLeadRet_Ref )
 provide( 'activeCompUrl_Global', activeCompUrl_Ref )

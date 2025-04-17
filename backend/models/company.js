@@ -14,7 +14,7 @@ class Company extends Model {
 }
 
 Company.init( {
-  expo_Year: DataTypes.INTEGER, // foreign key
+  year: DataTypes.INTEGER, // foreign key
   expo_Client: DataTypes.STRING, // foreign key
   id: {
     type: DataTypes.INTEGER,

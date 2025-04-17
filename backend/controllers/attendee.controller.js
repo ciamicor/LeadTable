@@ -17,7 +17,7 @@ exports.getAllAttendees = async ( req, res ) => {
 // Controller method to create a new attendee
 exports.createAttendee = async ( req, res ) => {
   const {
-    expo_Year,
+    year,
     expo_Client,
     name_First,
     name_Last,
@@ -31,7 +31,7 @@ exports.createAttendee = async ( req, res ) => {
   } = req.body
   try {
     const newAttendee = await Attendee.create( {
-      expo_Year,
+      year,
       expo_Client,
       name_First,
       name_Last,

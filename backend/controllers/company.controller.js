@@ -6,7 +6,7 @@ exports.createCompany = async ( req, res ) => {
     id,
     login_URL,
     name,
-    expo_Year,
+    year,
     expo_Client
   } = req.body
   try {
@@ -14,7 +14,7 @@ exports.createCompany = async ( req, res ) => {
       id,
       login_URL,
       name,
-      expo_Year,
+      year,
       expo_Client
     } )
     res.status( 201 ).json( newCompany )

@@ -29,7 +29,7 @@ async function createCompany_Service(companyObject: any, year: number, client: s
     id: companyObject.value.id,
     login_URL: companyObject.value.autoLoginUrl,
     name: companyObject.value.name,
-    expo_Year: year,
+    year: year,
     expo_Client: client
   }
   console.log(data)
@@ -76,7 +76,7 @@ async function getLocalCompanyData_Service(p: any) {
       // console.log('name: ', p.name)
       // console.log('login_Url: ', p.login_Url)
       // console.log('lead_Ret: ', p.lead_Ret)
-      // console.log('expo_Year: ', p.expo_Year)
+      // console.log('year: ', p.year)
       // console.log('expo_Client: ', p.expo_Client)
       return p
     })

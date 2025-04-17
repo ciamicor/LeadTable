@@ -9,7 +9,7 @@
 <script lang="js"
         setup>
 import { utils, writeFile } from 'xlsx'
-import { useCompanyLocalStore } from '@/main.ts'
+import { useCompanyLocalStore } from '@/stores.js'
 
 const companyLocalData = useCompanyLocalStore()
 
@@ -26,7 +26,7 @@ async function exportLeads() {
   const formattedLeads = props.leadsList.map( ( {
                                                   id,
                                                   expo_Client,
-                                                  expo_Year,
+                                                  year,
                                                   scan_Company_Id,
                                                   attendee_Id,
                                                   updatedAt,
@@ -36,7 +36,7 @@ async function exportLeads() {
   const workbook = utils.book_new()
   utils.book_append_sheet( workbook, worksheet, `2025 Leads` )
   utils.sheet_add_aoa( worksheet, [ [ 'First Name', 'Last Name', 'Title', 'Email', 'Phone', 'Employer', 'Address', 'Score', 'Comment', 'Scanned Date' ] ], { origin: 'A1' } )
-  writeFile( workbook, `${ companyLocalData.name }-Leads-${ companyLocalData.expo_Client }-Expo-${ companyLocalData.expo_Year }.xlsx`, { compression: true } )
+  writeFile( workbook, `${ companyLocalData.name }-Leads-${ companyLocalData.expo_Client }-Expo-${ companyLocalData.year }.xlsx`, { compression: true } )
 }
 
 </script>

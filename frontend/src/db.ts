@@ -3,7 +3,7 @@ import Dexie, { type EntityTable } from 'dexie'
 
 interface Lead {
   id: number
-  expo_Year: number
+  year: number
   expo_Client: string
   attendee_Id: number
   scan_Company_Id: number
@@ -22,7 +22,7 @@ interface Profile {
   name: string
   login_Url: string
   lead_Ret: boolean
-  expo_Year: number
+  year: number
   expo_Client: string
 }
 
@@ -39,9 +39,9 @@ const db = new Dexie('LeadsDB') as Dexie & {
 
 // Schema declaration:
 db.version(1).stores({
-  // leads: '++id, expo_Year, attendee_Id, scan_Company_Id, name_First, name_Last, email, phone, employer, score, comment',
+  // leads: '++id, year, attendee_Id, scan_Company_Id, name_First, name_Last, email, phone, employer, score, comment',
   // exhibitors: 'id, name',
-  profile: 'id, &ex_Id, name, login_Url, lead_Ret, expo_Year, expo_Client'
+  profile: 'id, &ex_Id, name, login_Url, lead_Ret, year, expo_Client'
 })
 
 export type { Lead }

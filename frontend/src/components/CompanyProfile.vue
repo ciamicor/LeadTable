@@ -72,7 +72,7 @@ import {
 } from '@/services/CompanyDataService.ts'
 import { onBeforeMount, ref } from 'vue'
 import { db } from '@/db.ts'
-import { useCompanyLocalStore } from '@/main.ts'
+import { useCompanyLocalStore } from '@/stores.ts'
 
 /*-| Variables |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
@@ -125,7 +125,7 @@ async function saveDbLogin() {
       login_Url: selectedCompanyData.value.autoLoginUrl,
       lead_Ret: !!extraMatch.value,
       expo_Client: companyLocalData.expo_Client,
-      expo_Year: companyLocalData.expo_Year
+      year: companyLocalData.year
     })
     status.value = `${selectedCompanyData.value.name}
           successfully added. Got id ${id}`
@@ -180,7 +180,7 @@ async function login() {
   if (companyLocalData.name === '') {
     console.log('saving to db')
     await saveDbLogin()
-    await createCompany_Service(selectedCompanyData, companyLocalData.expo_Year, companyLocalData.expo_Client)
+    await createCompany_Service(selectedCompanyData, companyLocalData.year, companyLocalData.expo_Client)
   }
   loggedIn.value = true
   // window.location.reload()

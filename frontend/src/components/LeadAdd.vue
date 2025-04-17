@@ -98,7 +98,7 @@ import { createLead_Service } from '@/services/LeadDataService.js'
 import AttendeeDataService from '@/services/AttendeeDataService.ts'
 import { inject, onBeforeMount, onMounted, ref } from 'vue'
 import router from '@/router.js'
-import { useCompanyLocalStore } from '@/main.ts'
+import { useCompanyLocalStore } from '@/stores.js'
 
 /*-| Variables |-*/
 /*---+----+---+----+---+----+---+----+---*/
@@ -119,7 +119,7 @@ const commentRef = ref( null )
 const attendeeService = new AttendeeDataService()
 let attendee = ref(
   {
-    expo_Year: companyLocalData.expo_Year,
+    year: companyLocalData.year,
     name_First: null,
     name_Last: null,
     contact_Email: null,
@@ -135,7 +135,7 @@ let attendee = ref(
 let company = ref(
   {
     id: companyLocalData.id,
-    expo_Year: companyLocalData.expo_Year,
+    year: companyLocalData.year,
     company_Name: companyLocalData.name
   }
 )
@@ -144,7 +144,7 @@ let company = ref(
 let lead = ref(
   {
     id: null,
-    expo_Year: companyLocalData.expo_Year,
+    year: companyLocalData.year,
     expo_Client: companyLocalData.expo_Client,
     attendee_Id: attendee.value.id,
     scan_Company_Id: companyLocalData.id,

@@ -21,7 +21,7 @@
       <div class="row --p-4">
         <div v-if="companyLocalData.name"
              class="col-12-300 col-10-800">
-          <p class="--m-0">{{ companyLocalData.expo_Client }} {{ companyLocalData.expo_Year }}
+          <p class="--m-0">{{ companyLocalData.expo_Client }} {{ companyLocalData.year }}
                            Supplier's Day</p>
           <h2>{{ companyLocalData.name }}</h2>
         </div>
@@ -52,7 +52,7 @@
 </template>
 
 <script setup>
-import { useCompanyLocalStore } from '@/main.ts'
+import { useCompanyLocalStore } from '@/stores.ts'
 import { storeToRefs } from 'pinia'
 import { db } from '../db'
 import { getAllLeads_Service } from '../services/LeadDataService.js'
@@ -67,7 +67,7 @@ const {
   name,
   login_Url,
   lead_Ret,
-  expo_Year,
+  year,
   expo_Client
 } = storeToRefs( companyLocalData )
 
@@ -90,7 +90,7 @@ async function getProfile() {
 async function addDbLead() {
   try {
     const id = await db.leads.add( {
-      expo_Year: lead.value.expo_Year,
+      year: lead.value.year,
       expo_Client: lead.value.expo_Client,
       attendee_Id: lead.value.attendee_Id,
       scan_Company_Id: lead.value.scan_Company_Id,
@@ -122,7 +122,7 @@ const leadsList = ref()
 const lead = ref(
   {
     expo_Client: companyLocalData.expo_Client,
-    expo_Year: companyLocalData.expo_Year,
+    year: companyLocalData.year,
     attendee_Id: null,
     scan_Company_Id: companyLocalData.id,
     name_First: '',

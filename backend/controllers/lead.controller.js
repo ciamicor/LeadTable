@@ -5,7 +5,7 @@ const { where } = require( 'sequelize' )
 exports.createLead = async ( req, res ) => {
   const {
     expo_Client,
-    expo_Year,
+    year,
     attendee_Id,
     scan_Company_Id,
     name_First,
@@ -22,7 +22,7 @@ exports.createLead = async ( req, res ) => {
   try {
     const newLead = await Lead.create( {
       expo_Client,
-      expo_Year,
+      year,
       attendee_Id,
       scan_Company_Id,
       name_First,

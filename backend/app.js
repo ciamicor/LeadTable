@@ -42,7 +42,7 @@ app.use( express.json() )
 const leadRoutes = require( './routes/lead.routes' )
 const attendeeRoutes = require( './routes/attendee.routes' )
 const companyRoutes = require( './routes/company.routes' )
-// const scanRoutes = require( './routes/scan.routes' )
+const expoRoutes = require( './routes/expo.routes' )
 
 const PORT = process.env.PORT || 8080
 const HOST = process.env.HOST || 'localhost'
@@ -51,7 +51,7 @@ const frontend_root = 'dist'
 app.use( '/api/lead', leadRoutes )
 app.use( '/api/company', companyRoutes )
 app.use( '/api/attendee', attendeeRoutes )
-// app.use( '/api/scan', scanRoutes )
+app.use( '/api/expo', expoRoutes )
 
 app.use( express.static( path.join( __dirname, frontend_root ) ) )
 app.get( '*', ( req, res ) => {
@@ -99,35 +99,35 @@ module.exports = app
 //
 async function initPlaceholdData() {
   const newExpo = await Expo.create( {
-    expo_Active: 1,
-    expo_Year: 2025,
+    active: 1,
+    year: 2025,
     expoFp_Id: 23706,
     expo_Client: 'NYIFT'
   } )
   const newCompany1 = await Company.create( {
     id: 6150790,
-    expo_Year: 2025,
+    year: 2025,
     login_URL: '/exhibitors/details/edit?uid=73accba5-0b60-488c-acde-30f9d295edcb&token=fF7PY%252B1nPloFunSt0DmsGTHw8L1oa6Sf',
     name: 'ABRAZIL LLC',
     expo_Client: 'NYIFT'
   } )
   const newCompany2 = await Company.create( {
     id: 456453,
-    expo_Year: 2025,
+    year: 2025,
     login_URL: 'https://www.icor.org',
     name: 'ICOR',
     expo_Client: 'NYIFT'
   } )
   const newCompany3 = await Company.create( {
     id: 832387,
-    expo_Year: 2025,
+    year: 2025,
     login_URL: 'https://www.nyift.org',
     name: 'NYIFT',
     expo_Client: 'NYIFT'
   } )
 
   const newAttendee2 = await Attendee.create( {
-    expo_Year: 2025,
+    year: 2025,
     name_First: 'Katy',
     name_Last: 'Taylor',
     contact_Email: 'katy@iami411.org',
@@ -140,7 +140,7 @@ async function initPlaceholdData() {
   } )
 
   const newAttendee3 = await Attendee.create( {
-    expo_Year: 2025,
+    year: 2025,
     name_First: 'Lynnda',
     name_Last: 'Nelson',
     contact_Email: 'lynnda@iami411.org',
@@ -153,7 +153,7 @@ async function initPlaceholdData() {
   } )
 
   const newAttendee1 = await Attendee.create( {
-    expo_Year: 2025,
+    year: 2025,
     name_First: 'Kate',
     name_Last: 'Valentine',
     contact_Email: 'kate@icor.org',
@@ -166,7 +166,7 @@ async function initPlaceholdData() {
   } )
 
   const newLead2 = await Lead.create( {
-    expo_Year: 2025,
+    year: 2025,
     contact_Employer: 2,
     attendee_Id: 1,
     scan_Company_Id: 456453,
@@ -181,7 +181,7 @@ async function initPlaceholdData() {
   } )
 
   const newLead3 = await Lead.create( {
-    expo_Year: 2025,
+    year: 2025,
     contact_Employer: 3,
     attendee_Id: 2,
     scan_Company_Id: 832387,

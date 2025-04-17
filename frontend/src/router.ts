@@ -1,17 +1,18 @@
-import { createWebHashHistory, createRouter } from 'vue-router'
+import { createWebHistory, createRouter } from 'vue-router'
 import LeadsList from '@/components/LeadsList.vue'
-import ScanLead from '@/components/AddLead.vue'
-import FloorPlan from '@/components/FloorPlan.vue'
 import CompanyProfile from '@/components/CompanyProfile.vue'
 import BadgePrint from '@/components/BadgePrint.vue'
-import CreateBadge from '@/components/BadgeCreate.vue'
-import UploadAttendees from '@/components/UploadAttendees.vue'
+import ExpoMap from '@/components/ExpoMap.vue'
+import ExpoSelect from '@/components/ExpoSelect.vue'
+import LeadAdd from '@/components/LeadAdd.vue'
+import BadgeCreate from '@/components/BadgeCreate.vue'
+import AttendeesUpload from '@/components/AttendeesUpload.vue'
 
 const routes = [
   {
     path: '/',
     name: '',
-    component: FloorPlan
+    component: ExpoSelect
   },
   {
     path: '/leads-list',
@@ -21,12 +22,12 @@ const routes = [
   {
     path: '/scan-lead',
     name: 'scan-lead',
-    component: ScanLead
+    component: LeadAdd
   },
   {
     path: '/floor-plan',
     name: 'floor-plan',
-    component: FloorPlan
+    component: ExpoMap
   },
   {
     path: '/profile',
@@ -41,17 +42,17 @@ const routes = [
   {
     path: '/create-badge',
     name: 'create-badge',
-    component: CreateBadge
+    component: BadgeCreate
   },
   {
     path: '/upload-attendees',
     name: 'upload-attendees',
-    component: UploadAttendees
+    component: AttendeesUpload
   }
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes
 })
 
