@@ -1,46 +1,48 @@
+@use "config/config" as c;
+
 .table-container {
   overflow-x: auto;
 }
 
 table {
   text-align:      left;
-  padding:         $sp-4;
+  padding:         c.$sp-4;
   border-collapse: collapse;
-  border:          1px solid $grey-8;
+  border:          1px solid c.$grey-8;
   th {
-    padding: $sp-4 $sp-5;
-    border:  1px solid $grey-9;
+    padding: c.$sp-4 c.$sp-5;
+    border:  1px solid c.$grey-9;
   }
   tbody {
     tr {
-      border:     1px solid $grey-9;
+      border:     1px solid c.$grey-9;
       transition: background 200ms ease-in;
       td {
         line-height:  1;
         white-space:  nowrap;
         width:        5%;
-        padding:      $sp-4 $sp-4;
-        border-right: 1px solid $grey-11;
+        padding:      c.$sp-4 c.$sp-4;
+        border-right: 1px solid c.$grey-11;
         outline:      2px solid hsla(0, 0%, 0%, 0);
         transition:   outline 200ms ease-out;
         &:has(input) {
-          padding: $sp-2;
+          padding: c.$sp-2;
         }
         &#comment {
           white-space: wrap;
         }
       }
       &:hover {
-        background: $grey-12;
+        background: c.$grey-12;
       }
       input {
-        width:      calc(100% - $sp-8);
+        width:      calc(100% - #{c.$sp-8});
         max-width:  15ch;
-        height:     calc(100% - $sp-8);
-        padding:    $sp-4;
+        height:     calc(100% - #{c.$sp-8});
+        padding:    c.$sp-4;
         background: hsla(0, 0%, 100%, .65);
         &:active, &:focus {
-          background: $grey-12;
+          background: c.$grey-12;
         }
       }
     }

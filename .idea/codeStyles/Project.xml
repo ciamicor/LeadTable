@@ -45,7 +45,6 @@
       <option name="SPACES_AROUND_ARROW" value="true" />
     </PHPCodeStyleSettings>
     <SassCodeStyleSettings>
-      <option name="BLANK_LINES_BETWEEN_BLOCKS" value="0" />
       <option name="BLANK_LINES_AROUND_NESTED_SELECTOR" value="0" />
     </SassCodeStyleSettings>
     <ScssCodeStyleSettings>
@@ -1191,7 +1190,7 @@
       </indentOptions>
     </codeStyleSettings>
     <codeStyleSettings language="SCSS">
-      <option name="KEEP_BLANK_LINES_IN_CODE" value="0" />
+      <option name="KEEP_BLANK_LINES_IN_CODE" value="1" />
       <indentOptions>
         <option name="INDENT_SIZE" value="4" />
       </indentOptions>

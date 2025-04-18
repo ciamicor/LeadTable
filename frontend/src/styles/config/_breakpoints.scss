@@ -1,0 +1,24 @@
+@use "spacing" as s;
+@use "colors" as c;
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+/*-| Variables |-*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+$column-number:  12;
+$max-page-width: 1600px;
+
+/*-| Breakpoints |-*/
+$breakpoints:    (
+                   xxxs: 300,
+                   xxs: 400,
+                   xs: 500,
+                   sm: 700,
+                   md: 900,
+                   lg: 1100,
+                   xl: 1400,
+                   xxl: 1600,
+                 );
+@mixin breakpoint($breakpoint) {
+  @media (min-width: #{$breakpoint}px) {
+    @content
+  }
+}

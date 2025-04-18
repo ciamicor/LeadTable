@@ -1,28 +1,30 @@
+@use "config/config" as c;
+
 label {
   display:   grid;
   flex:      1 1 auto;
-  gap:       $sp-4;
-  font-size: $font-xs;
-  margin:    $sp-4 0 0 0;
-  padding:   0 $sp-2;
+  gap:       c.$sp-4;
+  font-size: c.$font-xs;
+  margin:    c.$sp-4 0 0 0;
+  padding:   0 c.$sp-2;
   & input, select, textarea {
     flex: 1 1 auto;
   }
 }
 
 input, select {
-  padding:       $sp-5 $sp-6;
-  border:        2px solid $grey-10;
-  border-radius: $item-border;
-  transition:    box-shadow $trans-200, border $trans-200;
+  padding:       c.$sp-5 c.$sp-6;
+  border:        2px solid c.$grey-10;
+  border-radius: c.$item-border;
+  transition:    box-shadow c.$trans-200, border c.$trans-200;
   &::placeholder {
-    color:      $grey-8;
+    color:      c.$grey-8;
     font-style: italic;
   }
   &:focus, &:focus-visible {
-    border:     2px solid $color-secondary-8;
+    border:     2px solid c.$color-secondary-8;
     outline:    none;
-    box-shadow: 0 0 8px -0 $color-secondary-10, inset 0 0 8px 0 $color-secondary-10;
+    box-shadow: 0 0 8px -0 c.$color-secondary-10, inset 0 0 8px 0 c.$color-secondary-10;
   }
 }
 
@@ -31,11 +33,11 @@ input, select {
 fieldset {
   display:   flex;
   flex-flow: row wrap;
-  gap:       $sp-4;
+  gap:       c.$sp-4;
   div:has( > input[type="radio"]) {
     input[type="radio"] {
-      width:  $sp-8;
-      height: $sp-8;
+      width:  c.$sp-8;
+      height: c.$sp-8;
     }
   }
 }
@@ -47,18 +49,18 @@ fieldset {
   button {
     position:      absolute;
     top:           50%;
-    right:         $sp-8;
-    border:        1px solid $grey-8;
+    right:         c.$sp-8;
+    border:        1px solid c.$grey-8;
     border-radius: 65px;
     translate:     0 -50%;
     scale:         .85;
   }
   input.search {
-    padding:       $sp-6 $sp-8;
+    padding:       c.$sp-6 c.$sp-8;
     border-radius: 65px;
-    transition:    border-radius $trans-200;
+    transition:    border-radius c.$trans-200;
     &:focus, &:focus-visible {
-      border-radius: $item-border;
+      border-radius: c.$item-border;
     }
   }
 }

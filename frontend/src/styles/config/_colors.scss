@@ -1,0 +1,139 @@
+$lightness-1:        8% !default;
+$lightness-2:        16% !default;
+$lightness-3:        24% !default;
+$lightness-4:        32% !default;
+$lightness-5:        40% !default;
+$lightness-6:        48% !default;
+$lightness-7:        56% !default;
+$lightness-8:        64% !default;
+$lightness-9:        72% !default;
+$lightness-10:       80% !default;
+$lightness-11:       88% !default;
+$lightness-12:       94% !default;
+$color-saturate:     (
+                       94,
+                       88,
+                       80,
+                       72,
+                       64,
+                       56,
+                       48,
+                       40,
+                       32,
+                       24,
+                       16,
+                       8,
+                     );
+$color-light:        (
+                       8,
+                       16,
+                       24,
+                       32,
+                       40,
+                       48,
+                       56,
+                       64,
+                       72,
+                       80,
+                       88,
+                       94
+                     );
+$color-hues:         (
+                       "primary": "85",
+                       "secondary": "45",
+                       "success": "235",
+                       "warn": "10",
+                     );
+$grey-hue:           "215" !default;
+:root {
+  @for $c from 1 through 12 {
+    @each $type, $hue in $color-hues {
+      --color-#{$type}-#{$c}: hsl(#{$hue}, #{80 + "%"}, #{(0 + (8 *$c)) + "%"});
+    }
+    --grey-#{$c}: hsl(#{$grey-hue}, 20%, #{(0 + (8 *$c)) + "%"});
+  }
+  --color-primary-hs:   85, 65%;
+  --color-secondary-hs: 35, 85%;
+  --color-success-hs:   235, 85%;
+  --color-warn-hs:      10, 85%;
+  --grey-1-hsl:         215, 25%, #{$lightness-1};
+  --grey-2-hsl:         215, 25%, #{$lightness-2};
+  --grey-3-hsl:         215, 25%, #{$lightness-3};
+  --grey-4-hsl:         215, 25%, #{$lightness-4};
+  --grey-5-hsl:         215, 25%, #{$lightness-5};
+  --grey-6-hsl:         215, 25%, #{$lightness-6};
+  --grey-7-hsl:         215, 25%, #{$lightness-7};
+  --grey-8-hsl:         215, 25%, #{$lightness-8};
+  --grey-9-hsl:         215, 25%, #{$lightness-9};
+  --grey-10-hsl:        215, 25%, #{$lightness-10};
+  --grey-11-hsl:        215, 25%, #{$lightness-11};
+  --grey-12-hsl:        215, 25%, #{$lightness-12};
+  --font-primary:       hsl(var(--grey-1-hsl));
+  --font-contrast:      white;
+}
+
+/*-| SCSS |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+$font-primary:       var(--font-primary) !default;
+$font-contrast:      var(--font-contrast) !default;
+$color-primary-1:    var(--color-primary-1) !default;
+$color-primary-2:    var(--color-primary-2) !default;
+$color-primary-3:    var(--color-primary-3) !default;
+$color-primary-4:    var(--color-primary-4) !default;
+$color-primary-5:    var(--color-primary-5) !default;
+$color-primary-6:    var(--color-primary-6) !default;
+$color-primary-7:    var(--color-primary-7) !default;
+$color-primary-8:    var(--color-primary-8) !default;
+$color-primary-9:    var(--color-primary-9) !default;
+$color-primary-10:   var(--color-primary-10) !default;
+$color-primary-11:   var(--color-primary-11) !default;
+$color-primary-12:   var(--color-primary-12) !default;
+$color-secondary-1:  var(--color-secondary-1) !default;
+$color-secondary-2:  var(--color-secondary-2) !default;
+$color-secondary-3:  var(--color-secondary-3) !default;
+$color-secondary-4:  var(--color-secondary-4) !default;
+$color-secondary-5:  var(--color-secondary-5) !default;
+$color-secondary-6:  var(--color-secondary-6) !default;
+$color-secondary-7:  var(--color-secondary-7) !default;
+$color-secondary-8:  var(--color-secondary-8) !default;
+$color-secondary-9:  var(--color-secondary-9) !default;
+$color-secondary-10: var(--color-secondary-10) !default;
+$color-secondary-11: var(--color-secondary-11) !default;
+$color-secondary-12: var(--color-secondary-12) !default;
+$color-success-1:    var(--color-success-1) !default;
+$color-success-2:    var(--color-success-2) !default;
+$color-success-3:    var(--color-success-3) !default;
+$color-success-4:    var(--color-success-4) !default;
+$color-success-5:    var(--color-success-5) !default;
+$color-success-6:    var(--color-success-6) !default;
+$color-success-7:    var(--color-success-7) !default;
+$color-success-8:    var(--color-success-8) !default;
+$color-success-9:    var(--color-success-9) !default;
+$color-success-10:   var(--color-success-10) !default;
+$color-success-11:   var(--color-success-11) !default;
+$color-success-12:   var(--color-success-12) !default;
+$color-warn-1:       var(--color-warn-1) !default;
+$color-warn-2:       var(--color-warn-2) !default;
+$color-warn-3:       var(--color-warn-3) !default;
+$color-warn-4:       var(--color-warn-4) !default;
+$color-warn-5:       var(--color-warn-5) !default;
+$color-warn-6:       var(--color-warn-6) !default;
+$color-warn-7:       var(--color-warn-7) !default;
+$color-warn-8:       var(--color-warn-8) !default;
+$color-warn-9:       var(--color-warn-9) !default;
+$color-warn-10:      var(--color-warn-10) !default;
+$color-warn-11:      var(--color-warn-11) !default;
+$color-warn-12:      var(--color-warn-12) !default;
+$grey-1:             var(--grey-1) !default;
+$grey-2:             var(--grey-2) !default;
+$grey-3:             var(--grey-3) !default;
+$grey-4:             var(--grey-4) !default;
+$grey-5:             var(--grey-5) !default;
+$grey-6:             var(--grey-6) !default;
+$grey-7:             var(--grey-7) !default;
+$grey-8:             var(--grey-8) !default;
+$grey-9:             var(--grey-9) !default;
+$grey-10:            var(--grey-10) !default;
+$grey-11:            var(--grey-11) !default;
+$grey-12:            var(--grey-12) !default;
+

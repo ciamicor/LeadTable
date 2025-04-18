@@ -1,56 +1,57 @@
+@use "config/config" as c;
 
 .lead-cards-container {
-  @extend .adapt-grid;
+  @include c.adapt-grid;
 }
 
 .lead-card {
-@extend .grid-card;
+  @extend .grid-card;
   .card-label {
-    color:          $grey-1;
-    font-size:      $font-xs - 2px;
+    color:          c.$grey-1;
+    font-size:      c.$font-xs - 2px;
     font-weight:    400;
     text-transform: uppercase;
   }
   #name {
-    font-size:     $font-md;
+    font-size:     c.$font-md;
     font-weight:   500;
     line-height:   1;
-    margin-bottom: $sp-2;
+    margin-bottom: c.$sp-2;
   }
   #contact {
-    @extend .row;
+    @extend .row !optional;
     justify-content: space-between;
-    margin:          $sp-5 0 0 0;
+    margin:          c.$sp-5 0 0 0;
     padding:         0;
   }
   #phone, #email {
-    color:                     $color-success-4;
-    font-size:                 $font-xs;
+    color:                     c.$color-success-4;
+    font-size:                 c.$font-xs;
     font-weight:               300;
     min-width:                 max-content;
-    transition:                background $trans-100;
+    transition:                background c.$trans-100;
     text-decoration-line:      underline;
-    text-underline-offset:     $sp-1;
-    text-decoration-color:     $color-success-11;
+    text-underline-offset:     c.$sp-1;
+    text-decoration-color:     c.$color-success-11;
     text-decoration-thickness: 2px;
     & i {
-      color:     $color-success-8;
-      font-size: $font-sm;
+      color:     c.$color-success-8;
+      font-size: c.$font-sm;
     }
     &:hover {
-      background: $color-success-12;
+      background: c.$color-success-12;
     }
   }
   #score {
     display:               grid;
     grid-template-columns: repeat(5, 28px);
-    margin-top:            $sp-6;
+    margin-top:            c.$sp-6;
     & i {
-      color:     $color-secondary-7;
-      font-size: $font-md;
+      color:     c.$color-secondary-7;
+      font-size: c.$font-md;
     }
   }
   #comment {
-    margin-top: $sp-6;
+    margin-top: c.$sp-6;
   }
 }

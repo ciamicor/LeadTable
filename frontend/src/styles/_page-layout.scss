@@ -1,41 +1,23 @@
-/*-| Variables |-*/
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-$column-number:       12;
-$max-page-width:      1600px;
-$row-gap:             $sp-4;
-$col-gap:             $sp-4;
-/*-| Breakpoints |-*/
-$breakpoints:         (
-                        xxxs: 300,
-                        xxs: 400,
-                        xs: 500,
-                        sm: 700,
-                        md: 900,
-                        lg: 1100,
-                        xl: 1400,
-                        xxl: 1600,
-                      );
+@use "config/config" as c;
 /*-| Setup |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-/*-| Breakpoints |-*/
-/*---+----+---+----+---+----+---+----+---*/
-@mixin breakpoint($breakpoint) {
-  @media (min-width: #{$breakpoint}px) {
-    @content
-  }
-}
-
 /*-| Layout |-*/
 /*---+----+---+----+---+----+---+----+---*/
-.section {
-  display:   flex;
-  flex:      1 1 auto;
-  flex-flow: row wrap;
-  gap:       $row-gap;
-  width:     100dvw;
-  max-width: $max-page-width;
-  margin:    0;
-  padding:   $sp-v-8;
+.--full {
+  max-width: 100%;
+  margin:    0 !important;
+}
+
+.container {
+  display:       flex;
+  flex:          1 1 auto;
+  flex-flow:     row wrap;
+  place-content: center;
+  place-items:   center;
+  gap:           c.$row-gap;
+  width:         100dvw;
+  max-width:     c.$max-page-width;
+  margin:        auto;
 }
 
 .row {
@@ -43,86 +25,55 @@ $breakpoints:         (
   flex:          1 1 auto;
   flex-flow:     row wrap;
   place-content: center;
-  gap:           $row-gap;
-  max-width:     $max-page-width;
+  gap:           c.$row-gap;
+  max-width:     c.$max-page-width;
   margin:        0 auto;
-  padding:       $sp-v-2 $sp-v-2;
-  &.--full {
-    max-width: 100%;
-    margin:    0 !important;
-  }
+  padding:       c.$sp-v-2 c.$sp-v-2;
   &.--items {
     margin:  0;
     padding: 0;
   }
 }
 
-/*-| Grid |-*/
+/*-| Flex |-*/
 /*---+----+---+----+---+----+---+----+---*/
-// TODO - Remove all .adapt-grid styles, change to the mixin.
-@mixin adapt-grid($card-min-width, $card-padding) {}
-
-$grid-card-min-width: 400;
-$grid-card-h-padding: 20;
-
-.adapt-grid {
-  display:            grid;
-  grid-template-rows: auto;
-  gap:                min(24px, 2vw);
-  padding:            0 0 $sp-v-14;
-  @for $c from 1 through 4 {
-    $gap-base: 8;
-    $bp:       $c * $grid-card-min-width;
-    @include breakpoint(calc($bp + (($grid-card-h-padding * 2) * $c))) {
-      grid-template-columns: repeat($c, minmax(#{$grid-card-min-width + "px" }, 1fr));
-    }
-  }
-  .grid-card {
-    display:            grid;
-    grid-template-rows: min-content;
-    align-items:        start;
-    padding:            $sp-7 #{$grid-card-h-padding + "px"};
-    border:             1px solid $grey-8;
-    border-radius:      $item-border;
-  }
-}
 
 /*-| Columns by Breakpoint |-*/
 // @each $bp, $size in $breakpoints {
 @for $size from 3 through 16 {
-  @for $i from 1 through $column-number {
+  @for $i from 1 through c.$column-number {
     .col-#{$i}-#{$size * 100} {
       display:   flex;
       flex-flow: column nowrap;
-      gap:       $col-gap;
+      gap:       c.$col-gap;
       & > *:not(.button,button) + .button,
       & > *:not(.button,button) + button {
-        margin-top: $sp-4;
+        margin-top: c.$sp-4;
       }
       & > .button:has(+ *:not(.button, button)),
       & > button:has(+ *:not(.button, button)) {
-        margin-bottom: $sp-6;
+        margin-bottom: c.$sp-6;
       }
-      @include breakpoint($size * 100) {
-        flex:  0 1 calc((100% * ($i / $column-number)) - $row-gap);
-        width: calc((100% * ($i / $column-number)) - $row-gap);
+      @include c.breakpoint($size * 100) {
+        flex:  0 1 calc((100% * calc($i / #{c.$column-number})) - #{c.$row-gap});
+        width: calc((100% * calc($i / #{c.$column-number})) - #{c.$row-gap});
       }
     }
     .row-#{$i}-#{$size * 100} {
       display:   flex;
       flex-flow: row wrap;
-      gap:       $col-gap;
+      gap:       c.$col-gap;
       & > *:not(.button,button) + .button,
       & > *:not(.button,button) + button {
-        margin-top: $sp-4;
+        margin-top: c.$sp-4;
       }
       & > .button:has(+ *:not(.button, button)),
       & > button:has(+ *:not(.button, button)) {
-        margin-bottom: $sp-6;
+        margin-bottom: c.$sp-6;
       }
-      @include breakpoint($size * 100) {
-        flex:  0 1 calc((100% * ($i / $column-number)) - $row-gap);
-        width: calc((100% * ($i / $column-number)) - $row-gap);
+      @include c.breakpoint($size * 100) {
+        flex:  0 1 calc((100% * $i / #{c.$column-number}) - #{c.$row-gap});
+        width: calc((100% * $i / #{c.$column-number}) - #{c.$row-gap});
       }
     }
   }
@@ -134,34 +85,6 @@ $grid-card-h-padding: 20;
 
 .--f-shrink {
   flex-shrink: 1;
-}
-
-/*-| Placement |-*/
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-$align-type:          (
-                        "place",
-                        "justify",
-                        "align"
-                      );
-$align-subject:       (
-                        "self",
-                        "items",
-                        "content"
-                      );
-$align-area:          (
-                        "start",
-                        "center",
-                        "end",
-                        "stretch"
-                      );
-@each $type in $align-type {
-  @each $subject in $align-subject {
-    @each $area in $align-area {
-      .--#{$type}-#{$subject}-#{$area} {
-        #{$type}-#{$subject}: #{$area}
-      }
-    }
-  }
 }
 
 /*-| Position |-*/

@@ -1,16 +1,13 @@
-$app-height:        100dvh;
-$app-width:         100dvw;
-$nav-height:        calc(60px);
-$nav-padding:       $sp-6;
-$nav-height-actual: calc($nav-height + ($nav-padding * 2));
-$view-height:       calc($app-height - $nav-height-actual);
+@use "config/config" as c;
+/*-| App Views |-*/
+/*---+----+---+----+---+----+---+----+---*/
 #app {
   position:           relative;
   display:            grid;
   overflow:           hidden;
-  grid-template-rows: 1fr $nav-height-actual;
+  grid-template-rows: 1fr c.$nav-height-actual;
   width:              100dvw;
-  height:             $app-height;
+  height:             c.$app-height;
 }
 
 .nav-bar {
@@ -23,10 +20,10 @@ $view-height:       calc($app-height - $nav-height-actual);
   flex-flow:        row nowrap;
   place-content:    center;
   place-items:      center;
-  gap:              $sp-4;
-  height:           $nav-height;
-  padding:          $nav-padding;
-  background-color: $color-primary-5;
+  gap:              c.$sp-4;
+  height:           c.$nav-height;
+  padding:          c.$nav-padding;
+  background-color: c.$color-primary-5;
   .button {
     width:     20%;
     min-width: 65px;
@@ -41,22 +38,22 @@ $view-height:       calc($app-height - $nav-height-actual);
 
 .view {
   &-mask {
-    overflow:  scroll;
-    width:     $app-width;
-    max-width: $app-width;
-    height:    $view-height;
-    background: $grey-12;
+    overflow:   scroll;
+    width:      c.$app-width;
+    max-width:  c.$app-width;
+    height:     c.$view-height;
+    background: c.$grey-12;
   }
   &-container {
     display:    flex;
-    min-height: $view-height;
+    min-height: c.$view-height;
   }
 }
 
 /*-| Views |-*/
 /*---+----+---+----+---+----+---+----+---*/
 .view-floor-plan {
-  width:  $app-width;
-  height: calc($view-height - 4px);
+  width:  c.$app-width;
+  height: calc(#{c.$view-height} - 4px);
   border: none !important;
 }

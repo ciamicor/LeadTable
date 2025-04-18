@@ -1,9 +1,11 @@
+@use "colors" as c;
+
 @font-face {
   font-family:  InterVariable;
   font-style:   normal;
   font-weight:  100 900;
   font-display: swap;
-  src:          url("../assets/fonts/inter-4.1/InterVariable.woff2") format("woff2");
+  src:          url("../../assets/fonts/inter-4.1/InterVariable.woff2") format("woff2");
 }
 
 @font-face {
@@ -11,12 +13,12 @@
   font-style:   italic;
   font-weight:  100 900;
   font-display: swap;
-  src:          url("../assets/fonts/inter-4.1/InterVariable-Italic.woff2") format("woff2");
+  src:          url("../../assets/fonts/inter-4.1/InterVariable-Italic.woff2") format("woff2");
 }
 
 /*-| Reset |-*/
 * {
-  color:     $grey-2;
+  color:     c.$grey-2;
   text-wrap: pretty;
 }
 
@@ -26,12 +28,12 @@
 
 /*-| Generate |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-$font-xs:  16px;
-$font-sm:  18px;
-$font-md:  22px;
-$font-lg:  26px;
-$font-xl:  30px;
-$font-xxl: 34px;
+$font-xs:  16px !default;
+$font-sm:  18px !default;
+$font-md:  22px !default;
+$font-lg:  26px !default;
+$font-xl:  30px !default;
+$font-xxl: 34px !default;
 /*-| Font Size Classes |-*/
 @for $f from 0 through 16 {
   $add: #{14 + (2 * $f)};

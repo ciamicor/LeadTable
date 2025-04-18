@@ -1,52 +1,61 @@
 /*-| General |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+
 /*-| Constant |-*/
 /*---+----+---+----+---+----+---+----+---*/
-$sp-1:         2px;
-$sp-2:         4px;
-$sp-3:         6px;
-$sp-4:         8px;
-$sp-5:         12px;
-$sp-6:         16px;
-$sp-7:         20px;
-$sp-8:         24px;
-$sp-9:         28px;
-$sp-10:        32px;
-$sp-11:        36px;
-$sp-12:        40px;
-$sp-13:        44px;
-$sp-14:        48px;
-$sp-15:        54px;
-$sp-16:        60px;
-$sp-17:        72px;
-$sp-18:        86px;
+$sp-1:         2px !default;
+$sp-2:         4px !default;
+$sp-3:         6px !default;
+$sp-4:         8px !default;
+$sp-5:         12px !default;
+$sp-6:         16px !default;
+$sp-7:         20px !default;
+$sp-8:         24px !default;
+$sp-9:         28px !default;
+$sp-10:        32px !default;
+$sp-11:        36px !default;
+$sp-12:        40px !default;
+$sp-13:        44px !default;
+$sp-14:        48px !default;
+$sp-15:        54px !default;
+$sp-16:        60px !default;
+$sp-17:        72px !default;
+$sp-18:        86px !default;
 /*-| Variable |-*/
 /*---+----+---+----+---+----+---+----+---*/
-$sp-v-1:       max(2vw, calc($sp-1 * 2));
-$sp-v-2:       max(4vw, calc($sp-2 * 2));
-$sp-v-3:       max(6vw, calc($sp-3 * 2));
-$sp-v-4:       max(8vw, calc($sp-4 * 2));
-$sp-v-5:       max(10vw, calc($sp-5 * 2));
-$sp-v-6:       max(12vw, calc($sp-6 * 2));
-$sp-v-7:       max(14vw, calc($sp-7 * 2));
-$sp-v-8:       max(16vw, calc($sp-8 * 2));
-$sp-v-9:       max(18vw, calc($sp-9 * 2));
-$sp-v-10:      max(20vw, calc($sp-10 * 2));
-$sp-v-11:      max(22vw, calc($sp-11 * 2));
-$sp-v-12:      max(24vw, calc($sp-12 * 2));
-$sp-v-13:      max(28vw, calc($sp-13 * 2));
-$sp-v-14:      max(32vw, calc($sp-14 * 2));
-$sp-v-15:      max(36vw, calc($sp-15 * 2));
-$sp-v-16:      max(40vw, calc($sp-16 * 2));
-$sp-v-17:      max(44vw, calc($sp-17 * 2));
-$sp-v-18:      max(48vw, calc($sp-18 * 2));
+$sp-v-1:       max(2vw, calc($sp-1 * 2)) !default;
+$sp-v-2:       max(4vw, calc($sp-2 * 2)) !default;
+$sp-v-3:       max(6vw, calc($sp-3 * 2)) !default;
+$sp-v-4:       max(8vw, calc($sp-4 * 2)) !default;
+$sp-v-5:       max(10vw, calc($sp-5 * 2)) !default;
+$sp-v-6:       max(12vw, calc($sp-6 * 2)) !default;
+$sp-v-7:       max(14vw, calc($sp-7 * 2)) !default;
+$sp-v-8:       max(16vw, calc($sp-8 * 2)) !default;
+$sp-v-9:       max(18vw, calc($sp-9 * 2)) !default;
+$sp-v-10:      max(20vw, calc($sp-10 * 2)) !default;
+$sp-v-11:      max(22vw, calc($sp-11 * 2)) !default;
+$sp-v-12:      max(24vw, calc($sp-12 * 2)) !default;
+$sp-v-13:      max(28vw, calc($sp-13 * 2)) !default;
+$sp-v-14:      max(32vw, calc($sp-14 * 2)) !default;
+$sp-v-15:      max(36vw, calc($sp-15 * 2)) !default;
+$sp-v-16:      max(40vw, calc($sp-16 * 2)) !default;
+$sp-v-17:      max(44vw, calc($sp-17 * 2)) !default;
+$sp-v-18:      max(48vw, calc($sp-18 * 2)) !default;
+
+/*-| Layout |-*/
+/*---+----+---+----+---+----+---+----+---*/
+$row-gap:      $sp-4;
+$col-gap:      $sp-4;
+
+/*-| Borders |-*/
+/*---+----+---+----+---+----+---+----+---*/
+$item-border:  $sp-4 !default;
+$panel-border: $sp-6 !default;
+
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-/*-| Items, Borders |-*/
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-$item-border:  $sp-4;
-$panel-border: $sp-6;
 /*-| Generate |-*/
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+
 @for $i from 0 through 24 {
   /*-| All |-*/
   /*---+----+---+----+---+----+---+----+---*/
@@ -122,20 +131,5 @@ $panel-border: $sp-6;
   }
   .--right-#{$i} {
     right: calc(2px * $i) !important;
-  }
-}
-
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-/*-| Dimensions |-*/
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-@for $i from 1 through 20 {
-  .--w-#{$i * 5} {
-    width: #{$i * 5 + "%"} !important;
-  }
-  .--h-#{$i * 5} {
-    height: #{$i * 5 + "%"} !important;
-  }
-  .--flex-basis-#{$i * 5} {
-    flex-basis: #{$i * 5 + "%"} !important;
   }
 }

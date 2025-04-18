@@ -1,0 +1,31 @@
+@use "../spacing" as s;
+@use "../colors" as c;
+@use "../breakpoints" as b;
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+/*-| Grid |-*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+@mixin adapt-grid(
+  $grid-card-min-width: 400,
+  $grid-card-h-padding: 20,
+  $grid-padding: 0 0 s.$sp-v-14
+) {
+  display:            grid;
+  grid-template-rows: auto;
+  gap:                min(24px, 2vw);
+  padding:            $grid-padding;
+  @for $c from 1 through 4 {
+    $gap-base: 8;
+    $bp:       $c * $grid-card-min-width;
+    @include b.breakpoint(calc($bp + (($grid-card-h-padding * 2) * $c))) {
+      grid-template-columns: repeat($c, minmax(#{$grid-card-min-width + "px" }, 1fr));
+    }
+  }
+  .grid-card {
+    display:            grid;
+    grid-template-rows: min-content;
+    align-items:        start;
+    padding:            s.$sp-7 #{$grid-card-h-padding + "px"};
+    border:             1px solid c.$grey-8;
+    border-radius:      s.$item-border;
+  }
+}

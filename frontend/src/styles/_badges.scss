@@ -1,12 +1,13 @@
+@use "config/config" as c;
 /*-| Badges for Selecting |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 .badge-select-grid {
-  @extend .adapt-grid;
-  margin: $sp-18 0 0 0;
+  margin: c.$sp-18 0 0 0;
+  @include c.adapt-grid;
   .badge-select-wrap {
     @extend .grid-card;
     grid-template-columns: min-content 1fr;
-    gap:                   $sp-6;
+    gap:                   c.$sp-6;
     & * {
       margin: 0;
     }
@@ -35,11 +36,11 @@
     /*width:              4in;
     height:             3in;*/
     padding:            0.165in 0.165in 0.325in;
-    //outline:            1px dashed $grey-11;
+    //outline:            1px dashed c.$grey-11;
     & .--attendee-info-container {
       display:            grid;
       grid-template-rows: repeat(3, min-content );
-      gap:                $sp-4;
+      gap:                c.$sp-4;
       width:              100%;
       * {
         line-height:    1;
@@ -51,16 +52,16 @@
         border:  none;
       }
       & .--employer {
-        color:                   $color-primary-4;
+        color:                   c.$color-primary-4;
         font-size:               1.25rem;
         font-variation-settings: "wght" 300, "wdth" 100, "opsz" 15;
       }
       & .--name {
-        font-size:               $font-xl;
+        font-size:               c.$font-xl;
         font-variation-settings: "wght" 600, "wdth" 100, "opsz" 15;
       }
       & .--title {
-        color:                   $grey-5;
+        color:                   c.$grey-5;
         font-size:               1.25rem;
         font-style:              italic;
         font-variation-settings: "wght" 300, "wdth" 100, "opsz" 15;
@@ -75,7 +76,7 @@
       .badge--qr {
         width:      115px !important;
         height:     115px !important;
-        background: $grey-10;
+        background: c.$grey-10;
       }
       img {
         width:  185px;
