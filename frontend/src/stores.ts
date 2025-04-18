@@ -1,41 +1,51 @@
-import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import {defineStore} from 'pinia'
+import {ref} from 'vue'
 
+/*-| Expo Store |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const useExpoLocalStore = defineStore('companyLocal', () => {
-  const id = ref(0)
-  const name = ref('')
-  const login_Url = ref('')
-  const lead_Ret = ref(false)
-  const year = ref(2025)
-  const expo_Client = ref('NYIFT') //ref<String>('NYIFT')
+  const active = ref(false)<Boolean>
+  const start_Date = ref(null)<DateConstructor>
+  const expo_Client = ref('')<String>
+  const year = ref(0)<Number>
+  const expoFp_Id = ref(0)<Number>
+  const logoUrl_Color = ref('')<String>
+  const logoUrl_Black = ref('')<String>
+  const expoFp_MapUrl = ref('')<String>
 
   function $reset() {
-    id.value = 0
-    name.value = ''
-    login_Url.value = ''
-    lead_Ret.value = false
-    year.value = 0
+    active.value = false
+    start_Date.value = null
     expo_Client.value = ''
+    year.value = 0
+    expoFp_Id.value = 0
+    logoUrl_Color.value = ''
+    logoUrl_Black.value = ''
+    expoFp_MapUrl.value = ''
   }
 
   return {
-    id,
-    name,
-    login_Url,
-    lead_Ret,
-    year,
+    active,
+    start_Date,
     expo_Client,
+    year,
+    expoFp_Id,
+    logoUrl_Color,
+    logoUrl_Black,
+    expoFp_MapUrl,
     $reset
   }
 })
 
+/*-| Company Store |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const useCompanyLocalStore = defineStore('companyLocal', () => {
-  const id = ref(0)
-  const name = ref('')
-  const login_Url = ref('')
-  const lead_Ret = ref(false)
-  const year = ref(2025)
-  const expo_Client = ref('NYIFT') //ref<String>('NYIFT')
+  const id = ref(0)<Number>
+  const name = ref('')<String>
+  const login_Url = ref('')<String>
+  const lead_Ret = ref(false)<Boolean>
+  const year = ref(0)<Number>
+  const expo_Client = ref('')<String>
 
   function $reset() {
     id.value = 0
@@ -57,4 +67,6 @@ const useCompanyLocalStore = defineStore('companyLocal', () => {
   }
 })
 
-export { useExpoLocalStore, useCompanyLocalStore }
+export {useExpoLocalStore, useCompanyLocalStore}
+
+

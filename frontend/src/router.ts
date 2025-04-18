@@ -1,4 +1,4 @@
-import { createWebHistory, createRouter } from 'vue-router'
+import {createWebHistory, createRouter} from 'vue-router'
 import LeadsList from '@/components/LeadsList.vue'
 import CompanyProfile from '@/components/CompanyProfile.vue'
 import BadgePrint from '@/components/BadgePrint.vue'
@@ -11,42 +11,39 @@ import AttendeesUpload from '@/components/AttendeesUpload.vue'
 const routes = [
   {
     path: '/',
-    name: '',
     component: ExpoSelect
   },
   {
-    path: '/leads-list',
-    name: 'leads-list',
-    component: LeadsList
+    path: '/:client/:year/',
+    children: [
+      {
+        path: 'leads-list',
+        component: LeadsList,
+      },
+      {
+        path: 'scan-lead',
+        component: LeadAdd,
+      },
+      {
+        path: 'floor-plan',
+        component: ExpoMap,
+      },
+      {
+        path: 'profile',
+        component: CompanyProfile,
+      },
+      {
+        path: 'create-badge',
+        component: BadgeCreate,
+      },
+    ]
   },
   {
-    path: '/scan-lead',
-    name: 'scan-lead',
-    component: LeadAdd
-  },
-  {
-    path: '/floor-plan',
-    name: 'floor-plan',
-    component: ExpoMap
-  },
-  {
-    path: '/profile',
-    name: 'profile',
-    component: CompanyProfile
-  },
-  {
-    path: '/print-badges',
-    name: 'print-badges',
+    path: '/admin/print-badges',
     component: BadgePrint
   },
   {
-    path: '/create-badge',
-    name: 'create-badge',
-    component: BadgeCreate
-  },
-  {
-    path: '/upload-attendees',
-    name: 'upload-attendees',
+    path: '/admin/upload-attendees',
     component: AttendeesUpload
   }
 ]

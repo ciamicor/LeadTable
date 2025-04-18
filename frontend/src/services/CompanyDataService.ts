@@ -1,5 +1,5 @@
 import http from '../http-common'
-import { db } from '@/db.ts'
+import {db} from '@/db.ts'
 
 export default class CompanyDataService {
   create(data: any) {
@@ -72,14 +72,8 @@ async function getLocalCompanyData_Service(p: any) {
       p.login_Url = companyLocalHold.login_Url
       p.lead_Ret = companyLocalHold.lead_Ret
 
-      // console.log('id: ', p.id)
-      // console.log('name: ', p.name)
-      // console.log('login_Url: ', p.login_Url)
-      // console.log('lead_Ret: ', p.lead_Ret)
-      // console.log('year: ', p.year)
-      // console.log('expo_Client: ', p.expo_Client)
       return p
     })
 }
 
-export { getCompanyById_Service, createCompany_Service, getLocalCompanyData_Service }
+export {getCompanyById_Service, createCompany_Service, getLocalCompanyData_Service}

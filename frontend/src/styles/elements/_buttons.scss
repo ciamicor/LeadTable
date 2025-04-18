@@ -27,10 +27,7 @@ button,
     color:     inherit;
     font-size: inherit;
   }
-  &:active {
-    border-top-width:    3px;
-    border-bottom-width: 1px;
-  }
+
   &:hover {
     color:      c.$grey-2;
     background: c.$grey-10;

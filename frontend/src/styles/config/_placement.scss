@@ -1,24 +1,25 @@
 /*-| Placement |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-$align-type:    (
+$place-type:    (
                   "place",
                   "justify",
                   "align"
                 );
-$align-subject: (
+$place-subject: (
                   "self",
                   "items",
                   "content"
                 );
-$align-area:    (
+$place-area:    (
                   "start",
                   "center",
                   "end",
-                  "stretch"
+                  "stretch",
+                  "baseline"
                 );
-@each $type in $align-type {
-  @each $subject in $align-subject {
-    @each $area in $align-area {
+@each $type in $place-type {
+  @each $subject in $place-subject {
+    @each $area in $place-area {
       .--#{$type}-#{$subject}-#{$area} {
         #{$type}-#{$subject}: #{$area}
       }

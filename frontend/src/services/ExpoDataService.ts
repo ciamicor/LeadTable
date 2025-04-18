@@ -40,6 +40,7 @@ async function createExpo_Service(expoObject: any) {
   console.log(expoObject.value)
   const data = {
     active: expoObject.active,
+    start_Date: expoObject.start_Date,
     expo_Client: expoObject.expo_Client,
     year: expoObject.year,
     expoFp_Id: expoObject.expoFp_Id,
@@ -73,4 +74,4 @@ async function getExpoById_Service(id: any, expoObject: any) {
     })
 }
 
-export { getExpoById_Service, createExpo_Service, getAllExpos_Service }
+export {getExpoById_Service, createExpo_Service, getAllExpos_Service}

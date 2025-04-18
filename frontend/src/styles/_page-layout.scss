@@ -42,6 +42,7 @@
 // @each $bp, $size in $breakpoints {
 @for $size from 3 through 16 {
   @for $i from 1 through c.$column-number {
+    /*-| Columns |-*/
     .col-#{$i}-#{$size * 100} {
       display:   flex;
       flex-flow: column nowrap;
@@ -59,6 +60,7 @@
         width: calc((100% * calc($i / #{c.$column-number})) - #{c.$row-gap});
       }
     }
+    /*-| Rows |-*/
     .row-#{$i}-#{$size * 100} {
       display:   flex;
       flex-flow: row wrap;

@@ -2705,6 +2705,10 @@
   place-self: stretch;
 }
 
+.--place-self-baseline {
+  place-self: baseline;
+}
+
 .--place-items-start {
   place-items: start;
 }
@@ -2719,6 +2723,10 @@
 
 .--place-items-stretch {
   place-items: stretch;
+}
+
+.--place-items-baseline {
+  place-items: baseline;
 }
 
 .--place-content-start {
@@ -2737,6 +2745,10 @@
   place-content: stretch;
 }
 
+.--place-content-baseline {
+  place-content: baseline;
+}
+
 .--justify-self-start {
   justify-self: start;
 }
@@ -2751,6 +2763,10 @@
 
 .--justify-self-stretch {
   justify-self: stretch;
+}
+
+.--justify-self-baseline {
+  justify-self: baseline;
 }
 
 .--justify-items-start {
@@ -2769,6 +2785,10 @@
   justify-items: stretch;
 }
 
+.--justify-items-baseline {
+  justify-items: baseline;
+}
+
 .--justify-content-start {
   justify-content: start;
 }
@@ -2783,6 +2803,10 @@
 
 .--justify-content-stretch {
   justify-content: stretch;
+}
+
+.--justify-content-baseline {
+  justify-content: baseline;
 }
 
 .--align-self-start {
@@ -2801,6 +2825,10 @@
   align-self: stretch;
 }
 
+.--align-self-baseline {
+  align-self: baseline;
+}
+
 .--align-items-start {
   align-items: start;
 }
@@ -2817,6 +2845,10 @@
   align-items: stretch;
 }
 
+.--align-items-baseline {
+  align-items: baseline;
+}
+
 .--align-content-start {
   align-content: start;
 }
@@ -2831,6 +2863,10 @@
 
 .--align-content-stretch {
   align-content: stretch;
+}
+
+.--align-content-baseline {
+  align-content: baseline;
 }
 
 @font-face {
