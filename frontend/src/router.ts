@@ -7,6 +7,7 @@ import ExpoSelect from '@/components/ExpoSelect.vue'
 import LeadAdd from '@/components/LeadAdd.vue'
 import BadgeCreate from '@/components/BadgeCreate.vue'
 import AttendeesUpload from '@/components/AttendeesUpload.vue'
+import App from "@/App.vue";
 
 const routes = [
   {
@@ -18,34 +19,46 @@ const routes = [
     children: [
       {
         path: 'leads-list',
+        name: 'LeadsList',
         component: LeadsList,
       },
       {
         path: 'scan-lead',
+        name: 'LeadAdd',
         component: LeadAdd,
       },
       {
         path: 'floor-plan',
+        name: 'ExpoMap',
         component: ExpoMap,
       },
       {
         path: 'profile',
+        name: 'CompanyProfile',
         component: CompanyProfile,
       },
       {
         path: 'create-badge',
+        name: 'BadgeCreate',
         component: BadgeCreate,
       },
+      {
+        path: 'admin/',
+        children: [
+          {
+            path: 'print-badges',
+            name: 'BadgePrint',
+            component: BadgePrint
+          },
+          {
+            path: 'upload-attendees',
+            name: 'AttendeesUpload',
+            component: AttendeesUpload
+          }
+        ]
+      }
     ]
   },
-  {
-    path: '/admin/print-badges',
-    component: BadgePrint
-  },
-  {
-    path: '/admin/upload-attendees',
-    component: AttendeesUpload
-  }
 ]
 
 const router = createRouter({

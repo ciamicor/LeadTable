@@ -1,6 +1,6 @@
 import http from '../http-common'
 
-export default class LeadDataService {
+class LeadDataService {
   create(data: any) {
     return http.post('/lead', data)
   }
@@ -110,4 +110,4 @@ async function deleteLead_Service(id: any) {
     })
 }
 
-export { createLead_Service, getAllLeads_Service, deleteLead_Service }
+export {createLead_Service, getAllLeads_Service, deleteLead_Service}

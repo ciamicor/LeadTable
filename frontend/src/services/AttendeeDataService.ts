@@ -1,5 +1,4 @@
 import http from '../http-common'
-import LeadDataService from '@/services/LeadDataService.ts'
 
 export default class AttendeeDataService {
   create(data: any) {
@@ -12,6 +11,10 @@ export default class AttendeeDataService {
 
   get(id: any) {
     return http.get('/attendee/' + id)
+  }
+
+  getExpoAttendees(client: any, year: any) {
+    return http.get('/attendee/client/' + client + '/year/' + year)
   }
 
   update(id: any, data: any) {
@@ -56,7 +59,6 @@ async function createAttendee_Service(attendee: any) {
     })
     .catch((e: any) => {
       console.log(e)
-      window.alert('Attendee with email ' + attendee.contact_Email + ' already exists.')
     })
 }
 
@@ -74,5 +76,19 @@ async function getAllAttendees_Service(list: any) {
     })
 }
 
-export { getAllAttendees_Service, createAttendee_Service }
+/*-| Get Attendees By Expo |-*/
+
+/*---+----+---+----+---+----+---+----+---*/
+async function getExpoAttendees_Service(client: any, year: any, list: any) {
+  await attendeeService.getExpoAttendees(client, year)
+    .then((response) => {
+      console.log(response)
+      list.value = response.data
+    })
+    .catch((e) => {
+      console.log(e)
+    })
+}
+
+export {getAllAttendees_Service, createAttendee_Service, getExpoAttendees_Service}
 

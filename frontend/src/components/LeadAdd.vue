@@ -65,7 +65,8 @@
       <div class="row --items --m-t-16">
         <button
           class="--success --flex-basis-100"
-          @click="createLead(lead); router.push('/leads-list')">Add {{ lead.name_First }}
+          @click="createLead(lead); router.push('/:client/:year/leads-list')">
+          Add {{ lead.name_First }}
         </button>
         <button
           class="--warn"

@@ -8,6 +8,9 @@ router.post( '/', attendeeController.createAttendee )
 // Route to get all Attendees
 router.get( '/', attendeeController.getAllAttendees )
 
+// Get Attendees by Expo
+router.get( '/client/:client/year/:year', attendeeController.getExpoAttendees )
+
 // Route to get a lead by ID
 router.get( '/:id', attendeeController.getAttendeeById )
 

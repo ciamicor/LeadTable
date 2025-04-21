@@ -1,4 +1,5 @@
 const { Expo } = require( '../models' )
+const { Op } = require( 'sequelize' );
 
 // Controller method to create a new expo
 exports.createExpo = async ( req, res ) => {
@@ -50,18 +51,26 @@ exports.getAll = async ( req, res ) => {
     }
 }
 
-// Controller method to get a expo by ID
-exports.getExpoById = async ( req, res ) => {
-    const id = req.params.id
+// Get Expo by Client, Year
+exports.getExpo = async ( req, res ) => {
+    const client = req.params.client
+    const year = req.params.year
+
     try {
-        const expo = await Expo.findByPk( id )
+        const expo = await Expo.findOne(
+            {
+                where: {
+                    [Op.and]: [ { expo_Client: client }, { year: year } ]
+                }
+            }
+        )
         if ( expo ) {
             res.json( expo )
         } else {
             res.status( 404 ).json( { error: 'Expo not found' } )
         }
     } catch ( error ) {
-        console.error( 'error in controller getExpoById: ', error )
+        console.error( 'error in controller getExpo: ', error )
         res.status( 500 ).json( {
             error: 'Something went wrong while getting that expo.',
             details: error?.message || 'Unknown error'

@@ -50,7 +50,7 @@ export const getExhibExtras = (id: any) => axios({
 
 // These don't work as well as 'export const', but they get to stay here
 /*
-export default class ExpoFpDataService {
+export default ExpoFpDataService {
   getAllExhibitors(i: any) {
     axios({
       method: 'post',

@@ -2,8 +2,9 @@ import {defineStore} from 'pinia'
 import {ref} from 'vue'
 
 /*-| Expo Store |-*/
+
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-const useExpoLocalStore = defineStore('companyLocal', () => {
+const useExpoLocalStore = defineStore('expoLocal', () => {
   const active = ref(false)<Boolean>
   const start_Date = ref(null)<DateConstructor>
   const expo_Client = ref('')<String>
@@ -33,7 +34,7 @@ const useExpoLocalStore = defineStore('companyLocal', () => {
     logoUrl_Color,
     logoUrl_Black,
     expoFp_MapUrl,
-    $reset
+    $reset,
   }
 })
 

@@ -6,21 +6,21 @@ require( '@dotenvx/dotenvx' ).config()
 
 const Sequelize = require( './config/config' )
 const {
-  Lead,
-  Company,
-  Expo,
-  Attendee
+    Lead,
+    Company,
+    Expo,
+    Attendee
 } = require( './models' )
 
 // Connect to the database
 const { DataTypes } = require( 'sequelize' )
 Sequelize.authenticate()
-  .then( () => console.log( `Database ${ process.env.DB_NAME } connected` ) )
-  .catch( ( err ) => console.error( 'Error connecting to database:', err ) )
+    .then( () => console.log( `Database ${ process.env.DB_NAME } connected` ) )
+    .catch( ( err ) => console.error( 'Error connecting to database:', err ) )
 Sequelize.sync( { /*force: true*/ } )
-  .then( async () => {
-    /*await initPlaceholdData()*/
-  } )
+    .then( async () => {
+        /*await initPlaceholdData()*/
+    } )
 //
 //
 
@@ -55,153 +55,33 @@ app.use( '/api/expo', expoRoutes )
 
 app.use( express.static( path.join( __dirname, frontend_root ) ) )
 app.get( '*', ( req, res ) => {
-  res.sendFile( path.join( __dirname, frontend_root, 'index.html' ) )
+    res.sendFile( path.join( __dirname, frontend_root, 'index.html' ) )
 } )
 
 /*-| Handle Errors |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 app.use( ( req, res, next ) => {
-  const error = new Error( `🔍 Not Found - ${ req.originalUrl }` )
-  error.status = 404
-  next( error )
+    const error = new Error( `🔍 Not Found - ${ req.originalUrl }` )
+    error.status = 404
+    next( error )
 } )
 app.use( ( err, req, res, next ) => {
-  console.error( '🔥 Uncaught Error:', {
-    message: err.message,
-    stack: err.stack,
-    route: req.originalUrl,
-    method: req.method,
-    body: req.body
-  } )
+    console.error( '🔥 Uncaught Error:', {
+        message: err.message,
+        stack: err.stack,
+        route: req.originalUrl,
+        method: req.method,
+        body: req.body
+    } )
 
-  res.status( err.status || 500 ).json( {
-    error: '🔥 Internal Server Error',
-    message: err.message
-  } )
+    res.status( err.status || 500 ).json( {
+        error: '🔥 Internal Server Error',
+        message: err.message
+    } )
 } )
 
 app.listen( PORT, () => {
-  console.log( `Server ${ HOST } is running on port ${ PORT }` )
+    console.log( `Server ${ HOST } is running on port ${ PORT }` )
 } )
 
 module.exports = app
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-async function initPlaceholdData() {
-  const newExpo = await Expo.create( {
-    active: 1,
-    year: 2025,
-    expoFp_Id: 23706,
-    expo_Client: 'NYIFT'
-  } )
-  const newCompany1 = await Company.create( {
-    id: 6150790,
-    year: 2025,
-    login_URL: '/exhibitors/details/edit?uid=73accba5-0b60-488c-acde-30f9d295edcb&token=fF7PY%252B1nPloFunSt0DmsGTHw8L1oa6Sf',
-    name: 'ABRAZIL LLC',
-    expo_Client: 'NYIFT'
-  } )
-  const newCompany2 = await Company.create( {
-    id: 456453,
-    year: 2025,
-    login_URL: 'https://www.icor.org',
-    name: 'ICOR',
-    expo_Client: 'NYIFT'
-  } )
-  const newCompany3 = await Company.create( {
-    id: 832387,
-    year: 2025,
-    login_URL: 'https://www.nyift.org',
-    name: 'NYIFT',
-    expo_Client: 'NYIFT'
-  } )
-
-  const newAttendee2 = await Attendee.create( {
-    year: 2025,
-    name_First: 'Katy',
-    name_Last: 'Taylor',
-    contact_Email: 'katy@iami411.org',
-    contact_Phone: '323587468',
-    contact_Employer: 'IAMI',
-    title: 'Employee',
-    reg_Type: 'Exhibitor',
-    tech_Sem: true,
-    expo_Client: 'NYIFT'
-  } )
-
-  const newAttendee3 = await Attendee.create( {
-    year: 2025,
-    name_First: 'Lynnda',
-    name_Last: 'Nelson',
-    contact_Email: 'lynnda@iami411.org',
-    contact_Phone: '323587468',
-    contact_Employer: 'ICOR',
-    title: 'Employee',
-    reg_Type: 'Attendee',
-    tech_Sem: true,
-    expo_Client: 'NYIFT'
-  } )
-
-  const newAttendee1 = await Attendee.create( {
-    year: 2025,
-    name_First: 'Kate',
-    name_Last: 'Valentine',
-    contact_Email: 'kate@icor.org',
-    contact_Phone: '323587468',
-    contact_Employer: 'ICOR',
-    title: 'Employee',
-    reg_Type: 'Attendee',
-    tech_Sem: true,
-    expo_Client: 'NYIFT'
-  } )
-
-  const newLead2 = await Lead.create( {
-    year: 2025,
-    contact_Employer: 2,
-    attendee_Id: 1,
-    scan_Company_Id: 456453,
-    name_First: 'Katy',
-    name_Last: 'Taylor',
-    email: 'katy@iami411.org',
-    phone: '323587468',
-    employer: 'IAMI',
-    score: 5,
-    comment: 'She\'s so cool.',
-    expo_Client: 'NYIFT'
-  } )
-
-  const newLead3 = await Lead.create( {
-    year: 2025,
-    contact_Employer: 3,
-    attendee_Id: 2,
-    scan_Company_Id: 832387,
-    name_First: 'Lynnda',
-    name_Last: 'Nelson',
-    email: 'lynnda@iami411.org',
-    phone: '6068545684',
-    employer: 'IAMI',
-    score: 5,
-    comment: 'She\'s so cool.',
-    expo_Client: 'NYIFT'
-  } )
-
-  console.log( newExpo )
-  console.log( newLead2 )
-  console.log( newLead3 )
-  console.log( newAttendee1 )
-  console.log( newAttendee2 )
-  console.log( newAttendee3 )
-  console.log( newCompany1 )
-  console.log( newCompany2 )
-  console.log( newCompany3 )
-}

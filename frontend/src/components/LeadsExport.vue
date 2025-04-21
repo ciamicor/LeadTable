@@ -19,19 +19,17 @@ const props = defineProps( {
   }
 } )
 
-console.log( typeof props.leadsList )
-
 async function exportLeads() {
-  console.log( props.leadsList )
-  const formattedLeads = props.leadsList.map( ( {
-                                                  id,
-                                                  expo_Client,
-                                                  year,
-                                                  scan_Company_Id,
-                                                  attendee_Id,
-                                                  updatedAt,
-                                                  ...item
-                                                } ) => item )
+  const formattedLeads = props.leadsList
+    .map( ( {
+              id,
+              expo_Client,
+              year,
+              scan_Company_Id,
+              attendee_Id,
+              updatedAt,
+              ...item
+            } ) => item )
   const worksheet = utils.json_to_sheet( formattedLeads )
   const workbook = utils.book_new()
   utils.book_append_sheet( workbook, worksheet, `2025 Leads` )

@@ -1,6 +1,6 @@
 import http from '../http-common'
 
-export default class ExpoDataService {
+class ExpoDataService {
   create(data: any) {
     return http.post('/expo', data)
   }
@@ -9,8 +9,8 @@ export default class ExpoDataService {
     return http.get('/expo')
   }
 
-  get(id: any) {
-    return http.get('/expo/' + id)
+  getExpo(client: string, year: any) {
+    return http.get('/expo/client/' + client + '/year/' + year)
   }
 }
 
@@ -60,13 +60,23 @@ async function createExpo_Service(expoObject: any) {
     })
 }
 
-/*-| Get by ID |-*/
+/*-| Get by Client, Year |-*/
 
 /*---+----+---+----+---+----+---+----+---*/
-async function getExpoById_Service(id: any, expoObject: any) {
-  await expoService.get(id)
+async function getExpo_Service(client: any, year: any, expoObject: any) {
+  await expoService.getExpo(client, year)
     .then((response) => {
-      expoObject.value = response.data
+      // console.log("Found Expo: ", response.data)
+      expoObject.active = response.data.active
+      expoObject.start_Date = response.data.start_Date
+      expoObject.expo_Client = response.data.expo_Client
+      expoObject.year = response.data.year
+      expoObject.expoFp_Id = response.data.expoFp_Id
+      expoObject.logoUrl_Color = response.data.logoUrl_Color
+      expoObject.logoUrl_Black = response.data.logoUrl_Black
+      expoObject.expoFp_MapUrl = response.data.expoFp_MapUrl
+
+      //expoObject.value = response.data
       // console.log('expo: ', expoObject.value)
     })
     .catch((e) => {
@@ -74,4 +84,4 @@ async function getExpoById_Service(id: any, expoObject: any) {
     })
 }
 
-export {getExpoById_Service, createExpo_Service, getAllExpos_Service}
+export {getExpo_Service, createExpo_Service, getAllExpos_Service}

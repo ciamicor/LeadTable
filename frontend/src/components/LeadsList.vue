@@ -25,7 +25,7 @@
                            Supplier's Day</p>
           <h2>{{ companyLocalData.name }}</h2>
         </div>
-        <LeadsExport :leads-list="leadsList" />
+        <LeadsExport :leads-list="leadsList"/>
       </div>
       <div class="lead-cards-container">
         <div v-for="(lead, index) in leadsList"
@@ -34,7 +34,7 @@
              :data-company-scan="lead.scan_Company_Id"
              class="lead-card"
         >
-          <LeadCard :lead="lead" />
+          <LeadCard :lead="lead"/>
         </div>
       </div>
 
@@ -133,7 +133,7 @@ const lead = ref(
     address: '',
     employer: '',
     score: 5,
-    comment: 'I would do anything for her.'
+    comment: ''
   }
 )
 
@@ -143,7 +143,7 @@ const lead = ref(
 
 async function getAllLeads( l ) {
   await getAllLeads_Service( l )
-  console.log( 'leads', l )
+  //console.log( 'Got All Leads: ', l )
   leadsList.value = leadsList.value.filter( ( l ) => {
     return l.scan_Company_Id === companyLocalData.id
   } )

@@ -1,21 +1,15 @@
 <template>
   <div class="view-mask">
     <div class="view-container">
-      <!--
-        <header class="row">
-              <img alt="NYIFT Logo"
-                   height="45"
-                   src="https://nyift.org/wp-content/uploads/2025/01/New-York_Central-Jersey-Sections__Horizontal__RGB.jpg">
-            </header>
-            -->
       <router-view/>
     </div>
   </div>
   <nav class="nav-bar">
+    {{ expoLocalData.expo_Client }}{{ expoLocalData.year }}
     <router-link
       active-class="--secondary"
       class="button --stacked"
-      to="floor-plan">
+      to="/:client/:year/floor-plan">
       <svg
         fill="none"
         height="24"
@@ -33,7 +27,7 @@
     <router-link
       active-class="--secondary"
       class="button --stacked"
-      to="leads-list">
+      to="/:client/:year/leads-list">
       <svg
         fill="none"
         height="24"
@@ -51,7 +45,7 @@
     <router-link
       active-class="--secondary"
       class="button --stacked"
-      to="profile">
+      to="/:client/:year/profile">
       <svg
         fill="none"
         height="24"
@@ -66,20 +60,21 @@
       </svg>
       Profile
     </router-link>
-
-
   </nav>
 </template>
 
 <script
   setup>
-import { ref, provide, onBeforeMount, onMounted } from 'vue'
 import { db } from '@/db.js'
-import { useCompanyLocalStore } from '@/stores.js'
+import { ref, provide, onBeforeMount, onMounted } from 'vue'
+import { useExpoLocalStore, useCompanyLocalStore } from '@/stores.js'
+import { getUrl_ClientYear } from "@/services/functions/UrlFunc.js";
+import { getExpo_Service } from "@/services/ExpoDataService.js";
 
 /*-| Variables |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const companyLocalData = useCompanyLocalStore()
+const expoLocalData = useExpoLocalStore()
 
 /*-| REF |-*/
 /*---+----+---+----+---+----+---+----+---*/
@@ -91,18 +86,19 @@ let activeCompName_Ref = ref( '' )
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Hooks |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-
-onBeforeMount( () => {
-  updateCompany()
+onBeforeMount( async () => {
+  console.log( "App mounting!" )
+  await updateCompany()
+  let url = getUrl_ClientYear()
+  await getExpo_Service( url.client, url.year, expoLocalData )
 } )
 
 /*-| Get Company from Local |-*/
 /*---+----+---+----+---+----+---+----+---*/
+
 async function updateCompany() {
   await db.profile.get( 1 ).then( ( res ) => {
     if ( res ) {
-      // console.log( 'Response - Company Name:', res.name )
-      // companyLocalData.year = res.year
       companyLocalData.$patch( {
         id: res.ex_Id,
         lead_Ret: res.lead_Ret,

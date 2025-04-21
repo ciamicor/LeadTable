@@ -1,7 +1,7 @@
 import http from '../http-common'
 import {db} from '@/db.ts'
 
-export default class CompanyDataService {
+class CompanyDataService {
   create(data: any) {
     return http.post('/company', data)
   }
