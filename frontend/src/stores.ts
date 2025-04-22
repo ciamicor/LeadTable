@@ -5,14 +5,14 @@ import {ref} from 'vue'
 
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const useExpoLocalStore = defineStore('expoLocal', () => {
-  const active = ref(false)<Boolean>
-  const start_Date = ref(null)<DateConstructor>
-  const expo_Client = ref('')<String>
-  const year = ref(0)<Number>
-  const expoFp_Id = ref(0)<Number>
-  const logoUrl_Color = ref('')<String>
-  const logoUrl_Black = ref('')<String>
-  const expoFp_MapUrl = ref('')<String>
+  const active = ref(false)
+  const start_Date = ref(null)
+  const expo_Client = ref('')
+  const year = ref(0)
+  const expoFp_Id = ref(0)
+  const logoUrl_Color = ref('')
+  const logoUrl_Black = ref('')
+  const expoFp_MapUrl = ref('')
 
   function $reset() {
     active.value = false
@@ -41,12 +41,12 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
 /*-| Company Store |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const useCompanyLocalStore = defineStore('companyLocal', () => {
-  const id = ref(0)<Number>
-  const name = ref('')<String>
-  const login_Url = ref('')<String>
-  const lead_Ret = ref(false)<Boolean>
-  const year = ref(0)<Number>
-  const expo_Client = ref('')<String>
+  const id = ref(0)
+  const name = ref('')
+  const login_Url = ref('')
+  const lead_Ret = ref(false)
+  const year = ref(0)
+  const expo_Client = ref('')
 
   function $reset() {
     id.value = 0

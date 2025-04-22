@@ -5,9 +5,9 @@
       class="col-12-300 col-10-600 col-8-900 --p-b-24 --p-t-12"
     >
       <h1 id="attendee-reg">Attendee Registration</h1>
-      <p>Register for the {{ companyLocalData.expo_Client }} {{ companyLocalData.year }}
+      <p>Register for the {{ expoLocalData.expo_Client }} {{ expoLocalData.year }}
 
-         Supplier's Day. All fields are.</p>
+         Supplier's Day. All fields are required.</p>
       <div class="row --items">
         <label>
           First Name
@@ -54,7 +54,7 @@
             v-model="attendee.contact_Email"
             name="title"
             placeholder="Email Address"
-            type="email" />
+            type="email"/>
 
         </label>
         <label>
@@ -63,7 +63,7 @@
             v-model="attendee.contact_Phone"
             name="phone"
             placeholder="Phone Number"
-            type="tel" />
+            type="tel"/>
 
         </label>
       </div>
@@ -74,7 +74,7 @@
             v-model="attendee.address"
             name="address"
             placeholder="Enter your address"
-            type="text" />
+            type="text"/>
 
         </label>
       </div>
@@ -139,10 +139,11 @@ import html2canvas from 'html2canvas'
 import QrCode from '@/components/QrCode.vue'
 import { ref } from 'vue'
 import { createAttendee_Service } from '@/services/AttendeeDataService.ts'
-import { useCompanyLocalStore } from '@/stores.js'
+import { useCompanyLocalStore, useExpoLocalStore } from '@/stores.js'
 import { toTitleCase_Service } from '@/services/TextContentService.js'
 
 const companyLocalData = useCompanyLocalStore()
+const expoLocalData = useExpoLocalStore()
 
 /*-| Print Component |-*/
 

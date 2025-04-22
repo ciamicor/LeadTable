@@ -1,11 +1,5 @@
 <template>
   <div class="container">
-    
-    <button @click="saveToQ('yes', 'yes')">Yes</button>
-    <button @click="saveToQ('dogs', 'dogs')">Dogs</button>
-    <button @click="saveToQ('yes', 'no')">No</button>
-    <button @click="saveToQ('dogs', 'cats')">cats</button>
-
     <h2 class="col-12-300">Active Expos</h2>
     <div class="expo-select-container">
       <div
@@ -56,19 +50,6 @@ import {getAllExpos_Service} from '@/services/ExpoDataService.ts'
 import {onMounted, ref} from 'vue'
 import {useRouter} from "vue-router";
 
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-/*-| Test |-*/
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-const {push, currentRoute} = useRouter()
-const saveToQ = (parameter: string, value: string) => {
-  push({
-    query: {
-      ...currentRoute.value.query,
-      [parameter]: value,
-    },
-  })
-}
-
 /*-| Variables |-*/
 /*---+----+---+----+---+----+---+----+---*/
 const router = useRouter()
@@ -86,14 +67,14 @@ onMounted(() => {
 
 /*-| Expo Functions |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-async function getAllExpos(listObj) {
+async function getAllExpos(listObj: any) {
   await getAllExpos_Service(listObj)
   console.log(typeof allExposList, allExposList)
-  archivedExposList.value = allExposList.value.filter((e) => e.active === false)
-  activeExposList.value = allExposList.value.filter((e) => e.active === true)
+  archivedExposList.value = allExposList.value.filter((e: any) => e.active === false)
+  activeExposList.value = allExposList.value.filter((e: any) => e.active === true)
 }
 
-async function setCurrentExpo(obj) {
+async function setCurrentExpo(obj: any) {
   console.log(
     obj.active,
     obj.start_Date,
@@ -117,8 +98,8 @@ async function setCurrentExpo(obj) {
   })
   console.log("Selected Expo", obj)
 
-  const dateVar = new Date(expoLocalData.start_Date);
-  console.log(dateVar.toLocaleString());
+  // const dateVar = new Date(expoLocalData.start_Date);
+  // console.log(dateVar.toLocaleString());
 
   /*-| Update Route |-*/
   await router.push({path: "/" + expoLocalData.expo_Client + "/" + expoLocalData.year + "/profile"})

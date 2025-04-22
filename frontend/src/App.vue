@@ -5,11 +5,10 @@
     </div>
   </div>
   <nav class="nav-bar">
-    {{ expoLocalData.expo_Client }}{{ expoLocalData.year }}
     <router-link
+      :to="`/${expoLocalData.expo_Client}/${expoLocalData.year}/floor-plan`"
       active-class="--secondary"
-      class="button --stacked"
-      to="/:client/:year/floor-plan">
+      class="button --stacked">
       <svg
         fill="none"
         height="24"
@@ -25,9 +24,9 @@
       Map
     </router-link>
     <router-link
+      :to="`/${expoLocalData.expo_Client}/${expoLocalData.year}/leads-list`"
       active-class="--secondary"
-      class="button --stacked"
-      to="/:client/:year/leads-list">
+      class="button --stacked">
       <svg
         fill="none"
         height="24"
@@ -43,9 +42,9 @@
       Leads
     </router-link>
     <router-link
+      :to="`/${expoLocalData.expo_Client}/${expoLocalData.year}/profile`"
       active-class="--secondary"
-      class="button --stacked"
-      to="/:client/:year/profile">
+      class="button --stacked">
       <svg
         fill="none"
         height="24"
@@ -78,10 +77,10 @@ const expoLocalData = useExpoLocalStore()
 
 /*-| REF |-*/
 /*---+----+---+----+---+----+---+----+---*/
-let activeCompId_Ref = ref()
-let activeCompLeadRet_Ref = ref()
-let activeCompUrl_Ref = ref( '' )
-let activeCompName_Ref = ref( '' )
+const activeCompId_Ref = ref()
+const activeCompLeadRet_Ref = ref()
+const activeCompUrl_Ref = ref( '' )
+const activeCompName_Ref = ref( '' )
 
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Hooks |-*/
@@ -90,12 +89,15 @@ onBeforeMount( async () => {
   console.log( "App mounting!" )
   await updateCompany()
   let url = getUrl_ClientYear()
+  expoLocalData.$patch( {
+    expo_Client: url[0],
+    year: url[1]
+  } )
   await getExpo_Service( url.client, url.year, expoLocalData )
 } )
 
 /*-| Get Company from Local |-*/
 /*---+----+---+----+---+----+---+----+---*/
-
 async function updateCompany() {
   await db.profile.get( 1 ).then( ( res ) => {
     if ( res ) {

@@ -6,10 +6,16 @@ export function getUrl_ClientYear() {
   }
   let u = url.split("/")
   // console.log("Current URL:", params)
+  if (u[0] === 'admin') {
+    console.log('admin?', u[0])
+    u.shift()
+    console.log('urls ', u)
+  }
+  // console.log('urls ', u)
   return {
     client: u[0],
     year: u[1],
-    view: u[2]
+    // view: u[2]
   }
 }
 

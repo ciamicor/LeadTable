@@ -82,7 +82,7 @@ async function getAllAttendees_Service(list: any) {
 async function getExpoAttendees_Service(client: any, year: any, list: any) {
   await attendeeService.getExpoAttendees(client, year)
     .then((response) => {
-      console.log(response)
+      // console.log(response)
       list.value = response.data
     })
     .catch((e) => {

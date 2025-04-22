@@ -29,18 +29,30 @@
       <button
         v-show="attendeeListSelected.length === 1"
         class="--secondary --p-4"
-        @click="printBadge_Brother4300(attendeeListSelected[0])">
-        Print 1: Brother 4300
+        @click="printBadge_Portrait3x4(attendeeListSelected[0])">
+        printBadge_Portrait3x4
       </button>
       <button
         v-show="attendeeListSelected.length === 1"
         class="--secondary --p-4"
-        @click="printBadge2(attendeeListSelected[0])">
-        Print 1: Other
+        @click="printBadge_Portrait4x3(attendeeListSelected[0])">
+        printBadge_Portrait4x3
+      </button>
+      <button
+        v-show="attendeeListSelected.length === 1"
+        class="--secondary --p-4"
+        @click="printBadge_Land3x4(attendeeListSelected[0])">
+        printBadge_Land3x4
+      </button>
+      <button
+        v-show="attendeeListSelected.length === 1"
+        class="--secondary --p-4"
+        @click="printBadge_Land4x3(attendeeListSelected[0])">
+        printBadge_Land4x3
       </button>
       <router-link
-        class="button --primary --p-4"
-        to="/:client/:year/create-badge">
+        :to="`/${expoLocalData.expo_Client}/${expoLocalData.year}/create-badge`"
+        class="button --primary --p-4">
         New Badge
       </router-link>
     </div>
@@ -48,7 +60,9 @@
   </div>
 
   <div class="row">
+    <LoadingHolder :status="loading"/>
     <div
+      v-show="!loading"
       class="badge-select-grid"
     >
       <AttendeeBadgeRow
@@ -65,7 +79,7 @@
 
   <div
     v-if="attendeeListSelected.length !== 1"
-    ref="componentRef"
+    ref="printComponent"
     class="badges-page-container">
     <div v-for="(group, i) in attendeeListGrouped"
          :key="i"
@@ -97,51 +111,57 @@
 </template>
 
 
-<script lang="ts"
+<script lang="js"
         setup>
-import {useExpoLocalStore, useCompanyLocalStore} from "@/stores.js";
-import {getUrlHost} from "@/services/functions/UrlFunc.js";
-import {jsPDF} from 'jspdf'
+import { useCompanyLocalStore, useExpoLocalStore } from "@/stores.js";
+import { getUrlHost } from "@/services/functions/UrlFunc.js";
+import { jsPDF } from 'jspdf'
 import QrCode from '@/components/QrCode.vue'
 import html2canvas from 'html2canvas'
 import BadgeSingle from '@/components/BadgeSingle.vue'
 import AttendeeBadgeRow from '@/components/AttendeeBadgeRow.vue'
-import {useVueToPrint} from 'vue-to-print'
-import {onBeforeMount, onMounted, ref} from 'vue'
-import {getExpoAttendees_Service} from '@/services/AttendeeDataService.ts'
-import {sortLName_Service} from '@/services/SortService.js'
-import {toTitleCase_Service} from '@/services/TextContentService.js'
+import { useVueToPrint } from 'vue-to-print'
+import { onMounted, ref } from 'vue'
+import { getExpoAttendees_Service } from '@/services/AttendeeDataService.ts'
+import { sortLName_Service } from '@/services/SortService.js'
+import { toTitleCase_Service } from '@/services/TextContentService.js'
+import LoadingHolder from "@/components/LoadingHolder.vue";
 
-const host = getUrlHost()
+/*-| States |-*/
+/*---+----+---+----+---+----+---+----+---*/
 const expoLocalData = useExpoLocalStore()
 const companyLocalData = useCompanyLocalStore()
 
 /*-| Variables |-*/
-const attendeeListRenderLength = ref(5)
-const attendeeList = ref({})
-const attendeeListSelected = ref([])
-const attendeeListGrouped = ref([])
-const searchTerm = ref('')
-/*-| Print Component |-*/
-const componentRef = ref()
+const host = getUrlHost()
+const loading = ref( false )
+const attendeeList = ref( {} )
+const attendeeListSelected = ref( [] )
+const attendeeListGrouped = ref( [] )
+const searchTerm = ref( '' )
+const printComponent = ref() // for Print component
 
 /*-| Hooks |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-onBeforeMount(async () => {
-  await console.log(expoLocalData)
-})
-setTimeout(
-  () => {
-    getAllAttendees(expoLocalData.expo_Client, expoLocalData.year, attendeeList)
-  }, 300
-)
+
+/*-| WAIT for App.vue to get the expo info |-*/
+onMounted( () => {
+  loading.value = true
+  setTimeout(
+    () => {
+      console.log( expoLocalData )
+      loading.value = false
+      getAllAttendees( expoLocalData.expo_Client, expoLocalData.year, attendeeList )
+    }, 400
+  )
+} )
 
 /*-| Attendees |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 /*-| Get All |-*/
-async function getAllAttendees(client, year, o) {
-  await getExpoAttendees_Service(client, year, o)
-  await sortLName_Service(o.value)
+async function getAllAttendees( client, year, o ) {
+  await getExpoAttendees_Service( client, year, o )
+  await sortLName_Service( o.value )
   // console.log( 'Attendees: ', o, typeof o )
   // await chunkObject( o )
 }
@@ -152,55 +172,55 @@ async function resetSearch() {
 }
 
 /*-| Chunk array for printing |-*/
-async function chunkObject(a) {
+async function chunkObject( a ) {
   let countPushTotal = 0
   let indexCount = 0
   const groupSize = 6
   let tempGroup = []
   attendeeListGrouped.value = []
-  const attendeeNum = Object.keys(a.value).length
-  while (indexCount < attendeeNum) {
-    while (countPushTotal < groupSize) {
-      if (a.value[countPushTotal + indexCount] !== undefined) {
-        tempGroup.push(await a.value[countPushTotal + indexCount])
+  const attendeeNum = Object.keys( a.value ).length
+  while ( indexCount < attendeeNum ) {
+    while ( countPushTotal < groupSize ) {
+      if ( a.value[countPushTotal + indexCount] !== undefined ) {
+        tempGroup.push( await a.value[countPushTotal + indexCount] )
       }
       countPushTotal++
     }
-    attendeeListGrouped.value.push(tempGroup)
+    attendeeListGrouped.value.push( tempGroup )
     tempGroup = []
     indexCount += groupSize
     countPushTotal = 0
   }
 }
 
-function mergeSearchTerm(f, l) {
+function mergeSearchTerm( f, l ) {
   let fullName = f + l
-  return fullName.replace(' ', '').toUpperCase().includes(searchTerm.value.replace(' ', '').toUpperCase())
+  return fullName.replace( ' ', '' ).toUpperCase().includes( searchTerm.value.replace( ' ', '' ).toUpperCase() )
 
 }
 
 /*-| List Functions |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 /*-| Add badge to printing list |-*/
-async function addBadge(i) {
-  attendeeListSelected.value.push(i)
-  await sortLName_Service(attendeeListSelected.value)
-  await chunkObject(attendeeListSelected)
+async function addBadge( i ) {
+  attendeeListSelected.value.push( i )
+  await sortLName_Service( attendeeListSelected.value )
+  await chunkObject( attendeeListSelected )
 }
 
 /*-| Remove badge from printing list |-*/
-async function removeBadge(i) {
-  attendeeListGrouped.value.forEach((g) => {
-    let sliceGrouped = g.findIndex(a => a.id === i)
-    if (sliceGrouped > -1) {
-      return g.splice(sliceGrouped, 1)
+async function removeBadge( i ) {
+  attendeeListGrouped.value.forEach( ( g ) => {
+    let sliceGrouped = g.findIndex( a => a.id === i )
+    if ( sliceGrouped > -1 ) {
+      return g.splice( sliceGrouped, 1 )
     }
-  })
-  let sliceSelected = attendeeListSelected.value.findIndex((a) => {
+  } )
+  let sliceSelected = attendeeListSelected.value.findIndex( ( a ) => {
     return a.id === i
-  })
-  if (sliceSelected > -1) {
-    return attendeeListSelected.value.splice(sliceSelected, 1)
+  } )
+  if ( sliceSelected > -1 ) {
+    return attendeeListSelected.value.splice( sliceSelected, 1 )
   }
 }
 
@@ -208,16 +228,16 @@ async function removeBadge(i) {
 /*-| Printing |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 
-const {handlePrint} = useVueToPrint({
-  content: componentRef,
+const { handlePrint } = useVueToPrint( {
+  content: printComponent,
   documentTitle: 'Badges'
-})
+} )
 
 async function printBadges() {
-  if (attendeeListSelected.value.length === 0) {
+  if ( attendeeListSelected.value.length === 0 ) {
     attendeeListSelected.value = attendeeList.value
   }
-  await chunkObject(attendeeListSelected)
+  await chunkObject( attendeeListSelected )
   handlePrint()
   attendeeListSelected.value = []
 }
@@ -227,23 +247,23 @@ async function printBadges() {
 const qrData = ref()
 const qrLogo = ref()
 
-async function select2Canvas(s, d) {
-  const selector = document.querySelector(s)
-  await html2canvas(selector, {
+async function select2Canvas( s, d ) {
+  const selector = document.querySelector( s )
+  await html2canvas( selector, {
     allowTaint: true,
     useCORS: true
-  }).then(canvas => {
+  } ).then( canvas => {
     d.value = canvas.toDataURL(
-      'image/png')
-    console.log(canvas)
-  })
+      'image/png' )
+    console.log( canvas )
+  } )
 }
 
-async function printBadge_Brother4300(a) {
-  console.log(attendeeListSelected.value)
-  console.log(a.id)
-  await select2Canvas('#qr-code', qrData)
-  await select2Canvas('#badge-logo', qrLogo)
+async function printBadge_Portrait3x4( a ) {
+  console.log( attendeeListSelected.value )
+  console.log( a.id )
+  await select2Canvas( '#qr-code', qrData )
+  await select2Canvas( '#badge-logo', qrLogo )
   /*-| Store Badge Dimensions, Placement |-*/
   const dim = {
     h: 3,
@@ -254,35 +274,35 @@ async function printBadge_Brother4300(a) {
     rot: 90
   }
   /*-| Declare Badge |-*/
-  const badgePdf = new jsPDF({
+  const badgePdf = new jsPDF( {
     orientation: 'portrait',
     unit: 'in',
-    format: [dim.w, dim.h]
-  })
+    format: [ dim.w, dim.h ]
+  } )
 
   /*-| Text |-*/
-  badgePdf.setFontSize(18)
-  badgePdf.text(toTitleCase_Service(a.contact_Employer), dim.p * 2, dim.w - dim.p, null, dim.rot)
-  badgePdf.setFontSize(22)
-  badgePdf.text(toTitleCase_Service(`${a.name_First} ${a.name_Last}`), dim.p * 4, dim.w - dim.p, dim.rot)
-  badgePdf.setFontSize(18)
-  badgePdf.text(toTitleCase_Service(a.title), dim.p * 6, dim.w - dim.p, dim.rot)
+  badgePdf.setFontSize( 18 )
+  badgePdf.text( toTitleCase_Service( a.contact_Employer ), dim.p * 2, dim.w - dim.p, null, dim.rot )
+  badgePdf.setFontSize( 22 )
+  badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ), dim.p * 4, dim.w - dim.p, dim.rot )
+  badgePdf.setFontSize( 18 )
+  badgePdf.text( toTitleCase_Service( a.title ), dim.p * 6, dim.w - dim.p, dim.rot )
 
   /*-| Add QR Code |-*/
-  badgePdf.addImage(qrData.value, 'PNG', dim.h - dim.p, dim.w - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot)
+  badgePdf.addImage( qrData.value, 'PNG', dim.h - dim.p, dim.w - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot )
   /*-| Add Logo |-*/
-  badgePdf.addImage(qrLogo.value, 'PNG', dim.h - dim.p, dim.p * 4, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot)
+  badgePdf.addImage( qrLogo.value, 'PNG', dim.h - dim.p, dim.p * 4, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot )
 
-  setTimeout(() => {
-    badgePdf.output('dataurlnewwindow')
-  }, 300)
+  setTimeout( () => {
+    badgePdf.output( 'dataurlnewwindow' )
+  }, 300 )
 }
 
-async function printBadge2(a) {
-  console.log(attendeeListSelected.value)
-  console.log(a.id)
-  await select2Canvas('#qr-code', qrData)
-  await select2Canvas('#badge-logo', qrLogo)
+async function printBadge_Portrait4x3( a ) {
+  console.log( attendeeListSelected.value )
+  console.log( a.id )
+  await select2Canvas( '#qr-code', qrData )
+  await select2Canvas( '#badge-logo', qrLogo )
   /*-| Store Badge Dimensions, Placement |-*/
   const dim = {
     h: 4,
@@ -293,28 +313,106 @@ async function printBadge2(a) {
     rot: 90
   }
   /*-| Declare Badge |-*/
-  const badgePdf = new jsPDF({
+  const badgePdf = new jsPDF( {
     orientation: 'portrait',
     unit: 'in',
-    format: [dim.w, dim.h]
-  })
+    format: [ dim.w, dim.h ]
+  } )
 
   /*-| Text |-*/
-  badgePdf.setFontSize(18)
-  badgePdf.text(toTitleCase_Service(a.contact_Employer), dim.p * 2, dim.h - dim.p, null, dim.rot)
-  badgePdf.setFontSize(22)
-  badgePdf.text(toTitleCase_Service(`${a.name_First} ${a.name_Last}`), dim.p * 4, dim.h - dim.p, dim.rot)
-  badgePdf.setFontSize(18)
-  badgePdf.text(toTitleCase_Service(a.title), dim.p * 6, dim.h - dim.p, dim.rot)
+  badgePdf.setFontSize( 18 )
+  badgePdf.text( toTitleCase_Service( a.contact_Employer ), dim.p * 2, dim.h - dim.p, null, dim.rot )
+  badgePdf.setFontSize( 22 )
+  badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ), dim.p * 4, dim.h - dim.p, dim.rot )
+  badgePdf.setFontSize( 18 )
+  badgePdf.text( toTitleCase_Service( a.title ), dim.p * 6, dim.h - dim.p, dim.rot )
 
   /*-| Add QR Code |-*/
-  badgePdf.addImage(qrData.value, 'PNG', dim.w - dim.p, dim.h - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot)
+  badgePdf.addImage( qrData.value, 'PNG', dim.w - dim.p, dim.h - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot )
   /*-| Add Logo |-*/
-  badgePdf.addImage(qrLogo.value, 'PNG', dim.w - dim.p, dim.p * 4, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot)
+  badgePdf.addImage( qrLogo.value, 'PNG', dim.w - dim.p, dim.p * 4, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot )
 
-  setTimeout(() => {
-    badgePdf.output('dataurlnewwindow')
-  }, 300)
+  setTimeout( () => {
+    badgePdf.output( 'dataurlnewwindow' )
+  }, 300 )
+}
+
+async function printBadge_Land3x4( a ) {
+  console.log( attendeeListSelected.value )
+  console.log( a.id )
+  await select2Canvas( '#qr-code', qrData )
+  await select2Canvas( '#badge-logo', qrLogo )
+  /*-| Store Badge Dimensions, Placement |-*/
+  const dim = {
+    h: 3,
+    w: 4,
+    p: 0.1875,
+    imgW: 1.875,
+    imgH: 1.125,
+    rot: 0
+  }
+  /*-| Declare Badge |-*/
+  const badgePdf = new jsPDF( {
+    orientation: 'landscape',
+    unit: 'in',
+    format: [ dim.w, dim.h ]
+  } )
+
+  /*-| Text |-*/
+  badgePdf.setFontSize( 18 )
+  badgePdf.text( toTitleCase_Service( a.contact_Employer ), dim.p, dim.p * 2, null, dim.rot )
+  badgePdf.setFontSize( 22 )
+  badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ), dim.p, dim.p * 4.25, dim.rot )
+  badgePdf.setFontSize( 18 )
+  badgePdf.text( toTitleCase_Service( a.title ), dim.p, dim.p * 6, dim.rot )
+
+  /*-| Add QR Code |-*/
+  badgePdf.addImage( qrData.value, 'PNG', dim.p, dim.h - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot )
+  /*-| Add Logo |-*/
+  badgePdf.addImage( qrLogo.value, 'PNG', dim.w - dim.imgW - dim.p, dim.h - dim.imgH - dim.p, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot )
+
+  setTimeout( () => {
+    badgePdf.output( 'dataurlnewwindow' )
+  }, 300 )
+}
+
+async function printBadge_Land4x3( a ) {
+  console.log( attendeeListSelected.value )
+  console.log( a.id )
+  await select2Canvas( '#qr-code', qrData )
+  await select2Canvas( '#badge-logo', qrLogo )
+  /*-| Store Badge Dimensions, Placement |-*/
+  const dim = {
+    h: 4,
+    w: 3,
+    p: 0.1875,
+    imgW: 1.875,
+    imgH: 1.125,
+    rot: 0
+  }
+  /*-| Declare Badge |-*/
+  const badgePdf = new jsPDF( {
+    orientation: 'landscape',
+    unit: 'in',
+    format: [ dim.w, dim.h ]
+  } )
+
+  /*-| Text |-*/
+  badgePdf.setFontSize( 18 )
+  badgePdf.text( toTitleCase_Service( a.contact_Employer ), dim.p, dim.p * 2, null, dim.rot )
+  badgePdf.setFontSize( 22 )
+  badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ), dim.p, dim.p * 4.25, dim.rot )
+  badgePdf.setFontSize( 18 )
+  badgePdf.text( toTitleCase_Service( a.title ), dim.p, dim.p * 6, dim.rot )
+
+  /*-| Add QR Code |-*/
+  badgePdf.addImage( qrData.value, 'PNG', dim.p, dim.w - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot )
+  /*-| Add Logo |-*/
+  badgePdf.addImage( qrLogo.value, 'PNG', dim.h - dim.imgW - dim.p, dim.w - dim.imgH - dim.p, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot )
+
+  setTimeout( () => {
+    badgePdf.output( 'dataurlnewwindow' )
+  }, 300 )
 }
 
 </script>

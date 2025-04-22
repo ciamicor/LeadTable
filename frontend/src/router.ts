@@ -7,7 +7,6 @@ import ExpoSelect from '@/components/ExpoSelect.vue'
 import LeadAdd from '@/components/LeadAdd.vue'
 import BadgeCreate from '@/components/BadgeCreate.vue'
 import AttendeesUpload from '@/components/AttendeesUpload.vue'
-import App from "@/App.vue";
 
 const routes = [
   {
@@ -43,7 +42,7 @@ const routes = [
         component: BadgeCreate,
       },
       {
-        path: 'admin/',
+        path: 'admin',
         children: [
           {
             path: 'print-badges',
