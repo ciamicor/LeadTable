@@ -113,22 +113,24 @@
               class="--success --m-t-12"
               type="submit"
       >
-        <!--              type="submit"-->
         Submit Registration
       </button>
-      <button
-        v-if="showQr"
-        class="--secondary"
-        @click="printBadge_Portrait3x4(attendee)">
-        Print {{ attendee.name_First }}'s Badge
-      </button>
     </form>
+    <div class="row-12-300 --justify-content-center --align-content-start">
+      <div class="col-12-300 col-10-600 col-8-900">
+        <button
+          v-if="showQr"
+          class="--secondary"
+          @click="printBadge_Portrait3x4(attendee)">
+          Print {{ attendee.name_First }}'s Badge
+        </button>
+      </div>
+    </div>
 
     <div class="badges-page-container">
       <img id="badge-logo"
            :alt="`${companyLocalData.name}-logo`"
            :src="getImageUrl(`${expoLocalData.expo_Client.toString().toLowerCase()}-vert-rgb`)"
-
       >
       <QrCode
         v-if="showQr"
