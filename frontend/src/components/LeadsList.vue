@@ -1,6 +1,6 @@
 <template>
   <div
-    class="row-12-300 --justify-content-center">
+    class="row-12-300 --place-content-center">
     <div v-if="!companyLocalData.lead_Ret"
          class="col-12-300 col-10-500 col-5-800">
       <h1>Looking for Leads?</h1>
