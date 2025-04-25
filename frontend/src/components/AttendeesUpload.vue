@@ -17,7 +17,9 @@
 import {ref} from "vue";
 import {read, utils, writeFile} from 'xlsx'
 import {createAttendee_Service} from '@/services/AttendeeDataService.ts'
+import {useExpoLocalStore} from "@/stores.ts";
 
+const expoLocalData = useExpoLocalStore()
 const status = ref(false)
 
 async function handleFileAsync(e: any) {
@@ -32,7 +34,7 @@ async function handleFileAsync(e: any) {
   console.log(jsonData)
 
   jsonData.forEach(e => {
-    createAttendee_Service(e)
+    createAttendee_Service(e, expoLocalData.expo_Client, expoLocalData.expo_Client)
   })
   status.value = false
 }

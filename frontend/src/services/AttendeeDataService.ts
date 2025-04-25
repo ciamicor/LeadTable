@@ -34,11 +34,11 @@ const attendeeService = new AttendeeDataService()
 /*-| Create Attendees |-*/
 
 /*---+----+---+----+---+----+---+----+---*/
-async function createAttendee_Service(attendee: any) {
+async function createAttendee_Service(attendee: any, client: any, year: any) {
   console.log('Create Attendee Service: ', attendee)
   const data = {
-    expo_Client: attendee.expo_Client,
-    expo_Year: attendee.expo_Year,
+    expo_Client: client,
+    expo_Year: year,
     name_First: attendee.name_First,
     name_Last: attendee.name_Last,
     contact_Email: attendee.contact_Email,
@@ -50,16 +50,14 @@ async function createAttendee_Service(attendee: any) {
     tech_Sem: attendee.tech_Sem
   }
   console.log(data)
-  await attendeeService.create(data)
-    .then((response: any) => {
-      attendee.id = response.data.id
-      console.log(response.data)
-      // attendee = null
-      attendee = response.data
-    })
-    .catch((e: any) => {
-      console.log(e)
-    })
+  try {
+    let newAttendee = await attendeeService.create(data)
+    attendee.id = newAttendee.data.id
+    console.log(newAttendee.data)
+    attendee = newAttendee.data
+  } catch (e: any) {
+    console.log(e)
+  }
 }
 
 /*-| Get All Attendees |-*/

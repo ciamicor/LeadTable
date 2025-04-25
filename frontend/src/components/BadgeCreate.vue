@@ -1,8 +1,9 @@
 <template>
 
   <div class="row-12-300 --gap-24 --place-content-center --p-4">
-    <div
+    <form
       class="col-12-300 col-10-600 col-8-900 --p-b-24 --p-t-12"
+      @submit.prevent="createAttendee(attendee)"
     >
       <h4 class="--m-0">{{ expoLocalData.expo_Client }} {{ expoLocalData.expo_Year }} Supplier's
                         Day</h4>
@@ -15,6 +16,7 @@
             v-model="attendee.name_First"
             name="name-first"
             placeholder="First Name"
+            required
             type="text">
 
         </label>
@@ -24,6 +26,7 @@
             v-model="attendee.name_Last"
             name="name-last"
             placeholder="Last Name"
+            required
             type="text">
 
         </label>
@@ -35,6 +38,7 @@
             v-model="attendee.contact_Employer"
             name="employer"
             placeholder="Employer"
+            required
             type="text"></label>
 
         <label>
@@ -43,6 +47,7 @@
             v-model="attendee.title"
             name="title"
             placeholder="Position/Title"
+            required
             type="text">
 
         </label>
@@ -54,6 +59,7 @@
             v-model="attendee.contact_Email"
             name="title"
             placeholder="Email Address"
+            required
             type="email"/>
 
         </label>
@@ -63,6 +69,7 @@
             v-model="attendee.contact_Phone"
             name="phone"
             placeholder="Phone Number"
+            required
             type="tel"/>
 
         </label>
@@ -74,6 +81,7 @@
             v-model="attendee.address"
             name="address"
             placeholder="Enter your address"
+            required
             type="text"/>
 
         </label>
@@ -83,26 +91,27 @@
         <select
           v-model="attendee.reg_Type"
           name="reg-type"
+          required
         >
           <option value="Attendee">Attendee</option>
           <option value="Exhibitor">Exhibitor</option>
           <option value="Both">Both</option>
         </select>
       </label>
-      <label>
-        Choose Tech Seminars
-        <select
-          v-model="attendee.tech_Sem"
-          name="reg-type"
-        >
-          <option value="Attending">Yes</option>
-          <option value="">No</option>
-        </select>
-      </label>
+      <!--      <label>
+              Choose Tech Seminars
+              <select
+                v-model="attendee.tech_Sem"
+                name="reg-type"
+              >
+                <option value="Attending">Yes</option>
+                <option value="">No</option>
+              </select>
+            </label>-->
 
       <button v-if="!showQr"
               class="--success --m-t-12"
-              @click="createAttendee(attendee)"
+              type="submit"
       >
         <!--              type="submit"-->
         Submit Registration
@@ -113,12 +122,12 @@
         @click="printBadge_Portrait3x4(attendee)">
         Print {{ attendee.name_First }}'s Badge
       </button>
-    </div>
+    </form>
 
     <div class="badges-page-container">
       <img id="badge-logo"
+           :alt="`${companyLocalData.name}-logo`"
            :src="host + '/src/assets/logos/'+ expoLocalData.expo_Client.toLowerCase() + '/' + expoLocalData.expo_Client.toLowerCase() + '-vert-rgb.jpeg'"
-           alt="nyift-logo"
       >
       <QrCode
         v-if="showQr"
@@ -148,8 +157,6 @@ const companyLocalData = useCompanyLocalStore()
 const expoLocalData = useExpoLocalStore()
 
 /*-| Print Component |-*/
-
-
 /*-| Attendees |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const showQr = ref( false )
@@ -169,10 +176,9 @@ const attendee = ref( {
 } )
 
 async function createAttendee( a ) {
-  await createAttendee_Service( a )
-  console.log( attendee )
+  await createAttendee_Service( a, expoLocalData.expo_Client, expoLocalData.expo_Year )
   attendeeId.value = attendee.value.id.toString()
-  console.log( typeof attendeeId.value, attendeeId.value )
+  console.log( 'New Attendee\'s ID is: ', typeof attendeeId.value, attendeeId.value )
   showQr.value = true
 }
 
