@@ -8,7 +8,7 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
   const active = ref(false)
   const start_Date = ref(null)
   const expo_Client = ref('')
-  const year = ref(0)
+  const expo_Year = ref(0)
   const expoFp_Id = ref(0)
   const logoUrl_Color = ref('')
   const logoUrl_Black = ref('')
@@ -18,7 +18,7 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
     active.value = false
     start_Date.value = null
     expo_Client.value = ''
-    year.value = 0
+    expo_Year.value = 0
     expoFp_Id.value = 0
     logoUrl_Color.value = ''
     logoUrl_Black.value = ''
@@ -29,7 +29,7 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
     active,
     start_Date,
     expo_Client,
-    year,
+    expo_Year,
     expoFp_Id,
     logoUrl_Color,
     logoUrl_Black,
@@ -45,7 +45,7 @@ const useCompanyLocalStore = defineStore('companyLocal', () => {
   const name = ref('')
   const login_Url = ref('')
   const lead_Ret = ref(false)
-  const year = ref(0)
+  const expo_Year = ref(0)
   const expo_Client = ref('')
 
   function $reset() {
@@ -53,7 +53,7 @@ const useCompanyLocalStore = defineStore('companyLocal', () => {
     name.value = ''
     login_Url.value = ''
     lead_Ret.value = false
-    year.value = 0
+    expo_Year.value = 0
     expo_Client.value = ''
   }
 
@@ -62,7 +62,7 @@ const useCompanyLocalStore = defineStore('companyLocal', () => {
     name,
     login_Url,
     lead_Ret,
-    year,
+    expo_Year,
     expo_Client,
     $reset
   }

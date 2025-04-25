@@ -1,82 +1,85 @@
 <template>
 
-  <div class="--p-4 row --pos-fixed --bg-blur-8 --top-0 --top-r --right-0 --left-0">
-    <span>{{ expoLocalData }}</span>
-    <span>{{ companyLocalData }}</span>
-    <div class="search-wrap --place-self-center">
-      <button
-        v-show="searchTerm !== ''"
-        class="--square"
-        @click="resetSearch">
-        <i class="bi-x-lg"></i>
-      </button>
-      <input id="searchAttendees"
-             v-model="searchTerm"
-             class="search"
-             name="searchAttendees"
-             placeholder="Search Attendees"
-             type="text">
+  <!-- Visible Container, Components -->
+  <div class="container">
+    <div class="--p-4 row-12-300 --bg-blur-8 --top-0 --top-r --right-0 --left-0">
+      <span>{{ expoLocalData }}</span>
+      <span>{{ companyLocalData }}</span>
+      <div class="search-wrap --place-self-center">
+        <button
+          v-show="searchTerm !== ''"
+          class="--square"
+          @click="resetSearch">
+          <i class="bi-x-lg"></i>
+        </button>
+        <input id="searchAttendees"
+               v-model="searchTerm"
+               class="search"
+               name="searchAttendees"
+               placeholder="Search Attendees"
+               type="text">
+      </div>
+
+      <!-- SINGLE BADGE -->
+      <!--  TODO Polish Single Badge Code, merge with BadgeCreate or BadgeService  -->
+      <div class="row-12-300 --place-items-center">
+        <button v-show="attendeeListSelected.length === 0 || attendeeListSelected.length > 1"
+                class="--secondary --p-4"
+                @click="printBadges">
+          Print {{ attendeeListSelected.length > 0 ? attendeeListSelected.length : 'All' }} Badges
+        </button>
+        <button
+          v-show="attendeeListSelected.length === 1"
+          class="--success--invert --p-4"
+          @click="printBadge_Portrait3x4(attendeeListSelected[0])">
+          printBadge_Portrait3x4
+        </button>
+        <button
+          v-show="attendeeListSelected.length === 1"
+          class="--secondary --p-4"
+          @click="printBadge_Portrait4x3(attendeeListSelected[0])">
+          printBadge_Portrait4x3
+        </button>
+        <button
+          v-show="attendeeListSelected.length === 1"
+          class="--secondary --p-4"
+          @click="printBadge_Land3x4(attendeeListSelected[0])">
+          printBadge_Land3x4
+        </button>
+        <button
+          v-show="attendeeListSelected.length === 1"
+          class="--secondary --p-4"
+          @click="printBadge_Land4x3(attendeeListSelected[0])">
+          printBadge_Land4x3
+        </button>
+        <router-link
+          :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/create-badge`"
+          class="button --primary --p-4">
+          New Badge
+        </router-link>
+      </div>
     </div>
 
-    <!-- SINGLE BADGE -->
-    <!--  TODO Polish Single Badge Code, merge with BadgeCreate or BadgeService  -->
-    <div class="row-12-300 row-6-600 --justify-content-end --align-items-center">
-      <button v-show="attendeeListSelected.length === 0 || attendeeListSelected.length > 1"
-              class="--secondary --p-4"
-              @click="printBadges">
-        Print {{ attendeeListSelected.length > 0 ? attendeeListSelected.length : 'All' }} Badges
-      </button>
-      <button
-        v-show="attendeeListSelected.length === 1"
-        class="--secondary --p-4"
-        @click="printBadge_Portrait3x4(attendeeListSelected[0])">
-        printBadge_Portrait3x4
-      </button>
-      <button
-        v-show="attendeeListSelected.length === 1"
-        class="--secondary --p-4"
-        @click="printBadge_Portrait4x3(attendeeListSelected[0])">
-        printBadge_Portrait4x3
-      </button>
-      <button
-        v-show="attendeeListSelected.length === 1"
-        class="--secondary --p-4"
-        @click="printBadge_Land3x4(attendeeListSelected[0])">
-        printBadge_Land3x4
-      </button>
-      <button
-        v-show="attendeeListSelected.length === 1"
-        class="--secondary --p-4"
-        @click="printBadge_Land4x3(attendeeListSelected[0])">
-        printBadge_Land4x3
-      </button>
-      <router-link
-        :to="`/${expoLocalData.expo_Client}/${expoLocalData.year}/create-badge`"
-        class="button --primary --p-4">
-        New Badge
-      </router-link>
+    <div class="row">
+      <LoadingHolder :status="loading"/>
+      <div
+        v-show="!loading"
+        class="badge-select-grid"
+      >
+        <AttendeeBadgeRow
+          v-for="(attendee, ind) in attendeeList"
+          v-show="mergeSearchTerm(attendee.name_First, attendee.name_Last)"
+          :key="ind"
+          :attendee="attendee"
+          class="badge-select-wrap"
+          @add-badge="addBadge"
+          @remove-badge="removeBadge"
+        />
+      </div>
     </div>
-
   </div>
 
-  <div class="row">
-    <LoadingHolder :status="loading"/>
-    <div
-      v-show="!loading"
-      class="badge-select-grid"
-    >
-      <AttendeeBadgeRow
-        v-for="(attendee, ind) in attendeeList"
-        v-show="mergeSearchTerm(attendee.name_First, attendee.name_Last)"
-        :key="ind"
-        :attendee="attendee"
-        class="badge-select-wrap"
-        @add-badge="addBadge"
-        @remove-badge="removeBadge"
-      />
-    </div>
-  </div>
-
+  <!-- Hidden, Printing Components -->
   <div
     v-if="attendeeListSelected.length !== 1"
     ref="printComponent"
@@ -151,8 +154,8 @@ onMounted( () => {
     () => {
       console.log( expoLocalData )
       loading.value = false
-      getAllAttendees( expoLocalData.expo_Client, expoLocalData.year, attendeeList )
-    }, 400
+      getAllAttendees( expoLocalData.expo_Client, expoLocalData.expo_Year, attendeeList )
+    }, 600
   )
 } )
 

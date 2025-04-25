@@ -4,9 +4,10 @@
       <router-view/>
     </div>
   </div>
-  <nav class="nav-bar">
+  <nav v-if="route.path !== '/'"
+       class="nav-bar">
     <router-link
-      :to="`/${expoLocalData.expo_Client}/${expoLocalData.year}/floor-plan`"
+      :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/floor-plan`"
       active-class="--secondary"
       class="button --stacked">
       <svg
@@ -24,7 +25,7 @@
       Map
     </router-link>
     <router-link
-      :to="`/${expoLocalData.expo_Client}/${expoLocalData.year}/leads-list`"
+      :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/leads-list`"
       active-class="--secondary"
       class="button --stacked">
       <svg
@@ -42,7 +43,7 @@
       Leads
     </router-link>
     <router-link
-      :to="`/${expoLocalData.expo_Client}/${expoLocalData.year}/profile`"
+      :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/profile`"
       active-class="--secondary"
       class="button --stacked">
       <svg
@@ -65,22 +66,18 @@
 <script
   setup>
 import { db } from '@/db.js'
-import { ref, provide, onBeforeMount, onMounted } from 'vue'
+import { onBeforeMount } from 'vue'
 import { useExpoLocalStore, useCompanyLocalStore } from '@/stores.js'
 import { getUrl_ClientYear } from "@/services/functions/UrlFunc.js";
 import { getExpo_Service } from "@/services/ExpoDataService.js";
+import { useRoute } from "vue-router";
+
+const route = useRoute()
 
 /*-| Variables |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const companyLocalData = useCompanyLocalStore()
 const expoLocalData = useExpoLocalStore()
-
-/*-| REF |-*/
-/*---+----+---+----+---+----+---+----+---*/
-const activeCompId_Ref = ref()
-const activeCompLeadRet_Ref = ref()
-const activeCompUrl_Ref = ref( '' )
-const activeCompName_Ref = ref( '' )
 
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Hooks |-*/
@@ -91,7 +88,7 @@ onBeforeMount( async () => {
   let url = getUrl_ClientYear()
   expoLocalData.$patch( {
     expo_Client: url[0],
-    year: url[1]
+    expo_Year: url[1]
   } )
   await getExpo_Service( url.client, url.year, expoLocalData )
 } )
@@ -99,24 +96,23 @@ onBeforeMount( async () => {
 /*-| Get Company from Local |-*/
 /*---+----+---+----+---+----+---+----+---*/
 async function updateCompany() {
-  await db.profile.get( 1 ).then( ( res ) => {
-    if ( res ) {
+  let profile = await db.profile.get( 1 )
+  try {
+    if ( profile ) {
       companyLocalData.$patch( {
-        id: res.ex_Id,
-        lead_Ret: res.lead_Ret,
-        login_Url: res.login_Url.toString(),
-        name: res.name.toString()
+        id: profile.ex_Id,
+        lead_Ret: profile.lead_Ret,
+        login_Url: profile.login_Url.toString(),
+        name: profile.name.toString(),
+        expo_Year: profile.expo_Year.toString(),
+        expo_Client: profile.expo_Client.toString()
       } )
     }
     return companyLocalData
-  } )
+  } catch ( e ) {
+    console.error( e )
+  }
 }
-
-provide( 'expoYear_Global', companyLocalData.year )
-provide( 'activeCompId_Global', activeCompId_Ref )
-provide( 'activeCompLeadRet_Global', activeCompLeadRet_Ref )
-provide( 'activeCompUrl_Global', activeCompUrl_Ref )
-provide( 'activeCompName_Global', activeCompName_Ref )
 
 </script>
 

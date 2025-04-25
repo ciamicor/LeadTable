@@ -22,12 +22,18 @@ Expo.init( {
     start_Date: {
         type: DataTypes.DATE
     },
-    year: {
+    expo_Year: {
         type: DataTypes.INTEGER,
         primaryKey: true
     },
     expoFp_Id: {
         type: DataTypes.INTEGER
+    },
+    expoFp_MapUrl: {
+        type: DataTypes.STRING
+    },
+    expoFp_Token: {
+        type: DataTypes.STRING
     },
     logoUrl_Color: {
         type: DataTypes.STRING
@@ -35,9 +41,6 @@ Expo.init( {
     logoUrl_Black: {
         type: DataTypes.STRING
     },
-    expoFp_MapUrl: {
-        type: DataTypes.STRING
-    }
 }, {
     sequelize,
     modelName: 'Expo'

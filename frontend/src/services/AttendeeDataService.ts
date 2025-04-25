@@ -38,7 +38,7 @@ async function createAttendee_Service(attendee: any) {
   console.log('Create Attendee Service: ', attendee)
   const data = {
     expo_Client: attendee.expo_Client,
-    year: attendee.year,
+    expo_Year: attendee.expo_Year,
     name_First: attendee.name_First,
     name_Last: attendee.name_Last,
     contact_Email: attendee.contact_Email,

@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <h2 class="col-12-300">Active Expos</h2>
+    <div class="row-12-300 --place-content-center">
+      <h2 class="col-9-300">Active Expos</h2>
+    </div>
     <div class="expo-select-container">
       <div
         v-for="(expo, i) in activeExposList"
@@ -9,18 +11,21 @@
       >
         <div class="row-12-300 --align-items-center">
           <div class="col-5-300">
-            <h3 class="--m-0">{{ expo.year }}</h3>
+            <h3 class="--m-0">{{ expo.expo_Year }}</h3>
           </div>
           <div class="col-5-300">
-            <span class="--m-0">{{ expo.start_Date }}</span>
+            <!--            <span class="&#45;&#45;m-0">{{ expo.start_Date }}</span>-->
           </div>
         </div>
         <h1>{{ expo.expo_Client }}</h1>
-        <span>{{ expo }}</span>
-        <button @click="setCurrentExpo(expo)">Select Expo</button>
+        <button @click="setCurrentExpo(expo)">
+          Select Expo
+        </button>
       </div>
     </div>
-    <h2 class="col-12-300">Past Expos</h2>
+    <div class="row-12-300 --place-content-center">
+      <h2 class="col-9-300">Past Expos</h2>
+    </div>
     <div class="expo-select-container">
       <div
         v-for="(expo, i) in archivedExposList"
@@ -29,15 +34,16 @@
       >
         <div class="row-12-300 --align-items-center">
           <div class="col-5-300">
-            <h3 class="--m-0">{{ expo.year }}</h3>
+            <h3 class="--m-0">{{ expo.expo_Year }}</h3>
           </div>
           <div class="col-5-300">
-            <span class="--m-0">{{ expo.start_Date }}</span>
+            <!--            <span class="&#45;&#45;m-0">{{ expo.start_Date }}</span>-->
           </div>
         </div>
         <h1>{{ expo.expo_Client }}</h1>
-        <span>{{ expo }}</span>
-        <button @click="setCurrentExpo(expo)">View Archived Expo</button>
+        <button @click="setCurrentExpo(expo)">
+          View Archived Expo
+        </button>
       </div>
     </div>
   </div>
@@ -65,6 +71,17 @@ onMounted(() => {
   getAllExpos(allExposList)
 })
 
+onMounted(async () => {
+  setTimeout(() => {
+    console.log(`${companyLocalData.expo_Client}/${companyLocalData.expo_Year}/leads-list`)
+    if (companyLocalData.expo_Year !== '' && companyLocalData.expo_Client !== '') {
+      console.log('matched')
+      console.log(`${companyLocalData.expo_Client}/${companyLocalData.expo_Year}/leads-list`)
+      router.push(`${companyLocalData.expo_Client}/${companyLocalData.expo_Year}/leads-list`)
+    }
+  }, 500)
+})
+
 /*-| Expo Functions |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 async function getAllExpos(listObj: any) {
@@ -79,7 +96,7 @@ async function setCurrentExpo(obj: any) {
     obj.active,
     obj.start_Date,
     obj.expo_Client,
-    obj.year,
+    obj.expo_Year,
     obj.expoFp_Id,
     obj.logoUrl_Color,
     obj.logoUrl_Black,
@@ -90,7 +107,7 @@ async function setCurrentExpo(obj: any) {
     active: obj.active,
     start_Date: obj.start_Date,
     expo_Client: obj.expo_Client,
-    year: obj.year,
+    expo_Year: obj.expo_Year,
     expoFp_Id: obj.expoFp_Id,
     logoUrl_Color: obj.logoUrl_Color,
     logoUrl_Black: obj.logoUrl_Black,
@@ -102,7 +119,7 @@ async function setCurrentExpo(obj: any) {
   // console.log(dateVar.toLocaleString());
 
   /*-| Update Route |-*/
-  await router.push({path: "/" + expoLocalData.expo_Client + "/" + expoLocalData.year + "/profile"})
+  await router.push({path: "/" + expoLocalData.expo_Client + "/" + expoLocalData.expo_Year + "/profile"})
 }
 
 </script>

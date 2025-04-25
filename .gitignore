@@ -6,3 +6,10 @@
 /backend/package-lock.json
 /frontend/package-lock.json
 /frontend/src/assets
+
+## Font
+*.ttf     -text diff
+*.ttc     -text diff
+*.eot     -text diff
+*.woff    -text diff
+*.woff2   -text diff

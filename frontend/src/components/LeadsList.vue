@@ -21,8 +21,11 @@
       <div class="row --p-4">
         <div v-if="companyLocalData.name"
              class="col-12-300 col-10-800">
-          <p class="--m-0">{{ companyLocalData.expo_Client }} {{ companyLocalData.year }}
-                           Supplier's Day</p>
+          <p class="--m-0">
+            {{ companyLocalData.expo_Client }}
+            {{ companyLocalData.expo_Year }}
+            Supplier's Day
+          </p>
           <h2>{{ companyLocalData.name }}</h2>
         </div>
         <LeadsExport :leads-list="leadsList"/>
@@ -53,7 +56,6 @@
 
 <script setup>
 import { useCompanyLocalStore } from '@/stores.ts'
-import { storeToRefs } from 'pinia'
 import { db } from '../db'
 import { getAllLeads_Service } from '../services/LeadDataService.js'
 import { onMounted, ref } from 'vue'
@@ -62,14 +64,6 @@ import LeadCard from '@/components/LeadCard.vue'
 import LeadsExport from '@/components/LeadsExport.vue'
 
 const companyLocalData = useCompanyLocalStore()
-const {
-  id,
-  name,
-  login_Url,
-  lead_Ret,
-  year,
-  expo_Client
-} = storeToRefs( companyLocalData )
 
 /*-| Hooks |-*/
 /*---+----+---+----+---+----+---+----+---*/
@@ -87,33 +81,6 @@ async function getProfile() {
   await getLocalCompanyData_Service( companyLocalData )
 }
 
-async function addDbLead() {
-  try {
-    const id = await db.leads.add( {
-      year: lead.value.year,
-      expo_Client: lead.value.expo_Client,
-      attendee_Id: lead.value.attendee_Id,
-      scan_Company_Id: lead.value.scan_Company_Id,
-      name_First: lead.value.name_First,
-      name_Last: lead.value.name_Last,
-      email: lead.value.email,
-      phone: lead.value.phone,
-      employer: lead.value.employer,
-      address: lead.value.address,
-      score: lead.value.score,
-      comment: lead.value.comment
-    } )
-
-    status.value = `${ lead.value.name_First }
-          successfully added. Got id ${ id }`
-
-  } catch ( error ) {
-    status.value = `Failed to add
-          ${ lead.value.name }: ${ error }`
-  }
-  // Reset form
-}
-
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Leads List |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
@@ -122,7 +89,7 @@ const leadsList = ref()
 const lead = ref(
   {
     expo_Client: companyLocalData.expo_Client,
-    year: companyLocalData.year,
+    expo_Year: companyLocalData.expo_Year,
     attendee_Id: null,
     scan_Company_Id: companyLocalData.id,
     name_First: '',

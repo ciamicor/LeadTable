@@ -5,18 +5,14 @@
     Sign Out
   </button>
 
-  <iframe
-    v-if="loggedIn"
-    :src="'https://app.expofp.com' + loginUrl"
-    allow="clipboard-read; clipboard-write"
-    class="view-floor-plan"
-  >
-  </iframe>
-  <div v-else
-       class="row --place-content-center --place-items-center">
+  <!--    v-else-->
+  <div
+    class="row --place-content-center --place-items-center">
     <div
       class="col-12-300 col-10-500 col-6-900">
-      <h1>Exhibitor Profile Login</h1>
+      <h4 class="--m-0">{{ expoLocalData.expo_Client }} {{ expoLocalData.expo_Year }} Supplier's
+                        Day</h4>
+      <h1>Exhibitor Login</h1>
       <p>If you've already purchased lead retrieval, login here to access it.</p>
       <p>To purchase lead retrieval, login to your ExpoFP Exhibitor profile here, and add it as a
          booth extra.</p>
@@ -33,7 +29,7 @@
              type="tel">
       <button class="--primary--invert"
               @click="login()">
-        Exhibitor Portal Login
+        Exhibitor Profile Login
       </button>
     </div>
   </div>
@@ -52,50 +48,57 @@
       <p>{{ selectedCompanyData ? selectedCompanyData.id : null }}</p>
       <h2>Extras</h2>
       {{ companyExtras }}
-      <h2>exData</h2>
+      <h2>companyData</h2>
       {{ selectedCompanyData }}
+      {{ companyLocalData }}
     </div>
-    {{ companyLocalData }}
   </div>
+
+  <iframe
+    v-if="loggedIn"
+    :src="'https://app.expofp.com' + loginUrl"
+    allow="clipboard-read; clipboard-write"
+    class="view-floor-plan"
+  >
+  </iframe>
 </template>
 
 <script lang="ts"
         setup>
 import {
-  getAllExhibitors,
   getExhibitor,
   getExhibExtras
 } from '../services/ExpoFpDataService.ts'
 import {
   createCompany_Service,
+  getCompanyById_Service,
   getLocalCompanyData_Service
 } from '@/services/CompanyDataService.ts'
-import { onBeforeMount, ref } from 'vue'
-import { db } from '@/db.ts'
-import { useCompanyLocalStore } from '@/stores.ts'
+import {getExpoToken_Service} from "@/services/ExpoDataService.ts";
+import {onMounted, ref} from 'vue'
+import {db} from '@/db.ts'
+import {useCompanyLocalStore, useExpoLocalStore} from '@/stores.ts'
 
 /*-| Variables |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-const debug = ref(false)
-
-const exList = ref()
+const debug = ref(true)
 
 const selectedCompanyData = ref()
 const companyExtras = ref()
 const loginIdMatch = ref(false)
 const extraMatch = ref(false)
 
-const loginId = ref()
+const loginId = ref('')
 const loginUrl = ref()
 const loggedIn = ref(false)
 
 const companyLocalData = useCompanyLocalStore()
+const expoLocalData = useExpoLocalStore()
 
 /*-| Lifecycle |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-onBeforeMount(() => {
-    getProfile()
-    getAllEx()
+onMounted(async () => {
+    await getProfile()
   }
 )
 
@@ -105,15 +108,13 @@ const status = ref()
 
 async function getProfile() {
   await getLocalCompanyData_Service(companyLocalData)
-
-  loginId.value = companyLocalData.id
+  // if (companyLocalData.id !== 0) loginId.value = companyLocalData.id
+  loginId.value = 10675008
   loginUrl.value = companyLocalData.login_Url
-
-  console.log('profile loginUrl: ', loginUrl.value)
-
-  if (companyLocalData) {
+  console.log('Login URL is: ', loginUrl.value)
+  /*if (companyLocalData) {
     loggedIn.value = true
-  }
+  }*/
 }
 
 async function saveDbLogin() {
@@ -124,8 +125,8 @@ async function saveDbLogin() {
       name: selectedCompanyData.value.name,
       login_Url: selectedCompanyData.value.autoLoginUrl,
       lead_Ret: !!extraMatch.value,
-      expo_Client: companyLocalData.expo_Client,
-      year: companyLocalData.year
+      expo_Client: expoLocalData.expo_Client,
+      expo_Year: expoLocalData.expo_Year
     })
     status.value = `${selectedCompanyData.value.name}
           successfully added. Got id ${id}`
@@ -135,53 +136,41 @@ async function saveDbLogin() {
   }
 }
 
-/*-| Function |-*/
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-function matchUrlParams(u: string) {
-  return u.match(/(\?uid)(.*)(&token)/g)
-}
-
-async function getAllEx() {
-  const hold = await getAllExhibitors()
-  exList.value = hold.filter((c: any) => {
-    return c.booths.length > 0
-  })
-  // console.log('exList: ', exList.value)
-}
-
-async function getEx(id: any) {
-  selectedCompanyData.value = await getExhibitor(id)
-  console.log('exData: ', selectedCompanyData.value)
-}
-
-async function getExtras(id: any) {
-  companyExtras.value = await getExhibExtras(id)
-  console.log('Extras: ', companyExtras.value)
-}
-
-async function checkLeadExtra(id: any) {
-  console.log('checking lead retrieval purchase')
-  await getExtras(id)
-  extraMatch.value = await companyExtras.value.some((e: any) =>
-    e.name.toLowerCase().includes('lead retrieval')
-  )
-  console.log('Lead retrieval: ', extraMatch.value)
-}
-
 /*-| Login/Out |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 async function login() {
-  await getEx(loginId.value)
-  await checkLeadExtra(loginId.value)
-  console.log('company logging in is: ', selectedCompanyData.value.autoLoginUrl)
-  loginUrl.value = selectedCompanyData.value.autoLoginUrl
-  console.log('loginURL: ', loginUrl.value)
+  /*-| Get Exhibitor |-*/
+  console.log('Getting Exhibitor...')
+  await getExhibitor(
+    loginId.value,
+    expoLocalData.expo_Client,
+    expoLocalData.expo_Year,
+    selectedCompanyData)
 
-  if (companyLocalData.name === '') {
-    console.log('saving to db')
-    await saveDbLogin()
-    await createCompany_Service(selectedCompanyData, companyLocalData.year, companyLocalData.expo_Client)
-  }
+  /*-| Match Extras |-*/
+  console.log('Matching extras...')
+  await getExhibExtras(
+    loginId.value,
+    expoLocalData.expo_Client,
+    expoLocalData.expo_Year,
+    companyExtras)
+
+  /*-| Check Extras |-*/
+  /*console.log("Extras: ", companyExtras.value)
+  extraMatch.value = companyExtras.value.some((e: any) =>
+    e.name.toLowerCase().includes('lead retrieval')
+  )
+  console.log("Lead retrieval purchased: ", extraMatch.value)*/
+  console.log('Logging in for: ', selectedCompanyData.value.name)
+  loginUrl.value = selectedCompanyData.value.autoLoginUrl
+  console.log('loginURL is: ', loginUrl.value)
+
+  console.log('Saving company to Local DB...')
+  await saveDbLogin()
+  await createCompany_Service(selectedCompanyData, companyLocalData.expo_Year, companyLocalData.expo_Client)
+  /*-| Check if Company is in server DB |-*/
+  await getCompanyById_Service(loginId.value)
+
   loggedIn.value = true
   // window.location.reload()
 }

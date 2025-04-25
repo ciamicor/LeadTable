@@ -46,6 +46,7 @@
   }
   &-container {
     display:    flex;
+    flex-flow:  column;
     min-height: c.$view-height;
   }
 }

@@ -120,7 +120,7 @@ const commentRef = ref( null )
 const attendeeService = new AttendeeDataService()
 let attendee = ref(
   {
-    year: companyLocalData.year,
+    expo_Year: companyLocalData.expo_Year,
     name_First: null,
     name_Last: null,
     contact_Email: null,
@@ -136,7 +136,7 @@ let attendee = ref(
 let company = ref(
   {
     id: companyLocalData.id,
-    year: companyLocalData.year,
+    expo_Year: companyLocalData.expo_Year,
     company_Name: companyLocalData.name
   }
 )
@@ -145,7 +145,7 @@ let company = ref(
 let lead = ref(
   {
     id: null,
-    year: companyLocalData.year,
+    expo_Year: companyLocalData.expo_Year,
     expo_Client: companyLocalData.expo_Client,
     attendee_Id: attendee.value.id,
     scan_Company_Id: companyLocalData.id,

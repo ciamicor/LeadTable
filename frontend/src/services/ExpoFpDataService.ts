@@ -1,99 +1,81 @@
 import axios from 'axios'
+import {getExpoToken_Service} from "@/services/ExpoDataService.ts";
 
 const baseUrl = 'https://app.expofp.com/api/v1/'
-const fpToken = '12593l56be89a73a1d79031b6f6fd7fdc621adc60ee8d52fb2211a2a2891ed8948ae46'
 
 /*-| Get All Exhibitors |-*/
-/*---+----+---+----+---+----+---+----+---*/
-export const getAllExhibitors = () => axios({
-  method: 'post',
-  url: baseUrl + 'list-exhibitors',
-  data: {
-    'token': fpToken,
-    'eventId': 23706
-  }
-})
-  .then((res) => {
-    // console.log("all exhibitors response: ", res.data)
-    return res.data
-  })
 
-/*-| Get Exhibitor |-*/
 /*---+----+---+----+---+----+---+----+---*/
-export const getExhibitor = (id: any) => axios({
-  method: 'post',
-  url: baseUrl + 'get-exhibitor',
-  data: {
-    'token': fpToken,
-    'id': id
-  }
-})
-  .then((res) => {
-    // console.log("exhibitor response: ", res.data)
-    return res.data
-  })
-
-/*-| Get Exhibitor Extras |-*/
-/*---+----+---+----+---+----+---+----+---*/
-export const getExhibExtras = (id: any) => axios({
-  method: 'post',
-  url: baseUrl + 'list-exhibitor-extras',
-  data: {
-    'token': fpToken,
-    'exhibitorId': id
-  }
-})
-  .then((res) => {
-    // console.log("extras response: ", res.data)
-    return res.data
-  })
-
-// These don't work as well as 'export const', but they get to stay here
-/*
-export default ExpoFpDataService {
-  getAllExhibitors(i: any) {
-    axios({
+export async function getAllExhibitors(client: any, year: any) {
+  try {
+    let token = await getExpoToken_Service(client, year)
+    await console.log('getAllExhibitors got token: ', token)
+    let res = await axios({
       method: 'post',
       url: baseUrl + 'list-exhibitors',
       data: {
-        "token": fpToken,
-        "eventId": 23706
+        'token': token,
+        'eventId': 23706
       }
     })
-      .then((res) => {
-        console.log("all exhibitors response: ", res.data)
-        i.value = res.data
-      })
+    console.log("Got all Exhibitors: ", res.data)
+    return res.data
+  } catch (e) {
+    console.log(e)
   }
+}
 
-  getExhibitor(id: any, exData: any) {
-    axios({
+/*-| Get Exhibitor |-*/
+
+/*---+----+---+----+---+----+---+----+---*/
+export async function getExhibitor(
+  id: any,
+  client: any,
+  year: any,
+  exObj: any) {
+  try {
+    let token = await getExpoToken_Service(client, year)
+    console.log('getExhibitor got token: ',)
+    let res = await axios({
       method: 'post',
       url: baseUrl + 'get-exhibitor',
       data: {
-        "token": fpToken,
-        "id": id
+        'token': token,
+        'id': id
       }
     })
-      .then((res) => {
-        console.log("exhibitor response: ", res.data)
-        exData.value = res.data
-      })
+    console.log("Got Exhibitor: ", res.data)
+    exObj.value = res.data
+  } catch (e) {
+    console.log(e)
   }
+}
 
-  getExhibitorExtras(id: any, extraData: any) {
-    axios({
+/*-| Get Exhibitor Extras |-*/
+
+/*---+----+---+----+---+----+---+----+---*/
+export async function getExhibExtras(
+  id: any,
+  client: any,
+  year: any,
+  extraObj: any) {
+  try {
+    let token = await getExpoToken_Service(client, year)
+    console.log('getExhibitor got token: ',)
+    let res = await axios({
       method: 'post',
       url: baseUrl + 'list-exhibitor-extras',
       data: {
-        "token": fpToken,
-        "exhibitorId": id
+        'token': token,
+        'exhibitorId': id
       }
     })
-      .then((res) => {
-        console.log("extras response: ", res.data)
-        extraData.value = res.data
-      })
+    console.log("Exhibitor extras are: ", res.data)
+    extraObj.value = res.data
+  } catch (e) {
+    console.log(e);
   }
 
-}*/
+}
+
+

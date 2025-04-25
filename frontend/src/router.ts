@@ -9,13 +9,27 @@ import BadgeCreate from '@/components/BadgeCreate.vue'
 import AttendeesUpload from '@/components/AttendeesUpload.vue'
 
 const routes = [
+  /*-| Redirects |-*/
+  {
+    path: '/profile',
+    redirect: '/',
+  },
+  {
+    path: '/leads-list',
+    redirect: '/',
+  },
+  /*-| Routes |-*/
   {
     path: '/',
-    component: ExpoSelect
+    component: ExpoSelect,
   },
   {
     path: '/:client/:year/',
     children: [
+      {
+        path: "",
+        component: ExpoMap,
+      },
       {
         path: 'leads-list',
         name: 'LeadsList',

@@ -1,14 +1,14 @@
 <template>
 
-  <div class="row --gap-24">
+  <div class="row-12-300 --gap-24 --place-content-center --p-4">
     <div
       class="col-12-300 col-10-600 col-8-900 --p-b-24 --p-t-12"
     >
+      <h4 class="--m-0">{{ expoLocalData.expo_Client }} {{ expoLocalData.expo_Year }} Supplier's
+                        Day</h4>
       <h1 id="attendee-reg">Attendee Registration</h1>
-      <p>Register for the {{ expoLocalData.expo_Client }} {{ expoLocalData.year }}
-
-         Supplier's Day. All fields are required.</p>
-      <div class="row --items">
+      <p>All fields are required.</p>
+      <div class="row-12-300 --items">
         <label>
           First Name
           <input
@@ -28,7 +28,7 @@
 
         </label>
       </div>
-      <div class="row --items">
+      <div class="row-12-300 --items">
         <label>
           Employer
           <input
@@ -47,7 +47,7 @@
 
         </label>
       </div>
-      <div class="row --items">
+      <div class="row-12-300 --items">
         <label>
           Email Address
           <input
@@ -67,7 +67,7 @@
 
         </label>
       </div>
-      <div class="row --items">
+      <div class="row-12-300 --items">
         <label>
           Your Address
           <input
@@ -153,7 +153,7 @@ const expoLocalData = useExpoLocalStore()
 const showQr = ref( false )
 const attendeeId = ref()
 const attendee = ref( {
-  year: companyLocalData.year,
+  expo_Year: companyLocalData.expo_Year,
   expo_Client: companyLocalData.expo_Client,
   name_First: '',
   name_Last: '',

@@ -32,7 +32,7 @@ exports.createAttendee = async ( req, res ) => {
     } = req.body
     try {
         const newAttendee = await Attendee.create( {
-            year,
+            expo_Year,
             expo_Client,
             name_First,
             name_Last,
@@ -73,7 +73,7 @@ exports.getExpoAttendees = async ( req, res ) => {
         const expo = await Attendee.findAll(
             {
                 where: {
-                    [Op.and]: [ { expo_Client: client }, { year: year } ]
+                    [Op.and]: [ { expo_Client: client }, { expo_Year: year } ]
                 }
             }
         )
