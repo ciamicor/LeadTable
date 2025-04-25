@@ -74,7 +74,7 @@ onMounted(() => {
 onMounted(async () => {
   setTimeout(() => {
     console.log(`${companyLocalData.expo_Client}/${companyLocalData.expo_Year}/leads-list`)
-    if (companyLocalData.expo_Year !== '' && companyLocalData.expo_Client !== '') {
+    if (companyLocalData.expo_Year !== undefined && companyLocalData.expo_Client !== '') {
       console.log('matched')
       console.log(`${companyLocalData.expo_Client}/${companyLocalData.expo_Year}/leads-list`)
       router.push(`${companyLocalData.expo_Client}/${companyLocalData.expo_Year}/leads-list`)
