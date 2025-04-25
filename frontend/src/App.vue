@@ -7,9 +7,9 @@
   <nav v-if="route.path !== '/'"
        class="nav-bar">
     <router-link
-      :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/floor-plan`"
       active-class="--secondary"
-      class="button --stacked">
+      class="button --stacked"
+      to="floor-plan">
       <svg
         fill="none"
         height="24"
@@ -25,9 +25,9 @@
       Map
     </router-link>
     <router-link
-      :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/leads-list`"
       active-class="--secondary"
-      class="button --stacked">
+      class="button --stacked"
+      to="leads-list">
       <svg
         fill="none"
         height="24"
@@ -43,9 +43,9 @@
       Leads
     </router-link>
     <router-link
-      :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/profile`"
       active-class="--secondary"
-      class="button --stacked">
+      class="button --stacked"
+      to="profile">
       <svg
         fill="none"
         height="24"
@@ -94,9 +94,9 @@ onBeforeMount( async () => {
   } )
   await getExpo_Service( url.client, url.year, expoLocalData )
   console.log( 'Expo is: ', expoLocalData )
-  if ( sessionStore.logged_In === true ) {
+  /*if ( sessionStore.logged_In === true ) {
     await checkExpoMatch()
-  }
+  }*/
 } )
 
 /*-| Get Company from Local |-*/
@@ -125,7 +125,7 @@ async function checkLoginState() {
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 /*-| Check if URL matches login |-*/
 // TODO Move check into router beforeRoute function.
-async function checkExpoMatch() {
+/*async function checkExpoMatch() {
   let clientMatch = expoLocalData.expo_Client === companyLocalData.expo_Client
   let yearMatch = expoLocalData.expo_Year === parseInt( companyLocalData.expo_Year )
   if ( !clientMatch || !yearMatch ) {
@@ -135,7 +135,7 @@ async function checkExpoMatch() {
     url = getUrl_ClientYear()
     await getExpo_Service( url.client, url.year, expoLocalData )
   }
-}
+}*/
 
 </script>
 
