@@ -8,6 +8,9 @@ router.post( '/', leadController.createLead );
 // Route to get all leads
 router.get( '/', leadController.getAllLeads );
 
+// Route to get all leads for exhibitor
+router.get( '/exhibitor/:id', leadController.getAllExhibitorLeads );
+
 // Route to get a lead by ID
 router.get( '/:id', leadController.getLeadById );
 

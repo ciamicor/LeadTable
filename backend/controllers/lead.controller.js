@@ -1,5 +1,5 @@
 const { Lead } = require( '../models' )
-const { where } = require( 'sequelize' )
+const { Op } = require( 'sequelize' )
 
 // Controller method to create a new lead
 exports.createLead = async ( req, res ) => {
@@ -67,6 +67,29 @@ exports.getAllLeads = async ( req, res ) => {
         console.error( 'error in controller: ', error )
         res.status( 500 ).json( {
             error: 'Something went wrong.',
+            details: error?.message || 'Unknown error'
+        } )
+    }
+}
+
+// Controller method to get all leads by exhibitor
+exports.getAllExhibitorLeads = async ( req, res ) => {
+    const company_Id = req.params.id
+    try {
+        const leads = await Lead.findAll( {
+            where: {
+                [Op.and]: [ { scan_Company_Id: company_Id } ]
+            }
+        } )
+        if ( leads ) {
+            res.json( leads )
+        } else {
+            res.status( 404 ).json( { error: 'No leads found for this company.' } )
+        }
+    } catch ( error ) {
+        console.error( 'error in controller getAllExhibitorLeads: ', error )
+        res.status( 500 ).json( {
+            error: 'Something went wrong with getAllExhibitorLeads.',
             details: error?.message || 'Unknown error'
         } )
     }

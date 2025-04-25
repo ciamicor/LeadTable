@@ -67,15 +67,17 @@
   setup>
 import { db } from '@/db.js'
 import { onBeforeMount } from 'vue'
-import { useExpoLocalStore, useCompanyLocalStore } from '@/stores.js'
+import { useExpoLocalStore, useCompanyLocalStore, useSessionStore } from '@/stores.js'
 import { getUrl_ClientYear } from "@/services/functions/UrlFunc.js";
 import { getExpo_Service } from "@/services/ExpoDataService.js";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute()
+const router = useRouter()
 
 /*-| Variables |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+const sessionStore = useSessionStore()
 const companyLocalData = useCompanyLocalStore()
 const expoLocalData = useExpoLocalStore()
 
@@ -84,20 +86,24 @@ const expoLocalData = useExpoLocalStore()
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 onBeforeMount( async () => {
   console.log( "App mounting!" )
-  await updateCompany()
+  await checkLoginState()
   let url = getUrl_ClientYear()
   expoLocalData.$patch( {
     expo_Client: url[0],
     expo_Year: url[1]
   } )
   await getExpo_Service( url.client, url.year, expoLocalData )
+  console.log( 'Expo is: ', expoLocalData )
+  if ( sessionStore.logged_In === true ) {
+    await checkExpoMatch()
+  }
 } )
 
 /*-| Get Company from Local |-*/
 /*---+----+---+----+---+----+---+----+---*/
-async function updateCompany() {
-  let profile = await db.profile.get( 1 )
+async function checkLoginState() {
   try {
+    let profile = await db.profile.get( 1 )
     if ( profile ) {
       companyLocalData.$patch( {
         id: profile.ex_Id,
@@ -107,10 +113,27 @@ async function updateCompany() {
         expo_Year: profile.expo_Year.toString(),
         expo_Client: profile.expo_Client.toString()
       } )
+      sessionStore.logged_In = true
     }
     return companyLocalData
   } catch ( e ) {
     console.error( e )
+  }
+}
+
+/*-| Checks |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Check if URL matches login |-*/
+// TODO Move check into router beforeRoute function.
+async function checkExpoMatch() {
+  let clientMatch = expoLocalData.expo_Client === companyLocalData.expo_Client
+  let yearMatch = expoLocalData.expo_Year === parseInt( companyLocalData.expo_Year )
+  if ( !clientMatch || !yearMatch ) {
+    alert( `Your login does not match selected expo. You've selected ${ expoLocalData.expo_Client } ${ expoLocalData.expo_Year }, but are logged in for ${ companyLocalData.expo_Client } ${ companyLocalData.expo_Year }. You'll be redirected.` )
+    let url = getUrl_ClientYear()
+    await router.push( `/${ companyLocalData.expo_Client }/${ companyLocalData.expo_Year }/${ url.view }` )
+    url = getUrl_ClientYear()
+    await getExpo_Service( url.client, url.year, expoLocalData )
   }
 }
 

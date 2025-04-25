@@ -2690,183 +2690,183 @@
 /*-| Placement |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 .--place-self-start {
-  place-self: start;
+  place-self: start !important;
 }
 
 .--place-self-center {
-  place-self: center;
+  place-self: center !important;
 }
 
 .--place-self-end {
-  place-self: end;
+  place-self: end !important;
 }
 
 .--place-self-stretch {
-  place-self: stretch;
+  place-self: stretch !important;
 }
 
 .--place-self-baseline {
-  place-self: baseline;
+  place-self: baseline !important;
 }
 
 .--place-items-start {
-  place-items: start;
+  place-items: start !important;
 }
 
 .--place-items-center {
-  place-items: center;
+  place-items: center !important;
 }
 
 .--place-items-end {
-  place-items: end;
+  place-items: end !important;
 }
 
 .--place-items-stretch {
-  place-items: stretch;
+  place-items: stretch !important;
 }
 
 .--place-items-baseline {
-  place-items: baseline;
+  place-items: baseline !important;
 }
 
 .--place-content-start {
-  place-content: start;
+  place-content: start !important;
 }
 
 .--place-content-center {
-  place-content: center;
+  place-content: center !important;
 }
 
 .--place-content-end {
-  place-content: end;
+  place-content: end !important;
 }
 
 .--place-content-stretch {
-  place-content: stretch;
+  place-content: stretch !important;
 }
 
 .--place-content-baseline {
-  place-content: baseline;
+  place-content: baseline !important;
 }
 
 .--justify-self-start {
-  justify-self: start;
+  justify-self: start !important;
 }
 
 .--justify-self-center {
-  justify-self: center;
+  justify-self: center !important;
 }
 
 .--justify-self-end {
-  justify-self: end;
+  justify-self: end !important;
 }
 
 .--justify-self-stretch {
-  justify-self: stretch;
+  justify-self: stretch !important;
 }
 
 .--justify-self-baseline {
-  justify-self: baseline;
+  justify-self: baseline !important;
 }
 
 .--justify-items-start {
-  justify-items: start;
+  justify-items: start !important;
 }
 
 .--justify-items-center {
-  justify-items: center;
+  justify-items: center !important;
 }
 
 .--justify-items-end {
-  justify-items: end;
+  justify-items: end !important;
 }
 
 .--justify-items-stretch {
-  justify-items: stretch;
+  justify-items: stretch !important;
 }
 
 .--justify-items-baseline {
-  justify-items: baseline;
+  justify-items: baseline !important;
 }
 
 .--justify-content-start {
-  justify-content: start;
+  justify-content: start !important;
 }
 
 .--justify-content-center {
-  justify-content: center;
+  justify-content: center !important;
 }
 
 .--justify-content-end {
-  justify-content: end;
+  justify-content: end !important;
 }
 
 .--justify-content-stretch {
-  justify-content: stretch;
+  justify-content: stretch !important;
 }
 
 .--justify-content-baseline {
-  justify-content: baseline;
+  justify-content: baseline !important;
 }
 
 .--align-self-start {
-  align-self: start;
+  align-self: start !important;
 }
 
 .--align-self-center {
-  align-self: center;
+  align-self: center !important;
 }
 
 .--align-self-end {
-  align-self: end;
+  align-self: end !important;
 }
 
 .--align-self-stretch {
-  align-self: stretch;
+  align-self: stretch !important;
 }
 
 .--align-self-baseline {
-  align-self: baseline;
+  align-self: baseline !important;
 }
 
 .--align-items-start {
-  align-items: start;
+  align-items: start !important;
 }
 
 .--align-items-center {
-  align-items: center;
+  align-items: center !important;
 }
 
 .--align-items-end {
-  align-items: end;
+  align-items: end !important;
 }
 
 .--align-items-stretch {
-  align-items: stretch;
+  align-items: stretch !important;
 }
 
 .--align-items-baseline {
-  align-items: baseline;
+  align-items: baseline !important;
 }
 
 .--align-content-start {
-  align-content: start;
+  align-content: start !important;
 }
 
 .--align-content-center {
-  align-content: center;
+  align-content: center !important;
 }
 
 .--align-content-end {
-  align-content: end;
+  align-content: end !important;
 }
 
 .--align-content-stretch {
-  align-content: stretch;
+  align-content: stretch !important;
 }
 
 .--align-content-baseline {
-  align-content: baseline;
+  align-content: baseline !important;
 }
 
 @font-face {

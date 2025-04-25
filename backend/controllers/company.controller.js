@@ -61,3 +61,25 @@ exports.getCompanyById = async ( req, res ) => {
         } )
     }
 }
+
+// Controller method to update Lead Retrieval Status
+exports.updateCompanyLeadRet = async ( req, res ) => {
+    const id = req.params.id
+    const { lead_Ret } = req.body
+    try {
+        const company = await Company.findByPk( id )
+        if ( company ) {
+            company.lead_Ret = lead_Ret
+            await company.save()
+            res.json( company )
+        } else {
+            res.status( 404 ).json( { error: 'Company not found' } )
+        }
+    } catch ( error ) {
+        console.error( 'error in controller updateCompanyLeadRet: ', error )
+        res.status( 500 ).json( {
+            error: 'Something went wrong with controller: updateCompanyLeadRet.',
+            details: error?.message || 'Unknown error'
+        } )
+    }
+}

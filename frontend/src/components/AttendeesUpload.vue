@@ -1,6 +1,6 @@
 <template>
 
-  <div class="row">
+  <div class="row-12-300 --place-content-center">
     <div class="col-12-300 col-8-600 col-6-800">
       <h1>Upload Attendees</h1>
       <p>Add attendee data that was registered on another service.</p>
@@ -14,10 +14,14 @@
 
 <script lang="ts"
         setup>
-import { read, utils, writeFile } from 'xlsx'
-import { createAttendee_Service } from '@/services/AttendeeDataService.ts'
+import {ref} from "vue";
+import {read, utils, writeFile} from 'xlsx'
+import {createAttendee_Service} from '@/services/AttendeeDataService.ts'
+
+const status = ref(false)
 
 async function handleFileAsync(e: any) {
+  status.value = true
   const file = e.target.files[0]
   console.log(file, e)
   const data = await file.arrayBuffer()
@@ -30,5 +34,6 @@ async function handleFileAsync(e: any) {
   jsonData.forEach(e => {
     createAttendee_Service(e)
   })
+  status.value = false
 }
 </script>

@@ -110,15 +110,15 @@
       <button
         v-if="showQr"
         class="--secondary"
-        @click="printBadge(attendee)">
+        @click="printBadge_Portrait3x4(attendee)">
         Print {{ attendee.name_First }}'s Badge
       </button>
     </div>
 
     <div class="badges-page-container">
       <img id="badge-logo"
+           :src="host + '/src/assets/logos/'+ expoLocalData.expo_Client.toLowerCase() + '/' + expoLocalData.expo_Client.toLowerCase() + '-vert-rgb.jpeg'"
            alt="nyift-logo"
-           src="../assets/logos/nyift/nyift-vert-rgb.jpeg"
       >
       <QrCode
         v-if="showQr"
@@ -141,7 +141,9 @@ import { ref } from 'vue'
 import { createAttendee_Service } from '@/services/AttendeeDataService.ts'
 import { useCompanyLocalStore, useExpoLocalStore } from '@/stores.js'
 import { toTitleCase_Service } from '@/services/TextContentService.js'
+import { getUrlHost } from "@/services/functions/UrlFunc.js";
 
+const host = getUrlHost()
 const companyLocalData = useCompanyLocalStore()
 const expoLocalData = useExpoLocalStore()
 
@@ -153,8 +155,8 @@ const expoLocalData = useExpoLocalStore()
 const showQr = ref( false )
 const attendeeId = ref()
 const attendee = ref( {
-  expo_Year: companyLocalData.expo_Year,
-  expo_Client: companyLocalData.expo_Client,
+  expo_Year: expoLocalData.expo_Year,
+  expo_Client: expoLocalData.expo_Client,
   name_First: '',
   name_Last: '',
   contact_Email: '',
@@ -177,7 +179,7 @@ async function createAttendee( a ) {
 /*-| Printing |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const qrData = ref()
-const logoData = ref()
+const qrLogo = ref()
 
 async function select2Canvas( s, d ) {
   const selector = document.querySelector( s )
@@ -191,9 +193,10 @@ async function select2Canvas( s, d ) {
   } )
 }
 
-async function printBadge( a ) {
+async function printBadge_Portrait3x4( a ) {
+  console.log( a.id )
   await select2Canvas( '#qr-code', qrData )
-  await select2Canvas( '#badge-logo', logoData )
+  await select2Canvas( '#badge-logo', qrLogo )
   /*-| Store Badge Dimensions, Placement |-*/
   const dim = {
     h: 3,
@@ -210,20 +213,19 @@ async function printBadge( a ) {
     format: [ dim.w, dim.h ]
   } )
 
-  /*-| Boundary |-*/
-  badgePdf.setLineWidth( .1 )
-  // badgePdf.rect( 0, 0, dim.h, dim.w )
-  /*-| Add QR Code |-*/
-  badgePdf.addImage( qrData.value, 'PNG', dim.h - dim.p, dim.w - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot )
-  /*-| Add Logo |-*/
-  badgePdf.addImage( logoData.value, 'PNG', dim.h - dim.p, dim.p * 4, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot )
   /*-| Text |-*/
   badgePdf.setFontSize( 18 )
-  badgePdf.text( toTitleCase_Service( a.contact_Employer ), dim.p * 2, dim.w - dim.p, dim.rot )
+  badgePdf.text( a.contact_Employer, dim.p * 2, dim.w - dim.p, null, dim.rot )
   badgePdf.setFontSize( 22 )
   badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ), dim.p * 4, dim.w - dim.p, dim.rot )
   badgePdf.setFontSize( 18 )
   badgePdf.text( toTitleCase_Service( a.title ), dim.p * 6, dim.w - dim.p, dim.rot )
+
+  /*-| Add QR Code |-*/
+  badgePdf.addImage( qrData.value, 'PNG', dim.h - dim.p, dim.w - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot )
+  /*-| Add Logo |-*/
+  badgePdf.addImage( qrLogo.value, 'PNG', dim.h - dim.p, dim.p * 4, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot )
+
   setTimeout( () => {
     badgePdf.output( 'dataurlnewwindow' )
   }, 300 )

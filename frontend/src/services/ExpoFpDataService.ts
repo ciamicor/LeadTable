@@ -9,7 +9,7 @@ const baseUrl = 'https://app.expofp.com/api/v1/'
 export async function getAllExhibitors(client: any, year: any) {
   try {
     let token = await getExpoToken_Service(client, year)
-    await console.log('getAllExhibitors got token: ', token)
+    // await console.log('getAllExhibitors got token: ', token)
     let res = await axios({
       method: 'post',
       url: baseUrl + 'list-exhibitors',
@@ -31,11 +31,10 @@ export async function getAllExhibitors(client: any, year: any) {
 export async function getExhibitor(
   id: any,
   client: any,
-  year: any,
-  exObj: any) {
+  year: any) {
   try {
     let token = await getExpoToken_Service(client, year)
-    console.log('getExhibitor got token: ',)
+    // console.log('getExhibitor got token: ',)
     let res = await axios({
       method: 'post',
       url: baseUrl + 'get-exhibitor',
@@ -44,8 +43,8 @@ export async function getExhibitor(
         'id': id
       }
     })
-    console.log("Got Exhibitor: ", res.data)
-    exObj.value = res.data
+    // console.log("Got Exhibitor: ", res.data)
+    return res.data
   } catch (e) {
     console.log(e)
   }
@@ -58,10 +57,10 @@ export async function getExhibExtras(
   id: any,
   client: any,
   year: any,
-  extraObj: any) {
+) {
   try {
     let token = await getExpoToken_Service(client, year)
-    console.log('getExhibitor got token: ',)
+    // console.log('getExhibitor got token: ',)
     let res = await axios({
       method: 'post',
       url: baseUrl + 'list-exhibitor-extras',
@@ -70,8 +69,8 @@ export async function getExhibExtras(
         'exhibitorId': id
       }
     })
-    console.log("Exhibitor extras are: ", res.data)
-    extraObj.value = res.data
+    // console.log("Exhibitor extras are: ", res.data)
+    return res.data
   } catch (e) {
     console.log(e);
   }

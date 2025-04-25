@@ -23,24 +23,24 @@ $sp-17:        72px !default;
 $sp-18:        86px !default;
 /*-| Variable |-*/
 /*---+----+---+----+---+----+---+----+---*/
-$sp-v-1:       max(2vw, calc($sp-1 * 2)) !default;
-$sp-v-2:       max(4vw, calc($sp-2 * 2)) !default;
-$sp-v-3:       max(6vw, calc($sp-3 * 2)) !default;
-$sp-v-4:       max(8vw, calc($sp-4 * 2)) !default;
-$sp-v-5:       max(10vw, calc($sp-5 * 2)) !default;
-$sp-v-6:       max(12vw, calc($sp-6 * 2)) !default;
-$sp-v-7:       max(14vw, calc($sp-7 * 2)) !default;
-$sp-v-8:       max(16vw, calc($sp-8 * 2)) !default;
-$sp-v-9:       max(18vw, calc($sp-9 * 2)) !default;
-$sp-v-10:      max(20vw, calc($sp-10 * 2)) !default;
-$sp-v-11:      max(22vw, calc($sp-11 * 2)) !default;
-$sp-v-12:      max(24vw, calc($sp-12 * 2)) !default;
-$sp-v-13:      max(28vw, calc($sp-13 * 2)) !default;
-$sp-v-14:      max(32vw, calc($sp-14 * 2)) !default;
-$sp-v-15:      max(36vw, calc($sp-15 * 2)) !default;
-$sp-v-16:      max(40vw, calc($sp-16 * 2)) !default;
-$sp-v-17:      max(44vw, calc($sp-17 * 2)) !default;
-$sp-v-18:      max(48vw, calc($sp-18 * 2)) !default;
+$sp-v-1:       clamp(calc($sp-1 * 1), 4vw, calc($sp-1 * 1.5)) !default;
+$sp-v-2:       clamp(calc($sp-2 * 1), 4vw, calc($sp-2 * 1.5)) !default;
+$sp-v-3:       clamp(calc($sp-3 * 1), 4vw, calc($sp-3 * 1.5)) !default;
+$sp-v-4:       clamp(calc($sp-4 * 1), 4vw, calc($sp-4 * 1.5)) !default;
+$sp-v-5:       clamp(calc($sp-5 * 1), 4vw, calc($sp-5 * 1.5)) !default;
+$sp-v-6:       clamp(calc($sp-6 * 1), 4vw, calc($sp-6 * 1.5)) !default;
+$sp-v-7:       clamp(calc($sp-7 * 1), 4vw, calc($sp-7 * 1.5)) !default;
+$sp-v-8:       clamp(calc($sp-8 * 1), 4vw, calc($sp-8 * 1.5)) !default;
+$sp-v-9:       clamp(calc($sp-9 * 1), 4vw, calc($sp-9 * 1.5)) !default;
+$sp-v-10:      clamp(calc($sp-10 * 1), 4vw, calc($sp-10 * 1.5)) !default;
+$sp-v-11:      clamp(calc($sp-11 * 1), 4vw, calc($sp-11 * 1.5)) !default;
+$sp-v-12:      clamp(calc($sp-12 * 1), 4vw, calc($sp-12 * 1.5)) !default;
+$sp-v-13:      clamp(calc($sp-13 * 1), 4vw, calc($sp-13 * 1.5)) !default;
+$sp-v-14:      clamp(calc($sp-14 * 1), 4vw, calc($sp-14 * 1.5)) !default;
+$sp-v-15:      clamp(calc($sp-15 * 1), 4vw, calc($sp-15 * 1.5)) !default;
+$sp-v-16:      clamp(calc($sp-16 * 1), 4vw, calc($sp-16 * 1.5)) !default;
+$sp-v-17:      clamp(calc($sp-17 * 1), 4vw, calc($sp-17 * 1.5)) !default;
+$sp-v-18:      clamp(calc($sp-18 * 1), 4vw, calc($sp-18 * 1.5)) !default;
 
 /*-| Layout |-*/
 /*---+----+---+----+---+----+---+----+---*/

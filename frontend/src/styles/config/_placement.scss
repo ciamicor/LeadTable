@@ -21,7 +21,7 @@ $place-area:    (
   @each $subject in $place-subject {
     @each $area in $place-area {
       .--#{$type}-#{$subject}-#{$area} {
-        #{$type}-#{$subject}: #{$area}
+        #{$type}-#{$subject}: #{$area} !important;
       }
     }
   }

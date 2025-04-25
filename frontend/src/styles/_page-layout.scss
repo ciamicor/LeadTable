@@ -74,18 +74,18 @@
         margin-bottom: c.$sp-6;
       }
       @include c.breakpoint($size * 100) {
-        flex:  0 1 calc((100% * $i / #{c.$column-number}) - #{c.$row-gap});
-        width: calc((100% * $i / #{c.$column-number}) - #{c.$row-gap});
+        flex:  0 1 calc((100% * ($i / #{c.$column-number})) - #{c.$row-gap});
+        width: calc((100% * ($i / #{c.$column-number})) - #{c.$row-gap});
       }
     }
   }
 }
 
-.--f-grow {
+.--flex-grow {
   flex-grow: 1;
 }
 
-.--f-shrink {
+.--flex-shrink {
   flex-shrink: 1;
 }
 
@@ -93,10 +93,4 @@
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 .--pos-fixed {
   position: fixed;
-}
-
-/*-| Sizing |-*/
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-.--h-100 {
-  height: 100%;
 }

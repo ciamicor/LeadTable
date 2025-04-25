@@ -1,11 +1,13 @@
 <template>
   <div v-show="props.status">
-    <p>Loading...</p>
+    <p>{{ props.message }}</p>
   </div>
 </template>
 <script lang="ts"
         setup>
 const props = defineProps({
-  status: Boolean
+  status: Boolean,
+  message: {type: String, default: 'Loading...'},
+
 })
 </script>

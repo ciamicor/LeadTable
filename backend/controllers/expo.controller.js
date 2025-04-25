@@ -79,30 +79,3 @@ exports.getExpo = async ( req, res ) => {
         } )
     }
 }
-
-// Get Expo by Client, Year
-/*exports.getExpoToken = async ( req, res ) => {
-    const client = req.params.client
-    const year = req.params.year
-
-    try {
-        const expo = await Expo.findOne(
-            {
-                where: {
-                    [Op.and]: [ { expo_Client: client }, { expo_Year: year } ]
-                }
-            }
-        )
-        if ( expo ) {
-            return res.json( expo.expoFp_Token )
-        } else {
-            res.status( 404 ).json( { error: 'Expo not found' } )
-        }
-    } catch ( error ) {
-        console.error( 'error in controller getExpoToken: ', error )
-        res.status( 500 ).json( {
-            error: 'Something went wrong while getting that expo\'s token.',
-            details: error?.message || 'Unknown error'
-        } )
-    }
-}*/

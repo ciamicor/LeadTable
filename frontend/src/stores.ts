@@ -1,6 +1,22 @@
 import {defineStore} from 'pinia'
 import {ref} from 'vue'
 
+/*-| Session Store |-*/
+
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+const useSessionStore = defineStore('sessionStore', () => {
+  const logged_In = ref(false)
+
+  function $reset() {
+    logged_In.value = false
+  }
+
+  return {
+    logged_In,
+    $reset,
+  }
+})
+
 /*-| Expo Store |-*/
 
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
@@ -41,7 +57,7 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
 /*-| Company Store |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const useCompanyLocalStore = defineStore('companyLocal', () => {
-  const id = ref(0)
+  const id = ref(null)
   const name = ref('')
   const login_Url = ref('')
   const lead_Ret = ref(false)
@@ -49,7 +65,7 @@ const useCompanyLocalStore = defineStore('companyLocal', () => {
   const expo_Client = ref('')
 
   function $reset() {
-    id.value = 0
+    id.value = null
     name.value = ''
     login_Url.value = ''
     lead_Ret.value = false
@@ -68,6 +84,6 @@ const useCompanyLocalStore = defineStore('companyLocal', () => {
   }
 })
 
-export {useExpoLocalStore, useCompanyLocalStore}
+export {useExpoLocalStore, useCompanyLocalStore, useSessionStore}
 
 

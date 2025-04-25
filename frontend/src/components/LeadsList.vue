@@ -1,15 +1,17 @@
 <template>
   <div
-    class="row --justify-content-center">
+    class="row-12-300 --justify-content-center">
     <div v-if="!companyLocalData.lead_Ret"
-         class="col-12-300 col-9-500 col-5-900  --place-self-center">
+         class="col-12-300 col-10-500 col-5-800">
       <h1>Looking for Leads?</h1>
       <p>To access or purchase lead retrieval, you'll first need to login.</p>
-      <p>In "Booths & Extras" click "Reserve More", then scroll down to find the option for lead
+      <p>If you haven't purchased access, you can do so by logging in, then scrolling to "Booths &
+         Extras" click "Reserve More",
+         then scroll down again to find the option for lead
          retrieval.</p>
       <router-link
         class="button --primary"
-        to="/profile"
+        to="profile"
       >
         Go to Profile
       </router-link>
@@ -17,10 +19,10 @@
                            register.</p>
 
     </div>
-    <div v-if="companyLocalData.lead_Ret">
-      <div class="row --p-4">
+    <div v-if="companyLocalData.lead_Ret === true">
+      <div class="row-12-300 --p-4">
         <div v-if="companyLocalData.name"
-             class="col-12-300 col-10-800">
+             class="col-12-300 col-8-800 --flex-grow">
           <p class="--m-0">
             {{ companyLocalData.expo_Client }}
             {{ companyLocalData.expo_Year }}
@@ -28,8 +30,11 @@
           </p>
           <h2>{{ companyLocalData.name }}</h2>
         </div>
-        <LeadsExport :leads-list="leadsList"/>
+        <LeadsExport :leads-list="leadsList"
+                     class="--justify-self-end"/>
       </div>
+      <LoadingHolder :status="status"
+                     class="--place-self-center"/>
       <div class="lead-cards-container">
         <div v-for="(lead, index) in leadsList"
              :key="index"
@@ -42,9 +47,9 @@
       </div>
 
       <router-link
-        v-if="companyLocalData.lead_Ret"
+        v-if="companyLocalData.lead_Ret === true"
         class="button --stacked --float --bottom-r --success--invert"
-        to="/scan-lead">
+        to="scan-lead">
         <i class="bi-qr-code-scan"></i>
         Scan
       </router-link>
@@ -55,31 +60,30 @@
 </template>
 
 <script setup>
-import { useCompanyLocalStore } from '@/stores.ts'
-import { db } from '../db'
-import { getAllLeads_Service } from '../services/LeadDataService.js'
+import LoadingHolder from "@/components/LoadingHolder.vue";
+import { useCompanyLocalStore, useExpoLocalStore } from '@/stores.ts'
+import { getAllLeads_Service, getAllCompanyLeads_Service } from '../services/LeadDataService.js'
 import { onMounted, ref } from 'vue'
 import { getLocalCompanyData_Service } from '@/services/CompanyDataService.js'
 import LeadCard from '@/components/LeadCard.vue'
 import LeadsExport from '@/components/LeadsExport.vue'
 
 const companyLocalData = useCompanyLocalStore()
+const expoLocalData = useExpoLocalStore()
 
 /*-| Hooks |-*/
 /*---+----+---+----+---+----+---+----+---*/
-onMounted( () => {
-    getAllLeads( leadsList )
-    getProfile()
+onMounted( async () => {
+    await getLocalCompanyData_Service( companyLocalData )
+    console.log( companyLocalData.id )
+    await getAllCompanyLeads_Service( companyLocalData.id, leadsList )
+    status.value = false
   }
 )
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| DB |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-const status = ref()
-
-async function getProfile() {
-  await getLocalCompanyData_Service( companyLocalData )
-}
+const status = ref( true )
 
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Leads List |-*/

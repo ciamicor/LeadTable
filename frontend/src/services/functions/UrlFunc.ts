@@ -1,3 +1,4 @@
+// TODO replace with Vue Router "route.params"
 export function getUrl_ClientYear() {
   let url = window.location.pathname
   let slashIndex = url.indexOf("/")
@@ -11,11 +12,11 @@ export function getUrl_ClientYear() {
     u.shift()
     console.log('urls ', u)
   }
-  // console.log('urls ', u)
+  console.log('Detected URL: ', u)
   return {
     client: u[0],
     year: u[1],
-    // view: u[2]
+    view: u[2]
   }
 }
 

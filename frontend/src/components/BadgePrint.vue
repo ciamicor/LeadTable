@@ -1,10 +1,8 @@
 <template>
 
   <!-- Visible Container, Components -->
-  <div class="container">
-    <div class="--p-4 row-12-300 --bg-blur-8 --top-0 --top-r --right-0 --left-0">
-      <span>{{ expoLocalData }}</span>
-      <span>{{ companyLocalData }}</span>
+  <div class="container --align-content-start">
+    <div class="--p-v-4 --p-h-6 row-12-300 --bg-blur-8 --top-0 --top-r --right-0 --left-0">
       <div class="search-wrap --place-self-center">
         <button
           v-show="searchTerm !== ''"
@@ -22,7 +20,7 @@
 
       <!-- SINGLE BADGE -->
       <!--  TODO Polish Single Badge Code, merge with BadgeCreate or BadgeService  -->
-      <div class="row-12-300 --place-items-center">
+      <div class="row-8-300 --flex-grow --justify-content-end --align-content-center">
         <button v-show="attendeeListSelected.length === 0 || attendeeListSelected.length > 1"
                 class="--secondary --p-4"
                 @click="printBadges">
@@ -32,30 +30,17 @@
           v-show="attendeeListSelected.length === 1"
           class="--success--invert --p-4"
           @click="printBadge_Portrait3x4(attendeeListSelected[0])">
-          printBadge_Portrait3x4
+          Print Single
         </button>
-        <button
-          v-show="attendeeListSelected.length === 1"
-          class="--secondary --p-4"
-          @click="printBadge_Portrait4x3(attendeeListSelected[0])">
-          printBadge_Portrait4x3
-        </button>
-        <button
-          v-show="attendeeListSelected.length === 1"
-          class="--secondary --p-4"
-          @click="printBadge_Land3x4(attendeeListSelected[0])">
-          printBadge_Land3x4
-        </button>
-        <button
-          v-show="attendeeListSelected.length === 1"
-          class="--secondary --p-4"
-          @click="printBadge_Land4x3(attendeeListSelected[0])">
-          printBadge_Land4x3
-        </button>
+        <router-link
+          class="button --success --p-4"
+          to="upload-attendees">
+          <i class="bi-upload --m-r-4"/>Upload Attendees
+        </router-link>
         <router-link
           :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/create-badge`"
           class="button --primary --p-4">
-          New Badge
+          <i class="bi-plus-lg --m-r-4"/>New Badge
         </router-link>
       </div>
     </div>
@@ -285,7 +270,7 @@ async function printBadge_Portrait3x4( a ) {
 
   /*-| Text |-*/
   badgePdf.setFontSize( 18 )
-  badgePdf.text( toTitleCase_Service( a.contact_Employer ), dim.p * 2, dim.w - dim.p, null, dim.rot )
+  badgePdf.text( a.contact_Employer, dim.p * 2, dim.w - dim.p, null, dim.rot )
   badgePdf.setFontSize( 22 )
   badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ), dim.p * 4, dim.w - dim.p, dim.rot )
   badgePdf.setFontSize( 18 )

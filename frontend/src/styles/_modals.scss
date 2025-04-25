@@ -1,0 +1,22 @@
+@use "config/config" as c;
+
+.modal-wrapper {
+  z-index:         10000;
+  position:        fixed;
+  top:             0;
+  right:           0;
+  bottom:          0;
+  left:            0;
+  display:         flex;
+  place-content:   center;
+  place-items:     center;
+  background:      rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+  .modal-content {
+    margin:        c.$sp-8;
+    padding:       c.$sp-v-7 c.$sp-v-8;
+    border-radius: c.$panel-border;
+    background:    white;
+    box-shadow:    8px 8px 8px 2px rgba(0, 0, 0, 0.25);
+  }
+}

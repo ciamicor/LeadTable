@@ -13,6 +13,10 @@ class CompanyDataService {
   get(id: any) {
     return http.get('/company/' + id)
   }
+
+  updateLeadRet(id: any, data: any) {
+    return http.put('/company/' + id, data)
+  }
 }
 
 /*-| Functions |-*/
@@ -23,22 +27,21 @@ const companyService = new CompanyDataService()
 /*-| Create |-*/
 
 /*---+----+---+----+---+----+---+----+---*/
-async function createCompany_Service(companyObject: any, year: number, client: string) {
-  console.log("Creating company: ", companyObject.value)
+async function createCompany_Service(companyObject: any) {
+  console.log("Creating company: ", companyObject)
   const data = {
-    id: companyObject.value.id,
-    login_URL: companyObject.value.autoLoginUrl,
-    name: companyObject.value.name,
-    lead_Ret: companyObject.value.lead_Ret,
-    expo_Year: year,
-    expo_Client: client,
+    id: companyObject.id,
+    login_URL: companyObject.autoLoginUrl,
+    name: companyObject.name,
+    lead_Ret: companyObject.lead_Ret,
+    expo_Year: companyObject.expo_Year,
+    expo_Client: companyObject.expo_Client,
   }
   console.log(data)
-  let newCompany = await companyService.create(data)
   try {
-    companyObject.id = newCompany.data.id
+    let newCompany = await companyService.create(data)
     console.log(newCompany.data)
-    companyObject = null
+    return companyObject.id = newCompany.data.id
   } catch (e: any) {
     console.log(e)
   }
@@ -48,8 +51,8 @@ async function createCompany_Service(companyObject: any, year: number, client: s
 
 /*---+----+---+----+---+----+---+----+---*/
 async function getCompanyById_Service(id: any, companyObject: any = null) {
-  let company = await companyService.get(id)
   try {
+    let company = await companyService.get(id)
     console.log('company: ', companyObject)
     console.log('response: ', company)
     if (companyObject !== null) {
@@ -67,14 +70,14 @@ async function getCompanyById_Service(id: any, companyObject: any = null) {
 
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 async function getLocalCompanyData_Service(c: any) {
-  let profile = await db.profile.get(1)
   try {
+    let profile = await db.profile.get(1)
     let companyLocalHold: any = profile
-    console.log('company local data service: ', c)
-    console.log('company local data service: ', profile)
+    console.log('Company LocalData Service: ', c)
+    console.log('Company LocalData Service: ', profile)
 
     if (profile) {
-      c.id = companyLocalHold.id
+      c.id = companyLocalHold.ex_Id
       c.name = companyLocalHold.name
       c.login_Url = companyLocalHold.login_Url
       c.lead_Ret = companyLocalHold.lead_Ret
@@ -88,4 +91,22 @@ async function getLocalCompanyData_Service(c: any) {
   }
 }
 
-export {getCompanyById_Service, createCompany_Service, getLocalCompanyData_Service}
+async function updateCompanyLeadRet_Service(id: any, retStatus: boolean) {
+  console.log("Updating company: ", id)
+  const data = {
+    lead_Ret: retStatus
+  }
+  console.log('Updating Lead Retrieval to: ', data)
+  try {
+    await companyService.updateLeadRet(id, data)
+  } catch (e: any) {
+    console.log(e)
+  }
+}
+
+export {
+  getCompanyById_Service,
+  createCompany_Service,
+  getLocalCompanyData_Service,
+  updateCompanyLeadRet_Service
+}

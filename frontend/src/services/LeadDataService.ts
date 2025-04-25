@@ -9,6 +9,10 @@ class LeadDataService {
     return http.get('/lead')
   }
 
+  getAllExhibLeads(id: any) {
+    return http.get('/lead/exhibitor/' + id)
+  }
+
   get(id: any) {
     return http.get('/lead/' + id)
   }
@@ -56,58 +60,65 @@ async function createLead_Service(lead: any) {
     comment: lead.comment
   }
   console.log(data)
-  await leadService.create(data)
-    .then((response: any) => {
-      lead.id = response.data.id
-      console.log(response.data)
-      lead = null
-    })
-    .catch((e: any) => {
-      console.log(e)
-    })
+  try {
+    let newLead = await leadService.create(data)
+    lead.id = newLead.data.id
+    console.log(newLead.data)
+    lead = null
+  } catch (e: any) {
+    console.log(e)
+  }
 }
 
 /*-| Get Single Leads |-*/
 
 /*---+----+---+----+---+----+---+----+---*/
 async function getLead_Service(id: any) {
-  await leadService.get(id)
-    .then((response) => {
-      id.value = response.data
-      console.log(response.data)
-    })
-    .catch((e) => {
-      console.log(e)
-    })
+  try {
+    let lead = await leadService.get(id)
+    id.value = lead.data
+    console.log(lead.data)
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+/*-| Get All Leads by Exhibitor Company ID |-*/
+
+/*---+----+---+----+---+----+---+----+---*/
+
+async function getAllCompanyLeads_Service(cId: any, list: any) {
+  try {
+    let leads = await leadService.getAllExhibLeads(cId)
+    list.value = leads.data
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 /*-| Get All Leads |-*/
 
 /*---+----+---+----+---+----+---+----+---*/
 
-// TODO Get Lead by Company ID here, instead of filtering in LeadsList view
 async function getAllLeads_Service(list: any) {
-  await leadService.getAll()
-    .then((response) => {
-      list.value = response.data
-      // console.log('Get all leads service: ', response.data)
-    })
-    .catch((e) => {
-      console.log(e)
-    })
+  try {
+    let leads = await leadService.getAll()
+    list.value = leads.data
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 /*-| Delete a Lead by ID |-*/
 
 /*---+----+---+----+---+----+---+----+---*/
 async function deleteLead_Service(id: any) {
-  await leadService.delete(id)
-    .then((response) => {
-      console.log(response.data)
-    })
-    .catch((e) => {
-      console.log(e)
-    })
+  try {
+    let lead = await leadService.delete(id)
+    console.log(lead.data)
+  } catch (e) {
+    console.log(e)
+  }
 }
 
-export {createLead_Service, getAllLeads_Service, deleteLead_Service}
+export {createLead_Service, getAllLeads_Service, deleteLead_Service, getAllCompanyLeads_Service}

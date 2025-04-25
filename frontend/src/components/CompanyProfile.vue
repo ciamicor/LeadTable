@@ -1,15 +1,15 @@
 <template>
-  <button v-if="loggedIn"
+  <button v-if="sessionStore.logged_In === true"
           class="--float --top-r --warn--invert"
           @click="logOut">
     Sign Out
   </button>
 
-  <!--    v-else-->
   <div
+    v-else
     class="row --place-content-center --place-items-center">
     <div
-      class="col-12-300 col-10-500 col-6-900">
+      class="--p-v-20 col-12-300 col-10-500 col-6-900">
       <h4 class="--m-0">{{ expoLocalData.expo_Client }} {{ expoLocalData.expo_Year }} Supplier's
                         Day</h4>
       <h1>Exhibitor Login</h1>
@@ -21,7 +21,7 @@
         Login ID
       </label>
       <input id="loginId"
-             v-model="loginId"
+             v-model="companyLocalData.id"
              inputmode="tel"
              name="loginId"
              pattern="\d*"
@@ -33,30 +33,26 @@
       </button>
     </div>
   </div>
+  <router-link
+    v-if="sessionStore.logged_In === false"
+    class="--place-self-center --m-b-12"
+    to="/">Looking for a different Supplier's Day?
+  </router-link>
 
   <div v-if="debug"
        class="row">
-    <p>{{ selectedCompanyData ? selectedCompanyData.id : null }}</p>
-    <p>{{ loginUrl }}</p>
     <div class="col-12">
-      <div class="row">
-        <p class="col-5">Link match: {{ loginIdMatch }}</p>
-        <p class="col-5">Lead retrieval: {{ extraMatch }}</p>
-      </div>
-      <h2>Login Id</h2>
-      <p>{{ loginId }}</p>
-      <p>{{ selectedCompanyData ? selectedCompanyData.id : null }}</p>
+      <span>{{ sessionStore }}</span>
+      <h2>companyData</h2>
+      {{ companyLocalData }}
       <h2>Extras</h2>
       {{ companyExtras }}
-      <h2>companyData</h2>
-      {{ selectedCompanyData }}
-      {{ companyLocalData }}
     </div>
   </div>
 
   <iframe
-    v-if="loggedIn"
-    :src="'https://app.expofp.com' + loginUrl"
+    v-if="sessionStore.logged_In === true"
+    :src="'https://app.expofp.com' + companyLocalData.login_Url"
     allow="clipboard-read; clipboard-write"
     class="view-floor-plan"
   >
@@ -72,67 +68,47 @@ import {
 import {
   createCompany_Service,
   getCompanyById_Service,
-  getLocalCompanyData_Service
+  updateCompanyLeadRet_Service
 } from '@/services/CompanyDataService.ts'
-import {getExpoToken_Service} from "@/services/ExpoDataService.ts";
-import {onMounted, ref} from 'vue'
+import {ref} from 'vue'
 import {db} from '@/db.ts'
-import {useCompanyLocalStore, useExpoLocalStore} from '@/stores.ts'
+import {useCompanyLocalStore, useExpoLocalStore, useSessionStore} from '@/stores.ts'
 
 /*-| Variables |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-const debug = ref(true)
+const debug = ref(false)
 
-const selectedCompanyData = ref()
 const companyExtras = ref()
 const loginIdMatch = ref(false)
 const extraMatch = ref(false)
 
-const loginId = ref('')
-const loginUrl = ref()
-const loggedIn = ref(false)
-
+const sessionStore = useSessionStore()
 const companyLocalData = useCompanyLocalStore()
 const expoLocalData = useExpoLocalStore()
 
 /*-| Lifecycle |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-onMounted(async () => {
-    await getProfile()
-  }
-)
 
 /*-| DB |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const status = ref()
 
-async function getProfile() {
-  await getLocalCompanyData_Service(companyLocalData)
-  // if (companyLocalData.id !== 0) loginId.value = companyLocalData.id
-  loginId.value = 10675008
-  loginUrl.value = companyLocalData.login_Url
-  console.log('Login URL is: ', loginUrl.value)
-  /*if (companyLocalData) {
-    loggedIn.value = true
-  }*/
-}
-
 async function saveDbLogin() {
   try {
     const id = await db.profile.add({
       id: 1,
-      ex_Id: selectedCompanyData.value.id,
-      name: selectedCompanyData.value.name,
-      login_Url: selectedCompanyData.value.autoLoginUrl,
-      lead_Ret: !!extraMatch.value,
+      ex_Id: companyLocalData.id || 0,
+      name: companyLocalData.name,
+      login_Url: companyLocalData.login_Url,
+      lead_Ret: extraMatch.value,
       expo_Client: expoLocalData.expo_Client,
       expo_Year: expoLocalData.expo_Year
     })
-    status.value = `${selectedCompanyData.value.name}
+    status.value = `${companyLocalData.name}
           successfully added. Got id ${id}`
   } catch (error) {
     status.value = `Failed to add
-          ${selectedCompanyData.value.name}: ${error}`
+          ${companyLocalData.name}: ${error}`
   }
 }
 
@@ -141,37 +117,48 @@ async function saveDbLogin() {
 async function login() {
   /*-| Get Exhibitor |-*/
   console.log('Getting Exhibitor...')
-  await getExhibitor(
-    loginId.value,
+  let gotExhib = await getExhibitor(
+    companyLocalData.id,
     expoLocalData.expo_Client,
     expoLocalData.expo_Year,
-    selectedCompanyData)
+  )
+  console.log("Got exhibitor company: ", gotExhib)
 
-  /*-| Match Extras |-*/
+  companyLocalData.$patch({
+    id: gotExhib.id,
+    name: gotExhib.name,
+    login_Url: gotExhib.autoLoginUrl,
+    lead_Ret: extraMatch.value,
+    expo_Year: expoLocalData.expo_Year,
+    expo_Client: expoLocalData.expo_Client,
+  })
+
+  /*-| Check for Lead Retrieval |-*/
+  /*---+----+---+----+---+----+---+----+---*/
   console.log('Matching extras...')
-  await getExhibExtras(
-    loginId.value,
+  companyExtras.value = await getExhibExtras(
+    companyLocalData.id,
     expoLocalData.expo_Client,
-    expoLocalData.expo_Year,
-    companyExtras)
-
-  /*-| Check Extras |-*/
-  /*console.log("Extras: ", companyExtras.value)
-  extraMatch.value = companyExtras.value.some((e: any) =>
+    expoLocalData.expo_Year)
+  console.log("Company extras are: ", companyExtras.value)
+  /*-| Look for Lead Ret match |-*/
+  extraMatch.value = await companyExtras.value.some((e: any) =>
     e.name.toLowerCase().includes('lead retrieval')
   )
-  console.log("Lead retrieval purchased: ", extraMatch.value)*/
-  console.log('Logging in for: ', selectedCompanyData.value.name)
-  loginUrl.value = selectedCompanyData.value.autoLoginUrl
-  console.log('loginURL is: ', loginUrl.value)
+  console.log("Lead retrieval purchased: ", extraMatch.value)
 
+  /*-| Prep ExpoFP Login |-*/
+  console.log('Logging in for: ', companyLocalData.name)
+  console.log('loginURL is: ', companyLocalData.login_Url)
+
+  /*-| Save to local DB |-*/
   console.log('Saving company to Local DB...')
   await saveDbLogin()
-  await createCompany_Service(selectedCompanyData, companyLocalData.expo_Year, companyLocalData.expo_Client)
+  await createCompany_Service(companyLocalData)
   /*-| Check if Company is in server DB |-*/
-  await getCompanyById_Service(loginId.value)
+  await getCompanyById_Service(companyLocalData.id)
 
-  loggedIn.value = true
+  sessionStore.logged_In = true
   // window.location.reload()
 }
 
@@ -180,7 +167,7 @@ async function logOut() {
   db.profile.delete(1)
   loginIdMatch.value = false
   extraMatch.value = false
-  loggedIn.value = false
+  sessionStore.logged_In = false
   companyLocalData.$reset()
   window.location.reload()
 }

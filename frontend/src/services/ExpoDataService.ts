@@ -47,8 +47,8 @@ async function createExpo_Service(expoObject: any) {
     logoUrl_Black: expoObject.logoUrl_Black,
   }
   console.log('Creating expo with data: ', data)
-  let newExpo = await expoService.create(data)
   try {
+    let newExpo = await expoService.create(data)
     expoObject.id = newExpo.data.id
     console.log('Expo created with data: ', newExpo.data)
     expoObject = null
@@ -61,8 +61,8 @@ async function createExpo_Service(expoObject: any) {
 
 /*---+----+---+----+---+----+---+----+---*/
 async function getExpo_Service(client: any, year: any, expoObject: any) {
-  let e = await expoService.getExpo(client, year)
   try {
+    let e = await expoService.getExpo(client, year)
     // console.log("Found Expo: ", response.data)
     expoObject.active = e.data.active
     expoObject.start_Date = e.data.start_Date
@@ -76,7 +76,7 @@ async function getExpo_Service(client: any, year: any, expoObject: any) {
     //expoObject.value = response.data
     // console.log('expo: ', expoObject.value)
   } catch (e) {
-    console.log(e)
+    console.log('That expo doesn\'t exist. ', e)
   }
 }
 
@@ -87,7 +87,7 @@ async function getExpoToken_Service(client: any, year: any, token: any = 0) {
   // console.log('Getting expo: ', client, year, token.value)
   try {
     let t = await expoService.getExpo(client, year)
-    console.log('Expo token ', t.data.expoFp_Token)
+    // console.log('Expo token ', t.data.expoFp_Token)
     return t.data.expoFp_Token
   } catch (e) {
     console.log(e)
