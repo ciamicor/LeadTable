@@ -3,6 +3,7 @@
   <div class="row-12-300 --place-content-center">
     <div class="col-12-300 col-8-600 col-6-800">
       <h1>Upload Attendees</h1>
+      <h4>For {{ expoLocalData.expo_Client }} {{ expoLocalData.expo_Year }} Supplier's Day</h4>
       <p>Add attendee data that was registered on another service.</p>
       <p>.xlsx file must match the template provided.</p>
       <input id="input_dom_element"
