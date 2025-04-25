@@ -86,7 +86,7 @@
   <div class="badges-page-container">
     <img id="badge-logo"
          :alt="`${expoLocalData.expo_Client}-logo`"
-         :src="host + '/src/assets/logos/'+ expoLocalData.expo_Client.toLowerCase() + '/' + expoLocalData.expo_Client.toLowerCase() + '-vert-rgb.jpeg'"
+         :src="getImageUrl(`${expoLocalData.expo_Client.toString().toLowerCase()}-vert-rgb`)"
     >
     <QrCode
       v-if="attendeeListSelected.length === 1"
@@ -128,6 +128,12 @@ const attendeeListSelected = ref( [] )
 const attendeeListGrouped = ref( [] )
 const searchTerm = ref( '' )
 const printComponent = ref() // for Print component
+
+/*-| Get Image |-*/
+/*---+----+---+----+---+----+---+----+---*/
+function getImageUrl( name ) {
+  return new URL( `../../public/logos/${ expoLocalData.expo_Client.toString().toLowerCase() }/${ name }.jpeg`, import.meta.url ).href
+}
 
 /*-| Hooks |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/

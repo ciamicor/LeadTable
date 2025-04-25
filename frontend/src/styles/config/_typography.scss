@@ -5,9 +5,9 @@
   font-style:   normal;
   font-weight:  100 900;
   font-display: swap;
-  src:          url("../../assets/fonts/inter-4.1/InterVariable.ttf") format("ttf"),
-                url("../../assets/fonts/inter-4.1/InterVariable.woff2") format("woff2"),
-                url("../../assets/fonts/inter-4.1/Inter.ttc") format("ttc");
+  src:          url("../../../public/fonts/inter-4.1/InterVariable.ttf") format("ttf"),
+                url("../../../public/fonts/inter-4.1/InterVariable.woff2") format("woff2"),
+                url("../../../public/fonts/inter-4.1/Inter.ttc") format("ttc");
 }
 
 @font-face {
@@ -15,9 +15,9 @@
   font-style:   italic;
   font-weight:  100 900;
   font-display: swap;
-  src:          url("../../assets/fonts/inter-4.1/InterVariable-Italic.ttf") format("ttf"),
-                url("../../assets/fonts/inter-4.1/InterVariable-Italic.woff2") format("woff2"),
-                url("../../assets/fonts/inter-4.1/Inter.ttc") format("ttc");
+  src:          url("../../../public/fonts/inter-4.1/InterVariable-Italic.ttf") format("ttf"),
+                url("../../../public/fonts/inter-4.1/InterVariable-Italic.woff2") format("woff2"),
+                url("../../../public/fonts/inter-4.1/Inter.ttc") format("ttc");
 }
 
 /*-| Reset |-*/

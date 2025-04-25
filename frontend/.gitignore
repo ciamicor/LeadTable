@@ -29,5 +29,3 @@ coverage
 
 *.tsbuildinfo
 /node_modules
-
-src/assets/

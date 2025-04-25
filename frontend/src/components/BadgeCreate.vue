@@ -127,7 +127,8 @@
     <div class="badges-page-container">
       <img id="badge-logo"
            :alt="`${companyLocalData.name}-logo`"
-           :src="host + '/src/assets/logos/'+ expoLocalData.expo_Client.toLowerCase() + '/' + expoLocalData.expo_Client.toLowerCase() + '-vert-rgb.jpeg'"
+           :src="getImageUrl(`${expoLocalData.expo_Client.toString().toLowerCase()}-vert-rgb`)"
+
       >
       <QrCode
         v-if="showQr"
@@ -155,6 +156,10 @@ import { getUrlHost } from "@/services/functions/UrlFunc.js";
 const host = getUrlHost()
 const companyLocalData = useCompanyLocalStore()
 const expoLocalData = useExpoLocalStore()
+
+function getImageUrl( name ) {
+  return new URL( `../../public/logos/${ expoLocalData.expo_Client.toString().toLowerCase() }/${ name }.jpeg`, import.meta.url ).href
+}
 
 /*-| Print Component |-*/
 /*-| Attendees |-*/
