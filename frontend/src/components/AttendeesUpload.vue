@@ -34,7 +34,7 @@ async function handleFileAsync(e: any) {
   console.log(jsonData)
 
   jsonData.forEach(e => {
-    createAttendee_Service(e, expoLocalData.expo_Client, expoLocalData.expo_Client)
+    createAttendee_Service(e, expoLocalData.expo_Client, expoLocalData.expo_Year)
   })
   status.value = false
 }
