@@ -1,17 +1,16 @@
-<script lang="ts"
-        setup>
-const link = "https://2025NYIFTExpo.expofp.com?allowConsent=false"
-
-</script>
-
 <template>
-  <iframe :src="link"
+  <iframe :src="expoLocalStore.expoFp_MapUrl"
           allow="clipboard-read; clipboard-write"
           class="view-floor-plan"
   >
   </iframe>
 </template>
+<script lang="ts"
+        setup>
+import {useExpoLocalStore} from "@/stores.ts";
 
-<style scoped>
+const expoLocalStore = useExpoLocalStore()
 
-</style>
+</script>
+
+
