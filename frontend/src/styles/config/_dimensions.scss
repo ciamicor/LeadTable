@@ -13,3 +13,12 @@
     flex-basis: #{$i * 5 + "%"} !important;
   }
 }
+
+@for $i from 1 through 20 {
+  .--max-w-#{$i * 50} {
+    max-width: #{$i * 50 + "px"} !important;
+  }
+  .--max-h-#{$i * 50} {
+    max-height: #{$i * 50 + "px"} !important;
+  }
+}

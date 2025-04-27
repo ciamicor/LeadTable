@@ -7,9 +7,9 @@
   <nav v-if="route.path !== '/'"
        class="nav-bar">
     <router-link
+      :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/floor-plan`"
       active-class="--secondary"
-      class="button --stacked"
-      to="floor-plan">
+      class="button --stacked">
       <svg
         fill="none"
         height="24"
@@ -25,9 +25,9 @@
       Map
     </router-link>
     <router-link
+      :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/leads-list`"
       active-class="--secondary"
-      class="button --stacked"
-      to="leads-list">
+      class="button --stacked">
       <svg
         fill="none"
         height="24"
@@ -43,9 +43,9 @@
       Leads
     </router-link>
     <router-link
+      :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/profile`"
       active-class="--secondary"
-      class="button --stacked"
-      to="profile">
+      class="button --stacked">
       <svg
         fill="none"
         height="24"

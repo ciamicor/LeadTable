@@ -19,9 +19,11 @@ export async function getAllExhibitors(client: any, year: any) {
       }
     })
     console.log("Got all Exhibitors: ", res.data)
+    token = null
     return res.data
   } catch (e) {
     console.log(e)
+    return res
   }
 }
 
@@ -44,9 +46,11 @@ export async function getExhibitor(
       }
     })
     // console.log("Got Exhibitor: ", res.data)
+    token = null
     return res.data
   } catch (e) {
     console.log(e)
+    return res
   }
 }
 
@@ -70,9 +74,11 @@ export async function getExhibExtras(
       }
     })
     // console.log("Exhibitor extras are: ", res.data)
+    token = null
     return res.data
   } catch (e) {
     console.log(e);
+    return res
   }
 
 }

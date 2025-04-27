@@ -28,7 +28,7 @@
   gap:           c.$row-gap;
   max-width:     c.$max-page-width;
   margin:        0 auto;
-  padding:       c.$sp-v-2 c.$sp-v-2;
+  padding:       c.$sp-v-2 c.$sp-v-4;
   &.--items {
     margin:  0;
     padding: 0;
@@ -65,14 +65,14 @@
       display:   flex;
       flex-flow: row wrap;
       gap:       c.$col-gap;
-      & > *:not(.button,button) + .button,
-      & > *:not(.button,button) + button {
-        margin-top: c.$sp-4;
-      }
-      & > .button:has(+ *:not(.button, button)),
-      & > button:has(+ *:not(.button, button)) {
-        margin-bottom: c.$sp-6;
-      }
+      /*      & > *:not(.button,button) + .button,
+            & > *:not(.button,button) + button {
+              margin-top: c.$sp-4;
+            }
+           & > .button:has(+ *:not(.button, button)),
+            & > button:has(+ *:not(.button, button)) {
+              margin-bottom: c.$sp-6;
+            }*/
       @include c.breakpoint($size * 100) {
         flex:  0 1 calc((100% * ($i / #{c.$column-number})) - #{c.$row-gap});
         width: calc((100% * ($i / #{c.$column-number})) - #{c.$row-gap});

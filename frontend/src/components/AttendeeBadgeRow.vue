@@ -1,21 +1,21 @@
 <template>
   <div class="badge-select-wrap">
-    <div class="select-toggle">
+    <div class="select-toggle ">
       <button :class="!badgeSelected ? 'bi-x-lg bi-circle' :  'bi-check-lg --success --invert'"
-              class=""
+              class="--p-4"
               @click="selectBadge(attendee)">
       </button>
     </div>
     <div>
       <span class="--font-size-14">{{ formatDateTime( attendee.createdAt ) }}</span>
-      <h3>
+      <h3 class="--font-size-20">
         {{ attendee.name_First }}
         {{ attendee.name_Last }}
       </h3>
-      <p>
+      <p class="--font-size-16">
         {{ attendee.contact_Employer }}
       </p>
-      <p>
+      <p class="--font-size-16">
         {{ attendee.title }}
       </p>
     </div>

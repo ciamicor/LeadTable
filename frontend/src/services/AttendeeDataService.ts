@@ -54,9 +54,12 @@ async function createAttendee_Service(attendee: any, client: any, year: any) {
     let newAttendee = await attendeeService.create(data)
     attendee.id = newAttendee.data.id
     console.log(newAttendee.data)
-    attendee = newAttendee.data
+    return attendee = newAttendee.data
   } catch (e: any) {
-    console.log(e)
+    console.error("Error Name:", e.name);
+    console.error("Error Message:", e.message);
+    console.error("Error Stack:", e.stack);
+    console.error("Tried to create attendee:", attendee);
   }
 }
 

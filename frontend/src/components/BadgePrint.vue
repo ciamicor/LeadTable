@@ -2,7 +2,7 @@
 
   <!-- Visible Container, Components -->
   <div class="container --align-content-start">
-    <div class="--p-v-4 --p-h-6 row-12-300 --bg-blur-8 --top-0 --top-r --right-0 --left-0">
+    <div class="--p-v-4 --p-h-6 row-12-300">
       <div class="search-wrap --place-self-center">
         <button
           v-show="searchTerm !== ''"

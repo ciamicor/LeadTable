@@ -15,7 +15,10 @@ $place-area:    (
                   "center",
                   "end",
                   "stretch",
-                  "baseline"
+                  "baseline",
+                  "space-around",
+                  "space-between",
+                  "space-evenly"
                 );
 @each $type in $place-type {
   @each $subject in $place-subject {
