@@ -13,6 +13,10 @@ export default class AttendeeDataService {
     return http.get('/attendee/' + id)
   }
 
+  getUploadAttendee(id: any) {
+    return http.get('/attendee/upload/' + id)
+  }
+
   getExpoAttendees(client: any, year: any) {
     return http.get('/attendee/client/' + client + '/year/' + year)
   }
@@ -34,7 +38,7 @@ const attendeeService = new AttendeeDataService()
 /*-| Create Attendees |-*/
 
 /*---+----+---+----+---+----+---+----+---*/
-async function createAttendee_Service(attendee: any, client: any, year: any) {
+async function createAttendee_Service(attendee: any, client: any, year: any, upload: any = null) {
   console.log('Create Attendee Service: ', attendee)
   const data = {
     expo_Client: client,
@@ -47,7 +51,8 @@ async function createAttendee_Service(attendee: any, client: any, year: any) {
     address: attendee.address,
     title: attendee.title,
     reg_Type: attendee.reg_Type,
-    tech_Sem: attendee.tech_Sem
+    tech_Sem: attendee.tech_Sem,
+    upload_Id: upload
   }
   console.log(data)
   try {
@@ -91,5 +96,20 @@ async function getExpoAttendees_Service(client: any, year: any, list: any) {
     })
 }
 
-export {getAllAttendees_Service, createAttendee_Service, getExpoAttendees_Service}
+async function getAttendeesUploadId_Service(id: any) {
+  try {
+    let attendees = await attendeeService.getUploadAttendee(id)
+    console.log("Attendees in upload: ", attendees)
+    return attendees.data
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+export {
+  getAllAttendees_Service,
+  createAttendee_Service,
+  getAttendeesUploadId_Service,
+  getExpoAttendees_Service
+}
 

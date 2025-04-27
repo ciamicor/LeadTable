@@ -35,10 +35,17 @@ import {ref} from "vue";
 import {read, utils, writeFile} from 'xlsx'
 import {createAttendee_Service} from '@/services/AttendeeDataService.ts'
 import {useExpoLocalStore, useCompanyLocalStore} from "@/stores.ts";
+import {createUpload_Service, getAttendeeUploads_Service} from '@/services/UploadDataService.ts'
 
 const companyLocalData = useCompanyLocalStore()
 const expoLocalData = useExpoLocalStore()
+const currentUpload = ref()
 const status = ref(false)
+
+/*-| Create Upload |-*/
+async function createUpload(client: any, year: any) {
+  currentUpload.value = await createUpload_Service(client, year)
+}
 
 /*-| Upload Attendees |-*/
 /*---+----+---+----+---+----+---+----+---*/
@@ -53,8 +60,10 @@ async function handleFileAsync(e: any) {
 
   console.log(jsonData)
 
+  await createUpload(expoLocalData.expo_Client, expoLocalData.expo_Year)
+
   jsonData.forEach(e => {
-    createAttendee_Service(e, expoLocalData.expo_Client, expoLocalData.expo_Year)
+    createAttendee_Service(e, expoLocalData.expo_Client, expoLocalData.expo_Year, currentUpload.value.id)
   })
   status.value = false
 }

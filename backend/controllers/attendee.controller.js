@@ -28,7 +28,8 @@ exports.createAttendee = async ( req, res ) => {
         address,
         title,
         reg_Type,
-        tech_Sem
+        tech_Sem,
+        upload_Id
     } = req.body
     try {
         const newAttendee = await Attendee.create( {
@@ -42,12 +43,12 @@ exports.createAttendee = async ( req, res ) => {
             address,
             title,
             reg_Type,
-            tech_Sem
+            tech_Sem,
+            upload_Id
         } )
         res.status( 201 ).json( newAttendee )
     } catch ( error ) {
         console.error( 'Error while creating lead: ', error )
-
         if ( error.name === 'SequelizeUniqueConstraintError' ) {
             return res.status( 400 ).json( {
                 error: 'Cannot create attendee',
@@ -55,7 +56,6 @@ exports.createAttendee = async ( req, res ) => {
 
             } )
         }
-
         res.status( 500 ).json( {
             error: 'Something went wrong on the server.',
             details: error?.message || 'Unknown error',
@@ -68,7 +68,6 @@ exports.createAttendee = async ( req, res ) => {
 exports.getExpoAttendees = async ( req, res ) => {
     const client = req.params.client
     const year = req.params.year
-
     try {
         const expo = await Attendee.findAll(
             {
@@ -103,6 +102,31 @@ exports.getAttendeeById = async ( req, res ) => {
         }
     } catch ( error ) {
         console.error( 'error in controller getAttendeeById: ', error )
+        res.status( 500 ).json( {
+            error: 'Something went wrong with controller: getAttendeeById.',
+            details: error?.message || 'Unknown error'
+        } )
+    }
+}
+
+// Controller method to get an attendee by ID
+exports.getAttendeeByUploadId = async ( req, res ) => {
+    const id = req.params.id
+    try {
+        const attendee = await Attendee.findAll(
+            {
+                where: {
+                    [Op.and]: [ { upload_Id: id } ]
+                }
+            }
+        )
+        if ( attendee ) {
+            res.json( attendee )
+        } else {
+            res.status( 404 ).json( { error: 'Attendee not found' } )
+        }
+    } catch ( error ) {
+        console.error( 'error in controller getAttendeeByUploadId: ', error )
         res.status( 500 ).json( {
             error: 'Something went wrong with controller: getAttendeeById.',
             details: error?.message || 'Unknown error'

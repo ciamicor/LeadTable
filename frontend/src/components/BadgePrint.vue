@@ -43,6 +43,25 @@
           <i class="bi-plus-lg --m-r-4"/>New Badge
         </router-link>
       </div>
+
+      <div class="row-12-300 --align-items-center">
+        <span class="">View upload:</span>
+        <button
+          v-for="(upload, i) in uploadsList"
+          :key="i"
+          class="--p-4 --font-size-16 --place-self-center --font-size-16"
+          @click="getAttendees_SelectedUpload(upload.id)"
+        >
+          {{ upload.createdAt.slice( 0, 10 ) }}
+        </button>
+        <button
+          class="--p-2 --primary --font-size-16"
+          @click="refreshAttendees(expoLocalData.expo_Client, expoLocalData.expo_Year, attendeeList)"
+        >
+          <i class="bi-arrow-clockwise --font-size-20 --m-r-3"></i>
+          Reset
+        </button>
+      </div>
     </div>
 
     <div class="row">
@@ -110,7 +129,14 @@ import BadgeSingle from '@/components/BadgeSingle.vue'
 import AttendeeBadgeRow from '@/components/AttendeeBadgeRow.vue'
 import { useVueToPrint } from 'vue-to-print'
 import { onMounted, ref } from 'vue'
-import { getExpoAttendees_Service } from '@/services/AttendeeDataService.ts'
+import {
+  getExpoAttendees_Service,
+  getAttendeesUploadId_Service
+} from '@/services/AttendeeDataService.ts'
+import {
+  getAttendeeUploads_Service,
+  getAttendeeUpload_Service
+} from '@/services/UploadDataService.js'
 import { sortLName_Service } from '@/services/SortService.js'
 import { toTitleCase_Service } from '@/services/TextContentService.js'
 import LoadingHolder from "@/components/LoadingHolder.vue";
@@ -120,6 +146,9 @@ import LoadingHolder from "@/components/LoadingHolder.vue";
 const expoLocalData = useExpoLocalStore()
 const companyLocalData = useCompanyLocalStore()
 
+/*-| Uploads |-*/
+const uploadsList = ref()
+const selectedUploadId = ref()
 /*-| Variables |-*/
 const host = getUrlHost()
 const loading = ref( false )
@@ -137,7 +166,6 @@ function getImageUrl( name ) {
 
 /*-| Hooks |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-
 /*-| WAIT for App.vue to get the expo info |-*/
 onMounted( () => {
   loading.value = true
@@ -146,16 +174,37 @@ onMounted( () => {
       console.log( expoLocalData )
       loading.value = false
       getAllAttendees( expoLocalData.expo_Client, expoLocalData.expo_Year, attendeeList )
+      getAllAttendeeUploads( expoLocalData.expo_Client )
     }, 600
   )
 } )
 
 /*-| Attendees |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Get by Upload |-*/
+async function getAllAttendeeUploads( client ) {
+  uploadsList.value = await getAttendeeUploads_Service( client )
+  console.log( "uploads list: ", uploadsList.value )
+}
+
+/*-| Get Selected Upload |-*/
+async function getAttendees_SelectedUpload( id ) {
+  selectedUploadId.value = id
+  console.log( "Selected upload: ", selectedUploadId.value )
+  attendeeList.value = await getAttendeesUploadId_Service( id )
+  console.log( attendeeList.value )
+}
+
+async function refreshAttendees( client, year, a ) {
+  window.location.reload()
+  await getAllAttendees( client, year, a )
+  console.log( attendeeList.value )
+}
+
 /*-| Get All |-*/
 async function getAllAttendees( client, year, o ) {
   await getExpoAttendees_Service( client, year, o )
-  await sortLName_Service( o.value )
+  await sortLName_Service( o )
   // console.log( 'Attendees: ', o, typeof o )
   // await chunkObject( o )
 }

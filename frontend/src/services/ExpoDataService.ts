@@ -83,7 +83,7 @@ async function getExpo_Service(client: any, year: any, expoObject: any) {
 /*-| Get Expo Token |-*/
 
 /*---+----+---+----+---+----+---+----+---*/
-async function getExpoToken_Service(client: any, year: any, token: any = 0) {
+async function getExpoToken_Service(client: any, year: any) {
   // console.log('Getting expo: ', client, year, token.value)
   try {
     let t = await expoService.getExpo(client, year)

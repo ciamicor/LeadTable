@@ -8,7 +8,8 @@ const {
     Lead,
     Company,
     Expo,
-    Attendee
+    Attendee,
+    uploadAttendee
 } = require( './models' )
 
 // Connect to the database
@@ -41,6 +42,7 @@ app.use( express.json() )
 const leadRoutes = require( './routes/lead.routes' )
 const attendeeRoutes = require( './routes/attendee.routes' )
 const companyRoutes = require( './routes/company.routes' )
+const uploadRoutes = require( './routes/uploadAttendee.routes' )
 const expoRoutes = require( './routes/expo.routes' )
 
 const PORT = process.env.PORT || 8080
@@ -50,6 +52,7 @@ const frontend_root = 'dist'
 app.use( '/api/lead', leadRoutes )
 app.use( '/api/company', companyRoutes )
 app.use( '/api/attendee', attendeeRoutes )
+app.use( '/api/upload', uploadRoutes )
 app.use( '/api/expo', expoRoutes )
 
 app.use( express.static( path.join( __dirname, frontend_root ) ) )
