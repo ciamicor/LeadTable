@@ -23,7 +23,6 @@ export async function getAllExhibitors(client: any, year: any) {
     return res.data
   } catch (e) {
     console.log(e)
-    return res
   }
 }
 
@@ -50,7 +49,6 @@ export async function getExhibitor(
     return res.data
   } catch (e) {
     console.log(e)
-    return res
   }
 }
 
@@ -78,7 +76,6 @@ export async function getExhibExtras(
     return res.data
   } catch (e) {
     console.log(e);
-    return res
   }
 
 }

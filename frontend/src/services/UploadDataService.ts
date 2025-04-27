@@ -42,7 +42,7 @@ async function createUpload_Service(client: any, year: any) {
     console.error("Error Name:", e.name);
     console.error("Error Message:", e.message);
     console.error("Error Stack:", e.stack);
-    console.error("Tried to create upload:", upload);
+    console.error("Tried to create upload.");
   }
 }
 
