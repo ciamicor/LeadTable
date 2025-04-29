@@ -1,20 +1,8 @@
-@forward "normalize.css";
-@forward "config/animation";
-@forward "config/spacing";
-@forward "config/colors";
-@forward "config/typography";
-@forward "page-layout";
-@forward "tables";
-@forward "forms";
-@forward "views";
-@forward "elements/buttons";
-@forward "qr-scan";
-@forward "badges";
-@forward "transform-filter";
-@forward "lead-card";
-@forward "modals";
-/*-| Views |-*/
-@forward "views/expo-select";
+@use "abstracts" as *;
+@use "base" as base;
+@use "components" as comp;
+@use "layout" as layout;
+@use "pages" as pages;
 
+/*-| Import |-*/
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
-

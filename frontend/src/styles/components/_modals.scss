@@ -1,4 +1,4 @@
-@use "config/config" as c;
+@use "../abstracts/index" as *;
 
 .modal-wrapper {
   z-index:         10000;
@@ -13,9 +13,9 @@
   background:      rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(4px);
   .modal-content {
-    margin:        c.$sp-8;
-    padding:       c.$sp-v-7 c.$sp-v-8;
-    border-radius: c.$panel-border;
+    margin:        $sp-8;
+    padding:       $sp-v-7 $sp-v-8;
+    border-radius: $panel-border;
     background:    white;
     box-shadow:    8px 8px 8px 2px rgba(0, 0, 0, 0.25);
   }

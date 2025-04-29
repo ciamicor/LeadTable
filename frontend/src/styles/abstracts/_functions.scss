@@ -1,0 +1,12 @@
+@use "sass:math";
+
+// Ref: https://www.marcbacon.com/understanding-clamp/
+@function clamp-spacing ($mV, $factor: 2, $type:"px") {
+  $MV: $mV * $factor;
+  $vmax: 1600;
+  $vmin: 320;
+  $S: calc(($MV - $mV) /($vmax - $vmin));
+  $B: #{-$vmin * $S + $mV};
+  $pref: #{$B}#{$type} + " + " + (#{$S * 100}vw);
+  @return clamp(#{$mV}#{$type}, #{$pref}, #{$MV}#{$type})
+}

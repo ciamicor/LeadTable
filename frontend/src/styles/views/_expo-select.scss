@@ -1,7 +1,0 @@
-@use "../config/config" as c;
-
-.expo-select-container {
-  @include c.adapt-grid(
-    $grid-padding: c.$sp-v-1
-  )
-}

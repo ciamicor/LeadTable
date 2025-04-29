@@ -1,8 +1,0 @@
-@use "spacing" as s;
-
-$app-height:        100dvh;
-$app-width:         100dvw;
-$nav-height:        calc(60px);
-$nav-padding:       s.$sp-6;
-$nav-height-actual: calc($nav-height + ($nav-padding * 2));
-$view-height:       calc($app-height - $nav-height-actual);

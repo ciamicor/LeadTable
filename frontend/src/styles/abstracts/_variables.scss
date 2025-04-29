@@ -1,0 +1,252 @@
+@use "functions" as f;
+
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+/*-| Page Layout |-*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+/*-| Breakpoints |-*/
+$breakpoints:          (
+                         xxxs: 300,
+                         xxs: 400,
+                         xs: 500,
+                         sm: 700,
+                         md: 900,
+                         lg: 1100,
+                         xl: 1400,
+                         xxl: 1600,
+                       );
+
+$column-number:        12 !default;
+$min-page-width:       320 !default;
+$max-page-width:       1600 !default;
+
+/*-| App Level |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+$app-height:           100dvh !default;
+$app-width:            100dvw !default;
+$nav-height:           calc(60px) !default;
+$nav-padding:          16px !default;
+$nav-height-actual:    calc($nav-height + ($nav-padding * 2)) !default;
+$view-height:          calc($app-height - $nav-height-actual) !default;
+
+/*-| Components |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+$button-border-bottom: 3px solid;
+$button-border:        1px solid;
+
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+/*-| Spacing |-*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+
+/*-| Constant |-*/
+/*---+----+---+----+---+----+---+----+---*/
+$sp-1:                 2px !default;
+$sp-2:                 4px !default;
+$sp-3:                 6px !default;
+$sp-4:                 8px !default;
+$sp-5:                 12px !default;
+$sp-6:                 16px !default;
+$sp-7:                 20px !default;
+$sp-8:                 24px !default;
+$sp-9:                 28px !default;
+$sp-10:                32px !default;
+$sp-11:                36px !default;
+$sp-12:                40px !default;
+$sp-13:                44px !default;
+$sp-14:                48px !default;
+$sp-15:                54px !default;
+$sp-16:                60px !default;
+$sp-17:                72px !default;
+$sp-18:                86px !default;
+
+/*-| Variable |-*/
+/*---+----+---+----+---+----+---+----+---*/
+$sp-v-1:               f.clamp-spacing(1, 4) !default;
+$sp-v-2:               f.clamp-spacing(2, 4) !default;
+$sp-v-3:               f.clamp-spacing(3, 4) !default;
+$sp-v-4:               f.clamp-spacing(4, 4) !default;
+$sp-v-5:               f.clamp-spacing(5, 4) !default;
+$sp-v-6:               f.clamp-spacing(6, 4) !default;
+$sp-v-7:               f.clamp-spacing(7, 4) !default;
+$sp-v-8:               f.clamp-spacing(8, 4) !default;
+$sp-v-9:               f.clamp-spacing(9, 4) !default;
+$sp-v-10:              f.clamp-spacing(10, 4) !default;
+$sp-v-11:              f.clamp-spacing(11, 4) !default;
+$sp-v-12:              f.clamp-spacing(12, 4) !default;
+$sp-v-13:              f.clamp-spacing(13, 4) !default;
+$sp-v-14:              f.clamp-spacing(14, 4) !default;
+$sp-v-15:              f.clamp-spacing(15, 4) !default;
+$sp-v-16:              f.clamp-spacing(16, 4) !default;
+$sp-v-17:              f.clamp-spacing(17, 4) !default;
+$sp-v-18:              f.clamp-spacing(18, 4) !default;
+
+/*-| Layout |-*/
+/*---+----+---+----+---+----+---+----+---*/
+$row-gap:              $sp-4 !default;
+$col-gap:              $sp-4 !default;
+
+/*-| Borders |-*/
+/*---+----+---+----+---+----+---+----+---*/
+$item-border:          $sp-4 !default;
+$panel-border:         $sp-6 !default;
+
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+/*-| Type |-*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+$font-xs:              16px !default;
+$font-sm:              18px !default;
+$font-md:              22px !default;
+$font-lg:              26px !default;
+$font-xl:              30px !default;
+$font-xxl:             34px !default;
+
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+/*-| Colors |-*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+$lightness-1:          8% !default;
+$lightness-2:          16% !default;
+$lightness-3:          24% !default;
+$lightness-4:          32% !default;
+$lightness-5:          40% !default;
+$lightness-6:          48% !default;
+$lightness-7:          56% !default;
+$lightness-8:          64% !default;
+$lightness-9:          72% !default;
+$lightness-10:         80% !default;
+$lightness-11:         88% !default;
+$lightness-12:         94% !default;
+$color-saturate:       (
+                         94,
+                         88,
+                         80,
+                         72,
+                         64,
+                         56,
+                         48,
+                         40,
+                         32,
+                         24,
+                         16,
+                         8,
+                       );
+$color-light:          (
+                         8,
+                         16,
+                         24,
+                         32,
+                         40,
+                         48,
+                         56,
+                         64,
+                         72,
+                         80,
+                         88,
+                         94
+                       );
+$color-hues:           (
+                         "primary": "85",
+                         "secondary": "45",
+                         "success": "235",
+                         "warn": "10",
+                       );
+$grey-hue:             "215" !default;
+:root {
+  @for $c from 1 through 12 {
+    @each $type, $hue in $color-hues {
+      --color-#{$type}-#{$c}: hsl(#{$hue}, #{80 + "%"}, #{(0 + (8 *$c)) + "%"});
+    }
+    --grey-#{$c}: hsl(#{$grey-hue}, 20%, #{(0 + (8 *$c)) + "%"});
+  }
+  --color-primary-hs:   85, 65%;
+  --color-secondary-hs: 35, 85%;
+  --color-success-hs:   235, 85%;
+  --color-warn-hs:      10, 85%;
+  --grey-1-hsl:         215, 25%, #{$lightness-1};
+  --grey-2-hsl:         215, 25%, #{$lightness-2};
+  --grey-3-hsl:         215, 25%, #{$lightness-3};
+  --grey-4-hsl:         215, 25%, #{$lightness-4};
+  --grey-5-hsl:         215, 25%, #{$lightness-5};
+  --grey-6-hsl:         215, 25%, #{$lightness-6};
+  --grey-7-hsl:         215, 25%, #{$lightness-7};
+  --grey-8-hsl:         215, 25%, #{$lightness-8};
+  --grey-9-hsl:         215, 25%, #{$lightness-9};
+  --grey-10-hsl:        215, 25%, #{$lightness-10};
+  --grey-11-hsl:        215, 25%, #{$lightness-11};
+  --grey-12-hsl:        215, 25%, #{$lightness-12};
+  --font-primary:       hsl(var(--grey-1-hsl));
+  --font-contrast:      white;
+}
+
+/*-| SCSS |-*/
+/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+$font-primary:         var(--font-primary) !default;
+$font-contrast:        var(--font-contrast) !default;
+$color-primary-1:      var(--color-primary-1) !default;
+$color-primary-2:      var(--color-primary-2) !default;
+$color-primary-3:      var(--color-primary-3) !default;
+$color-primary-4:      var(--color-primary-4) !default;
+$color-primary-5:      var(--color-primary-5) !default;
+$color-primary-6:      var(--color-primary-6) !default;
+$color-primary-7:      var(--color-primary-7) !default;
+$color-primary-8:      var(--color-primary-8) !default;
+$color-primary-9:      var(--color-primary-9) !default;
+$color-primary-10:     var(--color-primary-10) !default;
+$color-primary-11:     var(--color-primary-11) !default;
+$color-primary-12:     var(--color-primary-12) !default;
+$color-secondary-1:    var(--color-secondary-1) !default;
+$color-secondary-2:    var(--color-secondary-2) !default;
+$color-secondary-3:    var(--color-secondary-3) !default;
+$color-secondary-4:    var(--color-secondary-4) !default;
+$color-secondary-5:    var(--color-secondary-5) !default;
+$color-secondary-6:    var(--color-secondary-6) !default;
+$color-secondary-7:    var(--color-secondary-7) !default;
+$color-secondary-8:    var(--color-secondary-8) !default;
+$color-secondary-9:    var(--color-secondary-9) !default;
+$color-secondary-10:   var(--color-secondary-10) !default;
+$color-secondary-11:   var(--color-secondary-11) !default;
+$color-secondary-12:   var(--color-secondary-12) !default;
+$color-success-1:      var(--color-success-1) !default;
+$color-success-2:      var(--color-success-2) !default;
+$color-success-3:      var(--color-success-3) !default;
+$color-success-4:      var(--color-success-4) !default;
+$color-success-5:      var(--color-success-5) !default;
+$color-success-6:      var(--color-success-6) !default;
+$color-success-7:      var(--color-success-7) !default;
+$color-success-8:      var(--color-success-8) !default;
+$color-success-9:      var(--color-success-9) !default;
+$color-success-10:     var(--color-success-10) !default;
+$color-success-11:     var(--color-success-11) !default;
+$color-success-12:     var(--color-success-12) !default;
+$color-warn-1:         var(--color-warn-1) !default;
+$color-warn-2:         var(--color-warn-2) !default;
+$color-warn-3:         var(--color-warn-3) !default;
+$color-warn-4:         var(--color-warn-4) !default;
+$color-warn-5:         var(--color-warn-5) !default;
+$color-warn-6:         var(--color-warn-6) !default;
+$color-warn-7:         var(--color-warn-7) !default;
+$color-warn-8:         var(--color-warn-8) !default;
+$color-warn-9:         var(--color-warn-9) !default;
+$color-warn-10:        var(--color-warn-10) !default;
+$color-warn-11:        var(--color-warn-11) !default;
+$color-warn-12:        var(--color-warn-12) !default;
+$grey-1:               var(--grey-1) !default;
+$grey-2:               var(--grey-2) !default;
+$grey-3:               var(--grey-3) !default;
+$grey-4:               var(--grey-4) !default;
+$grey-5:               var(--grey-5) !default;
+$grey-6:               var(--grey-6) !default;
+$grey-7:               var(--grey-7) !default;
+$grey-8:               var(--grey-8) !default;
+$grey-9:               var(--grey-9) !default;
+$grey-10:              var(--grey-10) !default;
+$grey-11:              var(--grey-11) !default;
+$grey-12:              var(--grey-12) !default;
+
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+/*-| Animation |-*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+$trans-100:            100ms ease-in-out !default;
+$trans-200:            200ms ease-in-out !default;
+$trans-300:            300ms ease-in-out !default;
+$trans-400:            400ms ease-in-out !default;
+$trans-500:            500ms ease-in-out !default;
+$trans-600:            600ms ease-in-out !default;

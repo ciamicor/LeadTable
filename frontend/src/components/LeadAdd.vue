@@ -121,14 +121,15 @@ const attendeeService = new AttendeeDataService()
 let attendee = ref(
   {
     expo_Year: companyLocalData.expo_Year,
-    name_First: null,
-    name_Last: null,
-    contact_Email: null,
-    contact_Phone: null,
-    contact_Employer: null,
-    title: null,
-    reg_Type: null,
-    tech_Sem: null
+    expo_Client: companyLocalData.expo_Client,
+    name_First: '',
+    name_Last: '',
+    contact_Email: '',
+    contact_Phone: '',
+    contact_Employer: '',
+    title: '',
+    reg_Type: '',
+    tech_Sem: ''
   }
 )
 

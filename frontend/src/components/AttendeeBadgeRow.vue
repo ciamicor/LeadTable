@@ -1,9 +1,10 @@
 <template>
-  <div class="badge-select-wrap">
+  <div class="badge-select-wrap"
+       @click="selectBadge(attendee)">
     <div class="select-toggle ">
       <button :class="!badgeSelected ? 'bi-x-lg bi-circle' :  'bi-check-lg --success --invert'"
               class="--p-4"
-              @click="selectBadge(attendee)">
+              @click.stop="selectBadge(attendee)">
       </button>
     </div>
     <div>

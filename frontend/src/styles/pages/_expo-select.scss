@@ -1,0 +1,7 @@
+@use "../abstracts/index" as *;
+
+.expo-select-container {
+  @include adapt-grid(
+    $grid-padding: $sp-v-1
+  )
+}

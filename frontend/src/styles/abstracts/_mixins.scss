@@ -1,0 +1,47 @@
+@use "variables" as *;
+@use "functions" as f;
+
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+/*-| Breakpoint |-*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+@mixin breakpoint($breakpoint) {
+  @media (min-width: #{$breakpoint}px) {
+    @content
+  }
+}
+
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+/*-| Grid |-*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+@mixin adapt-grid(
+  $grid-card-min-width: 400,
+  $grid-card-h-padding: 20,
+  $grid-padding: 0 $sp-v-8 $sp-v-14
+) {
+  display:            grid;
+  grid-template-rows: auto;
+  gap:                min(24px, 2vw);
+  padding:            $grid-padding;
+  @for $c from 1 through 4 {
+    $gap-base: 8;
+    $bp:       $c * $grid-card-min-width;
+    @include breakpoint(calc($bp + (($grid-card-h-padding * 2) * $c))) {
+      grid-template-columns: repeat($c, minmax(#{$grid-card-min-width + "px" }, 1fr));
+    }
+  }
+  .grid-card {
+    display:            grid;
+    grid-template-rows: 1fr repeat(3, min-content);
+    gap:                f.clamp-spacing(8, 2);
+    align-items:        start;
+    padding:            $sp-7 #{$grid-card-h-padding + "px"};
+    border:             1px solid $grey-8;
+    border-radius:      $item-border;
+    outline:            1px solid rgba(0, 0, 0, 0);
+    transition:         outline $trans-100, background $trans-400;
+    &:hover {
+      outline:    1px solid $color-success-9;
+      background: $color-success-12;
+    }
+  }
+}

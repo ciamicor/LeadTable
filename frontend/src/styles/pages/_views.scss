@@ -1,13 +1,14 @@
-@use "config/config" as c;
+@use "../abstracts/index" as *;
+
 /*-| App Views |-*/
 /*---+----+---+----+---+----+---+----+---*/
 #app {
   position:           relative;
   display:            grid;
   overflow:           hidden;
-  grid-template-rows: 1fr c.$nav-height-actual;
+  grid-template-rows: 1fr $nav-height-actual;
   width:              100dvw;
-  height:             c.$app-height;
+  height:             $app-height;
 }
 
 .nav-bar {
@@ -20,15 +21,14 @@
   flex-flow:        row nowrap;
   place-content:    center;
   place-items:      center;
-  gap:              c.$sp-4;
-  height:           c.$nav-height;
-  padding:          c.$nav-padding;
-  background-color: c.$color-primary-5;
+  gap:              $sp-4;
+  height:           $nav-height;
+  padding:          $nav-padding;
+  background-color: $color-primary-5;
   .button {
     width:     20%;
     min-width: 65px;
     max-width: 85px;
-    padding:   0;
     opacity:   65%;
     &.--secondary {
       opacity: 100% !important;
@@ -39,23 +39,23 @@
 .view {
   &-mask {
     overflow:   scroll;
-    width:      c.$app-width;
-    max-width:  c.$app-width;
-    height:     c.$view-height;
-    background: c.$grey-12;
+    width:      $app-width;
+    max-width:  $app-width;
+    height:     $view-height;
+    background: $grey-12;
   }
   &-container {
     display:    flex;
     flex-flow:  column;
     height:     100%;
-    min-height: c.$view-height;
+    min-height: $view-height;
   }
 }
 
 /*-| Views |-*/
 /*---+----+---+----+---+----+---+----+---*/
 .view-floor-plan {
-  width:  c.$app-width;
-  height: calc(#{c.$view-height} - 4px);
+  width:  $app-width;
+  height: calc(#{$view-height} - 4px);
   border: none !important;
 }

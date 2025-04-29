@@ -20,10 +20,10 @@
 
     </div>
     <div v-if="companyLocalData.lead_Ret === true">
-      <div class="row-12-300 --p-4">
+      <div class="row-12-300 --p-10-clamp">
         <div v-if="companyLocalData.name"
              class="col-12-300 col-8-800 --flex-grow">
-          <p class="--m-0">
+          <p>
             {{ companyLocalData.expo_Client }}
             {{ companyLocalData.expo_Year }}
             Supplier's Day
@@ -43,6 +43,7 @@
              class="lead-card"
         >
           <LeadCard :lead="lead"/>
+          <LeadCardModal :lead="lead"/>
         </div>
       </div>
 
@@ -66,6 +67,7 @@ import { getAllLeads_Service, getAllCompanyLeads_Service } from '../services/Lea
 import { onMounted, ref } from 'vue'
 import { getLocalCompanyData_Service } from '@/services/CompanyDataService.js'
 import LeadCard from '@/components/LeadCard.vue'
+import LeadCardModal from '@/components/LeadCardModal.vue'
 import LeadsExport from '@/components/LeadsExport.vue'
 
 const companyLocalData = useCompanyLocalStore()

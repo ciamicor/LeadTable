@@ -1,0 +1,166 @@
+@use "../abstracts/functions" as f;
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+/*-| Dimensions |-*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+
+@for $i from 1 through 20 {
+  .--w-#{$i * 5} {
+    width: #{$i * 5 + "%"} !important;
+  }
+  .--h-#{$i * 5} {
+    height: #{$i * 5 + "%"} !important;
+  }
+  .--flex-basis-#{$i * 5} {
+    flex-basis: #{$i * 5 + "%"} !important;
+  }
+}
+
+@for $i from 1 through 20 {
+  .--max-w-#{$i * 50} {
+    max-width: #{$i * 50 + "px"} !important;
+  }
+  .--max-h-#{$i * 50} {
+    max-height: #{$i * 50 + "px"} !important;
+  }
+}
+
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+/*-| Spacing |-*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+
+@for $i from 0 through 24 {
+  $spacer:  calc(2px * $i);
+  $clamp-s: #{$i + "px"};
+  $clamp-m: calc(#{$i + "vw"} / 2);
+  $clamp-l: calc(2 * #{$i + "px"});
+  /*-| All |-*/
+  /*---+----+---+----+---+----+---+----+---*/
+  .--p-#{$i} {
+    padding: $spacer !important;
+  }
+  .--m-#{$i} {
+    margin: $spacer !important;
+  }
+  .--gap-#{$i} {
+    gap: $spacer !important;
+  }
+  .--p-#{$i}-clamp {
+    padding: f.clamp-spacing($i, 4) !important;
+  }
+  .--m-#{$i}-clamp {
+    margin: f.clamp-spacing($i, 4) !important;
+  }
+  .--gap-#{$i}-clamp {
+    gap: f.clamp-spacing($i, 4) !important;
+  }
+  /*-| Axis |-*/
+  /*---+----+---+----+---+----+---+----+---*/
+  /*-| Vert |-*/
+  .--p-v-#{$i} {
+    padding-top:    $spacer !important;
+    padding-bottom: $spacer !important;
+  }
+  .--m-v-#{$i} {
+    margin-block-start: $spacer !important;
+    margin-block-end:   $spacer !important;
+  }
+  /*-| Vert Clamp|-*/
+  .--p-v-#{$i}-clamp {
+    padding-top:    f.clamp-spacing($i, 4) !important;
+    padding-bottom: f.clamp-spacing($i, 4) !important;
+  }
+  .--m-v-#{$i}-clamp {
+    margin-block-start: f.clamp-spacing($i, 4) !important;
+    margin-block-end:   f.clamp-spacing($i, 4) !important;
+  }
+  /*-| Horz |-*/
+  .--p-h-#{$i} {
+    padding-left:  $spacer !important;
+    padding-right: $spacer !important;
+  }
+  .--m-h-#{$i} {
+    margin-inline-start: $spacer !important;
+    margin-inline-end:   $spacer !important;
+  }
+  /*-| Horz Clamp |-*/
+  .--p-h-#{$i}-clamp {
+    padding-left:  f.clamp-spacing($i, 4) !important;
+    padding-right: f.clamp-spacing($i, 4) !important;
+  }
+  .--m-h-#{$i}-clamp {
+    margin-inline-start: f.clamp-spacing($i, 4) !important;
+    margin-inline-end:   f.clamp-spacing($i, 4) !important;
+  }
+  /*-| Individual |-*/
+  /*---+----+---+----+---+----+---+----+---*/
+  /*-| Top |-*/
+  .--p-t-#{$i} {
+    padding-top: $spacer !important;
+  }
+  .--m-t-#{$i} {
+    margin-block-start: $spacer !important;
+  }
+  /*-| Top Clamp|-*/
+  .--p-t-#{$i}-clamp {
+    padding-top: f.clamp-spacing($i, 4) !important;
+  }
+  .--m-t-#{$i}-clamp {
+    margin-block-start: f.clamp-spacing($i, 4) !important;
+  }
+  /*-| Right |-*/
+  .--p-r-#{$i} {
+    padding-right: $spacer !important;
+  }
+  .--m-r-#{$i} {
+    margin-inline-end: $spacer !important;
+  }
+  /*-| Right Clamp|-*/
+  .--p-r-#{$i}-clamp {
+    padding-right: f.clamp-spacing($i, 4) !important;
+  }
+  .--m-r-#{$i}-clamp {
+    margin-inline-end: f.clamp-spacing($i, 4) !important;
+  }
+  /*-| Bottom |-*/
+  .--p-b-#{$i} {
+    padding-bottom: $spacer !important;
+  }
+  .--m-b-#{$i} {
+    margin-block-end: $spacer !important;
+  }
+  /*-| Bottom Clamp|-*/
+  .--p-b-#{$i}-clamp {
+    padding-bottom: f.clamp-spacing($i, 4) !important;
+  }
+  .--m-b-#{$i}-clamp {
+    margin-block-end: f.clamp-spacing($i, 4) !important;
+  }
+  /*-| Left |-*/
+  .--p-l-#{$i} {
+    padding-left: $spacer !important;
+  }
+  .--m-l-#{$i} {
+    margin-inline-start: $spacer !important;
+  }
+  /*-| Left Clamp|-*/
+  .--p-l-#{$i}-clamp {
+    padding-left: f.clamp-spacing($i, 4) !important;
+  }
+  .--m-l-#{$i}-clamp {
+    margin-inline-start: f.clamp-spacing($i, 4) !important;
+  }
+  /*-| Positioning |-*/
+  /*---+----+---+----+---+----+---+----+---*/
+  .--top-#{$i} {
+    top: $spacer !important;
+  }
+  .--bottom-#{$i} {
+    bottom: $spacer !important;
+  }
+  .--left-#{$i} {
+    left: $spacer !important;
+  }
+  .--right-#{$i} {
+    right: $spacer !important;
+  }
+}

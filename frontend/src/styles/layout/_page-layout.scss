@@ -1,6 +1,7 @@
-@use "config/config" as c;
+@use "../abstracts/index" as *;
 /*-| Setup |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+
 /*-| Layout |-*/
 /*---+----+---+----+---+----+---+----+---*/
 .--full {
@@ -14,9 +15,9 @@
   flex-flow:     row wrap;
   place-content: center;
   place-items:   center;
-  gap:           c.$row-gap;
+  gap:           $row-gap;
   width:         100dvw;
-  max-width:     c.$max-page-width;
+  max-width:     #{ $max-page-width }px;
   margin:        auto;
 }
 
@@ -25,10 +26,10 @@
   flex:          1 1 auto;
   flex-flow:     row wrap;
   place-content: center;
-  gap:           c.$row-gap;
-  max-width:     c.$max-page-width;
+  gap:           $row-gap;
+  max-width:     #{ $max-page-width }px;
   margin:        0 auto;
-  padding:       c.$sp-v-2 c.$sp-v-4;
+  padding:       $sp-v-2 $sp-v-4;
   &.--items {
     margin:  0;
     padding: 0;
@@ -41,41 +42,41 @@
 /*-| Columns by Breakpoint |-*/
 // @each $bp, $size in $breakpoints {
 @for $size from 3 through 16 {
-  @for $i from 1 through c.$column-number {
+  @for $i from 1 through $column-number {
     /*-| Columns |-*/
     .col-#{$i}-#{$size * 100} {
       display:   flex;
       flex-flow: column nowrap;
-      gap:       c.$col-gap;
+      gap:       $col-gap;
       & > *:not(.button,button) + .button,
       & > *:not(.button,button) + button {
-        margin-top: c.$sp-4;
+        margin-block-start: $sp-4;
       }
       & > .button:has(+ *:not(.button, button)),
       & > button:has(+ *:not(.button, button)) {
-        margin-bottom: c.$sp-6;
+        margin-block-end: $sp-6;
       }
-      @include c.breakpoint($size * 100) {
-        flex:  0 1 calc((100% * calc($i / #{c.$column-number})) - #{c.$row-gap});
-        width: calc((100% * calc($i / #{c.$column-number})) - #{c.$row-gap});
+      @include breakpoint($size * 100) {
+        flex: 0 1 calc((100% * calc($i / #{$column-number})) - #{$row-gap});
+        // width: calc((100% * calc($i / #{$column-number})) - #{$row-gap});
       }
     }
     /*-| Rows |-*/
     .row-#{$i}-#{$size * 100} {
       display:   flex;
       flex-flow: row wrap;
-      gap:       c.$col-gap;
+      gap:       $col-gap;
       /*      & > *:not(.button,button) + .button,
             & > *:not(.button,button) + button {
-              margin-top: c.$sp-4;
+              margin-block-start: $sp-4;
             }
            & > .button:has(+ *:not(.button, button)),
             & > button:has(+ *:not(.button, button)) {
-              margin-bottom: c.$sp-6;
+              margin-block-end: $sp-6;
             }*/
-      @include c.breakpoint($size * 100) {
-        flex:  0 1 calc((100% * ($i / #{c.$column-number})) - #{c.$row-gap});
-        width: calc((100% * ($i / #{c.$column-number})) - #{c.$row-gap});
+      @include breakpoint($size * 100) {
+        flex: 0 1 calc((100% * ($i / #{$column-number})) - #{$row-gap});
+        // width: calc((100% * ($i / #{$column-number})) - #{$row-gap});
       }
     }
   }

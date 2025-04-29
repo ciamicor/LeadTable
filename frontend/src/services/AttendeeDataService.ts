@@ -72,28 +72,26 @@ async function createAttendee_Service(attendee: any, client: any, year: any, upl
 
 /*---+----+---+----+---+----+---+----+---*/
 async function getAllAttendees_Service(list: any) {
-  await attendeeService.getAll()
-    .then((response) => {
-      list.value = response.data
-      // console.log(response.data)
-    })
-    .catch((e) => {
-      console.log(e)
-    })
+  try {
+    let allAttendees = await attendeeService.getAll()
+    // console.log(allAttendees.data)
+    return allAttendees.data
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 /*-| Get Attendees By Expo |-*/
 
 /*---+----+---+----+---+----+---+----+---*/
-async function getExpoAttendees_Service(client: any, year: any, list: any) {
-  await attendeeService.getExpoAttendees(client, year)
-    .then((response) => {
-      // console.log(response)
-      list.value = response.data
-    })
-    .catch((e) => {
-      console.log(e)
-    })
+async function getExpoAttendees_Service(client: any, year: any) {
+  try {
+    let allAttendees = await attendeeService.getExpoAttendees(client, year)
+    console.log(allAttendees.data)
+    return allAttendees.data
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 async function getAttendeesUploadId_Service(id: any) {

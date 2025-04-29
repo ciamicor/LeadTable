@@ -179,7 +179,7 @@ const attendee = ref( {
   address: '',
   title: '',
   reg_Type: 'Attendee',
-  tech_Sem: 'Attending'
+  tech_Sem: ''
 } )
 
 async function createAttendee( a ) {

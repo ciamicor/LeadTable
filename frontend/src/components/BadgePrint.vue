@@ -18,8 +18,6 @@
                type="text">
       </div>
 
-      <!-- SINGLE BADGE -->
-      <!--  TODO Polish Single Badge Code, merge with BadgeCreate or BadgeService  -->
       <div class="row-8-300 --flex-grow --justify-content-end --align-content-center">
         <button v-show="attendeeListSelected.length === 0 || attendeeListSelected.length > 1"
                 class="--secondary --p-4"
@@ -43,7 +41,6 @@
           <i class="bi-plus-lg --m-r-4"/>New Badge
         </router-link>
       </div>
-
       <div class="row-12-300 --align-items-center">
         <span class="">View upload:</span>
         <button
@@ -55,7 +52,7 @@
           {{ upload.createdAt.slice( 0, 10 ) }}
         </button>
         <button
-          class="--p-2 --primary --font-size-16"
+          class="--p-2 --p-h-4 --primary --font-size-16"
           @click="refreshAttendees(expoLocalData.expo_Client, expoLocalData.expo_Year, attendeeList)"
         >
           <i class="bi-arrow-clockwise --font-size-20 --m-r-3"></i>
@@ -70,10 +67,11 @@
         v-show="!loading"
         class="badge-select-grid"
       >
+        <!--          v-for="(attendee, ind) in attendeeList"-->
         <AttendeeBadgeRow
-          v-for="(attendee, ind) in attendeeList"
+          v-for="[key, attendee] in mapList"
           v-show="mergeSearchTerm(attendee.name_First, attendee.name_Last)"
-          :key="ind"
+          :key="key"
           :attendee="attendee"
           class="badge-select-wrap"
           @add-badge="addBadge"
@@ -83,6 +81,7 @@
     </div>
   </div>
 
+  <!--  TODO Polish Single Badge Code, merge with BadgeCreate or BadgeService  -->
   <!-- Hidden, Printing Components -->
   <div
     v-if="attendeeListSelected.length !== 1"
@@ -128,7 +127,7 @@ import html2canvas from 'html2canvas'
 import BadgeSingle from '@/components/BadgeSingle.vue'
 import AttendeeBadgeRow from '@/components/AttendeeBadgeRow.vue'
 import { useVueToPrint } from 'vue-to-print'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, computed } from 'vue'
 import {
   getExpoAttendees_Service,
   getAttendeesUploadId_Service
@@ -172,15 +171,25 @@ onMounted( () => {
   setTimeout(
     () => {
       console.log( expoLocalData )
-      loading.value = false
-      getAllAttendees( expoLocalData.expo_Client, expoLocalData.expo_Year, attendeeList )
+      getAllAttendees( expoLocalData.expo_Client, expoLocalData.expo_Year )
       getAllAttendeeUploads( expoLocalData.expo_Client )
     }, 600
   )
+  setTimeout( () => {
+    loading.value = false
+    makeMap()
+  }, 1200 )
 } )
 
 /*-| Attendees |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+const mapList = ref()
+
+async function makeMap() {
+  mapList.value = await new Map( Object.entries( attendeeList.value ) )
+  console.log( "List", mapList )
+}
+
 /*-| Get by Upload |-*/
 async function getAllAttendeeUploads( client ) {
   uploadsList.value = await getAttendeeUploads_Service( client )
@@ -195,16 +204,16 @@ async function getAttendees_SelectedUpload( id ) {
   console.log( attendeeList.value )
 }
 
-async function refreshAttendees( client, year, a ) {
+async function refreshAttendees( client, year ) {
   window.location.reload()
-  await getAllAttendees( client, year, a )
+  attendeeList.value = await getAllAttendees( client, year )
   console.log( attendeeList.value )
 }
 
 /*-| Get All |-*/
-async function getAllAttendees( client, year, o ) {
-  await getExpoAttendees_Service( client, year, o )
-  await sortLName_Service( o )
+async function getAllAttendees( client, year ) {
+  attendeeList.value = await getExpoAttendees_Service( client, year )
+  await sortLName_Service( attendeeList.value )
   // console.log( 'Attendees: ', o, typeof o )
   // await chunkObject( o )
 }
