@@ -5629,11 +5629,11 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
   right: 24px;
   border: 1px solid var(--grey-8);
   border-radius: 65px;
-  translate: 0 -50%;
+  translate: 45% -50%;
   scale: 0.85;
 }
 .search-wrap input.search {
-  padding: 16px 24px;
+  padding: 12px 20px;
   border-radius: 65px;
   transition: border-radius 200ms ease-in-out;
 }
@@ -12300,29 +12300,29 @@ table tbody tr input:active, table tbody tr input:focus {
   gap: min(24px, 2vw);
   padding: 0 clamp(8px, 2px + 1.875vw, 32px) clamp(14px, 3.5px + 3.28125vw, 56px);
 }
-@media (min-width: 440px) {
+@media (min-width: 340px) {
   .badge-select-grid {
-    grid-template-columns: repeat(1, minmax(400px, 1fr));
+    grid-template-columns: repeat(1, minmax(300px, 1fr));
   }
 }
-@media (min-width: 880px) {
+@media (min-width: 680px) {
   .badge-select-grid {
-    grid-template-columns: repeat(2, minmax(400px, 1fr));
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
   }
 }
-@media (min-width: 1320px) {
+@media (min-width: 1020px) {
   .badge-select-grid {
-    grid-template-columns: repeat(3, minmax(400px, 1fr));
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
   }
 }
-@media (min-width: 1760px) {
+@media (min-width: 1360px) {
   .badge-select-grid {
-    grid-template-columns: repeat(4, minmax(400px, 1fr));
+    grid-template-columns: repeat(4, minmax(300px, 1fr));
   }
 }
 .badge-select-grid .grid-card, .badge-select-grid .badge-select-wrap {
   display: grid;
-  grid-template-rows: 1fr repeat(3, min-content);
+  grid-template-rows: 1fr repeat(auto-fill, min-content);
   gap: clamp(8px, 6px + 0.625vw, 16px);
   align-items: start;
   padding: 20px 20px;
@@ -12337,10 +12337,15 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 .badge-select-grid .badge-select-wrap {
   grid-template-columns: min-content 1fr;
+  align-items: stretch;
   gap: 16px;
+  padding: clamp(4px, 1px + 0.9375vw, 16px);
 }
-.badge-select-grid .badge-select-wrap * {
-  margin: 0;
+.badge-select-grid .badge-select-wrap .select-toggle {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  gap: 8px;
 }
 
 /*-| Badges for Printing |-*/

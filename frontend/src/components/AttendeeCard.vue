@@ -1,12 +1,18 @@
 <template>
   <div class="badge-select-wrap"
-       @click="selectBadge(attendee)">
+  >
     <div class="select-toggle ">
       <button :class="!badgeSelected ? 'bi-x-lg bi-circle' :  'bi-check-lg --success --invert'"
               class="--p-4"
               @click.stop="selectBadge(attendee)">
       </button>
+      <button class="--justify-self-end --p-4"
+              @click.stop="toggleModal"><i class="bi-pencil"/></button>
     </div>
+
+    <AttendeeEditModal :attendee="attendee"
+                       :visible="modalVisible"
+                       @show-modal="toggleModal"/>
     <div>
       <span class="--font-size-14">{{ formatDateTime( attendee.createdAt ) }}</span>
       <h3 class="--font-size-20">
@@ -25,6 +31,8 @@
 
 <script setup>
 import { ref } from 'vue'
+import LeadCardModal from "@/components/LeadEditModal.vue";
+import AttendeeEditModal from "@/components/AttendeeEditModal.vue";
 
 const emit = defineEmits( [ 'addBadge', 'removeBadge' ] )
 const prop = defineProps( {
@@ -45,6 +53,16 @@ function selectBadge( i ) {
   }
 }
 
+/*-| Modal |-*/
+/*---+----+---+----+---+----+---+----+---*/
+const modalVisible = ref( false )
+
+function toggleModal() {
+  modalVisible.value = !modalVisible.value
+}
+
+/*-| Formatting |-*/
+/*---+----+---+----+---+----+---+----+---*/
 function formatDateTime( dt ) {
   let d = dt.slice( 0, 10 )
   let t = dt.slice( -13, -8 )

@@ -41,7 +41,7 @@
 <script lang="ts"
         setup>
 import {defineProps, computed, ref} from "vue";
-import LeadCardModal from "@/components/LeadCardModal.vue";
+import LeadCardModal from "@/components/LeadEditModal.vue";
 
 const props = defineProps({
   lead: {

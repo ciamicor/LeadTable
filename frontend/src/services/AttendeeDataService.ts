@@ -68,6 +68,31 @@ async function createAttendee_Service(attendee: any, client: any, year: any, upl
   }
 }
 
+/*-| Update Attendee |-*/
+
+/*---+----+---+----+---+----+---+----+---*/
+async function updateAttendee_Service(id: any, attendee: any) {
+  console.log('Updating Attendee: ', attendee)
+  const data = {
+    name_First: attendee.name_First,
+    name_Last: attendee.name_Last,
+    contact_Email: attendee.contact_Email,
+    contact_Phone: attendee.contact_Phone,
+    contact_Employer: attendee.contact_Employer,
+    address: attendee.address,
+    title: attendee.title,
+    reg_Type: attendee.reg_Type,
+    tech_Sem: attendee.tech_Sem,
+  }
+  console.log("Update Attendee data: ", data)
+  try {
+    let updatedAttendee = await attendeeService.update(id, data)
+    console.log(updatedAttendee)
+  } catch (e: any) {
+    console.log(e)
+  }
+}
+
 /*-| Get All Attendees |-*/
 
 /*---+----+---+----+---+----+---+----+---*/
@@ -108,6 +133,7 @@ export {
   getAllAttendees_Service,
   createAttendee_Service,
   getAttendeesUploadId_Service,
-  getExpoAttendees_Service
+  getExpoAttendees_Service,
+  updateAttendee_Service
 }
 

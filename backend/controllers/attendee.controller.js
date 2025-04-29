@@ -137,15 +137,29 @@ exports.getAttendeeByUploadId = async ( req, res ) => {
 // Controller method to update an attendee by ID
 exports.updateAttendee = async ( req, res ) => {
     const id = req.params.id
-    const { name_First, name_Last, contact_Email, contact_Phone, contact_Employer } = req.body
+    const {
+        name_First,
+        name_Last,
+        title,
+        contact_Email,
+        contact_Phone,
+        contact_Employer,
+        address,
+        reg_Type,
+        tech_Sem
+    } = req.body
     try {
         const attendee = await Attendee.findByPk( id )
         if ( attendee ) {
             attendee.name_First = name_First
             attendee.name_Last = name_Last
+            attendee.title = title
             attendee.contact_Email = contact_Email
             attendee.contact_Phone = contact_Phone
             attendee.contact_Employer = contact_Employer
+            attendee.address = address
+            attendee.reg_Type = reg_Type
+            attendee.tech_Sem = tech_Sem
             await attendee.save()
             res.json( attendee )
         } else {

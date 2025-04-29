@@ -53,11 +53,11 @@ fieldset {
     right:         $sp-8;
     border:        1px solid $grey-8;
     border-radius: 65px;
-    translate:     0 -50%;
+    translate:     45% -50%;
     scale:         .85;
   }
   input.search {
-    padding:       $sp-6 $sp-8;
+    padding:       $sp-5 $sp-7;
     border-radius: 65px;
     transition:    border-radius $trans-200;
     &:focus, &:focus-visible {

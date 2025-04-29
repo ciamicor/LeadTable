@@ -28,7 +28,7 @@
   <div v-if="scanConfirm"
        class="row">
     <div
-      class="col-12">
+      class="col-12-300 --m-h-8 --m-v-12">
       <h1>Confirm Lead</h1>
       <p><span>Name: </span>{{ attendee.name_First }} {{ attendee.name_Last }}</p>
       <p><span>Email: </span>{{ attendee.contact_Email }}</p>
@@ -37,7 +37,7 @@
       <p><span>Title: </span>{{ attendee.title }}</p>
       <p><span>Address: </span>{{ attendee.address }}</p>
       <form action=""
-            class="col-6">
+            class="col-12-300">
         <fieldset class="--m-t-12">
           <legend>Rating</legend>
           <div
@@ -56,13 +56,12 @@
         <label class="--m-t-16"
                for="comment">Comments</label>
         <textarea v-model="commentRef"
-                  class="--w-100"
                   name="comment"
                   rows="3"
                   @change="updateComment( commentRef )">
                   name="leadComments"></textarea>
       </form>
-      <div class="row --items --m-t-16">
+      <div class="row-12-300 --items --m-t-16">
         <button
           class="--primary--invert --flex-basis-100"
           @click="createLead(lead); router.push('/:client/:year/leads-list')">

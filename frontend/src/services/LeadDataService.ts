@@ -70,6 +70,9 @@ async function createLead_Service(lead: any) {
   }
 }
 
+/*-| Update Lead |-*/
+
+/*---+----+---+----+---+----+---+----+---*/
 async function updateLead_Service(id: any, lead: any) {
   console.log('Updating Lead: ', lead)
   const data = {
@@ -83,7 +86,7 @@ async function updateLead_Service(id: any, lead: any) {
     score: lead.score,
     comment: lead.comment
   }
-  console.log(data)
+  console.log("Update Lead Data: ", data)
   try {
     let updatedLead = await leadService.update(id, data)
     console.log(updatedLead)

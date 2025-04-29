@@ -132,15 +132,15 @@ exports.updateLead = async ( req, res ) => {
     try {
         const lead = await Lead.findByPk( id )
         if ( lead ) {
-            lead.name_First = name_First
-            lead.name_Last = name_Last
-            lead.email = email
+            lead.name_First = name_First.trim()
+            lead.name_Last = name_Last.trim()
+            lead.email = email.trim()
             lead.phone = phone
-            lead.employer = employer
-            lead.address = address
-            lead.title = title
-            lead.score = score
-            lead.comment = comment
+            lead.employer = employer.trim()
+            lead.address = address.trim()
+            lead.title = title.trim()
+            lead.score = score.trim()
+            lead.comment = comment.trim()
             await lead.save()
             res.json( lead )
         } else {

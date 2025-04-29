@@ -69,7 +69,7 @@
       >
         <!-- TODO: Change list to use Map       -->
         <!--          v-for="[key, attendee] in mapList"-->
-        <AttendeeBadgeRow
+        <AttendeeCard
           v-for="(attendee, key) in attendeeList"
           v-show="mergeSearchTerm(attendee.name_First, attendee.name_Last)"
           :key="key"
@@ -126,7 +126,7 @@ import { jsPDF } from 'jspdf'
 import QrCode from '@/components/QrCode.vue'
 import html2canvas from 'html2canvas'
 import BadgeSingle from '@/components/BadgeSingle.vue'
-import AttendeeBadgeRow from '@/components/AttendeeBadgeRow.vue'
+import AttendeeCard from '@/components/AttendeeCard.vue'
 import { useVueToPrint } from 'vue-to-print'
 import { onMounted, ref, computed } from 'vue'
 import {

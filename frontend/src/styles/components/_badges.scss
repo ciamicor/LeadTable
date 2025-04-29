@@ -4,13 +4,18 @@
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 .badge-select-grid {
   margin: $sp-18 0 0 0;
-  @include adapt-grid;
+  @include adapt-grid($grid-card-min-width: 300, $grid-card-rows: auto-fill);
   .badge-select-wrap {
     @extend .grid-card;
     grid-template-columns: min-content 1fr;
+    align-items:           stretch;
     gap:                   $sp-6;
-    & * {
-      margin: 0;
+    padding:               $sp-v-4;
+    & .select-toggle {
+      display:         flex;
+      flex-flow:       column nowrap;
+      justify-content: space-between;
+      gap:             $sp-4;
     }
   }
 }
