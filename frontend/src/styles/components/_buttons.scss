@@ -7,12 +7,12 @@ button,
   place-content:       center;
   place-items:         center;
   color:               $grey-4;
-  font-size:           $font-sm;
-  font-weight:         500;
+  font-size:           $font-xs;
+  font-weight:         400;
   line-height:         1;
   text-align:          center;
   text-decoration:     none;
-  padding:             $sp-6 $sp-7;
+  padding:             $sp-5 $sp-6;
   cursor:              pointer;
   border-width:        1px;
   border-style:        solid;
@@ -113,9 +113,9 @@ button,
   /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
   &.--primary {
     @include color-button(
-        $color-primary-3, // $color,
+        $color-primary-2, // $color,
         $color-primary-4, // $border-color,
-        $color-primary-10, // $background,
+        $color-primary-11, // $background,
         $color-primary-2, // $hover-color,
         $color-primary-8, // $hover-background,
         $color-primary-12, // $invert-color,
@@ -127,9 +127,9 @@ button,
   }
   &.--secondary {
     @include color-button(
-        $color-secondary-3, // $color,
-        $color-secondary-7, // $border-color,
-        $color-secondary-10, // $background,
+        $color-secondary-2, // $color,
+        $color-secondary-6, // $border-color,
+        $color-secondary-11, // $background,
         $color-secondary-2, // $hover-color,
         $color-secondary-9, // $hover-background,
         $color-secondary-12, // $invert-color,
@@ -141,11 +141,11 @@ button,
   }
   &.--success {
     @include color-button(
-        $color-success-3, // $color,
-        $color-success-7, // $border-color,
-        $color-success-10, // $background,
+        $color-success-2, // $color,
+        $color-success-8, // $border-color,
+        $color-success-11, // $background,
         $color-success-2, // $hover-color,
-        $color-success-9, // $hover-background,
+        $color-success-10, // $hover-background,
         $color-success-12, // $invert-color,
         $color-success-3, // $invert-border-color,
         $color-success-6, // $invert-background,
@@ -155,9 +155,9 @@ button,
   }
   &.--warn {
     @include color-button(
-        $color-warn-3, // $color,
+        $color-warn-2, // $color,
         $color-warn-7, // $border-color,
-        $color-warn-10, // $background,
+        $color-warn-11, // $background,
         $color-warn-2, // $hover-color,
         $color-warn-9, // $hover-background,
         $color-warn-12, // $invert-color,

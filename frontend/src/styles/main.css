@@ -5401,12 +5401,12 @@ button,
   place-content: center;
   place-items: center;
   color: var(--grey-4);
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 400;
   line-height: 1;
   text-align: center;
   text-decoration: none;
-  padding: 16px 20px;
+  padding: 12px 16px;
   cursor: pointer;
   border-width: 1px;
   border-style: solid;
@@ -5490,9 +5490,9 @@ button.--stacked i,
 }
 button.--primary,
 .button.--primary {
-  color: var(--color-primary-3);
+  color: var(--color-primary-2);
   border-color: var(--color-primary-4);
-  background: var(--color-primary-10);
+  background: var(--color-primary-11);
 }
 button.--primary:hover,
 .button.--primary:hover {
@@ -5512,9 +5512,9 @@ button.--primary--invert:hover,
 }
 button.--secondary,
 .button.--secondary {
-  color: var(--color-secondary-3);
-  border-color: var(--color-secondary-7);
-  background: var(--color-secondary-10);
+  color: var(--color-secondary-2);
+  border-color: var(--color-secondary-6);
+  background: var(--color-secondary-11);
 }
 button.--secondary:hover,
 .button.--secondary:hover {
@@ -5534,14 +5534,14 @@ button.--secondary--invert:hover,
 }
 button.--success,
 .button.--success {
-  color: var(--color-success-3);
-  border-color: var(--color-success-7);
-  background: var(--color-success-10);
+  color: var(--color-success-2);
+  border-color: var(--color-success-8);
+  background: var(--color-success-11);
 }
 button.--success:hover,
 .button.--success:hover {
   color: var(--color-success-2);
-  background: var(--color-success-9);
+  background: var(--color-success-10);
 }
 button.--success--invert,
 .button.--success--invert {
@@ -5556,9 +5556,9 @@ button.--success--invert:hover,
 }
 button.--warn,
 .button.--warn {
-  color: var(--color-warn-3);
+  color: var(--color-warn-2);
   border-color: var(--color-warn-7);
-  background: var(--color-warn-10);
+  background: var(--color-warn-11);
 }
 button.--warn:hover,
 .button.--warn:hover {
