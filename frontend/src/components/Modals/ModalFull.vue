@@ -1,5 +1,5 @@
 <template>
-  <div class="modal-wrapper">
+  <div class="modal-backdrop">
     <div class="modal-content col-12-300 col-8-600 col-6-800">
       <h2>This is the title.</h2>
       <p>

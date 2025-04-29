@@ -1,20 +1,32 @@
 @use "../abstracts/index" as *;
+@use "../abstracts/functions" as f;
 
-.modal-wrapper {
+.modal-backdrop {
   z-index:         10000;
   position:        fixed;
   top:             0;
   right:           0;
-  bottom:          0;
+  bottom:          $nav-height-actual;
   left:            0;
   display:         flex;
-  place-content:   center;
-  place-items:     center;
+  place-content:   stretch;
+  place-items:     stretch;
   background:      rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(4px);
+  .modal-wrapper {
+    position:      relative;
+    display:       flex;
+    overflow-y:    scroll;
+    flex:          1 1 100%;
+    place-content: flex-start center;
+    place-items:   flex-start center;
+    max-height:    calc(100dvh - $nav-height-actual);
+  }
   .modal-content {
-    margin:        $sp-8;
-    padding:       $sp-v-7 $sp-v-8;
+    flex:          1 1 auto;
+    max-width:     600px;
+    margin:        f.clamp-spacing(16, 3) f.clamp-spacing(16, 4);
+    padding:       f.clamp-spacing(16, 3) f.clamp-spacing(16, 4);
     border-radius: $panel-border;
     background:    white;
     box-shadow:    8px 8px 8px 2px rgba(0, 0, 0, 0.25);

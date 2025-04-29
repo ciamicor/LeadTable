@@ -117,15 +117,30 @@ exports.getLeadById = async ( req, res ) => {
 // Controller method to update a lead by ID
 exports.updateLead = async ( req, res ) => {
     const id = req.params.id
-    const { name_First, name_Last, contact_Email, contact_Phone, contact_Employer } = req.body
+
+    const {
+        name_First,
+        name_Last,
+        email,
+        phone,
+        employer,
+        address,
+        title,
+        score,
+        comment
+    } = req.body
     try {
         const lead = await Lead.findByPk( id )
         if ( lead ) {
             lead.name_First = name_First
             lead.name_Last = name_Last
-            lead.contact_Email = contact_Email
-            lead.contact_Phone = contact_Phone
-            lead.contact_Employer = contact_Employer
+            lead.email = email
+            lead.phone = phone
+            lead.employer = employer
+            lead.address = address
+            lead.title = title
+            lead.score = score
+            lead.comment = comment
             await lead.save()
             res.json( lead )
         } else {

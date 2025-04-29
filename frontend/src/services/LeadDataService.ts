@@ -18,7 +18,7 @@ class LeadDataService {
   }
 
   update(id: any, data: any) {
-    return http.put('/lead/', data)
+    return http.put('/lead/' + id, data)
   }
 
   delete(id: any) {
@@ -65,6 +65,28 @@ async function createLead_Service(lead: any) {
     lead.id = newLead.data.id
     console.log(newLead.data)
     lead = null
+  } catch (e: any) {
+    console.log(e)
+  }
+}
+
+async function updateLead_Service(id: any, lead: any) {
+  console.log('Updating Lead: ', lead)
+  const data = {
+    name_First: lead.name_First,
+    name_Last: lead.name_Last,
+    email: lead.email,
+    phone: lead.phone,
+    employer: lead.employer,
+    address: lead.address,
+    title: lead.title,
+    score: lead.score,
+    comment: lead.comment
+  }
+  console.log(data)
+  try {
+    let updatedLead = await leadService.update(id, data)
+    console.log(updatedLead)
   } catch (e: any) {
     console.log(e)
   }
@@ -121,4 +143,10 @@ async function deleteLead_Service(id: any) {
   }
 }
 
-export {createLead_Service, getAllLeads_Service, deleteLead_Service, getAllCompanyLeads_Service}
+export {
+  createLead_Service,
+  getAllLeads_Service,
+  deleteLead_Service,
+  getAllCompanyLeads_Service,
+  updateLead_Service
+}

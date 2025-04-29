@@ -43,7 +43,6 @@
              class="lead-card"
         >
           <LeadCard :lead="lead"/>
-          <LeadCardModal :lead="lead"/>
         </div>
       </div>
 
@@ -67,7 +66,6 @@ import { getAllLeads_Service, getAllCompanyLeads_Service } from '../services/Lea
 import { onMounted, ref } from 'vue'
 import { getLocalCompanyData_Service } from '@/services/CompanyDataService.js'
 import LeadCard from '@/components/LeadCard.vue'
-import LeadCardModal from '@/components/LeadCardModal.vue'
 import LeadsExport from '@/components/LeadsExport.vue'
 
 const companyLocalData = useCompanyLocalStore()

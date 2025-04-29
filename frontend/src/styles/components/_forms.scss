@@ -12,7 +12,7 @@ label {
   }
 }
 
-input, select {
+input, select, textarea {
   padding:       $sp-5 $sp-5 calc($sp-5 - 2px);
   border:        2px solid $grey-10;
   border-radius: $item-border;
