@@ -64,17 +64,17 @@
       </form>
       <div class="row --items --m-t-16">
         <button
-          class="--success --flex-basis-100"
+          class="--primary--invert --flex-basis-100"
           @click="createLead(lead); router.push('/:client/:year/leads-list')">
           Add {{ lead.name_First }}
         </button>
         <button
-          class="--warn"
+          class="--warn col-6-600"
           @click="resetScanning">
           Go Back
         </button>
         <button
-          class="--success"
+          class="--success col-6-600"
           @click="createLead(lead)">Add & Scan Another
         </button>
       </div>
