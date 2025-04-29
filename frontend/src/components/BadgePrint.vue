@@ -67,9 +67,10 @@
         v-show="!loading"
         class="badge-select-grid"
       >
-        <!--          v-for="(attendee, ind) in attendeeList"-->
+        <!-- TODO: Change list to use Map       -->
+        <!--          v-for="[key, attendee] in mapList"-->
         <AttendeeBadgeRow
-          v-for="[key, attendee] in mapList"
+          v-for="(attendee, key) in attendeeList"
           v-show="mergeSearchTerm(attendee.name_First, attendee.name_Last)"
           :key="key"
           :attendee="attendee"
