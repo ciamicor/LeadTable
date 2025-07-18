@@ -14,7 +14,6 @@ $breakpoints:          (
                          xl: 1400,
                          xxl: 1600,
                        );
-
 $column-number:        12 !default;
 $min-page-width:       320 !default;
 $max-page-width:       1600 !default;
@@ -23,7 +22,7 @@ $max-page-width:       1600 !default;
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 $app-height:           100dvh !default;
 $app-width:            100dvw !default;
-$nav-height:           calc(60px) !default;
+$nav-height:           60px !default;
 $nav-padding:          16px !default;
 $nav-height-actual:    calc($nav-height + ($nav-padding * 2)) !default;
 $view-height:          calc($app-height - $nav-height-actual) !default;

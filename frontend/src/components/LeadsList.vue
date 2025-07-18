@@ -48,9 +48,9 @@
 
       <router-link
         v-if="companyLocalData.lead_Ret === true"
-        class="button --stacked --float --bottom-r --success--invert"
+        class="button --stacked --float --bottom-r --success--invert --p-t-4 --gap-2"
         to="scan-lead">
-        <i class="bi-qr-code-scan"></i>
+        <i class="bi-camera"></i>
         Scan
       </router-link>
     </div>

@@ -24,9 +24,10 @@
   gap:              $sp-4;
   height:           $nav-height;
   padding:          $nav-padding;
-  background-color: $color-primary-5;
+  background-color: $color-primary-11;
   .button {
-    width:     20%;
+    flex:      1 1 30%;
+    font-size: $font-sm;
     min-width: 65px;
     max-width: 85px;
     opacity:   65%;
