@@ -441,6 +441,14 @@ template {
   flex-basis: 5% !important;
 }
 
+.--max-w-50 {
+  max-width: 50px !important;
+}
+
+.--max-h-50 {
+  max-height: 50px !important;
+}
+
 .--w-10 {
   width: 10% !important;
 }
@@ -451,6 +459,14 @@ template {
 
 .--flex-basis-10 {
   flex-basis: 10% !important;
+}
+
+.--max-w-100 {
+  max-width: 100px !important;
+}
+
+.--max-h-100 {
+  max-height: 100px !important;
 }
 
 .--w-15 {
@@ -465,6 +481,14 @@ template {
   flex-basis: 15% !important;
 }
 
+.--max-w-150 {
+  max-width: 150px !important;
+}
+
+.--max-h-150 {
+  max-height: 150px !important;
+}
+
 .--w-20 {
   width: 20% !important;
 }
@@ -475,6 +499,14 @@ template {
 
 .--flex-basis-20 {
   flex-basis: 20% !important;
+}
+
+.--max-w-200 {
+  max-width: 200px !important;
+}
+
+.--max-h-200 {
+  max-height: 200px !important;
 }
 
 .--w-25 {
@@ -489,6 +521,14 @@ template {
   flex-basis: 25% !important;
 }
 
+.--max-w-250 {
+  max-width: 250px !important;
+}
+
+.--max-h-250 {
+  max-height: 250px !important;
+}
+
 .--w-30 {
   width: 30% !important;
 }
@@ -499,6 +539,14 @@ template {
 
 .--flex-basis-30 {
   flex-basis: 30% !important;
+}
+
+.--max-w-300 {
+  max-width: 300px !important;
+}
+
+.--max-h-300 {
+  max-height: 300px !important;
 }
 
 .--w-35 {
@@ -513,6 +561,14 @@ template {
   flex-basis: 35% !important;
 }
 
+.--max-w-350 {
+  max-width: 350px !important;
+}
+
+.--max-h-350 {
+  max-height: 350px !important;
+}
+
 .--w-40 {
   width: 40% !important;
 }
@@ -523,6 +579,14 @@ template {
 
 .--flex-basis-40 {
   flex-basis: 40% !important;
+}
+
+.--max-w-400 {
+  max-width: 400px !important;
+}
+
+.--max-h-400 {
+  max-height: 400px !important;
 }
 
 .--w-45 {
@@ -537,6 +601,14 @@ template {
   flex-basis: 45% !important;
 }
 
+.--max-w-450 {
+  max-width: 450px !important;
+}
+
+.--max-h-450 {
+  max-height: 450px !important;
+}
+
 .--w-50 {
   width: 50% !important;
 }
@@ -547,6 +619,14 @@ template {
 
 .--flex-basis-50 {
   flex-basis: 50% !important;
+}
+
+.--max-w-500 {
+  max-width: 500px !important;
+}
+
+.--max-h-500 {
+  max-height: 500px !important;
 }
 
 .--w-55 {
@@ -561,6 +641,14 @@ template {
   flex-basis: 55% !important;
 }
 
+.--max-w-550 {
+  max-width: 550px !important;
+}
+
+.--max-h-550 {
+  max-height: 550px !important;
+}
+
 .--w-60 {
   width: 60% !important;
 }
@@ -571,6 +659,14 @@ template {
 
 .--flex-basis-60 {
   flex-basis: 60% !important;
+}
+
+.--max-w-600 {
+  max-width: 600px !important;
+}
+
+.--max-h-600 {
+  max-height: 600px !important;
 }
 
 .--w-65 {
@@ -585,6 +681,14 @@ template {
   flex-basis: 65% !important;
 }
 
+.--max-w-650 {
+  max-width: 650px !important;
+}
+
+.--max-h-650 {
+  max-height: 650px !important;
+}
+
 .--w-70 {
   width: 70% !important;
 }
@@ -595,6 +699,14 @@ template {
 
 .--flex-basis-70 {
   flex-basis: 70% !important;
+}
+
+.--max-w-700 {
+  max-width: 700px !important;
+}
+
+.--max-h-700 {
+  max-height: 700px !important;
 }
 
 .--w-75 {
@@ -609,6 +721,14 @@ template {
   flex-basis: 75% !important;
 }
 
+.--max-w-750 {
+  max-width: 750px !important;
+}
+
+.--max-h-750 {
+  max-height: 750px !important;
+}
+
 .--w-80 {
   width: 80% !important;
 }
@@ -619,6 +739,14 @@ template {
 
 .--flex-basis-80 {
   flex-basis: 80% !important;
+}
+
+.--max-w-800 {
+  max-width: 800px !important;
+}
+
+.--max-h-800 {
+  max-height: 800px !important;
 }
 
 .--w-85 {
@@ -633,6 +761,14 @@ template {
   flex-basis: 85% !important;
 }
 
+.--max-w-850 {
+  max-width: 850px !important;
+}
+
+.--max-h-850 {
+  max-height: 850px !important;
+}
+
 .--w-90 {
   width: 90% !important;
 }
@@ -643,6 +779,14 @@ template {
 
 .--flex-basis-90 {
   flex-basis: 90% !important;
+}
+
+.--max-w-900 {
+  max-width: 900px !important;
+}
+
+.--max-h-900 {
+  max-height: 900px !important;
 }
 
 .--w-95 {
@@ -657,6 +801,14 @@ template {
   flex-basis: 95% !important;
 }
 
+.--max-w-950 {
+  max-width: 950px !important;
+}
+
+.--max-h-950 {
+  max-height: 950px !important;
+}
+
 .--w-100 {
   width: 100% !important;
 }
@@ -667,158 +819,6 @@ template {
 
 .--flex-basis-100 {
   flex-basis: 100% !important;
-}
-
-.--max-w-50 {
-  max-width: 50px !important;
-}
-
-.--max-h-50 {
-  max-height: 50px !important;
-}
-
-.--max-w-100 {
-  max-width: 100px !important;
-}
-
-.--max-h-100 {
-  max-height: 100px !important;
-}
-
-.--max-w-150 {
-  max-width: 150px !important;
-}
-
-.--max-h-150 {
-  max-height: 150px !important;
-}
-
-.--max-w-200 {
-  max-width: 200px !important;
-}
-
-.--max-h-200 {
-  max-height: 200px !important;
-}
-
-.--max-w-250 {
-  max-width: 250px !important;
-}
-
-.--max-h-250 {
-  max-height: 250px !important;
-}
-
-.--max-w-300 {
-  max-width: 300px !important;
-}
-
-.--max-h-300 {
-  max-height: 300px !important;
-}
-
-.--max-w-350 {
-  max-width: 350px !important;
-}
-
-.--max-h-350 {
-  max-height: 350px !important;
-}
-
-.--max-w-400 {
-  max-width: 400px !important;
-}
-
-.--max-h-400 {
-  max-height: 400px !important;
-}
-
-.--max-w-450 {
-  max-width: 450px !important;
-}
-
-.--max-h-450 {
-  max-height: 450px !important;
-}
-
-.--max-w-500 {
-  max-width: 500px !important;
-}
-
-.--max-h-500 {
-  max-height: 500px !important;
-}
-
-.--max-w-550 {
-  max-width: 550px !important;
-}
-
-.--max-h-550 {
-  max-height: 550px !important;
-}
-
-.--max-w-600 {
-  max-width: 600px !important;
-}
-
-.--max-h-600 {
-  max-height: 600px !important;
-}
-
-.--max-w-650 {
-  max-width: 650px !important;
-}
-
-.--max-h-650 {
-  max-height: 650px !important;
-}
-
-.--max-w-700 {
-  max-width: 700px !important;
-}
-
-.--max-h-700 {
-  max-height: 700px !important;
-}
-
-.--max-w-750 {
-  max-width: 750px !important;
-}
-
-.--max-h-750 {
-  max-height: 750px !important;
-}
-
-.--max-w-800 {
-  max-width: 800px !important;
-}
-
-.--max-h-800 {
-  max-height: 800px !important;
-}
-
-.--max-w-850 {
-  max-width: 850px !important;
-}
-
-.--max-h-850 {
-  max-height: 850px !important;
-}
-
-.--max-w-900 {
-  max-width: 900px !important;
-}
-
-.--max-h-900 {
-  max-height: 900px !important;
-}
-
-.--max-w-950 {
-  max-width: 950px !important;
-}
-
-.--max-h-950 {
-  max-height: 950px !important;
 }
 
 .--max-w-1000 {
@@ -12490,7 +12490,6 @@ table tbody tr input:active, table tbody tr input:focus {
   width: 20%;
   min-width: 65px;
   max-width: 85px;
-  opacity: 65%;
 }
 .nav-bar .button.--secondary {
   opacity: 100% !important;

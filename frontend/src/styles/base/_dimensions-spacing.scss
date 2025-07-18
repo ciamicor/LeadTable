@@ -13,9 +13,6 @@
   .--flex-basis-#{$i * 5} {
     flex-basis: #{$i * 5 + "%"} !important;
   }
-}
-
-@for $i from 1 through 20 {
   .--max-w-#{$i * 50} {
     max-width: #{$i * 50 + "px"} !important;
   }

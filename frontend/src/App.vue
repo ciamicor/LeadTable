@@ -27,6 +27,9 @@
       <i class="bi-gear-fill --m-r-4"/>
       Profile
     </router-link>
+    <button class="button --primary --p-8">
+      <i class="bi-list"></i>
+    </button>
   </nav>
 </template>
 
