@@ -1,5 +1,18 @@
-@use "../abstracts/index";
+@use "../abstracts/index" as *;
+
+.sidebar--nav-wrapper {
+  z-index:    99999;
+  position:   fixed;
+  top:        0;
+  bottom:     $nav-height-actual;
+  left:       0;
+
+  max-width:  100%;
+  background: $color-primary-6;
+}
 
 .sidebar--nav {
-
+  display: grid;
+  gap:     $sp-4;
+  padding: $sp-8;
 }

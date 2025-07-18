@@ -29,7 +29,7 @@ export async function getAllExhibitors(client: any, year: any) {
 /*-| Get Exhibitor |-*/
 
 /*---+----+---+----+---+----+---+----+---*/
-export async function getExhibitor(
+export async function getFpExhibitor(
   id: any,
   client: any,
   year: any) {
@@ -55,7 +55,7 @@ export async function getExhibitor(
 /*-| Get Exhibitor Extras |-*/
 
 /*---+----+---+----+---+----+---+----+---*/
-export async function getExhibExtras(
+export async function getFpExhibExtras(
   id: any,
   client: any,
   year: any,

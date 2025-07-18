@@ -5854,6 +5854,22 @@ table tbody tr input:active, table tbody tr input:focus {
   background: var(--grey-12);
 }
 
+.sidebar--nav-wrapper {
+  z-index: 99999;
+  position: fixed;
+  top: 0;
+  bottom: 92px;
+  left: 0;
+  max-width: 100%;
+  background: var(--color-primary-6);
+}
+
+.sidebar--nav {
+  display: grid;
+  gap: 8px;
+  padding: 24px;
+}
+
 /*-| Setup |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 /*-| Layout |-*/

@@ -62,8 +62,8 @@
 <script lang="ts"
         setup>
 import {
-  getExhibitor,
-  getExhibExtras
+  getFpExhibitor,
+  getFpExhibExtras
 } from '../services/ExpoFpDataService.ts'
 import {
   createCompany_Service,
@@ -115,9 +115,13 @@ async function saveDbLogin() {
 /*-| Login/Out |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 async function login() {
-  /*-| Get Exhibitor |-*/
+  /*-| Check if Company is in server DB |-*/
+  console.log("no data ", await getCompanyById_Service(companyLocalData.id))
+  console.log("with data ", await getCompanyById_Service(companyLocalData.id, companyLocalData))
+
+  /*-| Get Exhibitor from ExpoFP |-*/
   console.log('Getting Exhibitor...')
-  let gotExhib = await getExhibitor(
+  let gotExhib = await getFpExhibitor(
     companyLocalData.id,
     expoLocalData.expo_Client,
     expoLocalData.expo_Year,
@@ -136,7 +140,7 @@ async function login() {
   /*-| Check for Lead Retrieval |-*/
   /*---+----+---+----+---+----+---+----+---*/
   console.log('Matching extras...')
-  companyExtras.value = await getExhibExtras(
+  companyExtras.value = await getFpExhibExtras(
     companyLocalData.id,
     expoLocalData.expo_Client,
     expoLocalData.expo_Year)
@@ -155,8 +159,6 @@ async function login() {
   console.log('Saving company to Local DB...')
   await saveDbLogin()
   await createCompany_Service(companyLocalData)
-  /*-| Check if Company is in server DB |-*/
-  await getCompanyById_Service(companyLocalData.id)
 
   sessionStore.logged_In = true
   // window.location.reload()
@@ -171,4 +173,6 @@ async function logOut() {
   companyLocalData.$reset()
   window.location.reload()
 }
+
+
 </script>

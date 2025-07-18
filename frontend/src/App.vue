@@ -4,8 +4,14 @@
       <router-view/>
     </div>
   </div>
+  <sidebar-nav v-if="showSidebarNav"/>
   <nav v-if="route.path !== '/'"
        class="nav-bar">
+    <button
+      class="button --primary --p-8"
+      @click="toggleSidebarNav">
+      <i class="bi-list"></i>
+    </button>
     <router-link
       :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/floor-plan`"
       active-class="--secondary"
@@ -27,16 +33,14 @@
       <i class="bi-gear-fill --m-r-4"/>
       Profile
     </router-link>
-    <button class="button --primary --p-8">
-      <i class="bi-list"></i>
-    </button>
   </nav>
 </template>
 
 <script
   setup>
+import SidebarNav from "@/components/SidebarNav.vue";
 import { db } from '@/db.js'
-import { onBeforeMount } from 'vue'
+import { onBeforeMount, ref } from 'vue'
 import { useExpoLocalStore, useCompanyLocalStore, useSessionStore } from '@/stores.js'
 import { getUrl_ClientYear } from "@/services/functions/UrlFunc.js";
 import { getExpo_Service } from "@/services/ExpoDataService.js";
@@ -89,6 +93,14 @@ async function checkLoginState() {
   } catch ( e ) {
     console.error( e )
   }
+}
+
+/*-| Toggle Sidebar |-*/
+/*---+----+---+----+---+----+---+----+---*/
+const showSidebarNav = ref( false )
+
+function toggleSidebarNav() {
+  showSidebarNav.value = !showSidebarNav.value
 }
 
 /*-| Checks |-*/
