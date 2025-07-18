@@ -8,21 +8,21 @@
        class="nav-bar">
     <router-link
       :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/floor-plan`"
-      active-class="--primary--invert"
+      active-class="--secondary"
       class="button --p-8">
       <i class="bi-geo-alt-fill --m-r-4"/>
       Map
     </router-link>
     <router-link
       :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/leads-list`"
-      active-class="--primary--invert"
+      active-class="--secondary"
       class="button --p-8">
       <i class="bi-person-circle --m-r-4"/>
       Leads
     </router-link>
     <router-link
       :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/profile`"
-      active-class="--primary--invert"
+      active-class="--secondary"
       class="button --p-8">
       <i class="bi-gear-fill --m-r-4"/>
       Profile
