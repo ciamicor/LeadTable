@@ -12484,11 +12484,10 @@ table tbody tr input:active, table tbody tr input:focus {
   gap: 8px;
   height: 60px;
   padding: 16px;
-  background-color: var(--color-primary-11);
+  background-color: var(--color-primary-5);
 }
 .nav-bar .button {
-  flex: 1 1 30%;
-  font-size: 18px;
+  width: 20%;
   min-width: 65px;
   max-width: 85px;
   opacity: 65%;
