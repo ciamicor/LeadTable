@@ -11,6 +11,7 @@
         setup>
 import {db} from "@/db.ts";
 import {useCompanyLocalStore, useExpoLocalStore, useSessionStore} from "@/stores.ts";
+import {logOut_Exhibitor} from "@/services/functions/LoginLogout.ts";
 
 const sessionStore = useSessionStore()
 const companyLocalData = useCompanyLocalStore()
@@ -23,12 +24,6 @@ const props = defineProps(
 )
 
 async function logOut() {
-  // db.delete({ disableAutoOpen: false })
-  db.profile.delete(1)
-  loginIdMatch.value = false
-  extraMatch.value = false
-  sessionStore.logged_In = false
-  companyLocalData.$reset()
-  window.location.reload()
+  await logOut_Exhibitor()
 }
 </script>

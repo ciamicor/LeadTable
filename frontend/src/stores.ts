@@ -57,7 +57,7 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
 /*-| Company Store |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const useCompanyLocalStore = defineStore('companyLocal', () => {
-  const id = ref(null)
+  const id = ref(undefined)
   const name = ref('')
   const login_Url = ref('')
   const lead_Ret = ref(false)
@@ -65,7 +65,7 @@ const useCompanyLocalStore = defineStore('companyLocal', () => {
   const expo_Client = ref('')
 
   function $reset() {
-    id.value = null
+    id.value = undefined
     name.value = ''
     login_Url.value = ''
     lead_Ret.value = false

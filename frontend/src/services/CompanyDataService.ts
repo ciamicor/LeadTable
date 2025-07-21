@@ -53,13 +53,13 @@ async function createCompany_Service(companyObject: any) {
 async function getCompanyById_Service(id: any, companyObject: any = null) {
   try {
     let company = await companyService.get(id)
-    console.log('company: ', companyObject)
+    console.log('company object: ', companyObject)
     console.log('response: ', company)
     if (companyObject !== null) {
       companyObject.value = company.data
       console.log('company: ', companyObject.value)
     } else {
-      return company
+      return company.data
     }
   } catch (error) {
     console.error('Error getting company by ID: ', error)

@@ -71,8 +71,11 @@ import {
   updateCompanyLeadRet_Service
 } from '@/services/CompanyDataService.ts'
 import {ref} from 'vue'
+import type {Ref} from 'vue'
 import {db} from '@/db.ts'
 import {useCompanyLocalStore, useExpoLocalStore, useSessionStore} from '@/stores.ts'
+
+import {saveLogin_LocalDB} from "@/services/functions/LoginLogout.ts";
 
 /*-| Variables |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
@@ -116,29 +119,95 @@ async function saveDbLogin() {
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 async function login() {
   /*-| Check if Company is in server DB |-*/
-  console.log("no data ", await getCompanyById_Service(companyLocalData.id))
-  console.log("with data ", await getCompanyById_Service(companyLocalData.id, companyLocalData))
+  const serverExhib = await getCompanyById_Service(companyLocalData.id)
 
-  /*-| Get Exhibitor from ExpoFP |-*/
-  console.log('Getting Exhibitor...')
-  let gotExhib = await getFpExhibitor(
-    companyLocalData.id,
-    expoLocalData.expo_Client,
-    expoLocalData.expo_Year,
-  )
-  console.log("Got exhibitor company: ", gotExhib)
+  if (serverExhib) {
+    console.log("local company data", companyLocalData.name)
+    console.log("got them!", serverExhib.name)
+    companyLocalData.$patch({
+      id: serverExhib.id,
+      name: serverExhib.name,
+      login_Url: serverExhib.login_URL,
+      lead_Ret: serverExhib.lead_Ret,
+      expo_Year: serverExhib.expo_Year,
+      expo_Client: serverExhib.expo_Client,
+    })
+    await saveLogin_LocalDB(
+      companyLocalData.id,
+      companyLocalData.name,
+      companyLocalData.login_Url,
+      serverExhib.lead_Ret,
+      expoLocalData.expo_Client,
+      expoLocalData.expo_Year,
+      status
+    )
+    console.log("local company data", companyLocalData.name)
+  } else {
+    console.log("Didn't find that company. Check your company ID to make sure it exists.")
 
-  companyLocalData.$patch({
-    id: gotExhib.id,
-    name: gotExhib.name,
-    login_Url: gotExhib.autoLoginUrl,
-    lead_Ret: extraMatch.value,
-    expo_Year: expoLocalData.expo_Year,
-    expo_Client: expoLocalData.expo_Client,
-  })
+    /*-| Get Exhibitor from ExpoFP |-*/
+    console.log('Getting Exhibitor...')
+    let gotExhib = await getFpExhibitor(
+      companyLocalData.id,
+      expoLocalData.expo_Client,
+      expoLocalData.expo_Year,
+    )
+    console.log("Got exhibitor company: ", gotExhib)
 
-  /*-| Check for Lead Retrieval |-*/
-  /*---+----+---+----+---+----+---+----+---*/
+    companyLocalData.$patch({
+      id: gotExhib.id,
+      name: gotExhib.name,
+      login_Url: gotExhib.autoLoginUrl,
+      lead_Ret: extraMatch.value,
+      expo_Year: expoLocalData.expo_Year,
+      expo_Client: expoLocalData.expo_Client,
+    })
+
+    /*-| Check for Lead Retrieval |-*/
+    /*---+----+---+----+---+----+---+----+---*/
+    await checkLeadRetPurch()
+
+    /*-| Prep ExpoFP Login |-*/
+    console.log('Logging in for: ', companyLocalData.name)
+    console.log('loginURL is: ', companyLocalData.login_Url)
+
+    /*-| Save to local DB |-*/
+    console.log('Saving company to Local DB...')
+    // await saveDbLogin()
+    await saveLogin_LocalDB(
+      companyLocalData.id,
+      companyLocalData.name,
+      companyLocalData.login_Url,
+      extraMatch.value,
+      expoLocalData.expo_Client,
+      expoLocalData.expo_Year,
+      status
+    )
+    await createCompany_Service(companyLocalData)
+  }
+  sessionStore.logged_In = true
+  // window.location.reload()
+}
+
+async function logOut(
+  /*loginIdMatch: Ref<boolean>,
+  extraMatch: Ref<boolean>,
+  session_LoggedIn: boolean,*/
+) {
+  // db.delete({ disableAutoOpen: false })
+  db.profile.delete(1)
+  loginIdMatch.value = false
+  extraMatch.value = false
+  sessionStore.logged_In = false
+  companyLocalData.$reset()
+  window.location.reload()
+}
+
+// TODO add function that compares ExpoFP & DB results
+// Updates data where appropriate (loginURL, etc)
+// Should not update lead retrieval after expo date has passed.
+
+async function checkLeadRetPurch() {
   console.log('Matching extras...')
   companyExtras.value = await getFpExhibExtras(
     companyLocalData.id,
@@ -150,29 +219,6 @@ async function login() {
     e.name.toLowerCase().includes('lead retrieval')
   )
   console.log("Lead retrieval purchased: ", extraMatch.value)
-
-  /*-| Prep ExpoFP Login |-*/
-  console.log('Logging in for: ', companyLocalData.name)
-  console.log('loginURL is: ', companyLocalData.login_Url)
-
-  /*-| Save to local DB |-*/
-  console.log('Saving company to Local DB...')
-  await saveDbLogin()
-  await createCompany_Service(companyLocalData)
-
-  sessionStore.logged_In = true
-  // window.location.reload()
 }
-
-async function logOut() {
-  // db.delete({ disableAutoOpen: false })
-  db.profile.delete(1)
-  loginIdMatch.value = false
-  extraMatch.value = false
-  sessionStore.logged_In = false
-  companyLocalData.$reset()
-  window.location.reload()
-}
-
 
 </script>
