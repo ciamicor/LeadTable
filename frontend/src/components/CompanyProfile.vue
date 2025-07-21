@@ -51,17 +51,9 @@
       {{ companyExtras }}
     </div>
   </div>
-
-  <iframe
-    v-if="sessionStore.logged_In === true && expoLocalData.expoInPast === false"
-    :src="'https://app.expofp.com' + companyLocalData.login_Url"
-    allow="clipboard-read; clipboard-write"
-    class="view-floor-plan"
-  >
-  </iframe>
-
+  
   <div
-    v-else-if="sessionStore.logged_In === true && expoLocalData.expoInPast === true"
+    v-if="sessionStore.logged_In === true && expoLocalData.expoInPast === true"
     class="row"
   >
     <div class="col-10-300 col-8-800">
@@ -74,6 +66,16 @@
       </router-link>
     </div>
   </div>
+
+  <iframe
+    v-else-if="sessionStore.logged_In === true
+      && expoLocalData.expoInPast === false
+      && companyLocalData.login_Url !== ''"
+    :src="'https://app.expofp.com' + companyLocalData.login_Url"
+    allow="clipboard-read; clipboard-write"
+    class="view-floor-plan"
+  >
+  </iframe>
 </template>
 
 <script lang="ts"
