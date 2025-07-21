@@ -53,12 +53,27 @@
   </div>
 
   <iframe
-    v-if="sessionStore.logged_In === true"
+    v-if="sessionStore.logged_In === true && expoLocalData.expoInPast === false"
     :src="'https://app.expofp.com' + companyLocalData.login_Url"
     allow="clipboard-read; clipboard-write"
     class="view-floor-plan"
   >
   </iframe>
+
+  <div
+    v-else-if="sessionStore.logged_In === true && expoLocalData.expoInPast === true"
+    class="row"
+  >
+    <div class="col-10-300 col-8-800">
+      <h3>This expo has passed.</h3>
+      <p>After the expo you are unable to view your ExpoFP profile, but your leads are always
+         accessible. </p>
+      <router-link
+        class="button --success--invert"
+        to="leads-list">View Leads
+      </router-link>
+    </div>
+  </div>
 </template>
 
 <script lang="ts"

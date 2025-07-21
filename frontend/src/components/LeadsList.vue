@@ -47,7 +47,7 @@
       </div>
 
       <router-link
-        v-if="companyLocalData.lead_Ret === true"
+        v-if="companyLocalData.lead_Ret === true && expoLocalData.expoInPast === false"
         class="button --stacked --float --bottom-r --success--invert --p-t-4 --gap-2"
         to="scan-lead">
         <i class="bi-camera"></i>
