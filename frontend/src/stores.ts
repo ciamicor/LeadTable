@@ -1,9 +1,9 @@
 import {defineStore} from 'pinia'
 import {ref} from 'vue'
+import type {Ref} from 'vue'
 
-/*-| Session Store |-*/
-
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Session Store
+==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const useSessionStore = defineStore('sessionStore', () => {
   const logged_In = ref(false)
 
@@ -17,12 +17,12 @@ const useSessionStore = defineStore('sessionStore', () => {
   }
 })
 
-/*-| Expo Store |-*/
-
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Expo Store
+==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const useExpoLocalStore = defineStore('expoLocal', () => {
   const active = ref(false)
-  const start_Date = ref(null)
+  const start_Date: Ref<Date, Date> = ref(new Date())
+  const expoInPast: Ref<Boolean, Boolean> = ref(false)
   const expo_Client = ref('')
   const expo_Year = ref(0)
   const expoFp_Id = ref(0)
@@ -32,7 +32,7 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
 
   function $reset() {
     active.value = false
-    start_Date.value = null
+    start_Date.value = new Date()
     expo_Client.value = ''
     expo_Year.value = 0
     expoFp_Id.value = 0
@@ -44,6 +44,7 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
   return {
     active,
     start_Date,
+    expoInPast,
     expo_Client,
     expo_Year,
     expoFp_Id,
@@ -54,8 +55,8 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
   }
 })
 
-/*-| Company Store |-*/
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Company Store
+==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const useCompanyLocalStore = defineStore('companyLocal', () => {
   const id = ref(undefined)
   const name = ref('')

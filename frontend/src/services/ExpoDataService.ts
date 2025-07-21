@@ -60,21 +60,18 @@ async function createExpo_Service(expoObject: any) {
 /*-| Get by Client, Year |-*/
 
 /*---+----+---+----+---+----+---+----+---*/
-async function getExpo_Service(client: any, year: any, expoObject: any) {
+async function getExpo_Service(client: string, year: number, expoObject: any) {
   try {
     let e = await expoService.getExpo(client, year)
-    // console.log("Found Expo: ", response.data)
     expoObject.active = e.data.active
-    expoObject.start_Date = e.data.start_Date
+    expoObject.start_Date = new Date(e.data.start_Date.toString())
+    expoObject.expoInPast = new Date() > expoObject.start_Date
     expoObject.expo_Client = e.data.expo_Client
     expoObject.expo_Year = e.data.expo_Year
     expoObject.expoFp_Id = e.data.expoFp_Id
     expoObject.expoFp_MapUrl = e.data.expoFp_MapUrl
     expoObject.logoUrl_Color = e.data.logoUrl_Color
     expoObject.logoUrl_Black = e.data.logoUrl_Black
-
-    //expoObject.value = response.data
-    // console.log('expo: ', expoObject.value)
   } catch (e) {
     console.log('That expo doesn\'t exist. ', e)
   }

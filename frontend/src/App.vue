@@ -68,9 +68,6 @@ onBeforeMount( async () => {
   } )
   await getExpo_Service( url.client, url.year, expoLocalData )
   console.log( 'Expo is: ', expoLocalData )
-  /*if ( sessionStore.logged_In === true ) {
-    await checkExpoMatch()
-  }*/
 } )
 
 /*-| Get Company from Local |-*/

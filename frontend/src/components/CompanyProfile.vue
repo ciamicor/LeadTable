@@ -1,4 +1,5 @@
 <template>
+  <div>{{ expoLocalData.expoInPast }}</div>
   <button-sign-out
     v-if="sessionStore.logged_In === true"
     :extra-match="extraMatch"
@@ -14,8 +15,9 @@
                         Day</h4>
       <h1>Exhibitor Login</h1>
       <p>If you've already purchased lead retrieval, login here to access it.</p>
-      <p>To purchase lead retrieval, login to your ExpoFP Exhibitor profile here, and add it as a
-         booth extra.</p>
+      <p v-if="!expoLocalData.expoInPast">
+        To purchase lead retrieval, login to your ExpoFP Exhibitor profile here, and add it as a
+        booth extra.</p>
       <label
         for="profileUrl">
         Login ID
@@ -70,11 +72,12 @@ import {
   getCompanyById_Service,
   updateCompanyLeadRet_Service
 } from '@/services/CompanyDataService.ts'
+import {
+  useCompanyLocalStore,
+  useExpoLocalStore,
+  useSessionStore
+} from '@/stores.ts'
 import {ref} from 'vue'
-import type {Ref} from 'vue'
-import {db} from '@/db.ts'
-import {useCompanyLocalStore, useExpoLocalStore, useSessionStore} from '@/stores.ts'
-
 import {saveLogin_LocalDB} from "@/services/functions/LoginLogout.ts";
 import ButtonSignOut from './Button_SignOut.vue'
 
@@ -90,31 +93,7 @@ const sessionStore = useSessionStore()
 const companyLocalData = useCompanyLocalStore()
 const expoLocalData = useExpoLocalStore()
 
-/*-| Lifecycle |-*/
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-
-/*-| DB |-*/
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const status = ref()
-
-async function saveDbLogin() {
-  try {
-    const id = await db.profile.add({
-      id: 1,
-      ex_Id: companyLocalData.id || 0,
-      name: companyLocalData.name,
-      login_Url: companyLocalData.login_Url,
-      lead_Ret: extraMatch.value,
-      expo_Client: expoLocalData.expo_Client,
-      expo_Year: expoLocalData.expo_Year
-    })
-    status.value = `${companyLocalData.name}
-          successfully added. Got id ${id}`
-  } catch (error) {
-    status.value = `Failed to add
-          ${companyLocalData.name}: ${error}`
-  }
-}
 
 /*-| Login/Out |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
