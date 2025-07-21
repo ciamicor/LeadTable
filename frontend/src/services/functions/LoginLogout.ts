@@ -1,21 +1,8 @@
 import {db} from "@/db.ts";
 import type {Ref} from "vue";
 
-import {useCompanyLocalStore} from "@/stores.ts";
-
-// const companyLocalData = useCompanyLocalStore();
-
-/*-| Log Exhibitor Out
+/*-| Sign Out function is located in SignOut Vue component
 ---+----+---+----+---+----+---+----+---*/
-export async function logOut_Exhibitor() {
-  // db.delete({ disableAutoOpen: false })
-  db.profile.delete(1)
-  // loginIdMatch.value = false
-  // extraMatch.value = false
-  // sessionStore.logged_In = false
-  // companyLocalData.$reset()
-  window.location.reload()
-}
 
 /*-| Save login to Browser Local Storage (Dexie DB)
 ---+----+---+----+---+----+---+----+---*/

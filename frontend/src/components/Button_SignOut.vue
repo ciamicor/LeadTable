@@ -1,7 +1,6 @@
 <template>
   <button v-if="sessionStore.logged_In === true"
-          :class="props.css_classes"
-          class="--float --top-r --warn--invert"
+          :class="props.css_classes ? props.css_classes : '--float --top-r --warn--invert'"
           @click="logOut">
     Sign Out
   </button>
@@ -10,20 +9,29 @@
 <script lang="ts"
         setup>
 import {db} from "@/db.ts";
-import {useCompanyLocalStore, useExpoLocalStore, useSessionStore} from "@/stores.ts";
-import {logOut_Exhibitor} from "@/services/functions/LoginLogout.ts";
+import {useCompanyLocalStore, useSessionStore} from "@/stores.ts";
 
 const sessionStore = useSessionStore()
 const companyLocalData = useCompanyLocalStore()
-const expoLocalData = useExpoLocalStore()
 
 const props = defineProps(
   {
-    css_classes: {type: String, default: ""}
+    css_classes: {type: String, default: ""},
+    loginIdMatch: {type: Boolean, default: undefined},
+    extraMatch: {type: Boolean, default: undefined}
   }
 )
 
 async function logOut() {
-  await logOut_Exhibitor()
+  console.log("Company local:", companyLocalData.name)
+  console.log("loginId match:", props.loginIdMatch)
+  console.log("extras match:", props.extraMatch)
+  db.profile.delete(1)
+  sessionStore.logged_In = false
+  companyLocalData.$reset()
+  console.log("Company local:", companyLocalData.name)
+  console.log("loginId match:", props.loginIdMatch)
+  console.log("extras match:", props.extraMatch)
 }
+
 </script>

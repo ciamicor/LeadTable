@@ -1,9 +1,9 @@
 <template>
-  <button v-if="sessionStore.logged_In === true"
-          class="--float --top-r --warn--invert"
-          @click="logOut">
-    Sign Out
-  </button>
+  <button-sign-out
+    v-if="sessionStore.logged_In === true"
+    :extra-match="extraMatch"
+    :login-id-match="loginIdMatch"
+  />
 
   <div
     v-else
@@ -76,6 +76,7 @@ import {db} from '@/db.ts'
 import {useCompanyLocalStore, useExpoLocalStore, useSessionStore} from '@/stores.ts'
 
 import {saveLogin_LocalDB} from "@/services/functions/LoginLogout.ts";
+import ButtonSignOut from './Button_SignOut.vue'
 
 /*-| Variables |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
@@ -121,9 +122,9 @@ async function login() {
   /*-| Check if Company is in server DB |-*/
   const serverExhib = await getCompanyById_Service(companyLocalData.id)
 
+  /*-| If exists, get Exhibitor from Server DB
+  ---+----+---+----+---+----+---+----+---*/
   if (serverExhib) {
-    console.log("local company data", companyLocalData.name)
-    console.log("got them!", serverExhib.name)
     companyLocalData.$patch({
       id: serverExhib.id,
       name: serverExhib.name,
@@ -141,18 +142,17 @@ async function login() {
       expoLocalData.expo_Year,
       status
     )
-    console.log("local company data", companyLocalData.name)
   } else {
     console.log("Didn't find that company. Check your company ID to make sure it exists.")
-
-    /*-| Get Exhibitor from ExpoFP |-*/
+    /*-| If not in Server DB, Get Exhibitor from ExpoFP
+    ---+----+---+----+---+----+---+----+---*/
     console.log('Getting Exhibitor...')
     let gotExhib = await getFpExhibitor(
       companyLocalData.id,
       expoLocalData.expo_Client,
       expoLocalData.expo_Year,
     )
-    console.log("Got exhibitor company: ", gotExhib)
+    console.log("Got exhibitor company from ExpoFP: ", gotExhib)
 
     companyLocalData.$patch({
       id: gotExhib.id,
@@ -187,20 +187,6 @@ async function login() {
   }
   sessionStore.logged_In = true
   // window.location.reload()
-}
-
-async function logOut(
-  /*loginIdMatch: Ref<boolean>,
-  extraMatch: Ref<boolean>,
-  session_LoggedIn: boolean,*/
-) {
-  // db.delete({ disableAutoOpen: false })
-  db.profile.delete(1)
-  loginIdMatch.value = false
-  extraMatch.value = false
-  sessionStore.logged_In = false
-  companyLocalData.$reset()
-  window.location.reload()
 }
 
 // TODO add function that compares ExpoFP & DB results
