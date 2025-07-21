@@ -93,12 +93,15 @@ import {
   useSessionStore
 } from '@/stores.ts'
 import {ref} from 'vue'
+import {useRouter} from "vue-router";
 import {saveLogin_LocalDB} from "@/services/functions/LoginLogout.ts";
 import ButtonSignOut from './Button_SignOut.vue'
 
 /*-| Variables |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const debug = ref(false)
+
+const router = useRouter()
 
 const companyExtras = ref()
 const loginIdMatch = ref(false)
@@ -180,7 +183,10 @@ async function login() {
     await createCompany_Service(companyLocalData)
   }
   sessionStore.logged_In = true
-  // window.location.reload()
+
+  if (companyLocalData.lead_Ret) {
+    await router.push({name: 'LeadsList'})
+  }
 }
 
 // TODO add function that compares ExpoFP & DB results
