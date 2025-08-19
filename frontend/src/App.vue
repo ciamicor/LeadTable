@@ -5,9 +5,13 @@
        class="nav-bar">
     <button
       id="toggle-nav"
-      class="button --primary p-8"
+      :class="showSidebarNav ? ' --warn ' : ' --primary ' "
+      class="button p-8"
       @click="toggleSidebarNav">
-      <i class="bi-list"></i>
+      <i v-if="!showSidebarNav"
+         class="bi-list"></i>
+      <i v-if="showSidebarNav"
+         class="bi-x-lg"></i>
     </button>
   </nav>
   <div class="view-mask">

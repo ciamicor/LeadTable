@@ -10,7 +10,7 @@
     v-else
     class="row --place-content-center --place-items-center">
     <div
-      class="--p-v-20 col-12-300 col-10-500 col-6-900">
+      class="col-12-300 col-10-500 col-6-900 --p-24-clamp">
       <h4 class="--m-0">
         {{ expoLocalData.expo_Client }} {{ expoLocalData.expo_Year }} Supplier's Day
       </h4>
@@ -32,7 +32,7 @@
              type="tel">
       <button class="--primary--invert"
               @click="login()">
-        Exhibitor Profile Login
+        Login
       </button>
     </div>
   </div>
