@@ -37,7 +37,7 @@
 @for $f from 0 through 16 {
   $add: #{14 + (2 * $f)};
   .--font-size-#{$add} {
-    font-size: #{$add + "px"};
+    font-size: #{$add + "px"} !important;
   }
 }
 

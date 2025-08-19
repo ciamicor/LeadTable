@@ -5290,71 +5290,71 @@ template {
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 /*-| Font Size Classes |-*/
 .--font-size-14 {
-  font-size: 14px;
+  font-size: 14px !important;
 }
 
 .--font-size-16 {
-  font-size: 16px;
+  font-size: 16px !important;
 }
 
 .--font-size-18 {
-  font-size: 18px;
+  font-size: 18px !important;
 }
 
 .--font-size-20 {
-  font-size: 20px;
+  font-size: 20px !important;
 }
 
 .--font-size-22 {
-  font-size: 22px;
+  font-size: 22px !important;
 }
 
 .--font-size-24 {
-  font-size: 24px;
+  font-size: 24px !important;
 }
 
 .--font-size-26 {
-  font-size: 26px;
+  font-size: 26px !important;
 }
 
 .--font-size-28 {
-  font-size: 28px;
+  font-size: 28px !important;
 }
 
 .--font-size-30 {
-  font-size: 30px;
+  font-size: 30px !important;
 }
 
 .--font-size-32 {
-  font-size: 32px;
+  font-size: 32px !important;
 }
 
 .--font-size-34 {
-  font-size: 34px;
+  font-size: 34px !important;
 }
 
 .--font-size-36 {
-  font-size: 36px;
+  font-size: 36px !important;
 }
 
 .--font-size-38 {
-  font-size: 38px;
+  font-size: 38px !important;
 }
 
 .--font-size-40 {
-  font-size: 40px;
+  font-size: 40px !important;
 }
 
 .--font-size-42 {
-  font-size: 42px;
+  font-size: 42px !important;
 }
 
 .--font-size-44 {
-  font-size: 44px;
+  font-size: 44px !important;
 }
 
 .--font-size-46 {
-  font-size: 46px;
+  font-size: 46px !important;
 }
 
 /*-| Elements |-*/
@@ -5414,7 +5414,7 @@ button,
   border-bottom-width: 3px;
   border-radius: 8px;
   background: var(--grey-12);
-  transition: background 200ms ease-in-out, color 200ms ease-in-out, border-width 100ms ease-in-out;
+  transition: background 200ms ease-out, color 200ms ease-out, border-width 100ms ease-out;
   /*-| Alternatives |-*/
   /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
   /*-| Mixin |-*/
@@ -5593,7 +5593,7 @@ input, select, textarea {
   padding: 12px 12px 10px;
   border: 2px solid var(--grey-10);
   border-radius: 8px;
-  transition: box-shadow 200ms ease-in-out, border 200ms ease-in-out;
+  transition: box-shadow 200ms ease-out, border 200ms ease-out;
 }
 input::placeholder, select::placeholder, textarea::placeholder {
   color: var(--grey-8);
@@ -5635,7 +5635,7 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
 .search-wrap input.search {
   padding: 12px 20px;
   border-radius: 65px;
-  transition: border-radius 200ms ease-in-out;
+  transition: border-radius 200ms ease-out;
 }
 .search-wrap input.search:focus, .search-wrap input.search:focus-visible {
   border-radius: 8px;
@@ -5676,7 +5676,7 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
   border: 1px solid var(--grey-8);
   border-radius: 8px;
   outline: 1px solid rgba(0, 0, 0, 0);
-  transition: outline 100ms ease-in-out, background 400ms ease-in-out;
+  transition: outline 100ms ease-out, background 400ms ease-out;
 }
 .lead-cards-container .grid-card:hover, .lead-cards-container .lead-card:hover {
   outline: 1px solid var(--color-success-9);
@@ -5703,7 +5703,7 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
   font-size: 16px;
   font-weight: 300;
   min-width: max-content;
-  transition: background 100ms ease-in-out;
+  transition: background 100ms ease-out;
   text-decoration-line: underline;
   text-underline-offset: 2px;
   text-decoration-color: var(--color-success-11);
@@ -5862,12 +5862,18 @@ table tbody tr input:active, table tbody tr input:focus {
   left: 0;
   display: flex;
   flex-flow: row nowrap;
-  place-content: end;
-  place-items: end;
+  align-items: center;
+  justify-content: space-between;
   gap: 8px;
   height: 45px;
   padding: 12px;
-  background-color: var(--color-primary-5);
+  background-color: var(--color-primary-4);
+}
+.nav-bar #page-title {
+  color: white;
+  font-size: 22px;
+  font-weight: 500;
+  padding-left: 8px;
 }
 
 .sidebar--nav-wrapper {
@@ -5877,22 +5883,39 @@ table tbody tr input:active, table tbody tr input:focus {
   bottom: 0;
   left: 0;
   display: flex;
+  flex-flow: column nowrap;
   place-content: stretch;
   width: 100dvw;
   background: var(--color-primary-6);
+  transition: all 100ms ease-out;
+}
+.sidebar--nav-wrapper.hide {
+  translate: -500px 0;
 }
 @media (min-width: 550px) {
   .sidebar--nav-wrapper {
-    max-width: 365px;
+    width: 65vw;
+    max-width: 465px;
   }
 }
 
 .sidebar--nav {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
   flex: 1 1;
   flex-flow: column nowrap;
   gap: 8px;
   padding: 12px;
+}
+.sidebar--nav .nav-buttons-grid--wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 165px);
+  gap: 8px;
+}
+.sidebar--nav .nav-buttons-grid--wrapper .button {
+  gap: 16px;
+  padding: 16px;
 }
 .sidebar--nav #sign-in, .sidebar--nav #sign-out {
   margin-block-start: auto;
@@ -12373,7 +12396,7 @@ table tbody tr input:active, table tbody tr input:focus {
   border: 1px solid var(--grey-8);
   border-radius: 8px;
   outline: 1px solid rgba(0, 0, 0, 0);
-  transition: outline 100ms ease-in-out, background 400ms ease-in-out;
+  transition: outline 100ms ease-out, background 400ms ease-out;
 }
 .badge-select-grid .grid-card:hover, .badge-select-grid .badge-select-wrap:hover {
   outline: 1px solid var(--color-success-9);
@@ -12497,7 +12520,7 @@ table tbody tr input:active, table tbody tr input:focus {
   border: 1px solid var(--grey-8);
   border-radius: 8px;
   outline: 1px solid rgba(0, 0, 0, 0);
-  transition: outline 100ms ease-in-out, background 400ms ease-in-out;
+  transition: outline 100ms ease-out, background 400ms ease-out;
 }
 .expo-select-container .grid-card:hover {
   outline: 1px solid var(--color-success-9);

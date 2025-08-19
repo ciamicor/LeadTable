@@ -2,12 +2,9 @@
 
   <div class="row-12-300 --gap-24 --place-content-center --p-4">
     <form
-      class="col-12-300 col-10-600 col-8-900 --p-b-24 --p-t-12"
+      class="col-12-300 col-10-600 col-8-900 --p-b-24 --p-t-4"
       @submit.prevent="createAttendee(attendee)"
     >
-      <h4 class="--m-0">{{ expoLocalData.expo_Client }} {{ expoLocalData.expo_Year }} Supplier's
-                        Day</h4>
-      <h1 id="attendee-reg">Attendee Registration</h1>
       <p>All fields are required.</p>
       <div class="row-12-300 --items">
         <label>
@@ -110,7 +107,7 @@
             </label>-->
 
       <button v-if="!showQr"
-              class="--success --m-t-12"
+              class="--success--invert --m-t-12"
               type="submit"
       >
         Submit Registration

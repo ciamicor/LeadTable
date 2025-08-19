@@ -1,8 +1,13 @@
 <template>
-  <sidebar-nav v-if="showSidebarNav"
+  <sidebar-nav :toggled="showSidebarNav"
                @closeNav="toggleSidebarNav"/>
   <nav v-if="route.path !== '/'"
        class="nav-bar">
+
+    <span id="page-title"
+          class="--m-0">
+      {{ route.name }}
+    </span>
     <button
       id="toggle-nav"
       :class="showSidebarNav ? ' --warn ' : ' --primary ' "

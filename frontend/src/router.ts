@@ -42,27 +42,27 @@ const routes = [
       },
       {
         path: 'leads-list',
-        name: 'LeadsList',
+        name: 'Lead Table',
         component: LeadsList,
       },
       {
         path: 'scan-lead',
-        name: 'LeadAdd',
+        name: 'Add a Lead',
         component: LeadAdd,
       },
       {
         path: 'floor-plan',
-        name: 'ExpoMap',
+        name: 'Booth Map',
         component: ExpoMap,
       },
       {
         path: 'profile',
-        name: 'CompanyProfile',
+        name: 'Company Profile',
         component: CompanyProfile,
       },
       {
         path: 'create-badge',
-        name: 'BadgeCreate',
+        name: 'Create a Badge',
         component: BadgeCreate,
       },
       /*-| Admin Views |-*/
