@@ -6,6 +6,7 @@
 /backend/package-lock.json
 /frontend/package-lock.json
 /frontend/src/assets
+/assets/
 
 ## Font
 *.ttf     -text diff

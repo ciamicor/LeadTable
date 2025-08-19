@@ -1,4 +1,5 @@
 @use "functions" as f;
+@use "sass:map";
 
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Page Layout |-*/
@@ -22,7 +23,7 @@ $max-page-width:       1600 !default;
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 $app-height:           100dvh !default;
 $app-width:            100dvw !default;
-$nav-height:           60px !default;
+$nav-height:           45px !default;
 $nav-padding:          16px !default;
 $nav-height-actual:    calc($nav-height + ($nav-padding * 2)) !default;
 $view-height:          calc($app-height - $nav-height-actual) !default;
@@ -113,20 +114,7 @@ $lightness-9:          72% !default;
 $lightness-10:         80% !default;
 $lightness-11:         88% !default;
 $lightness-12:         94% !default;
-$color-saturate:       (
-                         94,
-                         88,
-                         80,
-                         72,
-                         64,
-                         56,
-                         48,
-                         40,
-                         32,
-                         24,
-                         16,
-                         8,
-                       );
+
 $color-light:          (
                          8,
                          16,
@@ -142,21 +130,36 @@ $color-light:          (
                          94
                        );
 $color-hues:           (
-                         "primary": "85",
-                         "secondary": "45",
-                         "success": "235",
-                         "warn": "10",
+                         "primary": (
+                           "hue": "85",
+                           "saturation": "65"
+                         ),
+                         "secondary": (
+                           "hue": "45",
+                           "saturation": "95"
+                         ),
+                         "success": (
+                           "hue": "235",
+                           "saturation": "55"
+                         ),
+                         "warn": (
+                           "hue": "5",
+                           "saturation": "75"
+                         ),
                        );
 $grey-hue:             "215" !default;
+
 :root {
   @for $c from 1 through 12 {
-    @each $type, $hue in $color-hues {
-      --color-#{$type}-#{$c}: hsl(#{$hue}, #{80 + "%"}, #{(0 + (8 *$c)) + "%"});
+    @each $type, $values in $color-hues {
+      $hue:                   map.get($values, "hue");
+      $sat:                   map.get($values, "saturation");
+      --color-#{$type}-#{$c}: hsl(#{$hue}, #{$sat + "%"}, #{(0 + (8 *$c)) + "%"});
     }
     --grey-#{$c}: hsl(#{$grey-hue}, 20%, #{(0 + (8 *$c)) + "%"});
   }
   --color-primary-hs:   85, 65%;
-  --color-secondary-hs: 35, 85%;
+  --color-secondary-hs: 35, 15%;
   --color-success-hs:   235, 85%;
   --color-warn-hs:      10, 85%;
   --grey-1-hsl:         215, 25%, #{$lightness-1};

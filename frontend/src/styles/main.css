@@ -335,68 +335,68 @@ template {
 /*-| Colors |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 :root {
-  --color-primary-1: hsl(85, 80%, 8%);
-  --color-secondary-1: hsl(45, 80%, 8%);
-  --color-success-1: hsl(235, 80%, 8%);
-  --color-warn-1: hsl(10, 80%, 8%);
+  --color-primary-1: hsl(85, 65%, 8%);
+  --color-secondary-1: hsl(45, 95%, 8%);
+  --color-success-1: hsl(235, 55%, 8%);
+  --color-warn-1: hsl(5, 75%, 8%);
   --grey-1: hsl(215, 20%, 8%);
-  --color-primary-2: hsl(85, 80%, 16%);
-  --color-secondary-2: hsl(45, 80%, 16%);
-  --color-success-2: hsl(235, 80%, 16%);
-  --color-warn-2: hsl(10, 80%, 16%);
+  --color-primary-2: hsl(85, 65%, 16%);
+  --color-secondary-2: hsl(45, 95%, 16%);
+  --color-success-2: hsl(235, 55%, 16%);
+  --color-warn-2: hsl(5, 75%, 16%);
   --grey-2: hsl(215, 20%, 16%);
-  --color-primary-3: hsl(85, 80%, 24%);
-  --color-secondary-3: hsl(45, 80%, 24%);
-  --color-success-3: hsl(235, 80%, 24%);
-  --color-warn-3: hsl(10, 80%, 24%);
+  --color-primary-3: hsl(85, 65%, 24%);
+  --color-secondary-3: hsl(45, 95%, 24%);
+  --color-success-3: hsl(235, 55%, 24%);
+  --color-warn-3: hsl(5, 75%, 24%);
   --grey-3: hsl(215, 20%, 24%);
-  --color-primary-4: hsl(85, 80%, 32%);
-  --color-secondary-4: hsl(45, 80%, 32%);
-  --color-success-4: hsl(235, 80%, 32%);
-  --color-warn-4: hsl(10, 80%, 32%);
+  --color-primary-4: hsl(85, 65%, 32%);
+  --color-secondary-4: hsl(45, 95%, 32%);
+  --color-success-4: hsl(235, 55%, 32%);
+  --color-warn-4: hsl(5, 75%, 32%);
   --grey-4: hsl(215, 20%, 32%);
-  --color-primary-5: hsl(85, 80%, 40%);
-  --color-secondary-5: hsl(45, 80%, 40%);
-  --color-success-5: hsl(235, 80%, 40%);
-  --color-warn-5: hsl(10, 80%, 40%);
+  --color-primary-5: hsl(85, 65%, 40%);
+  --color-secondary-5: hsl(45, 95%, 40%);
+  --color-success-5: hsl(235, 55%, 40%);
+  --color-warn-5: hsl(5, 75%, 40%);
   --grey-5: hsl(215, 20%, 40%);
-  --color-primary-6: hsl(85, 80%, 48%);
-  --color-secondary-6: hsl(45, 80%, 48%);
-  --color-success-6: hsl(235, 80%, 48%);
-  --color-warn-6: hsl(10, 80%, 48%);
+  --color-primary-6: hsl(85, 65%, 48%);
+  --color-secondary-6: hsl(45, 95%, 48%);
+  --color-success-6: hsl(235, 55%, 48%);
+  --color-warn-6: hsl(5, 75%, 48%);
   --grey-6: hsl(215, 20%, 48%);
-  --color-primary-7: hsl(85, 80%, 56%);
-  --color-secondary-7: hsl(45, 80%, 56%);
-  --color-success-7: hsl(235, 80%, 56%);
-  --color-warn-7: hsl(10, 80%, 56%);
+  --color-primary-7: hsl(85, 65%, 56%);
+  --color-secondary-7: hsl(45, 95%, 56%);
+  --color-success-7: hsl(235, 55%, 56%);
+  --color-warn-7: hsl(5, 75%, 56%);
   --grey-7: hsl(215, 20%, 56%);
-  --color-primary-8: hsl(85, 80%, 64%);
-  --color-secondary-8: hsl(45, 80%, 64%);
-  --color-success-8: hsl(235, 80%, 64%);
-  --color-warn-8: hsl(10, 80%, 64%);
+  --color-primary-8: hsl(85, 65%, 64%);
+  --color-secondary-8: hsl(45, 95%, 64%);
+  --color-success-8: hsl(235, 55%, 64%);
+  --color-warn-8: hsl(5, 75%, 64%);
   --grey-8: hsl(215, 20%, 64%);
-  --color-primary-9: hsl(85, 80%, 72%);
-  --color-secondary-9: hsl(45, 80%, 72%);
-  --color-success-9: hsl(235, 80%, 72%);
-  --color-warn-9: hsl(10, 80%, 72%);
+  --color-primary-9: hsl(85, 65%, 72%);
+  --color-secondary-9: hsl(45, 95%, 72%);
+  --color-success-9: hsl(235, 55%, 72%);
+  --color-warn-9: hsl(5, 75%, 72%);
   --grey-9: hsl(215, 20%, 72%);
-  --color-primary-10: hsl(85, 80%, 80%);
-  --color-secondary-10: hsl(45, 80%, 80%);
-  --color-success-10: hsl(235, 80%, 80%);
-  --color-warn-10: hsl(10, 80%, 80%);
+  --color-primary-10: hsl(85, 65%, 80%);
+  --color-secondary-10: hsl(45, 95%, 80%);
+  --color-success-10: hsl(235, 55%, 80%);
+  --color-warn-10: hsl(5, 75%, 80%);
   --grey-10: hsl(215, 20%, 80%);
-  --color-primary-11: hsl(85, 80%, 88%);
-  --color-secondary-11: hsl(45, 80%, 88%);
-  --color-success-11: hsl(235, 80%, 88%);
-  --color-warn-11: hsl(10, 80%, 88%);
+  --color-primary-11: hsl(85, 65%, 88%);
+  --color-secondary-11: hsl(45, 95%, 88%);
+  --color-success-11: hsl(235, 55%, 88%);
+  --color-warn-11: hsl(5, 75%, 88%);
   --grey-11: hsl(215, 20%, 88%);
-  --color-primary-12: hsl(85, 80%, 96%);
-  --color-secondary-12: hsl(45, 80%, 96%);
-  --color-success-12: hsl(235, 80%, 96%);
-  --color-warn-12: hsl(10, 80%, 96%);
+  --color-primary-12: hsl(85, 65%, 96%);
+  --color-secondary-12: hsl(45, 95%, 96%);
+  --color-success-12: hsl(235, 55%, 96%);
+  --color-warn-12: hsl(5, 75%, 96%);
   --grey-12: hsl(215, 20%, 96%);
   --color-primary-hs: 85, 65%;
-  --color-secondary-hs: 35, 85%;
+  --color-secondary-hs: 35, 15%;
   --color-success-hs: 235, 85%;
   --color-warn-hs: 10, 85%;
   --grey-1-hsl: 215, 25%, 8%;
@@ -5400,7 +5400,7 @@ button,
   flex: 0 1 auto;
   place-content: center;
   place-items: center;
-  color: var(--grey-4);
+  color: var(--grey-2);
   font-size: 16px;
   font-weight: 400;
   line-height: 1;
@@ -5430,7 +5430,7 @@ button i,
 button:hover,
 .button:hover {
   color: var(--grey-2);
-  background: var(--grey-10);
+  background: var(--grey-11);
 }
 button.--square,
 .button.--square {
@@ -5457,16 +5457,16 @@ button.--float.--top-l,
 button.--float.--bottom-r,
 .button.--float.--bottom-r {
   right: 24px;
-  bottom: calc(116px);
+  bottom: calc(101px);
 }
 button.--float.--bottom-l,
 .button.--float.--bottom-l {
-  bottom: calc(116px);
+  bottom: calc(101px);
   left: 24px;
 }
 button.--float.--bottom-c,
 .button.--float.--bottom-c {
-  bottom: calc(116px);
+  bottom: calc(101px);
   left: 50%;
   transform: -50% 0;
 }
@@ -5497,18 +5497,18 @@ button.--primary,
 button.--primary:hover,
 .button.--primary:hover {
   color: var(--color-primary-2);
-  background: var(--color-primary-8);
+  background: var(--color-primary-10);
 }
 button.--primary--invert,
 .button.--primary--invert {
-  color: var(--color-primary-12);
-  border-color: var(--color-primary-4);
-  background: var(--color-primary-5);
+  color: var(--color-primary-1);
+  border-color: var(--color-primary-3);
+  background: var(--color-primary-7);
 }
 button.--primary--invert:hover,
 .button.--primary--invert:hover {
-  color: var(--color-primary-11);
-  background: var(--color-primary-4);
+  color: var(--color-primary-1);
+  background: var(--color-primary-8);
 }
 button.--secondary,
 .button.--secondary {
@@ -5519,40 +5519,40 @@ button.--secondary,
 button.--secondary:hover,
 .button.--secondary:hover {
   color: var(--color-secondary-2);
-  background: var(--color-secondary-9);
+  background: var(--color-secondary-10);
 }
 button.--secondary--invert,
 .button.--secondary--invert {
-  color: var(--color-secondary-12);
+  color: var(--color-secondary-1);
   border-color: var(--color-secondary-3);
-  background: var(--color-secondary-5);
+  background: var(--color-secondary-7);
 }
 button.--secondary--invert:hover,
 .button.--secondary--invert:hover {
-  color: var(--color-secondary-10);
-  background: var(--color-secondary-4);
+  color: var(--color-secondary-1);
+  background: var(--color-secondary-8);
 }
 button.--success,
 .button.--success {
   color: var(--color-success-2);
   border-color: var(--color-success-8);
-  background: var(--color-success-11);
+  background: var(--color-success-12);
 }
 button.--success:hover,
 .button.--success:hover {
   color: var(--color-success-2);
-  background: var(--color-success-10);
+  background: var(--color-success-11);
 }
 button.--success--invert,
 .button.--success--invert {
-  color: var(--color-success-12);
+  color: white;
   border-color: var(--color-success-3);
   background: var(--color-success-6);
 }
 button.--success--invert:hover,
 .button.--success--invert:hover {
-  color: var(--color-success-10);
-  background: var(--color-success-4);
+  color: white;
+  background: var(--color-success-7);
 }
 button.--warn,
 .button.--warn {
@@ -5563,18 +5563,18 @@ button.--warn,
 button.--warn:hover,
 .button.--warn:hover {
   color: var(--color-warn-2);
-  background: var(--color-warn-9);
+  background: var(--color-warn-10);
 }
 button.--warn--invert,
 .button.--warn--invert {
-  color: var(--color-warn-12);
+  color: white;
   border-color: var(--color-warn-3);
-  background: var(--color-warn-5);
+  background: var(--color-warn-6);
 }
 button.--warn--invert:hover,
 .button.--warn--invert:hover {
-  color: var(--color-warn-10);
-  background: var(--color-warn-4);
+  color: white;
+  background: var(--color-warn-7);
 }
 
 label {
@@ -5729,7 +5729,7 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
   position: fixed;
   top: 0;
   right: 0;
-  bottom: 92px;
+  bottom: 77px;
   left: 0;
   display: flex;
   place-content: stretch;
@@ -5744,7 +5744,7 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
   flex: 1 1 100%;
   place-content: flex-start center;
   place-items: flex-start center;
-  max-height: calc(100dvh - 92px);
+  max-height: calc(100dvh - 77px);
 }
 .modal-backdrop .modal-content {
   flex: 1 1 auto;
@@ -5757,7 +5757,7 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
 }
 
 .scanner-camera-container {
-  height: calc(100dvh - 92px) !important;
+  height: calc(100dvh - 77px) !important;
 }
 
 .scanner-camera-wrap {
@@ -5767,7 +5767,7 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
 .qr-float-container {
   position: absolute;
   right: 16px;
-  bottom: 96px;
+  bottom: 81px;
   left: 16px;
   place-content: space-between;
   align-items: stretch;
@@ -5791,7 +5791,7 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
 .scan-placement-container {
   z-index: 10;
   position: absolute;
-  bottom: calc(60% + 92px);
+  bottom: calc(60% + 77px);
   left: 50%;
   aspect-ratio: 1;
   width: 65%;
@@ -5854,20 +5854,48 @@ table tbody tr input:active, table tbody tr input:focus {
   background: var(--grey-12);
 }
 
+.nav-bar {
+  z-index: 10000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  place-content: end;
+  place-items: end;
+  gap: 8px;
+  height: 45px;
+  padding: 16px;
+  background-color: var(--color-primary-5);
+}
+
 .sidebar--nav-wrapper {
   z-index: 99999;
   position: fixed;
-  top: 0;
-  bottom: 92px;
+  top: 77px;
+  bottom: 0;
   left: 0;
-  max-width: 100%;
+  display: flex;
+  place-content: stretch;
+  width: 100dvw;
   background: var(--color-primary-6);
+}
+@media (min-width: 550px) {
+  .sidebar--nav-wrapper {
+    max-width: 365px;
+  }
 }
 
 .sidebar--nav {
-  display: grid;
+  display: flex;
+  flex: 1 1;
+  flex-flow: column nowrap;
   gap: 8px;
-  padding: 24px;
+  padding: 16px;
+}
+.sidebar--nav #sign-in, .sidebar--nav #sign-out {
+  margin-block-start: auto;
 }
 
 /*-| Setup |-*/
@@ -12482,54 +12510,31 @@ table tbody tr input:active, table tbody tr input:focus {
   position: relative;
   display: grid;
   overflow: hidden;
-  grid-template-rows: 1fr 92px;
+  grid-template-rows: 1fr;
   width: 100dvw;
   height: 100dvh;
-}
-
-.nav-bar {
-  z-index: 10000;
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  flex-flow: row nowrap;
-  place-content: center;
-  place-items: center;
-  gap: 8px;
-  height: 60px;
-  padding: 16px;
-  background-color: var(--color-primary-5);
-}
-.nav-bar .button {
-  width: 20%;
-  min-width: 65px;
-  max-width: 85px;
-}
-.nav-bar .button.--secondary {
-  opacity: 100% !important;
+  margin-block-start: 77px;
 }
 
 .view-mask {
   overflow: scroll;
   width: 100dvw;
   max-width: 100dvw;
-  height: calc(100dvh - 92px);
+  height: calc(100dvh - 77px);
   background: var(--grey-12);
 }
 .view-container {
   display: flex;
   flex-flow: column;
   height: 100%;
-  min-height: calc(100dvh - 92px);
+  min-height: calc(100dvh - 77px);
 }
 
 /*-| Views |-*/
 /*---+----+---+----+---+----+---+----+---*/
 .view-floor-plan {
   width: 100dvw;
-  height: calc(calc(100dvh - 92px) - 4px);
+  height: calc(calc(100dvh - 77px) - 4px);
   border: none !important;
 }
 

@@ -6,33 +6,10 @@
   position:           relative;
   display:            grid;
   overflow:           hidden;
-  grid-template-rows: 1fr $nav-height-actual;
+  grid-template-rows: 1fr;
   width:              100dvw;
   height:             $app-height;
-}
-
-.nav-bar {
-  z-index:          10000;
-  position:         fixed;
-  right:            0;
-  bottom:           0;
-  left:             0;
-  display:          flex;
-  flex-flow:        row nowrap;
-  place-content:    center;
-  place-items:      center;
-  gap:              $sp-4;
-  height:           $nav-height;
-  padding:          $nav-padding;
-  background-color: $color-primary-5;
-  .button {
-    width:     20%;
-    min-width: 65px;
-    max-width: 85px;
-    &.--secondary {
-      opacity: 100% !important;
-    }
-  }
+  margin-block-start: $nav-height-actual;
 }
 
 .view {

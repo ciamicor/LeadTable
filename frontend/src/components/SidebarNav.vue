@@ -1,33 +1,37 @@
 <template>
   <div class="sidebar--nav-wrapper">
     <nav class="sidebar--nav">
-      <h4> Hello, {{ companyLocalData.name }}</h4>
-      <button v-if="!sessionStore.logged_In"
-              class="">Sign In
-      </button>
+      <h4 v-if="companyLocalData.name"> Hello, {{ companyLocalData.name }}</h4>
       <router-link
         :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/floor-plan`"
-        active-class="--secondary"
+        active-class="--secondary--invert"
         class="button --p-8">
         <i class="bi-geo-alt-fill --m-r-4"/>
         Map
       </router-link>
       <router-link
         :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/leads-list`"
-        active-class="--secondary"
+        active-class="--secondary--invert"
         class="button --p-8">
         <i class="bi-person-circle --m-r-4"/>
         Leads
       </router-link>
       <router-link
         :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/profile`"
-        active-class="--secondary"
+        active-class="--secondary--invert"
         class="button --p-8">
         <i class="bi-gear-fill --m-r-4"/>
         Profile
       </router-link>
       <button v-if="sessionStore.logged_In"
-              class="--warn">Log Out
+              id="sign-out"
+              class="--warn">
+        Sign Out
+      </button>
+      <button v-if="!sessionStore.logged_In"
+              id="sign-in"
+      >
+        Sign In
       </button>
     </nav>
   </div>

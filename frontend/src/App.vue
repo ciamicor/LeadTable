@@ -1,39 +1,20 @@
 <template>
+  <sidebar-nav v-if="showSidebarNav"
+               @closeNav="toggleSidebarNav"/>
+  <nav v-if="route.path !== '/'"
+       class="nav-bar">
+    <button
+      id="toggle-nav"
+      class="button --primary p-8"
+      @click="toggleSidebarNav">
+      <i class="bi-list"></i>
+    </button>
+  </nav>
   <div class="view-mask">
     <div class="view-container">
       <router-view/>
     </div>
   </div>
-  <sidebar-nav v-if="showSidebarNav"/>
-  <nav v-if="route.path !== '/'"
-       class="nav-bar">
-    <button
-      class="button --primary --p-8"
-      @click="toggleSidebarNav">
-      <i class="bi-list"></i>
-    </button>
-    <router-link
-      :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/floor-plan`"
-      active-class="--secondary"
-      class="button --p-8">
-      <i class="bi-geo-alt-fill --m-r-4"/>
-      Map
-    </router-link>
-    <router-link
-      :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/leads-list`"
-      active-class="--secondary"
-      class="button --p-8">
-      <i class="bi-person-circle --m-r-4"/>
-      Leads
-    </router-link>
-    <router-link
-      :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/profile`"
-      active-class="--secondary"
-      class="button --p-8">
-      <i class="bi-gear-fill --m-r-4"/>
-      Profile
-    </router-link>
-  </nav>
 </template>
 
 <script

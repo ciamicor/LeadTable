@@ -11,8 +11,9 @@
     class="row --place-content-center --place-items-center">
     <div
       class="--p-v-20 col-12-300 col-10-500 col-6-900">
-      <h4 class="--m-0">{{ expoLocalData.expo_Client }} {{ expoLocalData.expo_Year }} Supplier's
-                        Day</h4>
+      <h4 class="--m-0">
+        {{ expoLocalData.expo_Client }} {{ expoLocalData.expo_Year }} Supplier's Day
+      </h4>
       <h1>Exhibitor Login</h1>
       <p>If you've already purchased lead retrieval, login here to access it.</p>
       <p v-if="!expoLocalData.expoInPast">
@@ -51,7 +52,7 @@
       {{ companyExtras }}
     </div>
   </div>
-  
+
   <div
     v-if="sessionStore.logged_In === true && expoLocalData.expoInPast === true"
     class="row"

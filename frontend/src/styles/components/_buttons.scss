@@ -7,7 +7,7 @@ button,
   flex:                0 1 auto;
   place-content:       center;
   place-items:         center;
-  color:               $grey-4;
+  color:               $grey-2;
   font-size:           $font-xs;
   font-weight:         400;
   line-height:         1;
@@ -26,10 +26,9 @@ button,
     color:     inherit;
     font-size: inherit;
   }
-
   &:hover {
     color:      $grey-2;
-    background: $grey-10;
+    background: $grey-11;
   }
   /*-| Alternatives |-*/
   /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
@@ -118,12 +117,12 @@ button,
         $color-primary-4, // $border-color,
         $color-primary-11, // $background,
         $color-primary-2, // $hover-color,
-        $color-primary-8, // $hover-background,
-        $color-primary-12, // $invert-color,
-        $color-primary-4, // $invert-border-color,
-        $color-primary-5, // $invert-background,
-        $color-primary-11, // $invert-hover-color,
-        $color-primary-4 // $invert-hover-background
+        $color-primary-10, // $hover-background,
+        $color-primary-1, // $invert-color,
+        $color-primary-3, // $invert-border-color,
+        $color-primary-7, // $invert-background,
+        $color-primary-1, // $invert-hover-color,
+        $color-primary-8 // $invert-hover-background
     );
   }
   &.--secondary {
@@ -132,26 +131,26 @@ button,
         $color-secondary-6, // $border-color,
         $color-secondary-11, // $background,
         $color-secondary-2, // $hover-color,
-        $color-secondary-9, // $hover-background,
-        $color-secondary-12, // $invert-color,
+        $color-secondary-10, // $hover-background,
+        $color-secondary-1, // $invert-color,
         $color-secondary-3, // $invert-border-color,
-        $color-secondary-5, // $invert-background,
-        $color-secondary-10, // $invert-hover-color,
-        $color-secondary-4 // $invert-hover-background
+        $color-secondary-7, // $invert-background,
+        $color-secondary-1, // $invert-hover-color,
+        $color-secondary-8 // $invert-hover-background
     );
   }
   &.--success {
     @include color-button(
         $color-success-2, // $color,
         $color-success-8, // $border-color,
-        $color-success-11, // $background,
+        $color-success-12, // $background,
         $color-success-2, // $hover-color,
-        $color-success-10, // $hover-background,
-        $color-success-12, // $invert-color,
+        $color-success-11, // $hover-background,
+        white, // $invert-color,
         $color-success-3, // $invert-border-color,
         $color-success-6, // $invert-background,
-        $color-success-10, // $invert-hover-color,
-        $color-success-4 // $invert-hover-background
+        white, // $invert-hover-color,
+        $color-success-7 // $invert-hover-background
     );
   }
   &.--warn {
@@ -160,12 +159,12 @@ button,
         $color-warn-7, // $border-color,
         $color-warn-11, // $background,
         $color-warn-2, // $hover-color,
-        $color-warn-9, // $hover-background,
-        $color-warn-12, // $invert-color,
+        $color-warn-10, // $hover-background,
+        white, // $invert-color,
         $color-warn-3, // $invert-border-color,
-        $color-warn-5, // $invert-background,
-        $color-warn-10, // $invert-hover-color,
-        $color-warn-4 // $invert-hover-background
+        $color-warn-6, // $invert-background,
+        white, // $invert-hover-color,
+        $color-warn-7 // $invert-hover-background
     );
   }
 }
