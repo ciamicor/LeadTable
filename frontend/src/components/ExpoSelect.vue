@@ -12,12 +12,9 @@
         <div class="row-12-300 --align-items-center">
           <div class="col-5-300">
             <h3 class="--m-0">{{ expo.expo_Year }}</h3>
-          </div>
-          <div class="col-5-300">
-            <!--            <span class="&#45;&#45;m-0">{{ expo.start_Date }}</span>-->
+            <h1>{{ expo.expo_Client }}</h1>
           </div>
         </div>
-        <h1>{{ expo.expo_Client }}</h1>
         <button @click="setCurrentExpo(expo)">
           Select Expo
         </button>

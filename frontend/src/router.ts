@@ -27,7 +27,7 @@ const routes = [
   /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
   {
     path: '/',
-    name: 'ExpoSelect',
+    name: 'Select Expo',
     component: ExpoSelect,
   },
   /*-| Expo Users |-*/
@@ -37,7 +37,7 @@ const routes = [
     children: [
       {
         path: "",
-        name: "ExpoMap",
+        name: "Booth Map",
         component: ExpoMap,
       },
       {
@@ -72,12 +72,12 @@ const routes = [
         children: [
           {
             path: 'print-badges',
-            name: 'BadgePrint',
+            name: 'Print Badges',
             component: BadgePrint
           },
           {
             path: 'upload-attendees',
-            name: 'AttendeesUpload',
+            name: 'Upload Attendees',
             component: AttendeesUpload
           }
         ]

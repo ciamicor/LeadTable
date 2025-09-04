@@ -33,10 +33,13 @@
   flex-flow:     column nowrap;
   place-content: stretch;
   width:         100dvw;
-  background:    $color-primary-6;
+  opacity:       1;
+  background:    $color-primary-4;
   transition:    all $trans-100;
+  translate:     0 0;
 
   &.hide {
+    opacity:   0;
     translate: -500px 0;
   }
 

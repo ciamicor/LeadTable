@@ -1,14 +1,14 @@
 <template>
   <sidebar-nav :toggled="showSidebarNav"
                @closeNav="toggleSidebarNav"/>
-  <nav v-if="route.path !== '/'"
-       class="nav-bar">
-
+  <nav
+    class="nav-bar">
     <span id="page-title"
           class="--m-0">
       {{ route.name }}
     </span>
     <button
+      v-if="route.path !== '/'"
       id="toggle-nav"
       :class="showSidebarNav ? ' --warn ' : ' --primary ' "
       class="button p-8"

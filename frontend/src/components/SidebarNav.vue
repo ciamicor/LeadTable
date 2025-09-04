@@ -1,8 +1,10 @@
 <template>
   <div :class="props.toggled ? ' ' : ' hide '"
        class="sidebar--nav-wrapper">
+
     <span>{{ expoLocalData.expo_Client }} {{ expoLocalData.expo_Year }} Suppliers' Day</span>
     <h4 v-if="companyLocalData.name"> Hello, {{ companyLocalData.name }}</h4>
+
     <nav class="sidebar--nav">
       <div class="nav-buttons-grid--wrapper">
         <router-link
@@ -13,6 +15,7 @@
           <i class="bi-person-circle"/>
           Create Badge
         </router-link>
+
         <router-link
           :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/floor-plan`"
           active-class="--secondary--invert"
@@ -21,6 +24,7 @@
           <i class="bi-geo-alt-fill"/>
           Map
         </router-link>
+
         <router-link
           :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/leads-list`"
           active-class="--secondary--invert"
@@ -29,6 +33,7 @@
           <i class="bi-person-circle"/>
           Leads
         </router-link>
+
         <router-link
           :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/profile`"
           active-class="--secondary--invert"
@@ -38,6 +43,7 @@
           Profile
         </router-link>
       </div>
+
       <button
         v-if="sessionStore.logged_In"
         id="sign-out"
@@ -45,6 +51,7 @@
         @click="$emit('closeNav')">
         Sign Out
       </button>
+
       <button v-if="!sessionStore.logged_In"
               id="sign-in"
       >
@@ -57,7 +64,6 @@
 <script lang="ts"
         setup>
 import {useExpoLocalStore, useCompanyLocalStore, useSessionStore} from '@/stores.js'
-import {ref} from "vue";
 
 const sessionStore = useSessionStore()
 const companyLocalData = useCompanyLocalStore()

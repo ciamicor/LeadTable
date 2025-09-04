@@ -5547,7 +5547,7 @@ button.--success--invert,
 .button.--success--invert {
   color: white;
   border-color: var(--color-success-3);
-  background: var(--color-success-6);
+  background: var(--color-success-7);
 }
 button.--success--invert:hover,
 .button.--success--invert:hover {
@@ -5886,10 +5886,13 @@ table tbody tr input:active, table tbody tr input:focus {
   flex-flow: column nowrap;
   place-content: stretch;
   width: 100dvw;
-  background: var(--color-primary-6);
+  opacity: 1;
+  background: var(--color-primary-4);
   transition: all 100ms ease-out;
+  translate: 0 0;
 }
 .sidebar--nav-wrapper.hide {
+  opacity: 0;
   translate: -500px 0;
 }
 @media (min-width: 550px) {
