@@ -129,53 +129,24 @@ $color-light:          (
                          88,
                          94
                        );
-$color-hues:           (
-                         "primary": (
-                           "hue": "85",
-                           "saturation": "65"
-                         ),
-                         "secondary": (
-                           "hue": "45",
-                           "saturation": "95"
-                         ),
-                         "success": (
-                           "hue": "235",
-                           "saturation": "55"
-                         ),
-                         "warn": (
-                           "hue": "5",
-                           "saturation": "75"
-                         ),
-                       );
-$grey-hue:             "215" !default;
 
 :root {
-  @for $c from 1 through 12 {
-    @each $type, $values in $color-hues {
-      $hue:                   map.get($values, "hue");
-      $sat:                   map.get($values, "saturation");
-      --color-#{$type}-#{$c}: hsl(#{$hue}, #{$sat + "%"}, #{(0 + (8 *$c)) + "%"});
-    }
-    --grey-#{$c}: hsl(#{$grey-hue}, 20%, #{(0 + (8 *$c)) + "%"});
-  }
   --color-primary-hs:   85, 65%;
-  --color-secondary-hs: 35, 15%;
-  --color-success-hs:   235, 85%;
-  --color-warn-hs:      10, 85%;
-  --grey-1-hsl:         215, 25%, #{$lightness-1};
-  --grey-2-hsl:         215, 25%, #{$lightness-2};
-  --grey-3-hsl:         215, 25%, #{$lightness-3};
-  --grey-4-hsl:         215, 25%, #{$lightness-4};
-  --grey-5-hsl:         215, 25%, #{$lightness-5};
-  --grey-6-hsl:         215, 25%, #{$lightness-6};
-  --grey-7-hsl:         215, 25%, #{$lightness-7};
-  --grey-8-hsl:         215, 25%, #{$lightness-8};
-  --grey-9-hsl:         215, 25%, #{$lightness-9};
-  --grey-10-hsl:        215, 25%, #{$lightness-10};
-  --grey-11-hsl:        215, 25%, #{$lightness-11};
-  --grey-12-hsl:        215, 25%, #{$lightness-12};
+  --color-secondary-hs: 45, 95%;
+  --color-success-hs:   235, 55%;
+  --color-warn-hs:      5, 75%;
+  --color-grey-hs:      215, 16%;
+
   --font-primary:       hsl(var(--grey-1-hsl));
   --font-contrast:      white;
+
+  @for $c from 1 through 12 {
+    --color-primary-#{$c}: hsl(var(--color-primary-hs), #{(0 + (8 *$c)) + "%"});
+    --color-secondary-#{$c}: hsl(var(--color-secondary-hs), #{(0 + (8 *$c)) + "%"});
+    --color-success-#{$c}: hsl(var(--color-success-hs), #{(0 + (8 *$c)) + "%"});
+    --color-warn-#{$c}: hsl(var(--color-warn-hs), #{(0 + (8 *$c)) + "%"});
+    --grey-#{$c}: hsl(var(--color-grey-hs), #{(0 + (8 *$c)) + "%"});
+  }
 }
 
 /*-| SCSS |-*/

@@ -10,3 +10,9 @@
   $pref: #{$B}#{$type} + " + " + (#{$S * 100}vw);
   @return clamp(#{$mV}#{$type}, #{$pref}, #{$MV}#{$type})
 }
+
+@function button-gradient ($c1, $light1: 96%, $light2: 84%) {
+  @return linear-gradient(180deg,
+    hsl($c1, $light1) var(--gradient-stop-1),
+    hsl($c1, $light2) var(--gradient-stop-2));
+}

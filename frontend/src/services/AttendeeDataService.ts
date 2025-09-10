@@ -35,10 +35,14 @@ export default class AttendeeDataService {
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 const attendeeService = new AttendeeDataService()
 
-/*-| Create Attendees |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
-async function createAttendee_Service(attendee: any, client: any, year: any, upload: any = null) {
+/*-| Create Attendees |-
+---+----+---+----+---+----+---+----+---*/
+async function createAttendee_Service(
+  attendee: any,
+  client: any,
+  year: any,
+  upload: any = null
+) {
   console.log('Create Attendee Service: ', attendee)
   const data = {
     expo_Client: client,

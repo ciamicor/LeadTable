@@ -1,6 +1,17 @@
 @use "../abstracts/index" as *;
 @use "../base/index" as *;
 
+@property --gradient-stop-1 {
+  initial-value: 16%;
+  inherits: false;
+  syntax: '<percentage>';
+}
+@property --gradient-stop-2 {
+  initial-value: 88%;
+  inherits: false;
+  syntax: '<percentage>';
+}
+
 button,
 .button {
   display:             flex;
@@ -17,18 +28,24 @@ button,
   cursor:              pointer;
   border-width:        1px;
   border-style:        solid;
-  border-color:        $grey-7;
+  border-color:        $grey-6;
   border-bottom-width: 3px;
   border-radius:       $item-border;
-  background:          $grey-12;
-  transition:          background $trans-200, color $trans-200, border-width $trans-100;
+  background:          button-gradient(var(--color-grey-hs));
+  transition:          background $trans-200,
+                       color $trans-200,
+                       border-width $trans-100,
+                       --gradient-stop-1 $trans-100,
+                       --gradient-stop-2 $trans-200;
   & i {
     color:     inherit;
     font-size: inherit;
   }
   &:hover {
     color:      $grey-2;
-    background: $grey-11;
+    // background: $grey-11; // reactivate if removing gradient backgrounds.
+    --gradient-stop-1: 20%;
+    --gradient-stop-2: 96%;
   }
   /*-| Alternatives |-*/
   /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
@@ -85,27 +102,27 @@ button,
     $border-color,
     $background,
     $hover-color,
-    $hover-background,
+    // $hover-background,
     $invert-color,
     $invert-border-color,
     $invert-background,
     $invert-hover-color,
-    $invert-hover-background
+    // $invert-hover-background
   ) {
-    color:        $color,;
-    border-color: $border-color,;
-    background:   $background,;
+    color:        $color;
+    border-color: $border-color;
+    background:   $background;
     &:hover {
       color:      $hover-color,;
-      background: $hover-background,;
+      // background: $hover-background;
     }
     &--invert {
-      color:        $invert-color,;
-      border-color: $invert-border-color,;
-      background:   $invert-background,;
+      color:        $invert-color;
+      border-color: $invert-border-color;
+      background:   $invert-background;
       &:hover {
-        color:      $invert-hover-color,;
-        background: $invert-hover-background;
+        color:      $invert-hover-color;
+        // background: $invert-hover-background;
       }
     }
   }
@@ -115,56 +132,48 @@ button,
     @include color-button(
         $color-primary-2, // $color,
         $color-primary-4, // $border-color,
-        $color-primary-11, // $background,
+        button-gradient(var(--color-primary-hs)), // $background,
         $color-primary-2, // $hover-color,
-        $color-primary-10, // $hover-background,
         $color-primary-1, // $invert-color,
         $color-primary-3, // $invert-border-color,
-        $color-primary-7, // $invert-background,
+        button-gradient(var(--color-primary-hs), 68%, 44%), // $invert-background,
         $color-primary-1, // $invert-hover-color,
-        $color-primary-8 // $invert-hover-background
     );
   }
   &.--secondary {
     @include color-button(
         $color-secondary-2, // $color,
         $color-secondary-6, // $border-color,
-        $color-secondary-11, // $background,
+        button-gradient(var(--color-secondary-hs)), // $background,
         $color-secondary-2, // $hover-color,
-        $color-secondary-10, // $hover-background,
         $color-secondary-1, // $invert-color,
         $color-secondary-3, // $invert-border-color,
-        $color-secondary-7, // $invert-background,
+        button-gradient(var(--color-secondary-hs), 68%, 44%), // $invert-background,
         $color-secondary-1, // $invert-hover-color,
-        $color-secondary-8 // $invert-hover-background
     );
   }
   &.--success {
     @include color-button(
         $color-success-2, // $color,
         $color-success-8, // $border-color,
-        $color-success-12, // $background,
+        button-gradient(var(--color-success-hs)), // $background,
         $color-success-2, // $hover-color,
-        $color-success-11, // $hover-background,
         white, // $invert-color,
         $color-success-3, // $invert-border-color,
-        $color-success-7, // $invert-background,
+        button-gradient(var(--color-success-hs), 68%, 44%), // $invert-background,
         white, // $invert-hover-color,
-        $color-success-7 // $invert-hover-background
     );
   }
   &.--warn {
     @include color-button(
         $color-warn-2, // $color,
         $color-warn-7, // $border-color,
-        $color-warn-11, // $background,
+        button-gradient(var(--color-warn-hs)), // $background,
         $color-warn-2, // $hover-color,
-        $color-warn-10, // $hover-background,
         white, // $invert-color,
         $color-warn-3, // $invert-border-color,
-        $color-warn-6, // $invert-background,
+        button-gradient(var(--color-warn-hs), 68%, 44%), // $invert-background,
         white, // $invert-hover-color,
-        $color-warn-7 // $invert-hover-background
     );
   }
 }
