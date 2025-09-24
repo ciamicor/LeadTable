@@ -1,6 +1,7 @@
-const express = require( 'express' );
+import express from "express";
+
 const router = express.Router();
-const companyController = require( '../controllers/company.controller' );
+import * as companyController from "../controllers/company.controller.js";
 
 // Route to create a new company
 router.post( '/', companyController.createCompany );
@@ -14,4 +15,4 @@ router.get( '/:id', companyController.getCompanyById );
 // Route to update a Company by ID
 router.put( '/:id', companyController.updateCompanyLeadRet )
 
-module.exports = router;
+export default router

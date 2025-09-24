@@ -1,6 +1,7 @@
-const express = require( 'express' )
+import express from "express"
+
 const router = express.Router()
-const attendeeController = require( '../controllers/attendee.controller' )
+import * as attendeeController from "../controllers/attendee.controller.js";
 
 // Route to create a new attendee
 router.post( '/', attendeeController.createAttendee )
@@ -23,4 +24,4 @@ router.put( '/:id', attendeeController.updateAttendee )
 // Route to delete an Attendee by ID
 router.delete( '/:id', attendeeController.deleteAttendee )
 
-module.exports = router
+export default router

@@ -1,6 +1,7 @@
-const express = require( 'express' )
+import express from "express";
+
 const router = express.Router()
-const techSessionController = require( '../controllers/techSession.controller' )
+import * as techSessionController from "../controllers/techSession.controller.js";
 
 // Route to create a new tech session
 router.post( '/', techSessionController.createTechSession )
@@ -20,4 +21,4 @@ router.put( '/:id', techSessionController.updateTechSession )
 // Route to delete a tech session by ID
 router.delete( '/:id', techSessionController.deleteTechSession )
 
-module.exports = router
+export default router

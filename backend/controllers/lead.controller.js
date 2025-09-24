@@ -1,8 +1,8 @@
-const { Lead } = require( '../models' )
-const { Op } = require( 'sequelize' )
+import { Lead } from "../models/index.js";
+import { Op } from 'sequelize';
 
 // Controller method to create a new lead
-exports.createLead = async ( req, res ) => {
+export const createLead = async ( req, res ) => {
     const {
         expo_Client,
         expo_Year,
@@ -55,7 +55,7 @@ exports.createLead = async ( req, res ) => {
 }
 
 // Controller method to get all leads
-exports.getAllLeads = async ( req, res ) => {
+export const getAllLeads = async ( req, res ) => {
     try {
         const leads = await Lead.findAll( {} )
         if ( leads ) {
@@ -73,7 +73,7 @@ exports.getAllLeads = async ( req, res ) => {
 }
 
 // Controller method to get all leads by exhibitor
-exports.getAllExhibitorLeads = async ( req, res ) => {
+export const getAllExhibitorLeads = async ( req, res ) => {
     const company_Id = req.params.id
     try {
         const leads = await Lead.findAll( {
@@ -96,7 +96,7 @@ exports.getAllExhibitorLeads = async ( req, res ) => {
 }
 
 // Controller method to get a lead by ID
-exports.getLeadById = async ( req, res ) => {
+export const getLeadById = async ( req, res ) => {
     const id = req.params.id
     try {
         const lead = await Lead.findByPk( id )
@@ -115,7 +115,7 @@ exports.getLeadById = async ( req, res ) => {
 }
 
 // Controller method to update a lead by ID
-exports.updateLead = async ( req, res ) => {
+export const updateLead = async ( req, res ) => {
     const id = req.params.id
 
     const {
@@ -156,7 +156,7 @@ exports.updateLead = async ( req, res ) => {
 }
 
 // Controller method to delete a lead by ID
-exports.deleteLead = async ( req, res ) => {
+export const deleteLead = async ( req, res ) => {
     const id = req.params.id
     try {
         const lead = await Lead.findByPk( id )

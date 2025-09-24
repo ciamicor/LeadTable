@@ -1,6 +1,6 @@
 'use strict'
-const { Model, DataTypes } = require( 'sequelize' )
-const sequelize = require( '../config/config' )
+import { Model, DataTypes } from "sequelize";
+import sequelize from "../config/config.js";
 
 class Scan extends Model {
     /**
@@ -27,4 +27,4 @@ Scan.init( {
     modelName: 'Scan'
 } )
 
-module.exports = Scan
+export default Scan

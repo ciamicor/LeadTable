@@ -1,8 +1,8 @@
-const { Attendee, Expo } = require( '../models' )
-const { Op } = require( "sequelize" );
+import { Attendee, Expo } from "../models/index.js"
+import { Op } from 'sequelize';
 
 // Controller method to get all attendees
-exports.getAllAttendees = async ( req, res ) => {
+export const getAllAttendees = async ( req, res ) => {
     try {
         const attendees = await Attendee.findAll()
         res.json( attendees )
@@ -16,7 +16,7 @@ exports.getAllAttendees = async ( req, res ) => {
 }
 
 // Controller method to create a new attendee
-exports.createAttendee = async ( req, res ) => {
+export const createAttendee = async ( req, res ) => {
     const {
         expo_Year,
         expo_Client,
@@ -65,7 +65,7 @@ exports.createAttendee = async ( req, res ) => {
 }
 
 // Get Attendees by Expo
-exports.getExpoAttendees = async ( req, res ) => {
+export const getExpoAttendees = async ( req, res ) => {
     const client = req.params.client
     const year = req.params.year
     try {
@@ -91,7 +91,7 @@ exports.getExpoAttendees = async ( req, res ) => {
 }
 
 // Controller method to get an attendee by ID
-exports.getAttendeeById = async ( req, res ) => {
+export const getAttendeeById = async ( req, res ) => {
     const id = req.params.id
     try {
         const attendee = await Attendee.findByPk( id )
@@ -110,7 +110,7 @@ exports.getAttendeeById = async ( req, res ) => {
 }
 
 // Controller method to get an attendee by ID
-exports.getAttendeeByUploadId = async ( req, res ) => {
+export const getAttendeeByUploadId = async ( req, res ) => {
     const id = req.params.id
     try {
         const attendee = await Attendee.findAll(
@@ -135,7 +135,7 @@ exports.getAttendeeByUploadId = async ( req, res ) => {
 }
 
 // Controller method to update an attendee by ID
-exports.updateAttendee = async ( req, res ) => {
+export const updateAttendee = async ( req, res ) => {
     const id = req.params.id
     const {
         name_First,
@@ -175,7 +175,7 @@ exports.updateAttendee = async ( req, res ) => {
 }
 
 // Controller method to delete a attendee by ID
-exports.deleteAttendee = async ( req, res ) => {
+export const deleteAttendee = async ( req, res ) => {
     const id = req.params.id
     try {
         const attendee = await Attendee.findByPk( id )

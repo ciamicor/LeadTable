@@ -1,6 +1,7 @@
-const express = require( 'express' );
+import express from "express";
+
 const router = express.Router();
-const scanController = require( '../controllers/scan.controller' );
+import * as scanController from "../controllers/scan.controller.js";
 
 // Route to get all scans
 router.get( '/', scanController.getAllScans );
@@ -8,4 +9,4 @@ router.get( '/', scanController.getAllScans );
 // Create scan
 router.post( '/', scanController.createScan );
 
-module.exports = router;
+export default router

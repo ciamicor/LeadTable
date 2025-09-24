@@ -1,20 +1,42 @@
-require( '@dotenvx/dotenvx' ).config()
+// require( '@dotenvx/dotenvx' ).config()
+
+import '@dotenvx/dotenvx/config';
+
+import Sequelize from "./config/config.js";
+import express from "express";
+import path from "path";
+// let path = require( 'path' )
+import cors from 'cors';
+
+/*-| Better Auth |-*/
+import { toNodeHandler } from "better-auth/node";
+import { auth } from "./auth.ts";
+
+// Init Routes
+import leadRoutes from "./routes/lead.routes.js"
+import attendeeRoutes from "./routes/attendee.routes.js"
+import companyRoutes from "./routes/company.routes.js"
+import uploadRoutes from "./routes/uploadAttendee.routes.js"
+import expoRoutes from "./routes/expo.routes.js"
+import techSessionRoutes from "./routes/techSession.routes.js"
 
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Init DB |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-const Sequelize = require( './config/config' )
-const {
+// const Sequelize = require( './config/config' )
+
+import {
+    Scan,
     Lead,
     Company,
     Expo,
     Attendee,
-    uploadAttendee,
-    techSession
-} = require( './models' )
+    UploadAttendee,
+    TechSession
+} from "./models/index.js";
 
 // Connect to the database
-const { DataTypes } = require( 'sequelize' )
+
 Sequelize.authenticate()
     .then( () => console.log( `Database ${ process.env.DB_NAME } connected` ) )
     .catch( ( err ) => console.error( 'Error connecting to database:', err ) )
@@ -22,30 +44,19 @@ Sequelize.sync( { /*force: true*/ } )
     .then( async () => {
         /*await initPlaceholdData()*/
     } )
-//
-//
 
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-/*-| Init App |-*/
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-const express = require( 'express' )
-let path = require( 'path' )
+/*-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===
+-| Init App
+-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===/*/
 const app = express()
 
 // Add CORS
-const cors = require( 'cors' )
 app.use( cors() )
+
+app.all( "/api/auth/{*any}", toNodeHandler( auth ) );
 
 // Middleware to parse JSON requests
 app.use( express.json() )
-
-// Init Routes
-const leadRoutes = require( './routes/lead.routes' )
-const attendeeRoutes = require( './routes/attendee.routes' )
-const companyRoutes = require( './routes/company.routes' )
-const uploadRoutes = require( './routes/uploadAttendee.routes' )
-const expoRoutes = require( './routes/expo.routes' )
-const techSessionRoutes = require( './routes/techSession.routes' )
 
 const PORT = process.env.PORT || 8080
 const HOST = process.env.HOST || 'localhost'
@@ -57,6 +68,8 @@ app.use( '/api/attendee', attendeeRoutes )
 app.use( '/api/upload', uploadRoutes )
 app.use( '/api/expo', expoRoutes )
 app.use( '/api/techsession', techSessionRoutes )
+
+const __dirname = import.meta.dirname;
 
 app.use( express.static( path.join( __dirname, frontend_root ) ) )
 app.get( '*', ( req, res ) => {
@@ -89,4 +102,4 @@ app.listen( PORT, () => {
     console.log( `Server ${ HOST } is running on port ${ PORT }` )
 } )
 
-module.exports = app
+export default app

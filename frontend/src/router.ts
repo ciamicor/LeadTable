@@ -1,11 +1,14 @@
 import {createWebHistory, createRouter} from 'vue-router'
 import LeadsList from '@/components/LeadsList.vue'
 import CompanyProfile from '@/components/CompanyProfile.vue'
-import BadgePrint from '@/components/BadgePrint.vue'
 import ExpoMap from '@/components/ExpoMap.vue'
 import ExpoSelect from '@/components/ExpoSelect.vue'
 import LeadAdd from '@/components/LeadAdd.vue'
 import BadgeCreate from '@/components/BadgeCreate.vue'
+
+/*-| Admin |-*/
+import Admin_Login from "@/components/Admin_Login.vue";
+import BadgePrint from '@/components/BadgePrint.vue'
 import AttendeesUpload from '@/components/AttendeesUpload.vue'
 
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
@@ -30,8 +33,13 @@ const routes = [
     name: 'Select Expo',
     component: ExpoSelect,
   },
-  /*-| Expo Users |-*/
-  /*---+----+---+----+---+----+---+----+---*/
+
+  /*-| Admin
+  ---+----+---+----+---+----+---+----+---*/
+// TODO make admin parent to client, year
+
+  /*-| Expo Users
+  ---+----+---+----+---+----+---+----+---*/
   {
     path: '/:client/:year/',
     children: [
@@ -68,7 +76,9 @@ const routes = [
       /*-| Admin Views |-*/
       /*---+----+---+----+---+----+---+----+---*/
       {
-        path: 'admin',
+        path: 'admin-login',
+        name: 'Admin Login',
+        component: Admin_Login,
         children: [
           {
             path: 'print-badges',

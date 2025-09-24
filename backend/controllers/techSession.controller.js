@@ -1,8 +1,8 @@
-const { TechSession, Expo } = require( '../models' )
-const { Op } = require( "sequelize" );
+import { TechSession, Expo } from "../models/index.js"
+import { Op } from 'sequelize';
 
 // Controller method to get all Tech Sessions
-exports.getAllTechSessions = async ( req, res ) => {
+export const getAllTechSessions = async ( req, res ) => {
     try {
         const techSessions = await TechSession.findAll()
         res.json( techSessions )
@@ -16,7 +16,7 @@ exports.getAllTechSessions = async ( req, res ) => {
 }
 
 // Controller method to create a new Tech Session
-exports.createTechSession = async ( req, res ) => {
+export const createTechSession = async ( req, res ) => {
     const {
         expo_Year,
         expo_Client,
@@ -61,7 +61,7 @@ exports.createTechSession = async ( req, res ) => {
 }
 
 // Get Tech Sessions by Expo
-exports.getExpoTechSessions = async ( req, res ) => {
+export const getExpoTechSessions = async ( req, res ) => {
     const client = req.params.client
     const year = req.params.year
     try {
@@ -87,7 +87,7 @@ exports.getExpoTechSessions = async ( req, res ) => {
 }
 
 // Controller method to get a Tech Session by ID
-exports.getTechSessionById = async ( req, res ) => {
+export const getTechSessionById = async ( req, res ) => {
     const id = req.params.id
     try {
         const techSession = await TechSession.findByPk( id )
@@ -106,7 +106,7 @@ exports.getTechSessionById = async ( req, res ) => {
 }
 
 // Controller method to update an attendee by ID
-exports.updateTechSession = async ( req, res ) => {
+export const updateTechSession = async ( req, res ) => {
     const id = req.params.id
     const {
         expo_Year,
@@ -148,7 +148,7 @@ exports.updateTechSession = async ( req, res ) => {
 }
 
 // Controller method to delete a Tech Session by ID
-exports.deleteTechSession = async ( req, res ) => {
+export const deleteTechSession = async ( req, res ) => {
     const id = req.params.id
     try {
         const techSession = await TechSession.findByPk( id )
