@@ -141,8 +141,8 @@ import { sortLName_Service } from '@/services/SortService.js'
 import { toTitleCase_Service } from '@/services/TextContentService.js'
 import LoadingHolder from "@/components/LoadingHolder.vue";
 
-/*-| States |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| States
+---+----+---+----+---+----+---+----+---*/
 const expoLocalData = useExpoLocalStore()
 const companyLocalData = useCompanyLocalStore()
 
@@ -158,8 +158,8 @@ const attendeeListGrouped = ref( [] )
 const searchTerm = ref( '' )
 const printComponent = ref() // for Print component
 
-/*-| Get Image |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Get Image
+---+----+---+----+---+----+---+----+---*/
 function getImageUrl( name ) {
   return new URL( `../../public/logos/${ expoLocalData.expo_Client.toString().toLowerCase() }/${ name }.jpeg`, import.meta.url ).href
 }

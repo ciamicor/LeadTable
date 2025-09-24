@@ -60,8 +60,8 @@ onBeforeMount( async () => {
   console.log( 'Expo is: ', expoLocalData )
 } )
 
-/*-| Get Company from Local |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Get Company from Local
+---+----+---+----+---+----+---+----+---*/
 async function checkLoginState() {
   try {
     let profile = await db.profile.get( 1 )
@@ -82,8 +82,8 @@ async function checkLoginState() {
   }
 }
 
-/*-| Toggle Sidebar |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Toggle Sidebar
+---+----+---+----+---+----+---+----+---*/
 const showSidebarNav = ref( false )
 
 function toggleSidebarNav() {

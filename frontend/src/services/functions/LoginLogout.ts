@@ -1,11 +1,9 @@
 import {db} from "@/db.ts";
 import type {Ref} from "vue";
 
-/*-| Sign Out function is located in SignOut Vue component
----+----+---+----+---+----+---+----+---*/
+/*-| Sign Out function is located in SignOut Vue component---+----+---+----+---+----+---+----+---*/
 
-/*-| Save login to Browser Local Storage (Dexie DB)
----+----+---+----+---+----+---+----+---*/
+/*-| Save login to Browser Local Storage (Dexie DB)---+----+---+----+---+----+---+----+---*/
 export async function saveLogin_LocalDB(
   exId: any,
   name: string,

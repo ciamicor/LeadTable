@@ -71,8 +71,8 @@ import LeadsExport from '@/components/LeadsExport.vue'
 const companyLocalData = useCompanyLocalStore()
 const expoLocalData = useExpoLocalStore()
 
-/*-| Hooks |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Hooks
+---+----+---+----+---+----+---+----+---*/
 onMounted( async () => {
     await getLocalCompanyData_Service( companyLocalData )
     console.log( companyLocalData.id )

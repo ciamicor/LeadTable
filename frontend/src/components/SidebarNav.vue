@@ -12,7 +12,7 @@
           active-class="--secondary--invert"
           class="button --stacked"
           @click="$emit('closeNav')">
-          <i class="bi-person-circle"/>
+          <i class="bi-person-vcard-fill"/>
           Create Badge
         </router-link>
 

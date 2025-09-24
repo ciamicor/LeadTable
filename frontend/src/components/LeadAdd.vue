@@ -100,8 +100,8 @@ import { inject, onBeforeMount, onMounted, ref } from 'vue'
 import router from '@/router.js'
 import { useCompanyLocalStore } from '@/stores.js'
 
-/*-| Variables |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Variables
+---+----+---+----+---+----+---+----+---*/
 const debug = false
 
 const companyLocalData = useCompanyLocalStore()
@@ -161,13 +161,13 @@ let lead = ref(
   }
 )
 
-/*-| Lifecycle |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Lifecycle
+---+----+---+----+---+----+---+----+---*/
 onBeforeMount( () => {
 } )
 
-/*-| Manage Related Data |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Manage Related Data
+---+----+---+----+---+----+---+----+---*/
 async function getAttendee( id ) {
   await attendeeService.get( id )
     .then( ( response ) => {
@@ -180,8 +180,8 @@ async function getAttendee( id ) {
   await loadLead()
 }
 
-/*-| Manage Scan Data |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Manage Scan Data
+---+----+---+----+---+----+---+----+---*/
 function updateComment( c ) {
   lead.value.comment = c
 }
@@ -190,8 +190,8 @@ function updateScore( r ) {
   lead.value.score = r
 }
 
-/*-| Manage Lead Data |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Manage Lead Data
+---+----+---+----+---+----+---+----+---*/
 function resetScanning() {
   scanTarget.value = 'Scanning'
   scanConfirm.value = false

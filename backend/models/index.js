@@ -3,7 +3,8 @@ const Lead = require( './lead' )
 const Company = require( './company' )
 const Scan = require( './scan' )
 const Attendee = require( './attendee' )
-const uploadAttendee = require( './uploadAttendee' )
+const UploadAttendee = require( './uploadAttendee' )
+const TechSession = require( './techSession' )
 
 Lead.belongsTo( Company, { foreignKey: 'scan_Company_Id' } )
 
@@ -13,5 +14,6 @@ module.exports = {
     Company,
     Expo,
     Attendee,
-    uploadAttendee
+    UploadAttendee,
+    TechSession
 }

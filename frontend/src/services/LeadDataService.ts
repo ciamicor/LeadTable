@@ -39,9 +39,8 @@ class LeadDataService {
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const leadService = new LeadDataService()
 
-/*-| Create Leads |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Create Leads
+---+----+---+----+---+----+---+----+---*/
 async function createLead_Service(lead: any) {
   console.log('Lead Service: ', lead)
   const data = {
@@ -70,9 +69,8 @@ async function createLead_Service(lead: any) {
   }
 }
 
-/*-| Update Lead |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Update Lead
+---+----+---+----+---+----+---+----+---*/
 async function updateLead_Service(id: any, lead: any) {
   console.log('Updating Lead: ', lead)
   const data = {
@@ -95,9 +93,8 @@ async function updateLead_Service(id: any, lead: any) {
   }
 }
 
-/*-| Get Single Leads |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Get Single Leads
+---+----+---+----+---+----+---+----+---*/
 async function getLead_Service(id: any) {
   try {
     let lead = await leadService.get(id)
@@ -108,9 +105,8 @@ async function getLead_Service(id: any) {
   }
 }
 
-/*-| Get All Leads by Exhibitor Company ID |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Get All Leads by Exhibitor Company ID
+---+----+---+----+---+----+---+----+---*/
 
 async function getAllCompanyLeads_Service(cId: any, list: any) {
   try {
@@ -121,9 +117,8 @@ async function getAllCompanyLeads_Service(cId: any, list: any) {
   }
 }
 
-/*-| Get All Leads |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Get All Leads
+---+----+---+----+---+----+---+----+---*/
 
 async function getAllLeads_Service(list: any) {
   try {
@@ -134,9 +129,8 @@ async function getAllLeads_Service(list: any) {
   }
 }
 
-/*-| Delete a Lead by ID |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Delete a Lead by ID
+---+----+---+----+---+----+---+----+---*/
 async function deleteLead_Service(id: any) {
   try {
     let lead = await leadService.delete(id)

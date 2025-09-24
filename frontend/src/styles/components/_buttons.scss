@@ -3,13 +3,14 @@
 
 @property --gradient-stop-1 {
   initial-value: 16%;
-  inherits: false;
-  syntax: '<percentage>';
+  inherits:      false;
+  syntax:        "<percentage>";
 }
+
 @property --gradient-stop-2 {
   initial-value: 88%;
-  inherits: false;
-  syntax: '<percentage>';
+  inherits:      false;
+  syntax:        "<percentage>";
 }
 
 button,
@@ -42,9 +43,9 @@ button,
     font-size: inherit;
   }
   &:hover {
-    color:      $grey-2;
+    color:             $grey-2;
     // background: $grey-11; // reactivate if removing gradient backgrounds.
-    --gradient-stop-1: 20%;
+    --gradient-stop-1: 24%;
     --gradient-stop-2: 96%;
   }
   /*-| Alternatives |-*/
@@ -113,7 +114,7 @@ button,
     border-color: $border-color;
     background:   $background;
     &:hover {
-      color:      $hover-color,;
+      color: $hover-color,;
       // background: $hover-background;
     }
     &--invert {
@@ -121,7 +122,7 @@ button,
       border-color: $invert-border-color;
       background:   $invert-background;
       &:hover {
-        color:      $invert-hover-color;
+        color: $invert-hover-color;
         // background: $invert-hover-background;
       }
     }

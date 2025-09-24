@@ -1,7 +1,7 @@
 @use "../abstracts/index" as *;
 
-/*-| App Views |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| App Views
+---+----+---+----+---+----+---+----+---*/
 #app {
   position:           relative;
   display:            grid;
@@ -28,8 +28,8 @@
   }
 }
 
-/*-| Views |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Views
+---+----+---+----+---+----+---+----+---*/
 .view-floor-plan {
   width:  $app-width;
   height: calc(#{$view-height} - 4px);

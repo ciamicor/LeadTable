@@ -1,4 +1,5 @@
 import http from '../http-common'
+import {titleCase} from '../services/functions/TextManipulation.ts'
 
 export default class AttendeeDataService {
   create(data: any) {
@@ -35,8 +36,7 @@ export default class AttendeeDataService {
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 const attendeeService = new AttendeeDataService()
 
-/*-| Create Attendees |-
----+----+---+----+---+----+---+----+---*/
+/*-| Create Attendees |----+----+---+----+---+----+---+----+---*/
 async function createAttendee_Service(
   attendee: any,
   client: any,
@@ -47,8 +47,8 @@ async function createAttendee_Service(
   const data = {
     expo_Client: client,
     expo_Year: year,
-    name_First: attendee.name_First,
-    name_Last: attendee.name_Last,
+    name_First: titleCase(attendee.name_First),
+    name_Last: titleCase(attendee.name_Last),
     contact_Email: attendee.contact_Email,
     contact_Phone: attendee.contact_Phone,
     contact_Employer: attendee.contact_Employer,
@@ -72,9 +72,8 @@ async function createAttendee_Service(
   }
 }
 
-/*-| Update Attendee |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Update Attendee
+---+----+---+----+---+----+---+----+---*/
 async function updateAttendee_Service(id: any, attendee: any) {
   console.log('Updating Attendee: ', attendee)
   const data = {
@@ -97,9 +96,8 @@ async function updateAttendee_Service(id: any, attendee: any) {
   }
 }
 
-/*-| Get All Attendees |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Get All Attendees
+---+----+---+----+---+----+---+----+---*/
 async function getAllAttendees_Service(list: any) {
   try {
     let allAttendees = await attendeeService.getAll()
@@ -110,9 +108,8 @@ async function getAllAttendees_Service(list: any) {
   }
 }
 
-/*-| Get Attendees By Expo |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Get Attendees By Expo
+---+----+---+----+---+----+---+----+---*/
 async function getExpoAttendees_Service(client: any, year: any) {
   try {
     let allAttendees = await attendeeService.getExpoAttendees(client, year)

@@ -53,16 +53,16 @@ function selectBadge( i ) {
   }
 }
 
-/*-| Modal |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Modal
+---+----+---+----+---+----+---+----+---*/
 const modalVisible = ref( false )
 
 function toggleModal() {
   modalVisible.value = !modalVisible.value
 }
 
-/*-| Formatting |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Formatting
+---+----+---+----+---+----+---+----+---*/
 function formatDateTime( dt ) {
   let d = dt.slice( 0, 10 )
   let t = dt.slice( -13, -8 )

@@ -3,9 +3,9 @@ import {getExpoToken_Service} from "@/services/ExpoDataService.ts";
 
 const baseUrl = 'https://app.expofp.com/api/v1/'
 
-/*-| Get All Exhibitors |-*/
+/*-| Get All Exhibitors
+---+----+---+----+---+----+---+----+---*/
 
-/*---+----+---+----+---+----+---+----+---*/
 export async function getAllExhibitors(client: any, year: any) {
   try {
     let token = await getExpoToken_Service(client, year)
@@ -26,9 +26,9 @@ export async function getAllExhibitors(client: any, year: any) {
   }
 }
 
-/*-| Get Exhibitor |-*/
+/*-| Get Exhibitor
+---+----+---+----+---+----+---+----+---*/
 
-/*---+----+---+----+---+----+---+----+---*/
 export async function getFpExhibitor(
   id: any,
   client: any,
@@ -52,9 +52,9 @@ export async function getFpExhibitor(
   }
 }
 
-/*-| Get Exhibitor Extras |-*/
+/*-| Get Exhibitor Extras
+---+----+---+----+---+----+---+----+---*/
 
-/*---+----+---+----+---+----+---+----+---*/
 export async function getFpExhibExtras(
   id: any,
   client: any,

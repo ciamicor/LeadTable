@@ -37,8 +37,8 @@ $button-border:        1px solid;
 /*-| Spacing |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 
-/*-| Constant |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Constant
+---+----+---+----+---+----+---+----+---*/
 $sp-1:                 2px !default;
 $sp-2:                 4px !default;
 $sp-3:                 6px !default;
@@ -58,8 +58,8 @@ $sp-16:                60px !default;
 $sp-17:                72px !default;
 $sp-18:                86px !default;
 
-/*-| Variable |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Variable
+---+----+---+----+---+----+---+----+---*/
 $sp-v-1:               f.clamp-spacing(1, 4) !default;
 $sp-v-2:               f.clamp-spacing(2, 4) !default;
 $sp-v-3:               f.clamp-spacing(3, 4) !default;
@@ -79,13 +79,13 @@ $sp-v-16:              f.clamp-spacing(16, 4) !default;
 $sp-v-17:              f.clamp-spacing(17, 4) !default;
 $sp-v-18:              f.clamp-spacing(18, 4) !default;
 
-/*-| Layout |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Layout
+---+----+---+----+---+----+---+----+---*/
 $row-gap:              $sp-4 !default;
 $col-gap:              $sp-4 !default;
 
-/*-| Borders |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Borders
+---+----+---+----+---+----+---+----+---*/
 $item-border:          $sp-4 !default;
 $panel-border:         $sp-6 !default;
 
@@ -131,7 +131,7 @@ $color-light:          (
                        );
 
 :root {
-  --color-primary-hs:   85, 65%;
+  --color-primary-hs:   85, 85%;
   --color-secondary-hs: 45, 95%;
   --color-success-hs:   235, 55%;
   --color-warn-hs:      5, 75%;
@@ -141,11 +141,11 @@ $color-light:          (
   --font-contrast:      white;
 
   @for $c from 1 through 12 {
-    --color-primary-#{$c}: hsl(var(--color-primary-hs), #{(0 + (8 *$c)) + "%"});
+    --color-primary-#{$c}:   hsl(var(--color-primary-hs), #{(0 + (8 *$c)) + "%"});
     --color-secondary-#{$c}: hsl(var(--color-secondary-hs), #{(0 + (8 *$c)) + "%"});
-    --color-success-#{$c}: hsl(var(--color-success-hs), #{(0 + (8 *$c)) + "%"});
-    --color-warn-#{$c}: hsl(var(--color-warn-hs), #{(0 + (8 *$c)) + "%"});
-    --grey-#{$c}: hsl(var(--color-grey-hs), #{(0 + (8 *$c)) + "%"});
+    --color-success-#{$c}:   hsl(var(--color-success-hs), #{(0 + (8 *$c)) + "%"});
+    --color-warn-#{$c}:      hsl(var(--color-warn-hs), #{(0 + (8 *$c)) + "%"});
+    --grey-#{$c}:            hsl(var(--color-grey-hs), #{(0 + (8 *$c)) + "%"});
   }
 }
 

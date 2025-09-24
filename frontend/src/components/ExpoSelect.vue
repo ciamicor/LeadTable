@@ -53,8 +53,8 @@ import {getAllExpos_Service} from '@/services/ExpoDataService.ts'
 import {onMounted, ref} from 'vue'
 import {useRouter} from "vue-router";
 
-/*-| Variables |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Variables
+---+----+---+----+---+----+---+----+---*/
 const router = useRouter()
 const expoLocalData = useExpoLocalStore()
 const companyLocalData = useCompanyLocalStore()
@@ -62,8 +62,8 @@ const allExposList = ref()
 const archivedExposList = ref()
 const activeExposList = ref()
 
-/*-| Lifecycle |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Lifecycle
+---+----+---+----+---+----+---+----+---*/
 onMounted(() => {
   getAllExpos(allExposList)
 })

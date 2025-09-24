@@ -19,9 +19,8 @@ export default class uploadAttendeeDataService {
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 const uploadAttendeeService = new uploadAttendeeDataService()
 
-/*-| Create Attendees |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Create Attendees
+---+----+---+----+---+----+---+----+---*/
 async function createUpload_Service(client: any, year: any) {
   console.log('Create Upload Service: ', client, year)
   const data = {
@@ -46,9 +45,8 @@ async function createUpload_Service(client: any, year: any) {
   }
 }
 
-/*-| Get Uploads By Client |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Get Uploads By Client
+---+----+---+----+---+----+---+----+---*/
 async function getAttendeeUploads_Service(client: any) {
   try {
     let foundUploads = await uploadAttendeeService.getAllAttendeeUploads(client)
@@ -59,9 +57,8 @@ async function getAttendeeUploads_Service(client: any) {
   }
 }
 
-/*-| Get Uploads By Client |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Get Uploads By Client
+---+----+---+----+---+----+---+----+---*/
 async function getAttendeeUpload_Service(id: any) {
   try {
     let foundUpload = await uploadAttendeeService.getAttendeeUpload(id)

@@ -24,9 +24,8 @@ class CompanyDataService {
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const companyService = new CompanyDataService()
 
-/*-| Create |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Create
+---+----+---+----+---+----+---+----+---*/
 async function createCompany_Service(companyObject: any) {
   console.log("Creating company: ", companyObject)
   const data = {
@@ -47,9 +46,8 @@ async function createCompany_Service(companyObject: any) {
   }
 }
 
-/*-| Get by ID |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Get by ID
+---+----+---+----+---+----+---+----+---*/
 async function getCompanyById_Service(id: any, companyObject: any = null) {
   try {
     let company = await companyService.get(id)

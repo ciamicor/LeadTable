@@ -9,7 +9,8 @@ const {
     Company,
     Expo,
     Attendee,
-    uploadAttendee
+    uploadAttendee,
+    techSession
 } = require( './models' )
 
 // Connect to the database
@@ -44,6 +45,7 @@ const attendeeRoutes = require( './routes/attendee.routes' )
 const companyRoutes = require( './routes/company.routes' )
 const uploadRoutes = require( './routes/uploadAttendee.routes' )
 const expoRoutes = require( './routes/expo.routes' )
+const techSessionRoutes = require( './routes/techSession.routes' )
 
 const PORT = process.env.PORT || 8080
 const HOST = process.env.HOST || 'localhost'
@@ -54,6 +56,7 @@ app.use( '/api/company', companyRoutes )
 app.use( '/api/attendee', attendeeRoutes )
 app.use( '/api/upload', uploadRoutes )
 app.use( '/api/expo', expoRoutes )
+app.use( '/api/techsession', techSessionRoutes )
 
 app.use( express.static( path.join( __dirname, frontend_root ) ) )
 app.get( '*', ( req, res ) => {

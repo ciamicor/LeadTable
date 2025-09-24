@@ -47,8 +47,8 @@ async function createUpload(client: any, year: any) {
   currentUpload.value = await createUpload_Service(client, year)
 }
 
-/*-| Upload Attendees |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Upload Attendees
+---+----+---+----+---+----+---+----+---*/
 async function handleFileAsync(e: any) {
   status.value = true
   const file = e.target.files[0]
@@ -68,8 +68,8 @@ async function handleFileAsync(e: any) {
   status.value = false
 }
 
-/*-| Download Template |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Download Template
+---+----+---+----+---+----+---+----+---*/
 async function downloadTemplate() {
   const formattedLeads = [{"": "", "": "", "": "", "": "", "": "", "": "", "": "", "": "", "": ""}]
   const worksheet = utils.json_to_sheet(formattedLeads)
