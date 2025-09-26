@@ -60,7 +60,7 @@
 </template>
 
 <script setup>
-import LoadingHolder from "@/components/LoadingHolder.vue";
+import LoadingHolder from "@/components/Elements/LoadingHolder.vue";
 import { useCompanyLocalStore, useExpoLocalStore } from '@/stores.ts'
 import { getAllLeads_Service, getAllCompanyLeads_Service } from '../services/LeadDataService.js'
 import { onMounted, ref } from 'vue'

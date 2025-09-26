@@ -95,9 +95,9 @@ import {
   useExpoLocalStore,
   useSessionStore
 } from '@/stores.ts'
-import {ref} from 'vue'
-import {useRouter} from "vue-router";
-import {saveLogin_LocalDB} from "@/services/functions/LoginLogout.ts";
+import { ref } from 'vue'
+import { useRouter } from "vue-router";
+import { saveLogin_LocalDB } from "@/services/functions/LoginLogoutFunc.ts";
 import ButtonSignOut from './Button_SignOut.vue'
 
 /*-| Variables |-*/
@@ -142,7 +142,8 @@ async function login() {
       expoLocalData.expo_Year,
       status
     )
-  } else {
+  }
+  else {
     console.log("Didn't find that company. Check your company ID to make sure it exists.")
     /*-| If not in Server DB, Get Exhibitor from ExpoFP
     ---+----+---+----+---+----+---+----+---*/

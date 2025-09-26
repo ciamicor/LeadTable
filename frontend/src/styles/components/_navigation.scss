@@ -14,7 +14,7 @@
   height:           $nav-height;
   padding:          $nav-padding;
   background-color: $color-primary-4;
-  box-shadow: 0 0 32px 12px rgba(0, 0, 0, 0.2);
+  box-shadow:       0 0 32px 12px rgba(0, 0, 0, 0.2);
 
   #page-title {
     color:        white;
@@ -24,7 +24,7 @@
   }
 }
 
-.sidebar--nav-wrapper {
+.sidebar--page-wrapper {
   z-index:       99999;
   position:      fixed;
   top:           $nav-height-actual;
@@ -35,13 +35,16 @@
   place-content: stretch;
   width:         100dvw;
   opacity:       1;
-  background:    $color-primary-4;
-  transition:    all $trans-100;
+  transition:    translate 100ms ease-in-out,
+                 opacity 200ms ease-out,
+                 scale 150ms ease-out;
   translate:     0 0;
+  scale:         1;
 
   &.hide {
     opacity:   0;
     translate: -500px 0;
+    scale:     .85;
   }
 
   @include breakpoint(550) {
@@ -50,13 +53,23 @@
   }
 }
 
-.sidebar--nav {
+.sidebar--content-container {
+  display:       flex;
+  flex:          1 1 auto;
+  flex-flow:     column nowrap;
+  gap:           $sp-7;
+  margin:        $sp-6;
+  padding:       $sp-8;
+  border-radius: $sp-6;
+  background:    $color-primary-4;
+}
+
+.sidebar--nav-menu-wrapper {
   display:               grid;
   grid-template-columns: 1fr;
   flex:                  1 1;
   flex-flow:             column nowrap;
   gap:                   $sp-4;
-  padding:               $nav-padding;
   .nav-buttons-grid--wrapper {
     display:               grid;
     grid-template-columns: repeat(2, 1fr);

@@ -1,15 +1,16 @@
 import {createWebHistory, createRouter} from 'vue-router'
 import LeadsList from '@/components/LeadsList.vue'
 import CompanyProfile from '@/components/CompanyProfile.vue'
-import ExpoMap from '@/components/ExpoMap.vue'
+import ExpoMap from '@/components/Elements/ExpoMap.vue'
 import ExpoSelect from '@/components/ExpoSelect.vue'
 import LeadAdd from '@/components/LeadAdd.vue'
 import BadgeCreate from '@/components/BadgeCreate.vue'
 
 /*-| Admin |-*/
-import Admin_Login from "@/components/Admin_Login.vue";
-import BadgePrint from '@/components/BadgePrint.vue'
-import AttendeesUpload from '@/components/AttendeesUpload.vue'
+import Admin_Login from "@/components/Admin/Admin_Login.vue";
+import Admin_Dashboard from "@/components/Admin/Admin_Dashboard.vue";
+import BadgePrint from '@/components/Admin/Admin_BadgePrint.vue'
+import AttendeesUpload from '@/components/Admin/Admin_AttendeesUpload.vue'
 
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Routes |-*/
@@ -37,7 +38,17 @@ const routes = [
   /*-| Admin
   ---+----+---+----+---+----+---+----+---*/
 // TODO make admin parent to client, year
-
+  {
+    path: '/admin-login',
+    name: 'Admin Login',
+    component: Admin_Login,
+  },
+  {
+    path: '/admin-dashboard',
+    name: 'Admin Dashboard',
+    component: Admin_Dashboard,
+    children: []
+  },
   /*-| Expo Users
   ---+----+---+----+---+----+---+----+---*/
   {
@@ -76,22 +87,16 @@ const routes = [
       /*-| Admin Views |-*/
       /*---+----+---+----+---+----+---+----+---*/
       {
-        path: 'admin-login',
-        name: 'Admin Login',
-        component: Admin_Login,
-        children: [
-          {
-            path: 'print-badges',
-            name: 'Print Badges',
-            component: BadgePrint
-          },
-          {
-            path: 'upload-attendees',
-            name: 'Upload Attendees',
-            component: AttendeesUpload
-          }
-        ]
+        path: 'print-badges',
+        name: 'Print Badges',
+        component: BadgePrint
+      },
+      {
+        path: 'upload-attendees',
+        name: 'Upload Attendees',
+        component: AttendeesUpload
       }
+
     ]
   },
 ]
@@ -104,11 +109,11 @@ const router = createRouter({
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Check Check Check |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-router.beforeEach((to, from) => {
-  /*-| Reroute when 'undefined' |-*/
+/*router.beforeEach((to, from) => {
+  /!*-| Reroute when 'undefined' |-*!/
   if ((to.params.client === 'undefined' || to.params.year === 'undefined' && to.name !== 'ExpoSelect') && to.name !== 'ExpoSelect') {
     return {name: 'ExpoSelect'}
   }
-})
+})*/
 
 export default router

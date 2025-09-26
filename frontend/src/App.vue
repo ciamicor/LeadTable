@@ -28,7 +28,7 @@
 
 <script
   setup>
-import SidebarNav from "@/components/SidebarNav.vue";
+import SidebarNav from "@/components/Navigation/SidebarNav.vue";
 import { db } from '@/db.js'
 import { onBeforeMount, ref } from 'vue'
 import { useExpoLocalStore, useCompanyLocalStore, useSessionStore } from '@/stores.js'

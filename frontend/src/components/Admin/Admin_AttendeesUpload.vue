@@ -1,5 +1,4 @@
 <template>
-
   <div class="row-12-300 --place-content-center">
     <div class="col-12-300 --align-items-start --gap-12 --max-w-600">
       <h1>Upload Attendees</h1>

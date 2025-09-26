@@ -23,26 +23,14 @@ import techSessionRoutes from "./routes/techSession.routes.js"
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Init DB |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-// const Sequelize = require( './config/config' )
-
-import {
-    Scan,
-    Lead,
-    Company,
-    Expo,
-    Attendee,
-    UploadAttendee,
-    TechSession
-} from "./models/index.js";
 
 // Connect to the database
 
 Sequelize.authenticate()
     .then( () => console.log( `Database ${ process.env.DB_NAME } connected` ) )
     .catch( ( err ) => console.error( 'Error connecting to database:', err ) )
-Sequelize.sync( { /*force: true*/ } )
+Sequelize.sync( {} )
     .then( async () => {
-        /*await initPlaceholdData()*/
     } )
 
 /*-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===
@@ -51,9 +39,19 @@ Sequelize.sync( { /*force: true*/ } )
 const app = express()
 
 // Add CORS
-app.use( cors() )
+const allowedOrigins = [
+    "http://localhost:8080",
+    "http://localhost:8081",
+    "https://leadtable.iami411.org",
+];
+app.use( cors( {
+    origin: allowedOrigins,
+    methods: [ "GET", "POST", "PUT", "PATCH", "DELETE" ],
+    credentials: true,
+} ) )
 
-app.all( "/api/auth/{*any}", toNodeHandler( auth ) );
+// Better Auth handler
+app.all( '/api/auth/*', toNodeHandler( auth ) );
 
 // Middleware to parse JSON requests
 app.use( express.json() )
@@ -69,6 +67,7 @@ app.use( '/api/upload', uploadRoutes )
 app.use( '/api/expo', expoRoutes )
 app.use( '/api/techsession', techSessionRoutes )
 
+// Adjust _dirname for ES6 modules
 const __dirname = import.meta.dirname;
 
 app.use( express.static( path.join( __dirname, frontend_root ) ) )
@@ -83,7 +82,10 @@ app.use( ( req, res, next ) => {
     error.status = 404
     next( error )
 } )
-app.use( ( err, req, res, next ) => {
+app.use( ( err,
+           req,
+           res,
+           next ) => {
     console.error( '🔥 Uncaught Error:', {
         message: err.message,
         stack: err.stack,
@@ -93,13 +95,14 @@ app.use( ( err, req, res, next ) => {
     } )
 
     res.status( err.status || 500 ).json( {
-        error: '🔥 Internal Server Error',
+        error: '🔥 Uh oh. Internal Server Error',
         message: err.message
     } )
 } )
 
 app.listen( PORT, () => {
-    console.log( `Server ${ HOST } is running on port ${ PORT }` )
+    console.log( `Server ${ HOST } is sorting your data on port ${ PORT }` )
+    console.log( `Better Auth is looking at your password at port ${ PORT }` );
 } )
 
 export default app

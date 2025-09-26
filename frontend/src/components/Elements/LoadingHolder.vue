@@ -1,5 +1,6 @@
 <template>
-  <div v-show="props.status">
+  <div v-show="props.status"
+       class="row">
     <p>{{ props.message }}</p>
   </div>
 </template>

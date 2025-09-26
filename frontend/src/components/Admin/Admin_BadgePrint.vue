@@ -120,8 +120,8 @@
 
 <script lang="js"
         setup>
-import { useCompanyLocalStore, useExpoLocalStore } from "@/stores.js";
-import { getUrlHost } from "@/services/functions/UrlFunc.js";
+import { useCompanyLocalStore, useExpoLocalStore } from "@/stores.ts";
+import { getUrlHost } from "@/services/functions/UrlFunc.ts";
 import { jsPDF } from 'jspdf'
 import QrCode from '@/components/QrCode.vue'
 import html2canvas from 'html2canvas'
@@ -136,10 +136,10 @@ import {
 import {
   getAttendeeUploads_Service,
   getAttendeeUpload_Service
-} from '@/services/UploadDataService.js'
-import { sortLName_Service } from '@/services/SortService.js'
-import { toTitleCase_Service } from '@/services/TextContentService.js'
-import LoadingHolder from "@/components/LoadingHolder.vue";
+} from '@/services/UploadDataService.ts'
+import { sortLName_Service } from '@/services/SortService.ts'
+import { toTitleCase_Service } from '@/services/TextContentService.ts'
+import LoadingHolder from "@/components/Elements/LoadingHolder.vue";
 
 /*-| States
 ---+----+---+----+---+----+---+----+---*/
