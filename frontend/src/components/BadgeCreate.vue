@@ -11,8 +11,8 @@
         {{expoLocalData.expo_Year}}
         Suppliers' Day
       </h4>
-      <h1 id="attendee-reg">Attendee Registration</h1>
-      <p>All fields are required.</p>
+      <h1 id="attendee-reg">Badge Registration</h1>
+      <p>Register to attend the expo or create booth personnel badges.</p>
       <div class="row-12-300 --items">
         <label>
           First Name
@@ -80,7 +80,6 @@
             v-model="attendee.address"
             name="address"
             placeholder="Enter your address"
-            required
             type="text"/>
         </label>
       </div>
@@ -283,4 +282,6 @@ async function printBadge_Portrait3x4( a ) {
     badgePdf.output( 'dataurlnewwindow' )
   }, 300 )
 }
+
+
 </script>
