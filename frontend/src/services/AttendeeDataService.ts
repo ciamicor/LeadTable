@@ -36,9 +36,8 @@ export default class AttendeeDataService {
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 const attendeeService = new AttendeeDataService()
 
-/*-| Create Attendees |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Create Attendees
+---+----+---+----+---+----+---+----+---*/
 async function createAttendee_Service(attendee: any, client: any, year: any, upload: any = null) {
   console.log('Create Attendee Service: ', attendee)
   const data = {
@@ -49,7 +48,12 @@ async function createAttendee_Service(attendee: any, client: any, year: any, upl
     contact_Email: attendee.contact_Email.toLowerCase(),
     contact_Phone: attendee.contact_Phone,
     contact_Employer: attendee.contact_Employer,
-    address: attendee.address,
+    address_Line1: attendee.address_Line1,
+    address_Line2: attendee.address_Line2,
+    address_City: attendee.address_City,
+    address_State: attendee.address_State,
+    address_Zip: attendee.address_Zip,
+    address_Country: attendee.address_Country,
     title: attendee.title,
     reg_Type: attendee.reg_Type,
     tech_Sem: attendee.tech_Sem,
@@ -69,9 +73,8 @@ async function createAttendee_Service(attendee: any, client: any, year: any, upl
   }
 }
 
-/*-| Update Attendee |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Update Attendee
+---+----+---+----+---+----+---+----+---*/
 async function updateAttendee_Service(id: any, attendee: any) {
   console.log('Updating Attendee: ', attendee)
   const data = {
@@ -80,7 +83,12 @@ async function updateAttendee_Service(id: any, attendee: any) {
     contact_Email: attendee.contact_Email,
     contact_Phone: attendee.contact_Phone,
     contact_Employer: attendee.contact_Employer,
-    address: attendee.address,
+    address_Line1: attendee.address_Line1,
+    address_Line2: attendee.address_Line2,
+    address_City: attendee.address_City,
+    address_State: attendee.address_State,
+    address_Zip: attendee.address_Zip,
+    address_Country: attendee.address_Country,
     title: attendee.title,
     reg_Type: attendee.reg_Type,
     tech_Sem: attendee.tech_Sem,
@@ -94,9 +102,8 @@ async function updateAttendee_Service(id: any, attendee: any) {
   }
 }
 
-/*-| Get All Attendees |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Get All Attendees
+---+----+---+----+---+----+---+----+---*/
 async function getAllAttendees_Service(list: any) {
   try {
     let allAttendees = await attendeeService.getAll()
@@ -107,9 +114,8 @@ async function getAllAttendees_Service(list: any) {
   }
 }
 
-/*-| Get Attendees By Expo |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Get Attendees By Expo
+---+----+---+----+---+----+---+----+---*/
 async function getExpoAttendees_Service(client: any, year: any) {
   try {
     let allAttendees = await attendeeService.getExpoAttendees(client, year)

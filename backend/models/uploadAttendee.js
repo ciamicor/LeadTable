@@ -16,6 +16,7 @@ class UploadAttendee extends Model {
 UploadAttendee.init( {
     expo_Year: DataTypes.INTEGER, // foreign key
     expo_Client: DataTypes.STRING, // foreign key
+    upload_Title: DataTypes.STRING,
 }, {
     sequelize,
     modelName: 'uploadAttendee'

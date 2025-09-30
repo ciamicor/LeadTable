@@ -25,8 +25,13 @@ exports.createAttendee = async ( req, res ) => {
         contact_Email,
         contact_Phone,
         contact_Employer,
-        address,
         title,
+        address_Line1,
+        address_Line2,
+        address_City,
+        address_State,
+        address_Zip,
+        address_Country,
         reg_Type,
         tech_Sem,
         upload_Id
@@ -40,8 +45,13 @@ exports.createAttendee = async ( req, res ) => {
             contact_Email,
             contact_Phone,
             contact_Employer,
-            address,
             title,
+            address_Line1,
+            address_Line2,
+            address_City,
+            address_State,
+            address_Zip,
+            address_Country,
             reg_Type,
             tech_Sem,
             upload_Id
@@ -98,7 +108,7 @@ exports.getAttendeeById = async ( req, res ) => {
         if ( attendee ) {
             res.json( attendee )
         } else {
-            res.status( 404 ).json( { error: 'Attendee not found' } )
+            res.status( 404 ).json( { error: 'Attendee ID not found' } )
         }
     } catch ( error ) {
         console.error( 'error in controller getAttendeeById: ', error )
@@ -144,7 +154,12 @@ exports.updateAttendee = async ( req, res ) => {
         contact_Email,
         contact_Phone,
         contact_Employer,
-        address,
+        address_Line1,
+        address_Line2,
+        address_City,
+        address_State,
+        address_Zip,
+        address_Country,
         reg_Type,
         tech_Sem
     } = req.body
@@ -157,7 +172,12 @@ exports.updateAttendee = async ( req, res ) => {
             attendee.contact_Email = contact_Email
             attendee.contact_Phone = contact_Phone
             attendee.contact_Employer = contact_Employer
-            attendee.address = address
+            attendee.address_Line1 = address_Line1
+            attendee.address_Line2 = address_Line2
+            attendee.address_City = address_City
+            attendee.address_State = address_State
+            attendee.address_Zip = address_Zip
+            attendee.address_Country = address_Country
             attendee.reg_Type = reg_Type
             attendee.tech_Sem = tech_Sem
             await attendee.save()
