@@ -46,7 +46,7 @@ async function createAttendee_Service(attendee: any, client: any, year: any, upl
     expo_Year: year,
     name_First: titleCase(attendee.name_First),
     name_Last: titleCase(attendee.name_Last),
-    contact_Email: attendee.contact_Email,
+    contact_Email: attendee.contact_Email.toLowerCase(),
     contact_Phone: attendee.contact_Phone,
     contact_Employer: attendee.contact_Employer,
     address: attendee.address,
