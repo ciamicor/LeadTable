@@ -282,6 +282,4 @@ async function printBadge_Portrait3x4( a ) {
     badgePdf.output( 'dataurlnewwindow' )
   }, 300 )
 }
-
-
 </script>
