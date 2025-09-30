@@ -1,5 +1,5 @@
 <template>
-  <router-view/>
+  <p>this is where you manage users.</p>
 </template>
 
 <script lang="ts"

@@ -3,8 +3,8 @@
        class="sidebar--page-wrapper">
     <div class="sidebar--content-container">
 
-      <span>{{ expoLocalData.expo_Client }} {{ expoLocalData.expo_Year }} Suppliers' Day</span>
-      <h4 v-if="companyLocalData.name"> Hello, {{ companyLocalData.name }}</h4>
+      <span>{{expoLocalData.expo_Client}} {{expoLocalData.expo_Year}} Suppliers' Day</span>
+      <h4 v-if="companyLocalData.name"> Hello, {{companyLocalData.name}}</h4>
 
       <nav class="sidebar--nav-menu-wrapper">
         <div class="nav-buttons-grid--wrapper">
@@ -48,8 +48,7 @@
       </nav>
       <router-link
         v-if="authSession.data"
-        :to="`/admin-dashboard`"
-        active-class="--secondary--invert"
+        :to="`admin`"
         class="button"
         @click="$emit('closeNav')">
         Admin Dashboard
@@ -80,9 +79,6 @@ const props = defineProps({
 
 async function authClientSignOut() {
   await authSignOut()
-  loginEmail.value = ""
-  loginPass.value = ""
-  loginUser_Name.value = ""
 }
 
 </script>

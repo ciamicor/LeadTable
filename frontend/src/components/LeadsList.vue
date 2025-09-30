@@ -22,13 +22,13 @@
     <div v-if="companyLocalData.lead_Ret === true">
       <div class="row-12-300 --p-10-clamp">
         <div v-if="companyLocalData.name"
-             class="col-12-300 col-8-800 --flex-grow">
+             class="col-12-300 col-8-800 --flex-grow-1">
           <p>
-            {{ companyLocalData.expo_Client }}
-            {{ companyLocalData.expo_Year }}
+            {{companyLocalData.expo_Client}}
+            {{companyLocalData.expo_Year}}
             Supplier's Day
           </p>
-          <h2>{{ companyLocalData.name }}</h2>
+          <h2>{{companyLocalData.name}}</h2>
         </div>
         <LeadsExport :leads-list="leadsList"
                      class="--justify-self-end"/>

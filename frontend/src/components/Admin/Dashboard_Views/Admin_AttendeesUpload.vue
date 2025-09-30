@@ -3,7 +3,7 @@
     <div class="col-12-300 --align-items-start --gap-12 --max-w-600">
       <h1>Upload Attendees</h1>
       <div class="col-12-300">
-        <h4>For {{ expoLocalData.expo_Client }} {{ expoLocalData.expo_Year }} Supplier's Day</h4>
+        <h4>For {{expoLocalData.expo_Client}} {{expoLocalData.expo_Year}} Supplier's Day</h4>
         <button class="--p-h-4 --p-v-2 --secondary --align-self-start"
                 @click="downloadTemplate()">
           <i class="bi-download --m-r-4"/>
@@ -16,10 +16,10 @@
       </div>
       <div class="row-12-300 --align-items-center">
         <input id="input_dom_element"
-               class="--flex-grow"
+               class="--flex-grow-1"
                type="file"
                @change="handleFileAsync($event)">
-        <button class="--success --flex-grow">
+        <button class="--success --flex-grow-1">
           <i class="bi-upload --m-r-4"/>
           Upload
         </button>
@@ -30,11 +30,11 @@
 
 <script lang="ts"
         setup>
-import {ref} from "vue";
-import {read, utils, writeFile} from 'xlsx'
-import {createAttendee_Service} from '@/services/AttendeeDataService.ts'
-import {useExpoLocalStore, useCompanyLocalStore} from "@/stores.ts";
-import {createUpload_Service, getAttendeeUploads_Service} from '@/services/UploadDataService.ts'
+import { ref } from "vue";
+import { read, utils, writeFile } from 'xlsx'
+import { createAttendee_Service } from '@/services/AttendeeDataService.ts'
+import { useExpoLocalStore, useCompanyLocalStore } from "@/stores.ts";
+import { createUpload_Service, getAttendeeUploads_Service } from '@/services/UploadDataService.ts'
 
 const companyLocalData = useCompanyLocalStore()
 const expoLocalData = useExpoLocalStore()
@@ -74,7 +74,19 @@ async function downloadTemplate() {
   const worksheet = utils.json_to_sheet(formattedLeads)
   const workbook = utils.book_new()
   utils.book_append_sheet(workbook, worksheet, `Upload Template`)
-  utils.sheet_add_aoa(worksheet, [['name_First', 'name_Last', 'title', 'contact_Email', 'contact_Phone', 'contact_Employer', 'reg_Type', 'tech_Sem', 'address']], {origin: 'A1'})
+  utils.sheet_add_aoa(worksheet, [
+    [
+      'name_First',
+      'name_Last',
+      'title',
+      'contact_Email',
+      'contact_Phone',
+      'contact_Employer',
+      'reg_Type',
+      'tech_Sem',
+      'address'
+    ]
+  ], {origin: 'A1'})
   writeFile(workbook, 'leadtable-upload-template.xlsx', {compression: true})
 }
 </script>

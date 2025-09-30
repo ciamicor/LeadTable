@@ -119,12 +119,12 @@
         {{expoLocalData.expo_Client}} Suppliers' Day, {{attendee.name_First}}.
       </p>
       <button
-        class="--secondary --flex-grow"
+        class="--secondary --flex-grow-1"
         @click="printBadge_Portrait3x4(attendee)">
         Print {{attendee.name_First}}'s Badge
       </button>
       <button
-        class="--success --flex-grow"
+        class="--success --flex-grow-1"
         @click="resetForm">
         Register Another Badge
       </button>

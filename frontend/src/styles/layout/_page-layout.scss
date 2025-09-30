@@ -56,8 +56,9 @@
         margin-block-end: $sp-6;
       }
       @include breakpoint($size * 100) {
-        flex: 0 1 calc((100% * calc($i / #{$column-number})) - #{$row-gap});
-        // width: calc((100% * calc($i / #{$column-number})) - #{$row-gap});
+        flex-grow:   0;
+        flex-shrink: 1;
+        flex-basis:  calc((100% * calc($i / #{$column-number})) - #{$row-gap});
       }
     }
     /*-| Rows |-*/
@@ -65,28 +66,29 @@
       display:   flex;
       flex-flow: row wrap;
       gap:       $col-gap;
-      /*      & > *:not(.button,button) + .button,
-            & > *:not(.button,button) + button {
-              margin-block-start: $sp-4;
-            }
-           & > .button:has(+ *:not(.button, button)),
-            & > button:has(+ *:not(.button, button)) {
-              margin-block-end: $sp-6;
-            }*/
       @include breakpoint($size * 100) {
-        flex: 0 1 calc((100% * ($i / #{$column-number})) - #{$row-gap});
-        // width: calc((100% * ($i / #{$column-number})) - #{$row-gap});
+        flex-grow:   0;
+        flex-shrink: 1;
+        flex-basis:  calc((100% * ($i / #{$column-number})) - #{$row-gap});
       }
     }
   }
 }
 
-.--flex-grow {
-  flex-grow: 1;
+.--flex-grow-1 {
+  flex-grow: 1 !important;
 }
 
-.--flex-shrink {
-  flex-shrink: 1;
+.--flex-grow-0 {
+  flex-grow: 0 !important;
+}
+
+.--flex-shrink-1 {
+  flex-shrink: 1 !important;
+}
+
+.--flex-shrink-0 {
+  flex-shrink: 0 !important;
 }
 
 /*-| Position |-*/

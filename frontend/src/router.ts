@@ -1,4 +1,4 @@
-import {createWebHistory, createRouter} from 'vue-router'
+import { createWebHistory, createRouter } from 'vue-router'
 import LeadsList from '@/components/LeadsList.vue'
 import CompanyProfile from '@/components/CompanyProfile.vue'
 import ExpoMap from '@/components/Elements/ExpoMap.vue'
@@ -8,9 +8,13 @@ import BadgeCreate from '@/components/BadgeCreate.vue'
 
 /*-| Admin |-*/
 import Admin_Login from "@/components/Admin/Admin_Login.vue";
-import Admin_Dashboard from "@/components/Admin/Admin_Dashboard.vue";
-import BadgePrint from '@/components/Admin/Admin_BadgePrint.vue'
-import AttendeesUpload from '@/components/Admin/Admin_AttendeesUpload.vue'
+import Admin_View from "@/components/Admin/Admin_View.vue";
+import BadgePrint from '@/components/Admin/Dashboard_Views/Admin_BadgePrint.vue'
+import AttendeesUpload from '@/components/Admin/Dashboard_Views/Admin_AttendeesUpload.vue'
+import Admin_ExpoManage from "@/components/Admin/Dashboard_Views/Admin_ExpoManage.vue";
+import Admin_BadgePrint from "@/components/Admin/Dashboard_Views/Admin_BadgePrint.vue";
+import Admin_UsersManage from "@/components/Admin/Dashboard_Views/Admin_UsersManage.vue";
+import Admin_Dashboard from "@/components/Admin/Dashboard_Views/Admin_Dashboard.vue";
 
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Routes |-*/
@@ -44,10 +48,30 @@ const routes = [
     component: Admin_Login,
   },
   {
-    path: '/admin-dashboard',
-    name: 'Admin Dashboard',
-    component: Admin_Dashboard,
-    children: []
+    path: '/admin/',
+    component: Admin_View,
+    children: [
+      {
+        path: 'dashboard',
+        name: 'Dashboard',
+        component: Admin_Dashboard
+      },
+      {
+        path: "manage-expo",
+        name: "Manage Expo",
+        component: Admin_ExpoManage
+      },
+      {
+        path: "badges",
+        name: "Badges",
+        component: Admin_BadgePrint
+      },
+      {
+        path: "users",
+        name: "Users",
+        component: Admin_UsersManage
+      }
+    ]
   },
   /*-| Expo Users
   ---+----+---+----+---+----+---+----+---*/

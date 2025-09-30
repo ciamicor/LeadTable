@@ -18,11 +18,11 @@
                type="text">
       </div>
 
-      <div class="row-8-300 --flex-grow --justify-content-end --align-content-center">
+      <div class="row-8-300 --flex-grow-1 --justify-content-end --align-content-center">
         <button v-show="attendeeListSelected.length === 0 || attendeeListSelected.length > 1"
                 class="--secondary --p-4"
                 @click="printBadges">
-          Print {{ attendeeListSelected.length > 0 ? attendeeListSelected.length : 'All' }} Badges
+          Print {{attendeeListSelected.length > 0 ? attendeeListSelected.length : 'All'}} Badges
         </button>
         <button
           v-show="attendeeListSelected.length === 1"
@@ -49,7 +49,7 @@
           class="--p-4 --font-size-16 --place-self-center --font-size-16"
           @click="getAttendees_SelectedUpload(upload.id)"
         >
-          {{ upload.createdAt.slice( 0, 10 ) }}
+          {{upload.createdAt.slice( 0, 10 )}}
         </button>
         <button
           class="--p-2 --p-h-4 --primary --font-size-16"
@@ -161,7 +161,8 @@ const printComponent = ref() // for Print component
 /*-| Get Image
 ---+----+---+----+---+----+---+----+---*/
 function getImageUrl( name ) {
-  return new URL( `../../public/logos/${ expoLocalData.expo_Client.toString().toLowerCase() }/${ name }.jpeg`, import.meta.url ).href
+  return new URL( `../../public/logos/${ expoLocalData.expo_Client.toString()
+    .toLowerCase() }/${ name }.jpeg`, import.meta.url ).href
 }
 
 /*-| Hooks |-*/
@@ -248,7 +249,9 @@ async function chunkObject( a ) {
 
 function mergeSearchTerm( f, l ) {
   let fullName = f + l
-  return fullName.replace( ' ', '' ).toUpperCase().includes( searchTerm.value.replace( ' ', '' ).toUpperCase() )
+  return fullName.replace( ' ', '' )
+    .toUpperCase()
+    .includes( searchTerm.value.replace( ' ', '' ).toUpperCase() )
 
 }
 
@@ -337,14 +340,33 @@ async function printBadge_Portrait3x4( a ) {
   badgePdf.setFontSize( 18 )
   badgePdf.text( a.contact_Employer, dim.p * 2, dim.w - dim.p, null, dim.rot )
   badgePdf.setFontSize( 22 )
-  badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ), dim.p * 4, dim.w - dim.p, dim.rot )
+  badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ),
+    dim.p * 4,
+    dim.w - dim.p,
+    dim.rot )
   badgePdf.setFontSize( 18 )
   badgePdf.text( toTitleCase_Service( a.title ), dim.p * 6, dim.w - dim.p, dim.rot )
 
   /*-| Add QR Code |-*/
-  badgePdf.addImage( qrData.value, 'PNG', dim.h - dim.p, dim.w - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot )
+  badgePdf.addImage( qrData.value,
+    'PNG',
+    dim.h - dim.p,
+    dim.w - dim.imgH - dim.p,
+    dim.imgH,
+    dim.imgH,
+    'qr',
+    'FAST',
+    dim.rot )
   /*-| Add Logo |-*/
-  badgePdf.addImage( qrLogo.value, 'PNG', dim.h - dim.p, dim.p * 4, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot )
+  badgePdf.addImage( qrLogo.value,
+    'PNG',
+    dim.h - dim.p,
+    dim.p * 4,
+    dim.imgW,
+    dim.imgH,
+    'logo',
+    'FAST',
+    dim.rot )
 
   setTimeout( () => {
     badgePdf.output( 'dataurlnewwindow' )
@@ -374,16 +396,39 @@ async function printBadge_Portrait4x3( a ) {
 
   /*-| Text |-*/
   badgePdf.setFontSize( 18 )
-  badgePdf.text( toTitleCase_Service( a.contact_Employer ), dim.p * 2, dim.h - dim.p, null, dim.rot )
+  badgePdf.text( toTitleCase_Service( a.contact_Employer ),
+    dim.p * 2,
+    dim.h - dim.p,
+    null,
+    dim.rot )
   badgePdf.setFontSize( 22 )
-  badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ), dim.p * 4, dim.h - dim.p, dim.rot )
+  badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ),
+    dim.p * 4,
+    dim.h - dim.p,
+    dim.rot )
   badgePdf.setFontSize( 18 )
   badgePdf.text( toTitleCase_Service( a.title ), dim.p * 6, dim.h - dim.p, dim.rot )
 
   /*-| Add QR Code |-*/
-  badgePdf.addImage( qrData.value, 'PNG', dim.w - dim.p, dim.h - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot )
+  badgePdf.addImage( qrData.value,
+    'PNG',
+    dim.w - dim.p,
+    dim.h - dim.imgH - dim.p,
+    dim.imgH,
+    dim.imgH,
+    'qr',
+    'FAST',
+    dim.rot )
   /*-| Add Logo |-*/
-  badgePdf.addImage( qrLogo.value, 'PNG', dim.w - dim.p, dim.p * 4, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot )
+  badgePdf.addImage( qrLogo.value,
+    'PNG',
+    dim.w - dim.p,
+    dim.p * 4,
+    dim.imgW,
+    dim.imgH,
+    'logo',
+    'FAST',
+    dim.rot )
 
   setTimeout( () => {
     badgePdf.output( 'dataurlnewwindow' )
@@ -415,14 +460,33 @@ async function printBadge_Land3x4( a ) {
   badgePdf.setFontSize( 18 )
   badgePdf.text( toTitleCase_Service( a.contact_Employer ), dim.p, dim.p * 2, null, dim.rot )
   badgePdf.setFontSize( 22 )
-  badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ), dim.p, dim.p * 4.25, dim.rot )
+  badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ),
+    dim.p,
+    dim.p * 4.25,
+    dim.rot )
   badgePdf.setFontSize( 18 )
   badgePdf.text( toTitleCase_Service( a.title ), dim.p, dim.p * 6, dim.rot )
 
   /*-| Add QR Code |-*/
-  badgePdf.addImage( qrData.value, 'PNG', dim.p, dim.h - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot )
+  badgePdf.addImage( qrData.value,
+    'PNG',
+    dim.p,
+    dim.h - dim.imgH - dim.p,
+    dim.imgH,
+    dim.imgH,
+    'qr',
+    'FAST',
+    dim.rot )
   /*-| Add Logo |-*/
-  badgePdf.addImage( qrLogo.value, 'PNG', dim.w - dim.imgW - dim.p, dim.h - dim.imgH - dim.p, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot )
+  badgePdf.addImage( qrLogo.value,
+    'PNG',
+    dim.w - dim.imgW - dim.p,
+    dim.h - dim.imgH - dim.p,
+    dim.imgW,
+    dim.imgH,
+    'logo',
+    'FAST',
+    dim.rot )
 
   setTimeout( () => {
     badgePdf.output( 'dataurlnewwindow' )
@@ -454,14 +518,33 @@ async function printBadge_Land4x3( a ) {
   badgePdf.setFontSize( 18 )
   badgePdf.text( toTitleCase_Service( a.contact_Employer ), dim.p, dim.p * 2, null, dim.rot )
   badgePdf.setFontSize( 22 )
-  badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ), dim.p, dim.p * 4.25, dim.rot )
+  badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ),
+    dim.p,
+    dim.p * 4.25,
+    dim.rot )
   badgePdf.setFontSize( 18 )
   badgePdf.text( toTitleCase_Service( a.title ), dim.p, dim.p * 6, dim.rot )
 
   /*-| Add QR Code |-*/
-  badgePdf.addImage( qrData.value, 'PNG', dim.p, dim.w - dim.imgH - dim.p, dim.imgH, dim.imgH, 'qr', 'FAST', dim.rot )
+  badgePdf.addImage( qrData.value,
+    'PNG',
+    dim.p,
+    dim.w - dim.imgH - dim.p,
+    dim.imgH,
+    dim.imgH,
+    'qr',
+    'FAST',
+    dim.rot )
   /*-| Add Logo |-*/
-  badgePdf.addImage( qrLogo.value, 'PNG', dim.h - dim.imgW - dim.p, dim.w - dim.imgH - dim.p, dim.imgW, dim.imgH, 'logo', 'FAST', dim.rot )
+  badgePdf.addImage( qrLogo.value,
+    'PNG',
+    dim.h - dim.imgW - dim.p,
+    dim.w - dim.imgH - dim.p,
+    dim.imgW,
+    dim.imgH,
+    'logo',
+    'FAST',
+    dim.rot )
 
   setTimeout( () => {
     badgePdf.output( 'dataurlnewwindow' )

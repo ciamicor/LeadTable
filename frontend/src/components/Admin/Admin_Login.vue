@@ -4,11 +4,11 @@
        class="row-10-300 --place-items-center --place-content-center">
     <div class="col-10-300 --gap-12">
       <p v-if="authSession.data">
-        Hi, {{ authSession.data.user.name }}.
-        You're logged in using {{ authSession.data.user.email }}.
+        Hi, {{authSession.data.user.name}}.
+        You're logged in using {{authSession.data.user.email}}.
       </p>
       <span>
-        {{ authSession.data }}
+        {{authSession.data}}
       </span>
 
       <h3 v-if="!authSession.data">
@@ -35,11 +35,11 @@
         <!-- Auth Buttons -->
         <div class="row-12-300 --m-t-5">
           <button
-            class="--success--invert --flex-grow --flex-basis-45"
+            class="--success--invert --flex-grow-1 --flex-basis-45"
           >Create Account
           </button>
           <button
-            class="--primary--invert --flex-grow --flex-basis-45"
+            class="--primary--invert --flex-grow-1 --flex-basis-45"
             type="submit">
             Sign In
           </button>
@@ -70,7 +70,7 @@ const loadingStatus = ref(false)
 
 async function authClientSignIn() {
   console.log(loadingStatus.value)
-  await authSignIn(loginEmail.value, loginPass.value)
+  await authSignIn(loginEmail.value, loginPass.value, "/admin-dashboard")
   console.log(loadingStatus.value)
 }
 

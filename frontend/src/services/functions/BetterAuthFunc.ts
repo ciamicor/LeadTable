@@ -14,11 +14,12 @@ export async function authSignOut() {
   })
 }
 
-export async function authSignIn(e: string, p: string, /*loading: boolean*/) {
+export async function authSignIn(e: string, p: string, url: string = "" /*loading: boolean*/) {
   authClient.signIn.email({
     email: e,
     password: p,
-    rememberMe: true
+    rememberMe: true,
+    callbackURL: url
   }, {
     onRequest(ctx) {
       console.log(ctx, "signing in...")
