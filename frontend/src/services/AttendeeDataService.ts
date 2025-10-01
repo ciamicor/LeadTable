@@ -93,7 +93,7 @@ async function updateAttendee_Service(id: any, attendee: any) {
     reg_Type: attendee.reg_Type,
     tech_Sem: attendee.tech_Sem,
   }
-  console.log("Update Attendee data: ", data)
+  console.log("Update Attendee addresses: ", data)
   try {
     let updatedAttendee = await attendeeService.update(id, data)
     console.log(updatedAttendee)
@@ -107,7 +107,7 @@ async function updateAttendee_Service(id: any, attendee: any) {
 async function getAllAttendees_Service(list: any) {
   try {
     let allAttendees = await attendeeService.getAll()
-    // console.log(allAttendees.data)
+    // console.log(allAttendees.addresses)
     return allAttendees.data
   } catch (e) {
     console.log(e)

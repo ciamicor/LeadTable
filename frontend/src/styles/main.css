@@ -5595,7 +5595,7 @@ input, select, textarea {
   border-radius: 8px;
   transition: box-shadow 200ms ease-in-out, border 200ms ease-in-out;
 }
-input::placeholder, select::placeholder, textarea::placeholder {
+input::placeholder, input > option:disabled, select::placeholder, select > option:disabled, textarea::placeholder, textarea > option:disabled {
   color: var(--grey-8);
   font-size: 16px;
   font-style: italic;
@@ -12294,7 +12294,7 @@ table tbody tr input:active, table tbody tr input:focus {
 /*-| Badges for Selecting |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 .badge-select-grid {
-  margin: 86px 0 0 0;
+  margin-top: 24px;
   display: grid;
   grid-template-rows: auto;
   gap: min(24px, 2vw);

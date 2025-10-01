@@ -5,8 +5,7 @@
     <div class="modal-wrapper">
       <div
         class="modal-content col-12-300">
-        <h2>Editing Attendee: {{ attendeeLocal.name_First }}
-            {{ attendeeLocal.name_Last }}</h2>
+        <h2>Badge Edit</h2>
         <div id="details"
              class="col-12-300">
           <div class="row-12-300">
@@ -44,10 +43,55 @@
             <input id="phone"
                    v-model="attendeeContact_Phone"/>
           </label>
-          <label>
-            <span><i class="bi-map --p-r-2"/> Address</span>
-            <input id="address"
-                   v-model="attendeeAddress"/>
+          <label class="row-12-300">
+            <span class="--flex-basis-100">Your Address</span>
+            <input
+              v-model="attendeeAddress.address_Line1"
+              autocomplete="address-line1"
+              class="--w-45"
+              name="address"
+              placeholder="Address"
+              type="text"/>
+            <input
+              v-model="attendeeAddress.address_Line2"
+              autocomplete="address-line2"
+              class="--w-45"
+              name="address"
+              placeholder="Apt, Suite, etc"
+              type="text"/>
+            <input
+              v-model="attendeeAddress.address_City"
+              autocomplete="address-level2"
+              name="city"
+              placeholder="City"
+              type="text"/>
+            <input
+              v-model="attendeeAddress.address_State"
+              autocomplete="address-level1"
+              name="state"
+              placeholder="State/Province"
+              type="text"/>
+            <input
+              v-model="attendeeAddress.address_Zip"
+              autocomplete="postal-code"
+              name="zip"
+              placeholder="Zip/Postal Code"
+              type="text"/>
+            <select id="selectCountry"
+                    v-model="attendeeAddress.address_Country"
+                    autocomplete="country-name"
+                    name="selectCountry">
+              <option disabled
+                      selected
+                      value="">Select Country
+              </option>
+              <option v-for="c in countries"
+                      :key="c"
+                      :value="c"
+              >
+                {{c}}
+              </option>
+            </select>
           </label>
         </div>
         <div class="row-12-300 --place-content-space-between --place-items-space-between --p-t-6-clamp">
@@ -66,8 +110,9 @@
 </template>
 <script lang="ts"
         setup>
-import {defineProps, computed, defineEmits, ref, onBeforeMount} from "vue";
-import {updateAttendee_Service} from "@/services/AttendeeDataService.ts";
+import { defineProps, computed, defineEmits, ref, onBeforeMount } from "vue";
+import { updateAttendee_Service } from "@/services/AttendeeDataService.ts";
+import { countries } from "@/services/addresses/AddressForm_Countries.ts";
 
 const emit = defineEmits(["showModal"]);
 
@@ -85,7 +130,14 @@ const attendeeLName = ref(props.attendee.name_Last)
 const attendeeContact_Email = ref(props.attendee.contact_Email)
 const attendeeContact_Phone = ref(props.attendee.contact_Phone)
 const attendeeContact_Employer = ref(props.attendee.contact_Employer)
-const attendeeAddress = ref(props.attendee.address)
+const attendeeAddress = ref({
+  address_Line1: props.attendee.address_Line1,
+  address_Line2: props.attendee.address_Line2,
+  address_City: props.attendee.address_City,
+  address_State: props.attendee.address_State,
+  address_Zip: props.attendee.address_Zip,
+  address_Country: props.attendee.address_Country,
+})
 const attendeeTitle = ref(props.attendee.title)
 
 async function updateAttendee() {
@@ -96,6 +148,12 @@ async function updateAttendee() {
     contact_Phone: attendeeContact_Phone.value,
     contact_Employer: attendeeContact_Employer.value,
     address: attendeeAddress.value,
+    address_Line1: attendeeAddress.value.address_Line1,
+    address_Line2: attendeeAddress.value.address_Line2,
+    address_City: attendeeAddress.value.address_City,
+    address_State: attendeeAddress.value.address_State,
+    address_Zip: attendeeAddress.value.address_Zip,
+    address_Country: attendeeAddress.value.address_Country,
     title: attendeeTitle.value,
   }
   await updateAttendee_Service(attendeeLocal.value.id, data)

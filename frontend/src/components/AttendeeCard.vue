@@ -14,16 +14,17 @@
                        :visible="modalVisible"
                        @show-modal="toggleModal"/>
     <div>
-      <span class="--font-size-14">{{ formatDateTime( attendee.createdAt ) }}</span>
+      <span class="--font-size-14">Created: {{makeDate( attendee.createdAt )}}</span>
+
       <h3 class="--font-size-20">
-        {{ attendee.name_First }}
-        {{ attendee.name_Last }}
+        {{attendee.name_First}}
+        {{attendee.name_Last}}
       </h3>
       <p class="--font-size-16">
-        {{ attendee.contact_Employer }}
+        {{attendee.contact_Employer}}
       </p>
       <p class="--font-size-16">
-        {{ attendee.title }}
+        {{attendee.title}}
       </p>
     </div>
   </div>
@@ -63,6 +64,14 @@ function toggleModal() {
 
 /*-| Formatting |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*function convertTZ( date, tzString ) {
+  return new Date( (typeof date === "string" ? new Date( date ) : date).toLocaleString( "en-US",
+    { timeZone: tzString } ) );
+}*/
+function makeDate( date ) {
+  return new Date( date ).toLocaleString()
+}
+
 function formatDateTime( dt ) {
   let d = dt.slice( 0, 10 )
   let t = dt.slice( -13, -8 )

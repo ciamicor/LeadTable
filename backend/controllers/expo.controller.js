@@ -38,7 +38,7 @@ exports.createExpo = async ( req, res ) => {
     }
 }
 
-// Controller method to get all Expos
+// Get all Expos
 exports.getAll = async ( req, res ) => {
     try {
         const expos = await Expo.findAll()

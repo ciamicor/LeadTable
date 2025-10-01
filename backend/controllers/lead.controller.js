@@ -54,7 +54,7 @@ exports.createLead = async ( req, res ) => {
     }
 }
 
-// Controller method to get all leads
+// Get all leads
 exports.getAllLeads = async ( req, res ) => {
     try {
         const leads = await Lead.findAll( {} )
@@ -72,7 +72,7 @@ exports.getAllLeads = async ( req, res ) => {
     }
 }
 
-// Controller method to get all leads by exhibitor
+// Get all leads by exhibitor
 exports.getAllExhibitorLeads = async ( req, res ) => {
     const company_Id = req.params.id
     try {
@@ -95,7 +95,7 @@ exports.getAllExhibitorLeads = async ( req, res ) => {
     }
 }
 
-// Controller method to get a lead by ID
+// Get a lead by ID
 exports.getLeadById = async ( req, res ) => {
     const id = req.params.id
     try {

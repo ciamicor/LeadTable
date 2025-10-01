@@ -29,7 +29,7 @@ exports.createCompany = async ( req, res ) => {
     }
 }
 
-// Controller method to get all Companies
+// Get all Companies
 exports.getAllCompanies = async ( req, res ) => {
     try {
         const companies = await Company.findAll()
@@ -43,7 +43,7 @@ exports.getAllCompanies = async ( req, res ) => {
     }
 }
 
-// Controller method to get a company by ID
+// Get a company by ID
 exports.getCompanyById = async ( req, res ) => {
     const id = req.params.id
     try {

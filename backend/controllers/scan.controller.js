@@ -10,7 +10,7 @@ exports.getAllScans = async ( req, res ) => {
     }
 }
 
-// Controller method to get a company by ID
+// Get a company by ID
 exports.getScan = async ( req, res ) => {
     const id = req.params.id
     try {

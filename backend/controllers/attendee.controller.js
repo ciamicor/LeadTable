@@ -1,7 +1,7 @@
 const { Attendee, Expo } = require( '../models' )
 const { Op } = require( "sequelize" );
 
-// Controller method to get all attendees
+// Get all attendees
 exports.getAllAttendees = async ( req, res ) => {
     try {
         const attendees = await Attendee.findAll()
@@ -100,7 +100,33 @@ exports.getExpoAttendees = async ( req, res ) => {
     }
 }
 
-// Controller method to get an attendee by ID
+// Get attendees created between two dates
+exports.getAttendeesBetweenDates = async ( req, res ) => {
+    const startDate = req.params.startDate
+    const endDate = req.params.endDate
+    try {
+        const attendees = await Attendee.findAll(
+            {
+                where: {
+                    createdAt: { [Op.between]: [ startDate, endDate ] }
+                }
+            }
+        )
+        if ( attendees ) {
+            res.json( attendees )
+        } else {
+            res.status( 404 ).json( { error: 'No attendees created between those dates.' } )
+        }
+    } catch ( error ) {
+        console.error( 'error in controller getAttendeesBetweenDates: ', error )
+        res.status( 500 ).json( {
+            error: 'Something went wrong while getting those attendees.',
+            details: error?.message || 'Unknown error'
+        } )
+    }
+}
+
+// Get an attendee by ID
 exports.getAttendeeById = async ( req, res ) => {
     const id = req.params.id
     try {
@@ -119,7 +145,7 @@ exports.getAttendeeById = async ( req, res ) => {
     }
 }
 
-// Controller method to get an attendee by ID
+// Get an attendee by UPLOAD ID
 exports.getAttendeeByUploadId = async ( req, res ) => {
     const id = req.params.id
     try {
