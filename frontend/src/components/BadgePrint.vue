@@ -157,12 +157,8 @@ const printComponent = ref() // for Print component
 /*-| Get Image |-*/
 /*---+----+---+----+---+----+---+----+---*/
 function getImageUrl( name ) {
-  let url = new URL( `../../public/logos/${ expoLocalData.expo_Client.toString()
+  return new URL( `../../public/logos/${ expoLocalData.expo_Client.toString()
     .toLowerCase() }/${ name }.jpeg`, import.meta.url ).href
-  console.log( url )
-  return url
-  /*return new URL( `../../public/logos/${ expoLocalData.expo_Client.toString()
-    .toLowerCase() }/${ name }.jpeg`, import.meta.url ).href*/
 }
 
 /*-| Hooks |-*/
