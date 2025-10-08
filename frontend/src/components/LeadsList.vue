@@ -74,7 +74,7 @@ const expoLocalData = useExpoLocalStore()
 const leadListLocal = useLeadsListLocal()
 
 /*-| Hooks
----+----+---+----+---+----+---+----+---*/
+==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 onMounted( async () => {
     await getLocalCompanyData_Service( companyLocalData )
     console.log( companyLocalData.id )
@@ -90,15 +90,13 @@ onMounted( async () => {
     console.log( listMap.get( 459 ) )
   }
 )
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-/*-| DB |-*/
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+
+/*-| DB
+==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const status = ref( true )
 
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-/*-| Leads List |-*/
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-
+/*-| Leads List
+==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const leadsList = ref( [] )
 const lead = ref(
   {

@@ -52,6 +52,10 @@
   }
   /*-| Axis |-*/
   /*---+----+---+----+---+----+---+----+---*/
+  /*-| Row Gap  |-*/
+  .--gap-row-#{$i} {
+    row-gap: $spacer !important;
+  }
   /*-| Vert |-*/
   .--p-v-#{$i} {
     padding-top:    $spacer !important;
@@ -69,6 +73,10 @@
   .--m-v-#{$i}-clamp {
     margin-block-start: f.clamp-spacing($i, 4) !important;
     margin-block-end:   f.clamp-spacing($i, 4) !important;
+  }
+  /*-| Column Gap |-*/
+  .--gap-col-#{$i} {
+    column-gap: $spacer !important;
   }
   /*-| Horz |-*/
   .--p-h-#{$i} {

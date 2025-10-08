@@ -849,6 +849,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-0 {
+  row-gap: 0px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-0 {
   padding-top: 0px !important;
@@ -869,6 +874,11 @@ template {
 .--m-v-0-clamp {
   margin-block-start: clamp(0px, 0px + 0vw, 0px) !important;
   margin-block-end: clamp(0px, 0px + 0vw, 0px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-0 {
+  column-gap: 0px !important;
 }
 
 /*-| Horz |-*/
@@ -1013,6 +1023,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-1 {
+  row-gap: 2px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-1 {
   padding-top: 2px !important;
@@ -1033,6 +1048,11 @@ template {
 .--m-v-1-clamp {
   margin-block-start: clamp(1px, 0.25px + 0.234375vw, 4px) !important;
   margin-block-end: clamp(1px, 0.25px + 0.234375vw, 4px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-1 {
+  column-gap: 2px !important;
 }
 
 /*-| Horz |-*/
@@ -1177,6 +1197,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-2 {
+  row-gap: 4px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-2 {
   padding-top: 4px !important;
@@ -1197,6 +1222,11 @@ template {
 .--m-v-2-clamp {
   margin-block-start: clamp(2px, 0.5px + 0.46875vw, 8px) !important;
   margin-block-end: clamp(2px, 0.5px + 0.46875vw, 8px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-2 {
+  column-gap: 4px !important;
 }
 
 /*-| Horz |-*/
@@ -1341,6 +1371,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-3 {
+  row-gap: 6px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-3 {
   padding-top: 6px !important;
@@ -1361,6 +1396,11 @@ template {
 .--m-v-3-clamp {
   margin-block-start: clamp(3px, 0.75px + 0.703125vw, 12px) !important;
   margin-block-end: clamp(3px, 0.75px + 0.703125vw, 12px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-3 {
+  column-gap: 6px !important;
 }
 
 /*-| Horz |-*/
@@ -1505,6 +1545,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-4 {
+  row-gap: 8px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-4 {
   padding-top: 8px !important;
@@ -1525,6 +1570,11 @@ template {
 .--m-v-4-clamp {
   margin-block-start: clamp(4px, 1px + 0.9375vw, 16px) !important;
   margin-block-end: clamp(4px, 1px + 0.9375vw, 16px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-4 {
+  column-gap: 8px !important;
 }
 
 /*-| Horz |-*/
@@ -1669,6 +1719,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-5 {
+  row-gap: 10px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-5 {
   padding-top: 10px !important;
@@ -1689,6 +1744,11 @@ template {
 .--m-v-5-clamp {
   margin-block-start: clamp(5px, 1.25px + 1.171875vw, 20px) !important;
   margin-block-end: clamp(5px, 1.25px + 1.171875vw, 20px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-5 {
+  column-gap: 10px !important;
 }
 
 /*-| Horz |-*/
@@ -1833,6 +1893,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-6 {
+  row-gap: 12px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-6 {
   padding-top: 12px !important;
@@ -1853,6 +1918,11 @@ template {
 .--m-v-6-clamp {
   margin-block-start: clamp(6px, 1.5px + 1.40625vw, 24px) !important;
   margin-block-end: clamp(6px, 1.5px + 1.40625vw, 24px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-6 {
+  column-gap: 12px !important;
 }
 
 /*-| Horz |-*/
@@ -1997,6 +2067,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-7 {
+  row-gap: 14px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-7 {
   padding-top: 14px !important;
@@ -2017,6 +2092,11 @@ template {
 .--m-v-7-clamp {
   margin-block-start: clamp(7px, 1.75px + 1.640625vw, 28px) !important;
   margin-block-end: clamp(7px, 1.75px + 1.640625vw, 28px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-7 {
+  column-gap: 14px !important;
 }
 
 /*-| Horz |-*/
@@ -2161,6 +2241,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-8 {
+  row-gap: 16px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-8 {
   padding-top: 16px !important;
@@ -2181,6 +2266,11 @@ template {
 .--m-v-8-clamp {
   margin-block-start: clamp(8px, 2px + 1.875vw, 32px) !important;
   margin-block-end: clamp(8px, 2px + 1.875vw, 32px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-8 {
+  column-gap: 16px !important;
 }
 
 /*-| Horz |-*/
@@ -2325,6 +2415,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-9 {
+  row-gap: 18px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-9 {
   padding-top: 18px !important;
@@ -2345,6 +2440,11 @@ template {
 .--m-v-9-clamp {
   margin-block-start: clamp(9px, 2.25px + 2.109375vw, 36px) !important;
   margin-block-end: clamp(9px, 2.25px + 2.109375vw, 36px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-9 {
+  column-gap: 18px !important;
 }
 
 /*-| Horz |-*/
@@ -2489,6 +2589,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-10 {
+  row-gap: 20px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-10 {
   padding-top: 20px !important;
@@ -2509,6 +2614,11 @@ template {
 .--m-v-10-clamp {
   margin-block-start: clamp(10px, 2.5px + 2.34375vw, 40px) !important;
   margin-block-end: clamp(10px, 2.5px + 2.34375vw, 40px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-10 {
+  column-gap: 20px !important;
 }
 
 /*-| Horz |-*/
@@ -2653,6 +2763,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-11 {
+  row-gap: 22px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-11 {
   padding-top: 22px !important;
@@ -2673,6 +2788,11 @@ template {
 .--m-v-11-clamp {
   margin-block-start: clamp(11px, 2.75px + 2.578125vw, 44px) !important;
   margin-block-end: clamp(11px, 2.75px + 2.578125vw, 44px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-11 {
+  column-gap: 22px !important;
 }
 
 /*-| Horz |-*/
@@ -2817,6 +2937,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-12 {
+  row-gap: 24px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-12 {
   padding-top: 24px !important;
@@ -2837,6 +2962,11 @@ template {
 .--m-v-12-clamp {
   margin-block-start: clamp(12px, 3px + 2.8125vw, 48px) !important;
   margin-block-end: clamp(12px, 3px + 2.8125vw, 48px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-12 {
+  column-gap: 24px !important;
 }
 
 /*-| Horz |-*/
@@ -2981,6 +3111,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-13 {
+  row-gap: 26px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-13 {
   padding-top: 26px !important;
@@ -3001,6 +3136,11 @@ template {
 .--m-v-13-clamp {
   margin-block-start: clamp(13px, 3.25px + 3.046875vw, 52px) !important;
   margin-block-end: clamp(13px, 3.25px + 3.046875vw, 52px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-13 {
+  column-gap: 26px !important;
 }
 
 /*-| Horz |-*/
@@ -3145,6 +3285,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-14 {
+  row-gap: 28px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-14 {
   padding-top: 28px !important;
@@ -3165,6 +3310,11 @@ template {
 .--m-v-14-clamp {
   margin-block-start: clamp(14px, 3.5px + 3.28125vw, 56px) !important;
   margin-block-end: clamp(14px, 3.5px + 3.28125vw, 56px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-14 {
+  column-gap: 28px !important;
 }
 
 /*-| Horz |-*/
@@ -3309,6 +3459,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-15 {
+  row-gap: 30px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-15 {
   padding-top: 30px !important;
@@ -3329,6 +3484,11 @@ template {
 .--m-v-15-clamp {
   margin-block-start: clamp(15px, 3.75px + 3.515625vw, 60px) !important;
   margin-block-end: clamp(15px, 3.75px + 3.515625vw, 60px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-15 {
+  column-gap: 30px !important;
 }
 
 /*-| Horz |-*/
@@ -3473,6 +3633,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-16 {
+  row-gap: 32px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-16 {
   padding-top: 32px !important;
@@ -3493,6 +3658,11 @@ template {
 .--m-v-16-clamp {
   margin-block-start: clamp(16px, 4px + 3.75vw, 64px) !important;
   margin-block-end: clamp(16px, 4px + 3.75vw, 64px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-16 {
+  column-gap: 32px !important;
 }
 
 /*-| Horz |-*/
@@ -3637,6 +3807,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-17 {
+  row-gap: 34px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-17 {
   padding-top: 34px !important;
@@ -3657,6 +3832,11 @@ template {
 .--m-v-17-clamp {
   margin-block-start: clamp(17px, 4.25px + 3.984375vw, 68px) !important;
   margin-block-end: clamp(17px, 4.25px + 3.984375vw, 68px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-17 {
+  column-gap: 34px !important;
 }
 
 /*-| Horz |-*/
@@ -3801,6 +3981,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-18 {
+  row-gap: 36px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-18 {
   padding-top: 36px !important;
@@ -3821,6 +4006,11 @@ template {
 .--m-v-18-clamp {
   margin-block-start: clamp(18px, 4.5px + 4.21875vw, 72px) !important;
   margin-block-end: clamp(18px, 4.5px + 4.21875vw, 72px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-18 {
+  column-gap: 36px !important;
 }
 
 /*-| Horz |-*/
@@ -3965,6 +4155,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-19 {
+  row-gap: 38px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-19 {
   padding-top: 38px !important;
@@ -3985,6 +4180,11 @@ template {
 .--m-v-19-clamp {
   margin-block-start: clamp(19px, 4.75px + 4.453125vw, 76px) !important;
   margin-block-end: clamp(19px, 4.75px + 4.453125vw, 76px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-19 {
+  column-gap: 38px !important;
 }
 
 /*-| Horz |-*/
@@ -4129,6 +4329,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-20 {
+  row-gap: 40px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-20 {
   padding-top: 40px !important;
@@ -4149,6 +4354,11 @@ template {
 .--m-v-20-clamp {
   margin-block-start: clamp(20px, 5px + 4.6875vw, 80px) !important;
   margin-block-end: clamp(20px, 5px + 4.6875vw, 80px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-20 {
+  column-gap: 40px !important;
 }
 
 /*-| Horz |-*/
@@ -4293,6 +4503,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-21 {
+  row-gap: 42px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-21 {
   padding-top: 42px !important;
@@ -4313,6 +4528,11 @@ template {
 .--m-v-21-clamp {
   margin-block-start: clamp(21px, 5.25px + 4.921875vw, 84px) !important;
   margin-block-end: clamp(21px, 5.25px + 4.921875vw, 84px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-21 {
+  column-gap: 42px !important;
 }
 
 /*-| Horz |-*/
@@ -4457,6 +4677,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-22 {
+  row-gap: 44px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-22 {
   padding-top: 44px !important;
@@ -4477,6 +4702,11 @@ template {
 .--m-v-22-clamp {
   margin-block-start: clamp(22px, 5.5px + 5.15625vw, 88px) !important;
   margin-block-end: clamp(22px, 5.5px + 5.15625vw, 88px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-22 {
+  column-gap: 44px !important;
 }
 
 /*-| Horz |-*/
@@ -4621,6 +4851,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-23 {
+  row-gap: 46px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-23 {
   padding-top: 46px !important;
@@ -4641,6 +4876,11 @@ template {
 .--m-v-23-clamp {
   margin-block-start: clamp(23px, 5.75px + 5.390625vw, 92px) !important;
   margin-block-end: clamp(23px, 5.75px + 5.390625vw, 92px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-23 {
+  column-gap: 46px !important;
 }
 
 /*-| Horz |-*/
@@ -4785,6 +5025,11 @@ template {
 
 /*-| Axis |-*/
 /*---+----+---+----+---+----+---+----+---*/
+/*-| Row Gap  |-*/
+.--gap-row-24 {
+  row-gap: 48px !important;
+}
+
 /*-| Vert |-*/
 .--p-v-24 {
   padding-top: 48px !important;
@@ -4805,6 +5050,11 @@ template {
 .--m-v-24-clamp {
   margin-block-start: clamp(24px, 6px + 5.625vw, 96px) !important;
   margin-block-end: clamp(24px, 6px + 5.625vw, 96px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-24 {
+  column-gap: 48px !important;
 }
 
 /*-| Horz |-*/
@@ -5642,22 +5892,22 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
   gap: min(24px, 2vw);
   padding: 0 clamp(8px, 2px + 1.875vw, 32px) clamp(14px, 3.5px + 3.28125vw, 56px);
 }
-@media (min-width: 440px) {
+@media (min-width: 432px) {
   .lead-cards-container {
     grid-template-columns: repeat(1, minmax(400px, 1fr));
   }
 }
-@media (min-width: 880px) {
+@media (min-width: 864px) {
   .lead-cards-container {
     grid-template-columns: repeat(2, minmax(400px, 1fr));
   }
 }
-@media (min-width: 1320px) {
+@media (min-width: 1296px) {
   .lead-cards-container {
     grid-template-columns: repeat(3, minmax(400px, 1fr));
   }
 }
-@media (min-width: 1760px) {
+@media (min-width: 1728px) {
   .lead-cards-container {
     grid-template-columns: repeat(4, minmax(400px, 1fr));
   }
@@ -5667,7 +5917,7 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
   grid-template-rows: 1fr repeat(3, min-content);
   gap: clamp(8px, 6px + 0.625vw, 16px);
   align-items: start;
-  padding: 20px 20px;
+  padding: 12px 16px;
   border: 1px solid var(--grey-8);
   border-radius: 8px;
   outline: 1px solid rgba(0, 0, 0, 0);
@@ -5677,23 +5927,27 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
   outline: 1px solid var(--color-success-9);
   background: var(--color-success-12);
 }
-
-.lead-card .card-label {
+.lead-cards-container .lead-card {
+  padding-top: 8px;
+  padding-right: 8px;
+  padding-bottom: 8px;
+}
+.lead-cards-container .lead-card .card-label {
   color: var(--grey-1);
   font-size: 14px;
   font-weight: 400;
   text-transform: uppercase;
 }
-.lead-card #name {
+.lead-cards-container .lead-card #name {
   font-size: 22px;
   font-weight: 500;
   line-height: 1;
   margin-block-end: 4px;
 }
-.lead-card #contact {
+.lead-cards-container .lead-card #contact {
   gap: 12px;
 }
-.lead-card #phone, .lead-card #email {
+.lead-cards-container .lead-card #phone, .lead-cards-container .lead-card #email {
   color: var(--color-success-4);
   font-size: 16px;
   font-weight: 300;
@@ -5704,20 +5958,34 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
   text-decoration-color: var(--color-success-11);
   text-decoration-thickness: 2px;
 }
-.lead-card #phone i, .lead-card #email i {
+.lead-cards-container .lead-card #phone i, .lead-cards-container .lead-card #email i {
   color: var(--color-success-8);
   font-size: 18px;
 }
-.lead-card #phone:hover, .lead-card #email:hover {
+.lead-cards-container .lead-card #phone:hover, .lead-cards-container .lead-card #email:hover {
   background: var(--color-success-12);
 }
-.lead-card #score {
+.lead-cards-container .lead-card #score {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(5, 28px);
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
 }
-.lead-card #score i {
+.lead-cards-container .lead-card #score #score-value {
+  grid-column: 1;
+  grid-row: 1;
+  place-self: center;
+  color: var(--color-secondary-3);
+  font-size: 16px;
+  font-weight: 700;
+  translate: 0 2px;
+}
+.lead-cards-container .lead-card #score i {
+  grid-column: 1;
+  grid-row: 1;
   color: var(--color-secondary-7);
-  font-size: 22px;
+  font-size: 34px;
+  line-height: 0;
 }
 .modal-backdrop {
   z-index: 10000;
@@ -5745,7 +6013,7 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
   flex: 1 1 auto;
   max-width: 600px;
   margin: clamp(16px, 8px + 2.5vw, 48px) clamp(16px, 4px + 3.75vw, 64px);
-  padding: clamp(16px, 8px + 2.5vw, 48px) clamp(16px, 4px + 3.75vw, 64px);
+  padding: clamp(12px, 6px + 1.875vw, 36px) clamp(13px, 3.25px + 3.046875vw, 52px);
   border-radius: 16px;
   background: white;
   box-shadow: 8px 8px 8px 2px rgba(0, 0, 0, 0.25);
@@ -11714,22 +11982,22 @@ table tbody tr input:active, table tbody tr input:focus {
   gap: min(24px, 2vw);
   padding: 0 clamp(8px, 2px + 1.875vw, 32px) clamp(14px, 3.5px + 3.28125vw, 56px);
 }
-@media (min-width: 340px) {
+@media (min-width: 332px) {
   .badge-select-grid {
     grid-template-columns: repeat(1, minmax(300px, 1fr));
   }
 }
-@media (min-width: 680px) {
+@media (min-width: 664px) {
   .badge-select-grid {
     grid-template-columns: repeat(2, minmax(300px, 1fr));
   }
 }
-@media (min-width: 1020px) {
+@media (min-width: 996px) {
   .badge-select-grid {
     grid-template-columns: repeat(3, minmax(300px, 1fr));
   }
 }
-@media (min-width: 1360px) {
+@media (min-width: 1328px) {
   .badge-select-grid {
     grid-template-columns: repeat(4, minmax(300px, 1fr));
   }
@@ -11739,7 +12007,7 @@ table tbody tr input:active, table tbody tr input:focus {
   grid-template-rows: 1fr repeat(auto-fill, min-content);
   gap: clamp(8px, 6px + 0.625vw, 16px);
   align-items: start;
-  padding: 20px 20px;
+  padding: 12px 16px;
   border: 1px solid var(--grey-8);
   border-radius: 8px;
   outline: 1px solid rgba(0, 0, 0, 0);
@@ -11838,22 +12106,22 @@ table tbody tr input:active, table tbody tr input:focus {
   gap: min(24px, 2vw);
   padding: clamp(1px, 0.25px + 0.234375vw, 4px);
 }
-@media (min-width: 440px) {
+@media (min-width: 432px) {
   .expo-select-container {
     grid-template-columns: repeat(1, minmax(400px, 1fr));
   }
 }
-@media (min-width: 880px) {
+@media (min-width: 864px) {
   .expo-select-container {
     grid-template-columns: repeat(2, minmax(400px, 1fr));
   }
 }
-@media (min-width: 1320px) {
+@media (min-width: 1296px) {
   .expo-select-container {
     grid-template-columns: repeat(3, minmax(400px, 1fr));
   }
 }
-@media (min-width: 1760px) {
+@media (min-width: 1728px) {
   .expo-select-container {
     grid-template-columns: repeat(4, minmax(400px, 1fr));
   }
@@ -11863,7 +12131,7 @@ table tbody tr input:active, table tbody tr input:focus {
   grid-template-rows: 1fr repeat(3, min-content);
   gap: clamp(8px, 6px + 0.625vw, 16px);
   align-items: start;
-  padding: 20px 20px;
+  padding: 12px 16px;
   border: 1px solid var(--grey-8);
   border-radius: 8px;
   outline: 1px solid rgba(0, 0, 0, 0);

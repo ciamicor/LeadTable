@@ -6,7 +6,7 @@
       <div
         class="modal-content col-12-300">
         <div class="row-12-300">
-          <h2>Edit Lead</h2>
+          <h3>Edit Lead</h3>
           <!--          <button class="&#45;&#45;warn"
                             @click="deleteLead(leadLocal.id)"
                     ><i class="bi-trash3-fill"></i></button>-->
@@ -48,11 +48,6 @@
             <span><i class="bi-telephone-outbound --p-r-2"/> Phone</span>
             <input id="phone"
                    v-model="leadLocal.phone"/>
-          </label>
-          <label>
-            <span><i class="bi-map --p-r-2"/> Address</span>
-            <input id="address"
-                   v-model="leadLocal.address"/>
           </label>
           <label class="row-12-300">
             <span class="--flex-basis-100">Your Address</span>
@@ -105,26 +100,42 @@
             </select>
           </label>
         </div>
-        <div id="score">
-          <i v-for="n in scoreCount.score"
-             :key="n"
-             class="bi-star-fill">
-          </i>
-          <i v-for="n in scoreCount.unscored"
-             :key="n"
-             class="bi-star">
-          </i>
-        </div>
+        <!--TODO Enable lead rating edit.-->
+        <!--        <fieldset class="&#45;&#45;m-t-12">
+                  <legend>Rating</legend>
+                  <div
+                    v-for="(rating, index) in ratings"
+                    :key="index"
+                  >
+                    <input
+                      :id="'r-'+ rating"
+                      :name="'r-'+ rating"
+                      type="radio"
+                      @change="updateScore(rating)"
+                    />
+                    <label :for="'r-'+ rating">{{ rating }}</label>
+                  </div>
+                </fieldset>
+                <div id="score">
+                  <i v-for="n in scoreCount.score"
+                     :key="n"
+                     class="bi-star-fill">
+                  </i>
+                  <i v-for="n in scoreCount.unscored"
+                     :key="n"
+                     class="bi-star">
+                  </i>
+                </div>-->
         <label>
           Comment
           <textarea id="comment"
                     v-model="leadLocal.comment"/>
         </label>
         <div class="row-12-300 --place-content-space-between --place-items-space-between --p-t-6-clamp">
-          <button class="col-12-300 col-6-500 col-5-800"
+          <button class="--warn --flex-grow-1 --flex-basis-45"
                   @click="$emit('showModal')">Cancel
           </button>
-          <button class="--primary--invert col-12-300 col-6-500 col-5-800"
+          <button class="--primary--invert --flex-grow-1 --flex-basis-45"
                   @click="updateLead_Service(leadLocal.id, leadLocal); $emit('showModal')">
             Save Changes
           </button>
@@ -142,6 +153,7 @@ import { countries } from "@/services/addresses/AddressForm_Countries.ts";
 
 const confirmDelete = ref(false)
 const emit = defineEmits(["showModal"]);
+let ratings = [1, 2, 3, 4, 5]
 
 const props = defineProps({
   lead: {
@@ -160,6 +172,10 @@ const scoreCount = computed(() => {
 async function deleteLead(id: number) {
   await deleteLead_Service(id)
   emit('showModal')
+}
+
+function updateScore(r) {
+  lead.value.score = r
 }
 
 </script>

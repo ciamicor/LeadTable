@@ -3,53 +3,71 @@
 
 .lead-cards-container {
   @include adapt-grid;
+
+  .lead-card {
+    @extend .grid-card;
+    padding-top:    $sp-4;
+    padding-right:  $sp-4;
+    padding-bottom: $sp-4;
+    .card-label {
+      color:          $grey-1;
+      font-size:      $font-xs - 2px;
+      font-weight:    400;
+      text-transform: uppercase;
+    }
+    #details {
+    }
+    #name {
+      font-size:        $font-md;
+      font-weight:      500;
+      line-height:      1;
+      margin-block-end: $sp-2;
+    }
+    #contact {
+      gap: 12px;
+    }
+    #phone, #email {
+      color:                     $color-success-4;
+      font-size:                 $font-xs;
+      font-weight:               300;
+      min-width:                 max-content;
+      transition:                background $trans-100;
+      text-decoration-line:      underline;
+      text-underline-offset:     $sp-1;
+      text-decoration-color:     $color-success-11;
+      text-decoration-thickness: 2px;
+      & i {
+        color:     $color-success-8;
+        font-size: $font-sm;
+      }
+      &:hover {
+        background: $color-success-12;
+      }
+    }
+    #score {
+      position:              relative;
+      display:               grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      #score-value {
+        grid-column: 1;
+        grid-row:    1;
+        place-self:  center;
+        color:       $color-secondary-3;
+        font-size:   $font-xs;
+        font-weight: 700;
+        translate:   0 2px;
+      }
+      & i {
+        grid-column: 1;
+        grid-row:    1;
+        color:       $color-secondary-7;
+        font-size:   $font-xxl;
+        line-height: 0;
+      }
+    }
+    #comment {
+    }
+  }
 }
 
-.lead-card {
-  @extend .grid-card;
-  .card-label {
-    color:          $grey-1;
-    font-size:      $font-xs - 2px;
-    font-weight:    400;
-    text-transform: uppercase;
-  }
-  #details {
-  }
-  #name {
-    font-size:        $font-md;
-    font-weight:      500;
-    line-height:      1;
-    margin-block-end: $sp-2;
-  }
-  #contact {
-    gap: 12px;
-  }
-  #phone, #email {
-    color:                     $color-success-4;
-    font-size:                 $font-xs;
-    font-weight:               300;
-    min-width:                 max-content;
-    transition:                background $trans-100;
-    text-decoration-line:      underline;
-    text-underline-offset:     $sp-1;
-    text-decoration-color:     $color-success-11;
-    text-decoration-thickness: 2px;
-    & i {
-      color:     $color-success-8;
-      font-size: $font-sm;
-    }
-    &:hover {
-      background: $color-success-12;
-    }
-  }
-  #score {
-    display:               grid;
-    grid-template-columns: repeat(5, 28px);
-    & i {
-      color:     $color-secondary-7;
-      font-size: $font-md;
-    }
-  }
-  #comment {
-  }
-}

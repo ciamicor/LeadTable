@@ -116,7 +116,6 @@ async function getLead_Service(id: any) {
 
 /*-| Get All Leads by Exhibitor Company ID
 ---+----+---+----+---+----+---+----+---*/
-
 async function getAllCompanyLeads_Service(cId: any, list: any) {
   try {
     let leads = await leadService.getAllExhibLeads(cId)
