@@ -7,9 +7,10 @@
         class="modal-content col-12-300">
         <div class="row-12-300">
           <h2>Edit Lead</h2>
-          <button class="--warn"
-          ><i class="bi-trash3-fill"></i></button>
-          <!--@click="deleteLead(leadLocal.id)"-->
+          <!--          <button class="&#45;&#45;warn"
+                            @click="deleteLead(leadLocal.id)"
+                    ><i class="bi-trash3-fill"></i></button>-->
+
         </div>
         <div id="details"
              class="col-12-300">
