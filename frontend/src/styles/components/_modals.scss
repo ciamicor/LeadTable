@@ -25,7 +25,7 @@
   .modal-content {
     flex:          1 1 auto;
     max-width:     600px;
-    margin:        f.clamp-spacing(16, 3) f.clamp-spacing(16, 4);
+    margin:        f.clamp-spacing(12, 3) f.clamp-spacing(12, 4);
     padding:       f.clamp-spacing(12, 3) f.clamp-spacing(13, 4);
     border-radius: $panel-border;
     background:    white;

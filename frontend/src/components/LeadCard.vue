@@ -21,16 +21,22 @@
        :href="'tel:' + lead.phone"><i class="bi-telephone-outbound --p-r-2"/>
       {{ lead.phone }}</a>
   </div>
-  <div id="address">
+  <div v-show="lead.address_Country != null"
+       id="address">
     <i class="bi-map --p-r-2"/>
     {{ lead.address_Country }}
   </div>
 
   <div id="comment">{{ lead.comment }}</div>
 
-  <button class="--justify-self-end --p-4"
-          @click.stop="toggleModal"><i class="bi-pencil"/>
-  </button>
+  <div class="row-12-300">
+    <button class="--flex-grow-1 --p-4"
+            @click.stop="toggleModal"><i class="bi-pencil"/>
+    </button>
+    <!--    <button class="&#45;&#45;warn &#45;&#45;flex-grow-0 &#45;&#45;p-4"
+                @click="deleteLead(leadLocal.id)"
+        ><i class="bi-trash3-fill"></i></button>-->
+  </div>
   <LeadEditModal :lead="lead"
                  :visible="modalVisible"
                  @show-modal="toggleModal"/>
@@ -38,8 +44,9 @@
 </template>
 <script lang="ts"
         setup>
-import { defineProps, computed, ref } from "vue";
+import { defineProps, computed, ref, defineEmits } from "vue";
 import LeadEditModal from "@/components/Elements/LeadEditModal.vue";
+import { deleteLead_Service } from "@/services/LeadDataService.ts";
 
 const props = defineProps({
   lead: {
@@ -52,6 +59,15 @@ const modalVisible = ref(false)
 
 function toggleModal() {
   modalVisible.value = !modalVisible.value
+}
+
+/*-| Delete Lead
+---+----+---+----+---+----+---+----+---*/
+const confirmDelete = ref(false)
+
+async function deleteLead(id: number) {
+  await deleteLead_Service(id)
+  emit('showModal')
 }
 
 </script>

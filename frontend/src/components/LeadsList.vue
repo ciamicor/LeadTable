@@ -48,7 +48,7 @@
       </div>
 
       <router-link
-        v-if="companyLocalData.lead_Ret === true && expoLocalData.expoInPast === true"
+        v-if="companyLocalData.lead_Ret === true && expoLocalData.expoInPast === false"
         class="button --stacked --float --bottom-r --success--invert --p-t-4 --gap-2"
         to="scan-lead">
         <i class="bi-camera"></i>
@@ -63,7 +63,7 @@
 <script setup>
 import LoadingHolder from "@/components/Elements/LoadingHolder.vue";
 import { useCompanyLocalStore, useExpoLocalStore, useLeadsListLocal } from '@/stores.ts'
-import { getAllLeads_Service, getAllCompanyLeads_Service } from '../services/LeadDataService.js'
+import { getAllCompanyLeads_Service } from '../services/LeadDataService.js'
 import { onMounted, ref } from 'vue'
 import { getLocalCompanyData_Service } from '@/services/CompanyDataService.js'
 import LeadCard from '@/components/LeadCard.vue'

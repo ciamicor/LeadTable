@@ -7,10 +7,6 @@
         class="modal-content col-12-300">
         <div class="row-12-300">
           <h3>Edit Lead</h3>
-          <!--          <button class="&#45;&#45;warn"
-                            @click="deleteLead(leadLocal.id)"
-                    ><i class="bi-trash3-fill"></i></button>-->
-
         </div>
         <div id="details"
              class="col-12-300">
@@ -151,7 +147,6 @@ import { defineProps, computed, defineEmits, ref } from "vue";
 import { updateLead_Service, deleteLead_Service } from "@/services/LeadDataService.ts";
 import { countries } from "@/services/addresses/AddressForm_Countries.ts";
 
-const confirmDelete = ref(false)
 const emit = defineEmits(["showModal"]);
 let ratings = [1, 2, 3, 4, 5]
 
@@ -169,13 +164,8 @@ const scoreCount = computed(() => {
   return {"score": props.lead.score, "unscored": unscored}
 })
 
-async function deleteLead(id: number) {
-  await deleteLead_Service(id)
-  emit('showModal')
-}
-
-function updateScore(r) {
-  lead.value.score = r
+function updateScore(r: number) {
+  props.lead.value.score = r
 }
 
 </script>

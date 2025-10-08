@@ -62,7 +62,7 @@ async function getExpo_Service(client: string, year: number, expoObject: any) {
     // console.log("Found Expo: ", response.data)
     expoObject.active = e.data.active
     expoObject.start_Date = new Date(e.data.start_Date.toString())
-    expoObject.expoInPast = new Date() > expoObject.start_Date
+    expoObject.expoInPast = new Date() > expoObject.start_Date.setDate(expoObject.start_Date + 1)
     expoObject.expo_Client = e.data.expo_Client
     expoObject.expo_Year = e.data.expo_Year
     expoObject.expoFp_Id = e.data.expoFp_Id
