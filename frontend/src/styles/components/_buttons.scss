@@ -15,37 +15,39 @@
 
 button,
 .button {
-  display:             flex;
-  place-content:       center;
-  place-items:         center;
-  color:               $grey-2;
-  font-size:           $font-xs;
-  font-weight:         400;
-  line-height:         1;
-  text-align:          center;
-  text-decoration:     none;
-  padding:             $sp-5 $sp-6;
-  cursor:              pointer;
-  border-width:        1px;
-  border-style:        solid;
-  border-color:        $grey-6;
-  border-bottom-width: 3px;
-  border-radius:       $item-border;
-  background:          button-gradient(var(--color-grey-hs));
-  transition:          background $trans-200,
-                       color $trans-200,
-                       border-width $trans-100,
-                       --gradient-stop-1 $trans-100,
-                       --gradient-stop-2 $trans-200;
+  display:         flex;
+  place-content:   center;
+  place-items:     center;
+  color:           $grey-2;
+  font-size:       $font-xs;
+  font-weight:     400;
+  line-height:     1;
+  text-align:      center;
+  text-decoration: none;
+  padding:         $sp-5 $sp-6;
+  cursor:          pointer;
+  border-width:    1px;
+  border-style:    solid;
+  border-color:    $grey-10;
+  //border-bottom-width: 2px;
+  border-radius:   $item-border;
+  background:      button-gradient(var(--color-grey-hs));
+  transition:      background $trans-200,
+                   color $trans-200,
+                   border-width $trans-100,
+                   box-shadow $trans-100,
+                   --gradient-stop-1 $trans-100,
+                   --gradient-stop-2 $trans-200;
   & i {
     color:     inherit;
     font-size: inherit;
   }
   &:hover {
     color:             $grey-2;
-    // background: $grey-11; // reactivate if removing gradient backgrounds.
-    --gradient-stop-1: 24%;
-    --gradient-stop-2: 96%;
+    //background:        $grey-11; // reactivate if removing gradient backgrounds.
+    box-shadow:        inset 0 0 8px 1px hsla(0, 0%, 0%, .15);
+    --gradient-stop-1: 0%;
+    --gradient-stop-2: 50%;
   }
   /*-| Alternatives |-*/
   /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
@@ -131,7 +133,7 @@ button,
   &.--primary {
     @include color-button(
         $color-primary-2, // $color,
-        $color-primary-4, // $border-color,
+        $color-primary-6, // $border-color,
         button-gradient(var(--color-primary-hs)), // $background,
         $color-primary-2, // $hover-color,
         $color-primary-1, // $invert-color,
