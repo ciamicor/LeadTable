@@ -6,7 +6,7 @@
       <button class="--justify-self-end --p-4"
               @click.stop="toggleModal"><i class="bi-pencil"/></button>
     </div>
-    <LeadCardModal :lead="lead"
+    <LeadEditModal :lead="lead"
                    :visible="modalVisible"
                    @show-modal="toggleModal"/>
     <span id="employment">{{ lead.title ? lead.title : '' }}</span>
@@ -20,10 +20,15 @@
     <a id="phone"
        :href="'tel:' + lead.phone"><i class="bi-telephone-outbound --p-r-2"/>
       {{ lead.phone }}</a>
-    <span id="address">
-        <i class="bi-map --p-r-2"/>
-        {{ lead.address }}
-      </span>
+    <div id="address">
+      <i class="bi-map --p-r-2"/>
+      {{ `${lead.address_Line1}, ${lead.address_Line2}` }}
+      <div class="--m-l-12">
+        {{ `${lead.address_City}, ${lead.address_State}
+           ${lead.address_Zip}, ${lead.address_Country}`
+        }}
+      </div>
+    </div>
   </div>
 
   <div id="score">
@@ -40,8 +45,8 @@
 </template>
 <script lang="ts"
         setup>
-import {defineProps, computed, ref} from "vue";
-import LeadCardModal from "@/components/LeadEditModal.vue";
+import { defineProps, computed, ref } from "vue";
+import LeadEditModal from "@/components/LeadEditModal.vue";
 
 const props = defineProps({
   lead: {

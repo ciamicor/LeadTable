@@ -27,7 +27,12 @@ Lead.init( {
     email: DataTypes.STRING,
     phone: DataTypes.STRING,
     employer: DataTypes.STRING,
-    address: DataTypes.STRING,
+    address_Line1: DataTypes.STRING,
+    address_Line2: DataTypes.STRING,
+    address_City: DataTypes.STRING,
+    address_State: DataTypes.STRING,
+    address_Zip: DataTypes.CHAR,
+    address_Country: DataTypes.STRING,
     score: {
         type: DataTypes.INTEGER,
         defaultValue: 0

@@ -10,7 +10,7 @@
     <div class="row --items qr-float-container">
       <span class="col-10-300 qr-float-target-text">{{ scanTarget }}</span>
 
-      <div v-if="scanCodeFound"
+      <div v-show="scanCodeFound"
            class="row --justify-content-center">
         <button
           class="--warn qr-float-cancel"
@@ -30,12 +30,38 @@
     <div
       class="col-12-300 --m-h-8 --m-v-12">
       <h1>Confirm Lead</h1>
-      <p><span>Name: </span>{{ attendee.name_First }} {{ attendee.name_Last }}</p>
-      <p><span>Email: </span>{{ attendee.contact_Email }}</p>
-      <p><span>Phone: </span>{{ attendee.contact_Phone }}</p>
-      <p><span>Employer: </span>{{ attendee.contact_Employer }}</p>
-      <p><span>Title: </span>{{ attendee.title }}</p>
-      <p><span>Address: </span>{{ attendee.address }}</p>
+      <span>Name: </span>
+      <p class=" --m-b-8">{{ attendee.name_First }} {{ attendee.name_Last }}</p>
+      <div class="row-12-300 --m-b-8">
+        <div class="col-6-300">
+          <span>Email: </span>
+          <p>{{ attendee.contact_Email }}</p>
+        </div>
+        <div class="col-6-300">
+          <span>Phone: </span>
+          <p>{{ attendee.contact_Phone }}</p>
+        </div>
+      </div>
+      <div class="row-12-300 --m-b-8">
+        <div class="col-6-300">
+          <span>Employer: </span>
+          <p>{{ attendee.contact_Employer }}</p>
+        </div>
+        <div class="col-6-300">
+          <span>Title: </span>
+          <p>{{ attendee.title }}</p>
+        </div>
+      </div>
+      <span>Address: </span>
+      <div>
+        <p>{{ `${ attendee.address_Line1 }, ${ attendee.address_Line2 }` }}</p>
+        <p>{{ ` ${ attendee.address_City }, ${ attendee.address_State } ${ attendee.address_Zip }`
+           }}
+        </p>
+        <p>{{ `${ attendee.address_Country }` }}</p>
+      </div>
+
+
       <form action=""
             class="col-12-300">
         <fieldset class="--m-t-12">
@@ -68,12 +94,12 @@
           Add {{ lead.name_First }}
         </button>
         <button
-          class="--warn col-6-600"
+          class="--warn"
           @click="resetScanning">
           Go Back
         </button>
         <button
-          class="--success col-6-600"
+          class="--success"
           @click="createLead(lead)">Add & Scan Another
         </button>
       </div>
@@ -128,7 +154,13 @@ let attendee = ref(
     contact_Employer: '',
     title: '',
     reg_Type: '',
-    tech_Sem: ''
+    tech_Sem: '',
+    address_Line1: '',
+    address_Line2: '',
+    address_City: '',
+    address_State: '',
+    address_Zip: '',
+    address_Country: '',
   }
 )
 
@@ -154,7 +186,12 @@ let lead = ref(
     email: attendee.value.contact_Email,
     phone: attendee.value.contact_Phone,
     employer: attendee.value.contact_Employer,
-    address: attendee.value.address,
+    address_Line1: attendee.value.address_Line1,
+    address_Line2: attendee.value.address_Line2,
+    address_City: attendee.value.address_City,
+    address_State: attendee.value.address_State,
+    address_Zip: attendee.value.address_Zip,
+    address_Country: attendee.value.address_Country,
     title: attendee.value.title,
     score: 5,
     comment: null
@@ -206,7 +243,12 @@ async function resetLead() {
   lead.value.phone = null
   lead.value.employer = null
   lead.value.title = null
-  lead.value.address = null
+  lead.value.address_Line1 = null
+  lead.value.address_Line2 = null
+  lead.value.address_City = null
+  lead.value.address_State = null
+  lead.value.address_Zip = null
+  lead.value.address_Country = null
   lead.value.comment = null
 }
 
@@ -219,7 +261,12 @@ async function loadLead() {
   lead.value.phone = attendee.value.contact_Phone
   lead.value.employer = attendee.value.contact_Employer
   lead.value.title = attendee.value.title
-  lead.value.address = attendee.value.address
+  lead.value.address_Line1 = attendee.value.address_Line1
+  lead.value.address_Line2 = attendee.value.address_Line2
+  lead.value.address_City = attendee.value.address_City
+  lead.value.address_State = attendee.value.address_State
+  lead.value.address_Zip = attendee.value.address_Zip
+  lead.value.address_Country = attendee.value.address_Country
 }
 
 /*-| Get ID from QR Code |-*/

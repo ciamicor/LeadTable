@@ -13,7 +13,12 @@ exports.createLead = async ( req, res ) => {
         email,
         phone,
         employer,
-        address,
+        address_Line1,
+        address_Line2,
+        address_City,
+        address_State,
+        address_Zip,
+        address_Country,
         title,
         score,
         comment
@@ -30,7 +35,12 @@ exports.createLead = async ( req, res ) => {
             email,
             phone,
             employer,
-            address,
+            address_Line1,
+            address_Line2,
+            address_City,
+            address_State,
+            address_Zip,
+            address_Country,
             title,
             score,
             comment
@@ -124,7 +134,12 @@ exports.updateLead = async ( req, res ) => {
         email,
         phone,
         employer,
-        address,
+        address_Line1,
+        address_Line2,
+        address_City,
+        address_State,
+        address_Zip,
+        address_Country,
         title,
         score,
         comment
@@ -137,7 +152,12 @@ exports.updateLead = async ( req, res ) => {
             lead.email = email
             lead.phone = phone
             lead.employer = employer
-            lead.address = address
+            lead.address_Line1 = address_Line1
+            lead.address_Line2 = address_Line2
+            lead.address_City = address_City
+            lead.address_State = address_State
+            lead.address_Zip = address_Zip
+            lead.address_Country = address_Country
             lead.title = title
             lead.score = score
             lead.comment = comment

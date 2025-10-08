@@ -34,14 +34,12 @@ class LeadDataService {
   }
 }
 
-/*-| Functions |-*/
-
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Functions
+/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const leadService = new LeadDataService()
 
-/*-| Create Leads |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Create Leads
+---+----+---+----+---+----+---+----+---*/
 async function createLead_Service(lead: any) {
   console.log('Lead Service: ', lead)
   const data = {
@@ -54,7 +52,12 @@ async function createLead_Service(lead: any) {
     email: lead.email,
     phone: lead.phone,
     employer: lead.employer,
-    address: lead.address,
+    address_Line1: lead.address_Line1,
+    address_Line2: lead.address_Line2,
+    address_City: lead.address_City,
+    address_State: lead.address_State,
+    address_Zip: lead.address_Zip,
+    address_Country: lead.address_Country,
     title: lead.title,
     score: lead.score,
     comment: lead.comment
@@ -70,9 +73,8 @@ async function createLead_Service(lead: any) {
   }
 }
 
-/*-| Update Lead |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Update Lead
+---+----+---+----+---+----+---+----+---*/
 async function updateLead_Service(id: any, lead: any) {
   console.log('Updating Lead: ', lead)
   const data = {
@@ -81,7 +83,12 @@ async function updateLead_Service(id: any, lead: any) {
     email: lead.email,
     phone: lead.phone,
     employer: lead.employer,
-    address: lead.address,
+    address_Line1: lead.address_Line1,
+    address_Line2: lead.address_Line2,
+    address_City: lead.address_City,
+    address_State: lead.address_State,
+    address_Zip: lead.address_Zip,
+    address_Country: lead.address_Country,
     title: lead.title,
     score: lead.score,
     comment: lead.comment
@@ -95,9 +102,8 @@ async function updateLead_Service(id: any, lead: any) {
   }
 }
 
-/*-| Get Single Leads |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Get Single Leads
+---+----+---+----+---+----+---+----+---*/
 async function getLead_Service(id: any) {
   try {
     let lead = await leadService.get(id)
@@ -108,9 +114,8 @@ async function getLead_Service(id: any) {
   }
 }
 
-/*-| Get All Leads by Exhibitor Company ID |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Get All Leads by Exhibitor Company ID
+---+----+---+----+---+----+---+----+---*/
 
 async function getAllCompanyLeads_Service(cId: any, list: any) {
   try {
@@ -121,10 +126,8 @@ async function getAllCompanyLeads_Service(cId: any, list: any) {
   }
 }
 
-/*-| Get All Leads |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
-
+/*-| Get All Leads
+---+----+---+----+---+----+---+----+---*/
 async function getAllLeads_Service(list: any) {
   try {
     let leads = await leadService.getAll()
@@ -134,9 +137,8 @@ async function getAllLeads_Service(list: any) {
   }
 }
 
-/*-| Delete a Lead by ID |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Delete a Lead by ID
+---+----+---+----+---+----+---+----+---*/
 async function deleteLead_Service(id: any) {
   try {
     let lead = await leadService.delete(id)
