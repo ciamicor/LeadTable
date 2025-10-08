@@ -5705,16 +5705,16 @@ button.--float.--top-l,
 button.--float.--bottom-r,
 .button.--float.--bottom-r {
   right: 24px;
-  bottom: calc(93px);
+  bottom: 24px;
 }
 button.--float.--bottom-l,
 .button.--float.--bottom-l {
-  bottom: calc(93px);
+  bottom: 24px;
   left: 24px;
 }
 button.--float.--bottom-c,
 .button.--float.--bottom-c {
-  bottom: calc(93px);
+  bottom: 24px;
   left: 50%;
   transform: -50% 0;
 }
@@ -5931,6 +5931,7 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
   padding-top: 8px;
   padding-right: 8px;
   padding-bottom: 8px;
+  background: white;
 }
 .lead-cards-container .lead-card .card-label {
   color: var(--grey-1);
@@ -5990,9 +5991,9 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
 .modal-backdrop {
   z-index: 10000;
   position: fixed;
-  top: 0;
+  top: 68px;
   right: 0;
-  bottom: 69px;
+  bottom: 0;
   left: 0;
   display: flex;
   place-content: stretch;
@@ -6007,7 +6008,7 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
   flex: 1 1 100%;
   place-content: flex-start center;
   place-items: flex-start center;
-  max-height: calc(100dvh - 69px);
+  max-height: calc(100dvh - 68px);
 }
 .modal-backdrop .modal-content {
   flex: 1 1 auto;
@@ -6020,7 +6021,7 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
 }
 
 .scanner-camera-container {
-  height: calc(100dvh - 69px) !important;
+  height: calc(100dvh - 68px) !important;
 }
 
 .scanner-camera-wrap {
@@ -6030,7 +6031,7 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
 .qr-float-container {
   position: absolute;
   right: 16px;
-  bottom: 109px;
+  bottom: 108px;
   left: 16px;
   place-content: space-between;
   align-items: stretch;
@@ -6054,7 +6055,7 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
 .scan-placement-container {
   z-index: 10;
   position: absolute;
-  bottom: calc(60% + 69px);
+  bottom: calc(60% + 68px);
   left: 50%;
   aspect-ratio: 1;
   width: 65%;
@@ -6145,7 +6146,7 @@ table tbody tr input:active, table tbody tr input:focus {
 .sidebar--page-wrapper {
   z-index: 99999;
   position: fixed;
-  top: 69px;
+  top: 68px;
   bottom: 0;
   left: 0;
   display: flex;
@@ -12150,28 +12151,28 @@ table tbody tr input:active, table tbody tr input:focus {
   overflow: hidden;
   grid-template-rows: 1fr;
   width: 100dvw;
-  margin-block-start: 69px;
+  margin-block-start: 68px;
 }
 
 .view-mask {
   overflow: scroll;
   width: 100dvw;
   max-width: 100dvw;
-  height: calc(100dvh - 69px);
+  height: calc(100dvh - 68px);
   background: var(--grey-12);
 }
 .view-container {
   display: flex;
   flex-flow: column;
   height: 100%;
-  min-height: calc(100dvh - 69px);
+  min-height: calc(100dvh - 68px);
 }
 
 /*-| Views
 ---+----+---+----+---+----+---+----+---*/
 .view-floor-plan {
   width: 100dvw;
-  height: calc(calc(100dvh - 69px) - 4px);
+  height: calc(calc(100dvh - 68px) - 4px);
   border: none !important;
 }
 

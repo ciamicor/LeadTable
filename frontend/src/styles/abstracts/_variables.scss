@@ -25,7 +25,7 @@ $app-height:           100dvh !default;
 $app-width:            100dvw !default;
 $nav-height:           45px !default;
 $nav-padding:          12px !default;
-$nav-height-actual:    calc($nav-height + ($nav-padding * 2)) !default;
+$nav-height-actual:    calc($nav-height + ($nav-padding * 2) - 1px) !default;
 $view-height:          calc($app-height - $nav-height-actual) !default;
 
 /*-| Components |-*/

@@ -70,14 +70,14 @@ button,
     }
     &.--bottom-r {
       right:  $sp-8;
-      bottom: calc(#{$sp-8 + $nav-height-actual});
+      bottom: $sp-8;
     }
     &.--bottom-l {
-      bottom: calc(#{$sp-8 + $nav-height-actual});
+      bottom: $sp-8;
       left:   $sp-8;
     }
     &.--bottom-c {
-      bottom:    calc(#{$sp-8 + $nav-height-actual});
+      bottom:    $sp-8;
       left:      50%;
       transform: -50% 0;
     }
