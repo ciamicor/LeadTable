@@ -8,7 +8,8 @@
         <div class="row-12-300">
           <h2>Edit Lead</h2>
           <button class="--warn"
-                  @click="deleteLead(leadLocal.id)"><i class="bi-trash3-fill"></i></button>
+          ><i class="bi-trash3-fill"></i></button>
+          <!--@click="deleteLead(leadLocal.id)"-->
         </div>
         <div id="details"
              class="col-12-300">
@@ -98,7 +99,7 @@
                       :key="c"
                       :value="c"
               >
-                {{c}}
+                {{ c }}
               </option>
             </select>
           </label>
