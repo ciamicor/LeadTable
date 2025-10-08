@@ -22,7 +22,7 @@
         <button v-show="attendeeListSelected.length === 0 || attendeeListSelected.length > 1"
                 class="--secondary --p-4"
                 @click="printBadges">
-          Print {{attendeeListSelected.length > 0 ? attendeeListSelected.length : 'All'}} Badges
+          Print {{ attendeeListSelected.length > 0 ? attendeeListSelected.length : 'All' }} Badges
         </button>
         <button
           v-show="attendeeListSelected.length === 1"
@@ -136,7 +136,7 @@ import {
 import { getAttendeeUploads_Service } from '@/services/UploadDataService.js'
 import { sortLName_Service } from '@/services/SortService.js'
 import { toTitleCase_Service } from '@/services/TextContentService.js'
-import LoadingHolder from "@/components/LoadingHolder.vue";
+import LoadingHolder from "@/components/Elements/LoadingHolder.vue";
 
 /*-| States
 ---+----+---+----+---+----+---+----+---*/
