@@ -3,7 +3,7 @@
 /*-| Badges for Selecting |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 .badge-select-grid {
-  margin: $sp-18 0 0 0;
+  margin-top: $sp-8;
   @include adapt-grid($grid-card-min-width: 300, $grid-card-rows: auto-fill);
   .badge-select-wrap {
     @extend .grid-card;

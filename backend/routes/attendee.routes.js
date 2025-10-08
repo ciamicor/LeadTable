@@ -1,27 +1,29 @@
 import express from "express"
-
 const router = express.Router()
 import * as attendeeController from "../controllers/attendee.controller.js";
 
-// Route to create a new attendee
+// Create a new attendee
 router.post( '/', attendeeController.createAttendee )
 
-// Route to get all Attendees
+// Get all Attendees
 router.get( '/', attendeeController.getAllAttendees )
 
 // Get Attendees by Expo
 router.get( '/client/:client/year/:year', attendeeController.getExpoAttendees )
 
-// Route to get an Attendee by ID
+// Get Attendees created between dates
+router.get( '/start/:startDate/end/:endDate', attendeeController.getAttendeesBetweenDates )
+
+// Get Attendee by ID
 router.get( '/:id', attendeeController.getAttendeeById )
 
-// Route to get an Attendee by Upload ID
+// Get Attendee by Upload ID
 router.get( '/upload/:id', attendeeController.getAttendeeByUploadId )
 
-// Route to update an Attendee by ID
+// Update an Attendee by ID
 router.put( '/:id', attendeeController.updateAttendee )
 
-// Route to delete an Attendee by ID
+// Delete Attendee by ID
 router.delete( '/:id', attendeeController.deleteAttendee )
 
 export default router

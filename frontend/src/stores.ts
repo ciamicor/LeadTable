@@ -3,7 +3,7 @@ import {ref} from 'vue'
 import type {Ref} from 'vue'
 
 /*-| Session Store
-==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const useSessionStore = defineStore('sessionStore', () => {
   const logged_In = ref(false)
 
@@ -85,6 +85,21 @@ const useCompanyLocalStore = defineStore('companyLocal', () => {
   }
 })
 
-export {useExpoLocalStore, useCompanyLocalStore, useSessionStore}
+/*-| Leads List Store
+/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+const useLeadsListLocal = defineStore('companyLocal', () => {
+  const map = ref(null)
+
+  function $reset() {
+    map.value = null
+  }
+
+  return {
+    map,
+    $reset
+  }
+})
+
+export { useExpoLocalStore, useCompanyLocalStore, useSessionStore, useLeadsListLocal }
 
 

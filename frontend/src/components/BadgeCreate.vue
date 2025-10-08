@@ -18,6 +18,7 @@
           First Name
           <input
             v-model="attendee.name_First"
+            autocomplete="given-name"
             name="name-first"
             placeholder="First Name"
             required
@@ -27,6 +28,7 @@
           Last Name
           <input
             v-model="attendee.name_Last"
+            autocomplete="family-name"
             name="name-last"
             placeholder="Last Name"
             required
@@ -38,6 +40,7 @@
           Employer
           <input
             v-model="attendee.contact_Employer"
+            autocomplete="organization"
             name="employer"
             placeholder="Employer"
             required
@@ -46,11 +49,11 @@
           Position/Title
           <input
             v-model="attendee.title"
+            autocomplete="organization-title"
             name="title"
             placeholder="Position/Title"
             required
             type="text">
-
         </label>
       </div>
       <div class="row-12-300 --items">
@@ -58,6 +61,7 @@
           Email Address
           <input
             v-model="attendee.contact_Email"
+            autocomplete="email"
             name="title"
             placeholder="Email Address"
             required
@@ -67,6 +71,7 @@
           Phone Number
           <input
             v-model="attendee.contact_Phone"
+            autocomplete="tel"
             name="phone"
             placeholder="Phone Number"
             required
@@ -74,13 +79,55 @@
         </label>
       </div>
       <div class="row-12-300 --items">
-        <label>
-          Your Address
+        <label class="row-12-300">
+          <span class="--flex-basis-100">Your Address</span>
           <input
-            v-model="attendee.address"
+            v-model="attendee.address_Line1"
+            autocomplete="address-line1"
+            class="--w-45"
             name="address"
-            placeholder="Enter your address"
+            placeholder="Address"
             type="text"/>
+          <input
+            v-model="attendee.address_Line2"
+            autocomplete="address-line2"
+            class="--w-45"
+            name="address"
+            placeholder="Apt, Suite, etc"
+            type="text"/>
+          <input
+            v-model="attendee.address_City"
+            autocomplete="address-level2"
+            name="city"
+            placeholder="City"
+            type="text"/>
+          <input
+            v-model="attendee.address_State"
+            autocomplete="address-level1"
+            name="state"
+            placeholder="State/Province"
+            type="text"/>
+          <input
+            v-model="attendee.address_Zip"
+            autocomplete="postal-code"
+            name="zip"
+            placeholder="Zip/Postal Code"
+            type="text"/>
+          <select id="selectCountry"
+                  v-model="attendee.address_Country"
+                  autocomplete="country-name"
+                  name="selectCountry">
+            <option disabled
+                    selected
+                    value="">Select Country
+            </option>
+            <option v-for="c in countries"
+                    :key="c"
+                    :value="c"
+            >
+              {{c}}
+            </option>
+          </select>
         </label>
       </div>
       <label>
@@ -157,6 +204,8 @@ import { useCompanyLocalStore, useExpoLocalStore } from '@/stores.js'
 import { toTitleCase_Service } from '@/services/TextContentService.js'
 import { getUrlHost } from "@/services/functions/UrlFunc.js";
 
+import { countries } from "@/services/addresses/AddressForm_Countries.js";
+
 const host = getUrlHost()
 const companyLocalData = useCompanyLocalStore()
 const expoLocalData = useExpoLocalStore()
@@ -179,7 +228,12 @@ const attendee = ref( {
   contact_Email: '',
   contact_Phone: '',
   contact_Employer: '',
-  address: '',
+  address_Line1: '',
+  address_Line2: '',
+  address_City: '',
+  address_State: '',
+  address_Zip: '',
+  address_Country: '',
   title: '',
   reg_Type: 'Attendee',
   tech_Sem: ''
@@ -202,7 +256,12 @@ function resetForm() {
     contact_Email: '',
     contact_Phone: '',
     contact_Employer: '',
-    address: '',
+    address_Line1: '',
+    address_Line2: '',
+    address_City: '',
+    address_State: '',
+    address_Zip: '',
+    address_Country: '',
     title: '',
     reg_Type: '',
     tech_Sem: ''

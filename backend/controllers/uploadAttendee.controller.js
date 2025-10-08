@@ -6,12 +6,13 @@ export const createUpload = async ( req, res ) => {
     const {
         expo_Year,
         expo_Client,
-
+        upload_Title
     } = req.body
     try {
         const newUpload = await UploadAttendee.create( {
             expo_Year,
             expo_Client,
+            upload_Title
         } )
         res.status( 201 ).json( newUpload )
     } catch ( error ) {

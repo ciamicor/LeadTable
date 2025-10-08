@@ -1,5 +1,5 @@
 import http from '../http-common'
-import { titleCase } from './functions/TextManipulationFunc.ts'
+import { titleCase } from "@/services/functions/TextManipulationFunc.ts";
 
 export default class AttendeeDataService {
   create(data: any) {
@@ -36,7 +36,8 @@ export default class AttendeeDataService {
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 const attendeeService = new AttendeeDataService()
 
-/*-| Create Attendees |----+----+---+----+---+----+---+----+---*/
+/*-| Create Attendees
+---+----+---+----+---+----+---+----+---*/
 async function createAttendee_Service(
   attendee: any,
   client: any,
@@ -52,7 +53,12 @@ async function createAttendee_Service(
     contact_Email: attendee.contact_Email.toLowerCase(),
     contact_Phone: attendee.contact_Phone,
     contact_Employer: attendee.contact_Employer,
-    address: attendee.address,
+    address_Line1: attendee.address_Line1,
+    address_Line2: attendee.address_Line2,
+    address_City: attendee.address_City,
+    address_State: attendee.address_State,
+    address_Zip: attendee.address_Zip,
+    address_Country: attendee.address_Country,
     title: attendee.title,
     reg_Type: attendee.reg_Type,
     tech_Sem: attendee.tech_Sem,
@@ -82,12 +88,17 @@ async function updateAttendee_Service(id: any, attendee: any) {
     contact_Email: attendee.contact_Email,
     contact_Phone: attendee.contact_Phone,
     contact_Employer: attendee.contact_Employer,
-    address: attendee.address,
+    address_Line1: attendee.address_Line1,
+    address_Line2: attendee.address_Line2,
+    address_City: attendee.address_City,
+    address_State: attendee.address_State,
+    address_Zip: attendee.address_Zip,
+    address_Country: attendee.address_Country,
     title: attendee.title,
     reg_Type: attendee.reg_Type,
     tech_Sem: attendee.tech_Sem,
   }
-  console.log("Update Attendee data: ", data)
+  console.log("Update Attendee addresses: ", data)
   try {
     let updatedAttendee = await attendeeService.update(id, data)
     console.log(updatedAttendee)

@@ -24,13 +24,14 @@
         <div v-if="companyLocalData.name"
              class="col-12-300 col-8-800 --flex-grow-1">
           <p>
-            {{companyLocalData.expo_Client}}
-            {{companyLocalData.expo_Year}}
+            {{ companyLocalData.expo_Client }}
+            {{ companyLocalData.expo_Year }}
             Supplier's Day
           </p>
-          <h2>{{companyLocalData.name}}</h2>
+          <h2>{{ companyLocalData.name }}</h2>
         </div>
-        <LeadsExport :leads-list="leadsList"
+        <LeadsExport v-if="leadsList.length > 0"
+                     :leads-list="leadsList"
                      class="--justify-self-end"/>
       </div>
       <LoadingHolder :status="status"
@@ -61,7 +62,7 @@
 
 <script setup>
 import LoadingHolder from "@/components/Elements/LoadingHolder.vue";
-import { useCompanyLocalStore, useExpoLocalStore } from '@/stores.ts'
+import { useCompanyLocalStore, useExpoLocalStore, useLeadsListLocal } from '@/stores.ts'
 import { getAllLeads_Service, getAllCompanyLeads_Service } from '../services/LeadDataService.js'
 import { onMounted, ref } from 'vue'
 import { getLocalCompanyData_Service } from '@/services/CompanyDataService.js'
@@ -70,6 +71,7 @@ import LeadsExport from '@/components/LeadsExport.vue'
 
 const companyLocalData = useCompanyLocalStore()
 const expoLocalData = useExpoLocalStore()
+const leadListLocal = useLeadsListLocal()
 
 /*-| Hooks
 ---+----+---+----+---+----+---+----+---*/
@@ -78,6 +80,14 @@ onMounted( async () => {
     console.log( companyLocalData.id )
     await getAllCompanyLeads_Service( companyLocalData.id, leadsList )
     status.value = false
+    console.log( typeof leadsList )
+    console.log( leadsList.value )
+    console.log( " Mapping array..." )
+    const listMap = new Map( leadsList.value.map( ( l ) => [ l.id, l ] ) )
+    // arr.map((obj) => [obj.key, obj.value])
+    console.log( typeof listMap )
+    console.log( listMap )
+    console.log( listMap.get( 459 ) )
   }
 )
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
@@ -89,7 +99,7 @@ const status = ref( true )
 /*-| Leads List |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 
-const leadsList = ref()
+const leadsList = ref( [] )
 const lead = ref(
   {
     expo_Client: companyLocalData.expo_Client,
@@ -101,24 +111,18 @@ const lead = ref(
     title: '',
     email: '',
     phone: '',
-    address: '',
+    address_Line1: '',
+    address_Line2: '',
+    address_City: '',
+    address_State: '',
+    address_Zip: '',
+    address_Country: '',
     employer: '',
-    score: 5,
+    score: 0,
     comment: ''
   }
 )
 
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-/*-| Edit Leads |-*/
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-
-async function getAllLeads( l ) {
-  await getAllLeads_Service( l )
-  //console.log( 'Got All Leads: ', l )
-  leadsList.value = leadsList.value.filter( ( l ) => {
-    return l.scan_Company_Id === companyLocalData.id
-  } )
-}
 
 </script>
 

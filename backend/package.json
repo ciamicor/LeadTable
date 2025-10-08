@@ -23,6 +23,6 @@
     "serve-static": "^2.2.0"
   },
   "devDependencies": {
-    "sequelize-cli": "^6.6.2"
+    "sequelize-cli": "^6.6.3"
   }
 }

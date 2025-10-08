@@ -14,9 +14,8 @@ class ExpoDataService {
   }
 }
 
-/*-| Functions |-*/
-
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Functions
+/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const expoService = new ExpoDataService()
 
 /*-| Get All Expos
@@ -60,6 +59,7 @@ async function createExpo_Service(expoObject: any) {
 async function getExpo_Service(client: string, year: number, expoObject: any) {
   try {
     let e = await expoService.getExpo(client, year)
+    // console.log("Found Expo: ", response.data)
     expoObject.active = e.data.active
     expoObject.start_Date = new Date(e.data.start_Date.toString())
     expoObject.expoInPast = new Date() > expoObject.start_Date
@@ -69,6 +69,9 @@ async function getExpo_Service(client: string, year: number, expoObject: any) {
     expoObject.expoFp_MapUrl = e.data.expoFp_MapUrl
     expoObject.logoUrl_Color = e.data.logoUrl_Color
     expoObject.logoUrl_Black = e.data.logoUrl_Black
+
+    //expoObject.value = response.data
+    // console.log('expo: ', expoObject.value)
   } catch (e) {
     console.log('That expo doesn\'t exist. ', e)
   }
@@ -89,4 +92,4 @@ async function getExpoToken_Service(client: any, year: any) {
   }
 }
 
-export {getExpo_Service, getExpoToken_Service, createExpo_Service, getAllExpos_Service}
+export { getExpo_Service, getExpoToken_Service, createExpo_Service, getAllExpos_Service }

@@ -25,8 +25,13 @@ export const createAttendee = async ( req, res ) => {
         contact_Email,
         contact_Phone,
         contact_Employer,
-        address,
         title,
+        address_Line1,
+        address_Line2,
+        address_City,
+        address_State,
+        address_Zip,
+        address_Country,
         reg_Type,
         tech_Sem,
         upload_Id
@@ -40,8 +45,13 @@ export const createAttendee = async ( req, res ) => {
             contact_Email,
             contact_Phone,
             contact_Employer,
-            address,
             title,
+            address_Line1,
+            address_Line2,
+            address_City,
+            address_State,
+            address_Zip,
+            address_Country,
             reg_Type,
             tech_Sem,
             upload_Id
@@ -90,7 +100,33 @@ export const getExpoAttendees = async ( req, res ) => {
     }
 }
 
-// Controller method to get an attendee by ID
+// Get attendees created between two dates
+export const getAttendeesBetweenDates = async ( req, res ) => {
+    const startDate = req.params.startDate
+    const endDate = req.params.endDate
+    try {
+        const attendees = await Attendee.findAll(
+            {
+                where: {
+                    createdAt: { [Op.between]: [ startDate, endDate ] }
+                }
+            }
+        )
+        if ( attendees ) {
+            res.json( attendees )
+        } else {
+            res.status( 404 ).json( { error: 'No attendees created between those dates.' } )
+        }
+    } catch ( error ) {
+        console.error( 'error in controller getAttendeesBetweenDates: ', error )
+        res.status( 500 ).json( {
+            error: 'Something went wrong while getting those attendees.',
+            details: error?.message || 'Unknown error'
+        } )
+    }
+}
+
+// Get an attendee by ID
 export const getAttendeeById = async ( req, res ) => {
     const id = req.params.id
     try {
@@ -98,7 +134,7 @@ export const getAttendeeById = async ( req, res ) => {
         if ( attendee ) {
             res.json( attendee )
         } else {
-            res.status( 404 ).json( { error: 'Attendee not found' } )
+            res.status( 404 ).json( { error: 'Attendee ID not found' } )
         }
     } catch ( error ) {
         console.error( 'error in controller getAttendeeById: ', error )
@@ -109,7 +145,7 @@ export const getAttendeeById = async ( req, res ) => {
     }
 }
 
-// Controller method to get an attendee by ID
+// Get an attendee by UPLOAD ID
 export const getAttendeeByUploadId = async ( req, res ) => {
     const id = req.params.id
     try {
@@ -144,7 +180,12 @@ export const updateAttendee = async ( req, res ) => {
         contact_Email,
         contact_Phone,
         contact_Employer,
-        address,
+        address_Line1,
+        address_Line2,
+        address_City,
+        address_State,
+        address_Zip,
+        address_Country,
         reg_Type,
         tech_Sem
     } = req.body
@@ -157,7 +198,12 @@ export const updateAttendee = async ( req, res ) => {
             attendee.contact_Email = contact_Email
             attendee.contact_Phone = contact_Phone
             attendee.contact_Employer = contact_Employer
-            attendee.address = address
+            attendee.address_Line1 = address_Line1
+            attendee.address_Line2 = address_Line2
+            attendee.address_City = address_City
+            attendee.address_State = address_State
+            attendee.address_Zip = address_Zip
+            attendee.address_Country = address_Country
             attendee.reg_Type = reg_Type
             attendee.tech_Sem = tech_Sem
             await attendee.save()

@@ -11,7 +11,7 @@ export const getAllScans = async ( req, res ) => {
     }
 }
 
-// Controller method to get a company by ID
+// Get a company by ID
 export const getScan = async ( req, res ) => {
     const id = req.params.id
     try {
@@ -26,7 +26,7 @@ export const getScan = async ( req, res ) => {
     }
 }
 
-// Controller method to create a new Scan
+// Create a new Scan
 export const createScan = async ( req, res ) => {
     const { expo_Year, company_Id, lead_Id, lead_Score, company_Comments } = req.body
     try {

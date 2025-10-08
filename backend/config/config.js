@@ -6,6 +6,10 @@ const sequelize = new Sequelize(
     process.env.DB_PASS, {
         host: process.env.DB_HOST,
         dialect: "mariadb",
+        dialectOptions: {
+            useUTC: true
+        },
+        timezone: "UTC"
     } )
 
 export default sequelize;

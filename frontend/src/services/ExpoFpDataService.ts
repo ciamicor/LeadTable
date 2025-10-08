@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {getExpoToken_Service} from "@/services/ExpoDataService.ts";
+import { getExpoToken_Service } from "@/services/ExpoDataService.ts";
 
 const baseUrl = 'https://app.expofp.com/api/v1/'
 
@@ -44,7 +44,7 @@ export async function getFpExhibitor(
         'id': id
       }
     })
-    // console.log("Got Exhibitor: ", res.data)
+    // console.log("Got Exhibitor: ", res.addresses)
     token = null
     return res.data
   } catch (e) {
@@ -71,7 +71,7 @@ export async function getFpExhibExtras(
         'exhibitorId': id
       }
     })
-    // console.log("Exhibitor extras are: ", res.data)
+    // console.log("Exhibitor extras are: ", res.addresses)
     token = null
     return res.data
   } catch (e) {

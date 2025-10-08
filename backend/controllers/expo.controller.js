@@ -1,7 +1,7 @@
 import { Expo } from "../models/index.js"
 import { Op } from 'sequelize';
 
-// Controller method to create a new expo
+// Create a new expo
 export const createExpo = async ( req, res ) => {
     const {
         id,
@@ -38,7 +38,7 @@ export const createExpo = async ( req, res ) => {
     }
 }
 
-// Controller method to get all Expos
+// Get all Expos
 export const getAll = async ( req, res ) => {
     try {
         const expos = await Expo.findAll()

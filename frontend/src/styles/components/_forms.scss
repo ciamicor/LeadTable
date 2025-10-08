@@ -17,7 +17,7 @@ input, select, textarea {
   border:        2px solid $grey-10;
   border-radius: $item-border;
   transition:    box-shadow $trans-200, border $trans-200;
-  &::placeholder {
+  &::placeholder, & > option:disabled {
     color:      $grey-8;
     font-size:  16px;
     font-style: italic;

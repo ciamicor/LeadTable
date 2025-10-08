@@ -21,11 +21,12 @@ const uploadAttendeeService = new uploadAttendeeDataService()
 
 /*-| Create Attendees
 ---+----+---+----+---+----+---+----+---*/
-async function createUpload_Service(client: any, year: any) {
-  console.log('Create Upload Service: ', client, year)
+async function createUpload_Service(client: any, year: any, title: string) {
+  console.log('Create Upload Service: ', client, year, title)
   const data = {
     expo_Client: client,
     expo_Year: year,
+    upload_Title: title,
   }
   console.log(data)
   try {
@@ -34,6 +35,7 @@ async function createUpload_Service(client: any, year: any) {
       id: newUpload.data.id,
       expo_Year: newUpload.data.expo_Year,
       expo_Client: newUpload.data.expo_Client,
+      uploadTitle: newUpload.data.upload_Title,
     }
     console.log(upload)
     return upload
@@ -69,5 +71,5 @@ async function getAttendeeUpload_Service(id: any) {
   }
 }
 
-export {createUpload_Service, getAttendeeUploads_Service, getAttendeeUpload_Service}
+export { createUpload_Service, getAttendeeUploads_Service, getAttendeeUpload_Service }
 

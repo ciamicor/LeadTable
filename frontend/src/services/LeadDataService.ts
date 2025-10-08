@@ -34,9 +34,8 @@ class LeadDataService {
   }
 }
 
-/*-| Functions |-*/
-
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Functions
+/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const leadService = new LeadDataService()
 
 /*-| Create Leads
@@ -53,7 +52,12 @@ async function createLead_Service(lead: any) {
     email: lead.email,
     phone: lead.phone,
     employer: lead.employer,
-    address: lead.address,
+    address_Line1: lead.address_Line1,
+    address_Line2: lead.address_Line2,
+    address_City: lead.address_City,
+    address_State: lead.address_State,
+    address_Zip: lead.address_Zip,
+    address_Country: lead.address_Country,
     title: lead.title,
     score: lead.score,
     comment: lead.comment
@@ -79,7 +83,12 @@ async function updateLead_Service(id: any, lead: any) {
     email: lead.email,
     phone: lead.phone,
     employer: lead.employer,
-    address: lead.address,
+    address_Line1: lead.address_Line1,
+    address_Line2: lead.address_Line2,
+    address_City: lead.address_City,
+    address_State: lead.address_State,
+    address_Zip: lead.address_Zip,
+    address_Country: lead.address_Country,
     title: lead.title,
     score: lead.score,
     comment: lead.comment
@@ -119,7 +128,6 @@ async function getAllCompanyLeads_Service(cId: any, list: any) {
 
 /*-| Get All Leads
 ---+----+---+----+---+----+---+----+---*/
-
 async function getAllLeads_Service(list: any) {
   try {
     let leads = await leadService.getAll()

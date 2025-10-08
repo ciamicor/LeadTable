@@ -5,7 +5,13 @@
     <div class="modal-wrapper">
       <div
         class="modal-content col-12-300">
-        <h2>Editing Lead: {{ leadLocal.name_First }} {{ leadLocal.name_Last }}</h2>
+        <div class="row-12-300">
+          <h2>Edit Lead</h2>
+          <!--          <button class="&#45;&#45;warn"
+                            @click="deleteLead(leadLocal.id)"
+                    ><i class="bi-trash3-fill"></i></button>-->
+
+        </div>
         <div id="details"
              class="col-12-300">
           <div class="row-12-300">
@@ -48,6 +54,56 @@
             <input id="address"
                    v-model="leadLocal.address"/>
           </label>
+          <label class="row-12-300">
+            <span class="--flex-basis-100">Your Address</span>
+            <input
+              v-model="leadLocal.address_Line1"
+              autocomplete="address-line1"
+              class="--w-45"
+              name="address"
+              placeholder="Address"
+              type="text"/>
+            <input
+              v-model="leadLocal.address_Line2"
+              autocomplete="address-line2"
+              class="--w-45"
+              name="address"
+              placeholder="Apt, Suite, etc"
+              type="text"/>
+            <input
+              v-model="leadLocal.address_City"
+              autocomplete="address-level2"
+              name="city"
+              placeholder="City"
+              type="text"/>
+            <input
+              v-model="leadLocal.address_State"
+              autocomplete="address-level1"
+              name="state"
+              placeholder="State/Province"
+              type="text"/>
+            <input
+              v-model="leadLocal.address_Zip"
+              autocomplete="postal-code"
+              name="zip"
+              placeholder="Zip/Postal Code"
+              type="text"/>
+            <select id="selectCountry"
+                    v-model="leadLocal.address_Country"
+                    autocomplete="country-name"
+                    name="selectCountry">
+              <option disabled
+                      selected
+                      value="">Select Country
+              </option>
+              <option v-for="c in countries"
+                      :key="c"
+                      :value="c"
+              >
+                {{ c }}
+              </option>
+            </select>
+          </label>
         </div>
         <div id="score">
           <i v-for="n in scoreCount.score"
@@ -80,9 +136,11 @@
 </template>
 <script lang="ts"
         setup>
-import {defineProps, computed, defineEmits, ref} from "vue";
-import {updateLead_Service} from "@/services/LeadDataService.ts";
+import { defineProps, computed, defineEmits, ref } from "vue";
+import { updateLead_Service, deleteLead_Service } from "@/services/LeadDataService.ts";
+import { countries } from "@/services/addresses/AddressForm_Countries.ts";
 
+const confirmDelete = ref(false)
 const emit = defineEmits(["showModal"]);
 
 const props = defineProps({
@@ -98,5 +156,10 @@ const scoreCount = computed(() => {
   const unscored = 5 - parseInt(props.lead.score)
   return {"score": props.lead.score, "unscored": unscored}
 })
+
+async function deleteLead(id: number) {
+  await deleteLead_Service(id)
+  emit('showModal')
+}
 
 </script>
