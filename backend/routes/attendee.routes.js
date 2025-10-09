@@ -1,4 +1,5 @@
 import express from "express"
+
 const router = express.Router()
 import * as attendeeController from "../controllers/attendee.controller.js";
 

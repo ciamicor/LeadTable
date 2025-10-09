@@ -14,16 +14,17 @@ class Company extends Model {
 }
 
 Company.init( {
-    expo_Year: DataTypes.INTEGER, // foreign key
-    expo_Client: DataTypes.STRING, // foreign key
-    lead_Ret: DataTypes.BOOLEAN,
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: false
     },
+    expoId: DataTypes.INTEGER,
+    expo_Client: DataTypes.STRING, // foreign key
+    expo_Year: DataTypes.INTEGER, // foreign key
     login_URL: DataTypes.STRING,
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
+    lead_Ret: DataTypes.BOOLEAN,
 }, {
     sequelize,
     modelName: 'Company'

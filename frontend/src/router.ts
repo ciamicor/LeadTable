@@ -1,6 +1,6 @@
 import { createWebHistory, createRouter } from 'vue-router'
 import LeadsList from '@/components/LeadsList.vue'
-import CompanyProfile from '@/components/CompanyProfile.vue'
+import CompanyProfile from '@/components/Company/CompanyProfile.vue'
 import ExpoMap from '@/components/Elements/ExpoMap.vue'
 import ExpoSelect from '@/components/ExpoSelect.vue'
 import LeadAdd from '@/components/LeadAdd.vue'

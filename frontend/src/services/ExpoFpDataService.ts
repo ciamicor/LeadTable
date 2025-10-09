@@ -5,7 +5,6 @@ const baseUrl = 'https://app.expofp.com/api/v1/'
 
 /*-| Get All Exhibitors
 ---+----+---+----+---+----+---+----+---*/
-
 export async function getAllExhibitors(client: any, year: any) {
   try {
     let token = await getExpoToken_Service(client, year)
@@ -26,9 +25,8 @@ export async function getAllExhibitors(client: any, year: any) {
   }
 }
 
-/*-| Get Exhibitor
+/*-| Get Company
 ---+----+---+----+---+----+---+----+---*/
-
 export async function getFpExhibitor(
   id: any,
   client: any,
@@ -44,7 +42,7 @@ export async function getFpExhibitor(
         'id': id
       }
     })
-    // console.log("Got Exhibitor: ", res.addresses)
+    // console.log("Got Company: ", res.addresses)
     token = null
     return res.data
   } catch (e) {
@@ -52,9 +50,8 @@ export async function getFpExhibitor(
   }
 }
 
-/*-| Get Exhibitor Extras
+/*-| Get Company Extras
 ---+----+---+----+---+----+---+----+---*/
-
 export async function getFpExhibExtras(
   id: any,
   client: any,
@@ -71,7 +68,7 @@ export async function getFpExhibExtras(
         'exhibitorId': id
       }
     })
-    // console.log("Exhibitor extras are: ", res.addresses)
+    // console.log("Company extras are: ", res.addresses)
     token = null
     return res.data
   } catch (e) {

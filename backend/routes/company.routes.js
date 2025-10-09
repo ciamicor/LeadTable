@@ -13,6 +13,6 @@ router.get( '/', companyController.getAllCompanies );
 router.get( '/:id', companyController.getCompanyById );
 
 // Route to update a Company by ID
-router.put( '/:id', companyController.updateCompanyLeadRet )
+router.put( '/:id', companyController.updateCompany )
 
 export default router

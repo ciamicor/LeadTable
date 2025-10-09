@@ -1,11 +1,21 @@
 <template>
-  <div>{{ expoLocalData.expoInPast }}</div>
-  <button-sign-out
-    v-if="sessionStore.logged_In === true"
-    :extra-match="extraMatch"
-    :login-id-match="loginIdMatch"
-  />
-
+  <div v-if="sessionStore.logged_In === true"
+       class="container --align-content-start --p-6">
+    <div>
+      <div class="row-12-300">
+        <a :href="`https://app.expofp.com${companyLocalData.login_Url}`"
+           class="button"
+           target="_blank">
+          ExpoFP Profile
+          <i class="--m-l-4 bi-arrow-up-right-square"></i>
+        </a>
+        <ButtonSignOut
+          :extra-match="extraMatch"
+          :login-id-match="loginIdMatch"
+        />
+      </div>
+    </div>
+  </div>
   <div
     v-else
     class="row --place-content-center --place-items-center">
@@ -23,13 +33,15 @@
         for="profileUrl">
         Login ID
       </label>
+      <p>12620281</p>
       <input id="loginId"
              v-model="companyLocalData.id"
              inputmode="tel"
              name="loginId"
              pattern="\d*"
              placeholder="Enter your login ID"
-             type="tel">
+             type="tel"
+             @keydown.enter="login">
       <button class="--primary--invert"
               @click="login()">
         Login
@@ -52,7 +64,6 @@
       {{ companyExtras }}
     </div>
   </div>
-
   <div
     v-if="sessionStore.logged_In === true && expoLocalData.expoInPast === true"
     class="row"
@@ -67,16 +78,6 @@
       </router-link>
     </div>
   </div>
-
-  <iframe
-    v-else-if="sessionStore.logged_In === true
-      && expoLocalData.expoInPast === false
-      && companyLocalData.login_Url !== ''"
-    :src="'https://app.expofp.com' + companyLocalData.login_Url"
-    allow="clipboard-read; clipboard-write"
-    class="view-floor-plan"
-  >
-  </iframe>
 </template>
 
 <script lang="ts"
@@ -84,36 +85,32 @@
 import {
   getFpExhibitor,
   getFpExhibExtras
-} from '../services/ExpoFpDataService.ts'
+} from '@/services/ExpoFpDataService.ts'
 import {
   createCompany_Service,
   getCompanyById_Service,
-  updateCompanyLeadRet_Service
 } from '@/services/CompanyDataService.ts'
 import {
   useCompanyLocalStore,
   useExpoLocalStore,
   useSessionStore
 } from '@/stores.ts'
-import { ref } from 'vue'
+import { type Ref, ref } from 'vue'
 import { useRouter } from "vue-router";
 import { saveLogin_LocalDB } from "@/services/functions/LoginLogoutFunc.ts";
-import ButtonSignOut from './Button_SignOut.vue'
+import ButtonSignOut from '../Button_SignOut.vue'
+import { object } from "better-auth";
 
 /*-| Variables |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-const debug = ref(false)
-
+const debug = ref(true)
 const router = useRouter()
-
 const companyExtras = ref()
 const loginIdMatch = ref(false)
 const extraMatch = ref(false)
-
 const sessionStore = useSessionStore()
 const companyLocalData = useCompanyLocalStore()
 const expoLocalData = useExpoLocalStore()
-
 const status = ref()
 
 /*-| Login/Out |-*/
@@ -122,9 +119,10 @@ async function login() {
   /*-| Check if Company is in server DB |-*/
   const serverExhib = await getCompanyById_Service(companyLocalData.id)
 
-  /*-| If exists, get Exhibitor from Server DB
-  ---+----+---+----+---+----+---+----+---*/
-  if (serverExhib) {
+  console.log("Expo in past:" + expoLocalData.expoInPast)
+
+  /*-| If Expo has passed, only check the database. |-*/
+  if (expoLocalData.expoInPast) {
     companyLocalData.$patch({
       id: serverExhib.id,
       name: serverExhib.name,
@@ -143,22 +141,20 @@ async function login() {
       status
     )
   }
-  else {
-    console.log("Didn't find that company. Check your company ID to make sure it exists.")
-    /*-| If not in Server DB, Get Exhibitor from ExpoFP
-    ---+----+---+----+---+----+---+----+---*/
-    console.log('Getting Exhibitor...')
-    let gotExhib = await getFpExhibitor(
+  /*-| If Expo is not over, check ExpoFP for info. |-*/
+  else if (!expoLocalData.expoInPast) {
+    console.log('Getting Company...')
+    const exhibFP = await getFpExhibitor(
       companyLocalData.id,
       expoLocalData.expo_Client,
       expoLocalData.expo_Year,
     )
-    console.log("Got exhibitor company from ExpoFP: ", gotExhib)
+    console.log("Got exhibitor company from ExpoFP: ", exhibFP)
 
     companyLocalData.$patch({
-      id: gotExhib.id,
-      name: gotExhib.name,
-      login_Url: gotExhib.autoLoginUrl,
+      id: exhibFP.id,
+      name: exhibFP.name,
+      login_Url: exhibFP.autoLoginUrl,
       lead_Ret: extraMatch.value,
       expo_Year: expoLocalData.expo_Year,
       expo_Client: expoLocalData.expo_Client,
@@ -174,7 +170,6 @@ async function login() {
 
     /*-| Save to local DB |-*/
     console.log('Saving company to Local DB...')
-    // await saveDbLogin()
     await saveLogin_LocalDB(
       companyLocalData.id,
       companyLocalData.name,
@@ -184,13 +179,27 @@ async function login() {
       expoLocalData.expo_Year,
       status
     )
+    await createCompany_Service({
+      id: 56,
+      expoId: 999,
+      name: "TEST",
+      login_Url: "NO",
+      lead_Ret: 1,
+      expo_Year: 2025,
+      expo_Client: "TEST",
+    })
     await createCompany_Service(companyLocalData)
+    console.log("GETTING DEBUG")
+    await getCompanyById_Service(12620281)
   }
   sessionStore.logged_In = true
+  /*if (companyLocalData.lead_Ret) {
+    await router.push({name: 'Lead Table'})
+  }*/
+}
 
-  if (companyLocalData.lead_Ret) {
-    await router.push({name: 'LeadsList'})
-  }
+async function scanUpdates(id: number) {
+  console.log(exhibFP.updatedAt)
 }
 
 // TODO add function that compares ExpoFP & DB results

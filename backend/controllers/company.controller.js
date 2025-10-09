@@ -5,19 +5,21 @@ import { Op } from 'sequelize';
 export const createCompany = async ( req, res ) => {
     const {
         id,
+        expoId,
+        expo_Client,
+        expo_Year,
         login_URL,
         name,
-        expo_Year,
-        expo_Client,
         lead_Ret
     } = req.body
     try {
         const newCompany = await Company.create( {
             id,
+            expoId,
+            expo_Client,
+            expo_Year,
             login_URL,
             name,
-            expo_Year,
-            expo_Client,
             lead_Ret
         } )
         res.status( 201 ).json( newCompany )
@@ -64,7 +66,7 @@ export const getCompanyById = async ( req, res ) => {
 }
 
 // Update Lead Retrieval Status
-export const updateCompanyLeadRet = async ( req, res ) => {
+export const updateCompany = async ( req, res ) => {
     const id = req.params.id
     const { lead_Ret } = req.body
     try {
@@ -77,9 +79,9 @@ export const updateCompanyLeadRet = async ( req, res ) => {
             res.status( 404 ).json( { error: 'Company not found' } )
         }
     } catch ( error ) {
-        console.error( 'error in controller updateCompanyLeadRet: ', error )
+        console.error( 'error in controller updateCompany: ', error )
         res.status( 500 ).json( {
-            error: 'Something went wrong with controller: updateCompanyLeadRet.',
+            error: 'Something went wrong with controller: updateCompany.',
             details: error?.message || 'Unknown error'
         } )
     }

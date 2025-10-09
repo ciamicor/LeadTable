@@ -1,6 +1,6 @@
 <template>
   <button v-if="sessionStore.logged_In === true"
-          :class="props.css_classes ? props.css_classes : '--float --top-r --warn--invert'"
+          :class="props.css_classes + '--warn--invert'"
           @click="logOut">
     Sign Out
   </button>
@@ -8,8 +8,8 @@
 
 <script lang="ts"
         setup>
-import {db} from "@/db.ts";
-import {useCompanyLocalStore, useSessionStore} from "@/stores.ts";
+import { db } from "@/db.ts";
+import { useCompanyLocalStore, useSessionStore } from "@/stores.ts";
 
 const sessionStore = useSessionStore()
 const companyLocalData = useCompanyLocalStore()

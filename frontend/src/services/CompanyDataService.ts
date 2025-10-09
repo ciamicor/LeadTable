@@ -1,5 +1,5 @@
 import http from '../http-common'
-import {db} from '@/db.ts'
+import { db } from '@/db.ts'
 
 class CompanyDataService {
   create(data: any) {
@@ -10,11 +10,11 @@ class CompanyDataService {
     return http.get('/company')
   }
 
-  get(id: any) {
-    return http.get('/company/' + id)
+  get(cId: any) {
+    return http.get('/company/' + cId)
   }
 
-  updateLeadRet(id: any, data: any) {
+  update(id: any, data: any) {
     return http.put('/company/' + id, data)
   }
 }
@@ -24,13 +24,14 @@ class CompanyDataService {
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const companyService = new CompanyDataService()
 
-/*-| Create
+/*-| Create Company
 ---+----+---+----+---+----+---+----+---*/
 async function createCompany_Service(companyObject: any) {
   console.log("Creating company: ", companyObject)
   const data = {
     id: companyObject.id,
-    login_URL: companyObject.autoLoginUrl,
+    expoId: companyObject.expoId,
+    login_URL: companyObject.login_Url,
     name: companyObject.name,
     lead_Ret: companyObject.lead_Ret,
     expo_Year: companyObject.expo_Year,
@@ -46,17 +47,18 @@ async function createCompany_Service(companyObject: any) {
   }
 }
 
-/*-| Get by ID
+/*-| Get by Company & Expo ID
 ---+----+---+----+---+----+---+----+---*/
-async function getCompanyById_Service(id: any, companyObject: any = null) {
+async function getCompanyById_Service(cId: any, companyObject: any = null) {
   try {
-    let company = await companyService.get(id)
+    let company = await companyService.get(cId)
     console.log('company object: ', companyObject)
     console.log('response: ', company)
     if (companyObject !== null) {
       companyObject.value = company.data
       console.log('company: ', companyObject.value)
-    } else {
+    }
+    else {
       return company.data
     }
   } catch (error) {
@@ -64,9 +66,8 @@ async function getCompanyById_Service(id: any, companyObject: any = null) {
   }
 }
 
-/*-| Get Profiles from DB |-*/
-
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Get Profiles from DB
+/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 async function getLocalCompanyData_Service(c: any) {
   try {
     let profile = await db.profile.get(1)
@@ -89,14 +90,14 @@ async function getLocalCompanyData_Service(c: any) {
   }
 }
 
-async function updateCompanyLeadRet_Service(id: any, retStatus: boolean) {
+async function updateCompany_Service(id: any, retStatus: boolean) {
   console.log("Updating company: ", id)
   const data = {
     lead_Ret: retStatus
   }
   console.log('Updating Lead Retrieval to: ', data)
   try {
-    await companyService.updateLeadRet(id, data)
+    await companyService.update(id, data)
   } catch (e: any) {
     console.log(e)
   }
@@ -106,5 +107,5 @@ export {
   getCompanyById_Service,
   createCompany_Service,
   getLocalCompanyData_Service,
-  updateCompanyLeadRet_Service
+  updateCompany_Service
 }
