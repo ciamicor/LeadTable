@@ -1,26 +1,27 @@
 <template>
   <div v-if="!scanConfirm"
        class="scanner-camera-container">
-    <div class="scan-placement-container"></div>
+    <div v-show="!scanCodeFound"
+         class="scan-placement-container"></div>
     <qrcode-stream
+      v-if="!scanCodeFound"
       class="scanner-camera-wrap"
       @detect="getQrId($event)"
-      @camera-on="scanTarget = 'Scanning'"
+      @camera-on="scanTarget = 'Waiting for QR code...'"
     ></qrcode-stream>
     <div class="row --items qr-float-container">
       <span class="col-10-300 qr-float-target-text">{{ scanTarget }}</span>
-
       <div v-show="scanCodeFound"
-           class="row --justify-content-center">
+           class="row-12-300">
         <button
-          class="--warn qr-float-cancel"
+          class="--warn qr-float-cancel --flex-basis-20"
           @click="resetScanning"
         >Reset
         </button>
         <button
-          class="qr-float-confirm --primary"
+          class="qr-float-confirm --primary --flex-basis-65"
           @click="scanConfirm = true">
-          Continue
+          <i class="bi-plus-lg"/> Add Lead
         </button>
       </div>
     </div>
@@ -89,17 +90,17 @@
       </form>
       <div class="row-12-300 --items --m-t-16">
         <button
-          class="--primary--invert --flex-basis-100"
-          @click="createLead(lead); router.push('/:client/:year/leads-list')">
+          class="--primary--invert --flex-basis-100 --p-12"
+          @click="createLead(lead); router.push(`/${companyLocalData.expo_Client}/${companyLocalData.expo_Year}/leads-list`)">
           Add {{ lead.name_First }}
         </button>
         <button
-          class="--warn"
+          class="--warn --flex-basis-30 --flex-grow"
           @click="resetScanning">
           Go Back
         </button>
         <button
-          class="--success"
+          class="--success --flex-basis-65 --flex-grow"
           @click="createLead(lead)">Add & Scan Another
         </button>
       </div>

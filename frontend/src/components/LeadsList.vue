@@ -1,8 +1,9 @@
 <template>
-  <div
-    class="row-12-300 --place-content-center">
-    <div v-if="!companyLocalData.lead_Ret"
-         class="col-12-300 col-10-500 col-5-800">
+
+  <div v-if="!companyLocalData.lead_Ret"
+       class="row-12-300 --place-content-center">
+    <div
+      class="col-12-300 col-10-500 col-5-800">
       <h1>Looking for Leads?</h1>
       <p>To access or purchase lead retrieval, you'll first need to login.</p>
       <p>If you haven't purchased access, you can do so by logging in, then scrolling to "Booths &
@@ -19,44 +20,44 @@
                            register.</p>
 
     </div>
-    <div v-if="companyLocalData.lead_Ret === true">
-      <div class="row-12-300 --p-10-clamp">
-        <div v-if="companyLocalData.name"
-             class="col-12-300 col-8-800 --flex-grow">
-          <p>
-            {{companyLocalData.expo_Client}}
-            {{companyLocalData.expo_Year}}
-            Supplier's Day
-          </p>
-          <h2>{{companyLocalData.name}}</h2>
-        </div>
-        <LeadsExport v-if="leadsList.length > 0"
-                     :leads-list="leadsList"
-                     class="--justify-self-end"/>
+  </div>
+  <div v-if="companyLocalData.lead_Ret === true">
+    <div class="row-12-300 --p-10-clamp --place-content-space-between">
+      <div v-if="companyLocalData.name"
+           class="--flex-grow-1">
+        <p>
+          {{ companyLocalData.expo_Client }}
+          {{ companyLocalData.expo_Year }}
+          Supplier's Day
+        </p>
+        <h2>{{ companyLocalData.name }}</h2>
       </div>
-      <LoadingHolder :status="status"
-                     class="--place-self-center"/>
-      <div class="lead-cards-container">
-        <div v-for="(lead,index) in leadsList"
-             :key="index"
-             :data-attendee-id="lead.attendee_Id"
-             :data-company-scan="lead.scan_Company_Id"
-             class="lead-card"
-        >
-          <LeadCard :lead="lead"/>
-        </div>
+      <LeadsExport v-if="leadsList.length > 0"
+                   :leads-list="leadsList"
+                   class="--justify-self-end"/>
+    </div>
+    <LoadingHolder :status="status"
+                   class="--place-self-center"/>
+    <div class="lead-cards-container">
+      <div v-for="(lead,index) in leadsList"
+           :key="index"
+           :data-attendee-id="lead.attendee_Id"
+           :data-company-scan="lead.scan_Company_Id"
+           class="lead-card"
+      >
+        <LeadCard :lead="lead"/>
       </div>
-
-      <router-link
-        v-if="companyLocalData.lead_Ret === true"
-        class="button --stacked --float --bottom-r --success--invert"
-        to="scan-lead">
-        <i class="bi-qr-code-scan"></i>
-        Scan
-      </router-link>
     </div>
 
+    <router-link
+      v-if="companyLocalData.lead_Ret === true"
+      class="button --stacked --float --bottom-r --success--invert"
+      to="scan-lead">
+      <i class="bi-qr-code-scan"></i>
+      Scan
+    </router-link>
   </div>
+
 
 </template>
 

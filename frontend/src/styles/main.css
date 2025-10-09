@@ -5415,12 +5415,6 @@ button,
   border-radius: 8px;
   background: var(--grey-12);
   transition: background 200ms ease-in-out, color 200ms ease-in-out, border-width 100ms ease-in-out;
-  /*-| Alternatives |-*/
-  /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-  /*-| Mixin |-*/
-  /*---+----+---+----+---+----+---+----+---*/
-  /*-| Colors |-*/
-  /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 }
 button i,
 .button i {
@@ -5431,6 +5425,11 @@ button:hover,
 .button:hover {
   color: var(--grey-2);
   background: var(--grey-10);
+}
+button,
+.button {
+  /*-| Alternatives |-*/
+  /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 }
 button.--square,
 .button.--square {
@@ -5487,6 +5486,13 @@ button.--stacked,
 button.--stacked i,
 .button.--stacked i {
   font-size: 30px;
+}
+button,
+.button {
+  /*-| Mixin |-*/
+  /*---+----+---+----+---+----+---+----+---*/
+  /*-| Colors |-*/
+  /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 }
 button.--primary,
 .button.--primary {
