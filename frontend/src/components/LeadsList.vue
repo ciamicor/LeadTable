@@ -38,6 +38,10 @@
     <LoadingHolder :status="status"
                    class="--place-self-center"/>
     <div class="lead-cards-container">
+      <p v-if="leadsList.length === 0"
+         class="--place-self-center">
+        No leads yet.
+      </p>
       <div v-for="(lead,index) in leadsList"
            :key="index"
            :data-attendee-id="lead.attendee_Id"
