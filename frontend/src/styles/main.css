@@ -5893,7 +5893,7 @@ table tbody tr input:active, table tbody tr input:focus {
   margin: 0 auto;
   padding: clamp(2px, 0.5px + 0.46875vw, 8px) clamp(4px, 1px + 0.9375vw, 16px);
 }
-.row.--items {
+.row.--no-space {
   margin: 0;
   padding: 0;
 }

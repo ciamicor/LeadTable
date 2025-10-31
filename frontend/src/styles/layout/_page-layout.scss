@@ -30,7 +30,7 @@
   max-width:     #{ $max-page-width }px;
   margin:        0 auto;
   padding:       $sp-v-2 $sp-v-4;
-  &.--items {
+  &.--no-space {
     margin:  0;
     padding: 0;
   }

@@ -11,7 +11,7 @@
 import { utils, writeFile } from 'xlsx'
 import { useCompanyLocalStore } from '@/stores.js'
 
-const companyLocalData = useCompanyLocalStore()
+const companyLocal = useCompanyLocalStore()
 
 const props = defineProps( {
   leadsList: {
@@ -22,19 +22,36 @@ const props = defineProps( {
 async function exportLeads() {
   const formattedLeads = props.leadsList
     .map( ( {
-              id,
-              expo_Client,
-              expo_Year,
-              scan_Company_Id,
-              attendee_Id,
-              updatedAt,
-              ...item
-            } ) => item )
+      id,
+      expo_Client,
+      expo_Year,
+      scan_Company_Id,
+      attendee_Id,
+      updatedAt,
+      ...item
+    } ) => item )
   const worksheet = utils.json_to_sheet( formattedLeads )
   const workbook = utils.book_new()
   utils.book_append_sheet( workbook, worksheet, `2025 Leads` )
-  utils.sheet_add_aoa( worksheet, [ [ 'First Name', 'Last Name', 'Title', 'Email', 'Phone', 'Employer', 'Address', 'Score', 'Comment', 'Scanned Date' ] ], { origin: 'A1' } )
-  writeFile( workbook, `${ companyLocalData.name }-Leads-${ companyLocalData.expo_Client }-Expo-${ companyLocalData.expo_Year }.xlsx`, { compression: true } )
+  utils.sheet_add_aoa( worksheet,
+    [
+      [
+        'First Name',
+        'Last Name',
+        'Title',
+        'Email',
+        'Phone',
+        'Employer',
+        'Address',
+        'Score',
+        'Comment',
+        'Scanned Date'
+      ]
+    ],
+    { origin: 'A1' } )
+  writeFile( workbook,
+    `${ companyLocal.name }-Leads-${ companyLocal.expo_Client }-Expo-${ companyLocal.expo_Year }.xlsx`,
+    { compression: true } )
 }
 
 </script>

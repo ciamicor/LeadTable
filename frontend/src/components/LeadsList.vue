@@ -1,6 +1,6 @@
 <template>
 
-  <div v-if="!companyLocalData.lead_Ret"
+  <div v-if="!companyLocal.lead_Ret"
        class="row-12-300 --place-content-center">
     <div
       class="col-12-300 col-10-500 col-5-800">
@@ -18,19 +18,18 @@
       </router-link>
       <p class="--font-xs">You may need to logout, then login again to have the purchase
                            register.</p>
-
     </div>
   </div>
-  <div v-if="companyLocalData.lead_Ret === true">
+  <div v-if="companyLocal.lead_Ret === true">
     <div class="row-12-300 --p-10-clamp --place-content-space-between">
-      <div v-if="companyLocalData.name"
+      <div v-if="companyLocal.name"
            class="--flex-grow-1">
         <p>
-          {{ companyLocalData.expo_Client }}
-          {{ companyLocalData.expo_Year }}
+          {{ companyLocal.expo_Client }}
+          {{ companyLocal.expo_Year }}
           Supplier's Day
         </p>
-        <h2>{{ companyLocalData.name }}</h2>
+        <h2>{{ companyLocal.name }}</h2>
       </div>
       <LeadsExport v-if="leadsList.length > 0"
                    :leads-list="leadsList"
@@ -50,7 +49,7 @@
     </div>
 
     <router-link
-      v-if="companyLocalData.lead_Ret === true"
+      v-if="companyLocal.lead_Ret === true"
       class="button --stacked --float --bottom-r --success--invert"
       to="scan-lead">
       <i class="bi-qr-code-scan"></i>
@@ -66,20 +65,20 @@ import LoadingHolder from "@/components/LoadingHolder.vue";
 import { useCompanyLocalStore, useExpoLocalStore, useLeadsListLocal } from '@/stores.ts'
 import { getAllLeads_Service, getAllCompanyLeads_Service } from '../services/LeadDataService.js'
 import { onMounted, ref } from 'vue'
-import { getLocalCompanyData_Service } from '@/services/CompanyDataService.js'
+import { getLocalCompanyData_Service } from '@/services/ExhibitorDataService.ts'
 import LeadCard from '@/components/LeadCard.vue'
 import LeadsExport from '@/components/LeadsExport.vue'
 
-const companyLocalData = useCompanyLocalStore()
-const expoLocalData = useExpoLocalStore()
+const companyLocal = useCompanyLocalStore()
+const expoLocal = useExpoLocalStore()
 const leadListLocal = useLeadsListLocal()
 
 /*-| Hooks |-*/
 /*---+----+---+----+---+----+---+----+---*/
 onMounted( async () => {
-    await getLocalCompanyData_Service( companyLocalData )
-    console.log( companyLocalData.id )
-    await getAllCompanyLeads_Service( companyLocalData.id, leadsList )
+    await getLocalCompanyData_Service( companyLocal )
+    console.log( companyLocal.id )
+    await getAllCompanyLeads_Service( companyLocal.id, leadsList )
     status.value = false
     console.log( typeof leadsList )
     console.log( leadsList.value )
@@ -103,10 +102,10 @@ const status = ref( true )
 const leadsList = ref( [] )
 const lead = ref(
   {
-    expo_Client: companyLocalData.expo_Client,
-    expo_Year: companyLocalData.expo_Year,
+    expo_Client: companyLocal.expo_Client,
+    expo_Year: companyLocal.expo_Year,
     attendee_Id: null,
-    scan_Company_Id: companyLocalData.id,
+    scan_Company_Id: companyLocal.id,
     name_First: '',
     name_Last: '',
     title: '',

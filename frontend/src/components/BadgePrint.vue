@@ -22,7 +22,7 @@
         <button v-show="attendeeListSelected.length === 0 || attendeeListSelected.length > 1"
                 class="--secondary --p-4"
                 @click="printBadges">
-          Print {{attendeeListSelected.length > 0 ? attendeeListSelected.length : 'All'}} Badges
+          Print {{ attendeeListSelected.length > 0 ? attendeeListSelected.length : 'All' }} Badges
         </button>
         <button
           v-show="attendeeListSelected.length === 1"
@@ -36,7 +36,7 @@
           <i class="bi-upload --m-r-4"/>Upload Attendees
         </router-link>
         <router-link
-          :to="`/${expoLocalData.expo_Client}/${expoLocalData.expo_Year}/create-badge`"
+          :to="`/${expoLocal.expo_Client}/${expoLocal.expo_Year}/create-badge`"
           class="button --primary --p-4">
           <i class="bi-plus-lg --m-r-4"/>New Badge
         </router-link>
@@ -49,11 +49,11 @@
           class="--p-4 --font-size-16 --place-self-center --font-size-16"
           @click="getAttendees_SelectedUpload(upload.id)"
         >
-          {{upload.createdAt.slice( 0, 10 )}}
+          {{ upload.createdAt.slice( 0, 10 ) }}
         </button>
         <button
           class="--p-2 --p-h-4 --primary --font-size-16"
-          @click="refreshAttendees(expoLocalData.expo_Client, expoLocalData.expo_Year, attendeeList)"
+          @click="refreshAttendees(expoLocal.expo_Client, expoLocal.expo_Year, attendeeList)"
         >
           <i class="bi-arrow-clockwise --font-size-20 --m-r-3"></i>
           Reset
@@ -104,8 +104,8 @@
   </div>
   <div class="badges-page-container">
     <img id="badge-logo"
-         :alt="`${expoLocalData.expo_Client}-logo`"
-         :src="getImageUrl(`${expoLocalData.expo_Client.toString().toLowerCase()}-vert-rgb`)"
+         :alt="`${expoLocal.expo_Client}-logo`"
+         :src="getImageUrl(`${expoLocal.expo_Client.toString().toLowerCase()}-vert-rgb`)"
     >
     <QrCode
       v-if="attendeeListSelected.length === 1"
@@ -121,7 +121,7 @@
 <script lang="js"
         setup>
 import { useExpoLocalStore } from "@/stores.js";
-import { getUrlHost } from "@/services/functions/UrlFunc.js";
+import { getUrlHost } from "@/services/functions/UrlService.ts";
 import { jsPDF } from 'jspdf'
 import QrCode from '@/components/QrCode.vue'
 import html2canvas from 'html2canvas'
@@ -135,12 +135,12 @@ import {
 } from '@/services/AttendeeDataService.ts'
 import { getAttendeeUploads_Service } from '@/services/UploadDataService.js'
 import { sortLName_Service } from '@/services/SortService.js'
-import { toTitleCase_Service } from '@/services/TextContentService.js'
+import { toTitleCase_Service } from '@/services/functions/TextManipulationService.ts'
 import LoadingHolder from "@/components/LoadingHolder.vue";
 
 /*-| States |-*/
 /*---+----+---+----+---+----+---+----+---*/
-const expoLocalData = useExpoLocalStore()
+const expoLocal = useExpoLocalStore()
 
 /*-| Uploads |-*/
 const uploadsList = ref()
@@ -157,7 +157,7 @@ const printComponent = ref() // for Print component
 /*-| Get Image |-*/
 /*---+----+---+----+---+----+---+----+---*/
 function getImageUrl( name ) {
-  return new URL( `../../public/logos/${ expoLocalData.expo_Client.toString()
+  return new URL( `../../public/logos/${ expoLocal.expo_Client.toString()
     .toLowerCase() }/${ name }.jpeg`, import.meta.url ).href
 }
 
@@ -168,9 +168,9 @@ onMounted( () => {
   loading.value = true
   setTimeout(
     () => {
-      console.log( expoLocalData )
-      getAllAttendees( expoLocalData.expo_Client, expoLocalData.expo_Year )
-      getAllAttendeeUploads( expoLocalData.expo_Client )
+      console.log( expoLocal )
+      getAllAttendees( expoLocal.expo_Client, expoLocal.expo_Year )
+      getAllAttendeeUploads( expoLocal.expo_Client )
     }, 600
   )
   setTimeout( () => {

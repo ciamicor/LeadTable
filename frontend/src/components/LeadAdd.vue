@@ -9,7 +9,7 @@
       @detect="getQrId($event)"
       @camera-on="scanTarget = 'Waiting for QR code...'"
     ></qrcode-stream>
-    <div class="row --items qr-float-container">
+    <div class="row --no-space qr-float-container">
       <span class="col-10-300 qr-float-target-text">{{ scanTarget }}</span>
       <div v-show="scanCodeFound"
            class="row-12-300">
@@ -88,10 +88,10 @@
                   @change="updateComment( commentRef )">
                   name="leadComments"></textarea>
       </form>
-      <div class="row-12-300 --items --m-t-16">
+      <div class="row-12-300 --no-space --m-t-16">
         <button
           class="--primary--invert --flex-basis-100 --p-12"
-          @click="createLead(lead); router.push(`/${companyLocalData.expo_Client}/${companyLocalData.expo_Year}/leads-list`)">
+          @click="createLead(lead); router.push(`/${companyLocal.expo_Client}/${companyLocal.expo_Year}/leads-list`)">
           Add {{ lead.name_First }}
         </button>
         <button
@@ -131,7 +131,7 @@ import { useCompanyLocalStore } from '@/stores.js'
 /*---+----+---+----+---+----+---+----+---*/
 const debug = false
 
-const companyLocalData = useCompanyLocalStore()
+const companyLocal = useCompanyLocalStore()
 
 /*-| Scanning |-*/
 const scanConfirm = ref( false )
@@ -146,8 +146,8 @@ const commentRef = ref( null )
 const attendeeService = new AttendeeDataService()
 let attendee = ref(
   {
-    expo_Year: companyLocalData.expo_Year,
-    expo_Client: companyLocalData.expo_Client,
+    expo_Year: companyLocal.expo_Year,
+    expo_Client: companyLocal.expo_Client,
     name_First: '',
     name_Last: '',
     contact_Email: '',
@@ -168,9 +168,9 @@ let attendee = ref(
 /*-| Company Service |-*/
 let company = ref(
   {
-    id: companyLocalData.id,
-    expo_Year: companyLocalData.expo_Year,
-    company_Name: companyLocalData.name
+    id: companyLocal.id,
+    expo_Year: companyLocal.expo_Year,
+    company_Name: companyLocal.name
   }
 )
 
@@ -178,10 +178,10 @@ let company = ref(
 let lead = ref(
   {
     id: null,
-    expo_Year: companyLocalData.expo_Year,
-    expo_Client: companyLocalData.expo_Client,
+    expo_Year: companyLocal.expo_Year,
+    expo_Client: companyLocal.expo_Client,
     attendee_Id: attendee.value.id,
-    scan_Company_Id: companyLocalData.id,
+    scan_Company_Id: companyLocal.id,
     name_First: attendee.value.name_First,
     name_Last: attendee.value.name_Last,
     email: attendee.value.contact_Email,

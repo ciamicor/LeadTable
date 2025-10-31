@@ -51,16 +51,16 @@
 
 <script lang="ts"
         setup>
-import {useCompanyLocalStore, useExpoLocalStore} from '@/stores.ts'
-import {getAllExpos_Service} from '@/services/ExpoDataService.ts'
-import {onMounted, ref} from 'vue'
-import {useRouter} from "vue-router";
+import { useCompanyLocalStore, useExpoLocalStore } from '@/stores.ts'
+import { getAllExpos_Service } from '@/services/ExpoDataService.ts'
+import { onMounted, ref } from 'vue'
+import { useRouter } from "vue-router";
 
 /*-| Variables |-*/
 /*---+----+---+----+---+----+---+----+---*/
 const router = useRouter()
-const expoLocalData = useExpoLocalStore()
-const companyLocalData = useCompanyLocalStore()
+const expoLocal = useExpoLocalStore()
+const companyLocal = useCompanyLocalStore()
 const allExposList = ref()
 const archivedExposList = ref()
 const activeExposList = ref()
@@ -73,11 +73,11 @@ onMounted(() => {
 
 onMounted(async () => {
   setTimeout(() => {
-    console.log(`${companyLocalData.expo_Client}/${companyLocalData.expo_Year}/leads-list`)
-    if (companyLocalData.expo_Year !== undefined && companyLocalData.expo_Client !== '') {
+    console.log(`${companyLocal.expo_Client}/${companyLocal.expo_Year}/leads-list`)
+    if (companyLocal.expo_Year !== undefined && companyLocal.expo_Client !== '') {
       console.log('matched')
-      console.log(`${companyLocalData.expo_Client}/${companyLocalData.expo_Year}/leads-list`)
-      router.push(`${companyLocalData.expo_Client}/${companyLocalData.expo_Year}/leads-list`)
+      console.log(`${companyLocal.expo_Client}/${companyLocal.expo_Year}/leads-list`)
+      router.push(`${companyLocal.expo_Client}/${companyLocal.expo_Year}/leads-list`)
     }
   }, 500)
 })
@@ -103,7 +103,7 @@ async function setCurrentExpo(obj: any) {
     obj.expoFp_MapUrl,
   )
 
-  expoLocalData.$patch({
+  expoLocal.$patch({
     active: obj.active,
     start_Date: obj.start_Date,
     expo_Client: obj.expo_Client,
@@ -115,11 +115,11 @@ async function setCurrentExpo(obj: any) {
   })
   console.log("Selected Expo", obj)
 
-  // const dateVar = new Date(expoLocalData.start_Date);
+  // const dateVar = new Date(expoLocal.start_Date);
   // console.log(dateVar.toLocaleString());
 
   /*-| Update Route |-*/
-  await router.push({path: "/" + expoLocalData.expo_Client + "/" + expoLocalData.expo_Year + "/profile"})
+  await router.push({path: "/" + expoLocal.expo_Client + "/" + expoLocal.expo_Year + "/profile"})
 }
 
 </script>

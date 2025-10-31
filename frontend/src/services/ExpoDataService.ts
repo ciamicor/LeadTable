@@ -19,9 +19,8 @@ class ExpoDataService {
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const expoService = new ExpoDataService()
 
-/*-| Get All Expos |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Get All Expos
+---+----+---+----+---+----+---+----+---*/
 async function getAllExpos_Service(exposList: any) {
   let expos = await expoService.getAll()
   try {
@@ -32,9 +31,8 @@ async function getAllExpos_Service(exposList: any) {
   }
 }
 
-/*-| Create |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Create
+---+----+---+----+---+----+---+----+---*/
 async function createExpo_Service(expoObject: any) {
   const data = {
     active: expoObject.active,
@@ -57,9 +55,8 @@ async function createExpo_Service(expoObject: any) {
   }
 }
 
-/*-| Get by Client, Year |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Get by Client, Year
+---+----+---+----+---+----+---+----+---*/
 async function getExpo_Service(client: any, year: any, expoObject: any) {
   try {
     let e = await expoService.getExpo(client, year)
@@ -80,19 +77,22 @@ async function getExpo_Service(client: any, year: any, expoObject: any) {
   }
 }
 
-/*-| Get Expo Token |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Get Expo Token
+---+----+---+----+---+----+---+----+---*/
 async function getExpoToken_Service(client: any, year: any) {
   // console.log('Getting expo: ', client, year, token.value)
   try {
     let t = await expoService.getExpo(client, year)
     // console.log('Expo token ', t.addresses.expoFp_Token)
-    return t.data.expoFp_Token
+    console.log(t)
+    console.log(`Finished getting token ${t.data.expoFp_Token} for expoId ${t.data.expoFp_Id}`)
+    return {
+      expoId: t.data.expoFp_Id,
+      token: t.data.expoFp_Token
+    }
   } catch (e) {
+    console.log("Error getting token.")
     console.log(e)
-  } finally {
-    console.log("Finished getting token.")
   }
 }
 

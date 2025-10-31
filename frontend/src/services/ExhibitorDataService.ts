@@ -1,7 +1,7 @@
 import http from '../http-common'
-import {db} from '@/db.ts'
+import { db } from '@/db.ts'
 
-class CompanyDataService {
+class ExhibitorDataService {
   create(data: any) {
     return http.post('/company', data)
   }
@@ -19,14 +19,12 @@ class CompanyDataService {
   }
 }
 
-/*-| Functions |-*/
+/*-| Functions
+/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+const companyService = new ExhibitorDataService()
 
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-const companyService = new CompanyDataService()
-
-/*-| Create |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Create
+---+----+---+----+---+----+---+----+---*/
 async function createCompany_Service(companyObject: any) {
   console.log("Creating company: ", companyObject)
   const data = {
@@ -47,28 +45,20 @@ async function createCompany_Service(companyObject: any) {
   }
 }
 
-/*-| Get by ID |-*/
-
-/*---+----+---+----+---+----+---+----+---*/
-async function getCompanyById_Service(id: any, companyObject: any = null) {
+/*-| Get by ID
+---+----+---+----+---+----+---+----+---*/
+async function getCompanyById_Service(id: any) {
   try {
     let company = await companyService.get(id)
-    console.log('company: ', companyObject)
     console.log('response: ', company)
-    if (companyObject !== null) {
-      companyObject.value = company.data
-      console.log('company: ', companyObject.value)
-    } else {
-      return company
-    }
+    return company.data
   } catch (error) {
     console.error('Error getting company by ID: ', error)
   }
 }
 
-/*-| Get Profiles from DB |-*/
-
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Get Profiles from DB
+/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 async function getLocalCompanyData_Service(c: any) {
   try {
     let profile = await db.profile.get(1)
