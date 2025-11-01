@@ -1,7 +1,23 @@
 @use "../abstracts/functions" as f;
+
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-/*-| Dimensions |-*/
+/*-| Dimensions & Sizing |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+
+$sizing-list: (
+                auto,
+                min-content,
+                max-content
+              );
+
+@each $size in $sizing-list {
+  .--h-#{$size} {
+    height: #{$size};
+  }
+  .--w-#{$size} {
+    width: #{$size};
+  }
+}
 
 @for $i from 1 through 20 {
   .--w-#{$i * 5} {
@@ -33,8 +49,24 @@
   $clamp-s: #{$i + "px"};
   $clamp-m: calc(#{$i + "vw"} / 2);
   $clamp-l: calc(2 * #{$i + "px"});
-  /*-| All |-*/
-  /*---+----+---+----+---+----+---+----+---*/
+
+  /*-| Placement
+    ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+  .--top-#{$i} {
+    top: $spacer !important;
+  }
+  .--right-#{$i} {
+    right: $spacer !important;
+  }
+  .--bottom-#{$i} {
+    bottom: $spacer !important;
+  }
+  .--left-#{$i} {
+    left: $spacer !important;
+  }
+
+  /*-| All Sides
+  ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
   .--p-#{$i} {
     padding: $spacer !important;
   }
@@ -53,9 +85,11 @@
   .--gap-#{$i}-clamp {
     gap: f.clamp-spacing($i, 4) !important;
   }
-  /*-| Axis |-*/
-  /*---+----+---+----+---+----+---+----+---*/
-  /*-| Vert |-*/
+  /*-| Axis
+  ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+
+  /*-| Vert
+  ---+----+---+----+---+----+---+----+---*/
   .--p-v-#{$i} {
     padding-top:    $spacer !important;
     padding-bottom: $spacer !important;
@@ -64,7 +98,8 @@
     margin-block-start: $spacer !important;
     margin-block-end:   $spacer !important;
   }
-  /*-| Vert Clamp|-*/
+  /*-| Vert Clamp
+  ---+----+---+----+---+----+---+----+---*/
   .--p-v-#{$i}-clamp {
     padding-top:    f.clamp-spacing($i, 4) !important;
     padding-bottom: f.clamp-spacing($i, 4) !important;
@@ -73,7 +108,8 @@
     margin-block-start: f.clamp-spacing($i, 4) !important;
     margin-block-end:   f.clamp-spacing($i, 4) !important;
   }
-  /*-| Horz |-*/
+  /*-| Horz
+  ---+----+---+----+---+----+---+----+---*/
   .--p-h-#{$i} {
     padding-left:  $spacer !important;
     padding-right: $spacer !important;
@@ -82,7 +118,8 @@
     margin-inline-start: $spacer !important;
     margin-inline-end:   $spacer !important;
   }
-  /*-| Horz Clamp |-*/
+  /*-| Horz Clamp
+  ---+----+---+----+---+----+---+----+---*/
   .--p-h-#{$i}-clamp {
     padding-left:  f.clamp-spacing($i, 4) !important;
     padding-right: f.clamp-spacing($i, 4) !important;
@@ -91,66 +128,75 @@
     margin-inline-start: f.clamp-spacing($i, 4) !important;
     margin-inline-end:   f.clamp-spacing($i, 4) !important;
   }
-  /*-| Individual |-*/
-  /*---+----+---+----+---+----+---+----+---*/
-  /*-| Top |-*/
+  /*-| Individual
+  ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+
+  /*-| Top
+  ---+----+---+----+---+----+---+----+---*/
   .--p-t-#{$i} {
     padding-top: $spacer !important;
   }
   .--m-t-#{$i} {
     margin-block-start: $spacer !important;
   }
-  /*-| Top Clamp|-*/
+  /*-| Top Clamp
+  ---+----+---+----+---+----+---+----+---*/
   .--p-t-#{$i}-clamp {
     padding-top: f.clamp-spacing($i, 4) !important;
   }
   .--m-t-#{$i}-clamp {
     margin-block-start: f.clamp-spacing($i, 4) !important;
   }
-  /*-| Right |-*/
+  /*-| Right
+  ---+----+---+----+---+----+---+----+---*/
   .--p-r-#{$i} {
     padding-right: $spacer !important;
   }
   .--m-r-#{$i} {
     margin-inline-end: $spacer !important;
   }
-  /*-| Right Clamp|-*/
+  /*-| Right Clamp
+  ---+----+---+----+---+----+---+----+---*/
   .--p-r-#{$i}-clamp {
     padding-right: f.clamp-spacing($i, 4) !important;
   }
   .--m-r-#{$i}-clamp {
     margin-inline-end: f.clamp-spacing($i, 4) !important;
   }
-  /*-| Bottom |-*/
+  /*-| Bottom
+  ---+----+---+----+---+----+---+----+---*/
   .--p-b-#{$i} {
     padding-bottom: $spacer !important;
   }
   .--m-b-#{$i} {
     margin-block-end: $spacer !important;
   }
-  /*-| Bottom Clamp|-*/
+  /*-| Bottom Clamp
+  ---+----+---+----+---+----+---+----+---*/
   .--p-b-#{$i}-clamp {
     padding-bottom: f.clamp-spacing($i, 4) !important;
   }
   .--m-b-#{$i}-clamp {
     margin-block-end: f.clamp-spacing($i, 4) !important;
   }
-  /*-| Left |-*/
+  /*-| Left
+  ---+----+---+----+---+----+---+----+---*/
   .--p-l-#{$i} {
     padding-left: $spacer !important;
   }
   .--m-l-#{$i} {
     margin-inline-start: $spacer !important;
   }
-  /*-| Left Clamp|-*/
+  /*-| Left Clamp
+  ---+----+---+----+---+----+---+----+---*/
   .--p-l-#{$i}-clamp {
     padding-left: f.clamp-spacing($i, 4) !important;
   }
   .--m-l-#{$i}-clamp {
     margin-inline-start: f.clamp-spacing($i, 4) !important;
   }
-  /*-| Positioning |-*/
-  /*---+----+---+----+---+----+---+----+---*/
+  /*-| Positioning
+  ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
   .--top-#{$i} {
     top: $spacer !important;
   }

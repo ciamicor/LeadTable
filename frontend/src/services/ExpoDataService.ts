@@ -85,7 +85,7 @@ async function getExpoToken_Service(client: any, year: any) {
     let t = await expoService.getExpo(client, year)
     // console.log('Expo token ', t.addresses.expoFp_Token)
     console.log(t)
-    console.log(`Finished getting token ${t.data.expoFp_Token} for expoId ${t.data.expoFp_Id}`)
+    console.log(`Finished getting token for expoId ${t.data.expoFp_Id}`)
     return {
       expoId: t.data.expoFp_Id,
       token: t.data.expoFp_Token

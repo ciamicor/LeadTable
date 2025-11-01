@@ -1,5 +1,55 @@
 @use "../abstracts/index" as *;
 
+/*-| Links
+==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+@mixin link-style($color) {
+  width:                 max-content;
+  margin:                0 -2px;
+  padding:               0 2px;
+  box-shadow:            inset 0 -.095rem 0 0 hsla($color, 0),
+                         inset 5rem -1rem 1rem 0 hsla($color, 0),
+                         inset 10rem -1.5rem 1rem 0 hsla($color, 0),
+                         inset 15rem -2rem 1rem 0 hsla($color, 0),
+                         inset 20rem -2.5rem 1rem 0 hsla($color, 0),
+                         0 0 .15rem 0 hsla($color, 0);
+  transition:            box-shadow $trans-200,
+                         padding $trans-200,
+                         margin $trans-200,
+                         text-decoration-color $trans-200,;
+  text-decoration-color: hsla($color, 85%);
+  border-radius:         4px;
+  &:hover {
+    text-decoration-color: hsla($color, 0%);
+    margin-right:          -2px;
+    margin-left:           -2px;
+    padding:               0 2px;
+    box-shadow:            inset 0 -.095rem 0 0 hsla($color, 0),
+                           inset 5rem -1rem 1rem 0 hsla($color, 5%),
+                           inset 10rem -1.5rem 1rem 0 hsla($color, 15%),
+                           inset 15rem -2rem 1rem 0 hsla($color, 25%),
+                           inset 20rem -2.5rem 1rem 0 hsla($color, 35%),
+                           0 0 .15rem 0 hsla($color, 0);
+  }
+}
+
+a {
+  @include link-style(var(--grey-10-hsl));
+  &.--primary {
+    @include link-style(var(--color-primary-hs) + ", 65%");
+  }
+  &.--secondary {
+    @include link-style(var(--color-secondary-hs) + ", 75%");
+  }
+  &.--success {
+    @include link-style(var(--color-success-hs) + ", 85%");
+  }
+  &.--warn {
+    @include link-style(var(--color-warn-hs) + ", 85%");
+  }
+}
+
+/*-| Buttons
+==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 button,
 .button {
   display:             flex;
@@ -25,7 +75,6 @@ button,
     color:     inherit;
     font-size: inherit;
   }
-
   &:hover {
     color:      $grey-2;
     background: $grey-10;
