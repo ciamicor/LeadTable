@@ -52,10 +52,11 @@
         <p>Fill out your profile to help expo attendees get to know you better!</p>
         <p>This contact information will be displayed publicly on the booth map.</p>
         <label>
-          <!--          <span>Name {{ exhibitor.externalId }}</span>
-                    <span>Name {{ externalIdFormat }}</span>-->
+          <span>Name {{ exhibitor.externalId }}</span>
+          <span>Name {{ externalIdFormat }}</span>
           <input
-            v-model="exhibitor.name"
+            v-model="urlParams.companyName"
+            disabled
             name="company-name"
             placeholder="Company Name"
             required
@@ -170,6 +171,7 @@
       </a>
       <!-- TODO: Include ability to add extras & sponsorships to profile here -->
       <div
+        v-if="urlParams.booth"
         class="row-12-300 --no-space">
         <span class="label --success--invert">
           You're reserving booth #{{ urlParams.booth }}
@@ -182,8 +184,9 @@
               @click="createExhibitor">
         {{ status }}
       </button>
-      <!--      <p>{{ expoLocal }}</p>
-            <p>{{ exhibitor }}</p>-->
+      <p>{{ urlParams }}</p>
+      <p>{{ expoLocal }}</p>
+      <p>{{ exhibitor }}</p>
     </div>
   </div>
 </template>
@@ -235,7 +238,7 @@ const exhibitor = ref( {
 } )
 
 const externalIdFormat = computed( () => {
-  return exhibitor.value.externalId = formatSlug( exhibitor.value.name )
+  return exhibitor.value.externalId = formatSlug( urlParams.value.companyName )
 } )
 
 async function createExhibitor() {
