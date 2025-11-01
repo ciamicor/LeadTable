@@ -52,8 +52,8 @@
         <p>Fill out your profile to help expo attendees get to know you better!</p>
         <p>This contact information will be displayed publicly on the booth map.</p>
         <label>
-          <span>Name {{ exhibitor.externalId }}</span>
-          <span>Name {{ externalIdFormat }}</span>
+          <!--          <span>Name {{ exhibitor.externalId }}</span>
+                    <span>Name {{ externalIdFormat }}</span>-->
           <input
             v-model="exhibitor.name"
             name="company-name"
@@ -168,6 +168,7 @@
         <i class="bi-arrow-return-left --m-r-4"></i>
         Return to Map
       </a>
+      <!-- TODO: Include ability to add extras & sponsorships to profile here -->
       <div
         class="row-12-300 --no-space">
         <span class="label --success--invert">
@@ -177,13 +178,10 @@
           ${{ urlParams.price }}
         </span>
       </div>
-      <button
-        class="--success"
-        type="submit"
-      >
-        Continue
+      <button class="--success"
+              @click="createExhibitor">
+        {{ status }}
       </button>
-      <button @click="createExhibitor">{{ status }}</button>
       <!--      <p>{{ expoLocal }}</p>
             <p>{{ exhibitor }}</p>-->
     </div>
