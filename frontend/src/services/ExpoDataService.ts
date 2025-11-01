@@ -4,11 +4,9 @@ class ExpoDataService {
   create(data: any) {
     return http.post('/expo', data)
   }
-
   getAll() {
     return http.get('/expo')
   }
-
   getExpo(client: string, year: any) {
     return http.get('/expo/client/' + client + '/year/' + year)
   }
@@ -83,12 +81,16 @@ async function getExpoToken_Service(client: any, year: any) {
   // console.log('Getting expo: ', client, year, token.value)
   try {
     let t = await expoService.getExpo(client, year)
-    // console.log('Expo token ', t.data.expoFp_Token)
-    return t.data.expoFp_Token
+    // console.log('Expo token ', t.addresses.expoFp_Token)
+    console.log(t)
+    console.log(`Finished getting token for expoId ${t.data.expoFp_Id}`)
+    return {
+      expoId: t.data.expoFp_Id,
+      token: t.data.expoFp_Token
+    }
   } catch (e) {
+    console.log("Error getting token.")
     console.log(e)
-  } finally {
-    console.log("Finished getting token.")
   }
 }
 

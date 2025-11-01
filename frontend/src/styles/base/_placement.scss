@@ -1,5 +1,5 @@
-/*-| Placement |-*/
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Placement
+/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 $place-type:    (
                   "place",
                   "justify",
@@ -27,5 +27,19 @@ $place-area:    (
         #{$type}-#{$subject}: #{$area} !important;
       }
     }
+  }
+}
+
+/*-| Position
+==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+$position-type: (
+                  relative,
+                  absolute,
+                  sticky,
+                  fixed,
+                );
+@each $position in $position-type {
+  .--position-#{$position} {
+    position: $position !important;
   }
 }

@@ -3,7 +3,7 @@
     <div class="col-12-300 --align-items-start --gap-12 --max-w-600">
       <h1>Upload Attendees</h1>
       <div class="col-12-300">
-        <h4>For {{expoLocalData.expo_Client}} {{expoLocalData.expo_Year}} Supplier's Day</h4>
+        <h4>For {{ expoLocal.expo_Client }} {{ expoLocal.expo_Year }} Supplier's Day</h4>
         <button class="--p-h-4 --p-v-2 --secondary --align-self-start"
                 @click="downloadTemplate()">
           <i class="bi-download --m-r-4"/>
@@ -47,8 +47,8 @@ import { createAttendee_Service } from '@/services/AttendeeDataService.ts'
 import { useExpoLocalStore, useCompanyLocalStore } from "@/stores.ts";
 import { createUpload_Service, getAttendeeUploads_Service } from '@/services/UploadDataService.ts'
 
-const companyLocalData = useCompanyLocalStore()
-const expoLocalData = useExpoLocalStore()
+const companyLocal = useCompanyLocalStore()
+const expoLocal = useExpoLocalStore()
 const currentUpload = ref()
 const status = ref(false)
 const uploadTitle = ref(new Date().toLocaleString())
@@ -71,10 +71,10 @@ async function handleFileAsync(e: any) {
 
   console.log(jsonData)
 
-  await createUpload(expoLocalData.expo_Client, expoLocalData.expo_Year, uploadTitle.value)
+  await createUpload(expoLocal.expo_Client, expoLocal.expo_Year, uploadTitle.value)
 
   jsonData.forEach(e => {
-    createAttendee_Service(e, expoLocalData.expo_Client, expoLocalData.expo_Year, currentUpload.value.id)
+    createAttendee_Service(e, expoLocal.expo_Client, expoLocal.expo_Year, currentUpload.value.id)
   })
   status.value = false
 }

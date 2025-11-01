@@ -1,0 +1,86 @@
+@use "../abstracts/index" as *;
+
+.label {
+  display:         flex;
+  place-content:   center;
+  place-items:     center;
+  color:           $grey-4;
+  font-size:       $font-xxs;
+  font-weight:     400;
+  line-height:     1;
+  text-align:      center;
+  text-decoration: none;
+  width:           max-content;
+  padding:         $sp-2 $sp-3;
+  border-width:    1px;
+  border-style:    dashed;
+  border-color:    $grey-7;
+  border-radius:   $sp-2;
+  background:      $grey-12;
+  transition:      background $trans-200, color $trans-200, border-width $trans-100;
+  & i {
+    color:     inherit;
+    font-size: inherit;
+  }
+  /*-| Mixin |-*/
+  /*---+----+---+----+---+----+---+----+---*/
+  @mixin color-button(
+    $color,
+    $border-color,
+    $background,
+    $invert-color,
+    $invert-border-color,
+    $invert-background,
+  ) {
+    color:        $color,;
+    border-color: $border-color,;
+    background:   $background,;
+    &--invert {
+      color:        $invert-color,;
+      border-color: $invert-border-color,;
+      background:   $invert-background,;
+    }
+  }
+  /*-| Colors |-*/
+  /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+  &.--primary {
+    @include color-button(
+        $color-primary-2, // $color,
+        $color-primary-5, // $border-color,
+        $color-primary-11, // $background,
+        $color-primary-1, // $invert-color,
+        $color-primary-5, // $invert-border-color,
+        $color-primary-8, // $invert-background,
+    );
+  }
+  &.--secondary {
+    @include color-button(
+        $color-secondary-2, // $color,
+        $color-secondary-6, // $border-color,
+        $color-secondary-12, // $background,
+        $color-secondary-12, // $invert-color,
+        $color-secondary-10, // $invert-border-color,
+        $color-secondary-5, // $invert-background,
+    );
+  }
+  &.--success {
+    @include color-button(
+        $color-success-2, // $color,
+        $color-success-8, // $border-color,
+        $color-success-12, // $background,
+        $color-success-12, // $invert-color,
+        $color-success-10, // $invert-border-color,
+        $color-success-6, // $invert-background,
+    );
+  }
+  &.--warn {
+    @include color-button(
+        $color-warn-2, // $color,
+        $color-warn-7, // $border-color,
+        $color-warn-12, // $background,
+        $color-warn-12, // $invert-color,
+        $color-warn-8, // $invert-border-color,
+        $color-warn-5, // $invert-background,
+    );
+  }
+}

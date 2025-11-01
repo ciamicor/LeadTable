@@ -32,7 +32,7 @@ import SidebarNav from "@/components/Navigation/SidebarNav.vue";
 import { db } from '@/db.js'
 import { onBeforeMount, ref } from 'vue'
 import { useExpoLocalStore, useCompanyLocalStore, useSessionStore } from '@/stores.js'
-import { getUrl_ClientYear } from "@/services/functions/UrlFunc.js";
+import { getUrl_ClientYear } from "@/services/functions/UrlService.ts";
 import { getExpo_Service } from "@/services/ExpoDataService.js";
 import { useRoute, useRouter } from "vue-router";
 
@@ -42,8 +42,8 @@ const router = useRouter()
 /*-| Variables |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const sessionStore = useSessionStore()
-const companyLocalData = useCompanyLocalStore()
-const expoLocalData = useExpoLocalStore()
+const companyLocal = useCompanyLocalStore()
+const expoLocal = useExpoLocalStore()
 
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Hooks |-*/
@@ -52,12 +52,15 @@ onBeforeMount( async () => {
   console.log( "App mounting!" )
   await checkLoginState()
   let url = getUrl_ClientYear()
-  expoLocalData.$patch( {
+  expoLocal.$patch( {
     expo_Client: url[0],
     expo_Year: url[1]
   } )
-  await getExpo_Service( url.client, url.year, expoLocalData )
-  console.log( 'Expo is: ', expoLocalData )
+  await getExpo_Service( url.client, url.year, expoLocal )
+  console.log( 'Expo is: ', expoLocal )
+  /*if ( sessionStore.logged_In === true ) {
+    await checkExpoMatch()
+  }*/
 } )
 
 /*-| Get Company from Local
@@ -66,7 +69,7 @@ async function checkLoginState() {
   try {
     let profile = await db.profile.get( 1 )
     if ( profile ) {
-      companyLocalData.$patch( {
+      companyLocal.$patch( {
         id: profile.ex_Id,
         lead_Ret: profile.lead_Ret,
         login_Url: profile.login_Url.toString(),
@@ -76,7 +79,7 @@ async function checkLoginState() {
       } )
       sessionStore.logged_In = true
     }
-    return companyLocalData
+    return companyLocal
   } catch ( e ) {
     console.error( e )
   }
@@ -95,14 +98,14 @@ function toggleSidebarNav() {
 /*-| Check if URL matches login |-*/
 // TODO Move check into router beforeRoute function.
 /*async function checkExpoMatch() {
-  let clientMatch = expoLocalData.expo_Client === companyLocalData.expo_Client
-  let yearMatch = expoLocalData.expo_Year === parseInt( companyLocalData.expo_Year )
+  let clientMatch = expoLocal.expo_Client === companyLocal.expo_Client
+  let yearMatch = expoLocal.expo_Year === parseInt( companyLocal.expo_Year )
   if ( !clientMatch || !yearMatch ) {
-    alert( `Your login does not match selected expo. You've selected ${ expoLocalData.expo_Client } ${ expoLocalData.expo_Year }, but are logged in for ${ companyLocalData.expo_Client } ${ companyLocalData.expo_Year }. You'll be redirected.` )
+    alert( `Your login does not match selected expo. You've selected ${ expoLocal.expo_Client } ${ expoLocal.expo_Year }, but are logged in for ${ companyLocal.expo_Client } ${ companyLocal.expo_Year }. You'll be redirected.` )
     let url = getUrl_ClientYear()
-    await router.push( `/${ companyLocalData.expo_Client }/${ companyLocalData.expo_Year }/${ url.view }` )
+    await router.push( `/${ companyLocal.expo_Client }/${ companyLocal.expo_Year }/${ url.view }` )
     url = getUrl_ClientYear()
-    await getExpo_Service( url.client, url.year, expoLocalData )
+    await getExpo_Service( url.client, url.year, expoLocal )
   }
 }*/
 

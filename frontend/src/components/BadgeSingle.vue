@@ -21,7 +21,7 @@
       :url-value="attendee.id.toString()"
       class="badge--qr"
     ></QrCode>
-    <img :src="getImageUrl(`${expoLocalData.expo_Client.toString().toLowerCase()}-vert-rgb`)"
+    <img :src="getImageUrl(`${expoLocal.expo_Client.toString().toLowerCase()}-vert-rgb`)"
          alt=""
     >
   </div>
@@ -31,10 +31,11 @@
 import QrCode from '@/components/QrCode.vue'
 import { useExpoLocalStore } from "@/stores.js";
 
-const expoLocalData = useExpoLocalStore();
+const expoLocal = useExpoLocalStore();
 
 function getImageUrl( name ) {
-  return new URL( `../../public/logos/${ expoLocalData.expo_Client.toString().toLowerCase() }/${ name }.jpeg`, import.meta.url ).href
+  return new URL( `../../public/logos/${ expoLocal.expo_Client.toString()
+    .toLowerCase() }/${ name }.jpeg`, import.meta.url ).href
 }
 
 defineProps( {

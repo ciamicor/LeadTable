@@ -1,5 +1,5 @@
 import http from '../http-common'
-import { titleCase } from "@/services/functions/TextManipulationFunc.ts";
+import { titleCase } from "@/services/functions/TextManipulationService.ts";
 
 export default class AttendeeDataService {
   create(data: any) {
@@ -48,18 +48,18 @@ async function createAttendee_Service(
   const data = {
     expo_Client: client,
     expo_Year: year,
-    name_First: titleCase(attendee.name_First),
-    name_Last: titleCase(attendee.name_Last),
-    contact_Email: attendee.contact_Email.toLowerCase(),
-    contact_Phone: attendee.contact_Phone,
-    contact_Employer: attendee.contact_Employer,
-    address_Line1: attendee.address_Line1,
-    address_Line2: attendee.address_Line2,
-    address_City: attendee.address_City,
-    address_State: attendee.address_State,
-    address_Zip: attendee.address_Zip,
+    name_First: titleCase(attendee.name_First).trim(),
+    name_Last: titleCase(attendee.name_Last).trim(),
+    contact_Email: attendee.contact_Email.toLowerCase().trim(),
+    contact_Phone: attendee.contact_Phone.trim(),
+    contact_Employer: attendee.contact_Employer.trim(),
+    address_Line1: attendee.address_Line1.trim(),
+    address_Line2: attendee.address_Line2.trim(),
+    address_City: attendee.address_City.trim(),
+    address_State: attendee.address_State.trim(),
+    address_Zip: attendee.address_Zip.trim(),
     address_Country: attendee.address_Country,
-    title: attendee.title,
+    title: attendee.title.trim(),
     reg_Type: attendee.reg_Type,
     tech_Sem: attendee.tech_Sem,
     upload_Id: upload
@@ -83,18 +83,18 @@ async function createAttendee_Service(
 async function updateAttendee_Service(id: any, attendee: any) {
   console.log('Updating Attendee: ', attendee)
   const data = {
-    name_First: attendee.name_First,
-    name_Last: attendee.name_Last,
-    contact_Email: attendee.contact_Email,
-    contact_Phone: attendee.contact_Phone,
-    contact_Employer: attendee.contact_Employer,
-    address_Line1: attendee.address_Line1,
-    address_Line2: attendee.address_Line2,
-    address_City: attendee.address_City,
-    address_State: attendee.address_State,
-    address_Zip: attendee.address_Zip,
+    name_First: attendee.name_First.trim(),
+    name_Last: attendee.name_Last.trim(),
+    contact_Email: attendee.contact_Email.trim(),
+    contact_Phone: attendee.contact_Phone.trim(),
+    contact_Employer: attendee.contact_Employer.trim(),
+    address_Line1: attendee.address_Line1.trim(),
+    address_Line2: attendee.address_Line2.trim(),
+    address_City: attendee.address_City.trim(),
+    address_State: attendee.address_State.trim(),
+    address_Zip: attendee.address_Zip.trim(),
     address_Country: attendee.address_Country,
-    title: attendee.title,
+    title: attendee.title.trim(),
     reg_Type: attendee.reg_Type,
     tech_Sem: attendee.tech_Sem,
   }

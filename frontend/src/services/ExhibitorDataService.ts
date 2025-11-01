@@ -1,7 +1,7 @@
 import http from '../http-common'
 import { db } from '@/db.ts'
 
-class CompanyDataService {
+class ExhibitorDataService {
   create(data: any) {
     return http.post('/company', data)
   }
@@ -19,14 +19,13 @@ class CompanyDataService {
   }
 }
 
-/*-| Functions |-*/
-
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-const companyService = new CompanyDataService()
+/*-| Functions
+/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+const companyService = new ExhibitorDataService()
 
 /*-| Create Company
 ---+----+---+----+---+----+---+----+---*/
-async function createCompany_Service(companyObject: any) {
+export async function createCompany_Service(companyObject: any) {
   console.log("Creating company: ", companyObject)
   const data = {
     id: companyObject.id,
@@ -49,7 +48,7 @@ async function createCompany_Service(companyObject: any) {
 
 /*-| Get by Company & Expo ID
 ---+----+---+----+---+----+---+----+---*/
-async function getCompanyById_Service(cId: any, companyObject: any = null) {
+export async function getCompanyById_Service(cId: any, companyObject: any = null) {
   try {
     let company = await companyService.get(cId)
     console.log('company object: ', companyObject)
@@ -68,7 +67,7 @@ async function getCompanyById_Service(cId: any, companyObject: any = null) {
 
 /*-| Get Profiles from DB
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-async function getLocalCompanyData_Service(c: any) {
+export async function getLocalCompanyData_Service(c: any) {
   try {
     let profile = await db.profile.get(1)
     let companyLocalHold: any = profile
@@ -90,7 +89,7 @@ async function getLocalCompanyData_Service(c: any) {
   }
 }
 
-async function updateCompany_Service(id: any, retStatus: boolean) {
+export async function updateCompany_Service(id: any, retStatus: boolean) {
   console.log("Updating company: ", id)
   const data = {
     lead_Ret: retStatus
@@ -101,11 +100,4 @@ async function updateCompany_Service(id: any, retStatus: boolean) {
   } catch (e: any) {
     console.log(e)
   }
-}
-
-export {
-  getCompanyById_Service,
-  createCompany_Service,
-  getLocalCompanyData_Service,
-  updateCompany_Service
 }

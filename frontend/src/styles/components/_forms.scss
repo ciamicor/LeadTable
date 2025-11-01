@@ -1,11 +1,31 @@
 @use "../abstracts/index" as *;
 
+/*-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===
+-| Form Layout
+-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===/*/
+.form-container {
+  padding:       $sp-7 $sp-8 $sp-9;
+  border-radius: $panel-border;
+  transition:    padding $trans-200, box-shadow $trans-200;
+  &:hover {
+    box-shadow: 0 0 12px $grey-11;
+  }
+  &:has(*:focus, *:focus-visible) {
+    box-shadow: -2px 2px 16px $grey-9,
+                4px -4px 8px $grey-12;
+  }
+}
+
+/*-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===
+-| Form Elements
+-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===/*/
 label {
   display:   grid;
   flex:      1 1 auto;
-  gap:       $sp-4;
+  gap:       $sp-3;
+  color:     $grey-5;
   font-size: $font-xs;
-  margin:    $sp-4 0 0 0;
+  margin:    $sp-5 0 0 0;
   padding:   0 $sp-2;
   & input, select, textarea {
     flex: 1 1 auto;

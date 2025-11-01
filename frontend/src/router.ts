@@ -1,5 +1,8 @@
 import { createWebHistory, createRouter } from 'vue-router'
 import LeadsList from '@/components/LeadsList.vue'
+import CompanyProfile from '@/components/ExhibitorProfile.vue'
+import BadgePrint from '@/components/BadgePrint.vue'
+import ExpoMap from '@/components/ExpoMap.vue'
 import CompanyProfile from '@/components/Company/CompanyProfile.vue'
 import ExpoMap from '@/components/Elements/ExpoMap.vue'
 import ExpoSelect from '@/components/ExpoSelect.vue'
@@ -15,6 +18,8 @@ import Admin_ExpoManage from "@/components/Admin/Dashboard_Views/Admin_ExpoManag
 import Admin_BadgePrint from "@/components/Admin/Dashboard_Views/Admin_BadgePrint.vue";
 import Admin_UsersManage from "@/components/Admin/Dashboard_Views/Admin_UsersManage.vue";
 import Admin_Dashboard from "@/components/Admin/Dashboard_Views/Admin_Dashboard.vue";
+import AttendeesUpload from '@/components/AttendeesUpload.vue'
+import CompanyCreate from "@/components/ExhibitorCreate.vue";
 
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Routes |-*/
@@ -108,6 +113,11 @@ const routes = [
         name: 'Create a Badge',
         component: BadgeCreate,
       },
+      {
+        path: 'exhibitor-registration',
+        name: 'Exhibitor Registration',
+        component: CompanyCreate,
+      },
       /*-| Admin Views |-*/
       /*---+----+---+----+---+----+---+----+---*/
       {
@@ -120,7 +130,6 @@ const routes = [
         name: 'Upload Attendees',
         component: AttendeesUpload
       }
-
     ]
   },
 ]

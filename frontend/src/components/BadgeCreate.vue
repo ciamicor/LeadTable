@@ -7,13 +7,13 @@
       @submit.prevent="createAttendee(attendee)"
     >
       <h4 class="--m-0">
-        {{expoLocalData.expo_Client}}
-        {{expoLocalData.expo_Year}}
+        {{ expoLocal.expo_Client }}
+        {{ expoLocal.expo_Year }}
         Suppliers' Day
       </h4>
       <h1 id="attendee-reg">Badge Registration</h1>
       <p>Register to attend the expo or create booth personnel badges.</p>
-      <div class="row-12-300 --items">
+      <div class="row-12-300 --no-space">
         <label>
           First Name
           <input
@@ -35,7 +35,7 @@
             type="text">
         </label>
       </div>
-      <div class="row-12-300 --items">
+      <div class="row-12-300 --no-space">
         <label>
           Employer
           <input
@@ -56,7 +56,7 @@
             type="text">
         </label>
       </div>
-      <div class="row-12-300 --items">
+      <div class="row-12-300 --no-space">
         <label>
           Email Address
           <input
@@ -78,7 +78,7 @@
             type="tel"/>
         </label>
       </div>
-      <div class="row-12-300 --items">
+      <div class="row-12-300 --no-space">
         <label class="row-12-300">
           <span class="--flex-basis-100">Your Address</span>
           <input
@@ -125,7 +125,7 @@
                     :key="c"
                     :value="c"
             >
-              {{c}}
+              {{ c }}
             </option>
           </select>
         </label>
@@ -162,13 +162,13 @@
     <div v-show="showQr"
          class="row-10-300 --justify-content-center --align-content-start">
       <p class="--flex-basis-100 --place-self-center">
-        Thanks for registering for the {{expoLocalData.expo_Year}}
-        {{expoLocalData.expo_Client}} Suppliers' Day, {{attendee.name_First}}.
+        Thanks for registering for the {{ expoLocal.expo_Year }}
+        {{ expoLocal.expo_Client }} Suppliers' Day, {{ attendee.name_First }}.
       </p>
       <button
         class="--secondary --flex-grow-1"
         @click="printBadge_Portrait3x4(attendee)">
-        Print {{attendee.name_First}}'s Badge
+        Print {{ attendee.name_First }}'s Badge
       </button>
       <button
         class="--success --flex-grow-1"
@@ -178,8 +178,8 @@
     </div>
     <div class="badges-page-container">
       <img id="badge-logo"
-           :alt="`${companyLocalData.name}-logo`"
-           :src="getImageUrl(`${expoLocalData.expo_Client.toString().toLowerCase()}-vert-rgb`)"
+           :alt="`${companyLocal.name}-logo`"
+           :src="getImageUrl(`${expoLocal.expo_Client.toString().toLowerCase()}-vert-rgb`)"
       >
       <QrCode
         v-if="showQr"
@@ -201,17 +201,17 @@ import QrCode from '@/components/QrCode.vue'
 import { ref } from 'vue'
 import { createAttendee_Service } from '@/services/AttendeeDataService.ts'
 import { useCompanyLocalStore, useExpoLocalStore } from '@/stores.js'
-import { toTitleCase_Service } from '@/services/TextContentService.js'
-import { getUrlHost } from "@/services/functions/UrlFunc.js";
+import { toTitleCase_Service } from '@/services/functions/TextManipulationService.ts'
+import { getUrlHost } from "@/services/functions/UrlService.ts";
 
 import { countries } from "@/services/addresses/AddressForm_Countries.js";
 
 const host = getUrlHost()
-const companyLocalData = useCompanyLocalStore()
-const expoLocalData = useExpoLocalStore()
+const companyLocal = useCompanyLocalStore()
+const expoLocal = useExpoLocalStore()
 
 function getImageUrl( name ) {
-  return new URL( `../../public/logos/${ expoLocalData.expo_Client.toString()
+  return new URL( `../../public/logos/${ expoLocal.expo_Client.toString()
     .toLowerCase() }/${ name }.jpeg`, import.meta.url ).href
 }
 
@@ -221,8 +221,8 @@ function getImageUrl( name ) {
 const showQr = ref( false )
 const attendeeId = ref()
 const attendee = ref( {
-  expo_Year: expoLocalData.expo_Year,
-  expo_Client: expoLocalData.expo_Client,
+  expo_Year: expoLocal.expo_Year,
+  expo_Client: expoLocal.expo_Client,
   name_First: '',
   name_Last: '',
   contact_Email: '',
@@ -240,7 +240,7 @@ const attendee = ref( {
 } )
 
 async function createAttendee( a ) {
-  await createAttendee_Service( a, expoLocalData.expo_Client, expoLocalData.expo_Year )
+  await createAttendee_Service( a, expoLocal.expo_Client, expoLocal.expo_Year )
   attendeeId.value = attendee.value.id.toString()
   console.log( 'New Attendee\'s ID is: ', typeof attendeeId.value, attendeeId.value )
   showQr.value = true
@@ -249,8 +249,8 @@ async function createAttendee( a ) {
 function resetForm() {
   showQr.value = false
   attendee.value = {
-    expo_Year: expoLocalData.expo_Year,
-    expo_Client: expoLocalData.expo_Client,
+    expo_Year: expoLocal.expo_Year,
+    expo_Client: expoLocal.expo_Client,
     name_First: '',
     name_Last: '',
     contact_Email: '',
