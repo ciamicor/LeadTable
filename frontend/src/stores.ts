@@ -1,18 +1,21 @@
-import {defineStore} from 'pinia'
-import {ref} from 'vue'
-import type {Ref} from 'vue'
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
+import type { Ref } from 'vue'
 
 /*-| Session Store
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const useSessionStore = defineStore('sessionStore', () => {
-  const logged_In = ref(false)
+  const logged_In: Ref<boolean, boolean> = ref(false)
+  const status: Ref<string, string> = ref('')
 
   function $reset() {
     logged_In.value = false
+    status.value = ''
   }
 
   return {
     logged_In,
+    status,
     $reset,
   }
 })
@@ -55,9 +58,9 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
   }
 })
 
-/*-| Company Store
+/*-| exhibitor Store
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-const useCompanyLocalStore = defineStore('companyLocal', () => {
+const useExhibitorLocalStore = defineStore('exhibitorLocal', () => {
   const id = ref(undefined)
   const name = ref('')
   const login_Url = ref('')
@@ -85,9 +88,9 @@ const useCompanyLocalStore = defineStore('companyLocal', () => {
   }
 })
 
-/*-| Leads List Store
+/*-| leads List Store
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-const useLeadsListLocal = defineStore('companyLocal', () => {
+const useLeadsListLocal = defineStore('exhibitorLocal', () => {
   const map = ref(null)
 
   function $reset() {
@@ -100,6 +103,6 @@ const useLeadsListLocal = defineStore('companyLocal', () => {
   }
 })
 
-export { useExpoLocalStore, useCompanyLocalStore, useSessionStore, useLeadsListLocal }
+export { useExpoLocalStore, useExhibitorLocalStore, useSessionStore, useLeadsListLocal }
 
 

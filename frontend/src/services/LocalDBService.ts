@@ -1,5 +1,5 @@
-import {db} from "@/db.ts";
-import type {Ref} from "vue";
+import { db } from "@/db.ts";
+import type { Ref } from "vue";
 
 /*-| Sign Out function is located in SignOut Vue component---+----+---+----+---+----+---+----+---*/
 

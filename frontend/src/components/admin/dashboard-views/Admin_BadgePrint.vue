@@ -135,10 +135,8 @@ import {
 } from '@/services/AttendeeDataService.ts'
 import { getAttendeeUploads_Service } from '@/services/UploadDataService.js'
 import { sortLName_Service } from '@/services/SortService.js'
-import { toTitleCase_Service } from '@/services/TextContentService.js'
-import LoadingHolder from "@/components/Elements/LoadingHolder.vue";
 import { toTitleCase_Service } from '@/services/functions/TextManipulationService.ts'
-import LoadingHolder from "@/components/LoadingHolder.vue";
+import LoadingHolder from "@/components/elements/LoadingHolder.vue";
 
 /*-| States |-*/
 /*---+----+---+----+---+----+---+----+---*/

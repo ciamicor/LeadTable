@@ -32,7 +32,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import LeadCardModal from "@/components/Elements/LeadEditModal.vue";
+import LeadCardModal from "@/components/elements/LeadEditModal.vue";
 import AttendeeEditModal from "@/components/AttendeeEditModal.vue";
 
 const emit = defineEmits( [ 'addBadge', 'removeBadge' ] )

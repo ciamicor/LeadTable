@@ -28,10 +28,10 @@
 
 <script
   setup>
-import SidebarNav from "@/components/Navigation/SidebarNav.vue";
+import SidebarNav from "@/components/navigation/SidebarNav.vue";
 import { db } from '@/db.js'
 import { onBeforeMount, ref } from 'vue'
-import { useExpoLocalStore, useCompanyLocalStore, useSessionStore } from '@/stores.js'
+import { useExpoLocalStore, useExhibitorLocalStore, useSessionStore } from '@/stores.js'
 import { getUrl_ClientYear } from "@/services/functions/UrlService.ts";
 import { getExpo_Service } from "@/services/ExpoDataService.js";
 import { useRoute, useRouter } from "vue-router";
@@ -42,7 +42,7 @@ const router = useRouter()
 /*-| Variables |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const sessionStore = useSessionStore()
-const companyLocal = useCompanyLocalStore()
+const exhibitorLocal = useExhibitorLocalStore()
 const expoLocal = useExpoLocalStore()
 
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
@@ -63,13 +63,13 @@ onBeforeMount( async () => {
   }*/
 } )
 
-/*-| Get Company from Local
+/*-| Get exhibitor from Local
 ---+----+---+----+---+----+---+----+---*/
 async function checkLoginState() {
   try {
     let profile = await db.profile.get( 1 )
     if ( profile ) {
-      companyLocal.$patch( {
+      exhibitorLocal.$patch( {
         id: profile.ex_Id,
         lead_Ret: profile.lead_Ret,
         login_Url: profile.login_Url.toString(),
@@ -79,7 +79,7 @@ async function checkLoginState() {
       } )
       sessionStore.logged_In = true
     }
-    return companyLocal
+    return exhibitorLocal
   } catch ( e ) {
     console.error( e )
   }
@@ -98,12 +98,12 @@ function toggleSidebarNav() {
 /*-| Check if URL matches login |-*/
 // TODO Move check into router beforeRoute function.
 /*async function checkExpoMatch() {
-  let clientMatch = expoLocal.expo_Client === companyLocal.expo_Client
-  let yearMatch = expoLocal.expo_Year === parseInt( companyLocal.expo_Year )
+  let clientMatch = expoLocal.expo_Client === exhibitorLocal.expo_Client
+  let yearMatch = expoLocal.expo_Year === parseInt( exhibitorLocal.expo_Year )
   if ( !clientMatch || !yearMatch ) {
-    alert( `Your login does not match selected expo. You've selected ${ expoLocal.expo_Client } ${ expoLocal.expo_Year }, but are logged in for ${ companyLocal.expo_Client } ${ companyLocal.expo_Year }. You'll be redirected.` )
+    alert( `Your login does not match selected expo. You've selected ${ expoLocal.expo_Client } ${ expoLocal.expo_Year }, but are logged in for ${ exhibitorLocal.expo_Client } ${ exhibitorLocal.expo_Year }. You'll be redirected.` )
     let url = getUrl_ClientYear()
-    await router.push( `/${ companyLocal.expo_Client }/${ companyLocal.expo_Year }/${ url.view }` )
+    await router.push( `/${ exhibitorLocal.expo_Client }/${ exhibitorLocal.expo_Year }/${ url.view }` )
     url = getUrl_ClientYear()
     await getExpo_Service( url.client, url.year, expoLocal )
   }

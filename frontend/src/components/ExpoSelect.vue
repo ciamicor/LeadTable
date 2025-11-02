@@ -48,7 +48,7 @@
 
 <script lang="ts"
         setup>
-import { useCompanyLocalStore, useExpoLocalStore } from '@/stores.ts'
+import { useExhibitorLocalStore, useExpoLocalStore } from '@/stores.ts'
 import { getAllExpos_Service } from '@/services/ExpoDataService.ts'
 import { onMounted, ref } from 'vue'
 import { useRouter } from "vue-router";
@@ -57,7 +57,7 @@ import { useRouter } from "vue-router";
 ---+----+---+----+---+----+---+----+---*/
 const router = useRouter()
 const expoLocal = useExpoLocalStore()
-const companyLocal = useCompanyLocalStore()
+const exhibitorLocal = useExhibitorLocalStore()
 const allExposList = ref()
 const archivedExposList = ref()
 const activeExposList = ref()
@@ -70,11 +70,11 @@ onMounted(() => {
 
 onMounted(async () => {
   setTimeout(() => {
-    console.log(`${companyLocal.expo_Client}/${companyLocal.expo_Year}/leads-list`)
-    if (companyLocal.expo_Year !== undefined && companyLocal.expo_Client !== '') {
+    console.log(`${exhibitorLocal.expo_Client}/${exhibitorLocal.expo_Year}/leads-list`)
+    if (exhibitorLocal.expo_Year !== undefined && exhibitorLocal.expo_Client !== '') {
       console.log('matched')
-      console.log(`${companyLocal.expo_Client}/${companyLocal.expo_Year}/leads-list`)
-      router.push(`${companyLocal.expo_Client}/${companyLocal.expo_Year}/leads-list`)
+      console.log(`${exhibitorLocal.expo_Client}/${exhibitorLocal.expo_Year}/leads-list`)
+      router.push(`${exhibitorLocal.expo_Client}/${exhibitorLocal.expo_Year}/leads-list`)
     }
   }, 500)
 })

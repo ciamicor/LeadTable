@@ -5,7 +5,7 @@ const baseUrl = 'https://app.expofp.com/api/v1/'
 
 /*-| Get All Exhibitors
 ---+----+---+----+---+----+---+----+---*/
-export async function getAllExhibitors(client: any, year: any) {
+export async function getAllFPExhibitors(client: any, year: any) {
   try {
     const getData: any = await getExpoToken_Service(client, year)
     let expoData: { expoId: number, token: string } = {
@@ -29,9 +29,9 @@ export async function getAllExhibitors(client: any, year: any) {
   }
 }
 
-/*-| Get Exhibitor ID
+/*-| Get exhibitor ID
 ---+----+---+----+---+----+---+----+---*/
-export async function getExhibitorId(
+export async function getFPExhibitorId(
   externalId: any,
   client: any,
   year: any) {
@@ -52,7 +52,7 @@ export async function getExhibitorId(
         'token': expoData.token,
       }
     })
-    console.log("Got Exhibitor: ", res.data)
+    console.log("Got exhibitor: ", res.data)
     expoData.token = ""
     return res.data.id
   } catch (e) {
@@ -60,9 +60,9 @@ export async function getExhibitorId(
   }
 }
 
-/*-| Get Exhibitor Details
+/*-| Get exhibitor Details
 ---+----+---+----+---+----+---+----+---*/
-export async function getExhibitorDetails(
+export async function getFPExhibitor(
   id: any,
   client: any,
   year: any) {
@@ -81,7 +81,7 @@ export async function getExhibitorDetails(
         'id': id
       }
     })
-    console.log("Got Exhibitor: ", res.data)
+    console.log("Got exhibitor: ", res.data)
     expoData.token = ""
     return res.data
   } catch (e) {
@@ -89,9 +89,9 @@ export async function getExhibitorDetails(
   }
 }
 
-/*-| Get Exhibitor Extras
+/*-| Get exhibitor Extras
 ---+----+---+----+---+----+---+----+---*/
-export async function getExhibExtras(
+export async function getFPExhibitorExtras(
   id: any,
   client: any,
   year: any,
@@ -111,7 +111,7 @@ export async function getExhibExtras(
         'exhibitorId': id
       }
     })
-    // console.log("Exhibitor extras are: ", res.addresses)
+    // console.log("exhibitor extras are: ", res.addresses)
     expoData.token = ""
     return res.data
   } catch (e) {
@@ -120,19 +120,19 @@ export async function getExhibExtras(
 
 }
 
-/*-| Add Exhibitor
+/*-| Add exhibitor
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-export async function addExhibitor(
+export async function addFPExhibitor(
   client: any,
   year: any,
   exhibitor: any
 ) {
   /*-| Check if exists in ExpoFP already
   ---+----+---+----+---+----+---+----+---*/
-  console.log("Exhibitor is:")
+  console.log("exhibitor is:")
   console.log(exhibitor)
   // TODO getExhibitorId runs more times than necessary
-  const existsId = await getExhibitorId(
+  const existsId = await getFPExhibitorId(
     exhibitor.externalId,
     exhibitor.expo_Client,
     exhibitor.expo_Year
@@ -140,10 +140,10 @@ export async function addExhibitor(
   // getExhibitorId returns a number
   if (typeof existsId === 'number') {
     console.log(`Exhibitor ${existsId} already exists. Moving on.`)
-    return "Exhibitor already exists."
+    return "exhibitor already exists."
   }
   else if (typeof existsId !== 'number') {
-    console.log("Exhibitor doesn't exist yet. I'll create that now.")
+    console.log("exhibitor doesn't exist yet. I'll create that now.")
     try {
       const getData: any = await getExpoToken_Service(client, year)
       let expoData: { expoId: number, token: string } = {
@@ -177,7 +177,7 @@ export async function addExhibitor(
       console.log("Added exhibitor: ", exhibitor.name)
       console.log(exhibitor)
       // expoData.token = ""
-      return "Exhibitor created!"
+      return "exhibitor created!"
     } catch (e) {
       console.log(`Error! ${e}`)
     }
@@ -187,9 +187,9 @@ export async function addExhibitor(
 // TODO isolate get token function, so that it only runs once
 //  when calling multiple API calls.
 
-/*-| Add Exhibitor Booth
+/*-| Add exhibitor Booth
 ---+----+---+----+---+----+---+----+---*/
-export async function addExhibitorBooth(
+export async function addFPExhibitorBooth(
   client: any,
   year: any,
   exhibitorId: any,

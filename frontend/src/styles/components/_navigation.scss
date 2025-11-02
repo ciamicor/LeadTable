@@ -72,12 +72,18 @@
   gap:                   $sp-4;
   .nav-buttons-grid--wrapper {
     display:               grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 165px);
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(auto-fill, 65px);
     gap:                   $sp-4;
     .button {
-      gap:     $sp-6;
-      padding: $sp-6;
+      flex-grow:       1;
+      justify-content: flex-start;
+      gap:             $sp-6;
+      font-size:       $font-sm;
+      padding:         $sp-6;
+      i {
+        font-size: $font-lg;
+      }
     }
   }
   #sign-in, #sign-out {

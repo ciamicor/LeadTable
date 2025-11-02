@@ -178,7 +178,7 @@
     </div>
     <div class="badges-page-container">
       <img id="badge-logo"
-           :alt="`${companyLocal.name}-logo`"
+           :alt="`${exhibitorLocal.name}-logo`"
            :src="getImageUrl(`${expoLocal.expo_Client.toString().toLowerCase()}-vert-rgb`)"
       >
       <QrCode
@@ -200,14 +200,14 @@ import html2canvas from 'html2canvas'
 import QrCode from '@/components/QrCode.vue'
 import { ref } from 'vue'
 import { createAttendee_Service } from '@/services/AttendeeDataService.ts'
-import { useCompanyLocalStore, useExpoLocalStore } from '@/stores.js'
+import { useExhibitorLocalStore, useExpoLocalStore } from '@/stores.js'
 import { toTitleCase_Service } from '@/services/functions/TextManipulationService.ts'
 import { getUrlHost } from "@/services/functions/UrlService.ts";
 
 import { countries } from "@/services/addresses/AddressForm_Countries.js";
 
 const host = getUrlHost()
-const companyLocal = useCompanyLocalStore()
+const exhibitorLocal = useExhibitorLocalStore()
 const expoLocal = useExpoLocalStore()
 
 function getImageUrl( name ) {

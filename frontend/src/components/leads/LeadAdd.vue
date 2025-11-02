@@ -91,7 +91,7 @@
       <div class="row-12-300 --no-space --m-t-16">
         <button
           class="--primary--invert --flex-basis-100 --p-12"
-          @click="createLead(lead); router.push(`/${companyLocal.expo_Client}/${companyLocal.expo_Year}/leads-list`)">
+          @click="createLead(lead); router.push(`/${exhibitorLocal.expo_Client}/${exhibitorLocal.expo_Year}/leads-list`)">
           Add {{ lead.name_First }}
         </button>
         <button
@@ -121,17 +121,17 @@
 
 <script setup>
 import { QrcodeStream } from 'vue-qrcode-reader'
-import { createLead_Service } from '@/services/LeadDataService.js'
+import { createLead_Service } from '@/services/LeadDataService.ts'
 import AttendeeDataService from '@/services/AttendeeDataService.ts'
 import { inject, onBeforeMount, onMounted, ref } from 'vue'
-import router from '@/router.js'
-import { useCompanyLocalStore } from '@/stores.js'
+import router from '@/router.ts'
+import { useExhibitorLocalStore } from '@/stores.ts'
 
 /*-| Variables
 ---+----+---+----+---+----+---+----+---*/
 const debug = false
 
-const companyLocal = useCompanyLocalStore()
+const exhibitorLocal = useExhibitorLocalStore()
 
 /*-| Scanning |-*/
 const scanConfirm = ref( false )
@@ -146,8 +146,8 @@ const commentRef = ref( null )
 const attendeeService = new AttendeeDataService()
 let attendee = ref(
   {
-    expo_Year: companyLocal.expo_Year,
-    expo_Client: companyLocal.expo_Client,
+    expo_Year: exhibitorLocal.expo_Year,
+    expo_Client: exhibitorLocal.expo_Client,
     name_First: '',
     name_Last: '',
     contact_Email: '',
@@ -165,12 +165,12 @@ let attendee = ref(
   }
 )
 
-/*-| Exhibitor Service |-*/
+/*-| exhibitor Service |-*/
 let company = ref(
   {
-    id: companyLocal.id,
-    expo_Year: companyLocal.expo_Year,
-    company_Name: companyLocal.name
+    id: exhibitorLocal.id,
+    expo_Year: exhibitorLocal.expo_Year,
+    company_Name: exhibitorLocal.name
   }
 )
 
@@ -178,10 +178,10 @@ let company = ref(
 let lead = ref(
   {
     id: null,
-    expo_Year: companyLocal.expo_Year,
-    expo_Client: companyLocal.expo_Client,
+    expo_Year: exhibitorLocal.expo_Year,
+    expo_Client: exhibitorLocal.expo_Client,
     attendee_Id: attendee.value.id,
-    scan_Company_Id: companyLocal.id,
+    scan_Company_Id: exhibitorLocal.id,
     name_First: attendee.value.name_First,
     name_Last: attendee.value.name_Last,
     email: attendee.value.contact_Email,

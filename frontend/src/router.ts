@@ -1,30 +1,25 @@
 import { createWebHistory, createRouter } from 'vue-router'
-import LeadsList from '@/components/LeadsList.vue'
-import CompanyProfile from '@/components/ExhibitorProfile.vue'
-import BadgePrint from '@/components/BadgePrint.vue'
-import ExpoMap from '@/components/ExpoMap.vue'
-import CompanyProfile from '@/components/Company/CompanyProfile.vue'
-import ExpoMap from '@/components/Elements/ExpoMap.vue'
+import LeadsList from '@/components/leads/LeadsList.vue'
+import ExhibitorProfile from "@/components/exhibitor/ExhibitorProfile.vue";
+import ExpoMap from '@/components/elements/ExpoMap.vue'
 import ExpoSelect from '@/components/ExpoSelect.vue'
-import LeadAdd from '@/components/LeadAdd.vue'
+import LeadAdd from '@/components/leads/LeadAdd.vue'
 import BadgeCreate from '@/components/BadgeCreate.vue'
 
-/*-| Admin |-*/
-import Admin_Login from "@/components/Admin/Admin_Login.vue";
-import Admin_View from "@/components/Admin/Admin_View.vue";
-import BadgePrint from '@/components/Admin/Dashboard_Views/Admin_BadgePrint.vue'
-import AttendeesUpload from '@/components/Admin/Dashboard_Views/Admin_AttendeesUpload.vue'
-import Admin_ExpoManage from "@/components/Admin/Dashboard_Views/Admin_ExpoManage.vue";
-import Admin_BadgePrint from "@/components/Admin/Dashboard_Views/Admin_BadgePrint.vue";
-import Admin_UsersManage from "@/components/Admin/Dashboard_Views/Admin_UsersManage.vue";
-import Admin_Dashboard from "@/components/Admin/Dashboard_Views/Admin_Dashboard.vue";
-import AttendeesUpload from '@/components/AttendeesUpload.vue'
-import CompanyCreate from "@/components/ExhibitorCreate.vue";
+/*-| admin |-*/
+import Admin_Login from "@/components/admin/Admin_Login.vue";
+import Admin_View from "@/components/admin/Admin_View.vue";
+import BadgePrint from '@/components/admin/dashboard-views/Admin_BadgePrint.vue'
+import AttendeesUpload from '@/components/admin/dashboard-views/Admin_AttendeesUpload.vue'
+import Admin_ExpoManage from "@/components/admin/dashboard-views/Admin_ExpoManage.vue";
+import Admin_BadgePrint from "@/components/admin/dashboard-views/Admin_BadgePrint.vue";
+import Admin_UsersManage from "@/components/admin/dashboard-views/Admin_UsersManage.vue";
+import Admin_Dashboard from "@/components/admin/dashboard-views/Admin_Dashboard.vue";
+import CompanyCreate from "@/components/exhibitor/ExhibitorCreate.vue";
 
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-/*-| Routes |-*/
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-
+/*-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===
+-| Routes
+-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===/*/
 const routes = [
   /*-| Redirects |-*/
   /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
@@ -44,7 +39,7 @@ const routes = [
     component: ExpoSelect,
   },
 
-  /*-| Admin
+  /*-| admin
   ---+----+---+----+---+----+---+----+---*/
 // TODO make admin parent to client, year
   {
@@ -105,8 +100,8 @@ const routes = [
       },
       {
         path: 'profile',
-        name: 'Company Profile',
-        component: CompanyProfile,
+        name: 'Exhibitor Profile',
+        component: ExhibitorProfile,
       },
       {
         path: 'create-badge',
@@ -115,10 +110,10 @@ const routes = [
       },
       {
         path: 'exhibitor-registration',
-        name: 'Exhibitor Registration',
+        name: 'exhibitor Registration',
         component: CompanyCreate,
       },
-      /*-| Admin Views |-*/
+      /*-| admin Views |-*/
       /*---+----+---+----+---+----+---+----+---*/
       {
         path: 'print-badges',

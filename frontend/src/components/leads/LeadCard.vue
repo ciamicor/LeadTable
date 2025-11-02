@@ -45,7 +45,7 @@
 <script lang="ts"
         setup>
 import { defineProps, computed, ref, defineEmits } from "vue";
-import LeadEditModal from "@/components/Elements/LeadEditModal.vue";
+import LeadEditModal from "@/components/elements/LeadEditModal.vue";
 import { deleteLead_Service } from "@/services/LeadDataService.ts";
 
 const props = defineProps({

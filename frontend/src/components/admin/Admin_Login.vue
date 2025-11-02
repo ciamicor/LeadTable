@@ -59,7 +59,7 @@
         setup>
 import { ref } from "vue";
 import { authClient } from "@/lib/auth-client.ts"; //import the auth client
-import LoadingHolder from "@/components/Elements/LoadingHolder.vue";
+import LoadingHolder from "@/components/elements/LoadingHolder.vue";
 import { authSignOut, authSignIn } from "@/services/functions/BetterAuthFunc.ts";
 
 const authSession = authClient.useSession()

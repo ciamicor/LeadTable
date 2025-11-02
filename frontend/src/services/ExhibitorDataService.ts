@@ -23,9 +23,9 @@ class ExhibitorDataService {
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const companyService = new ExhibitorDataService()
 
-/*-| Create Company
+/*-| Create exhibitor
 ---+----+---+----+---+----+---+----+---*/
-export async function createCompany_Service(companyObject: any) {
+export async function createExhibitor_Service(companyObject: any) {
   console.log("Creating company: ", companyObject)
   const data = {
     id: companyObject.id,
@@ -46,9 +46,9 @@ export async function createCompany_Service(companyObject: any) {
   }
 }
 
-/*-| Get by Company & Expo ID
+/*-| Get by exhibitor & Expo ID
 ---+----+---+----+---+----+---+----+---*/
-export async function getCompanyById_Service(cId: any, companyObject: any = null) {
+export async function getExhibitor_Service(cId: any, companyObject: any = null) {
   try {
     let company = await companyService.get(cId)
     console.log('company object: ', companyObject)
@@ -67,20 +67,20 @@ export async function getCompanyById_Service(cId: any, companyObject: any = null
 
 /*-| Get Profiles from DB
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-export async function getLocalCompanyData_Service(c: any) {
+export async function getLocalExhibitor_Service(c: any) {
   try {
     let profile = await db.profile.get(1)
-    let companyLocalHold: any = profile
-    console.log('Company LocalData Service: ', c)
-    console.log('Company LocalData Service: ', profile)
+    let exhibitorLocalHold: any = profile
+    console.log('exhibitor LocalData Service: ', c)
+    console.log('exhibitor LocalData Service: ', profile)
 
     if (profile) {
-      c.id = companyLocalHold.ex_Id
-      c.name = companyLocalHold.name
-      c.login_Url = companyLocalHold.login_Url
-      c.lead_Ret = companyLocalHold.lead_Ret
-      c.expo_Year = companyLocalHold.expo_Year
-      c.expo_Client = companyLocalHold.expo_Client
+      c.id = exhibitorLocalHold.ex_Id
+      c.name = exhibitorLocalHold.name
+      c.login_Url = exhibitorLocalHold.login_Url
+      c.lead_Ret = exhibitorLocalHold.lead_Ret
+      c.expo_Year = exhibitorLocalHold.expo_Year
+      c.expo_Client = exhibitorLocalHold.expo_Client
 
       return c
     }
@@ -89,7 +89,9 @@ export async function getLocalCompanyData_Service(c: any) {
   }
 }
 
-export async function updateCompany_Service(id: any, retStatus: boolean) {
+/*-| Update exhibitor in Database
+---+----+---+----+---+----+---+----+---*/
+export async function updateExhibitor_Service(id: any, retStatus: boolean) {
   console.log("Updating company: ", id)
   const data = {
     lead_Ret: retStatus

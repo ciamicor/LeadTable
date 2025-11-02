@@ -1,5 +1,5 @@
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-/*-| Search Attendees/Leads |-*/
+/*-| Search Attendees/leads |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 
 // By first name
@@ -10,7 +10,9 @@ async function searchAttendeeName_Service(o: any, s: String) {
 
   return o.filter((a: any) => {
       // console.log(a.name_First.includes('Abhay'))
-      return a.name_First.trim().toUpperCase().includes(s.trim().toUpperCase()) || a.name_Last.trim().toUpperCase().includes(s.trim().toUpperCase())
+      return a.name_First.trim().toUpperCase().includes(s.trim().toUpperCase()) || a.name_Last.trim()
+        .toUpperCase()
+        .includes(s.trim().toUpperCase())
     }
   )
 

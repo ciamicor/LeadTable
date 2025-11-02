@@ -19,7 +19,7 @@ export const getScan = async ( req, res ) => {
         if ( scan ) {
             res.json( scan )
         } else {
-            res.status( 404 ).json( { error: 'Company not found' } )
+            res.status( 404 ).json( { error: 'exhibitor not found' } )
         }
     } catch ( error ) {
         res.status( 500 ).json( { error: 'Internal Server Error' + error.message } )

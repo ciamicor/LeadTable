@@ -44,10 +44,10 @@
 import { ref } from "vue";
 import { read, utils, writeFile } from 'xlsx'
 import { createAttendee_Service } from '@/services/AttendeeDataService.ts'
-import { useExpoLocalStore, useCompanyLocalStore } from "@/stores.ts";
+import { useExpoLocalStore, useExhibitorLocalStore } from "@/stores.ts";
 import { createUpload_Service, getAttendeeUploads_Service } from '@/services/UploadDataService.ts'
 
-const companyLocal = useCompanyLocalStore()
+const exhibitorLocal = useExhibitorLocalStore()
 const expoLocal = useExpoLocalStore()
 const currentUpload = ref()
 const status = ref(false)

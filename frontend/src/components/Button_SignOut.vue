@@ -9,10 +9,10 @@
 <script lang="ts"
         setup>
 import { db } from "@/db.ts";
-import { useCompanyLocalStore, useSessionStore } from "@/stores.ts";
+import { useExhibitorLocalStore, useSessionStore } from "@/stores.ts";
 
 const sessionStore = useSessionStore()
-const companyLocalData = useCompanyLocalStore()
+const exhibitorLocal = useExhibitorLocalStore()
 
 const props = defineProps(
   {
@@ -23,13 +23,13 @@ const props = defineProps(
 )
 
 async function logOut() {
-  console.log("Company local:", companyLocalData.name)
+  console.log("exhibitor local:", exhibitorLocal.name)
   console.log("loginId match:", props.loginIdMatch)
   console.log("extras match:", props.extraMatch)
   db.profile.delete(1)
   sessionStore.logged_In = false
-  companyLocalData.$reset()
-  console.log("Company local:", companyLocalData.name)
+  exhibitorLocal.$reset()
+  console.log("exhibitor local:", exhibitorLocal.name)
   console.log("loginId match:", props.loginIdMatch)
   console.log("extras match:", props.extraMatch)
 }

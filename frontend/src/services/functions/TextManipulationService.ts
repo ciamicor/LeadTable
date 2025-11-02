@@ -12,6 +12,14 @@ export function removeSpecialChars(s: string): string {
   return s.replace(/[^a-zA-Z0-9\- ]/g, "");
 }
 
+// TODO Add EXPOFP slug clean-up
+// Company Test &- Test & Test - Test!  Test, test. TEST!!!
+// company-testtesttesttest-test-test-test
+export function formatFPSlug(s: string): string {
+  return s + "lol"
+}
+
+/*-| Format text into Slug |-*/
 export function formatSlug(s: string): string {
   const clean1 = removeSpecialChars(s)
   let clean2 = clean1
