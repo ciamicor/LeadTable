@@ -32,7 +32,7 @@
   }
 }
 
-a {
+a:not(button, .button) {
   @include link-style(var(--grey-10-hsl));
   &.--primary {
     @include link-style(var(--color-primary-hs) + ", 65%");

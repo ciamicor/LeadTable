@@ -6380,7 +6380,7 @@ p, li, h1, h2, h3, h4, h5 {
 
 /*-| Links
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-a {
+a:not(button, .button) {
   width: max-content;
   margin: 0 -2px;
   padding: 0 2px;
@@ -6389,14 +6389,14 @@ a {
   text-decoration-color: hsla(var(--grey-10-hsl), 85%);
   border-radius: 4px;
 }
-a:hover {
+a:not(button, .button):hover {
   text-decoration-color: hsla(var(--grey-10-hsl), 0%);
   margin-right: -2px;
   margin-left: -2px;
   padding: 0 2px;
   box-shadow: inset 0 -0.095rem 0 0 hsla(var(--grey-10-hsl), 0), inset 5rem -1rem 1rem 0 hsla(var(--grey-10-hsl), 5%), inset 10rem -1.5rem 1rem 0 hsla(var(--grey-10-hsl), 15%), inset 15rem -2rem 1rem 0 hsla(var(--grey-10-hsl), 25%), inset 20rem -2.5rem 1rem 0 hsla(var(--grey-10-hsl), 35%), 0 0 0.15rem 0 hsla(var(--grey-10-hsl), 0);
 }
-a.--primary {
+a:not(button, .button).--primary {
   width: max-content;
   margin: 0 -2px;
   padding: 0 2px;
@@ -6405,14 +6405,14 @@ a.--primary {
   text-decoration-color: hsla(var(--color-primary-hs), 65%, 85%);
   border-radius: 4px;
 }
-a.--primary:hover {
+a:not(button, .button).--primary:hover {
   text-decoration-color: hsla(var(--color-primary-hs), 65%, 0%);
   margin-right: -2px;
   margin-left: -2px;
   padding: 0 2px;
   box-shadow: inset 0 -0.095rem 0 0 hsla(var(--color-primary-hs), 65%, 0), inset 5rem -1rem 1rem 0 hsla(var(--color-primary-hs), 65%, 5%), inset 10rem -1.5rem 1rem 0 hsla(var(--color-primary-hs), 65%, 15%), inset 15rem -2rem 1rem 0 hsla(var(--color-primary-hs), 65%, 25%), inset 20rem -2.5rem 1rem 0 hsla(var(--color-primary-hs), 65%, 35%), 0 0 0.15rem 0 hsla(var(--color-primary-hs), 65%, 0);
 }
-a.--secondary {
+a:not(button, .button).--secondary {
   width: max-content;
   margin: 0 -2px;
   padding: 0 2px;
@@ -6421,14 +6421,14 @@ a.--secondary {
   text-decoration-color: hsla(var(--color-secondary-hs), 75%, 85%);
   border-radius: 4px;
 }
-a.--secondary:hover {
+a:not(button, .button).--secondary:hover {
   text-decoration-color: hsla(var(--color-secondary-hs), 75%, 0%);
   margin-right: -2px;
   margin-left: -2px;
   padding: 0 2px;
   box-shadow: inset 0 -0.095rem 0 0 hsla(var(--color-secondary-hs), 75%, 0), inset 5rem -1rem 1rem 0 hsla(var(--color-secondary-hs), 75%, 5%), inset 10rem -1.5rem 1rem 0 hsla(var(--color-secondary-hs), 75%, 15%), inset 15rem -2rem 1rem 0 hsla(var(--color-secondary-hs), 75%, 25%), inset 20rem -2.5rem 1rem 0 hsla(var(--color-secondary-hs), 75%, 35%), 0 0 0.15rem 0 hsla(var(--color-secondary-hs), 75%, 0);
 }
-a.--success {
+a:not(button, .button).--success {
   width: max-content;
   margin: 0 -2px;
   padding: 0 2px;
@@ -6437,14 +6437,14 @@ a.--success {
   text-decoration-color: hsla(var(--color-success-hs), 85%, 85%);
   border-radius: 4px;
 }
-a.--success:hover {
+a:not(button, .button).--success:hover {
   text-decoration-color: hsla(var(--color-success-hs), 85%, 0%);
   margin-right: -2px;
   margin-left: -2px;
   padding: 0 2px;
   box-shadow: inset 0 -0.095rem 0 0 hsla(var(--color-success-hs), 85%, 0), inset 5rem -1rem 1rem 0 hsla(var(--color-success-hs), 85%, 5%), inset 10rem -1.5rem 1rem 0 hsla(var(--color-success-hs), 85%, 15%), inset 15rem -2rem 1rem 0 hsla(var(--color-success-hs), 85%, 25%), inset 20rem -2.5rem 1rem 0 hsla(var(--color-success-hs), 85%, 35%), 0 0 0.15rem 0 hsla(var(--color-success-hs), 85%, 0);
 }
-a.--warn {
+a:not(button, .button).--warn {
   width: max-content;
   margin: 0 -2px;
   padding: 0 2px;
@@ -6453,7 +6453,7 @@ a.--warn {
   text-decoration-color: hsla(var(--color-warn-hs), 85%, 85%);
   border-radius: 4px;
 }
-a.--warn:hover {
+a:not(button, .button).--warn:hover {
   text-decoration-color: hsla(var(--color-warn-hs), 85%, 0%);
   margin-right: -2px;
   margin-left: -2px;
