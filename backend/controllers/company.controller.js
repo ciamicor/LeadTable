@@ -4,7 +4,7 @@ const { Company } = require( '../models' )
 exports.createCompany = async ( req, res ) => {
     const {
         id,
-        login_URL,
+        login_Url,
         name,
         expo_Year,
         expo_Client,
@@ -13,7 +13,7 @@ exports.createCompany = async ( req, res ) => {
     try {
         const newCompany = await Company.create( {
             id,
-            login_URL,
+            login_Url,
             name,
             expo_Year,
             expo_Client,

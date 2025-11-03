@@ -143,7 +143,7 @@ async function login() {
 
   /*-| Prep ExpoFP Login |-*/
   // console.log('Logging in for: ', companyLocal.name)
-  // console.log('loginURL is: ', companyLocal.login_Url)
+  // console.log('loginUrl is: ', companyLocal.login_Url)
 
   /*-| Save to local DB |-*/
   console.log('Saving company to Local DB...')

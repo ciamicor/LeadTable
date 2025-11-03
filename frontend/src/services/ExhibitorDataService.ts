@@ -29,7 +29,7 @@ export async function createExhibitor_Service(companyObject: any) {
   console.log("Creating company: ", companyObject)
   const data = {
     id: companyObject.id,
-    login_URL: companyObject.login_URL,
+    login_Url: companyObject.login_Url,
     name: companyObject.name,
     lead_Ret: companyObject.lead_Ret,
     expo_Year: companyObject.expo_Year,

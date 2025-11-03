@@ -22,7 +22,7 @@ Company.init( {
         primaryKey: true,
         autoIncrement: false
     },
-    login_URL: DataTypes.STRING,
+    login_Url: DataTypes.STRING,
     name: DataTypes.STRING
 }, {
     sequelize,
