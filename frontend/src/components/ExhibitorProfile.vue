@@ -32,11 +32,11 @@
       </button>
     </div>
   </div>
-  <router-link
-    v-if="sessionStore.logged_In === false"
-    class="--place-self-center --m-b-12"
-    to="/">Looking for a different Supplier's Day?
-  </router-link>
+  <!--  <router-link
+      v-if="sessionStore.logged_In === false"
+      class="&#45;&#45;place-self-center &#45;&#45;m-b-12"
+      to="/">Looking for a different Supplier's Day?
+    </router-link>-->
 
   <div v-if="debug"
        class="row">
@@ -154,7 +154,7 @@ async function login() {
 
   sessionStore.logged_In = true
   // window.location.reload()
-  // router.push({name: 'Leadtable'})
+  router.push({name: 'Leadtable'})
 }
 
 async function saveDbLogin() {
