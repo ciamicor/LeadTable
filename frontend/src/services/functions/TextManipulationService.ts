@@ -1,5 +1,12 @@
 export function titleCase(w: string): string {
-  return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()
+  const list: string[] = w.split(' ')
+  let r: string = ''
+  for (let i = 0; i < list.length; i++) {
+    console.log(list[i])
+    const s: string = list[i].charAt(0).toUpperCase() + list[i].slice(1).toLowerCase()
+    r += ' ' + s
+  }
+  return r
 }
 
 // TODO - function should more properly format name casing

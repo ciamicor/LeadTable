@@ -2,6 +2,8 @@
 
   <div class="row-12-300 --place-content-center">
     <div class="col-12-300 --align-items-start --gap-12 --max-w-600">
+      <p>{{ titleCase('Dr. Claire Mooney the 1st') }}</p>
+      <p>{{ titleCase('dr. CLAIRE mooney the 1st PHD') }}</p>
       <h1>Upload Attendees</h1>
       <div class="col-12-300">
         <h4>For {{ expoLocal.expo_Client }} {{ expoLocal.expo_Year }} Supplier's Day</h4>
@@ -47,6 +49,7 @@ import { read, utils, writeFile } from 'xlsx'
 import { createAttendee_Service } from '@/services/AttendeeDataService.ts'
 import { useExpoLocalStore, useExhibitorLocalStore } from "@/stores.ts";
 import { createUpload_Service, getAttendeeUploads_Service } from '@/services/UploadDataService.ts'
+import { titleCase } from "@/services/functions/TextManipulationService.ts";
 
 const companyLocal = useExhibitorLocalStore()
 const expoLocal = useExpoLocalStore()
