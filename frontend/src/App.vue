@@ -67,7 +67,7 @@
   setup>
 import { db } from '@/db.js'
 import { onBeforeMount } from 'vue'
-import { useExpoLocalStore, useCompanyLocalStore, useSessionStore } from '@/stores.js'
+import { useExpoLocalStore, useExhibitorLocalStore, useSessionStore } from '@/stores.js'
 import { getUrl_ClientYear } from "@/services/functions/UrlService.ts";
 import { getExpo_Service } from "@/services/ExpoDataService.js";
 import { useRoute, useRouter } from "vue-router";
@@ -78,7 +78,7 @@ const router = useRouter()
 /*-| Variables |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const sessionStore = useSessionStore()
-const companyLocal = useCompanyLocalStore()
+const companyLocal = useExhibitorLocalStore()
 const expoLocal = useExpoLocalStore()
 
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/

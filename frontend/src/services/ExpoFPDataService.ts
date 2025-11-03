@@ -5,7 +5,7 @@ const baseUrl = 'https://app.expofp.com/api/v1/'
 
 /*-| Get All Exhibitors
 ---+----+---+----+---+----+---+----+---*/
-export async function getAllExhibitors(client: any, year: any) {
+export async function getAllFPExhibitors(client: any, year: any) {
   try {
     const getData: any = await getExpoToken_Service(client, year)
     let expoData: { expoId: number, token: string } = {
@@ -31,7 +31,7 @@ export async function getAllExhibitors(client: any, year: any) {
 
 /*-| Get Exhibitor ID
 ---+----+---+----+---+----+---+----+---*/
-export async function getExhibitorId(
+export async function getFPExhibitorId(
   externalId: any,
   client: any,
   year: any) {
@@ -62,7 +62,7 @@ export async function getExhibitorId(
 
 /*-| Get Exhibitor Details
 ---+----+---+----+---+----+---+----+---*/
-export async function getExhibitorDetails(
+export async function getFPExhibitor(
   id: any,
   client: any,
   year: any) {
@@ -91,7 +91,7 @@ export async function getExhibitorDetails(
 
 /*-| Get Exhibitor Extras
 ---+----+---+----+---+----+---+----+---*/
-export async function getExhibExtras(
+export async function getFPExhibitorExtras(
   id: any,
   client: any,
   year: any,
@@ -132,7 +132,7 @@ export async function addExhibitor(
   console.log("Exhibitor is:")
   console.log(exhibitor)
   // TODO getExhibitorId runs more times than necessary
-  const existsId = await getExhibitorId(
+  const existsId = await getFPExhibitorId(
     exhibitor.externalId,
     exhibitor.expo_Client,
     exhibitor.expo_Year

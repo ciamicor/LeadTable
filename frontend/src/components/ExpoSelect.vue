@@ -51,7 +51,7 @@
 
 <script lang="ts"
         setup>
-import { useCompanyLocalStore, useExpoLocalStore } from '@/stores.ts'
+import { useExhibitorLocalStore, useExpoLocalStore } from '@/stores.ts'
 import { getAllExpos_Service } from '@/services/ExpoDataService.ts'
 import { onMounted, ref } from 'vue'
 import { useRouter } from "vue-router";
@@ -60,7 +60,7 @@ import { useRouter } from "vue-router";
 /*---+----+---+----+---+----+---+----+---*/
 const router = useRouter()
 const expoLocal = useExpoLocalStore()
-const companyLocal = useCompanyLocalStore()
+const companyLocal = useExhibitorLocalStore()
 const allExposList = ref()
 const archivedExposList = ref()
 const activeExposList = ref()

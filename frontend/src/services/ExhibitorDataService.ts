@@ -25,11 +25,11 @@ const companyService = new ExhibitorDataService()
 
 /*-| Create
 ---+----+---+----+---+----+---+----+---*/
-async function createCompany_Service(companyObject: any) {
+export async function createExhibitor_Service(companyObject: any) {
   console.log("Creating company: ", companyObject)
   const data = {
     id: companyObject.id,
-    login_URL: companyObject.autoLoginUrl,
+    login_URL: companyObject.login_URL,
     name: companyObject.name,
     lead_Ret: companyObject.lead_Ret,
     expo_Year: companyObject.expo_Year,
@@ -47,7 +47,7 @@ async function createCompany_Service(companyObject: any) {
 
 /*-| Get by ID
 ---+----+---+----+---+----+---+----+---*/
-async function getCompanyById_Service(id: any) {
+export async function getExhibitor_Service(id: any) {
   try {
     let company = await companyService.get(id)
     console.log('response: ', company)
@@ -59,7 +59,7 @@ async function getCompanyById_Service(id: any) {
 
 /*-| Get Profiles from DB
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-async function getLocalCompanyData_Service(c: any) {
+export async function getLocalExhibitor_Service(c: any) {
   try {
     let profile = await db.profile.get(1)
     let companyLocalHold: any = profile
@@ -81,7 +81,7 @@ async function getLocalCompanyData_Service(c: any) {
   }
 }
 
-async function updateCompanyLeadRet_Service(id: any, retStatus: boolean) {
+export async function updateExhibitor_Service(id: any, retStatus: boolean) {
   console.log("Updating company: ", id)
   const data = {
     lead_Ret: retStatus
@@ -92,11 +92,4 @@ async function updateCompanyLeadRet_Service(id: any, retStatus: boolean) {
   } catch (e: any) {
     console.log(e)
   }
-}
-
-export {
-  getCompanyById_Service,
-  createCompany_Service,
-  getLocalCompanyData_Service,
-  updateCompanyLeadRet_Service
 }

@@ -10,8 +10,7 @@
     class="row --place-content-center --place-items-center">
     <div
       class="--p-v-20 col-12-300 col-10-500 col-6-900">
-      <h4 class="--m-0">{{ expoLocal.expo_Client }} {{ expoLocal.expo_Year }} Supplier's
-                        Day</h4>
+      <h4 class="--m-0">{{ expoLocal.expo_Client }} {{ expoLocal.expo_Year }} Supplier's Day</h4>
       <h1>Exhibitor Login</h1>
       <p>If you've already purchased lead retrieval, login here to access it.</p>
       <p>To purchase lead retrieval, login to your ExpoFP Exhibitor profile here, and add it as a
@@ -21,7 +20,7 @@
         Login ID
       </label>
       <input id="loginId"
-             v-model="companyLocal.id"
+             v-model="exhibitorLocal.id"
              inputmode="tel"
              name="loginId"
              pattern="\d*"
@@ -44,15 +43,15 @@
     <div class="col-12">
       <span>{{ sessionStore }}</span>
       <h2>companyData</h2>
-      {{ companyLocal }}
+      {{ exhibitorLocal }}
       <h2>Extras</h2>
-      {{ companyExtras }}
+      {{ exhibitorExtras }}
     </div>
   </div>
 
   <iframe
     v-if="sessionStore.logged_In === true"
-    :src="'https://app.expofp.com' + companyLocal.login_Url"
+    :src="'https://app.expofp.com' + exhibitorLocal.login_Url"
     allow="clipboard-read; clipboard-write"
     class="view-floor-plan"
   >
@@ -62,29 +61,29 @@
 <script lang="ts"
         setup>
 import {
-  getExhibitorDetails,
-  getExhibExtras
+  getFPExhibitor,
+  getFPExhibitorExtras
 } from '../services/ExpoFPDataService.ts'
 import {
-  createCompany_Service,
-  getCompanyById_Service,
-  updateCompanyLeadRet_Service
+  createExhibitor_Service,
+  getExhibitor_Service,
+  updateExhibitor_Service
 } from '@/services/ExhibitorDataService.ts'
 import { ref } from 'vue'
 import { db } from '@/db.ts'
-import { useCompanyLocalStore, useExpoLocalStore, useSessionStore } from '@/stores.ts'
+import { useExhibitorLocalStore, useExpoLocalStore, useSessionStore } from '@/stores.ts'
 import router from "@/router.ts";
 
 /*-| Variables
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const debug = ref(false)
 
-const companyExtras = ref()
+const exhibitorExtras = ref()
 const loginIdMatch = ref(false)
 const extraMatch = ref(false)
 
 const sessionStore = useSessionStore()
-const companyLocal = useCompanyLocalStore()
+const exhibitorLocal = useExhibitorLocalStore()
 const expoLocal = useExpoLocalStore()
 
 /*-| Lifecycle |-*/
@@ -100,20 +99,20 @@ async function login() {
   /*-| Get Exhibitor |-*/
   console.log('Getting Exhibitor...')
   let getCompany
-  getCompany = await getCompanyById_Service(companyLocal.id)
+  getCompany = await getExhibitor_Service(exhibitorLocal.id)
 
   if (!getCompany) {
     console.log('No Company')
-    getCompany = await getExhibitorDetails(
-      companyLocal.id,
+    getCompany = await getFPExhibitor(
+      exhibitorLocal.id,
       expoLocal.expo_Client,
       expoLocal.expo_Year,
     )
   }
   console.log("Got exhibitor company:")
-  console.log(getCompany.name)
+  console.log(getCompany)
 
-  companyLocal.$patch({
+  exhibitorLocal.$patch({
     id: getCompany.id,
     name: getCompany.name,
     login_Url: getCompany.autoLoginUrl,
@@ -121,20 +120,20 @@ async function login() {
     expo_Year: expoLocal.expo_Year,
     expo_Client: expoLocal.expo_Client,
   })
-  console.log(companyLocal)
+  console.log(exhibitorLocal)
   // TODO - Check to see if lead retrieval has changed.
   /*-| Check for Lead Retrieval
   ---+----+---+----+---+----+---+----+---*/
   try {
     console.log('Matching extras...')
-    companyExtras.value = await getExhibExtras(
-      companyLocal.id,
+    exhibitorExtras.value = await getFPExhibitorExtras(
+      exhibitorLocal.id,
       expoLocal.expo_Client,
       expoLocal.expo_Year
     )
-    console.log("Company extras are: ", companyExtras.value)
+    console.log("Company extras are: ", exhibitorExtras.value)
     /*-| Look for Lead Ret match |-*/
-    extraMatch.value = await companyExtras.value.some((e: any) =>
+    extraMatch.value = await exhibitorExtras.value.some((e: any) =>
       e.name.toLowerCase().includes('lead retrieval')
     )
     console.log("Lead retrieval purchased: ", extraMatch.value)
@@ -149,31 +148,31 @@ async function login() {
   /*-| Save to local DB |-*/
   console.log('Saving company to Local DB...')
   await saveDbLogin()
-  await createCompany_Service(companyLocal)
+  await createExhibitor_Service(exhibitorLocal)
   /*-| Check if Company is in server DB |-*/
-  await getCompanyById_Service(companyLocal.id)
+  await getExhibitor_Service(exhibitorLocal.id)
 
   sessionStore.logged_In = true
   // window.location.reload()
-  router.push({name: 'Leadtable'})
+  // router.push({name: 'Leadtable'})
 }
 
 async function saveDbLogin() {
   try {
     const id = await db.profile.add({
       id: 1,
-      ex_Id: companyLocal.id || 0,
-      name: companyLocal.name,
-      login_Url: companyLocal.login_Url,
-      lead_Ret: companyLocal.lead_Ret || extraMatch.value,
+      ex_Id: exhibitorLocal.id || 0,
+      name: exhibitorLocal.name,
+      login_Url: exhibitorLocal.login_Url,
+      lead_Ret: exhibitorLocal.lead_Ret || extraMatch.value,
       expo_Client: expoLocal.expo_Client,
       expo_Year: expoLocal.expo_Year
     })
-    status.value = `${companyLocal.name}
+    status.value = `${exhibitorLocal.name}
           successfully added. Got id ${id}`
   } catch (error) {
     status.value = `Failed to add
-          ${companyLocal.name}: ${error}`
+          ${exhibitorLocal.name}: ${error}`
   }
 }
 
@@ -183,7 +182,7 @@ async function logOut() {
   loginIdMatch.value = false
   extraMatch.value = false
   sessionStore.logged_In = false
-  companyLocal.$reset()
+  exhibitorLocal.$reset()
   window.location.reload()
 }
 </script>

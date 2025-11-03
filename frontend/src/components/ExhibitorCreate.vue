@@ -195,19 +195,19 @@
         setup>
 // TODO Convert to TS
 import { ref, computed } from 'vue'
-import { useCompanyLocalStore, useExpoLocalStore } from '@/stores.js'
+import { useExhibitorLocalStore, useExpoLocalStore } from '@/stores.js'
 import { getUrlHost, getURLParams } from "@/services/functions/UrlService.ts";
 import { countries } from "@/services/addresses/AddressForm_Countries.js";
 import { formatSlug } from "@/services/functions/TextManipulationService.ts";
 import {
   addExhibitor,
   addExhibitorBooth,
-  getExhibitorDetails,
-  getExhibitorId
+  getFPExhibitor,
+  getFPExhibitorId
 } from "@/services/ExpoFPDataService.js";
 
 const host = getUrlHost()
-const companyLocal = useCompanyLocalStore()
+const companyLocal = useExhibitorLocalStore()
 const expoLocal = useExpoLocalStore()
 
 // TODO add global status, add to global loading component where needed.
@@ -247,11 +247,11 @@ async function createExhibitor() {
 
   status.value = 'Checking info...'
   status.value = await addExhibitor( expoLocal.expo_Client, expoLocal.expo_Year, exhibitor.value )
-  const exhibId = await getExhibitorId(
+  const exhibId = await getFPExhibitorId(
     externalIdFormat.value,
     expoLocal.expo_Client,
     expoLocal.expo_Year )
-  const exhibDeets = await getExhibitorDetails(
+  const exhibDeets = await getFPExhibitor(
     exhibId,
     expoLocal.expo_Client,
     expoLocal.expo_Year )

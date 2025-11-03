@@ -54,7 +54,7 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
 
 /*-| Company Store
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-const useCompanyLocalStore = defineStore('companyLocal', () => {
+const useExhibitorLocalStore = defineStore('companyLocal', () => {
   const id = ref(null)
   const name = ref('')
   const login_Url = ref('')
@@ -97,6 +97,6 @@ const useLeadsListLocal = defineStore('companyLocal', () => {
   }
 })
 
-export { useExpoLocalStore, useCompanyLocalStore, useSessionStore, useLeadsListLocal }
+export { useExpoLocalStore, useExhibitorLocalStore, useSessionStore, useLeadsListLocal }
 
 

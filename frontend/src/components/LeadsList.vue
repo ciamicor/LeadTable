@@ -1,14 +1,19 @@
 <template>
 
-  <div v-if="!companyLocal.lead_Ret"
+  <div v-if="!exhibitorLocal.lead_Ret"
        class="row-12-300 --place-content-center">
     <div
       class="col-12-300 col-10-500 col-5-800">
       <h1>Looking for Leads?</h1>
-      <p>To access or purchase lead retrieval, you'll first need to login.</p>
-      <p>If you haven't purchased access, you can do so by logging in, then scrolling to "Booths &
-         Extras" click "Reserve More",
-         then scroll down again to find the option for lead
+      <p>If you haven't purchased access, you can do in your
+         ExpoFP Exhibitor Portal.
+        <a v-if="exhibitorLocal.login_Url"
+           :href="'https://app.expofp.com' + exhibitorLocal.login_Url"
+           target="_blank"> Click here to view your
+                            portal.</a>
+         Scroll down to "Booths &
+         Extras," click "Reserve More,"
+         and select the option for lead
          retrieval.</p>
       <router-link
         class="button --primary"
@@ -16,20 +21,20 @@
       >
         Go to Profile
       </router-link>
-      <p class="--font-xs">You may need to logout, then login again to have the purchase
-                           register.</p>
+      <p class="--font-xxs">You may need to logout, then login again to have the purchase
+                            register.</p>
     </div>
   </div>
-  <div v-if="companyLocal.lead_Ret === true">
+  <div v-if="exhibitorLocal.lead_Ret === true">
     <div class="row-12-300 --p-10-clamp --place-content-space-between">
-      <div v-if="companyLocal.name"
+      <div v-if="exhibitorLocal.name"
            class="--flex-grow-1">
         <p>
-          {{ companyLocal.expo_Client }}
-          {{ companyLocal.expo_Year }}
+          {{ exhibitorLocal.expo_Client }}
+          {{ exhibitorLocal.expo_Year }}
           Supplier's Day
         </p>
-        <h2>{{ companyLocal.name }}</h2>
+        <h2>{{ exhibitorLocal.name }}</h2>
       </div>
       <LeadsExport v-if="leadsList.length > 0"
                    :leads-list="leadsList"
@@ -53,7 +58,7 @@
     </div>
 
     <router-link
-      v-if="companyLocal.lead_Ret === true"
+      v-if="exhibitorLocal.lead_Ret === true"
       class="button --stacked --float --bottom-r --success--invert"
       to="scan-lead">
       <i class="bi-qr-code-scan"></i>
@@ -66,23 +71,23 @@
 
 <script setup>
 import LoadingHolder from "@/components/LoadingHolder.vue";
-import { useCompanyLocalStore, useExpoLocalStore, useLeadsListLocal } from '@/stores.ts'
+import { useExhibitorLocalStore, useExpoLocalStore, useLeadsListLocal } from '@/stores.ts'
 import { getAllLeads_Service, getAllCompanyLeads_Service } from '../services/LeadDataService.js'
 import { onMounted, ref } from 'vue'
-import { getLocalCompanyData_Service } from '@/services/ExhibitorDataService.ts'
+import { getLocalExhibitor_Service } from '@/services/ExhibitorDataService.ts'
 import LeadCard from '@/components/LeadCard.vue'
 import LeadsExport from '@/components/LeadsExport.vue'
 
-const companyLocal = useCompanyLocalStore()
+const exhibitorLocal = useExhibitorLocalStore()
 const expoLocal = useExpoLocalStore()
 const leadListLocal = useLeadsListLocal()
 
 /*-| Hooks |-*/
 /*---+----+---+----+---+----+---+----+---*/
 onMounted( async () => {
-    await getLocalCompanyData_Service( companyLocal )
-    console.log( companyLocal.id )
-    await getAllCompanyLeads_Service( companyLocal.id, leadsList )
+    await getLocalExhibitor_Service( exhibitorLocal )
+    console.log( exhibitorLocal.id )
+    await getAllCompanyLeads_Service( exhibitorLocal.id, leadsList )
     status.value = false
     console.log( typeof leadsList )
     console.log( leadsList.value )
@@ -106,10 +111,10 @@ const status = ref( true )
 const leadsList = ref( [] )
 const lead = ref(
   {
-    expo_Client: companyLocal.expo_Client,
-    expo_Year: companyLocal.expo_Year,
+    expo_Client: exhibitorLocal.expo_Client,
+    expo_Year: exhibitorLocal.expo_Year,
     attendee_Id: null,
-    scan_Company_Id: companyLocal.id,
+    scan_Company_Id: exhibitorLocal.id,
     name_First: '',
     name_Last: '',
     title: '',
