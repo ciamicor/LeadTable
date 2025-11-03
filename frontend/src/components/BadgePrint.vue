@@ -105,7 +105,7 @@
   <div class="badges-page-container">
     <img id="badge-logo"
          :alt="`${expoLocal.expo_Client}-logo`"
-         :src="getImageUrl(`${expoLocal.expo_Client.toString().toLowerCase()}-vert-rgb`)"
+         :src="getImageUrl(`${expoLocal.expo_Client.toLowerCase()}-vert-rgb`)"
     >
     <QrCode
       v-if="attendeeListSelected.length === 1"

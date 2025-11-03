@@ -1,3 +1,5 @@
+// TODO - function should more properly format name casing
+//  including strings like 'McDonald', 'Ph.D.', etc.
 export function titleCase(w: string): string {
   const list: string[] = w.split(' ')
   let r: string = ''
@@ -7,12 +9,6 @@ export function titleCase(w: string): string {
     r += ' ' + s
   }
   return r
-}
-
-// TODO - function should more properly format name casing
-//  including strings like 'McDonald', 'Ph.D.', etc.
-export function formatName_TitleCase(w: string): string {
-  return w
 }
 
 export function removeSpecialChars(s: string): string {
