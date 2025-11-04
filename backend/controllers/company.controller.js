@@ -8,7 +8,7 @@ export const createExhibitor = async ( req, res ) => {
         expoId,
         expo_Client,
         expo_Year,
-        login_URL,
+        login_Url,
         name,
         lead_Ret
     } = req.body
@@ -18,7 +18,7 @@ export const createExhibitor = async ( req, res ) => {
             expoId,
             expo_Client,
             expo_Year,
-            login_URL,
+            login_Url,
             name,
             lead_Ret
         } )
@@ -58,7 +58,7 @@ export const getExhibitorById = async ( req, res ) => {
             res.status( 404 ).json( { error: 'exhibitor not found' } )
         }
     } catch ( error ) {
-        console.error( 'error in controller getCompanyById: ', error )
+        console.error( 'error in controller getExhibitorById: ', error )
         res.status( 500 ).json( {
             error: 'Something went wrong while getting an exhibitor.',
             details: error?.message || 'Unknown error'

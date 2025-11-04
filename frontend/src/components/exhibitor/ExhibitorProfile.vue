@@ -36,19 +36,18 @@
       <p v-if="!expoLocal.expoInPast">
         To purchase lead retrieval, login to your ExpoFP Exhibitor profile here, and add it as a
         booth extra.</p>
-      <label
-        for="profileUrl">
+      <label>
         Login ID
+        <input id="loginId"
+               v-model="exhibitorLocal.id"
+               inputmode="tel"
+               name="loginId"
+               pattern="\d*"
+               placeholder="Enter your login ID"
+               type="tel"
+               @keydown.enter="login">
       </label>
-      <p>{{ testId }}</p>
-      <input id="loginId"
-             v-model="exhibitorLocal.id"
-             inputmode="tel"
-             name="loginId"
-             pattern="\d*"
-             placeholder="Enter your login ID"
-             type="tel"
-             @keydown.enter="login">
+      <!--      <p>{{ testId }}</p>-->
       <button class="--primary--invert"
               @click="login()">
         Login
@@ -56,7 +55,7 @@
     </div>
   </div>
   <router-link
-    v-if="sessionStore.logged_In === false"
+    v-if="!sessionStore.logged_In"
     class="--place-self-center --m-b-12"
     to="/">Looking for a different Supplier's Day?
   </router-link>
@@ -72,7 +71,7 @@
     </div>
   </div>
   <div
-    v-if="sessionStore.logged_In === true && expoLocal.expoInPast === true"
+    v-if="sessionStore.logged_In && expoLocal.expoInPast === true"
     class="row"
   >
     <div class="col-10-300 col-8-800">
@@ -92,7 +91,7 @@
 import {
   getFPExhibitor,
   getFPExhibitorExtras
-} from '@/services/ExpoFPDataService.ts'
+} from '@/services/ExpoFpDataService'
 import {
   createExhibitor_Service,
   getExhibitor_Service,
@@ -111,7 +110,7 @@ import { object } from "better-auth";
 /*-| Variables
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const debug = ref(false)
-const testId = ref(13286979)
+const testId = ref()// 13286979)
 
 const companyExtras = ref()
 const loginIdMatch = ref(false)
@@ -137,7 +136,7 @@ async function login() {
     exhibitorLocal.$patch({
       id: serverExhib.id,
       name: serverExhib.name,
-      login_Url: serverExhib.login_URL,
+      login_Url: serverExhib.login_Url,
       lead_Ret: serverExhib.lead_Ret,
       expo_Year: serverExhib.expo_Year,
       expo_Client: serverExhib.expo_Client,
@@ -192,7 +191,7 @@ async function login() {
     )
     await createExhibitor_Service(exhibitorLocal)
     console.log("GETTING DEBUG")
-    await getExhibitor_Service(testId.value)
+    await getExhibitor_Service(exhibitorLocal.id)
   }
   sessionStore.logged_In = true
   /*if (exhibitorLocal.lead_Ret) {

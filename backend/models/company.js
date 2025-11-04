@@ -22,7 +22,7 @@ Company.init( {
     expoId: DataTypes.INTEGER,
     expo_Client: DataTypes.STRING, // foreign key
     expo_Year: DataTypes.INTEGER, // foreign key
-    login_URL: DataTypes.STRING,
+    login_Url: DataTypes.STRING,
     name: DataTypes.STRING,
     lead_Ret: DataTypes.BOOLEAN,
 }, {

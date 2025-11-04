@@ -5,10 +5,15 @@
     <div
       class="col-12-300 col-10-500 col-5-800">
       <h1>Looking for Leads?</h1>
-      <p>To access or purchase lead retrieval, you'll first need to login.</p>
-      <p>If you haven't purchased access, you can do so by logging in, then scrolling to "Booths &
-         Extras" click "Reserve More",
-         then scroll down again to find the option for lead
+      <p>If you haven't purchased access, you can do in your
+         ExpoFP Exhibitor Portal.
+        <a v-if="exhibitorLocal.login_Url"
+           :href="'https://app.expofp.com' + exhibitorLocal.login_Url"
+           target="_blank"> Click here to view your
+                            portal.</a>
+         Scroll down to "Booths &
+         Extras," click "Reserve More,"
+         and select the option for lead
          retrieval.</p>
       <router-link
         class="button --primary"

@@ -16,7 +16,7 @@ export function getUrl_ClientYear() {
   console.log('Detected URL: ', u)
   return {
     client: u[0].toUpperCase(),
-    year: u[1],
+    year: parseInt(u[1]),
     view: u[2]
   }
 }

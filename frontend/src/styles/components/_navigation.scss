@@ -36,32 +36,31 @@
   width:         100dvw;
   opacity:       1;
   transition:    translate 100ms ease-in-out,
-                 opacity 200ms ease-out,
-                 scale 150ms ease-out;
+                 opacity 200ms ease-in-out,
+                 width 100ms ease-in-out;
   translate:     0 0;
   scale:         1;
 
   &.hide {
+    width:     35vw;
     opacity:   0;
     translate: -500px 0;
-    scale:     .85;
   }
 
   @include breakpoint(550) {
-    width:     65vw;
-    max-width: 465px;
+    max-width: 385px;
   }
 }
 
 .sidebar--content-container {
-  display:       flex;
-  flex:          1 1 auto;
-  flex-flow:     column nowrap;
-  gap:           $sp-7;
-  margin:        $sp-6;
-  padding:       $sp-8;
-  border-radius: $sp-6;
-  background:    $color-primary-4;
+  display:    flex;
+  flex:       1 1 auto;
+  flex-flow:  column nowrap;
+  gap:        $sp-7;
+  // margin:        $sp-6;
+  padding:    $sp-8;
+  // border-radius: $item-border;
+  background: $color-primary-4;
 }
 
 .sidebar--nav-menu-wrapper {
