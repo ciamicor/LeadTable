@@ -6,22 +6,23 @@
     <qrcode-stream
       v-if="!scanCodeFound"
       class="scanner-camera-wrap"
+
       @detect="getQrId($event)"
       @camera-on="scanTarget = 'Waiting for QR code...'"
     ></qrcode-stream>
-    <div class="row --no-space qr-float-container">
-      <span class="col-10-300 qr-float-target-text">{{ scanTarget }}</span>
+    <div class="row-12-300 --no-space qr-float-container">
+      <span class="col-12-300 qr-float-target-text">{{ scanTarget }}</span>
       <div v-show="scanCodeFound"
-           class="row-12-300">
+           class="row-12-300 --flex-grow">
         <button
-          class="--warn qr-float-cancel --flex-basis-20"
+          class="--warn qr-float-cancel --flex-basis-25"
           @click="resetScanning"
         >Reset
         </button>
         <button
           class="qr-float-confirm --primary --flex-basis-65"
           @click="scanConfirm = true">
-          <i class="bi-plus-lg"/> Add Lead
+          <i class="bi-plus-lg --m-r-4"/> Add Lead
         </button>
       </div>
     </div>
@@ -29,43 +30,33 @@
   <div v-if="scanConfirm"
        class="row">
     <div
-      class="col-12-300 --m-h-8 --m-v-12">
-      <h1>Confirm Lead</h1>
-      <span>Name: </span>
-      <p class=" --m-b-8">{{ attendee.name_First }} {{ attendee.name_Last }}</p>
-      <div class="row-12-300 --m-b-8">
-        <div class="col-6-300">
-          <span>Email: </span>
-          <p>{{ attendee.contact_Email }}</p>
-        </div>
-        <div class="col-6-300">
-          <span>Phone: </span>
-          <p>{{ attendee.contact_Phone }}</p>
-        </div>
+      class="col-12-300 --gap-2 --m-h-8 --m-v-12">
+      <h3 class="--m-b-3">Confirm Lead</h3>
+      <span class="--color-grey-6">Name: </span>
+      <div class="--m-b-2 --m-l-4">
+        {{ attendee.name_First }} {{ attendee.name_Last }}
       </div>
-      <div class="row-12-300 --m-b-8">
-        <div class="col-6-300">
-          <span>Employer: </span>
-          <p>{{ attendee.contact_Employer }}</p>
+      <span class="--color-grey-6">Email: </span>
+      <div class="--m-b-2 --m-l-4">{{ attendee.contact_Email }}</div>
+      <span class="--color-grey-6">Phone: </span>
+      <div class="--m-b-2 --m-l-4">{{ attendee.contact_Phone }}</div>
+      <span class="--color-grey-6">Employer: </span>
+      <div class="--m-b-2 --m-l-4">{{ attendee.contact_Employer }}</div>
+      <span class="--color-grey-6">Title: </span>
+      <div class="--m-b-2 --m-l-4">{{ attendee.title }}</div>
+      <span class="--color-grey-6">Address: </span>
+      <div class="--m-l-4">
+        <div>{{ `${ attendee.address_Line1 }, ${ attendee.address_Line2 }` }}</div>
+        <div>{{
+            ` ${ attendee.address_City }, ${ attendee.address_State } ${ attendee.address_Zip }`
+             }}
         </div>
-        <div class="col-6-300">
-          <span>Title: </span>
-          <p>{{ attendee.title }}</p>
-        </div>
+        <div>{{ `${ attendee.address_Country }` }}</div>
       </div>
-      <span>Address: </span>
-      <div>
-        <p>{{ `${ attendee.address_Line1 }, ${ attendee.address_Line2 }` }}</p>
-        <p>{{ ` ${ attendee.address_City }, ${ attendee.address_State } ${ attendee.address_Zip }`
-           }}
-        </p>
-        <p>{{ `${ attendee.address_Country }` }}</p>
-      </div>
-
 
       <form action=""
             class="col-12-300">
-        <fieldset class="--m-t-12">
+        <fieldset class="--m-t-8">
           <legend>Rating</legend>
           <div
             v-for="(rating, index) in ratings"
@@ -77,10 +68,11 @@
               type="radio"
               @change="updateScore(rating)"
             />
-            <label :for="'r-'+ rating">{{ rating }}</label>
+            <label :for="'r-'+ rating"
+                   class="--m-t-2">{{ rating }}</label>
           </div>
         </fieldset>
-        <label class="--m-t-16"
+        <label class="--m-t-8"
                for="comment">Comments</label>
         <textarea v-model="commentRef"
                   name="comment"
@@ -88,19 +80,19 @@
                   @change="updateComment( commentRef )">
                   name="leadComments"></textarea>
       </form>
-      <div class="row-12-300 --no-space --m-t-16">
+      <div class="row-12-300 --no-space --m-t-12">
         <button
-          class="--primary--invert --flex-basis-100 --p-12"
+          class="--primary--invert --flex-basis-100 --p-11"
           @click="createLead(lead); router.push(`/${companyLocal.expo_Client}/${companyLocal.expo_Year}/leads-list`)">
           Add {{ lead.name_First }}
         </button>
         <button
-          class="--warn --flex-basis-30 --flex-grow"
+          class="--warn --flex-basis-30 --flex-grow --p-10"
           @click="resetScanning">
           Go Back
         </button>
         <button
-          class="--success --flex-basis-65 --flex-grow"
+          class="--success --flex-basis-65 --flex-grow --p-10"
           @click="createLead(lead)">Add & Scan Another
         </button>
       </div>

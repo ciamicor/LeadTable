@@ -1,6 +1,6 @@
 <template>
   <button
-    class="button --primary --place-self-center --p-6"
+    class="button --primary"
     @click="exportLeads">
     Download Leads
   </button>

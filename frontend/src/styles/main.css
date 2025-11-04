@@ -6970,6 +6970,7 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
 
 .scanner-camera-container {
   height: calc(100dvh - 92px) !important;
+  background: var(--color-success-2);
 }
 
 .scanner-camera-wrap {
@@ -6977,7 +6978,7 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
 }
 
 .qr-float-container {
-  position: absolute;
+  position: absolute !important;
   right: 16px;
   bottom: 132px;
   left: 16px;

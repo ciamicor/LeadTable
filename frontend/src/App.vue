@@ -43,6 +43,7 @@
       Leads
     </router-link>
     <router-link
+      v-if="sessionStore.logged_In === false"
       :to="`/${expoLocal.expo_Client}/${expoLocal.expo_Year}/profile`"
       active-class="--secondary"
       class="button --stacked">
@@ -78,7 +79,7 @@ const router = useRouter()
 /*-| Variables |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const sessionStore = useSessionStore()
-const companyLocal = useExhibitorLocalStore()
+const exhibitorLocal = useExhibitorLocalStore()
 const expoLocal = useExpoLocalStore()
 
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
@@ -105,7 +106,7 @@ async function checkLoginState() {
   try {
     let profile = await db.profile.get( 1 )
     if ( profile ) {
-      companyLocal.$patch( {
+      exhibitorLocal.$patch( {
         id: profile.ex_Id,
         lead_Ret: profile.lead_Ret,
         login_Url: profile.login_Url.toString(),
@@ -115,7 +116,7 @@ async function checkLoginState() {
       } )
       sessionStore.logged_In = true
     }
-    return companyLocal
+    return exhibitorLocal
   } catch ( e ) {
     console.error( e )
   }

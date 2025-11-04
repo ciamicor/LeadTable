@@ -26,7 +26,16 @@
     </div>
   </div>
   <div v-if="exhibitorLocal.lead_Ret === true">
-    <div class="row-12-300 --p-10-clamp --place-content-space-between">
+    <div class="col-12-300 --p-10-clamp">
+      <div class="row-12-300 --justify-content-space-between --m-b-6">
+        <LeadsExport v-if="leadsList.length > 0"
+                     :leads-list="leadsList"
+                     class=" --p-v-3"/>
+        <button class="--warn --p-v-3"
+                @click="logOut">Log Out
+        </button>
+      </div>
+
       <div v-if="exhibitorLocal.name"
            class="--flex-grow-1">
         <p>
@@ -36,9 +45,6 @@
         </p>
         <h2>{{ exhibitorLocal.name }}</h2>
       </div>
-      <LeadsExport v-if="leadsList.length > 0"
-                   :leads-list="leadsList"
-                   class="--justify-self-end"/>
     </div>
     <LoadingHolder :status="status"
                    class="--place-self-center"/>
@@ -66,18 +72,24 @@
     </router-link>
   </div>
 
-
 </template>
 
 <script setup>
 import LoadingHolder from "@/components/LoadingHolder.vue";
-import { useExhibitorLocalStore, useExpoLocalStore, useLeadsListLocal } from '@/stores.ts'
+import {
+  useExhibitorLocalStore,
+  useExpoLocalStore,
+  useLeadsListLocal,
+  useSessionStore
+} from '@/stores.ts'
 import { getAllLeads_Service, getAllCompanyLeads_Service } from '../services/LeadDataService.js'
 import { onMounted, ref } from 'vue'
 import { getLocalExhibitor_Service } from '@/services/ExhibitorDataService.ts'
 import LeadCard from '@/components/LeadCard.vue'
 import LeadsExport from '@/components/LeadsExport.vue'
+import { db } from "@/db.js";
 
+const sessionStore = useSessionStore()
 const exhibitorLocal = useExhibitorLocalStore()
 const expoLocal = useExpoLocalStore()
 const leadListLocal = useLeadsListLocal()
@@ -132,6 +144,13 @@ const lead = ref(
   }
 )
 
+async function logOut() {
+  // db.delete({ disableAutoOpen: false })
+  db.profile.delete( 1 )
+  sessionStore.logged_In = false
+  exhibitorLocal.$reset()
+  window.location.reload()
+}
 
 </script>
 

@@ -25,7 +25,9 @@
              name="loginId"
              pattern="\d*"
              placeholder="Enter your login ID"
-             type="tel">
+             type="tel"
+             @keydown.enter="login()"
+      >
       <button class="--primary--invert"
               @click="login()">
         Exhibitor Profile Login
@@ -115,7 +117,7 @@ async function login() {
   exhibitorLocal.$patch({
     id: getCompany.id,
     name: getCompany.name,
-    login_Url: getCompany.autoLoginUrl,
+    login_Url: getCompany.autoLoginUrl || getCompany.login_Url,
     lead_Ret: getCompany.lead_Ret || extraMatch.value,
     expo_Year: expoLocal.expo_Year,
     expo_Client: expoLocal.expo_Client,
