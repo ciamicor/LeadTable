@@ -1,7 +1,7 @@
 <template>
   <qrcode-vue
     :background="background"
-    :foreground='foreground'
+    :foreground="foreground"
     :gradient="gradient"
     :gradient-end-color="gradientEndColor"
     :gradient-start-color="gradientStartColor"
@@ -18,11 +18,11 @@ import { ref } from 'vue'
 import QrcodeVue from 'qrcode.vue'
 import type { Level, RenderAs, GradientType, ImageSettings } from 'qrcode.vue'
 
-const { urlValue } = defineProps({
+const {urlValue} = defineProps({
   urlValue: String
 })
 
-const value = ref('http://leadtable.iami411.org/scan-lead?id=' + urlValue)
+const value = ref('http://leadtable.app/scan-lead?id=' + urlValue)
 const level = ref<Level>('M')
 const renderAs = ref<RenderAs>('canvas')
 const background = ref('#ffffff')

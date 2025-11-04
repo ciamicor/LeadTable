@@ -40,6 +40,7 @@ async function sortLName_Service(i: Array<{}>) {
     // names must be equal
     return 0
   })
+  console.log('Sorted by last name.')
 }
 
 // By Created Date

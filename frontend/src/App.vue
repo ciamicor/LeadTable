@@ -63,7 +63,7 @@ onBeforeMount( async () => {
   }*/
 } )
 
-/*-| Get exhibitor from Local
+/*-| Get Exhibitor from Local
 ---+----+---+----+---+----+---+----+---*/
 async function checkLoginState() {
   try {

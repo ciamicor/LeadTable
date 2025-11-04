@@ -9,22 +9,24 @@
       <button class="--justify-self-end --p-4"
               @click.stop="toggleModal"><i class="bi-pencil"/></button>
     </div>
-
     <AttendeeEditModal :attendee="attendee"
                        :visible="modalVisible"
                        @show-modal="toggleModal"/>
     <div>
-      <span class="--font-size-14">Created: {{makeDate( attendee.createdAt )}}</span>
-
+      <span class="--font-size-14 --color-grey-7">
+        Created: {{
+          makeDate( attendee.createdAt )
+        }}
+      </span>
       <h3 class="--font-size-20">
-        {{attendee.name_First}}
-        {{attendee.name_Last}}
+        {{ attendee.name_First }}
+        {{ attendee.name_Last }}
       </h3>
-      <p class="--font-size-16">
-        {{attendee.contact_Employer}}
+      <p class="--font-size-16 --color-grey-5">
+        {{ attendee.contact_Employer }}
       </p>
-      <p class="--font-size-16">
-        {{attendee.title}}
+      <p class="--font-size-16 --color-grey-5">
+        {{ attendee.title }}
       </p>
     </div>
   </div>
@@ -32,12 +34,13 @@
 
 <script setup>
 import { ref } from 'vue'
-import LeadCardModal from "@/components/elements/LeadEditModal.vue";
 import AttendeeEditModal from "@/components/AttendeeEditModal.vue";
 
 const emit = defineEmits( [ 'addBadge', 'removeBadge' ] )
 const prop = defineProps( {
-  attendee: Object,
+  attendee: {
+    type: Object, default: () => ({})
+  },
   showBadge: { type: Boolean, default: true }
 } )
 
@@ -60,6 +63,7 @@ const modalVisible = ref( false )
 
 function toggleModal() {
   modalVisible.value = !modalVisible.value
+  console.log( 'Editing ' + prop.attendee.name_First + ', id: ' + prop.attendee.id )
 }
 
 /*-| Formatting

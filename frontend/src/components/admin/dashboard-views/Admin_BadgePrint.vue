@@ -36,23 +36,23 @@
           <i class="bi-upload --m-r-4"/>Upload Attendees
         </router-link>
         <router-link
-          :to="`/${expoLocal.expo_Client}/${expoLocal.expo_Year}/create-badge`"
+          :to="`/${expoLocal.expo_Client}/${expoLocal.expo_Year}/admin/create-badge`"
           class="button --primary --p-4">
           <i class="bi-plus-lg --m-r-4"/>New Badge
         </router-link>
       </div>
-      <div class="row-12-300 --align-items-center">
+      <div class="row-12-300 --align-items-center --gap-3">
         <span class="">View upload:</span>
         <button
           v-for="(upload, i) in uploadsList"
           :key="i"
-          class="--p-4 --font-size-16 --place-self-center --font-size-16"
+          class="--p-4 --font-size-14 --place-self-center"
           @click="getAttendees_SelectedUpload(upload.id)"
         >
           {{ upload.createdAt.slice( 0, 10 ) }}
         </button>
         <button
-          class="--p-2 --p-h-4 --primary --font-size-16"
+          class="--p-2 --p-h-4 --primary --font-size-14"
           @click="refreshAttendees(expoLocal.expo_Client, expoLocal.expo_Year, attendeeList)"
         >
           <i class="bi-arrow-clockwise --font-size-20 --m-r-3"></i>
@@ -83,7 +83,9 @@
   </div>
 
   <!--  TODO Polish Single Badge Code, merge with BadgeCreate or BadgeService  -->
-  <!-- Hidden, Printing Components -->
+  <!-- ===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!
+  Hidden, Printing Components
+  ===!===!===!===!===!===!===!===!===!===!===!===!===!===!===! -->
   <div
     v-if="attendeeListSelected.length !== 1"
     ref="printComponent"
@@ -105,7 +107,7 @@
   <div class="badges-page-container">
     <img id="badge-logo"
          :alt="`${expoLocal.expo_Client}-logo`"
-         :src="getImageUrl(`${expoLocal.expo_Client.toString().toLowerCase()}-vert-rgb`)"
+         :src="getImageUrl(`${expoLocal.expo_Client.toLowerCase()}-vert-rgb`)"
     >
     <QrCode
       v-if="attendeeListSelected.length === 1"
@@ -116,7 +118,6 @@
     ></QrCode>
   </div>
 </template>
-
 
 <script lang="js"
         setup>
@@ -199,6 +200,7 @@ async function getAttendees_SelectedUpload( id ) {
   selectedUploadId.value = id
   console.log( "Selected upload: ", selectedUploadId.value )
   attendeeList.value = await getAttendeesUploadId_Service( id )
+  await sortLName_Service( attendeeList.value )
   console.log( attendeeList.value )
 }
 
@@ -275,10 +277,11 @@ async function removeBadge( i ) {
   }
 }
 
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-/*-| Printing |-*/
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!
+Printing
+===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 
+// TODO Use VueToPrint to generate single badge PDF for printing
 const { handlePrint } = useVueToPrint( {
   content: printComponent,
   documentTitle: 'Badges'
@@ -293,8 +296,8 @@ async function printBadges() {
   attendeeListSelected.value = []
 }
 
-/*-| Print Single |-*/
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Print Single
+/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const qrData = ref()
 const qrLogo = ref()
 
@@ -335,12 +338,12 @@ async function printBadge_Portrait3x4( a ) {
   badgePdf.setFontSize( 18 )
   badgePdf.text( a.contact_Employer, dim.p * 2, dim.w - dim.p, null, dim.rot )
   badgePdf.setFontSize( 22 )
-  badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ),
+  badgePdf.text( `${ a.name_First } ${ a.name_Last }`,
     dim.p * 4,
     dim.w - dim.p,
     dim.rot )
   badgePdf.setFontSize( 18 )
-  badgePdf.text( toTitleCase_Service( a.title ), dim.p * 6, dim.w - dim.p, dim.rot )
+  badgePdf.text( a.title, dim.p * 6, dim.w - dim.p, dim.rot )
 
   /*-| Add QR Code |-*/
   badgePdf.addImage( qrData.value,
@@ -367,5 +370,4 @@ async function printBadge_Portrait3x4( a ) {
     badgePdf.output( 'dataurlnewwindow' )
   }, 300 )
 }
-
 </script>

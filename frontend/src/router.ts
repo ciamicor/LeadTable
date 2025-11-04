@@ -116,14 +116,24 @@ const routes = [
       /*-| admin Views |-*/
       /*---+----+---+----+---+----+---+----+---*/
       {
-        path: 'print-badges',
-        name: 'Print Badges',
-        component: BadgePrint
-      },
-      {
-        path: 'upload-attendees',
-        name: 'Upload Attendees',
-        component: AttendeesUpload
+        path: 'admin',
+        children: [
+          {
+            path: 'create-badge',
+            name: 'Admin Badge Creation',
+            component: BadgeCreate,
+          },
+          {
+            path: 'print-badges',
+            name: 'Print Badges',
+            component: BadgePrint
+          },
+          {
+            path: 'upload-attendees',
+            name: 'Upload Attendees',
+            component: AttendeesUpload
+          }
+        ]
       }
     ]
   },

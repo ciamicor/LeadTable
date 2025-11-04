@@ -71,8 +71,8 @@ export async function getLocalExhibitor_Service(c: any) {
   try {
     let profile = await db.profile.get(1)
     let exhibitorLocalHold: any = profile
-    console.log('exhibitor LocalData Service: ', c)
-    console.log('exhibitor LocalData Service: ', profile)
+    console.log('Exhibitor LocalData Service: ', c)
+    console.log('Exhibitor LocalData Service: ', profile)
 
     if (profile) {
       c.id = exhibitorLocalHold.ex_Id

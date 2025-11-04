@@ -54,6 +54,9 @@
   .--color-warn-#{$x} {
     color: var(#{"--color-warn-" + $x}) !important;
   }
+  .--color-grey-#{$x} {
+    color: var(#{"--grey-" + $x}) !important;
+  }
 }
 
 /*-| elements |-*/

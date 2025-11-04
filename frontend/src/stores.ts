@@ -58,7 +58,7 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
   }
 })
 
-/*-| exhibitor Store
+/*-| Exhibitor Store
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const useExhibitorLocalStore = defineStore('exhibitorLocal', () => {
   const id = ref(undefined)

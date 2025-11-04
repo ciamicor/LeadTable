@@ -1,11 +1,14 @@
-export function titleCase(w: string): string {
-  return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()
-}
-
 // TODO - function should more properly format name casing
 //  including strings like 'McDonald', 'Ph.D.', etc.
-export function formatName_TitleCase(w: string): string {
-  return w
+export function titleCase(w: string): string {
+  const list: string[] = w.split(' ')
+  let r: string = ''
+  for (let i = 0; i < list.length; i++) {
+    console.log(list[i])
+    const s: string = list[i].charAt(0).toUpperCase() + list[i].slice(1).toLowerCase()
+    r += ' ' + s
+  }
+  return r
 }
 
 export function removeSpecialChars(s: string): string {

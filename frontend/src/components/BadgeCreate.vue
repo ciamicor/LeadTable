@@ -166,6 +166,7 @@
         {{ expoLocal.expo_Client }} Suppliers' Day, {{ attendee.name_First }}.
       </p>
       <button
+        v-if="urlData.view === 'admin'"
         class="--secondary --flex-grow-1"
         @click="printBadge_Portrait3x4(attendee)">
         Print {{ attendee.name_First }}'s Badge
@@ -202,10 +203,11 @@ import { ref } from 'vue'
 import { createAttendee_Service } from '@/services/AttendeeDataService.ts'
 import { useExhibitorLocalStore, useExpoLocalStore } from '@/stores.js'
 import { toTitleCase_Service } from '@/services/functions/TextManipulationService.ts'
-import { getUrlHost } from "@/services/functions/UrlService.ts";
+import { getUrlHost, getUrl_ClientYear } from "@/services/functions/UrlService.ts";
 
 import { countries } from "@/services/addresses/AddressForm_Countries.js";
 
+const urlData = ref( getUrl_ClientYear() )
 const host = getUrlHost()
 const exhibitorLocal = useExhibitorLocalStore()
 const expoLocal = useExpoLocalStore()

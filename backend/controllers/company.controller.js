@@ -54,8 +54,7 @@ export const getExhibitorById = async ( req, res ) => {
         if ( company ) {
             res.json( company )
         } else {
-            res.status( 404 ).json( { error: 'exhibitor not found' } )
-            res.status( 404 ).json( { error: 'exhibitor not found' } )
+            res.status( 404 ).json( { error: 'Exhibitor not found' } )
         }
     } catch ( error ) {
         console.error( 'error in controller getExhibitorById: ', error )
@@ -77,12 +76,12 @@ export const updateExhibitor = async ( req, res ) => {
             await company.save()
             res.json( company )
         } else {
-            res.status( 404 ).json( { error: 'exhibitor not found' } )
+            res.status( 404 ).json( { error: 'Exhibitor not found' } )
         }
     } catch ( error ) {
-        console.error( 'error in controller updateCompany: ', error )
+        console.error( 'error in controller updateExhibitor: ', error )
         res.status( 500 ).json( {
-            error: 'Something went wrong with controller: updateCompany.',
+            error: 'Something went wrong with controller: updateExhibitor.',
             details: error?.message || 'Unknown error'
         } )
     }

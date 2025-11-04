@@ -202,7 +202,6 @@ import { formatSlug } from "@/services/functions/TextManipulationService.ts";
 import {
   addFPExhibitor,
   addFPExhibitorBooth,
-  getFPExhibitor,
   getFPExhibitorId
 } from "@/services/ExpoFPDataService.ts";
 

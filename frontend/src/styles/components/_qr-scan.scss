@@ -1,7 +1,8 @@
 @use "../abstracts/index" as *;
 
 .scanner-camera-container {
-  height: $view-height !important;
+  height:     $view-height !important;
+  background: $color-success-2;
 }
 
 .scanner-camera-wrap {
@@ -9,7 +10,7 @@
 }
 
 .qr-float-container {
-  position:      absolute;
+  position:      absolute !important;
   right:         $sp-6;
   bottom:        $sp-12 + $nav-height-actual;
   left:          $sp-6;

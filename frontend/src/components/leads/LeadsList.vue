@@ -5,7 +5,8 @@
     <div
       class="col-12-300 col-10-500 col-5-800">
       <h1>Looking for Leads?</h1>
-      <p>If you haven't purchased access, you can do in your
+      <span v-if="exhibitorLocal.name !== ''">
+        <p>If you haven't purchased access, you can do in your
          ExpoFP Exhibitor Portal.
         <a v-if="exhibitorLocal.login_Url"
            :href="'https://app.expofp.com' + exhibitorLocal.login_Url"
@@ -15,18 +16,29 @@
          Extras," click "Reserve More,"
          and select the option for lead
          retrieval.</p>
+      </span>
+      <p v-else-if="exhibitorLocal.name === ''">
+        You'll need your login ID to access lead retrieval.
+      </p>
       <router-link
         class="button --primary"
         to="profile"
       >
         Go to Profile
       </router-link>
-      <p class="--font-xs">You may need to logout, then login again to have the purchase
-                           register.</p>
     </div>
   </div>
   <div v-if="exhibitorLocal.lead_Ret === true">
-    <div class="row-12-300 --p-10-clamp --place-content-space-between">
+    <div class="col-12-300 --p-10-clamp">
+      <div class="row-12-300 --justify-content-space-between --m-b-6">
+        <LeadsExport v-if="leadsList.length > 0"
+                     :leads-list="leadsList"
+                     class=" --p-v-3"/>
+        <button class="--warn --p-v-3"
+                @click="logOut">Log Out
+        </button>
+      </div>
+
       <div v-if="exhibitorLocal.name"
            class="--flex-grow-1">
         <p>
@@ -36,9 +48,6 @@
         </p>
         <h2>{{ exhibitorLocal.name }}</h2>
       </div>
-      <LeadsExport v-if="leadsList.length > 0"
-                   :leads-list="leadsList"
-                   class="--justify-self-end"/>
     </div>
     <LoadingHolder :status="status"
                    class="--place-self-center"/>
@@ -66,7 +75,6 @@
     </router-link>
   </div>
 
-
 </template>
 
 <script setup>
@@ -78,6 +86,7 @@ import { getLocalExhibitor_Service } from '@/services/ExhibitorDataService.ts'
 import LeadCard from '@/components/leads/LeadCard.vue'
 import LeadsExport from '@/components/leads/LeadsExport.vue'
 
+const sessionStore = useSessionStore()
 const exhibitorLocal = useExhibitorLocalStore()
 const expoLocal = useExpoLocalStore()
 const leadListLocal = useLeadsListLocal()
@@ -130,6 +139,13 @@ const lead = ref(
   }
 )
 
+async function logOut() {
+  // db.delete({ disableAutoOpen: false })
+  db.profile.delete( 1 )
+  sessionStore.logged_In = false
+  exhibitorLocal.$reset()
+  window.location.reload()
+}
 
 </script>
 
