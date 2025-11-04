@@ -6165,6 +6165,10 @@ template {
   color: var(--color-warn-1) !important;
 }
 
+.--color-grey-1 {
+  color: var(--grey-1) !important;
+}
+
 .--color-primary-2 {
   color: var(--color-primary-2) !important;
 }
@@ -6179,6 +6183,10 @@ template {
 
 .--color-warn-2 {
   color: var(--color-warn-2) !important;
+}
+
+.--color-grey-2 {
+  color: var(--grey-2) !important;
 }
 
 .--color-primary-3 {
@@ -6197,6 +6205,10 @@ template {
   color: var(--color-warn-3) !important;
 }
 
+.--color-grey-3 {
+  color: var(--grey-3) !important;
+}
+
 .--color-primary-4 {
   color: var(--color-primary-4) !important;
 }
@@ -6211,6 +6223,10 @@ template {
 
 .--color-warn-4 {
   color: var(--color-warn-4) !important;
+}
+
+.--color-grey-4 {
+  color: var(--grey-4) !important;
 }
 
 .--color-primary-5 {
@@ -6229,6 +6245,10 @@ template {
   color: var(--color-warn-5) !important;
 }
 
+.--color-grey-5 {
+  color: var(--grey-5) !important;
+}
+
 .--color-primary-6 {
   color: var(--color-primary-6) !important;
 }
@@ -6243,6 +6263,10 @@ template {
 
 .--color-warn-6 {
   color: var(--color-warn-6) !important;
+}
+
+.--color-grey-6 {
+  color: var(--grey-6) !important;
 }
 
 .--color-primary-7 {
@@ -6261,6 +6285,10 @@ template {
   color: var(--color-warn-7) !important;
 }
 
+.--color-grey-7 {
+  color: var(--grey-7) !important;
+}
+
 .--color-primary-8 {
   color: var(--color-primary-8) !important;
 }
@@ -6275,6 +6303,10 @@ template {
 
 .--color-warn-8 {
   color: var(--color-warn-8) !important;
+}
+
+.--color-grey-8 {
+  color: var(--grey-8) !important;
 }
 
 .--color-primary-9 {
@@ -6293,6 +6325,10 @@ template {
   color: var(--color-warn-9) !important;
 }
 
+.--color-grey-9 {
+  color: var(--grey-9) !important;
+}
+
 .--color-primary-10 {
   color: var(--color-primary-10) !important;
 }
@@ -6307,6 +6343,10 @@ template {
 
 .--color-warn-10 {
   color: var(--color-warn-10) !important;
+}
+
+.--color-grey-10 {
+  color: var(--grey-10) !important;
 }
 
 .--color-primary-11 {
@@ -6325,6 +6365,10 @@ template {
   color: var(--color-warn-11) !important;
 }
 
+.--color-grey-11 {
+  color: var(--grey-11) !important;
+}
+
 .--color-primary-12 {
   color: var(--color-primary-12) !important;
 }
@@ -6339,6 +6383,10 @@ template {
 
 .--color-warn-12 {
   color: var(--color-warn-12) !important;
+}
+
+.--color-grey-12 {
+  color: var(--grey-12) !important;
 }
 
 /*-| Elements |-*/

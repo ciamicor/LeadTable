@@ -9,25 +9,24 @@
       <button class="--justify-self-end --p-4"
               @click.stop="toggleModal"><i class="bi-pencil"/></button>
     </div>
-
     <AttendeeEditModal :attendee="attendee"
                        :visible="modalVisible"
                        @show-modal="toggleModal"/>
     <div>
-      <span class="--font-size-14">Created: {{ makeDate( attendee.createdAt ) }}</span>
-
+      <span class="--font-size-14 --color-grey-7">
+        Created: {{
+          makeDate( attendee.createdAt )
+        }}
+      </span>
       <h3 class="--font-size-20">
         {{ attendee.name_First }}
         {{ attendee.name_Last }}
       </h3>
-      <p class="--font-size-16">
+      <p class="--font-size-16 --color-grey-5">
         {{ attendee.contact_Employer }}
       </p>
-      <p class="--font-size-16">
+      <p class="--font-size-16 --color-grey-5">
         {{ attendee.title }}
-      </p>
-      <p class="--font-size-16">
-        {{ attendee.id }}
       </p>
     </div>
   </div>

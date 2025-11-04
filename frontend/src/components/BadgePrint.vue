@@ -41,18 +41,18 @@
           <i class="bi-plus-lg --m-r-4"/>New Badge
         </router-link>
       </div>
-      <div class="row-12-300 --align-items-center">
+      <div class="row-12-300 --align-items-center --gap-3">
         <span class="">View upload:</span>
         <button
           v-for="(upload, i) in uploadsList"
           :key="i"
-          class="--p-4 --font-size-16 --place-self-center --font-size-16"
+          class="--p-4 --font-size-14 --place-self-center"
           @click="getAttendees_SelectedUpload(upload.id)"
         >
           {{ upload.createdAt.slice( 0, 10 ) }}
         </button>
         <button
-          class="--p-2 --p-h-4 --primary --font-size-16"
+          class="--p-2 --p-h-4 --primary --font-size-14"
           @click="refreshAttendees(expoLocal.expo_Client, expoLocal.expo_Year, attendeeList)"
         >
           <i class="bi-arrow-clockwise --font-size-20 --m-r-3"></i>
@@ -118,7 +118,6 @@
     ></QrCode>
   </div>
 </template>
-
 
 <script lang="js"
         setup>
@@ -278,10 +277,11 @@ async function removeBadge( i ) {
   }
 }
 
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-/*-| Printing |-*/
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!
+Printing
+===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 
+// TODO Use VueToPrint to generate single badge PDF for printing
 const { handlePrint } = useVueToPrint( {
   content: printComponent,
   documentTitle: 'Badges'
@@ -296,8 +296,8 @@ async function printBadges() {
   attendeeListSelected.value = []
 }
 
-/*-| Print Single |-*/
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Print Single
+/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const qrData = ref()
 const qrLogo = ref()
 
@@ -338,12 +338,12 @@ async function printBadge_Portrait3x4( a ) {
   badgePdf.setFontSize( 18 )
   badgePdf.text( a.contact_Employer, dim.p * 2, dim.w - dim.p, null, dim.rot )
   badgePdf.setFontSize( 22 )
-  badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ),
+  badgePdf.text( `${ a.name_First } ${ a.name_Last }`,
     dim.p * 4,
     dim.w - dim.p,
     dim.rot )
   badgePdf.setFontSize( 18 )
-  badgePdf.text( toTitleCase_Service( a.title ), dim.p * 6, dim.w - dim.p, dim.rot )
+  badgePdf.text( a.title, dim.p * 6, dim.w - dim.p, dim.rot )
 
   /*-| Add QR Code |-*/
   badgePdf.addImage( qrData.value,
@@ -370,5 +370,4 @@ async function printBadge_Portrait3x4( a ) {
     badgePdf.output( 'dataurlnewwindow' )
   }, 300 )
 }
-
 </script>
