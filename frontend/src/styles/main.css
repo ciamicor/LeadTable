@@ -7079,7 +7079,6 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 
 .container {
-  position: relative;
   display: flex;
   flex: 1 1 auto;
   flex-flow: row wrap;
@@ -7092,7 +7091,6 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 
 .row {
-  position: relative;
   display: flex;
   flex: 1 1 auto;
   flex-flow: row wrap;
@@ -7112,7 +7110,6 @@ table tbody tr input:active, table tbody tr input:focus {
 /*-| Columns by Breakpoint |-*/
 /*-| Columns |-*/
 .col-1-300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7128,7 +7125,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-1-300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7149,7 +7145,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-2-300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7165,7 +7160,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-2-300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7186,7 +7180,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-3-300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7202,7 +7195,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-3-300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7223,7 +7215,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-4-300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7239,7 +7230,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-4-300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7260,7 +7250,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-5-300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7276,7 +7265,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-5-300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7297,7 +7285,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-6-300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7313,7 +7300,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-6-300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7334,7 +7320,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-7-300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7350,7 +7335,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-7-300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7371,7 +7355,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-8-300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7387,7 +7370,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-8-300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7408,7 +7390,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-9-300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7424,7 +7405,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-9-300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7445,7 +7425,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-10-300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7461,7 +7440,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-10-300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7482,7 +7460,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-11-300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7498,7 +7475,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-11-300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7519,7 +7495,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-12-300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7535,7 +7510,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-12-300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7556,7 +7530,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-1-400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7572,7 +7545,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-1-400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7593,7 +7565,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-2-400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7609,7 +7580,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-2-400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7630,7 +7600,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-3-400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7646,7 +7615,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-3-400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7667,7 +7635,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-4-400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7683,7 +7650,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-4-400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7704,7 +7670,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-5-400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7720,7 +7685,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-5-400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7741,7 +7705,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-6-400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7757,7 +7720,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-6-400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7778,7 +7740,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-7-400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7794,7 +7755,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-7-400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7815,7 +7775,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-8-400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7831,7 +7790,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-8-400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7852,7 +7810,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-9-400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7868,7 +7825,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-9-400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7889,7 +7845,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-10-400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7905,7 +7860,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-10-400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7926,7 +7880,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-11-400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7942,7 +7895,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-11-400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -7963,7 +7915,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-12-400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -7979,7 +7930,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-12-400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8000,7 +7950,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-1-500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8016,7 +7965,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-1-500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8037,7 +7985,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-2-500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8053,7 +8000,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-2-500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8074,7 +8020,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-3-500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8090,7 +8035,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-3-500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8111,7 +8055,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-4-500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8127,7 +8070,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-4-500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8148,7 +8090,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-5-500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8164,7 +8105,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-5-500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8185,7 +8125,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-6-500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8201,7 +8140,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-6-500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8222,7 +8160,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-7-500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8238,7 +8175,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-7-500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8259,7 +8195,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-8-500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8275,7 +8210,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-8-500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8296,7 +8230,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-9-500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8312,7 +8245,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-9-500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8333,7 +8265,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-10-500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8349,7 +8280,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-10-500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8370,7 +8300,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-11-500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8386,7 +8315,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-11-500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8407,7 +8335,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-12-500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8423,7 +8350,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-12-500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8444,7 +8370,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-1-600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8460,7 +8385,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-1-600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8481,7 +8405,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-2-600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8497,7 +8420,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-2-600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8518,7 +8440,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-3-600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8534,7 +8455,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-3-600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8555,7 +8475,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-4-600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8571,7 +8490,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-4-600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8592,7 +8510,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-5-600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8608,7 +8525,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-5-600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8629,7 +8545,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-6-600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8645,7 +8560,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-6-600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8666,7 +8580,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-7-600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8682,7 +8595,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-7-600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8703,7 +8615,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-8-600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8719,7 +8630,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-8-600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8740,7 +8650,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-9-600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8756,7 +8665,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-9-600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8777,7 +8685,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-10-600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8793,7 +8700,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-10-600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8814,7 +8720,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-11-600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8830,7 +8735,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-11-600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8851,7 +8755,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-12-600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8867,7 +8770,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-12-600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8888,7 +8790,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-1-700 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8904,7 +8805,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-1-700 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8925,7 +8825,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-2-700 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8941,7 +8840,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-2-700 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8962,7 +8860,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-3-700 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -8978,7 +8875,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-3-700 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -8999,7 +8895,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-4-700 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9015,7 +8910,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-4-700 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9036,7 +8930,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-5-700 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9052,7 +8945,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-5-700 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9073,7 +8965,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-6-700 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9089,7 +8980,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-6-700 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9110,7 +9000,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-7-700 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9126,7 +9015,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-7-700 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9147,7 +9035,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-8-700 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9163,7 +9050,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-8-700 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9184,7 +9070,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-9-700 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9200,7 +9085,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-9-700 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9221,7 +9105,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-10-700 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9237,7 +9120,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-10-700 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9258,7 +9140,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-11-700 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9274,7 +9155,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-11-700 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9295,7 +9175,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-12-700 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9311,7 +9190,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-12-700 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9332,7 +9210,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-1-800 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9348,7 +9225,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-1-800 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9369,7 +9245,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-2-800 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9385,7 +9260,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-2-800 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9406,7 +9280,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-3-800 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9422,7 +9295,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-3-800 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9443,7 +9315,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-4-800 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9459,7 +9330,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-4-800 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9480,7 +9350,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-5-800 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9496,7 +9365,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-5-800 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9517,7 +9385,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-6-800 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9533,7 +9400,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-6-800 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9554,7 +9420,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-7-800 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9570,7 +9435,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-7-800 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9591,7 +9455,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-8-800 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9607,7 +9470,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-8-800 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9628,7 +9490,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-9-800 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9644,7 +9505,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-9-800 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9665,7 +9525,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-10-800 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9681,7 +9540,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-10-800 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9702,7 +9560,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-11-800 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9718,7 +9575,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-11-800 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9739,7 +9595,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-12-800 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9755,7 +9610,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-12-800 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9776,7 +9630,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-1-900 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9792,7 +9645,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-1-900 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9813,7 +9665,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-2-900 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9829,7 +9680,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-2-900 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9850,7 +9700,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-3-900 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9866,7 +9715,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-3-900 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9887,7 +9735,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-4-900 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9903,7 +9750,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-4-900 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9924,7 +9770,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-5-900 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9940,7 +9785,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-5-900 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9961,7 +9805,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-6-900 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -9977,7 +9820,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-6-900 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -9998,7 +9840,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-7-900 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10014,7 +9855,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-7-900 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10035,7 +9875,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-8-900 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10051,7 +9890,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-8-900 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10072,7 +9910,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-9-900 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10088,7 +9925,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-9-900 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10109,7 +9945,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-10-900 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10125,7 +9960,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-10-900 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10146,7 +9980,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-11-900 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10162,7 +9995,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-11-900 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10183,7 +10015,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-12-900 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10199,7 +10030,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-12-900 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10220,7 +10050,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-1-1000 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10236,7 +10065,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-1-1000 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10257,7 +10085,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-2-1000 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10273,7 +10100,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-2-1000 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10294,7 +10120,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-3-1000 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10310,7 +10135,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-3-1000 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10331,7 +10155,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-4-1000 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10347,7 +10170,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-4-1000 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10368,7 +10190,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-5-1000 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10384,7 +10205,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-5-1000 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10405,7 +10225,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-6-1000 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10421,7 +10240,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-6-1000 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10442,7 +10260,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-7-1000 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10458,7 +10275,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-7-1000 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10479,7 +10295,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-8-1000 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10495,7 +10310,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-8-1000 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10516,7 +10330,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-9-1000 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10532,7 +10345,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-9-1000 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10553,7 +10365,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-10-1000 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10569,7 +10380,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-10-1000 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10590,7 +10400,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-11-1000 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10606,7 +10415,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-11-1000 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10627,7 +10435,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-12-1000 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10643,7 +10450,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-12-1000 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10664,7 +10470,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-1-1100 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10680,7 +10485,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-1-1100 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10701,7 +10505,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-2-1100 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10717,7 +10520,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-2-1100 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10738,7 +10540,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-3-1100 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10754,7 +10555,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-3-1100 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10775,7 +10575,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-4-1100 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10791,7 +10590,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-4-1100 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10812,7 +10610,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-5-1100 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10828,7 +10625,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-5-1100 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10849,7 +10645,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-6-1100 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10865,7 +10660,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-6-1100 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10886,7 +10680,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-7-1100 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10902,7 +10695,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-7-1100 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10923,7 +10715,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-8-1100 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10939,7 +10730,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-8-1100 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10960,7 +10750,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-9-1100 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -10976,7 +10765,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-9-1100 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -10997,7 +10785,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-10-1100 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11013,7 +10800,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-10-1100 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11034,7 +10820,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-11-1100 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11050,7 +10835,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-11-1100 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11071,7 +10855,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-12-1100 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11087,7 +10870,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-12-1100 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11108,7 +10890,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-1-1200 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11124,7 +10905,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-1-1200 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11145,7 +10925,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-2-1200 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11161,7 +10940,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-2-1200 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11182,7 +10960,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-3-1200 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11198,7 +10975,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-3-1200 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11219,7 +10995,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-4-1200 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11235,7 +11010,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-4-1200 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11256,7 +11030,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-5-1200 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11272,7 +11045,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-5-1200 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11293,7 +11065,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-6-1200 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11309,7 +11080,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-6-1200 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11330,7 +11100,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-7-1200 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11346,7 +11115,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-7-1200 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11367,7 +11135,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-8-1200 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11383,7 +11150,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-8-1200 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11404,7 +11170,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-9-1200 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11420,7 +11185,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-9-1200 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11441,7 +11205,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-10-1200 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11457,7 +11220,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-10-1200 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11478,7 +11240,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-11-1200 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11494,7 +11255,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-11-1200 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11515,7 +11275,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-12-1200 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11531,7 +11290,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-12-1200 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11552,7 +11310,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-1-1300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11568,7 +11325,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-1-1300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11589,7 +11345,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-2-1300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11605,7 +11360,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-2-1300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11626,7 +11380,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-3-1300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11642,7 +11395,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-3-1300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11663,7 +11415,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-4-1300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11679,7 +11430,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-4-1300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11700,7 +11450,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-5-1300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11716,7 +11465,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-5-1300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11737,7 +11485,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-6-1300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11753,7 +11500,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-6-1300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11774,7 +11520,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-7-1300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11790,7 +11535,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-7-1300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11811,7 +11555,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-8-1300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11827,7 +11570,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-8-1300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11848,7 +11590,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-9-1300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11864,7 +11605,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-9-1300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11885,7 +11625,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-10-1300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11901,7 +11640,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-10-1300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11922,7 +11660,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-11-1300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11938,7 +11675,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-11-1300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11959,7 +11695,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-12-1300 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -11975,7 +11710,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-12-1300 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -11996,7 +11730,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-1-1400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12012,7 +11745,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-1-1400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12033,7 +11765,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-2-1400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12049,7 +11780,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-2-1400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12070,7 +11800,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-3-1400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12086,7 +11815,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-3-1400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12107,7 +11835,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-4-1400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12123,7 +11850,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-4-1400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12144,7 +11870,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-5-1400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12160,7 +11885,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-5-1400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12181,7 +11905,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-6-1400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12197,7 +11920,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-6-1400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12218,7 +11940,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-7-1400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12234,7 +11955,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-7-1400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12255,7 +11975,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-8-1400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12271,7 +11990,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-8-1400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12292,7 +12010,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-9-1400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12308,7 +12025,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-9-1400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12329,7 +12045,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-10-1400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12345,7 +12060,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-10-1400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12366,7 +12080,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-11-1400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12382,7 +12095,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-11-1400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12403,7 +12115,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-12-1400 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12419,7 +12130,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-12-1400 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12440,7 +12150,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-1-1500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12456,7 +12165,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-1-1500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12477,7 +12185,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-2-1500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12493,7 +12200,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-2-1500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12514,7 +12220,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-3-1500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12530,7 +12235,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-3-1500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12551,7 +12255,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-4-1500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12567,7 +12270,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-4-1500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12588,7 +12290,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-5-1500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12604,7 +12305,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-5-1500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12625,7 +12325,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-6-1500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12641,7 +12340,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-6-1500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12662,7 +12360,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-7-1500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12678,7 +12375,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-7-1500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12699,7 +12395,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-8-1500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12715,7 +12410,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-8-1500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12736,7 +12430,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-9-1500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12752,7 +12445,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-9-1500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12773,7 +12465,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-10-1500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12789,7 +12480,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-10-1500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12810,7 +12500,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-11-1500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12826,7 +12515,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-11-1500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12847,7 +12535,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-12-1500 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12863,7 +12550,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-12-1500 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12884,7 +12570,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-1-1600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12900,7 +12585,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-1-1600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12921,7 +12605,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-2-1600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12937,7 +12620,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-2-1600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12958,7 +12640,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-3-1600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -12974,7 +12655,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-3-1600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -12995,7 +12675,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-4-1600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -13011,7 +12690,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-4-1600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -13032,7 +12710,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-5-1600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -13048,7 +12725,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-5-1600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -13069,7 +12745,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-6-1600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -13085,7 +12760,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-6-1600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -13106,7 +12780,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-7-1600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -13122,7 +12795,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-7-1600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -13143,7 +12815,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-8-1600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -13159,7 +12830,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-8-1600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -13180,7 +12850,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-9-1600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -13196,7 +12865,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-9-1600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -13217,7 +12885,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-10-1600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -13233,7 +12900,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-10-1600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -13254,7 +12920,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-11-1600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -13270,7 +12935,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-11-1600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
@@ -13291,7 +12955,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Columns |-*/
 .col-12-1600 {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   gap: 8px;
@@ -13307,7 +12970,6 @@ table tbody tr input:active, table tbody tr input:focus {
 
 /*-| Rows |-*/
 .row-12-1600 {
-  position: relative;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;

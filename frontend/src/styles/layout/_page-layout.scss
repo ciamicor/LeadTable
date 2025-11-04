@@ -10,7 +10,6 @@
 }
 
 .container {
-  position:      relative;
   display:       flex;
   flex:          1 1 auto;
   flex-flow:     row wrap;
@@ -23,7 +22,6 @@
 }
 
 .row {
-  position:      relative;
   display:       flex;
   flex:          1 1 auto;
   flex-flow:     row wrap;
@@ -47,7 +45,6 @@
   @for $i from 1 through $column-number {
     /*-| Columns |-*/
     .col-#{$i}-#{$size * 100} {
-      position:  relative;
       display:   flex;
       flex-flow: column nowrap;
       gap:       $col-gap;
@@ -66,7 +63,6 @@
     }
     /*-| Rows |-*/
     .row-#{$i}-#{$size * 100} {
-      position:  relative;
       display:   flex;
       flex-flow: row wrap;
       gap:       $col-gap;
