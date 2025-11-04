@@ -43,7 +43,7 @@
       Leads
     </router-link>
     <router-link
-      v-if="sessionStore.logged_In === false"
+      v-if="exhibitorLocal.name === ''"
       :to="`/${expoLocal.expo_Client}/${expoLocal.expo_Year}/profile`"
       active-class="--secondary"
       class="button --stacked">
