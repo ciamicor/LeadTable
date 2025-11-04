@@ -73,6 +73,65 @@ exports.createAttendee = async ( req, res ) => {
         } )
     }
 }
+// Controller method to create batch of attendees
+// https://sequelize.org/docs/v7/querying/insert/
+// TODO Add bulk attendee creation & related routes/services
+exports.createAttendeeBulk = async ( req, res ) => {
+    const {
+        expo_Year,
+        expo_Client,
+        name_First,
+        name_Last,
+        contact_Email,
+        contact_Phone,
+        contact_Employer,
+        title,
+        address_Line1,
+        address_Line2,
+        address_City,
+        address_State,
+        address_Zip,
+        address_Country,
+        reg_Type,
+        tech_Sem,
+        upload_Id
+    } = req.body
+    try {
+        const bulkAttendees = await Attendee.bulkCreate( {
+            expo_Year,
+            expo_Client,
+            name_First,
+            name_Last,
+            contact_Email,
+            contact_Phone,
+            contact_Employer,
+            title,
+            address_Line1,
+            address_Line2,
+            address_City,
+            address_State,
+            address_Zip,
+            address_Country,
+            reg_Type,
+            tech_Sem,
+            upload_Id
+        } )
+        res.status( 201 ).json( bulkAttendees )
+    } catch ( error ) {
+        console.error( 'Error while creating lead: ', error )
+        if ( error.name === 'SequelizeUniqueConstraintError' ) {
+            return res.status( 400 ).json( {
+                error: 'Cannot create attendees',
+                message: "Sorry, I didn't like that data. I'm not sure why."
+            } )
+        }
+        res.status( 500 ).json( {
+            error: 'Something went wrong on the server.',
+            details: error?.message || 'Unknown error',
+            stack: error.stack
+        } )
+    }
+}
 
 // Get Attendees by Expo
 exports.getExpoAttendees = async ( req, res ) => {

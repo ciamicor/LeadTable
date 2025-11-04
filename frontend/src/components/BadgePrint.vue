@@ -36,7 +36,7 @@
           <i class="bi-upload --m-r-4"/>Upload Attendees
         </router-link>
         <router-link
-          :to="`/${expoLocal.expo_Client}/${expoLocal.expo_Year}/create-badge`"
+          :to="`/${expoLocal.expo_Client}/${expoLocal.expo_Year}/admin/create-badge`"
           class="button --primary --p-4">
           <i class="bi-plus-lg --m-r-4"/>New Badge
         </router-link>
@@ -83,7 +83,9 @@
   </div>
 
   <!--  TODO Polish Single Badge Code, merge with BadgeCreate or BadgeService  -->
-  <!-- Hidden, Printing Components -->
+  <!-- ===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!
+  Hidden, Printing Components
+  ===!===!===!===!===!===!===!===!===!===!===!===!===!===!===! -->
   <div
     v-if="attendeeListSelected.length !== 1"
     ref="printComponent"
@@ -199,6 +201,7 @@ async function getAttendees_SelectedUpload( id ) {
   selectedUploadId.value = id
   console.log( "Selected upload: ", selectedUploadId.value )
   attendeeList.value = await getAttendeesUploadId_Service( id )
+  await sortLName_Service( attendeeList.value )
   console.log( attendeeList.value )
 }
 

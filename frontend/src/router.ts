@@ -77,6 +77,11 @@ const routes = [
         path: 'admin',
         children: [
           {
+            path: 'create-badge',
+            name: 'Admin Badge Creator',
+            component: BadgeCreate,
+          },
+          {
             path: 'print-badges',
             name: 'BadgePrint',
             component: BadgePrint
