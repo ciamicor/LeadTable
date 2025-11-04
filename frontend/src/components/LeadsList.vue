@@ -5,7 +5,8 @@
     <div
       class="col-12-300 col-10-500 col-5-800">
       <h1>Looking for Leads?</h1>
-      <p>If you haven't purchased access, you can do in your
+      <span v-if="exhibitorLocal.name !== ''">
+        <p>If you haven't purchased access, you can do in your
          ExpoFP Exhibitor Portal.
         <a v-if="exhibitorLocal.login_Url"
            :href="'https://app.expofp.com' + exhibitorLocal.login_Url"
@@ -15,14 +16,16 @@
          Extras," click "Reserve More,"
          and select the option for lead
          retrieval.</p>
+      </span>
+      <p v-else-if="exhibitorLocal.name === ''">
+        You'll need your login ID to access lead retrieval.
+      </p>
       <router-link
         class="button --primary"
         to="profile"
       >
         Go to Profile
       </router-link>
-      <p class="--font-xxs">You may need to logout, then login again to have the purchase
-                            register.</p>
     </div>
   </div>
   <div v-if="exhibitorLocal.lead_Ret === true">

@@ -9,28 +9,27 @@
     v-else
     class="row --place-content-center --place-items-center">
     <div
-      class="--p-v-20 col-12-300 col-10-500 col-6-900">
+      class="--p-v-20 col-12-300 col-10-500 col-6-900 --flex-grow">
       <h4 class="--m-0">{{ expoLocal.expo_Client }} {{ expoLocal.expo_Year }} Supplier's Day</h4>
       <h1>Exhibitor Login</h1>
-      <p>If you've already purchased lead retrieval, login here to access it.</p>
-      <p>To purchase lead retrieval, login to your ExpoFP Exhibitor profile here, and add it as a
-         booth extra.</p>
-      <label
-        for="profileUrl">
+      <!--      <p>If you've already purchased lead retrieval, login here to access it.</p>
+            <p>To purchase lead retrieval, login to your ExpoFP Exhibitor profile here, and add it as a
+               booth extra.</p>-->
+      <label>
         Login ID
+        <input id="loginId"
+               v-model="exhibitorLocal.id"
+               inputmode="tel"
+               name="loginId"
+               pattern="\d*"
+               placeholder="Enter your ID"
+               type="tel"
+               @keydown.enter="login()"
+        >
       </label>
-      <input id="loginId"
-             v-model="exhibitorLocal.id"
-             inputmode="tel"
-             name="loginId"
-             pattern="\d*"
-             placeholder="Enter your login ID"
-             type="tel"
-             @keydown.enter="login()"
-      >
       <button class="--primary--invert"
               @click="login()">
-        Exhibitor Profile Login
+        Login
       </button>
     </div>
   </div>
