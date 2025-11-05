@@ -1,13 +1,14 @@
 import { createWebHistory, createRouter } from 'vue-router'
 import LeadsList from '@/components/LeadsList.vue'
-import CompanyProfile from '@/components/ExhibitorProfile.vue'
-import BadgePrint from '@/components/BadgePrint.vue'
+import CompanyProfile from '@/components/exhibitor/ExhibitorProfile.vue'
+import BadgePrint from '@/components/admin/BadgePrint.vue'
+import BadgePrintQuickfix from '@/components/admin/BadgePrintQuickfix.vue'
 import ExpoMap from '@/components/ExpoMap.vue'
 import ExpoSelect from '@/components/ExpoSelect.vue'
 import LeadAdd from '@/components/LeadAdd.vue'
 import BadgeCreate from '@/components/BadgeCreate.vue'
 import AttendeesUpload from '@/components/AttendeesUpload.vue'
-import CompanyCreate from "@/components/ExhibitorCreate.vue";
+import CompanyCreate from "@/components/exhibitor/ExhibitorCreate.vue";
 
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Routes |-*/
@@ -85,6 +86,11 @@ const routes = [
             path: 'print-badges',
             name: 'BadgePrint',
             component: BadgePrint
+          },
+          {
+            path: 'print-badges-quickfix',
+            name: 'Badge Print Quickfix',
+            component: BadgePrintQuickfix
           },
           {
             path: 'upload-attendees',

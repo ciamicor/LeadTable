@@ -121,7 +121,7 @@
 
 <script lang="js"
         setup>
-import { useExpoLocalStore } from "@/stores.js";
+import { useExpoLocalStore } from "@/stores.ts";
 import { getUrlHost } from "@/services/functions/UrlService.ts";
 import { jsPDF } from 'jspdf'
 import QrCode from '@/components/QrCode.vue'
@@ -134,8 +134,8 @@ import {
   getExpoAttendees_Service,
   getAttendeesUploadId_Service
 } from '@/services/AttendeeDataService.ts'
-import { getAttendeeUploads_Service } from '@/services/UploadDataService.js'
-import { sortLName_Service } from '@/services/SortService.js'
+import { getAttendeeUploads_Service } from '@/services/UploadDataService.ts'
+import { sortLName_Service } from '@/services/SortService.ts'
 import { toTitleCase_Service } from '@/services/functions/TextManipulationService.ts'
 import LoadingHolder from "@/components/LoadingHolder.vue";
 
@@ -158,7 +158,7 @@ const printComponent = ref() // for Print component
 /*-| Get Image |-*/
 /*---+----+---+----+---+----+---+----+---*/
 function getImageUrl( name ) {
-  return new URL( `../../public/logos/${ expoLocal.expo_Client.toString()
+  return new URL( `../../../public/logos/${ expoLocal.expo_Client.toString()
     .toLowerCase() }/${ name }.jpeg`, import.meta.url ).href
 }
 

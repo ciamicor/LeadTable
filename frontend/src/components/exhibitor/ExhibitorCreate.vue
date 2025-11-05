@@ -195,16 +195,16 @@
         setup>
 // TODO Convert to TS
 import { ref, computed } from 'vue'
-import { useExhibitorLocalStore, useExpoLocalStore } from '@/stores.js'
+import { useExhibitorLocalStore, useExpoLocalStore } from '@/stores.ts'
 import { getUrlHost, getURLParams } from "@/services/functions/UrlService.ts";
-import { countries } from "@/services/addresses/AddressForm_Countries.js";
+import { countries } from "@/services/addresses/AddressForm_Countries.ts";
 import { formatSlug } from "@/services/functions/TextManipulationService.ts";
 import {
   addExhibitor,
   addExhibitorBooth,
   getFPExhibitor,
   getFPExhibitorId
-} from "@/services/ExpoFPDataService.js";
+} from "@/services/ExpoFPDataService.ts";
 
 const host = getUrlHost()
 const companyLocal = useExhibitorLocalStore()
