@@ -23,19 +23,20 @@
       </div>
     </div>
   </div>
+  <!-- Login -->
+  <!-------------------------->
   <div
     v-else
     class="row --place-content-center --place-items-center">
     <div
-      class="col-12-300 col-10-500 col-6-900 --p-24-clamp">
+      class="col-12-300 --p-24-clamp">
       <h4 class="--m-0">
         {{ expoLocal.expo_Client }} {{ expoLocal.expo_Year }} Supplier's Day
       </h4>
       <h1>Exhibitor Login</h1>
-      <p>If you've already purchased lead retrieval, login here to access it.</p>
-      <p v-if="!expoLocal.expoInPast">
-        To purchase lead retrieval, login to your ExpoFP Exhibitor profile here, and add it as a
-        booth extra.</p>
+      <!--      <p>If you've already purchased lead retrieval, login here to access it.</p>
+            <p>To purchase lead retrieval, login to your ExpoFP Exhibitor profile here, and add it as a
+               booth extra.</p>-->
       <label>
         Login ID
         <input id="loginId"
@@ -43,7 +44,7 @@
                inputmode="tel"
                name="loginId"
                pattern="\d*"
-               placeholder="Enter your login ID"
+               placeholder="Enter your ID"
                type="tel"
                @keydown.enter="login">
       </label>
@@ -54,11 +55,11 @@
       </button>
     </div>
   </div>
-  <router-link
-    v-if="!sessionStore.logged_In"
-    class="--place-self-center --m-b-12"
-    to="/">Looking for a different Supplier's Day?
-  </router-link>
+  <!--  <router-link
+      v-if="sessionStore.logged_In === false"
+      class="&#45;&#45;place-self-center &#45;&#45;m-b-12"
+      to="/">Looking for a different Supplier's Day?
+    </router-link>-->
 
   <div v-if="debug"
        class="row">
@@ -67,7 +68,7 @@
       <h2>companyData</h2>
       {{ exhibitorLocal }}
       <h2>Extras</h2>
-      {{ companyExtras }}
+      {{ exhibitorExtras }}
     </div>
   </div>
   <div
@@ -84,6 +85,14 @@
       </router-link>
     </div>
   </div>
+
+  <iframe
+    v-if="sessionStore.logged_In"
+    :src="'https://app.expofp.com' + exhibitorLocal.login_Url"
+    allow="clipboard-read; clipboard-write"
+    class="view-floor-plan"
+  >
+  </iframe>
 </template>
 
 <script lang="ts"
@@ -101,18 +110,17 @@ import {
   useExpoLocalStore,
   useSessionStore
 } from '@/stores.ts'
-import { type Ref, ref } from 'vue'
-import { useRouter } from "vue-router";
+import { ref } from 'vue'
 import { saveLogin_LocalDB } from "@/services/LocalDBService.ts";
 import ButtonSignOut from '../Button_SignOut.vue'
 import { object } from "better-auth";
 
 /*-| Variables
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-const debug = ref(false)
+const debug = ref(true)
 const testId = ref()// 13286979)
 
-const companyExtras = ref()
+const exhibitorExtras = ref()
 const loginIdMatch = ref(false)
 const extraMatch = ref(false)
 
@@ -127,25 +135,25 @@ const status = ref()
 // TODO... then use that to sign in automatically.
 async function login() {
   /*-| Check if exhibitor is in server DB |-*/
-  const serverExhib = await getExhibitor_Service(exhibitorLocal.id)
+  const serverExhibitor = await getExhibitor_Service(exhibitorLocal.id)
 
   console.log("Expo in past:" + expoLocal.expoInPast)
 
   /*-| If Expo has passed, only check the database. |-*/
   if (expoLocal.expoInPast) {
     exhibitorLocal.$patch({
-      id: serverExhib.id,
-      name: serverExhib.name,
-      login_Url: serverExhib.login_Url,
-      lead_Ret: serverExhib.lead_Ret,
-      expo_Year: serverExhib.expo_Year,
-      expo_Client: serverExhib.expo_Client,
+      id: serverExhibitor.id,
+      name: serverExhibitor.name,
+      login_Url: serverExhibitor.login_Url,
+      lead_Ret: serverExhibitor.lead_Ret,
+      expo_Year: serverExhibitor.expo_Year,
+      expo_Client: serverExhibitor.expo_Client,
     })
     await saveLogin_LocalDB(
       exhibitorLocal.id,
       exhibitorLocal.name,
       exhibitorLocal.login_Url,
-      serverExhib.lead_Ret,
+      serverExhibitor.lead_Ret,
       expoLocal.expo_Client,
       expoLocal.expo_Year,
       status
@@ -209,13 +217,13 @@ async function scanUpdates(id: number) {
 
 async function checkLeadRetPurch() {
   console.log('Matching extras...')
-  companyExtras.value = await getFPExhibitorExtras(
+  exhibitorExtras.value = await getFPExhibitorExtras(
     exhibitorLocal.id,
     expoLocal.expo_Client,
     expoLocal.expo_Year)
-  console.log("exhibitor extras are: ", companyExtras.value)
+  console.log("exhibitor extras are: ", exhibitorExtras.value)
   /*-| Look for Lead Ret match |-*/
-  extraMatch.value = await companyExtras.value.some((e: any) =>
+  extraMatch.value = await exhibitorExtras.value.some((e: any) =>
     e.name.toLowerCase().includes('lead retrieval')
   )
   console.log("Lead retrieval purchased: ", extraMatch.value)

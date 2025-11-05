@@ -6624,7 +6624,11 @@ template {
   color: var(--color-warn-12) !important;
 }
 
-/*-| Elements |-*/
+.--color-grey-12 {
+  color: var(--grey-12) !important;
+}
+
+/*-| elements |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 p, button, li, label {
   font-size: 18px;
@@ -7225,6 +7229,7 @@ fieldset div:has(> input[type=radio]) input[type=radio] {
 
 .scanner-camera-container {
   height: calc(100dvh - 68px) !important;
+  background: var(--color-success-2);
 }
 
 .scanner-camera-wrap {
