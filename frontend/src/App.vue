@@ -4,7 +4,7 @@
       <router-view/>
     </div>
   </div>
-  <nav v-if="route.path !== '/'"
+  <nav v-if="expoLocal.expo_Client !== 'WISE' && route.path !== '/'"
        class="nav-bar">
     <router-link
       :to="`/${expoLocal.expo_Client}/${expoLocal.expo_Year}/floor-plan`"

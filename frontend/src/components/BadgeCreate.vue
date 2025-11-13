@@ -6,13 +6,18 @@
       class="col-12-300 col-10-600 col-8-900 --p-b-0 --p-t-12"
       @submit.prevent="createAttendee(attendee)"
     >
-      <h4 class="--m-0">
+      <h4 v-if="expoLocal.expo_Client !== 'WISE'"
+          class="--m-0">
         {{ expoLocal.expo_Client }}
         {{ expoLocal.expo_Year }}
         Suppliers' Day
       </h4>
-      <h1 id="attendee-reg">Badge Registration</h1>
-      <p>Register to attend the expo or create booth personnel badges.</p>
+      <h1 id="attendee-reg">{{
+          expoLocal.expo_Client === 'WISE' ? 'WISE Sunset Reception' : 'Badge'
+                            }}
+                            Registration</h1>
+      <p v-if="expoLocal.expo_Client !== 'WISE'">Register to attend the expo or create booth
+                                                 personnel badges.</p>
       <div class="row-12-300 --no-space">
         <label>
           First Name
@@ -78,7 +83,8 @@
             type="tel"/>
         </label>
       </div>
-      <div class="row-12-300 --no-space">
+      <div v-if="expoLocal.expo_Client !== 'WISE'"
+           class="row-12-300 --no-space">
         <label class="row-12-300">
           <span class="--flex-basis-100">Your Address</span>
           <input
@@ -130,13 +136,17 @@
           </select>
         </label>
       </div>
-      <label>
+      <label v-if="expoLocal.expo_Client !== 'WISE'">
         Choose Registration Type
         <select
           v-model="attendee.reg_Type"
           name="reg-type"
           required
         >
+          <option disabled
+                  selected
+                  value="">Select Type
+          </option>
           <option value="Attendee">Attendee</option>
           <option value="Exhibitor">Exhibitor</option>
           <option value="Both">Both</option>
@@ -237,7 +247,7 @@ const attendee = ref( {
   address_Zip: '',
   address_Country: '',
   title: '',
-  reg_Type: 'Attendee',
+  reg_Type: '',
   tech_Sem: ''
 } )
 
@@ -343,6 +353,5 @@ async function printBadge_Portrait3x4( a ) {
     badgePdf.output( 'dataurlnewwindow' )
   }, 300 )
 }
-
 
 </script>
