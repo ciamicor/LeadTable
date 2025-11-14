@@ -3,7 +3,8 @@
   <!-- Visible Container, Components -->
   <div class="container --align-content-start">
     <div class="--p-v-4 --p-h-6 row-12-300">
-      <div class="search-wrap --place-self-center">
+      <div
+        class="search-wrap --place-self-center">
         <button
           v-show="searchTerm !== ''"
           class="--square"
@@ -300,6 +301,7 @@ async function printBadges() {
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const qrData = ref()
 const qrLogo = ref()
+const badgeTest = ref()
 
 async function select2Canvas( s, d ) {
   const selector = document.querySelector( s )
@@ -318,6 +320,8 @@ async function printBadge_Portrait3x4( a ) {
   console.log( a.id )
   if ( expoLocal.expo_Client !== 'WISE' ) await select2Canvas( '#qr-code', qrData )
   if ( expoLocal.expo_Client !== 'WISE' ) await select2Canvas( '#badge-logo', qrLogo )
+  // await select2Canvas( '#badge-test', badgeTest )
+
   /*-| Store Badge Dimensions, Placement |-*/
   const dim = {
     h: 3,
@@ -331,13 +335,18 @@ async function printBadge_Portrait3x4( a ) {
   const badgePdf = new jsPDF( {
     orientation: 'portrait',
     unit: 'in',
-    format: [ dim.w, dim.h ]
+    format: [ dim.w, dim.h ],
+    putOnlyUsedFonts: true
   } )
 
   /*-| Text |-*/
   badgePdf.setFontSize( 20 )
+  badgePdf.addFont( 'ArialMT', 'Arial', 'normal' );
+  badgePdf.addFont( 'Arial-Black', 'Arial Black', 'normal' );
+  badgePdf.setFont( 'Arial' );
   // badgePdf.text( a.contact_Employer, dim.p * 2, dim.w - dim.p, null, dim.rot )
   badgePdf.text( a.contact_Employer, dim.p * 5, dim.w - dim.p, null, dim.rot )
+  badgePdf.setFont( 'Arial Black' );
   badgePdf.setFontSize( 22 )
   /*badgePdf.text( `${ a.name_First } ${ a.name_Last }`,
     dim.p * 4,
@@ -347,13 +356,26 @@ async function printBadge_Portrait3x4( a ) {
     dim.p * 7.5,
     dim.w - dim.p,
     dim.rot )
+  badgePdf.setFont( 'Arial' );
   badgePdf.setFontSize( 20 )
   // badgePdf.text( a.title, dim.p * 6, dim.w - dim.p, dim.rot )
   badgePdf.text( a.title, dim.p * 10, dim.w - dim.p, dim.rot )
 
+  /*badgePdf.addImage(
+    badgeTest.value,
+    'PNG',
+    dim.h - dim.p,
+    dim.w - dim.imgH - dim.p,
+    dim.imgH,
+    dim.imgH,
+    'badge',
+    'FAST',
+    dim.rot )*/
+
   /*-| Add QR Code |-*/
   if ( expoLocal.expo_Client !== 'WISE' ) {
-    badgePdf.addImage( qrData.value,
+    badgePdf.addImage(
+      qrData.value,
       'PNG',
       dim.h - dim.p,
       dim.w - dim.imgH - dim.p,
@@ -365,7 +387,8 @@ async function printBadge_Portrait3x4( a ) {
   }
   if ( expoLocal.expo_Client !== 'WISE' ) {
     /*-| Add Logo |-*/
-    badgePdf.addImage( qrLogo.value,
+    badgePdf.addImage(
+      qrLogo.value,
       'PNG',
       dim.h - dim.p,
       dim.p * 4,
