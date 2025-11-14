@@ -13077,10 +13077,13 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 .badge-grid-container .badge-wrap {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr;
+  align-content: center;
+  align-items: center;
   /*width:              4in;
   height:             3in;*/
   padding: 0.165in 0.165in 0.325in;
+  outline: 1px dashed var(--grey-1);
 }
 .badge-grid-container .badge-wrap .--attendee-info-container {
   display: grid;
@@ -13115,7 +13118,7 @@ table tbody tr input:active, table tbody tr input:focus {
 .badge-grid-container .badge-wrap .badge--images-container {
   display: grid;
   grid-template-columns: 0.65fr 1fr;
-  grid-template-rows: 1.175in;
+  grid-template-rows: 0;
   place-content: center;
   place-items: center start;
 }
