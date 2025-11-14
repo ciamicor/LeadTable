@@ -193,7 +193,7 @@
            :src="getImageUrl(`${expoLocal.expo_Client.toString().toLowerCase()}-vert-rgb`)"
       >
       <QrCode
-        v-if="showQr"
+        v-if="showQr && expoLocal.expo_Client !== 'WISE'"
         id="qr-code"
         :size="215"
         :url-value="attendeeId"
@@ -297,10 +297,20 @@ async function select2Canvas( s, d ) {
   } )
 }
 
+function scaleFontSize( s, w = 4 ) {
+  // width 400, char width 40
+  let l = s.length
+  let wt = w * 100
+  console.log( 'length: ' + l )
+  console.log( (400 / (l * 40)) * 50 )
+  // Math.min(Math.max(parseInt(number), 1), 20);
+  return (400 / (l * 40)) * 50
+}
+
 async function printBadge_Portrait3x4( a ) {
   console.log( a.id )
-  await select2Canvas( '#qr-code', qrData )
-  await select2Canvas( '#badge-logo', qrLogo )
+  if ( expoLocal.expo_Client !== 'WISE' ) await select2Canvas( '#qr-code', qrData )
+  if ( expoLocal.expo_Client !== 'WISE' ) await select2Canvas( '#badge-logo', qrLogo )
   /*-| Store Badge Dimensions, Placement |-*/
   const dim = {
     h: 3,
@@ -319,36 +329,45 @@ async function printBadge_Portrait3x4( a ) {
 
   /*-| Text |-*/
   badgePdf.setFontSize( 18 )
-  badgePdf.text( a.contact_Employer, dim.p * 2, dim.w - dim.p, null, dim.rot )
+  // badgePdf.text( a.contact_Employer, dim.p * 2, dim.w - dim.p, null, dim.rot )
+  badgePdf.text( a.contact_Employer, dim.p * 5, dim.w - dim.p, null, dim.rot )
   badgePdf.setFontSize( 22 )
-  badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ),
+  /*badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ),
     dim.p * 4,
+    dim.w - dim.p,
+    dim.rot )*/
+  badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ),
+    dim.p * 7.5,
     dim.w - dim.p,
     dim.rot )
   badgePdf.setFontSize( 18 )
-  badgePdf.text( toTitleCase_Service( a.title ), dim.p * 6, dim.w - dim.p, dim.rot )
+  // badgePdf.text( toTitleCase_Service( a.title ), dim.p * 6, dim.w - dim.p, dim.rot )
+  badgePdf.text( toTitleCase_Service( a.title ), dim.p * 10, dim.w - dim.p, dim.rot )
 
   /*-| Add QR Code |-*/
-  badgePdf.addImage( qrData.value,
-    'PNG',
-    dim.h - dim.p,
-    dim.w - dim.imgH - dim.p,
-    dim.imgH,
-    dim.imgH,
-    'qr',
-    'FAST',
-    dim.rot )
+  if ( expoLocal.expo_Client !== 'WISE' ) {
+    badgePdf.addImage( qrData.value,
+      'PNG',
+      dim.h - dim.p,
+      dim.w - dim.imgH - dim.p,
+      dim.imgH,
+      dim.imgH,
+      'qr',
+      'FAST',
+      dim.rot )
+  }
   /*-| Add Logo |-*/
-  badgePdf.addImage( qrLogo.value,
-    'PNG',
-    dim.h - dim.p,
-    dim.p * 4,
-    dim.imgW,
-    dim.imgH,
-    'logo',
-    'FAST',
-    dim.rot )
-
+  if ( expoLocal.expo_Client !== 'WISE' ) {
+    badgePdf.addImage( qrLogo.value,
+      'PNG',
+      dim.h - dim.p,
+      dim.p * 4,
+      dim.imgW,
+      dim.imgH,
+      'logo',
+      'FAST',
+      dim.rot )
+  }
   setTimeout( () => {
     badgePdf.output( 'dataurlnewwindow' )
   }, 300 )

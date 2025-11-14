@@ -15,7 +15,8 @@
       {{ attendee.title }}
     </p>
   </div>
-  <div class="badge--images-container">
+  <div v-if="expoLocal.expo_Client !== 'WISE'"
+       class="badge--images-container">
     <QrCode
       :size="215"
       :url-value="attendee.id.toString()"
