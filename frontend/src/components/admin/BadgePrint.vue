@@ -28,7 +28,7 @@
         <button
           v-show="attendeeListSelected.length === 1"
           class="--success--invert --p-4"
-          @click="printBadge_Portrait3x4(attendeeListSelected[0])">
+          @click="badgeToPDF(attendeeListSelected[0])">
           Print Single
         </button>
         <router-link
@@ -124,7 +124,9 @@
         setup>
 import { useExpoLocalStore } from "@/stores.ts";
 import { getUrlHost } from "@/services/functions/UrlService.ts";
+import { limitNumberWithinRange } from "@/services/functions/mathService.js";
 import { jsPDF } from 'jspdf'
+import { scaleFont } from "@/services/functions/TextManipulationService.ts";
 import QrCode from '@/components/QrCode.vue'
 import html2canvas from 'html2canvas'
 import BadgeSingle from '@/components/BadgeSingle.vue'
@@ -301,7 +303,6 @@ async function printBadges() {
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const qrData = ref()
 const qrLogo = ref()
-const badgeTest = ref()
 
 async function select2Canvas( s, d ) {
   const selector = document.querySelector( s )
@@ -315,12 +316,14 @@ async function select2Canvas( s, d ) {
   } )
 }
 
-async function printBadge_Portrait3x4( a ) {
+const fontSize = ref()
+
+// TODO merge with code from BadgeCreate, then add to service file.
+async function badgeToPDF( a ) {
   console.log( attendeeListSelected.value )
   console.log( a.id )
   if ( expoLocal.expo_Client !== 'WISE' ) await select2Canvas( '#qr-code', qrData )
   if ( expoLocal.expo_Client !== 'WISE' ) await select2Canvas( '#badge-logo', qrLogo )
-  // await select2Canvas( '#badge-test', badgeTest )
 
   /*-| Store Badge Dimensions, Placement |-*/
   const dim = {
@@ -329,48 +332,49 @@ async function printBadge_Portrait3x4( a ) {
     p: 0.1875,
     imgW: 1.875,
     imgH: 1.125,
-    rot: 90
+    rot: 0
   }
   /*-| Declare Badge |-*/
   const badgePdf = new jsPDF( {
-    orientation: 'portrait',
+    orientation: 'landscape',
     unit: 'in',
     format: [ dim.w, dim.h ],
     putOnlyUsedFonts: true
   } )
 
-  /*-| Text |-*/
-  badgePdf.setFontSize( 20 )
-  badgePdf.addFont( 'ArialMT', 'Arial', 'normal' );
-  badgePdf.addFont( 'Arial-Black', 'Arial Black', 'normal' );
-  badgePdf.setFont( 'Arial' );
-  // badgePdf.text( a.contact_Employer, dim.p * 2, dim.w - dim.p, null, dim.rot )
-  badgePdf.text( a.contact_Employer, dim.p * 5, dim.w - dim.p, null, dim.rot )
-  badgePdf.setFont( 'Arial Black' );
-  badgePdf.setFontSize( 22 )
-  /*badgePdf.text( `${ a.name_First } ${ a.name_Last }`,
-    dim.p * 4,
+  /*-| Add Elements
+  ---+----+---+----+---+----+---+----+---*/
+  console.log( badgePdf.getFontList() )
+  badgePdf.setFont( 'Helvetica', 'normal' );
+  badgePdf.setFontSize( 18 )
+  // badgePdf.text( a.contact_Employer, dim.p * 2, dim.h - dim.p, null, dim.rot )
+  badgePdf.text(
+    a.contact_Employer,
     dim.w - dim.p,
-    dim.rot )*/
-  badgePdf.text( `${ a.name_First } ${ a.name_Last }`,
-    dim.p * 7.5,
-    dim.w - dim.p,
+    dim.p * 2,
+    { align: 'right' },
     dim.rot )
-  badgePdf.setFont( 'Arial' );
-  badgePdf.setFontSize( 20 )
-  // badgePdf.text( a.title, dim.p * 6, dim.w - dim.p, dim.rot )
-  badgePdf.text( a.title, dim.p * 10, dim.w - dim.p, dim.rot )
-
-  /*badgePdf.addImage(
-    badgeTest.value,
-    'PNG',
+  badgePdf.setFont( 'Helvetica', 'normal', 'bold' );
+  fontSize.value = scaleFont( a.name_First + a.name_Last, 400 )
+  badgePdf.setFontSize( fontSize.value )
+  /*badgePdf.text( `${ a.name_First } ${ a.name_Last }`,
+    dim.p,
     dim.h - dim.p,
-    dim.w - dim.imgH - dim.p,
-    dim.imgH,
-    dim.imgH,
-    'badge',
-    'FAST',
     dim.rot )*/
+  badgePdf.text(
+    `${ a.name_First } ${ a.name_Last }`,
+    dim.w / 2,
+    dim.h / 2,
+    { align: 'center' }
+  )
+  badgePdf.setFont( 'Helvetica', 'italic' );
+  badgePdf.setFontSize( 18 )
+  // badgePdf.text( a.title, dim.p * 6, dim.h - dim.p, dim.rot )
+  badgePdf.text(
+    a.title,
+    dim.w / 2,
+    dim.h / 2 + (dim.p * 2),
+    { align: 'center' } )
 
   /*-| Add QR Code |-*/
   if ( expoLocal.expo_Client !== 'WISE' ) {

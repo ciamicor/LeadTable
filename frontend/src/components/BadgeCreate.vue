@@ -178,7 +178,7 @@
       <button
         v-if="urlData.view === 'admin'"
         class="--secondary --flex-grow"
-        @click="printBadge_Portrait3x4(attendee)">
+        @click="badgeToPDF(attendee)">
         Print {{ attendee.name_First }}'s Badge
       </button>
       <button
@@ -208,6 +208,8 @@
 // TODO Convert to TS
 import { jsPDF } from 'jspdf'
 import html2canvas from 'html2canvas'
+import { scaleFont } from "@/services/functions/TextManipulationService.ts";
+import { limitNumberWithinRange } from "@/services/functions/mathService.js";
 import QrCode from '@/components/QrCode.vue'
 import { ref } from 'vue'
 import { createAttendee_Service } from '@/services/AttendeeDataService.ts'
@@ -307,7 +309,10 @@ function scaleFontSize( s, w = 4 ) {
   return (400 / (l * 40)) * 50
 }
 
-async function printBadge_Portrait3x4( a ) {
+const fontSize = ref()
+
+// TODO merge with code from BadgePrint, then add to service file.
+async function badgeToPDF( a ) {
   console.log( a.id )
   if ( expoLocal.expo_Client !== 'WISE' ) await select2Canvas( '#qr-code', qrData )
   if ( expoLocal.expo_Client !== 'WISE' ) await select2Canvas( '#badge-logo', qrLogo )
@@ -318,36 +323,48 @@ async function printBadge_Portrait3x4( a ) {
     p: 0.1875,
     imgW: 1.875,
     imgH: 1.125,
-    rot: 90
+    rot: 0
   }
   /*-| Declare Badge |-*/
   const badgePdf = new jsPDF( {
-    orientation: 'portrait',
+    orientation: 'landscape',
     unit: 'in',
-    format: [ dim.w, dim.h ]
+    format: [ dim.w, dim.h ],
+    putOnlyUsedFonts: true
   } )
 
-  /*-| Text |-*/
-  badgePdf.setFontSize( 20 )
-  badgePdf.addFont( 'ArialMT', 'Arial', 'normal' );
-  badgePdf.addFont( 'Arial-Black', 'Arial Black', 'normal' );
-  badgePdf.setFont( 'Arial' );
+  /*-| Add Elements
+  ---+----+---+----+---+----+---+----+---*/
+  console.log( badgePdf.getFontList() )
+  badgePdf.setFont( 'Helvetica', 'normal' );
+  badgePdf.setFontSize( 18 )
   // badgePdf.text( a.contact_Employer, dim.p * 2, dim.w - dim.p, null, dim.rot )
-  badgePdf.text( a.contact_Employer, dim.p * 5, dim.w - dim.p, null, dim.rot )
-  badgePdf.setFont( 'Arial Black' );
-  badgePdf.setFontSize( 22 )
+  badgePdf.text(
+    a.contact_Employer,
+    dim.w - dim.p,
+    dim.p * 2,
+    { align: 'right' },
+    dim.rot )
+  badgePdf.setFont( 'Helvetica', 'normal', 'bold' );
+  fontSize.value = scaleFont( a.name_First + a.name_Last, 400 )
+  badgePdf.setFontSize( fontSize.value )
   /*badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ),
     dim.p * 4,
     dim.w - dim.p,
     dim.rot )*/
-  badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ),
-    dim.p * 7.5,
-    dim.w - dim.p,
-    dim.rot )
-  badgePdf.setFont( 'Arial' );
-  badgePdf.setFontSize( 20 )
+  badgePdf.text(
+    `${ a.name_First } ${ a.name_Last }`,
+    dim.w / 2,
+    dim.h / 2,
+    { align: 'center' } )
+  badgePdf.setFont( 'Helvetica', 'italic' );
+  badgePdf.setFontSize( 18 )
   // badgePdf.text( toTitleCase_Service( a.title ), dim.p * 6, dim.w - dim.p, dim.rot )
-  badgePdf.text( toTitleCase_Service( a.title ), dim.p * 10, dim.w - dim.p, dim.rot )
+  badgePdf.text(
+    a.title,
+    dim.w / 2,
+    dim.h / 2 + (dim.p * 2),
+    { align: 'center' } )
 
   /*-| Add QR Code |-*/
   if ( expoLocal.expo_Client !== 'WISE' ) {

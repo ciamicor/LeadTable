@@ -38,14 +38,11 @@
   //outline:               1px dashed black;
   & .badge-wrap {
     display:            grid;
-    // WISE grid-template-rows: 1fr 1fr;
-    grid-template-rows: 1fr;
-    align-content:      center; // WISE
-    align-items:        center; // WISE
+    grid-template-rows: 1fr 1fr;
     /*width:              4in;
     height:             3in;*/
     padding:            0.165in 0.165in 0.325in;
-    outline:            1px dashed $grey-1;
+    //outline:            1px dashed $grey-4;
     & .--attendee-info-container {
       display:            grid;
       grid-template-rows: repeat(3, min-content );
@@ -79,8 +76,7 @@
     & .badge--images-container {
       display:               grid;
       grid-template-columns: .65fr 1fr;
-      // WISE grid-template-rows: 1.175in;
-      grid-template-rows: 0;
+      grid-template-rows: 1.175in;
       place-content:         center;
       place-items:           center start;
       .badge--qr {

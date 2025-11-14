@@ -1,5 +1,7 @@
 // TODO - function should more properly format name casing
 //  including strings like 'McDonald', 'Ph.D.', etc.
+import { limitNumberWithinRange } from "@/services/functions/mathService.ts";
+
 export function titleCase(w: string): string {
   const list: string[] = w.split(' ')
   let r: string = ''
@@ -33,4 +35,14 @@ export function toTitleCase_Service(str: string): string {
     /\w\S*/g,
     (text: String) => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
   )
+}
+
+/*-| Scaling
+---+----+---+----+---+----+---+----+---*/
+export function scaleFont(phrase: string, docWidth: number) {
+  const c = phrase.length
+  const cw = (docWidth / c) + 2
+  console.log(c)
+  console.log(cw)
+  return limitNumberWithinRange(cw, 18, 30)
 }
