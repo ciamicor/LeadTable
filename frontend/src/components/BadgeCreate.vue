@@ -328,9 +328,13 @@ async function printBadge_Portrait3x4( a ) {
   } )
 
   /*-| Text |-*/
-  badgePdf.setFontSize( 18 )
+  badgePdf.setFontSize( 20 )
+  badgePdf.addFont( 'ArialMT', 'Arial', 'normal' );
+  badgePdf.addFont( 'Arial-Black', 'Arial Black', 'normal' );
+  badgePdf.setFont( 'Arial' );
   // badgePdf.text( a.contact_Employer, dim.p * 2, dim.w - dim.p, null, dim.rot )
   badgePdf.text( a.contact_Employer, dim.p * 5, dim.w - dim.p, null, dim.rot )
+  badgePdf.setFont( 'Arial Black' );
   badgePdf.setFontSize( 22 )
   /*badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ),
     dim.p * 4,
@@ -340,7 +344,8 @@ async function printBadge_Portrait3x4( a ) {
     dim.p * 7.5,
     dim.w - dim.p,
     dim.rot )
-  badgePdf.setFontSize( 18 )
+  badgePdf.setFont( 'Arial' );
+  badgePdf.setFontSize( 20 )
   // badgePdf.text( toTitleCase_Service( a.title ), dim.p * 6, dim.w - dim.p, dim.rot )
   badgePdf.text( toTitleCase_Service( a.title ), dim.p * 10, dim.w - dim.p, dim.rot )
 
