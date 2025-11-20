@@ -42,9 +42,8 @@
       <div v-if="exhibitorLocal.name"
            class="--flex-grow-1">
         <p>
-          {{ exhibitorLocal.expo_Client }}
-          {{ exhibitorLocal.expo_Year }}
-          Supplier's Day
+          {{ expoLocal.clientFull }}
+          {{ expoLocal.name }}
         </p>
         <h2>{{ exhibitorLocal.name }}</h2>
       </div>

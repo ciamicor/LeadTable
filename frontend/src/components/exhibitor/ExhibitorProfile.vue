@@ -10,7 +10,10 @@
     class="row --place-content-center --place-items-center">
     <div
       class="--p-v-20 col-12-300 col-10-500 col-6-900 --flex-grow">
-      <h4 class="--m-0">{{ expoLocal.expo_Client }} {{ expoLocal.expo_Year }} Supplier's Day</h4>
+      <h4 class="--m-0">
+        {{ expoLocal.clientFull }}
+        {{ expoLocal.name }}
+      </h4>
       <h1>Exhibitor Login</h1>
       <!--      <p>If you've already purchased lead retrieval, login here to access it.</p>
             <p>To purchase lead retrieval, login to your ExpoFP Exhibitor profile here, and add it as a

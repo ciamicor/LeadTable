@@ -19,6 +19,12 @@ Expo.init( {
         type: DataTypes.STRING,
         primaryKey: true
     },
+    name: {
+        type: DataTypes.STRING
+    },
+    clientFull: {
+        type: DataTypes.STRING
+    },
     start_Date: {
         type: DataTypes.DATE
     },

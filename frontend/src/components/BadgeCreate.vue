@@ -8,9 +8,8 @@
     >
       <h4 v-if="expoLocal.expo_Client !== 'WISE'"
           class="--m-0">
-        {{ expoLocal.expo_Client }}
-        {{ expoLocal.expo_Year }}
-        Suppliers' Day
+        {{ expoLocal.clientFull }}
+        {{ expoLocal.name }}
       </h4>
       <h1 id="attendee-reg">{{
           expoLocal.expo_Client === 'WISE' ? 'WISE Sunset Reception' : 'Badge'

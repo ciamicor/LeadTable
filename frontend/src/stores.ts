@@ -22,6 +22,8 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
   const active = ref(false)
   const start_Date = ref(null)
   const expo_Client = ref('')
+  const clientFull = ref('')
+  const name = ref('')
   const expo_Year = ref(0)
   const expoFp_Id = ref(0)
   const logoUrl_Color = ref('')
@@ -32,6 +34,8 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
     active.value = false
     start_Date.value = null
     expo_Client.value = ''
+    clientFull.value = ''
+    name.value = ''
     expo_Year.value = 0
     expoFp_Id.value = 0
     logoUrl_Color.value = ''
@@ -43,6 +47,8 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
     active,
     start_Date,
     expo_Client,
+    clientFull,
+    name,
     expo_Year,
     expoFp_Id,
     logoUrl_Color,
