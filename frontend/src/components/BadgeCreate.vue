@@ -199,7 +199,7 @@
         </label>
       </div>
       <button v-if="!showQr"
-              class="--success --m-t-12"
+              class="--success --m-t-12 --m-b-24-clamp"
               type="submit"
       >
         Submit Registration
