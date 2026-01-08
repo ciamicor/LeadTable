@@ -12,8 +12,13 @@
         {{ expoLocal.clientFull }}
         {{ expoLocal.name }}
       </h4>
-      <h1 id="attendee-reg">Badge Registration</h1>
-      <p>Register to attend the expo or create booth personnel badges.</p>
+      <h1 id="attendee-reg">{{ expoLocal.name }} Registration</h1>
+      <!-- Remove Teamworks TEMP fix     -->
+      <p v-if="expoLocal.expo_Client.toLowerCase() === 'mwscc'">
+        Register to attend our seminars, expo, social night, and volunteering
+      </p>
+      <p v-else>Register to attend the expo or create booth personnel badges.</p>
+
       <div class="row-12-300 --no-space">
         <label>
           First Name
@@ -209,8 +214,8 @@
     <div v-show="showQr"
          class="row-10-300 --justify-content-center --align-content-start">
       <p class="--flex-basis-100 --place-self-center">
-        Thanks for registering for the {{ expoLocal.expo_Year }}
-        {{ expoLocal.expo_Client }} Suppliers' Day, {{ attendee.name_First }}.
+        Thanks for registering for {{ expoLocal.expo_Client }}
+        {{ expoLocal.name }}, {{ attendee.name_First }}!
       </p>
       <button
         v-if="urlData.view === 'admin'"

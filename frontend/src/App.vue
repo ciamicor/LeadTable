@@ -117,16 +117,7 @@ async function fetchData( id ) {
 // https://router.vuejs.org/guide/advanced/data-fetching.html
 
 onBeforeMount( async () => {
-  fetchData()
-  /*console.log( "App mounting!" )
-  await checkLoginState()
-  let url = getUrl_ClientYear()
-  expoLocal.$patch( {
-    expo_Client: url[0],
-    expo_Year: url[1]
-  } )
-  await getExpo_Service( url.client, url.year, expoLocal )
-  console.log( 'Expo is: ', expoLocal )*/
+  await fetchData()
   /*if ( sessionStore.logged_In === true ) {
     await checkExpoMatch()
   }*/
