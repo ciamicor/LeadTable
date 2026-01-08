@@ -4,22 +4,23 @@ require( '@dotenvx/dotenvx' ).config()
 /*-| Init DB |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 const Sequelize = require( './config/config' )
-const {
+/*const {
     Lead,
     Company,
     Expo,
     Attendee,
-    uploadAttendee
-} = require( './models' )
+    uploadAttendee,
+    CustomField
+} = require( './models' )*/
 
 // Connect to the database
-const { DataTypes } = require( 'sequelize' )
+/*const { DataTypes } = require( 'sequelize' )*/
+
 Sequelize.authenticate()
     .then( () => console.log( `Database ${ process.env.DB_NAME } connected` ) )
     .catch( ( err ) => console.error( 'Error connecting to database:', err ) )
 Sequelize.sync( { /*force: true*/ } )
     .then( async () => {
-        /*await initPlaceholdData()*/
     } )
 //
 //
@@ -44,6 +45,7 @@ const attendeeRoutes = require( './routes/attendee.routes' )
 const companyRoutes = require( './routes/company.routes' )
 const uploadRoutes = require( './routes/uploadAttendee.routes' )
 const expoRoutes = require( './routes/expo.routes' )
+const customFieldRoutes = require( './routes/customField.routes' )
 
 const PORT = process.env.PORT || 8080
 const HOST = process.env.HOST || 'localhost'
@@ -54,6 +56,7 @@ app.use( '/api/company', companyRoutes )
 app.use( '/api/attendee', attendeeRoutes )
 app.use( '/api/upload', uploadRoutes )
 app.use( '/api/expo', expoRoutes )
+app.use( '/api/customfield', customFieldRoutes )
 
 app.use( express.static( path.join( __dirname, frontend_root ) ) )
 app.get( '*', ( req, res ) => {

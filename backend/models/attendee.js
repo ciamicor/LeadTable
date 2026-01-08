@@ -28,8 +28,9 @@ Attendee.init( {
     address_State: DataTypes.STRING,
     address_Zip: DataTypes.CHAR,
     address_Country: DataTypes.STRING,
-    reg_Type: DataTypes.STRING,
-    tech_Sem: DataTypes.STRING,
+    regType: DataTypes.STRING,
+    techSessions: DataTypes.JSON,
+    customFields: DataTypes.JSON,
     upload_Id: DataTypes.INTEGER,
 }, {
     sequelize,

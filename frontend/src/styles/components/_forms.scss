@@ -49,19 +49,61 @@ input, select, textarea {
   }
 }
 
-/*-| Radio Buttons |-*/
+/*-| Fieldsets |-*/
 /*---+----+---+----+---+----+---+----+---*/
 fieldset {
   display:   flex;
   flex-flow: row wrap;
   gap:       $sp-4;
-  div:has( > input[type="radio"]) {
-    input[type="radio"] {
-      width:  $sp-8;
-      height: $sp-8;
+  color:     $grey-5;
+  font-size: $font-xs;
+  margin:    $sp-8 0 0 0;
+  padding:   0 $sp-2;
+  border:    none;
+  &:not(.lead-rating) {
+    flex-flow: column nowrap;
+  }
+  legend {
+    margin-block-end: $sp-5;
+    &:has( + .subtitle) {
+      margin-block-end: $sp-2;
     }
   }
+  .subtitle {
+    color:            $grey-6;
+    font-size:        $font-xxs;
+    margin-block-end: $sp-2;
+  }
+  /*-| Lead Ratings View |-*/
+  &.lead-rating div:has( > input[type="radio"]) {
+    input {
+      width:  $sp-7;
+      height: $sp-7;
+    }
+  }
+  /*-| Radio, Checkbox |-*/
+  div:has( > input[type="checkbox"]),
+  &:not(.lead-rating) div:has( > input[type="radio"]) {
+    display:               grid;
+    grid-template-columns: min-content 1fr;
+    flex:                  1 1 35%;
+    place-content:         center stretch;
+    place-items:           center stretch;
+    padding:               $sp-2;
+    input {
+      width:  $sp-7;
+      height: $sp-7;
+    }
+    label {
+      color:     $grey-2;
+      min-width: max-content;
+      margin:    0;
+    }
+  }
+
 }
+
+/*-| Checkbox |-*/
 
 /*-| Search |-*/
 /*---+----+---+----+---+----+---+----+---*/

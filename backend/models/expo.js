@@ -15,8 +15,13 @@ class Expo extends Model {
 
 Expo.init( {
     active: DataTypes.BOOLEAN,
+    id: DataTypes.INTEGER,
     expo_Client: {
         type: DataTypes.STRING,
+        primaryKey: true
+    },
+    expo_Year: {
+        type: DataTypes.INTEGER,
         primaryKey: true
     },
     name: {
@@ -27,10 +32,6 @@ Expo.init( {
     },
     start_Date: {
         type: DataTypes.DATE
-    },
-    expo_Year: {
-        type: DataTypes.INTEGER,
-        primaryKey: true
     },
     expoFp_Id: {
         type: DataTypes.INTEGER

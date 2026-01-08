@@ -1,6 +1,7 @@
 <template>
-
-  <div class="row-12-300 --gap-24 --place-content-center --p-4">
+  <div
+    class="row-12-300 --gap-24 --place-content-center --p-4"
+  >
     <form
       v-show="!showQr"
       class="col-12-300 col-10-600 col-8-900 --p-b-0 --p-t-12"
@@ -11,12 +12,8 @@
         {{ expoLocal.clientFull }}
         {{ expoLocal.name }}
       </h4>
-      <h1 id="attendee-reg">{{
-          expoLocal.expo_Client === 'WISE' ? 'WISE Sunset Reception' : 'Badge'
-                            }}
-                            Registration</h1>
-      <p v-if="expoLocal.expo_Client !== 'WISE'">Register to attend the expo or create booth
-                                                 personnel badges.</p>
+      <h1 id="attendee-reg">Badge Registration</h1>
+      <p>Register to attend the expo or create booth personnel badges.</p>
       <div class="row-12-300 --no-space">
         <label>
           First Name
@@ -135,10 +132,10 @@
           </select>
         </label>
       </div>
-      <label v-if="expoLocal.expo_Client !== 'WISE'">
+      <label>
         Choose Registration Type
         <select
-          v-model="attendee.reg_Type"
+          v-model="attendee.regType"
           name="reg-type"
           required
         >
@@ -147,20 +144,60 @@
                   value="">Select Type
           </option>
           <option value="Attendee">Attendee</option>
-          <option value="Exhibitor">Exhibitor</option>
+          <option value="Exhibitor">Exhibitor</option><!---->
           <option value="Both">Both</option>
         </select>
       </label>
-      <!--      <label>
-              Choose Tech Seminars
-              <select
-                v-model="attendee.tech_Sem"
-                name="reg-type"
-              >
-                <option value="Attending">Yes</option>
-                <option value="">No</option>
-              </select>
-            </label>-->
+      <div v-for="(field, key) in customFields"
+           :key>
+        <!-- If checkbox -->
+        <fieldset v-if="field.type === 'checkbox'">
+          <legend>{{ field.title }}</legend>
+          <span v-if="field.subtitle"
+                class="subtitle">{{ field.subtitle }}</span>
+          <div v-for="(options, key) in field.options"
+               :key>
+            <input
+              :id="options.id"
+              v-model="attendee.customFields[field.label + key]"
+              :name="field.label"
+              :true-value="options.value"
+              :type="field.type"/>
+            <label :for="options.id">
+              {{ options.value }}
+            </label>
+          </div>
+        </fieldset>
+        <!-- If radio -->
+        <fieldset v-else-if="field.type === 'radio'">
+          <legend>{{ field.title }}</legend>
+          <span v-if="field.subtitle"
+                class="subtitle">{{ field.subtitle }}</span>
+          <div v-for="(options, key) in field.options"
+               :key>
+            <input
+              :id="options.id"
+              v-model="attendee.customFields[field.label + key]"
+              :name="field.label"
+              :true-value="options.value"
+              :type="field.type"/>
+            <label :for="options.id">
+              {{ options.value }}
+            </label>
+          </div>
+        </fieldset>
+        <!-- If not checkbox or radio -->
+        <label v-else
+               :for="field.label">
+          {{ field.title }}
+          <span v-if="field.subtitle"
+                class="subtitle">{{ field.subtitle }}</span>
+          <input
+            v-model="attendee.customFields[field.label]"
+            :type="field.type">
+          <span>{{ field.subtitle }}</span>
+        </label>
+      </div>
       <button v-if="!showQr"
               class="--success --m-t-12"
               type="submit"
@@ -168,6 +205,7 @@
         Submit Registration
       </button>
     </form>
+
     <div v-show="showQr"
          class="row-10-300 --justify-content-center --align-content-start">
       <p class="--flex-basis-100 --place-self-center">
@@ -180,11 +218,21 @@
         @click="badgeToPDF(attendee)">
         Print {{ attendee.name_First }}'s Badge
       </button>
+
+      <!-- MWSCC TEMP PAYMENT REMOVE -->
+      <a
+        v-if="attendee.customFields.events3 === 'Social (6:00 PM - 10:00 PM) - $190'"
+        class="button --success--invert flex-grow"
+        href="https://www.paypal.com/ncp/payment/P29W8W5HR585Q">
+        Continue to Social Payment!
+      </a>
       <button
+        v-else
         class="--success --flex-grow"
         @click="resetForm">
         Register Another Badge
       </button>
+
     </div>
     <div class="badges-page-container">
       <img id="badge-logo"
@@ -210,12 +258,13 @@ import html2canvas from 'html2canvas'
 import { scaleFont } from "@/services/functions/TextManipulationService.ts";
 import { limitNumberWithinRange } from "@/services/functions/mathService.js";
 import QrCode from '@/components/QrCode.vue'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+import { useRoute } from "vue-router";
 import { createAttendee_Service } from '@/services/AttendeeDataService.ts'
+import { getCustomFields_Service } from "@/services/CustomFieldsDataService.js";
 import { useExhibitorLocalStore, useExpoLocalStore } from '@/stores.js'
 import { toTitleCase_Service } from '@/services/functions/TextManipulationService.ts'
 import { getUrlHost, getUrl_ClientYear } from "@/services/functions/UrlService.ts";
-
 import { countries } from "@/services/addresses/AddressForm_Countries.js";
 
 const urlData = ref( getUrl_ClientYear() )
@@ -228,9 +277,17 @@ function getImageUrl( name ) {
     .toLowerCase() }/${ name }.jpeg`, import.meta.url ).href
 }
 
-/*-| Print Component |-*/
-/*-| Attendees |-*/
+const customFields = ref( {} )
+
+async function getCustomFields() {
+  customFields.value = await getCustomFields_Service( expoLocal.eventId )
+}
+
+getCustomFields()
+
+/*-| Attendee Info |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+
 const showQr = ref( false )
 const attendeeId = ref()
 const attendee = ref( {
@@ -248,8 +305,9 @@ const attendee = ref( {
   address_Zip: '',
   address_Country: '',
   title: '',
-  reg_Type: '',
-  tech_Sem: ''
+  regType: '',
+  techSessions: '',
+  customFields: {}
 } )
 
 async function createAttendee( a ) {
@@ -276,8 +334,9 @@ function resetForm() {
     address_Zip: '',
     address_Country: '',
     title: '',
-    reg_Type: '',
-    tech_Sem: ''
+    regType: '',
+    techSessions: '',
+    customFields: ''
   }
 }
 

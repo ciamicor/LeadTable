@@ -32,8 +32,9 @@ exports.createAttendee = async ( req, res ) => {
         address_State,
         address_Zip,
         address_Country,
-        reg_Type,
-        tech_Sem,
+        regType,
+        techSessions,
+        customFields,
         upload_Id
     } = req.body
     try {
@@ -52,8 +53,9 @@ exports.createAttendee = async ( req, res ) => {
             address_State,
             address_Zip,
             address_Country,
-            reg_Type,
-            tech_Sem,
+            regType,
+            techSessions,
+            customFields,
             upload_Id
         } )
         res.status( 201 ).json( newAttendee )
@@ -92,9 +94,10 @@ exports.createAttendeeBulk = async ( req, res ) => {
         address_State,
         address_Zip,
         address_Country,
-        reg_Type,
-        tech_Sem,
-        upload_Id
+        regType,
+        techSessions,
+        customFields,
+        upload_Id,
     } = req.body
     try {
         const bulkAttendees = await Attendee.bulkCreate( {
@@ -112,9 +115,10 @@ exports.createAttendeeBulk = async ( req, res ) => {
             address_State,
             address_Zip,
             address_Country,
-            reg_Type,
-            tech_Sem,
-            upload_Id
+            regType,
+            techSessions,
+            customFields,
+            upload_Id,
         } )
         res.status( 201 ).json( bulkAttendees )
     } catch ( error ) {
@@ -245,8 +249,9 @@ exports.updateAttendee = async ( req, res ) => {
         address_State,
         address_Zip,
         address_Country,
-        reg_Type,
-        tech_Sem
+        regType,
+        techSessions,
+        customFields,
     } = req.body
     try {
         const attendee = await Attendee.findByPk( id )
@@ -263,8 +268,9 @@ exports.updateAttendee = async ( req, res ) => {
             attendee.address_State = address_State
             attendee.address_Zip = address_Zip
             attendee.address_Country = address_Country
-            attendee.reg_Type = reg_Type
-            attendee.tech_Sem = tech_Sem
+            attendee.regType = regType
+            attendee.techSessions = techSessions
+            attendee.customFields = customFields
             await attendee.save()
             res.json( attendee )
         } else {

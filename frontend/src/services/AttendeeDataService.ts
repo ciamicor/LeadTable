@@ -55,8 +55,9 @@ async function createAttendee_Service(attendee: any, client: any, year: any, upl
     address_Zip: attendee.address_Zip, // typeof undefined ? '' : attendee.address_Zip.trim(),
     address_Country: attendee.address_Country, // attendee.address_Country,
     title: attendee.title, // typeof undefined ? '' : attendee.title.trim(),
-    reg_Type: attendee.reg_Type, // typeof undefined ? '' : attendee.reg_Type,
-    tech_Sem: attendee.tech_Sem, // typeof undefined ? '' : attendee.tech_Sem,
+    regType: attendee.regType, // typeof undefined ? '' : attendee.regType,
+    techSessions: attendee.techSessions, // typeof undefined ? '' : attendee.techSessions,
+    customFields: attendee.customFields,
     upload_Id: upload
   }
   console.log(data)
@@ -90,8 +91,9 @@ async function updateAttendee_Service(id: any, attendee: any) {
     address_Zip: attendee.address_Zip,
     address_Country: attendee.address_Country,
     title: attendee.title,
-    reg_Type: attendee.reg_Type,
-    tech_Sem: attendee.tech_Sem,
+    regType: attendee.regType,
+    techSessions: attendee.techSessions,
+    customFields: attendee.customFields,
   }
   console.log("Update Attendee addresses: ", data)
   try {

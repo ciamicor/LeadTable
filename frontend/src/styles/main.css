@@ -6818,18 +6818,61 @@ input:focus, input:focus-visible, select:focus, select:focus-visible, textarea:f
   box-shadow: 0 0 8px 0 var(--color-secondary-10), inset 0 0 8px 0 var(--color-secondary-10);
 }
 
-/*-| Radio Buttons |-*/
+/*-| Fieldsets |-*/
 /*---+----+---+----+---+----+---+----+---*/
 fieldset {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
+  color: var(--grey-5);
+  font-size: 16px;
+  margin: 24px 0 0 0;
+  padding: 0 4px;
+  border: none;
 }
-fieldset div:has(> input[type=radio]) input[type=radio] {
-  width: 24px;
-  height: 24px;
+fieldset:not(.lead-rating) {
+  flex-flow: column nowrap;
+}
+fieldset legend {
+  margin-block-end: 12px;
+}
+fieldset legend:has(+ .subtitle) {
+  margin-block-end: 4px;
+}
+fieldset .subtitle {
+  color: var(--grey-6);
+  font-size: 14px;
+  margin-block-end: 4px;
+}
+fieldset {
+  /*-| Lead Ratings View |-*/
+}
+fieldset.lead-rating div:has(> input[type=radio]) input {
+  width: 20px;
+  height: 20px;
+}
+fieldset {
+  /*-| Radio, Checkbox |-*/
+}
+fieldset div:has(> input[type=checkbox]), fieldset:not(.lead-rating) div:has(> input[type=radio]) {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  flex: 1 1 35%;
+  place-content: center stretch;
+  place-items: center stretch;
+  padding: 4px;
+}
+fieldset div:has(> input[type=checkbox]) input, fieldset:not(.lead-rating) div:has(> input[type=radio]) input {
+  width: 20px;
+  height: 20px;
+}
+fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:has(> input[type=radio]) label {
+  color: var(--grey-2);
+  min-width: max-content;
+  margin: 0;
 }
 
+/*-| Checkbox |-*/
 /*-| Search |-*/
 /*---+----+---+----+---+----+---+----+---*/
 .search-wrap {

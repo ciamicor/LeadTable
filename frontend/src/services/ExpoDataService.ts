@@ -64,6 +64,7 @@ async function getExpo_Service(client: any, year: any, expoObject: any) {
     let e = await expoService.getExpo(client, year)
     console.log("Found Expo: ", e.data)
     expoObject.active = e.data.active
+    expoObject.eventId = e.data.id
     expoObject.start_Date = e.data.start_Date
     expoObject.expo_Client = e.data.expo_Client
     expoObject.clientFull = e.data.clientFull

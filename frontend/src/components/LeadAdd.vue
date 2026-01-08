@@ -44,7 +44,7 @@
       <div class="--m-b-2 --m-l-4">{{ attendee.contact_Employer }}</div>
       <span class="--color-grey-6">Title: </span>
       <div class="--m-b-2 --m-l-4">{{ attendee.title }}</div>
-      <span class="--color-grey-6">Address: </span>
+      <span class="--color-grey-6">Address<!---->: </span>
       <div class="--m-l-4">
         <div>{{ `${ attendee.address_Line1 }, ${ attendee.address_Line2 }` }}</div>
         <div>{{
@@ -56,7 +56,7 @@
 
       <form action=""
             class="col-12-300">
-        <fieldset class="--m-t-8">
+        <fieldset class="--m-t-8 lead-rating">
           <legend>Rating</legend>
           <div
             v-for="(rating, index) in ratings"
@@ -146,8 +146,8 @@ let attendee = ref(
     contact_Phone: '',
     contact_Employer: '',
     title: '',
-    reg_Type: '',
-    tech_Sem: '',
+    regType: '',
+    techSessions: '',
     address_Line1: '',
     address_Line2: '',
     address_City: '',

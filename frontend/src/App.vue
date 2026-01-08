@@ -1,7 +1,12 @@
 <template>
-  <div class="view-mask">
+  <div
+    class="view-mask">
     <div class="view-container">
-      <router-view/>
+      <div v-if="loading"
+           class="--place-self-center --p-v-24">
+        loading...
+      </div>
+      <router-view v-if="!loading"/>
     </div>
   </div>
   <nav v-if="expoLocal.expo_Client !== 'WISE' && route.path !== '/'"
@@ -67,7 +72,7 @@
 <script
   setup>
 import { db } from '@/db.js'
-import { onBeforeMount } from 'vue'
+import { onBeforeMount, ref } from 'vue'
 import { useExpoLocalStore, useExhibitorLocalStore, useSessionStore } from '@/stores.js'
 import { getUrl_ClientYear } from "@/services/functions/UrlService.ts";
 import { getExpo_Service } from "@/services/ExpoDataService.js";
@@ -85,8 +90,35 @@ const expoLocal = useExpoLocalStore()
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Hooks |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+
+const loading = ref( false )
+const error = ref( null )
+
+async function fetchData( id ) {
+  loading.value = true
+
+  try {
+    await checkLoginState()
+    let url = getUrl_ClientYear()
+    expoLocal.$patch( {
+      expo_Client: url[0],
+      expo_Year: url[1]
+    } )
+    await getExpo_Service( url.client, url.year, expoLocal )
+    console.log( 'Expo is: ', expoLocal )
+  } catch ( err ) {
+    error.value = err.toString()
+  } finally {
+    loading.value = false
+  }
+}
+
+// TODO: improve with Vue Router data fetching?
+// https://router.vuejs.org/guide/advanced/data-fetching.html
+
 onBeforeMount( async () => {
-  console.log( "App mounting!" )
+  fetchData()
+  /*console.log( "App mounting!" )
   await checkLoginState()
   let url = getUrl_ClientYear()
   expoLocal.$patch( {
@@ -94,7 +126,7 @@ onBeforeMount( async () => {
     expo_Year: url[1]
   } )
   await getExpo_Service( url.client, url.year, expoLocal )
-  console.log( 'Expo is: ', expoLocal )
+  console.log( 'Expo is: ', expoLocal )*/
   /*if ( sessionStore.logged_In === true ) {
     await checkExpoMatch()
   }*/
