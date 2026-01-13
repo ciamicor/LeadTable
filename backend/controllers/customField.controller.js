@@ -1,8 +1,8 @@
-const { CustomField } = require( '../models' )
-const { Op } = require( 'sequelize' );
+import { CustomField } from "../models/index.js"
+import { Op } from 'sequelize';
 
 // Get Custom Fields by Event
-exports.getCustomFields = async ( req, res ) => {
+export const getCustomFields = async ( req, res ) => {
     const eId = req.params.eventId
     console.log( eId )
     try {

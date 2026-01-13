@@ -1,6 +1,7 @@
-const express = require( 'express' )
+import express from 'express';
+
 const router = express.Router()
-const uploadAttendeeController = require( '../controllers/uploadAttendee.controller' )
+import * as uploadAttendeeController from '../controllers/uploadAttendee.controller.js'
 
 // Route to create an Upload
 router.post( '/', uploadAttendeeController.createUpload )
@@ -11,4 +12,4 @@ router.get( '/client/:client', uploadAttendeeController.getAllAttendeeUploads_Cl
 // Route to get an Upload by ID
 router.get( '/:id', uploadAttendeeController.getAttendeeUpload )
 
-module.exports = router
+export default router

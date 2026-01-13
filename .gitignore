@@ -5,7 +5,10 @@
 /backend/.env
 /backend/package-lock.json
 /frontend/package-lock.json
-/frontend/src/assets
+/frontend/src/assets/
+
+**/node_modules/
+.env*
 
 ## Font
 *.ttf     -text diff

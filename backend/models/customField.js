@@ -1,6 +1,6 @@
 'use strict'
-const { Model, DataTypes } = require( 'sequelize' )
-const sequelize = require( '../config/config' )
+import { Model, DataTypes } from "sequelize";
+import sequelize from "../config/config.js";
 
 class CustomField extends Model {
     /**
@@ -22,6 +22,7 @@ CustomField.init( {
         options: DataTypes.JSON,
         htmlTag: DataTypes.STRING,
         type: DataTypes.STRING,
+        required: DataTypes.BOOLEAN,
         eventYear: DataTypes.INTEGER,
         eventClient: DataTypes.STRING,
     },
@@ -30,4 +31,4 @@ CustomField.init( {
         modelName: 'CustomField'
     } )
 
-module.exports = CustomField
+export default CustomField

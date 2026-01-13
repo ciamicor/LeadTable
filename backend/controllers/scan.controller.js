@@ -1,7 +1,7 @@
-const { Scan, Lead } = require( '../models' )
+import { Scan } from "../models/index.js"
 
 // Get all scans
-exports.getAllScans = async ( req, res ) => {
+export const getAllScans = async ( req, res ) => {
     try {
         const scans = await Scan.findAll()
         res.json( scans )
@@ -11,7 +11,7 @@ exports.getAllScans = async ( req, res ) => {
 }
 
 // Get a company by ID
-exports.getScan = async ( req, res ) => {
+export const getScan = async ( req, res ) => {
     const id = req.params.id
     try {
         const scan = await Scan.findByPk( id )
@@ -26,7 +26,7 @@ exports.getScan = async ( req, res ) => {
 }
 
 // Controller method to create a new Scan
-exports.createScan = async ( req, res ) => {
+export const createScan = async ( req, res ) => {
     const { expo_Year, company_Id, lead_Id, lead_Score, company_Comments } = req.body
     try {
         const newCompany = await Scan.create( {

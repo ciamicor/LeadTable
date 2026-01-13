@@ -1,8 +1,9 @@
-const express = require( 'express' )
+import express from 'express';
+
 const router = express.Router()
-const customField = require( '../controllers/customField.controller' )
+import * as customField from '../controllers/customField.controller.js'
 
 // Route to get custom fields by event id
 router.get( '/event/:eventId', customField.getCustomFields )
 
-module.exports = router
+export default router

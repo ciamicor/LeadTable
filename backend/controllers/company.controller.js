@@ -1,7 +1,8 @@
-const { Company } = require( '../models' )
+import { Company } from "../models/index.js"
+import { Op } from 'sequelize';
 
 // Controller method to create a new company
-exports.createCompany = async ( req, res ) => {
+export const createCompany = async ( req, res ) => {
     const {
         id,
         login_Url,
@@ -30,7 +31,7 @@ exports.createCompany = async ( req, res ) => {
 }
 
 // Get all Companies
-exports.getAllCompanies = async ( req, res ) => {
+export const getAllCompanies = async ( req, res ) => {
     try {
         const companies = await Company.findAll()
         res.json( companies )
@@ -44,7 +45,7 @@ exports.getAllCompanies = async ( req, res ) => {
 }
 
 // Get a company by ID
-exports.getCompanyById = async ( req, res ) => {
+export const getCompanyById = async ( req, res ) => {
     const id = req.params.id
     try {
         const company = await Company.findByPk( id )
@@ -63,7 +64,7 @@ exports.getCompanyById = async ( req, res ) => {
 }
 
 // Controller method to update Lead Retrieval Status
-exports.updateCompanyLeadRet = async ( req, res ) => {
+export const updateCompanyLeadRet = async ( req, res ) => {
     const id = req.params.id
     const { lead_Ret } = req.body
     try {

@@ -1,6 +1,7 @@
-const express = require( 'express' );
+import express from 'express';
+
 const router = express.Router();
-const leadController = require( '../controllers/lead.controller' );
+import * as leadController from '../controllers/lead.controller.js'
 
 // Route to create a new lead
 router.post( '/', leadController.createLead );
@@ -20,4 +21,4 @@ router.put( '/:id', leadController.updateLead );
 // Route to delete a lead by ID
 router.delete( '/:id', leadController.deleteLead );
 
-module.exports = router;
+export default router;

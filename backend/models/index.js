@@ -1,12 +1,12 @@
-const Expo = require( './expo' )
-const Lead = require( './lead' )
-const Company = require( './company' )
-const Scan = require( './scan' )
-const Attendee = require( './attendee' )
-const uploadAttendee = require( './uploadAttendee' )
-const CustomField = require( './customField' )
+import Expo from './expo.js'
+import Lead from './lead.js'
+import Company from './company.js'
+import Scan from './scan.js'
+import Attendee from './attendee.js'
+import uploadAttendee from './uploadAttendee.js'
+import CustomField from './customField.js'
 
-module.exports = {
+export {
     Scan,
     Lead,
     Company,

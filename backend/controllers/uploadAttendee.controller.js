@@ -1,7 +1,8 @@
-const { uploadAttendee } = require( '../models' )
-const { Op } = require( "sequelize" );
+import { uploadAttendee } from "../models/index.js"
+import { Op } from 'sequelize';
+
 // Controller method to create a new attendee
-exports.createUpload = async ( req, res ) => {
+export const createUpload = async ( req, res ) => {
     const {
         expo_Year,
         expo_Client,
@@ -32,7 +33,7 @@ exports.createUpload = async ( req, res ) => {
 }
 
 // Get All Uploads
-exports.getAllAttendeeUploads_Client = async ( req, res ) => {
+export const getAllAttendeeUploads_Client = async ( req, res ) => {
     const client = req.params.client
     try {
         const uploads = await uploadAttendee.findAll(
@@ -57,7 +58,7 @@ exports.getAllAttendeeUploads_Client = async ( req, res ) => {
 }
 
 // Get Upload
-exports.getAttendeeUpload = async ( req, res ) => {
+export const getAttendeeUpload = async ( req, res ) => {
     const id = req.params.id
     try {
         const upload = await uploadAttendee.findByPk( id )

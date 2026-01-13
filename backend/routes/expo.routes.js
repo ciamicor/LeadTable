@@ -1,6 +1,7 @@
-const express = require( 'express' )
+import express from 'express';
+
 const router = express.Router()
-const expoController = require( '../controllers/expo.controller' )
+import * as expoController from '../controllers/expo.controller.js'
 
 // Route to create a new Expo
 router.post( '/', expoController.createExpo )
@@ -14,4 +15,4 @@ router.get( '/client/:client/year/:year', expoController.getExpo )
 // Route to get expo by year, client
 // router.get( '/token/client/:client/year/:year', expoController.getExpoToken )
 
-module.exports = router
+export default router

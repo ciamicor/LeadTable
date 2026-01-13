@@ -1,8 +1,8 @@
-const { Expo } = require( '../models' )
-const { Op } = require( 'sequelize' );
+import { Expo } from "../models/index.js"
+import { Op } from 'sequelize';
 
 // Controller method to create a new expo
-exports.createExpo = async ( req, res ) => {
+export const createExpo = async ( req, res ) => {
     const {
         id,
         active,
@@ -43,7 +43,7 @@ exports.createExpo = async ( req, res ) => {
 }
 
 // Get all Expos
-exports.getAll = async ( req, res ) => {
+export const getAll = async ( req, res ) => {
     try {
         const expos = await Expo.findAll()
         console.log( expos )
@@ -58,7 +58,7 @@ exports.getAll = async ( req, res ) => {
 }
 
 // Get Expo by Client, Year
-exports.getExpo = async ( req, res ) => {
+export const getExpo = async ( req, res ) => {
     const client = req.params.client
     const year = req.params.year
 

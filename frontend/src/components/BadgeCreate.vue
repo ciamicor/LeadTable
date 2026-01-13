@@ -311,7 +311,7 @@ const attendee = ref( {
   address_Country: '',
   title: '',
   regType: '',
-  techSessions: '',
+  techSessions: null,
   customFields: {}
 } )
 
@@ -340,8 +340,8 @@ function resetForm() {
     address_Country: '',
     title: '',
     regType: '',
-    techSessions: '',
-    customFields: ''
+    techSessions: null,
+    customFields: {}
   }
 }
 

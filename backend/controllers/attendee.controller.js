@@ -1,8 +1,8 @@
-const { Attendee, Expo } = require( '../models' )
-const { Op } = require( "sequelize" );
+import { Attendee } from "../models/index.js"
+import { Op } from 'sequelize';
 
 // Get all attendees
-exports.getAllAttendees = async ( req, res ) => {
+export const getAllAttendees = async ( req, res ) => {
     try {
         const attendees = await Attendee.findAll()
         res.json( attendees )
@@ -16,7 +16,7 @@ exports.getAllAttendees = async ( req, res ) => {
 }
 
 // Controller method to create a new attendee
-exports.createAttendee = async ( req, res ) => {
+export const createAttendee = async ( req, res ) => {
     const {
         expo_Year,
         expo_Client,
@@ -78,7 +78,7 @@ exports.createAttendee = async ( req, res ) => {
 // Controller method to create batch of attendees
 // https://sequelize.org/docs/v7/querying/insert/
 // TODO Add bulk attendee creation & related routes/services
-exports.createAttendeeBulk = async ( req, res ) => {
+export const createAttendeeBulk = async ( req, res ) => {
     const {
         expo_Year,
         expo_Client,
@@ -138,7 +138,7 @@ exports.createAttendeeBulk = async ( req, res ) => {
 }
 
 // Get Attendees by Expo
-exports.getExpoAttendees = async ( req, res ) => {
+export const getExpoAttendees = async ( req, res ) => {
     const client = req.params.client
     const year = req.params.year
     try {
@@ -164,7 +164,7 @@ exports.getExpoAttendees = async ( req, res ) => {
 }
 
 // Get attendees created between two dates
-exports.getAttendeesBetweenDates = async ( req, res ) => {
+export const getAttendeesBetweenDates = async ( req, res ) => {
     const startDate = req.params.startDate
     const endDate = req.params.endDate
     try {
@@ -190,7 +190,7 @@ exports.getAttendeesBetweenDates = async ( req, res ) => {
 }
 
 // Get an attendee by ID
-exports.getAttendeeById = async ( req, res ) => {
+export const getAttendeeById = async ( req, res ) => {
     const id = req.params.id
     try {
         const attendee = await Attendee.findByPk( id )
@@ -209,7 +209,7 @@ exports.getAttendeeById = async ( req, res ) => {
 }
 
 // Get an attendee by UPLOAD ID
-exports.getAttendeeByUploadId = async ( req, res ) => {
+export const getAttendeeByUploadId = async ( req, res ) => {
     const id = req.params.id
     try {
         const attendee = await Attendee.findAll(
@@ -234,7 +234,7 @@ exports.getAttendeeByUploadId = async ( req, res ) => {
 }
 
 // Controller method to update an attendee by ID
-exports.updateAttendee = async ( req, res ) => {
+export const updateAttendee = async ( req, res ) => {
     const id = req.params.id
     const {
         name_First,
@@ -286,7 +286,7 @@ exports.updateAttendee = async ( req, res ) => {
 }
 
 // Controller method to delete a attendee by ID
-exports.deleteAttendee = async ( req, res ) => {
+export const deleteAttendee = async ( req, res ) => {
     const id = req.params.id
     try {
         const attendee = await Attendee.findByPk( id )

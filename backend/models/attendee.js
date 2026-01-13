@@ -1,6 +1,6 @@
 'use strict'
-const { Model, DataTypes } = require( 'sequelize' )
-const sequelize = require( '../config/config' )
+import { Model, DataTypes } from "sequelize";
+import sequelize from "../config/config.js";
 
 class Attendee extends Model {
     /**
@@ -37,4 +37,4 @@ Attendee.init( {
     modelName: 'Attendee'
 } )
 
-module.exports = Attendee
+export default Attendee
