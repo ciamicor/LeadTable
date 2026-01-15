@@ -15,7 +15,7 @@ export const getAllAttendees = async ( req, res ) => {
     }
 }
 
-// Controller method to create a new attendee
+// Create new attendee
 export const createAttendee = async ( req, res ) => {
     const {
         expo_Year,
@@ -75,6 +75,7 @@ export const createAttendee = async ( req, res ) => {
         } )
     }
 }
+
 // Controller method to create batch of attendees
 // https://sequelize.org/docs/v7/querying/insert/
 // TODO Add bulk attendee creation & related routes/services

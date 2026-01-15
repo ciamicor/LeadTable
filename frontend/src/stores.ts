@@ -32,6 +32,7 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
   const expoFp_MapUrl = ref('')
   const customFields = ref(null)
   const techSessions = ref(null)
+  const paymentEnabled = ref(false)
 
   function $reset() {
     active.value = false
@@ -47,6 +48,7 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
     expoFp_MapUrl.value = ''
     customFields.value = null
     techSessions.value = null
+    paymentEnabled.value = false
   }
 
   return {
@@ -58,6 +60,7 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
     name,
     expo_Year,
     expoFp_Id,
+    paymentEnabled,
     logoUrl_Color,
     logoUrl_Black,
     expoFp_MapUrl,

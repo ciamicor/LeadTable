@@ -14,9 +14,8 @@ class ExpoDataService {
   }
 }
 
-/*-| Functions |-*/
-
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Functions
+==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const expoService = new ExpoDataService()
 
 /*-| Get All Expos
@@ -43,6 +42,7 @@ async function createExpo_Service(expoObject: any) {
     expo_Year: expoObject.expo_Year,
     expoFp_Id: expoObject.expoFp_Id,
     expoFp_MapUrl: expoObject.expoFp_MapUrl,
+    paymentEnabled: expoObject.paymentEnabled,
     logoUrl_Color: expoObject.logoUrl_Color,
     logoUrl_Black: expoObject.logoUrl_Black,
   }
@@ -72,6 +72,7 @@ async function getExpo_Service(client: any, year: any, expoObject: any) {
     expoObject.expo_Year = e.data.expo_Year
     expoObject.expoFp_Id = e.data.expoFp_Id
     expoObject.expoFp_MapUrl = e.data.expoFp_MapUrl
+    expoObject.paymentEnabled = e.data.paymentEnabled
     expoObject.logoUrl_Color = e.data.logoUrl_Color
     expoObject.logoUrl_Black = e.data.logoUrl_Black
 

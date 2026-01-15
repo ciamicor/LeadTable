@@ -68,6 +68,11 @@ const routes = [
         component: BadgeCreate,
       },
       {
+        path: 'register',
+        name: 'Register',
+        component: BadgeCreate,
+      },
+      {
         path: 'exhibitor-registration',
         name: 'Exhibitor Registration',
         component: CompanyCreate,

@@ -19,7 +19,7 @@ async function getCustomFields_Service(eventId: number) {
     console.log(customFields.data)
     return customFields.data
   } catch (e) {
-    console.log(e)
+    console.log(`Error getting custom fields for event ${eventId}`, e)
   }
 }
 

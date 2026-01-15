@@ -42,6 +42,7 @@ Expo.init( {
     expoFp_Token: {
         type: DataTypes.STRING
     },
+    paymentEnabled: { type: Boolean },
     logoUrl_Color: {
         type: DataTypes.STRING
     },
