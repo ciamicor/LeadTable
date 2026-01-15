@@ -26,7 +26,7 @@
 
 <script lang="ts"
         setup>
-import { onBeforeMount, defineProps, ref } from "vue";
+import { onBeforeMount, defineProps, ref, computed } from "vue";
 import { loadScript } from "@paypal/paypal-js";
 import { getPaymentProcessor_Service } from "@/services/payments/PaymentProcessDataService.ts";
 import { getProduct_Service } from "@/services/payments/ProductDataService.ts";
@@ -35,10 +35,15 @@ import { createPayment_Service } from "@/services/payments/PaymentDataService.ts
 // TS specific prop definition
 const emit = defineEmits(['paidFor'])
 
-const props = defineProps({
+const props = defineProps(
+  ['attendee', 'event', 'fName', 'lName', 'email']/*{
   attendee: {type: Object, default: () => {}},
   event: {type: Object, default: () => {}}
-})
+}*/)
+
+const syncedFName = computed(() => props.fName);
+const syncedLName = computed(() => props.lName);
+const syncedEmail = computed(() => props.email);
 
 /*-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===
 -| PayPal
@@ -61,10 +66,10 @@ const product = ref({
 })
 
 const payInfo = ref({
-  nameFirst: props.attendee.name_First,
-  nameLast: props.attendee.name_Last,
+  nameFirst: syncedFName, // props.attendee.name_First,
+  nameLast: syncedLName, // props.attendee.name_Last,
   attendeeId: null, // props.attendee.id,
-  payerEmail: props.attendee.contact_Email,
+  payerEmail: syncedEmail, // props.attendee.contact_Email,
   eventId: props.event.eventId,
   eventClient: props.event.expo_Client,
   eventYear: props.event.expo_Year,

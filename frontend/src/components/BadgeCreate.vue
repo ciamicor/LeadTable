@@ -247,7 +247,10 @@
       </button>
       <PaymentPayPal
         :attendee="attendee"
+        :email="attendee.contact_Email"
         :event="expoLocal"
+        :f-name="attendee.name_First"
+        :l-name="attendee.name_Last"
         @paid-for="onPaymentAccepted"
       />
     </div>
