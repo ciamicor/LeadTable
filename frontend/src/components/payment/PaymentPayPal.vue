@@ -7,8 +7,8 @@
       <h5 class="--font-size-16 --flex-basis-15">Total:</h5>
       <span class="--m-b-4">${{ product.price }}</span>
     </div>
-    <div v-for="(value, key, index) in product.details"
-         :key="index"
+    <div v-for="(value, key) in product.details"
+         :key="key"
          class="--font-size-16 col-12-300 --align-items-baseline --gap-1 --m-b-4">
       <h5 class="--font-size-16 --flex-basis-15">{{ key }}:</h5>
       <span>{{ value }}</span>
