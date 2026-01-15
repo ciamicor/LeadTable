@@ -137,23 +137,22 @@ onBeforeMount(async () => {
 
                 },
               ],
-              payment_source: {
-                card: {
-                  name: props.attendee.name_First + props.attendee.name_Last,
-                  billing_address: {
-                    address_line_1: props.attendee.address_Line1,
-                    address_line_2: props.attendee.address_Line2,
-                    admin_area_1: "", // state code here
-                    admin_area_2: props.attendee.address_City,
-                    country_code: props.attendee.address_Country,
-                    postal_code: props.attendee.address_Zip,
+              // deprecated...but works while 'payment_source' doesn't
+              payer: {
+                name: {given_name: props.attendee.name_First, surname: props.attendee.name_Last},
+                email_address: props.attendee.contact_Email,
+                phone: {
+                  phone_number: {
+                    national_number: props.attendee.contact_Phone
                   }
                 },
+              },
+              /*payment_source: {
                 paypal: {
                   experience_context: {
                     shipping_preference: "NO_SHIPPING"
                   },
-                  email_address: props.attendee.contact_Email,
+                  email_address: "email@email.com",// props.attendee.contact_Email,
                   name: {given_name: props.attendee.name_First, surname: props.attendee.name_Last},
                   phone_number: {national_number: props.attendee.contact_Phone},
                   address: {
@@ -177,7 +176,7 @@ onBeforeMount(async () => {
                     }
                   }
                 }
-              }
+              }*/
             })
           },
           onApprove: async (data: any, actions: any) => {
