@@ -116,6 +116,7 @@
             autocomplete="address-level2"
             name="city"
             placeholder="City"
+            required
             type="text"/>
           <input
             v-model="attendee.address_State"
@@ -132,7 +133,8 @@
           <select id="selectCountry"
                   v-model="attendee.address_Country"
                   autocomplete="country-name"
-                  name="selectCountry">
+                  name="selectCountry"
+                  required>
             <option disabled
                     selected
                     value="">Select Country
@@ -257,10 +259,20 @@
 
     <div v-show="showQr || paymentAccepted"
          class="row-10-300 row-8-600 --justify-content-center --align-content-start">
-      <p class="--flex-basis-100 --place-self-center">
+      <p
+        class="--flex-basis-100 --place-self-center">
         Thanks for registering for {{ expoLocal.expo_Client }}
         {{ expoLocal.name }}, {{ attendee.name_First }}!
       </p>
+
+      <!-- MWSCC TEMP PAYMENT REMOVE -->
+      <!--      <a
+              v-if="attendee.customFields.events3 === 'Social (6:00 PM - 10:00 PM) - $190'"
+              class="button &#45;&#45;success&#45;&#45;invert flex-grow"
+              href="https://www.paypal.com/ncp/payment/P29W8W5HR585Q">
+              If you were not automatically redirected, click here to pay for social night!
+            </a>-->
+
       <button
         v-if="urlData.view === 'admin'"
         class="--secondary --flex-grow"
@@ -269,14 +281,8 @@
       </button>
 
       <!-- MWSCC TEMP PAYMENT REMOVE -->
-      <!--      <a
-              v-if="attendee.customFields.events3 === 'Social (6:00 PM - 10:00 PM) - $190'"
-              class="button &#45;&#45;success&#45;&#45;invert flex-grow"
-              href="https://www.paypal.com/ncp/payment/P29W8W5HR585Q">
-              Continue to Social Payment!
-            </a>-->
+      <!--v-if="attendee.customFields.events3 !== 'Social (6:00 PM - 10:00 PM) - $190'"-->
       <button
-        v-else
         class="--success --flex-grow"
         @click="resetForm">
         Register Another Badge
@@ -344,13 +350,16 @@ try {
 -|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===/*/
 async function submitForm() {
   attendee.value.contact_Phone = attendee.value.contact_Phone.replace( /\D/g, '' )
-
   if ( paymentEnabled.value === true ) {
     console.log( "Payment form enabled" )
     paymentView.value = true
   } else if ( paymentEnabled.value === false ) {
     console.log( "No payment, creating attendee!" )
     await createAttendee( attendee.value )
+    /* MWSCC TEMP PAYMENT */
+    /*if ( attendee.value.customFields.events3 === "Social (6:00 PM - 10:00 PM) - $190" ) {
+      await window.location.replace( "https://www.paypal.com/ncp/payment/P29W8W5HR585Q" )
+    }*/
   }
 }
 

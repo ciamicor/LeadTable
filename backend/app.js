@@ -1,5 +1,4 @@
 import '@dotenvx/dotenvx/config';
-import nodemailer from 'nodemailer'
 import Sequelize from "./config/config.js";
 import express from "express";
 import path from "path";
@@ -15,45 +14,8 @@ import customFieldRoutes from "./routes/customField.routes.js"
 import paymentProcessorRoutes from "./routes/paymentProcessor.routes.js";
 import productRoutes from "./routes/product.routes.js"
 import paymentRoutes from "./routes/payment.routes.js";
-
-async function sendEmail() {
-    console.log( 'Sending email...' )
-    let transporter = nodemailer.createTransport( {
-        host: 'mail.leadtable.app',
-        port: 587, // 465
-        secure: false,
-        auth: {
-            user: 'registration@leadtable.app',
-            pass: 'SEEK7effects.topped0axl'
-        }
-    } )
-
-    let info = await transporter.sendMail( {
-        "from": "\"Claire Mooney\" <registration@leadtable.app>",
-        "to": "claire@iami411.org",
-        "cc": "dev@leadtable.app",
-        "subject": "Hello from Nodemailer!",
-        "html": "<h1>Hello!</h1>\n<p>This is an <strong>HTML</strong> message with an embedded image:</p>\n<p><img src=\"cid:logo@example\" alt=\"Logo\" style=\"width: 16px; height: 16px;\"></p>\n<p>Edit the JSON on the left to see the preview update in real-time.</p>",
-        /* "attachments": [
-                    {
-                        "filename": "logo.png",
-                        "content": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAUUlEQVR42sWTwQ4AMARD6f//s103MdOQzNUrtXQizdJbw0TMgVoa4IWB4NCAEUcMGHHEovuIYLd7FzMO/g/QJFCvPMydwLjYWVTynjHtz9SuBVmmEhqhGKQyAAAAAElFTkSuQmCC",
-                        "encoding": "base64",
-                        "cid": "logo@example",
-                        "contentType": "image/png"
-                    },
-                    {
-                        "filename": "document.pdf",
-                        "content": "JVBERi0xLjEKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA1OTUgODQyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA1MSA+PgpzdHJlYW0KQlQgL0YxIDEyIFRmIDI2Ni4xNSA0MjEgVGQgKE5vZGVtYWlsZXIpIFRqIEVUCmVuZHN0cmVhbQplbmRvYmoKNSAwIG9iago8PCAvVHlwZSAvRm9udCAvU3VidHlwZSAvVHlwZTEgL0Jhc2VGb250IC9IZWx2ZXRpY2EgPj4KZW5kb2JqCnhyZWYKMCA2CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAwOSAwMDAwMCBuIAowMDAwMDAwMDU4IDAwMDAwIG4gCjAwMDAwMDAxMTUgMDAwMDAgbiAKMDAwMDAwMDI1MyAwMDAwMCBuIAowMDAwMDAwMzgxIDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNiAvUm9vdCAxIDAgUiA+PgpzdGFydHhyZWYKNDU0CiUlRU9GCg==",
-                        "encoding": "base64",
-                        "contentType": "application/pdf"
-                    }
-                ]*/
-    } )
-    console.log( 'Message sent: ' + info.messageId )
-}
-
-sendEmail().catch( e => console.log( e ) );
+// Nodemailer
+import mailRoutes from "./email/email.routes.js"
 
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Init DB |-*/
@@ -99,6 +61,7 @@ app.use( '/api/customfield', customFieldRoutes )
 app.use( '/api/paymentprocessor', paymentProcessorRoutes )
 app.use( '/api/product', productRoutes )
 app.use( '/api/payment', paymentRoutes )
+app.use( '/api/mailer', mailRoutes )
 
 // Adjust _dirname for ES6 modules
 const __dirname = import.meta.dirname;

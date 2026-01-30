@@ -192,6 +192,9 @@ onBeforeMount(async () => {
           },
           onError: (err: any) => {
             console.log("A shocking error with PayPal...", err)
+            // console.log(Object.keys(err.data.body.details[0]))
+            alert(parseIssue(err.data.body.details[0].issue))
+
           }
         }
       ).render("#paypal-buttons");
@@ -200,4 +203,9 @@ onBeforeMount(async () => {
     }
   }
 })
+
+function parseIssue(i: string) {
+  let x = i.toLowerCase().replace("_", ' ')
+  return `Oops, ${x}`
+}
 </script>
