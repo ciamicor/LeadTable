@@ -22,9 +22,8 @@ async function sendRegConfirmEmail_Service(attendee: any, event: any,) {
   console.log(data)
   try {
     let email = await regEmailService.create(data)
-    attendee.id = email.data.id
+    console.log('Email sent!')
     console.log(email.data)
-    return attendee = email.data
   } catch (e: any) {
     console.error("Error Name: ", e.name);
     console.error("Error Message: ", e.message);
