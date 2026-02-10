@@ -20,6 +20,7 @@ export const sendEmail = async ( req, res ) => {
         event
     } = req.body
     try {
+        console.log( 'Server email attempt...' )
         // Send an email using async/await
         await (async () => {
             const info = await transporter.sendMail( {

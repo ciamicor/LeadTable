@@ -21,6 +21,9 @@ async function sendRegConfirmEmail_Service(a: any, e: any,) {
   }
   console.log(data)
   try {
+    console.log('Trying email on the frontend')
+    await regEmailService.create(data)
+    console.log('Tried on frontend.')
     let email = await regEmailService.create(data)
     console.log('Email sent!')
     console.log(email.data)
