@@ -229,7 +229,10 @@
           <span>{{ field.subtitle }}</span>
         </label>
       </div>
-      <button v-if="!showQr"
+      <LoadingHolder :status="status"
+                     class="--place-self-center --m-t-12 --m-b-24"
+                     message="Submitting..."/>
+      <button v-if="!showQr && !status"
               class="--success --m-t-12 --m-b-24"
               type="submit"
       >
@@ -308,6 +311,7 @@ import { sendRegConfirmEmail_Service } from "@/services/emails/RegistrationEmail
 import { useExhibitorLocalStore, useExpoLocalStore } from '@/stores.js'
 import { getUrlHost, getUrl_ClientYear } from "@/services/functions/UrlService.ts";
 import { countryCodes } from "@/services/addresses/AddressForm_Countries.js";
+import LoadingHolder from "@/components/LoadingHolder.vue";
 import QrCode from '@/components/QrCode.vue'
 import PaymentPayPal from "@/components/payment/PaymentPayPal.vue";
 
@@ -315,6 +319,7 @@ const urlData = ref( getUrl_ClientYear() )
 const host = getUrlHost()
 const companyLocal = useExhibitorLocalStore()
 const expoLocal = useExpoLocalStore()
+const status = ref( false )
 
 function getImageUrl( name ) {
   return new URL( `../../public/logos/${ expoLocal.expo_Client.toString()
@@ -341,6 +346,7 @@ try {
 -|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===/*/
 async function submitForm() {
   attendee.value.contact_Phone = attendee.value.contact_Phone.replace( /\D/g, '' )
+  status.value = true
   if ( paymentEnabled.value === true ) {
     console.log( "Payment form enabled" )
     paymentView.value = true
@@ -407,10 +413,11 @@ const attendee = ref( {
 } )
 
 async function createAttendee( a ) {
+  await sendRegConfirmEmail_Service( attendee.value, expoLocal )
   await createAttendee_Service( a, expoLocal.expo_Client, expoLocal.expo_Year )
   attendeeId.value = attendee.value.id.toString()
   console.log( 'New Attendee\'s ID is: ', typeof attendeeId.value, attendeeId.value )
-  await sendRegConfirmEmail_Service( attendee.value, expoLocal )
+  status.value = false
   showQr.value = true
 }
 

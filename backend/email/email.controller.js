@@ -23,17 +23,17 @@ export const sendEmail = async ( req, res ) => {
         console.log( 'Server email attempt...' )
         // Send an email using async/await
         await (async () => {
-            const info = await transporter.sendMail( {
-                from: `"${ event.clientFull }" <${ process.env.REG_EMAIL_USER }>`,
-                to: "claire@iami411.org",
-                subject: `${ attendee.name_First }, you're going to ${ event.name }!`,
-                text: `You've registered for this event, we're excited to see you!`, // Plain-text version of the message
-                html: email_RegConfirm( attendee, event ) // HTML version of the message
-            } );
-            console.log( "Message sent:", info.messageId );
-            console.log( info );
         })();
-        res.status( 201 ).json( "Email Sent" )
+        const info = await transporter.sendMail( {
+            from: `"${ event.clientFull }" <${ process.env.REG_EMAIL_USER }>`,
+            to: "claire@iami411.org",
+            subject: `${ attendee.name_First }, you're going to ${ event.name }!`,
+            text: `You've registered for this event, we're excited to see you!`, // Plain-text version of the message
+            html: email_RegConfirm( attendee, event ) // HTML version of the message
+        } );
+        console.log( "Message sent:", info.messageId );
+        console.log( info );
+        res.status( 201 ).json( info )
     } catch ( error ) {
         console.error( 'Error while sending email: ', error )
 

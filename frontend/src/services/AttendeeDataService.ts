@@ -1,5 +1,4 @@
 import http from '../http-common'
-import { titleCase } from "@/services/functions/TextManipulationService.ts";
 
 export default class AttendeeDataService {
   create(data: any) {
