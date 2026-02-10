@@ -366,7 +366,7 @@ const dev = ref( window.location.host === "localhost:8081" )
 
 const showQr = ref( false )
 const attendeeId = ref()
-const attendee = ref( {
+/*const attendee = ref( {
   expo_Year: expoLocal.expo_Year,
   expo_Client: expoLocal.expo_Client,
   name_First: "Claire",
@@ -384,9 +384,9 @@ const attendee = ref( {
   regType: "Attendee",
   techSessions: null,
   customFields: {}
-} )
+} )*/
 
-/*const attendee = ref( {
+const attendee = ref( {
   expo_Year: expoLocal.expo_Year,
   expo_Client: expoLocal.expo_Client,
   name_First: "",
@@ -404,7 +404,7 @@ const attendee = ref( {
   regType: "",
   techSessions: null,
   customFields: {}
-} )*/
+} )
 
 async function createAttendee( a ) {
   await createAttendee_Service( a, expoLocal.expo_Client, expoLocal.expo_Year )
