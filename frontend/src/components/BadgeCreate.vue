@@ -16,8 +16,7 @@
       class="col-12-300 col-9-600 col-7-900 col-5-1200 col-4-1600 --p-b-0 --p-t-12"
       @submit.prevent="submitForm"
     >
-      <h4 v-if="expoLocal.expo_Client !== 'WISE'"
-          class="--m-0">
+      <h4 class="--m-0">
         {{ expoLocal.clientFull }}
         {{ expoLocal.name }}
       </h4>
@@ -93,8 +92,7 @@
             type="tel"/>
         </label>
       </div>
-      <div v-if="expoLocal.expo_Client !== 'WISE'"
-           class="row-12-300 --no-space">
+      <div class="row-12-300 --no-space">
         <label class="row-12-300">
           <span class="--flex-basis-100">Your Address</span>
           <input
@@ -265,14 +263,6 @@
         {{ expoLocal.name }}, {{ attendee.name_First }}!
       </p>
 
-      <!-- MWSCC TEMP PAYMENT REMOVE -->
-      <!--      <a
-              v-if="attendee.customFields.events3 === 'Social (6:00 PM - 10:00 PM) - $190'"
-              class="button &#45;&#45;success&#45;&#45;invert flex-grow"
-              href="https://www.paypal.com/ncp/payment/P29W8W5HR585Q">
-              If you were not automatically redirected, click here to pay for social night!
-            </a>-->
-
       <button
         v-if="urlData.view === 'admin'"
         class="--secondary --flex-grow"
@@ -295,7 +285,7 @@
            :src="getImageUrl(`${expoLocal.expo_Client.toString().toLowerCase()}-vert-rgb`)"
       >
       <QrCode
-        v-if="showQr && expoLocal.expo_Client !== 'WISE'"
+        v-if="showQr"
         id="qr-code"
         :size="215"
         :url-value="attendeeId"
@@ -356,10 +346,6 @@ async function submitForm() {
   } else if ( paymentEnabled.value === false ) {
     console.log( "No payment, creating attendee!" )
     await createAttendee( attendee.value )
-    /* MWSCC TEMP PAYMENT */
-    /*if ( attendee.value.customFields.events3 === "Social (6:00 PM - 10:00 PM) - $190" ) {
-      await window.location.replace( "https://www.paypal.com/ncp/payment/P29W8W5HR585Q" )
-    }*/
   }
 }
 
@@ -379,22 +365,42 @@ const dev = ref( window.location.host === "localhost:8081" )
 
 const showQr = ref( false )
 const attendeeId = ref()
+/*const attendee = ref( {
+  expo_Year: expoLocal.expo_Year,
+  expo_Client: expoLocal.expo_Client,
+  name_First: "Claire",
+  name_Last: "Mooney",
+  contact_Email: "claire@iami411.org",
+  contact_Phone: "(404) 707-8088",
+  contact_Employer: "IAMI",
+  address_Line1: "126325 Street St.",
+  address_Line2: "\#567",
+  address_City: "Portland",
+  address_State: "Oregon",
+  address_Zip: "97214",
+  address_Country: "US",
+  title: "Developer",
+  regType: "Attendee",
+  techSessions: null,
+  customFields: {}
+} )*/
+
 const attendee = ref( {
   expo_Year: expoLocal.expo_Year,
   expo_Client: expoLocal.expo_Client,
-  name_First: "", // "Claire",
-  name_Last: "", // "Mooney",
-  contact_Email: "", // "claire@iami411.org",
-  contact_Phone: "", // "(404) 707-8088",
-  contact_Employer: "", // "IAMI",
-  address_Line1: "", // "126325 Street St.",
-  address_Line2: "", // "\#567",
-  address_City: "", // "Portland",
-  address_State: "", // "Oregon",
-  address_Zip: "", // "97214",
-  address_Country: "", // "US",
-  title: "", // "Developer",
-  regType: "", // "Attendee",
+  name_First: "",
+  name_Last: "",
+  contact_Email: "",
+  contact_Phone: "",
+  contact_Employer: "",
+  address_Line1: "",
+  address_Line2: "",
+  address_City: "",
+  address_State: "",
+  address_Zip: "",
+  address_Country: "",
+  title: "",
+  regType: "",
   techSessions: null,
   customFields: {}
 } )
@@ -449,32 +455,23 @@ async function select2Canvas( s, d ) {
   } )
 }
 
-function scaleFontSize( s, w = 4 ) {
-  // width 400, char width 40
-  let l = s.length
-  let wt = w * 100
-  console.log( 'length: ' + l )
-  console.log( (400 / (l * 40)) * 50 )
-  // Math.min(Math.max(parseInt(number), 1), 20);
-  return (400 / (l * 40)) * 50
+/*-| Store Badge Dimensions, Placement |-*/
+const dim = {
+  h: 3,
+  w: 4,
+  p: 0.1875,
+  imgW: 1.9375,
+  imgH: 1.1875,
+  rot: 0
 }
-
-const fontSize = ref()
+const pt2in = 0.0138888889
 
 // TODO merge with code from BadgePrint, then add to service file.
 async function badgeToPDF( a ) {
-  console.log( a.id )
-  if ( expoLocal.expo_Client !== 'WISE' ) await select2Canvas( '#qr-code', qrData )
-  if ( expoLocal.expo_Client !== 'WISE' ) await select2Canvas( '#badge-logo', qrLogo )
-  /*-| Store Badge Dimensions, Placement |-*/
-  const dim = {
-    h: 3,
-    w: 4,
-    p: 0.1875,
-    imgW: 1.875,
-    imgH: 1.125,
-    rot: 0
-  }
+  console.log( "Creating badge for: " + a.name_First )
+  await select2Canvas( '#qr-code', qrData )
+  await select2Canvas( '#badge-logo', qrLogo )
+
   /*-| Declare Badge |-*/
   const badgePdf = new jsPDF( {
     orientation: 'landscape',
@@ -485,61 +482,59 @@ async function badgeToPDF( a ) {
 
   /*-| Add Elements
   ---+----+---+----+---+----+---+----+---*/
-  console.log( badgePdf.getFontList() )
-  badgePdf.setFont( 'Helvetica', 'normal' );
-  badgePdf.setFontSize( 18 )
-  // badgePdf.text( a.contact_Employer, dim.p * 2, dim.w - dim.p, null, dim.rot )
-  badgePdf.text(
-    a.contact_Employer,
-    dim.w - dim.p,
-    dim.p * 2,
-    { align: 'right' },
-    dim.rot )
+  const nameSize = scaleFont( a.name_First + a.name_Last, 400 )
+  const titleSize = scaleFont( a.title, 400, 14, 20 )
+  const employSize = scaleFont( a.contact_Employer, 400, 16, 20 )
+
+  // Name
   badgePdf.setFont( 'Helvetica', 'normal', 'bold' );
-  fontSize.value = scaleFont( a.name_First + a.name_Last, 400 )
-  badgePdf.setFontSize( fontSize.value )
-  /*badgePdf.text( toTitleCase_Service( `${ a.name_First } ${ a.name_Last }` ),
-    dim.p * 4,
-    dim.w - dim.p,
-    dim.rot )*/
-  badgePdf.text(
-    `${ a.name_First } ${ a.name_Last }`,
-    dim.w / 2,
-    dim.h / 2,
-    { align: 'center' } )
+  badgePdf.setFontSize( nameSize )
+  badgePdf.text( `${ a.name_First } ${ a.name_Last }`,
+    dim.p,
+    ((employSize * pt2in) / 3) + ((nameSize + employSize) * pt2in) + (dim.p / 2),
+    { align: 'left' } )
+
+  // Title
   badgePdf.setFont( 'Helvetica', 'italic' );
-  badgePdf.setFontSize( 18 )
-  // badgePdf.text( toTitleCase_Service( a.title ), dim.p * 6, dim.w - dim.p, dim.rot )
+  badgePdf.setFontSize( titleSize )
   badgePdf.text(
     a.title,
-    dim.w / 2,
-    dim.h / 2 + (dim.p * 2),
-    { align: 'center' } )
+    dim.p,
+    +((nameSize * pt2in) / 3) + ((nameSize + employSize + titleSize) * pt2in) + dim.p,
+    { align: 'left' } )
+
+  // Employer
+  badgePdf.setFont( 'Helvetica', 'normal' );
+  badgePdf.setFontSize( employSize )
+  badgePdf.text(
+    a.contact_Employer,
+    dim.p,
+    dim.p * 2,
+    { align: 'left' } )
 
   /*-| Add QR Code |-*/
-  if ( expoLocal.expo_Client !== 'WISE' ) {
-    badgePdf.addImage( qrData.value,
-      'PNG',
-      dim.h - dim.p,
-      dim.w - dim.imgH - dim.p,
-      dim.imgH,
-      dim.imgH,
-      'qr',
-      'FAST',
-      dim.rot )
-  }
+  badgePdf.addImage(
+    qrData.value,
+    'PNG',
+    dim.p,
+    dim.h - dim.imgH - dim.p,
+    dim.imgH,
+    dim.imgH,
+    'qr',
+    'FAST',
+    dim.rot )
+
   /*-| Add Logo |-*/
-  if ( expoLocal.expo_Client !== 'WISE' ) {
-    badgePdf.addImage( qrLogo.value,
-      'PNG',
-      dim.h - dim.p,
-      dim.p * 4,
-      dim.imgW,
-      dim.imgH,
-      'logo',
-      'FAST',
-      dim.rot )
-  }
+  badgePdf.addImage(
+    qrLogo.value,
+    'PNG',
+    dim.w - dim.p - dim.imgW,
+    dim.h - dim.imgH - dim.p,
+    dim.imgW,
+    dim.imgH,
+    'logo',
+    'FAST',
+    dim.rot )
   setTimeout( () => {
     badgePdf.output( 'dataurlnewwindow' )
   }, 300 )

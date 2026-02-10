@@ -39,10 +39,10 @@ export function toTitleCase_Service(str: string): string {
 
 /*-| Scaling
 ---+----+---+----+---+----+---+----+---*/
-export function scaleFont(phrase: string, docWidth: number) {
+export function scaleFont(phrase: string, docWidth: number, minSize: number = 18, maxSize: number = 30) {
   const c = phrase.length
   const cw = (docWidth / c) + 2
   console.log(c)
   console.log(cw)
-  return limitNumberWithinRange(cw, 18, 30)
+  return limitNumberWithinRange(cw, minSize, maxSize)
 }

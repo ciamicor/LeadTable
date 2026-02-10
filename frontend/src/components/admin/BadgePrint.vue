@@ -124,7 +124,6 @@
         setup>
 import { useExpoLocalStore } from "@/stores.ts";
 import { getUrlHost } from "@/services/functions/UrlService.ts";
-import { limitNumberWithinRange } from "@/services/functions/mathService.js";
 import { jsPDF } from 'jspdf'
 import { scaleFont } from "@/services/functions/TextManipulationService.ts";
 import QrCode from '@/components/QrCode.vue'
@@ -139,7 +138,6 @@ import {
 } from '@/services/AttendeeDataService.ts'
 import { getAttendeeUploads_Service } from '@/services/UploadDataService.ts'
 import { sortLName_Service } from '@/services/SortService.ts'
-import { toTitleCase_Service } from '@/services/functions/TextManipulationService.ts'
 import LoadingHolder from "@/components/LoadingHolder.vue";
 
 /*-| States |-*/
@@ -188,7 +186,7 @@ onMounted( () => {
 const mapList = ref()
 
 async function makeMap() {
-  mapList.value = await new Map( Object.entries( attendeeList.value ) )
+  mapList.value = new Map( Object.entries( attendeeList.value ) )
   console.log( "List", mapList )
 }
 
@@ -299,7 +297,7 @@ async function printBadges() {
   attendeeListSelected.value = []
 }
 
-/*-| Print Single
+/*-| Print Single Badge
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const qrData = ref()
 const qrLogo = ref()
@@ -316,24 +314,23 @@ async function select2Canvas( s, d ) {
   } )
 }
 
-const fontSize = ref()
+/*-| Store Badge Dimensions, Placement |-*/
+const dim = {
+  h: 3,
+  w: 4,
+  p: 0.1875,
+  imgW: 1.9375,
+  imgH: 1.1875,
+  rot: 0
+}
+const pt2in = 0.0138888889
 
 // TODO merge with code from BadgeCreate, then add to service file.
 async function badgeToPDF( a ) {
-  console.log( attendeeListSelected.value )
-  console.log( a.id )
-  if ( expoLocal.expo_Client !== 'WISE' ) await select2Canvas( '#qr-code', qrData )
-  if ( expoLocal.expo_Client !== 'WISE' ) await select2Canvas( '#badge-logo', qrLogo )
+  console.log( "Creating badge for: " + a.name_First )
+  await select2Canvas( '#qr-code', qrData )
+  await select2Canvas( '#badge-logo', qrLogo )
 
-  /*-| Store Badge Dimensions, Placement |-*/
-  const dim = {
-    h: 3,
-    w: 4,
-    p: 0.1875,
-    imgW: 1.875,
-    imgH: 1.125,
-    rot: 0
-  }
   /*-| Declare Badge |-*/
   const badgePdf = new jsPDF( {
     orientation: 'landscape',
@@ -344,64 +341,60 @@ async function badgeToPDF( a ) {
 
   /*-| Add Elements
   ---+----+---+----+---+----+---+----+---*/
-  console.log( badgePdf.getFontList() )
-  badgePdf.setFont( 'Helvetica', 'normal' );
-  badgePdf.setFontSize( 18 )
-  // badgePdf.text( a.contact_Employer, dim.p * 2, dim.h - dim.p, null, dim.rot )
-  badgePdf.text(
-    a.contact_Employer,
-    dim.w - dim.p,
-    dim.p * 2,
-    { align: 'right' },
-    dim.rot )
+  const nameSize = scaleFont( a.name_First + a.name_Last, 400 )
+  const titleSize = scaleFont( a.title, 400, 14, 20 )
+  const employSize = scaleFont( a.contact_Employer, 400, 16, 20 )
+
+  // Name
   badgePdf.setFont( 'Helvetica', 'normal', 'bold' );
-  fontSize.value = scaleFont( a.name_First + a.name_Last, 400 )
-  badgePdf.setFontSize( fontSize.value )
-  /*badgePdf.text( `${ a.name_First } ${ a.name_Last }`,
+  badgePdf.setFontSize( nameSize )
+  badgePdf.text( `${ a.name_First } ${ a.name_Last }`,
     dim.p,
-    dim.h - dim.p,
-    dim.rot )*/
-  badgePdf.text(
-    `${ a.name_First } ${ a.name_Last }`,
-    dim.w / 2,
-    dim.h / 2,
-    { align: 'center' }
-  )
+    ((employSize * pt2in) / 3) + ((nameSize + employSize) * pt2in) + (dim.p / 2),
+    { align: 'left' } )
+
+  // Title
   badgePdf.setFont( 'Helvetica', 'italic' );
-  badgePdf.setFontSize( 18 )
-  // badgePdf.text( a.title, dim.p * 6, dim.h - dim.p, dim.rot )
+  badgePdf.setFontSize( titleSize )
   badgePdf.text(
     a.title,
-    dim.w / 2,
-    dim.h / 2 + (dim.p * 2),
-    { align: 'center' } )
+    dim.p,
+    +((nameSize * pt2in) / 3) + ((nameSize + employSize + titleSize) * pt2in) + dim.p,
+    { align: 'left' } )
+
+  // Employer
+  badgePdf.setFont( 'Helvetica', 'normal' );
+  badgePdf.setFontSize( employSize )
+  badgePdf.text(
+    a.contact_Employer,
+    dim.p,
+    dim.p * 2,
+    { align: 'left' } )
 
   /*-| Add QR Code |-*/
-  if ( expoLocal.expo_Client !== 'WISE' ) {
-    badgePdf.addImage(
-      qrData.value,
-      'PNG',
-      dim.h - dim.p,
-      dim.w - dim.imgH - dim.p,
-      dim.imgH,
-      dim.imgH,
-      'qr',
-      'FAST',
-      dim.rot )
-  }
-  if ( expoLocal.expo_Client !== 'WISE' ) {
-    /*-| Add Logo |-*/
-    badgePdf.addImage(
-      qrLogo.value,
-      'PNG',
-      dim.h - dim.p,
-      dim.p * 4,
-      dim.imgW,
-      dim.imgH,
-      'logo',
-      'FAST',
-      dim.rot )
-  }
+  badgePdf.addImage(
+    qrData.value,
+    'PNG',
+    dim.p,
+    dim.h - dim.imgH - dim.p,
+    dim.imgH,
+    dim.imgH,
+    'qr',
+    'FAST',
+    dim.rot )
+
+  /*-| Add Logo |-*/
+  badgePdf.addImage(
+    qrLogo.value,
+    'PNG',
+    dim.w - dim.p - dim.imgW,
+    dim.h - dim.imgH - dim.p,
+    dim.imgW,
+    dim.imgH,
+    'logo',
+    'FAST',
+    dim.rot )
+
   setTimeout( () => {
     badgePdf.output( 'dataurlnewwindow' )
   }, 300 )
