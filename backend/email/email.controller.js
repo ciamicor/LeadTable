@@ -81,8 +81,8 @@ function email_RegConfirm(
                     </td>
                 </tr>
               	<tr>
-                    <td style="padding: 8px;"><strong>Registration Type</strong></td>
-                    <td style="padding: 8px;"><strong>${ a.regType }</strong></td>
+                    <td style="padding: 8px;">Registration Type</td>
+                    <td style="padding: 8px;">${ a.regType }</td>
                 </tr>
 
                 <tr style="background-color: hsl(0, 0%, 95%);">
