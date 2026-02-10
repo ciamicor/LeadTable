@@ -304,6 +304,7 @@ import html2canvas from 'html2canvas'
 import { scaleFont } from "@/services/functions/TextManipulationService.ts";
 import { createAttendee_Service } from '@/services/AttendeeDataService.ts'
 import { getCustomFields_Service } from "@/services/CustomFieldsDataService.js";
+import { sendRegConfirmEmail_Service } from "@/services/emails/RegistrationEmailService.ts";
 import { useExhibitorLocalStore, useExpoLocalStore } from '@/stores.js'
 import { getUrlHost, getUrl_ClientYear } from "@/services/functions/UrlService.ts";
 import { countryCodes } from "@/services/addresses/AddressForm_Countries.js";
@@ -365,7 +366,7 @@ const dev = ref( window.location.host === "localhost:8081" )
 
 const showQr = ref( false )
 const attendeeId = ref()
-/*const attendee = ref( {
+const attendee = ref( {
   expo_Year: expoLocal.expo_Year,
   expo_Client: expoLocal.expo_Client,
   name_First: "Claire",
@@ -383,9 +384,9 @@ const attendeeId = ref()
   regType: "Attendee",
   techSessions: null,
   customFields: {}
-} )*/
+} )
 
-const attendee = ref( {
+/*const attendee = ref( {
   expo_Year: expoLocal.expo_Year,
   expo_Client: expoLocal.expo_Client,
   name_First: "",
@@ -403,13 +404,14 @@ const attendee = ref( {
   regType: "",
   techSessions: null,
   customFields: {}
-} )
+} )*/
 
 async function createAttendee( a ) {
   await createAttendee_Service( a, expoLocal.expo_Client, expoLocal.expo_Year )
   attendeeId.value = attendee.value.id.toString()
   console.log( 'New Attendee\'s ID is: ', typeof attendeeId.value, attendeeId.value )
   showQr.value = true
+  await sendConfirmEmail()
 }
 
 function resetForm() {
@@ -438,8 +440,18 @@ function resetForm() {
   }
 }
 
-/*-| Printing |-*/
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===
+-| Confirmation Email
+-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===/*/
+
+async function sendConfirmEmail() {
+  await sendRegConfirmEmail_Service( attendee.value, expoLocal )
+}
+
+/*-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===
+-| Badge Printing
+-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===/*/
+
 const qrData = ref()
 const qrLogo = ref()
 

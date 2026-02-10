@@ -89,7 +89,7 @@
                       :key="c"
                       :value="c"
               >
-                {{c}}
+                {{ c }}
               </option>
             </select>
           </label>

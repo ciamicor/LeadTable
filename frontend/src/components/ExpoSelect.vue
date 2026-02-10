@@ -14,7 +14,7 @@
             <h3 class="--m-0">{{ expo.expo_Year }}</h3>
           </div>
           <div class="col-5-300">
-            <!--            <span class="&#45;&#45;m-0">{{ expo.start_Date }}</span>-->
+            <!--            <span class="&#45;&#45;m-0">{{ expo.dateStart }}</span>-->
           </div>
         </div>
         <h1>{{ expo.expo_Client }}</h1>
@@ -37,7 +37,7 @@
             <h3 class="--m-0">{{ expo.expo_Year }}</h3>
           </div>
           <div class="col-5-300">
-            <!--            <span class="&#45;&#45;m-0">{{ expo.start_Date }}</span>-->
+            <!--            <span class="&#45;&#45;m-0">{{ expo.dateStart }}</span>-->
           </div>
         </div>
         <h1>{{ expo.expo_Client }}</h1>
@@ -94,7 +94,7 @@ async function getAllExpos(listObj: any) {
 async function setCurrentExpo(obj: any) {
   console.log(
     obj.active,
-    obj.start_Date,
+    obj.dateStart,
     obj.expo_Client,
     obj.expo_Year,
     obj.expoFp_Id,
@@ -105,7 +105,7 @@ async function setCurrentExpo(obj: any) {
 
   expoLocal.$patch({
     active: obj.active,
-    start_Date: obj.start_Date,
+    dateStart: obj.dateStart,
     expo_Client: obj.expo_Client,
     expo_Year: obj.expo_Year,
     expoFp_Id: obj.expoFp_Id,
@@ -115,7 +115,7 @@ async function setCurrentExpo(obj: any) {
   })
   console.log("Selected Expo", obj)
 
-  // const dateVar = new Date(expoLocal.start_Date);
+  // const dateVar = new Date(expoLocal.dateStart);
   // console.log(dateVar.toLocaleString());
 
   /*-| Update Route |-*/

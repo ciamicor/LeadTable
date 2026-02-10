@@ -6,7 +6,7 @@ export const createExpo = async ( req, res ) => {
     const {
         id,
         active,
-        start_Date,
+        dateStart,
         expo_Client,
         clientFull,
         name,
@@ -22,7 +22,7 @@ export const createExpo = async ( req, res ) => {
         const newExpo = await Expo.create( {
             id,
             active,
-            start_Date,
+            dateStart,
             expo_Client,
             clientFull,
             name,

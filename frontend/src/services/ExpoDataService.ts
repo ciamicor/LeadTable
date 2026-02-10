@@ -35,7 +35,7 @@ async function getAllExpos_Service(exposList: any) {
 async function createExpo_Service(expoObject: any) {
   const data = {
     active: expoObject.active,
-    start_Date: expoObject.start_Date,
+    dateStart: expoObject.dateStart,
     expo_Client: expoObject.expo_Client,
     clientFull: expoObject.clientFull,
     name: expoObject.name,
@@ -65,7 +65,7 @@ async function getExpo_Service(client: any, year: any, expoObject: any) {
     console.log("Found Expo: ", e.data)
     expoObject.active = e.data.active
     expoObject.eventId = e.data.id
-    expoObject.start_Date = e.data.start_Date
+    expoObject.dateStart = e.data.dateStart
     expoObject.expo_Client = e.data.expo_Client
     expoObject.clientFull = e.data.clientFull
     expoObject.name = e.data.name
@@ -75,6 +75,8 @@ async function getExpo_Service(client: any, year: any, expoObject: any) {
     expoObject.paymentEnabled = e.data.paymentEnabled
     expoObject.logoUrl_Color = e.data.logoUrl_Color
     expoObject.logoUrl_Black = e.data.logoUrl_Black
+    expoObject.webpage = e.data.webpage
+    expoObject.contactEmail = e.data.contactEmail
 
     //expoObject.value = response.addresses
     // console.log('expo: ', expoObject.value)

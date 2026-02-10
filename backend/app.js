@@ -61,7 +61,7 @@ app.use( '/api/customfield', customFieldRoutes )
 app.use( '/api/paymentprocessor', paymentProcessorRoutes )
 app.use( '/api/product', productRoutes )
 app.use( '/api/payment', paymentRoutes )
-app.use( '/api/mailer', mailRoutes )
+app.use( '/api/emailer', mailRoutes )
 
 // Adjust _dirname for ES6 modules
 const __dirname = import.meta.dirname;

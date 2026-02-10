@@ -30,9 +30,11 @@ Expo.init( {
     clientFull: {
         type: DataTypes.STRING
     },
-    start_Date: {
-        type: DataTypes.DATE
+    contactEmail: {
+        type: DataTypes.STRING
     },
+    webpage: DataTypes.STRING,
+    dateStart: DataTypes.DATE,
     expoFp_Id: {
         type: DataTypes.INTEGER
     },
@@ -43,6 +45,7 @@ Expo.init( {
         type: DataTypes.STRING
     },
     paymentEnabled: { type: Boolean },
+    leadEnabled: { type: Boolean },
     logoUrl_Color: {
         type: DataTypes.STRING
     },

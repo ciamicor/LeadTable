@@ -21,8 +21,9 @@ const useSessionStore = defineStore('sessionStore', () => {
 const useExpoLocalStore = defineStore('expoLocal', () => {
   const active = ref(false)
   const eventId = ref(0)
-  const start_Date = ref(null)
+  const dateStart = ref(null)
   const expo_Client = ref('')
+  const contactEmail = ref('')
   const clientFull = ref('')
   const name = ref('')
   const expo_Year = ref(0)
@@ -33,12 +34,15 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
   const customFields = ref(null)
   const techSessions = ref(null)
   const paymentEnabled = ref(false)
+  const leadEnabled = ref(false)
+  const webpage = ref('')
 
   function $reset() {
     active.value = false
     eventId.value = 0
-    start_Date.value = null
+    dateStart.value = null
     expo_Client.value = ''
+    contactEmail.value = ''
     clientFull.value = ''
     name.value = ''
     expo_Year.value = 0
@@ -49,22 +53,27 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
     customFields.value = null
     techSessions.value = null
     paymentEnabled.value = false
+    leadEnabled.value = false
+    webpage.value = ''
   }
 
   return {
     active,
     eventId,
-    start_Date,
+    dateStart,
     expo_Client,
+    contactEmail,
     clientFull,
     name,
     expo_Year,
     expoFp_Id,
     paymentEnabled,
+    leadEnabled,
     logoUrl_Color,
     logoUrl_Black,
     expoFp_MapUrl,
     customFields,
+    webpage,
     $reset,
   }
 })
