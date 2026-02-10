@@ -13,11 +13,11 @@ const regEmailService = new RegistrationEmailDataService()
 
 /*-| Create Attendees
 ---+----+---+----+---+----+---+----+---*/
-async function sendRegConfirmEmail_Service(attendee: any, event: any,) {
-  console.log('Sending confirmation email to ', attendee.name_First)
+async function sendRegConfirmEmail_Service(a: any, e: any,) {
+  console.log('Sending confirmation email to ', a.name_First)
   const data = {
-    attendee: attendee,
-    event: event,
+    attendee: a,
+    event: e,
   }
   console.log(data)
   try {
@@ -28,7 +28,7 @@ async function sendRegConfirmEmail_Service(attendee: any, event: any,) {
     console.error("Error Name: ", e.name);
     console.error("Error Message: ", e.message);
     console.error("Error Stack: ", e.stack);
-    console.error("Tried to send registration confirmation to: ", attendee);
+    console.error("Tried to send registration confirmation to: ", a);
   }
 }
 
