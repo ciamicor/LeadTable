@@ -6,6 +6,6 @@ export default axios.create({
   baseURL: '/api/',
   headers: {
     'Content-Type': 'application/json'
-    // 'Access-Control-Allow-Origin': 'https://leadtable.iami411.org/'
+    // 'Access-Control-Allow-Origin': 'https://leadtable.app/'
   }
 })

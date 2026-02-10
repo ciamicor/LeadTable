@@ -22,15 +22,12 @@ async function sendRegConfirmEmail_Service(a: any, e: any,) {
   console.log(data)
   try {
     console.log('Trying email on the frontend')
-    await regEmailService.create(data)
-    console.log('Tried on frontend.')
     let email = await regEmailService.create(data)
     console.log('Email sent!')
     console.log(email.data)
   } catch (e: any) {
-    console.error("Error Name: ", e.name);
-    console.error("Error Message: ", e.message);
-    console.error("Error Stack: ", e.stack);
+    console.error("Ouch. I got an error when sending that email. ");
+    console.error(e.stack);
     console.error("Tried to send registration confirmation to: ", a);
   }
 }
@@ -38,4 +35,3 @@ async function sendRegConfirmEmail_Service(a: any, e: any,) {
 export {
   sendRegConfirmEmail_Service
 }
-

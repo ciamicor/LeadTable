@@ -410,8 +410,8 @@ async function createAttendee( a ) {
   await createAttendee_Service( a, expoLocal.expo_Client, expoLocal.expo_Year )
   attendeeId.value = attendee.value.id.toString()
   console.log( 'New Attendee\'s ID is: ', typeof attendeeId.value, attendeeId.value )
+  await sendRegConfirmEmail_Service( attendee.value, expoLocal )
   showQr.value = true
-  await sendConfirmEmail()
 }
 
 function resetForm() {
@@ -438,14 +438,6 @@ function resetForm() {
     techSessions: null,
     customFields: {}
   }
-}
-
-/*-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===
--| Confirmation Email
--|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===/*/
-
-async function sendConfirmEmail() {
-  await sendRegConfirmEmail_Service( attendee.value, expoLocal )
 }
 
 /*-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===

@@ -67,9 +67,8 @@ async function createAttendee_Service(attendee: any, client: any, year: any, upl
     console.log(newAttendee.data)
     return attendee = newAttendee.data
   } catch (e: any) {
-    console.error("Error Name:", e.name);
-    console.error("Error Message:", e.message);
-    console.error("Error Stack:", e.stack);
+    console.error("Error when creating that attendee.");
+    console.error(e);
     console.error("Tried to create attendee:", attendee);
   }
 }
