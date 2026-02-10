@@ -26,7 +26,7 @@ export const sendEmail = async ( req, res ) => {
         })();
         const info = await transporter.sendMail( {
             from: `"${ event.clientFull }" <${ process.env.REG_EMAIL_USER }>`,
-            to: "claire@iami411.org",
+            to: `${ attendee.contact_Email }`,
             subject: `${ attendee.name_First }, you're going to ${ event.name }!`,
             text: `You've registered for this event, we're excited to see you!`, // Plain-text version of the message
             html: email_RegConfirm( attendee, event ) // HTML version of the message
