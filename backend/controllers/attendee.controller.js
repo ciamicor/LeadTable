@@ -1,4 +1,4 @@
-import { Attendee } from "../models/index.js"
+import { Attendee, Expo } from "../models/index.js"
 import { Op } from 'sequelize';
 
 // Get all attendees

@@ -1,7 +1,7 @@
 import { Expo } from "../models/index.js"
 import { Op } from 'sequelize';
 
-// Controller method to create a new expo
+// Create a new expo
 export const createExpo = async ( req, res ) => {
     const {
         id,

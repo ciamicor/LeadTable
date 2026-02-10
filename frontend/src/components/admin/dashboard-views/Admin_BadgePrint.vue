@@ -19,7 +19,7 @@
                type="text">
       </div>
 
-      <div class="row-8-300 --flex-grow --justify-content-end --align-content-center">
+      <div class="row-8-300 --flex-grow-1 --justify-content-end --align-content-center">
         <button v-show="attendeeListSelected.length === 0 || attendeeListSelected.length > 1"
                 class="--secondary --p-4"
                 @click="printBadges">
@@ -136,9 +136,16 @@ import {
   getExpoAttendees_Service,
   getAttendeesUploadId_Service
 } from '@/services/AttendeeDataService.ts'
+<<<<<<<< HEAD:frontend/src/components/admin/BadgePrint.vue
 import { getAttendeeUploads_Service } from '@/services/UploadDataService.ts'
 import { sortLName_Service } from '@/services/SortService.ts'
 import LoadingHolder from "@/components/LoadingHolder.vue";
+========
+import { getAttendeeUploads_Service } from '@/services/UploadDataService.js'
+import { sortLName_Service } from '@/services/SortService.js'
+import { toTitleCase_Service } from '@/services/functions/TextManipulationService.ts'
+import LoadingHolder from "@/components/elements/LoadingHolder.vue";
+>>>>>>>> dev:frontend/src/components/admin/dashboard-views/Admin_BadgePrint.vue
 
 /*-| States |-*/
 /*---+----+---+----+---+----+---+----+---*/
@@ -156,8 +163,8 @@ const attendeeListGrouped = ref( [] )
 const searchTerm = ref( '' )
 const printComponent = ref() // for Print component
 
-/*-| Get Image |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Get Image
+---+----+---+----+---+----+---+----+---*/
 function getImageUrl( name ) {
   return new URL( `../../../public/logos/${ expoLocal.expo_Client.toString()
     .toLowerCase() }/${ name }.jpeg`, import.meta.url ).href

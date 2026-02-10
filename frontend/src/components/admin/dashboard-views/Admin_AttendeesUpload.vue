@@ -1,5 +1,4 @@
 <template>
-
   <div class="row-12-300 --place-content-center">
     <div class="col-12-300 --align-items-start --gap-12 --max-w-600">
       <h1>Upload Attendees</h1>
@@ -48,7 +47,7 @@ import { createAttendee_Service } from '@/services/AttendeeDataService.ts'
 import { useExpoLocalStore, useExhibitorLocalStore } from "@/stores.ts";
 import { createUpload_Service, getAttendeeUploads_Service } from '@/services/UploadDataService.ts'
 
-const companyLocal = useExhibitorLocalStore()
+const exhibitorLocal = useExhibitorLocalStore()
 const expoLocal = useExpoLocalStore()
 const currentUpload = ref()
 const status = ref(false)

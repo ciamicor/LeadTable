@@ -4,9 +4,9 @@
 .modal-backdrop {
   z-index:         10000;
   position:        fixed;
-  top:             0;
+  top:             $nav-height-actual;
   right:           0;
-  bottom:          $nav-height-actual;
+  bottom:          0;
   left:            0;
   display:         flex;
   place-content:   stretch;
@@ -25,8 +25,8 @@
   .modal-content {
     flex:          1 1 auto;
     max-width:     600px;
-    margin:        f.clamp-spacing(16, 3) f.clamp-spacing(16, 4);
-    padding:       f.clamp-spacing(16, 3) f.clamp-spacing(16, 4);
+    margin:        f.clamp-spacing(12, 3) f.clamp-spacing(12, 4);
+    padding:       f.clamp-spacing(12, 3) f.clamp-spacing(13, 4);
     border-radius: $panel-border;
     background:    white;
     box-shadow:    8px 8px 8px 2px rgba(0, 0, 0, 0.25);

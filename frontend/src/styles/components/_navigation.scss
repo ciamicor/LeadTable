@@ -1,0 +1,91 @@
+@use "../abstracts/index" as *;
+
+.nav-bar {
+  z-index:          10000;
+  position:         fixed;
+  top:              0;
+  right:            0;
+  left:             0;
+  display:          flex;
+  flex-flow:        row nowrap;
+  align-items:      center;
+  justify-content:  space-between;
+  gap:              $sp-4;
+  height:           $nav-height;
+  padding:          $nav-padding;
+  background-color: $color-primary-4;
+  box-shadow:       0 0 32px 12px rgba(0, 0, 0, 0.2);
+
+  #page-title {
+    color:        white;
+    font-size:    $font-md;
+    font-weight:  500;
+    padding-left: $sp-4;
+  }
+}
+
+.sidebar--page-wrapper {
+  z-index:       99999;
+  position:      fixed;
+  top:           $nav-height-actual;
+  bottom:        0;
+  left:          0;
+  display:       flex;
+  flex-flow:     column nowrap;
+  place-content: stretch;
+  width:         100dvw;
+  opacity:       1;
+  transition:    translate 100ms ease-in-out,
+                 opacity 200ms ease-in-out,
+                 width 100ms ease-in-out;
+  translate:     0 0;
+  scale:         1;
+
+  &.hide {
+    width:     35vw;
+    opacity:   0;
+    translate: -500px 0;
+  }
+
+  @include breakpoint(550) {
+    max-width: 385px;
+  }
+}
+
+.sidebar--content-container {
+  display:    flex;
+  flex:       1 1 auto;
+  flex-flow:  column nowrap;
+  gap:        $sp-7;
+  // margin:        $sp-6;
+  padding:    $sp-8;
+  // border-radius: $item-border;
+  background: $color-primary-4;
+}
+
+.sidebar--nav-menu-wrapper {
+  display:               grid;
+  grid-template-columns: 1fr;
+  flex:                  1 1;
+  flex-flow:             column nowrap;
+  gap:                   $sp-4;
+  .nav-buttons-grid--wrapper {
+    display:               grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(auto-fill, 65px);
+    gap:                   $sp-4;
+    .button {
+      flex-grow:       1;
+      justify-content: flex-start;
+      gap:             $sp-6;
+      font-size:       $font-sm;
+      padding:         $sp-6;
+      i {
+        font-size: $font-lg;
+      }
+    }
+  }
+  #sign-in, #sign-out {
+    margin-block-start: auto;
+  }
+}

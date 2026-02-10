@@ -10,25 +10,26 @@ class ExhibitorDataService {
     return http.get('/company')
   }
 
-  get(id: any) {
-    return http.get('/company/' + id)
+  get(cId: any) {
+    return http.get('/company/' + cId)
   }
 
-  updateLeadRet(id: any, data: any) {
+  update(id: any, data: any) {
     return http.put('/company/' + id, data)
   }
 }
 
 /*-| Functions
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-const companyService = new ExhibitorDataService()
+const exhibitorService = new ExhibitorDataService()
 
-/*-| Create
+/*-| Create exhibitor
 ---+----+---+----+---+----+---+----+---*/
 export async function createExhibitor_Service(companyObject: any) {
   console.log("Creating company: ", companyObject)
   const data = {
     id: companyObject.id,
+    expoId: companyObject.expoId,
     login_Url: companyObject.login_Url,
     name: companyObject.name,
     lead_Ret: companyObject.lead_Ret,
@@ -37,21 +38,28 @@ export async function createExhibitor_Service(companyObject: any) {
   }
   console.log(data)
   try {
-    let newCompany = await companyService.create(data)
-    console.log(newCompany.data)
-    return companyObject.id = newCompany.data.id
+    let newExhibitor = await exhibitorService.create(data)
+    console.log(newExhibitor.data)
+    return companyObject.id = newExhibitor.data.id
   } catch (e: any) {
     console.log(e)
   }
 }
 
-/*-| Get by ID
+/*-| Get by exhibitor & Expo ID
 ---+----+---+----+---+----+---+----+---*/
-export async function getExhibitor_Service(id: any) {
+export async function getExhibitor_Service(cId: any, exhibitorObject: any = null) {
   try {
-    let company = await companyService.get(id)
-    console.log('response: ', company)
-    return company.data
+    let exhibitor = await exhibitorService.get(cId)
+    console.log('Exhibitor object: ', exhibitorObject)
+    console.log('response: ', exhibitor)
+    if (exhibitorObject !== null) {
+      exhibitorObject.value = exhibitor.data
+      console.log('company: ', exhibitorObject.value)
+    }
+    else {
+      return exhibitor.data
+    }
   } catch (error) {
     console.error('Error getting company by ID: ', error)
   }
@@ -62,17 +70,17 @@ export async function getExhibitor_Service(id: any) {
 export async function getLocalExhibitor_Service(c: any) {
   try {
     let profile = await db.profile.get(1)
-    let companyLocalHold: any = profile
-    console.log('Company LocalData Service: ', c)
-    console.log('Company LocalData Service: ', profile)
+    let exhibitorLocalHold: any = profile
+    console.log('Exhibitor LocalData Service: ', c)
+    console.log('Exhibitor LocalData Service: ', profile)
 
     if (profile) {
-      c.id = companyLocalHold.ex_Id
-      c.name = companyLocalHold.name
-      c.login_Url = companyLocalHold.login_Url
-      c.lead_Ret = companyLocalHold.lead_Ret
-      c.expo_Year = companyLocalHold.expo_Year
-      c.expo_Client = companyLocalHold.expo_Client
+      c.id = exhibitorLocalHold.ex_Id
+      c.name = exhibitorLocalHold.name
+      c.login_Url = exhibitorLocalHold.login_Url
+      c.lead_Ret = exhibitorLocalHold.lead_Ret
+      c.expo_Year = exhibitorLocalHold.expo_Year
+      c.expo_Client = exhibitorLocalHold.expo_Client
 
       return c
     }
@@ -81,6 +89,8 @@ export async function getLocalExhibitor_Service(c: any) {
   }
 }
 
+/*-| Update exhibitor in Database
+---+----+---+----+---+----+---+----+---*/
 export async function updateExhibitor_Service(id: any, retStatus: boolean) {
   console.log("Updating company: ", id)
   const data = {
@@ -88,7 +98,7 @@ export async function updateExhibitor_Service(id: any, retStatus: boolean) {
   }
   console.log('Updating Lead Retrieval to: ', data)
   try {
-    await companyService.updateLeadRet(id, data)
+    await exhibitorService.update(id, data)
   } catch (e: any) {
     console.log(e)
   }

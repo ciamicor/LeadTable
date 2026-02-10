@@ -6,14 +6,13 @@
     <qrcode-stream
       v-if="!scanCodeFound"
       class="scanner-camera-wrap"
-
       @detect="getQrId($event)"
       @camera-on="scanTarget = 'Waiting for QR code...'"
     ></qrcode-stream>
     <div class="row-12-300 --no-space qr-float-container">
       <span class="col-12-300 qr-float-target-text">{{ scanTarget }}</span>
       <div v-show="scanCodeFound"
-           class="row-12-300 --flex-grow">
+           class="row-12-300 --flex-grow-1">
         <button
           class="--warn qr-float-cancel --flex-basis-25"
           @click="resetScanning"
@@ -82,17 +81,17 @@
       </form>
       <div class="row-12-300 --no-space --m-t-12">
         <button
-          class="--primary--invert --flex-basis-100 --p-11"
-          @click="createLead(lead); router.push(`/${companyLocal.expo_Client}/${companyLocal.expo_Year}/leads-list`)">
+          class="--primary--invert --flex-basis-100 --p-12"
+          @click="createLead(lead); router.push(`/${exhibitorLocal.expo_Client}/${exhibitorLocal.expo_Year}/leads-list`)">
           Add {{ lead.name_First }}
         </button>
         <button
-          class="--warn --flex-basis-30 --flex-grow --p-10"
+          class="--warn --flex-basis-30 --flex-grow-1 --p-10"
           @click="resetScanning">
           Go Back
         </button>
         <button
-          class="--success --flex-basis-65 --flex-grow --p-10"
+          class="--success --flex-basis-65 --flex-grow-1 --p-10"
           @click="createLead(lead)">Add & Scan Another
         </button>
       </div>
@@ -113,17 +112,17 @@
 
 <script setup>
 import { QrcodeStream } from 'vue-qrcode-reader'
-import { createLead_Service } from '@/services/LeadDataService.js'
+import { createLead_Service } from '@/services/LeadDataService.ts'
 import AttendeeDataService from '@/services/AttendeeDataService.ts'
 import { inject, onBeforeMount, onMounted, ref } from 'vue'
-import router from '@/router.js'
-import { useExhibitorLocalStore } from '@/stores.js'
+import router from '@/router.ts'
+import { useExhibitorLocalStore } from '@/stores.ts'
 
-/*-| Variables |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Variables
+---+----+---+----+---+----+---+----+---*/
 const debug = false
 
-const companyLocal = useExhibitorLocalStore()
+const exhibitorLocal = useExhibitorLocalStore()
 
 /*-| Scanning |-*/
 const scanConfirm = ref( false )
@@ -138,8 +137,8 @@ const commentRef = ref( null )
 const attendeeService = new AttendeeDataService()
 let attendee = ref(
   {
-    expo_Year: companyLocal.expo_Year,
-    expo_Client: companyLocal.expo_Client,
+    expo_Year: exhibitorLocal.expo_Year,
+    expo_Client: exhibitorLocal.expo_Client,
     name_First: '',
     name_Last: '',
     contact_Email: '',
@@ -157,12 +156,12 @@ let attendee = ref(
   }
 )
 
-/*-| Company Service |-*/
+/*-| exhibitor Service |-*/
 let company = ref(
   {
-    id: companyLocal.id,
-    expo_Year: companyLocal.expo_Year,
-    company_Name: companyLocal.name
+    id: exhibitorLocal.id,
+    expo_Year: exhibitorLocal.expo_Year,
+    company_Name: exhibitorLocal.name
   }
 )
 
@@ -170,10 +169,10 @@ let company = ref(
 let lead = ref(
   {
     id: null,
-    expo_Year: companyLocal.expo_Year,
-    expo_Client: companyLocal.expo_Client,
+    expo_Year: exhibitorLocal.expo_Year,
+    expo_Client: exhibitorLocal.expo_Client,
     attendee_Id: attendee.value.id,
-    scan_Company_Id: companyLocal.id,
+    scan_Company_Id: exhibitorLocal.id,
     name_First: attendee.value.name_First,
     name_Last: attendee.value.name_Last,
     email: attendee.value.contact_Email,
@@ -191,13 +190,13 @@ let lead = ref(
   }
 )
 
-/*-| Lifecycle |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Lifecycle
+---+----+---+----+---+----+---+----+---*/
 onBeforeMount( () => {
 } )
 
-/*-| Manage Related Data |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Manage Related Data
+---+----+---+----+---+----+---+----+---*/
 async function getAttendee( id ) {
   await attendeeService.get( id )
     .then( ( response ) => {
@@ -210,8 +209,8 @@ async function getAttendee( id ) {
   await loadLead()
 }
 
-/*-| Manage Scan Data |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Manage Scan Data
+---+----+---+----+---+----+---+----+---*/
 function updateComment( c ) {
   lead.value.comment = c
 }
@@ -220,8 +219,8 @@ function updateScore( r ) {
   lead.value.score = r
 }
 
-/*-| Manage Lead Data |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Manage Lead Data
+---+----+---+----+---+----+---+----+---*/
 function resetScanning() {
   scanTarget.value = 'Scanning'
   scanConfirm.value = false

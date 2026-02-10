@@ -1,6 +1,25 @@
 <template>
-  <div
-    class="view-mask">
+  <sidebar-nav :toggled="showSidebarNav"
+               @closeNav="toggleSidebarNav"/>
+  <nav
+    class="nav-bar">
+    <span id="page-title"
+          class="--m-0">
+      {{ route.name }}
+    </span>
+    <button
+      v-if="route.path !== '/'"
+      id="toggle-nav"
+      :class="showSidebarNav ? ' --warn ' : ' --primary ' "
+      class="button p-8"
+      @click="toggleSidebarNav">
+      <i v-if="!showSidebarNav"
+         class="bi-list"></i>
+      <i v-if="showSidebarNav"
+         class="bi-x-lg"></i>
+    </button>
+  </nav>
+  <div class="view-mask">
     <div class="view-container">
       <div v-if="loading"
            class="--place-self-center --p-v-24">
@@ -9,7 +28,7 @@
       <router-view v-if="!loading"/>
     </div>
   </div>
-  <nav v-if="expoLocal.expo_Client !== 'WISE' && route.path !== '/'"
+  <nav v-if="route.path !== '/'"
        class="nav-bar">
     <router-link
       :to="`/${expoLocal.expo_Client}/${expoLocal.expo_Year}/floor-plan`"
@@ -71,6 +90,7 @@
 
 <script
   setup>
+import SidebarNav from "@/components/navigation/SidebarNav.vue";
 import { db } from '@/db.js'
 import { onBeforeMount, ref } from 'vue'
 import { useExpoLocalStore, useExhibitorLocalStore, useSessionStore } from '@/stores.js'
@@ -143,6 +163,14 @@ async function checkLoginState() {
   } catch ( e ) {
     console.error( e )
   }
+}
+
+/*-| Toggle Sidebar
+---+----+---+----+---+----+---+----+---*/
+const showSidebarNav = ref( false )
+
+function toggleSidebarNav() {
+  showSidebarNav.value = !showSidebarNav.value
 }
 
 /*-| Checks |-*/

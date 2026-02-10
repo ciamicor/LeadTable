@@ -9,9 +9,9 @@
 <script lang="js"
         setup>
 import { utils, writeFile } from 'xlsx'
-import { useExhibitorLocalStore } from '@/stores.js'
+import { useExhibitorLocalStore } from '@/stores.ts'
 
-const companyLocal = useExhibitorLocalStore()
+const exhibitorLocal = useExhibitorLocalStore()
 
 const props = defineProps( {
   leadsList: {
@@ -50,7 +50,7 @@ async function exportLeads() {
     ],
     { origin: 'A1' } )
   writeFile( workbook,
-    `${ companyLocal.name }-Leads-${ companyLocal.expo_Client }-Expo-${ companyLocal.expo_Year }.xlsx`,
+    `${ exhibitorLocal.name }-Leads-${ exhibitorLocal.expo_Client }-Expo-${ exhibitorLocal.expo_Year }.xlsx`,
     { compression: true } )
 }
 

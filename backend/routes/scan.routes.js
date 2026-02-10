@@ -9,4 +9,4 @@ router.get( '/', scanController.getAllScans );
 // Create scan
 router.post( '/', scanController.createScan );
 
-export default router;
+export default router

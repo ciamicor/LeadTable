@@ -200,14 +200,13 @@ import { getUrlHost, getURLParams } from "@/services/functions/UrlService.ts";
 import { countries } from "@/services/addresses/AddressForm_Countries.ts";
 import { formatSlug } from "@/services/functions/TextManipulationService.ts";
 import {
-  addExhibitor,
-  addExhibitorBooth,
-  getFPExhibitor,
+  addFPExhibitor,
+  addFPExhibitorBooth,
   getFPExhibitorId
 } from "@/services/ExpoFPDataService.ts";
 
 const host = getUrlHost()
-const companyLocal = useExhibitorLocalStore()
+const exhibitorLocal = useExhibitorLocalStore()
 const expoLocal = useExpoLocalStore()
 
 // TODO add global status, add to global loading component where needed.
@@ -246,7 +245,7 @@ async function createExhibitor() {
   exhibitor.value.expo_Client = expoLocal.expo_Client
 
   status.value = 'Checking info...'
-  status.value = await addExhibitor( expoLocal.expo_Client, expoLocal.expo_Year, exhibitor.value )
+  status.value = await addFPExhibitor( expoLocal.expo_Client, expoLocal.expo_Year, exhibitor.value )
   const exhibId = await getFPExhibitorId(
     externalIdFormat.value,
     expoLocal.expo_Client,
@@ -256,7 +255,7 @@ async function createExhibitor() {
     expoLocal.expo_Client,
     expoLocal.expo_Year )
   status.value = 'Adding booth...'
-  await addExhibitorBooth( expoLocal.expo_Client,
+  await addFPExhibitorBooth( expoLocal.expo_Client,
     expoLocal.expo_Year,
     exhibId,
     urlParams.value.booth )

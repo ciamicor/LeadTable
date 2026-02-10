@@ -1,14 +1,35 @@
 <template>
-  <button v-if="sessionStore.logged_In === true"
-          class="--float --top-r --warn--invert"
-          @click="logOut">
-    Sign Out
-  </button>
-
+  <div v-if="sessionStore.logged_In === true"
+       class="container --align-content-center --p-6">
+    <div>
+      <p class="--m-b-10">More profile features coming soon.</p>
+      <div class="row-12-300">
+        <a :href="`https://app.expofp.com${exhibitorLocal.login_Url}`"
+           class="button"
+           target="_blank">
+          ExpoFP
+          <i class="--m-l-4 bi-arrow-up-right-square"></i>
+        </a>
+        <a :href="`https://app.expofp.com${exhibitorLocal.login_Url.replace('edit?', 'editprofile?')}`"
+           class="button"
+           target="_blank">
+          Edit Profile
+          <i class="--m-l-4 bi-arrow-up-right-square"></i>
+        </a>
+        <ButtonSignOut
+          :extra-match="extraMatch"
+          :login-id-match="loginIdMatch"
+        />
+      </div>
+    </div>
+  </div>
+  <!-- Login -->
+  <!-------------------------->
   <div
     v-else
     class="row --place-content-center --place-items-center">
     <div
+      class="col-12-300 --p-24-clamp">
       class="--p-v-20 col-12-300 col-10-500 col-6-900 --flex-grow">
       <h4 class="--m-0">
         {{ expoLocal.clientFull }}
@@ -27,7 +48,7 @@
                pattern="\d*"
                placeholder="Enter your ID"
                type="tel"
-               @keydown.enter="login()"
+               @keydown.enter="login">
         >
       </label>
       <button class="--primary--invert"
@@ -52,9 +73,23 @@
       {{ exhibitorExtras }}
     </div>
   </div>
+  <div
+    v-if="sessionStore.logged_In && expoLocal.expoInPast === true"
+    class="row"
+  >
+    <div class="col-10-300 col-8-800">
+      <h3>This expo has passed.</h3>
+      <p>After the expo you are unable to view your ExpoFP profile, but your leads are always
+         accessible. </p>
+      <router-link
+        class="button --success--invert"
+        to="leads-list">View Leads
+      </router-link>
+    </div>
+  </div>
 
   <iframe
-    v-if="sessionStore.logged_In === true"
+    v-if="sessionStore.logged_In"
     :src="'https://app.expofp.com' + exhibitorLocal.login_Url"
     allow="clipboard-read; clipboard-write"
     class="view-floor-plan"
@@ -67,20 +102,28 @@
 import {
   getFPExhibitor,
   getFPExhibitorExtras
-} from '../../services/ExpoFPDataService.ts'
+} from '@/services/ExpoFpDataService'
 import {
   createExhibitor_Service,
   getExhibitor_Service,
   updateExhibitor_Service
 } from '@/services/ExhibitorDataService.ts'
+import {
+  useExhibitorLocalStore,
+  useExpoLocalStore,
+  useSessionStore
+} from '@/stores.ts'
 import { ref } from 'vue'
 import { db } from '@/db.ts'
-import { useExhibitorLocalStore, useExpoLocalStore, useSessionStore } from '@/stores.ts'
 import router from "@/router.ts";
+import { saveLogin_LocalDB } from "@/services/LocalDBService.ts";
+import ButtonSignOut from '../Button_SignOut.vue'
+import { object } from "better-auth";
 
 /*-| Variables
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-const debug = ref(false)
+const debug = ref(true)
+const testId = ref()// 13286979)
 
 const exhibitorExtras = ref()
 const loginIdMatch = ref(false)
@@ -89,104 +132,106 @@ const extraMatch = ref(false)
 const sessionStore = useSessionStore()
 const exhibitorLocal = useExhibitorLocalStore()
 const expoLocal = useExpoLocalStore()
-
-/*-| Lifecycle |-*/
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-
-/*-| DB |-*/
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const status = ref()
 
 /*-| Login/Out |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+// TODO Add URL parameter detection to grab exhibitor id...
+// TODO... then use that to sign in automatically.
 async function login() {
-  /*-| Get Exhibitor |-*/
-  console.log('Getting Exhibitor...')
-  let getCompany
-  getCompany = await getExhibitor_Service(exhibitorLocal.id)
+  /*-| Check if exhibitor is in server DB |-*/
+  const serverExhibitor = await getExhibitor_Service(exhibitorLocal.id)
 
-  if (!getCompany) {
-    console.log('No Company')
-    getCompany = await getFPExhibitor(
+  console.log("Expo in past:" + expoLocal.expoInPast)
+
+  /*-| If Expo has passed, only check the database. |-*/
+  if (expoLocal.expoInPast) {
+    exhibitorLocal.$patch({
+      id: serverExhibitor.id,
+      name: serverExhibitor.name,
+      login_Url: serverExhibitor.login_Url,
+      lead_Ret: serverExhibitor.lead_Ret,
+      expo_Year: serverExhibitor.expo_Year,
+      expo_Client: serverExhibitor.expo_Client,
+    })
+    await saveLogin_LocalDB(
+      exhibitorLocal.id,
+      exhibitorLocal.name,
+      exhibitorLocal.login_Url,
+      serverExhibitor.lead_Ret,
+      expoLocal.expo_Client,
+      expoLocal.expo_Year,
+      status
+    )
+  }
+  /*-| If Expo is not over, check ExpoFP for info. |-*/
+  else if (!expoLocal.expoInPast) {
+    console.log('Getting exhibitor...')
+    const exhibFP = await getFPExhibitor(
       exhibitorLocal.id,
       expoLocal.expo_Client,
       expoLocal.expo_Year,
     )
-  }
-  console.log("Got exhibitor company:")
-  console.log(getCompany)
+    console.log("Got exhibitor company from ExpoFP: ", exhibFP)
 
-  exhibitorLocal.$patch({
-    id: getCompany.id,
-    name: getCompany.name,
-    login_Url: getCompany.autoLoginUrl || getCompany.login_Url,
-    lead_Ret: getCompany.lead_Ret || extraMatch.value,
-    expo_Year: expoLocal.expo_Year,
-    expo_Client: expoLocal.expo_Client,
-  })
-  console.log(exhibitorLocal)
-  // TODO - Check to see if lead retrieval has changed.
-  /*-| Check for Lead Retrieval
-  ---+----+---+----+---+----+---+----+---*/
-  try {
-    console.log('Matching extras...')
-    exhibitorExtras.value = await getFPExhibitorExtras(
-      exhibitorLocal.id,
-      expoLocal.expo_Client,
-      expoLocal.expo_Year
-    )
-    console.log("Company extras are: ", exhibitorExtras.value)
-    /*-| Look for Lead Ret match |-*/
-    extraMatch.value = await exhibitorExtras.value.some((e: any) =>
-      e.name.toLowerCase().includes('lead retrieval')
-    )
-    console.log("Lead retrieval purchased: ", extraMatch.value)
-  } catch (e) {
-    console.log(e)
-  }
-
-  /*-| Prep ExpoFP Login |-*/
-  // console.log('Logging in for: ', companyLocal.name)
-  // console.log('loginUrl is: ', companyLocal.login_Url)
-
-  /*-| Save to local DB |-*/
-  console.log('Saving company to Local DB...')
-  await saveDbLogin()
-  await createExhibitor_Service(exhibitorLocal)
-  /*-| Check if Company is in server DB |-*/
-  await getExhibitor_Service(exhibitorLocal.id)
-
-  sessionStore.logged_In = true
-  // window.location.reload()
-  router.push({name: 'Leadtable'})
-}
-
-async function saveDbLogin() {
-  try {
-    const id = await db.profile.add({
-      id: 1,
-      ex_Id: exhibitorLocal.id || 0,
-      name: exhibitorLocal.name,
-      login_Url: exhibitorLocal.login_Url,
-      lead_Ret: exhibitorLocal.lead_Ret || extraMatch.value,
+    exhibitorLocal.$patch({
+      id: exhibFP.id,
+      name: exhibFP.name,
+      login_Url: exhibFP.autoLoginUrl,
+      lead_Ret: extraMatch.value,
+      expo_Year: expoLocal.expo_Year,
       expo_Client: expoLocal.expo_Client,
-      expo_Year: expoLocal.expo_Year
     })
-    status.value = `${exhibitorLocal.name}
-          successfully added. Got id ${id}`
-  } catch (error) {
-    status.value = `Failed to add
-          ${exhibitorLocal.name}: ${error}`
+
+    /*-| Check for Lead Retrieval |-*/
+    /*---+----+---+----+---+----+---+----+---*/
+    await checkLeadRetPurch()
+
+    /*-| Prep ExpoFP Login |-*/
+    console.log('Logging in for: ', exhibitorLocal.name)
+    console.log('loginURL is: ', exhibitorLocal.login_Url)
+
+    /*-| Save to local DB |-*/
+    console.log('Saving company to Local DB...')
+    await saveLogin_LocalDB(
+      exhibitorLocal.id,
+      exhibitorLocal.name,
+      exhibitorLocal.login_Url,
+      extraMatch.value,
+      expoLocal.expo_Client,
+      expoLocal.expo_Year,
+      status
+    )
+    await createExhibitor_Service(exhibitorLocal)
+    console.log("GETTING DEBUG")
+    await getExhibitor_Service(exhibitorLocal.id)
   }
+  sessionStore.logged_In = true
+  /*if (exhibitorLocal.lead_Ret) {
+    await router.push({name: 'Lead Table'})
+  }*/
 }
 
-async function logOut() {
-  // db.delete({ disableAutoOpen: false })
-  db.profile.delete(1)
-  loginIdMatch.value = false
-  extraMatch.value = false
-  sessionStore.logged_In = false
-  exhibitorLocal.$reset()
-  window.location.reload()
+async function scanUpdates(id: number) {
+  console.log('Why do I exist???')// exhibFP.updatedAt)
 }
+
+// TODO add function that compares ExpoFP & DB results
+// Updates data where appropriate (loginURL, etc)
+// Should not update lead retrieval after expo date has passed.
+
+async function checkLeadRetPurch() {
+  console.log('Matching extras...')
+  exhibitorExtras.value = await getFPExhibitorExtras(
+    exhibitorLocal.id,
+    expoLocal.expo_Client,
+    expoLocal.expo_Year)
+  console.log("exhibitor extras are: ", exhibitorExtras.value)
+  /*-| Look for Lead Ret match |-*/
+  extraMatch.value = await exhibitorExtras.value.some((e: any) =>
+    e.name.toLowerCase().includes('lead retrieval')
+  )
+  console.log("Lead retrieval purchased: ", extraMatch.value)
+}
+
 </script>

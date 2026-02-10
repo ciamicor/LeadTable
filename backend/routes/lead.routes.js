@@ -1,7 +1,7 @@
 import express from 'express';
 
 const router = express.Router();
-import * as leadController from '../controllers/lead.controller.js'
+import * as leadController from "../controllers/lead.controller.js";
 
 // Route to create a new lead
 router.post( '/', leadController.createLead );

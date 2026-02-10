@@ -1,17 +1,21 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import type { Ref } from 'vue'
 
 /*-| Session Store
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const useSessionStore = defineStore('sessionStore', () => {
-  const logged_In = ref(false)
+  const logged_In: Ref<boolean, boolean> = ref(false)
+  const status: Ref<string, string> = ref('')
 
   function $reset() {
     logged_In.value = false
+    status.value = ''
   }
 
   return {
     logged_In,
+    status,
     $reset,
   }
 })
@@ -22,6 +26,7 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
   const active = ref(false)
   const eventId = ref(0)
   const dateStart = ref(null)
+  const expoInPast : Ref<Boolean, Boolean> = ref(false)
   const expo_Client = ref('')
   const contactEmail = ref('')
   const clientFull = ref('')
@@ -41,6 +46,7 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
     active.value = false
     eventId.value = 0
     dateStart.value = null
+    expoInPast.value = false
     expo_Client.value = ''
     contactEmail.value = ''
     clientFull.value = ''
@@ -60,6 +66,7 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
   return {
     active,
     eventId,
+    expoInPast,
     dateStart,
     expo_Client,
     contactEmail,

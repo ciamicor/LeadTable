@@ -38,7 +38,7 @@ class LeadDataService {
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const leadService = new LeadDataService()
 
-/*-| Create Leads
+/*-| Create leads
 ---+----+---+----+---+----+---+----+---*/
 async function createLead_Service(lead: any) {
   console.log('Lead Service: ', lead)
@@ -102,7 +102,7 @@ async function updateLead_Service(id: any, lead: any) {
   }
 }
 
-/*-| Get Single Leads
+/*-| Get Single leads
 ---+----+---+----+---+----+---+----+---*/
 async function getLead_Service(id: any) {
   try {
@@ -114,9 +114,8 @@ async function getLead_Service(id: any) {
   }
 }
 
-/*-| Get All Leads by Exhibitor Company ID
+/*-| Get All leads by exhibitor ID
 ---+----+---+----+---+----+---+----+---*/
-
 async function getAllCompanyLeads_Service(cId: any, list: any) {
   try {
     let leads = await leadService.getAllExhibLeads(cId)
@@ -126,7 +125,7 @@ async function getAllCompanyLeads_Service(cId: any, list: any) {
   }
 }
 
-/*-| Get All Leads
+/*-| Get All leads
 ---+----+---+----+---+----+---+----+---*/
 async function getAllLeads_Service(list: any) {
   try {

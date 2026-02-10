@@ -320,14 +320,14 @@ template {
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Spacing |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-/*-| Constant |-*/
-/*---+----+---+----+---+----+---+----+---*/
-/*-| Variable |-*/
-/*---+----+---+----+---+----+---+----+---*/
-/*-| Layout |-*/
-/*---+----+---+----+---+----+---+----+---*/
-/*-| Borders |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Constant
+---+----+---+----+---+----+---+----+---*/
+/*-| Variable
+---+----+---+----+---+----+---+----+---*/
+/*-| Layout
+---+----+---+----+---+----+---+----+---*/
+/*-| Borders
+---+----+---+----+---+----+---+----+---*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Type |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
@@ -335,84 +335,73 @@ template {
 /*-| Colors |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 :root {
-  --color-primary-1: hsl(85, 80%, 8%);
-  --color-secondary-1: hsl(45, 80%, 8%);
-  --color-success-1: hsl(235, 80%, 8%);
-  --color-warn-1: hsl(10, 80%, 8%);
-  --grey-1: hsl(215, 20%, 8%);
-  --color-primary-2: hsl(85, 80%, 16%);
-  --color-secondary-2: hsl(45, 80%, 16%);
-  --color-success-2: hsl(235, 80%, 16%);
-  --color-warn-2: hsl(10, 80%, 16%);
-  --grey-2: hsl(215, 20%, 16%);
-  --color-primary-3: hsl(85, 80%, 24%);
-  --color-secondary-3: hsl(45, 80%, 24%);
-  --color-success-3: hsl(235, 80%, 24%);
-  --color-warn-3: hsl(10, 80%, 24%);
-  --grey-3: hsl(215, 20%, 24%);
-  --color-primary-4: hsl(85, 80%, 32%);
-  --color-secondary-4: hsl(45, 80%, 32%);
-  --color-success-4: hsl(235, 80%, 32%);
-  --color-warn-4: hsl(10, 80%, 32%);
-  --grey-4: hsl(215, 20%, 32%);
-  --color-primary-5: hsl(85, 80%, 40%);
-  --color-secondary-5: hsl(45, 80%, 40%);
-  --color-success-5: hsl(235, 80%, 40%);
-  --color-warn-5: hsl(10, 80%, 40%);
-  --grey-5: hsl(215, 20%, 40%);
-  --color-primary-6: hsl(85, 80%, 48%);
-  --color-secondary-6: hsl(45, 80%, 48%);
-  --color-success-6: hsl(235, 80%, 48%);
-  --color-warn-6: hsl(10, 80%, 48%);
-  --grey-6: hsl(215, 20%, 48%);
-  --color-primary-7: hsl(85, 80%, 56%);
-  --color-secondary-7: hsl(45, 80%, 56%);
-  --color-success-7: hsl(235, 80%, 56%);
-  --color-warn-7: hsl(10, 80%, 56%);
-  --grey-7: hsl(215, 20%, 56%);
-  --color-primary-8: hsl(85, 80%, 64%);
-  --color-secondary-8: hsl(45, 80%, 64%);
-  --color-success-8: hsl(235, 80%, 64%);
-  --color-warn-8: hsl(10, 80%, 64%);
-  --grey-8: hsl(215, 20%, 64%);
-  --color-primary-9: hsl(85, 80%, 72%);
-  --color-secondary-9: hsl(45, 80%, 72%);
-  --color-success-9: hsl(235, 80%, 72%);
-  --color-warn-9: hsl(10, 80%, 72%);
-  --grey-9: hsl(215, 20%, 72%);
-  --color-primary-10: hsl(85, 80%, 80%);
-  --color-secondary-10: hsl(45, 80%, 80%);
-  --color-success-10: hsl(235, 80%, 80%);
-  --color-warn-10: hsl(10, 80%, 80%);
-  --grey-10: hsl(215, 20%, 80%);
-  --color-primary-11: hsl(85, 80%, 88%);
-  --color-secondary-11: hsl(45, 80%, 88%);
-  --color-success-11: hsl(235, 80%, 88%);
-  --color-warn-11: hsl(10, 80%, 88%);
-  --grey-11: hsl(215, 20%, 88%);
-  --color-primary-12: hsl(85, 80%, 96%);
-  --color-secondary-12: hsl(45, 80%, 96%);
-  --color-success-12: hsl(235, 80%, 96%);
-  --color-warn-12: hsl(10, 80%, 96%);
-  --grey-12: hsl(215, 20%, 96%);
-  --color-primary-hs: 85, 65%;
-  --color-secondary-hs: 45, 85%;
-  --color-success-hs: 235, 85%;
-  --color-warn-hs: 10, 85%;
-  --grey-1-hsl: 215, 25%, 8%;
-  --grey-2-hsl: 215, 25%, 16%;
-  --grey-3-hsl: 215, 25%, 24%;
-  --grey-4-hsl: 215, 25%, 32%;
-  --grey-5-hsl: 215, 25%, 40%;
-  --grey-6-hsl: 215, 25%, 48%;
-  --grey-7-hsl: 215, 25%, 56%;
-  --grey-8-hsl: 215, 25%, 64%;
-  --grey-9-hsl: 215, 25%, 72%;
-  --grey-10-hsl: 215, 25%, 80%;
-  --grey-11-hsl: 215, 25%, 88%;
-  --grey-12-hsl: 215, 25%, 94%;
+  --color-primary-hs: 85, 85%;
+  --color-secondary-hs: 45, 95%;
+  --color-success-hs: 235, 55%;
+  --color-warn-hs: 5, 75%;
+  --color-grey-hs: 215, 16%;
   --font-primary: hsl(var(--grey-1-hsl));
   --font-contrast: white;
+  --color-primary-1: hsl(var(--color-primary-hs), 8%);
+  --color-secondary-1: hsl(var(--color-secondary-hs), 8%);
+  --color-success-1: hsl(var(--color-success-hs), 8%);
+  --color-warn-1: hsl(var(--color-warn-hs), 8%);
+  --grey-1: hsl(var(--color-grey-hs), 8%);
+  --color-primary-2: hsl(var(--color-primary-hs), 16%);
+  --color-secondary-2: hsl(var(--color-secondary-hs), 16%);
+  --color-success-2: hsl(var(--color-success-hs), 16%);
+  --color-warn-2: hsl(var(--color-warn-hs), 16%);
+  --grey-2: hsl(var(--color-grey-hs), 16%);
+  --color-primary-3: hsl(var(--color-primary-hs), 24%);
+  --color-secondary-3: hsl(var(--color-secondary-hs), 24%);
+  --color-success-3: hsl(var(--color-success-hs), 24%);
+  --color-warn-3: hsl(var(--color-warn-hs), 24%);
+  --grey-3: hsl(var(--color-grey-hs), 24%);
+  --color-primary-4: hsl(var(--color-primary-hs), 32%);
+  --color-secondary-4: hsl(var(--color-secondary-hs), 32%);
+  --color-success-4: hsl(var(--color-success-hs), 32%);
+  --color-warn-4: hsl(var(--color-warn-hs), 32%);
+  --grey-4: hsl(var(--color-grey-hs), 32%);
+  --color-primary-5: hsl(var(--color-primary-hs), 40%);
+  --color-secondary-5: hsl(var(--color-secondary-hs), 40%);
+  --color-success-5: hsl(var(--color-success-hs), 40%);
+  --color-warn-5: hsl(var(--color-warn-hs), 40%);
+  --grey-5: hsl(var(--color-grey-hs), 40%);
+  --color-primary-6: hsl(var(--color-primary-hs), 48%);
+  --color-secondary-6: hsl(var(--color-secondary-hs), 48%);
+  --color-success-6: hsl(var(--color-success-hs), 48%);
+  --color-warn-6: hsl(var(--color-warn-hs), 48%);
+  --grey-6: hsl(var(--color-grey-hs), 48%);
+  --color-primary-7: hsl(var(--color-primary-hs), 56%);
+  --color-secondary-7: hsl(var(--color-secondary-hs), 56%);
+  --color-success-7: hsl(var(--color-success-hs), 56%);
+  --color-warn-7: hsl(var(--color-warn-hs), 56%);
+  --grey-7: hsl(var(--color-grey-hs), 56%);
+  --color-primary-8: hsl(var(--color-primary-hs), 64%);
+  --color-secondary-8: hsl(var(--color-secondary-hs), 64%);
+  --color-success-8: hsl(var(--color-success-hs), 64%);
+  --color-warn-8: hsl(var(--color-warn-hs), 64%);
+  --grey-8: hsl(var(--color-grey-hs), 64%);
+  --color-primary-9: hsl(var(--color-primary-hs), 72%);
+  --color-secondary-9: hsl(var(--color-secondary-hs), 72%);
+  --color-success-9: hsl(var(--color-success-hs), 72%);
+  --color-warn-9: hsl(var(--color-warn-hs), 72%);
+  --grey-9: hsl(var(--color-grey-hs), 72%);
+  --color-primary-10: hsl(var(--color-primary-hs), 80%);
+  --color-secondary-10: hsl(var(--color-secondary-hs), 80%);
+  --color-success-10: hsl(var(--color-success-hs), 80%);
+  --color-warn-10: hsl(var(--color-warn-hs), 80%);
+  --grey-10: hsl(var(--color-grey-hs), 80%);
+  --color-primary-11: hsl(var(--color-primary-hs), 88%);
+  --color-secondary-11: hsl(var(--color-secondary-hs), 88%);
+  --color-success-11: hsl(var(--color-success-hs), 88%);
+  --color-warn-11: hsl(var(--color-warn-hs), 88%);
+  --grey-11: hsl(var(--color-grey-hs), 88%);
+  --color-primary-12: hsl(var(--color-primary-hs), 96%);
+  --color-secondary-12: hsl(var(--color-secondary-hs), 96%);
+  --color-success-12: hsl(var(--color-success-hs), 96%);
+  --color-warn-12: hsl(var(--color-warn-hs), 96%);
+  --grey-12: hsl(var(--color-grey-hs), 96%);
 }
 
 /*-| SCSS |-*/
@@ -902,6 +891,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-0 {
+  row-gap: 0px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-0 {
@@ -924,6 +918,11 @@ template {
 .--m-v-0-clamp {
   margin-block-start: clamp(0px, 0px + 0vw, 0px) !important;
   margin-block-end: clamp(0px, 0px + 0vw, 0px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-0 {
+  column-gap: 0px !important;
 }
 
 /*-| Horz
@@ -1096,6 +1095,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-1 {
+  row-gap: 2px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-1 {
@@ -1118,6 +1122,11 @@ template {
 .--m-v-1-clamp {
   margin-block-start: clamp(1px, 0.25px + 0.234375vw, 4px) !important;
   margin-block-end: clamp(1px, 0.25px + 0.234375vw, 4px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-1 {
+  column-gap: 2px !important;
 }
 
 /*-| Horz
@@ -1290,6 +1299,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-2 {
+  row-gap: 4px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-2 {
@@ -1312,6 +1326,11 @@ template {
 .--m-v-2-clamp {
   margin-block-start: clamp(2px, 0.5px + 0.46875vw, 8px) !important;
   margin-block-end: clamp(2px, 0.5px + 0.46875vw, 8px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-2 {
+  column-gap: 4px !important;
 }
 
 /*-| Horz
@@ -1484,6 +1503,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-3 {
+  row-gap: 6px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-3 {
@@ -1506,6 +1530,11 @@ template {
 .--m-v-3-clamp {
   margin-block-start: clamp(3px, 0.75px + 0.703125vw, 12px) !important;
   margin-block-end: clamp(3px, 0.75px + 0.703125vw, 12px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-3 {
+  column-gap: 6px !important;
 }
 
 /*-| Horz
@@ -1678,6 +1707,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-4 {
+  row-gap: 8px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-4 {
@@ -1700,6 +1734,11 @@ template {
 .--m-v-4-clamp {
   margin-block-start: clamp(4px, 1px + 0.9375vw, 16px) !important;
   margin-block-end: clamp(4px, 1px + 0.9375vw, 16px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-4 {
+  column-gap: 8px !important;
 }
 
 /*-| Horz
@@ -1872,6 +1911,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-5 {
+  row-gap: 10px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-5 {
@@ -1894,6 +1938,11 @@ template {
 .--m-v-5-clamp {
   margin-block-start: clamp(5px, 1.25px + 1.171875vw, 20px) !important;
   margin-block-end: clamp(5px, 1.25px + 1.171875vw, 20px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-5 {
+  column-gap: 10px !important;
 }
 
 /*-| Horz
@@ -2066,6 +2115,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-6 {
+  row-gap: 12px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-6 {
@@ -2088,6 +2142,11 @@ template {
 .--m-v-6-clamp {
   margin-block-start: clamp(6px, 1.5px + 1.40625vw, 24px) !important;
   margin-block-end: clamp(6px, 1.5px + 1.40625vw, 24px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-6 {
+  column-gap: 12px !important;
 }
 
 /*-| Horz
@@ -2260,6 +2319,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-7 {
+  row-gap: 14px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-7 {
@@ -2282,6 +2346,11 @@ template {
 .--m-v-7-clamp {
   margin-block-start: clamp(7px, 1.75px + 1.640625vw, 28px) !important;
   margin-block-end: clamp(7px, 1.75px + 1.640625vw, 28px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-7 {
+  column-gap: 14px !important;
 }
 
 /*-| Horz
@@ -2454,6 +2523,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-8 {
+  row-gap: 16px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-8 {
@@ -2476,6 +2550,11 @@ template {
 .--m-v-8-clamp {
   margin-block-start: clamp(8px, 2px + 1.875vw, 32px) !important;
   margin-block-end: clamp(8px, 2px + 1.875vw, 32px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-8 {
+  column-gap: 16px !important;
 }
 
 /*-| Horz
@@ -2648,6 +2727,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-9 {
+  row-gap: 18px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-9 {
@@ -2670,6 +2754,11 @@ template {
 .--m-v-9-clamp {
   margin-block-start: clamp(9px, 2.25px + 2.109375vw, 36px) !important;
   margin-block-end: clamp(9px, 2.25px + 2.109375vw, 36px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-9 {
+  column-gap: 18px !important;
 }
 
 /*-| Horz
@@ -2842,6 +2931,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-10 {
+  row-gap: 20px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-10 {
@@ -2864,6 +2958,11 @@ template {
 .--m-v-10-clamp {
   margin-block-start: clamp(10px, 2.5px + 2.34375vw, 40px) !important;
   margin-block-end: clamp(10px, 2.5px + 2.34375vw, 40px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-10 {
+  column-gap: 20px !important;
 }
 
 /*-| Horz
@@ -3036,6 +3135,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-11 {
+  row-gap: 22px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-11 {
@@ -3058,6 +3162,11 @@ template {
 .--m-v-11-clamp {
   margin-block-start: clamp(11px, 2.75px + 2.578125vw, 44px) !important;
   margin-block-end: clamp(11px, 2.75px + 2.578125vw, 44px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-11 {
+  column-gap: 22px !important;
 }
 
 /*-| Horz
@@ -3230,6 +3339,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-12 {
+  row-gap: 24px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-12 {
@@ -3252,6 +3366,11 @@ template {
 .--m-v-12-clamp {
   margin-block-start: clamp(12px, 3px + 2.8125vw, 48px) !important;
   margin-block-end: clamp(12px, 3px + 2.8125vw, 48px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-12 {
+  column-gap: 24px !important;
 }
 
 /*-| Horz
@@ -3424,6 +3543,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-13 {
+  row-gap: 26px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-13 {
@@ -3446,6 +3570,11 @@ template {
 .--m-v-13-clamp {
   margin-block-start: clamp(13px, 3.25px + 3.046875vw, 52px) !important;
   margin-block-end: clamp(13px, 3.25px + 3.046875vw, 52px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-13 {
+  column-gap: 26px !important;
 }
 
 /*-| Horz
@@ -3618,6 +3747,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-14 {
+  row-gap: 28px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-14 {
@@ -3640,6 +3774,11 @@ template {
 .--m-v-14-clamp {
   margin-block-start: clamp(14px, 3.5px + 3.28125vw, 56px) !important;
   margin-block-end: clamp(14px, 3.5px + 3.28125vw, 56px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-14 {
+  column-gap: 28px !important;
 }
 
 /*-| Horz
@@ -3812,6 +3951,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-15 {
+  row-gap: 30px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-15 {
@@ -3834,6 +3978,11 @@ template {
 .--m-v-15-clamp {
   margin-block-start: clamp(15px, 3.75px + 3.515625vw, 60px) !important;
   margin-block-end: clamp(15px, 3.75px + 3.515625vw, 60px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-15 {
+  column-gap: 30px !important;
 }
 
 /*-| Horz
@@ -4006,6 +4155,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-16 {
+  row-gap: 32px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-16 {
@@ -4028,6 +4182,11 @@ template {
 .--m-v-16-clamp {
   margin-block-start: clamp(16px, 4px + 3.75vw, 64px) !important;
   margin-block-end: clamp(16px, 4px + 3.75vw, 64px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-16 {
+  column-gap: 32px !important;
 }
 
 /*-| Horz
@@ -4200,6 +4359,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-17 {
+  row-gap: 34px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-17 {
@@ -4222,6 +4386,11 @@ template {
 .--m-v-17-clamp {
   margin-block-start: clamp(17px, 4.25px + 3.984375vw, 68px) !important;
   margin-block-end: clamp(17px, 4.25px + 3.984375vw, 68px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-17 {
+  column-gap: 34px !important;
 }
 
 /*-| Horz
@@ -4394,6 +4563,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-18 {
+  row-gap: 36px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-18 {
@@ -4416,6 +4590,11 @@ template {
 .--m-v-18-clamp {
   margin-block-start: clamp(18px, 4.5px + 4.21875vw, 72px) !important;
   margin-block-end: clamp(18px, 4.5px + 4.21875vw, 72px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-18 {
+  column-gap: 36px !important;
 }
 
 /*-| Horz
@@ -4588,6 +4767,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-19 {
+  row-gap: 38px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-19 {
@@ -4610,6 +4794,11 @@ template {
 .--m-v-19-clamp {
   margin-block-start: clamp(19px, 4.75px + 4.453125vw, 76px) !important;
   margin-block-end: clamp(19px, 4.75px + 4.453125vw, 76px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-19 {
+  column-gap: 38px !important;
 }
 
 /*-| Horz
@@ -4782,6 +4971,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-20 {
+  row-gap: 40px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-20 {
@@ -4804,6 +4998,11 @@ template {
 .--m-v-20-clamp {
   margin-block-start: clamp(20px, 5px + 4.6875vw, 80px) !important;
   margin-block-end: clamp(20px, 5px + 4.6875vw, 80px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-20 {
+  column-gap: 40px !important;
 }
 
 /*-| Horz
@@ -4976,6 +5175,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-21 {
+  row-gap: 42px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-21 {
@@ -4998,6 +5202,11 @@ template {
 .--m-v-21-clamp {
   margin-block-start: clamp(21px, 5.25px + 4.921875vw, 84px) !important;
   margin-block-end: clamp(21px, 5.25px + 4.921875vw, 84px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-21 {
+  column-gap: 42px !important;
 }
 
 /*-| Horz
@@ -5170,6 +5379,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-22 {
+  row-gap: 44px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-22 {
@@ -5192,6 +5406,11 @@ template {
 .--m-v-22-clamp {
   margin-block-start: clamp(22px, 5.5px + 5.15625vw, 88px) !important;
   margin-block-end: clamp(22px, 5.5px + 5.15625vw, 88px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-22 {
+  column-gap: 44px !important;
 }
 
 /*-| Horz
@@ -5364,6 +5583,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-23 {
+  row-gap: 46px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-23 {
@@ -5386,6 +5610,11 @@ template {
 .--m-v-23-clamp {
   margin-block-start: clamp(23px, 5.75px + 5.390625vw, 92px) !important;
   margin-block-end: clamp(23px, 5.75px + 5.390625vw, 92px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-23 {
+  column-gap: 46px !important;
 }
 
 /*-| Horz
@@ -5558,6 +5787,11 @@ template {
 
 /*-| Axis
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/*-| Row Gap  |-*/
+.--gap-row-24 {
+  row-gap: 48px !important;
+}
+
 /*-| Vert
 ---+----+---+----+---+----+---+----+---*/
 .--p-v-24 {
@@ -5580,6 +5814,11 @@ template {
 .--m-v-24-clamp {
   margin-block-start: clamp(24px, 6px + 5.625vw, 96px) !important;
   margin-block-end: clamp(24px, 6px + 5.625vw, 96px) !important;
+}
+
+/*-| Column Gap |-*/
+.--gap-col-24 {
+  column-gap: 48px !important;
 }
 
 /*-| Horz
@@ -6082,71 +6321,71 @@ template {
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 /*-| Font Size Classes |-*/
 .--font-size-14 {
-  font-size: 14px;
+  font-size: 14px !important;
 }
 
 .--font-size-16 {
-  font-size: 16px;
+  font-size: 16px !important;
 }
 
 .--font-size-18 {
-  font-size: 18px;
+  font-size: 18px !important;
 }
 
 .--font-size-20 {
-  font-size: 20px;
+  font-size: 20px !important;
 }
 
 .--font-size-22 {
-  font-size: 22px;
+  font-size: 22px !important;
 }
 
 .--font-size-24 {
-  font-size: 24px;
+  font-size: 24px !important;
 }
 
 .--font-size-26 {
-  font-size: 26px;
+  font-size: 26px !important;
 }
 
 .--font-size-28 {
-  font-size: 28px;
+  font-size: 28px !important;
 }
 
 .--font-size-30 {
-  font-size: 30px;
+  font-size: 30px !important;
 }
 
 .--font-size-32 {
-  font-size: 32px;
+  font-size: 32px !important;
 }
 
 .--font-size-34 {
-  font-size: 34px;
+  font-size: 34px !important;
 }
 
 .--font-size-36 {
-  font-size: 36px;
+  font-size: 36px !important;
 }
 
 .--font-size-38 {
-  font-size: 38px;
+  font-size: 38px !important;
 }
 
 .--font-size-40 {
-  font-size: 40px;
+  font-size: 40px !important;
 }
 
 .--font-size-42 {
-  font-size: 42px;
+  font-size: 42px !important;
 }
 
 .--font-size-44 {
-  font-size: 44px;
+  font-size: 44px !important;
 }
 
 .--font-size-46 {
-  font-size: 46px;
+  font-size: 46px !important;
 }
 
 .--color-primary-1 {
@@ -6389,7 +6628,7 @@ template {
   color: var(--grey-12) !important;
 }
 
-/*-| Elements |-*/
+/*-| elements |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 p, button, li, label {
   font-size: 18px;
@@ -6426,30 +6665,40 @@ p, li, h1, h2, h3, h4, h5 {
   margin: 0;
 }
 
+@property --gradient-stop-1 {
+  initial-value: 16%;
+  inherits: false;
+  syntax: "<percentage>";
+}
+@property --gradient-stop-2 {
+  initial-value: 88%;
+  inherits: false;
+  syntax: "<percentage>";
+}
 /*-| Links
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 a:not(button, .button) {
   width: max-content;
   margin: 0 -2px;
   padding: 0 2px;
-  box-shadow: inset 0 -0.095rem 0 0 hsla(var(--grey-10-hsl), 0), inset 5rem -1rem 1rem 0 hsla(var(--grey-10-hsl), 0), inset 10rem -1.5rem 1rem 0 hsla(var(--grey-10-hsl), 0), inset 15rem -2rem 1rem 0 hsla(var(--grey-10-hsl), 0), inset 20rem -2.5rem 1rem 0 hsla(var(--grey-10-hsl), 0), 0 0 0.15rem 0 hsla(var(--grey-10-hsl), 0);
-  transition: box-shadow 200ms ease-in-out, padding 200ms ease-in-out, margin 200ms ease-in-out, text-decoration-color 200ms ease-in-out;
-  text-decoration-color: hsla(var(--grey-10-hsl), 85%);
+  box-shadow: inset 0 -0.095rem 0 0 hsla(var(--color-grey-hs), 75%, 0), inset 5rem -1rem 1rem 0 hsla(var(--color-grey-hs), 75%, 0), inset 10rem -1.5rem 1rem 0 hsla(var(--color-grey-hs), 75%, 0), inset 15rem -2rem 1rem 0 hsla(var(--color-grey-hs), 75%, 0), inset 20rem -2.5rem 1rem 0 hsla(var(--color-grey-hs), 75%, 0), 0 0 0.15rem 0 hsla(var(--color-grey-hs), 75%, 0);
+  transition: box-shadow 200ms ease-out, padding 200ms ease-out, margin 200ms ease-out, text-decoration-color 200ms ease-out;
+  text-decoration-color: hsla(var(--color-grey-hs), 75%, 85%);
   border-radius: 4px;
 }
 a:not(button, .button):hover {
-  text-decoration-color: hsla(var(--grey-10-hsl), 0%);
+  text-decoration-color: hsla(var(--color-grey-hs), 75%, 0%);
   margin-right: -2px;
   margin-left: -2px;
   padding: 0 2px;
-  box-shadow: inset 0 -0.095rem 0 0 hsla(var(--grey-10-hsl), 0), inset 5rem -1rem 1rem 0 hsla(var(--grey-10-hsl), 5%), inset 10rem -1.5rem 1rem 0 hsla(var(--grey-10-hsl), 15%), inset 15rem -2rem 1rem 0 hsla(var(--grey-10-hsl), 25%), inset 20rem -2.5rem 1rem 0 hsla(var(--grey-10-hsl), 35%), 0 0 0.15rem 0 hsla(var(--grey-10-hsl), 0);
+  box-shadow: inset 0 -0.095rem 0 0 hsla(var(--color-grey-hs), 75%, 0), inset 5rem -1rem 1rem 0 hsla(var(--color-grey-hs), 75%, 5%), inset 10rem -1.5rem 1rem 0 hsla(var(--color-grey-hs), 75%, 15%), inset 15rem -2rem 1rem 0 hsla(var(--color-grey-hs), 75%, 25%), inset 20rem -2.5rem 1rem 0 hsla(var(--color-grey-hs), 75%, 35%), 0 0 0.15rem 0 hsla(var(--color-grey-hs), 75%, 0);
 }
 a:not(button, .button).--primary {
   width: max-content;
   margin: 0 -2px;
   padding: 0 2px;
   box-shadow: inset 0 -0.095rem 0 0 hsla(var(--color-primary-hs), 65%, 0), inset 5rem -1rem 1rem 0 hsla(var(--color-primary-hs), 65%, 0), inset 10rem -1.5rem 1rem 0 hsla(var(--color-primary-hs), 65%, 0), inset 15rem -2rem 1rem 0 hsla(var(--color-primary-hs), 65%, 0), inset 20rem -2.5rem 1rem 0 hsla(var(--color-primary-hs), 65%, 0), 0 0 0.15rem 0 hsla(var(--color-primary-hs), 65%, 0);
-  transition: box-shadow 200ms ease-in-out, padding 200ms ease-in-out, margin 200ms ease-in-out, text-decoration-color 200ms ease-in-out;
+  transition: box-shadow 200ms ease-out, padding 200ms ease-out, margin 200ms ease-out, text-decoration-color 200ms ease-out;
   text-decoration-color: hsla(var(--color-primary-hs), 65%, 85%);
   border-radius: 4px;
 }
@@ -6465,7 +6714,7 @@ a:not(button, .button).--secondary {
   margin: 0 -2px;
   padding: 0 2px;
   box-shadow: inset 0 -0.095rem 0 0 hsla(var(--color-secondary-hs), 75%, 0), inset 5rem -1rem 1rem 0 hsla(var(--color-secondary-hs), 75%, 0), inset 10rem -1.5rem 1rem 0 hsla(var(--color-secondary-hs), 75%, 0), inset 15rem -2rem 1rem 0 hsla(var(--color-secondary-hs), 75%, 0), inset 20rem -2.5rem 1rem 0 hsla(var(--color-secondary-hs), 75%, 0), 0 0 0.15rem 0 hsla(var(--color-secondary-hs), 75%, 0);
-  transition: box-shadow 200ms ease-in-out, padding 200ms ease-in-out, margin 200ms ease-in-out, text-decoration-color 200ms ease-in-out;
+  transition: box-shadow 200ms ease-out, padding 200ms ease-out, margin 200ms ease-out, text-decoration-color 200ms ease-out;
   text-decoration-color: hsla(var(--color-secondary-hs), 75%, 85%);
   border-radius: 4px;
 }
@@ -6481,7 +6730,7 @@ a:not(button, .button).--success {
   margin: 0 -2px;
   padding: 0 2px;
   box-shadow: inset 0 -0.095rem 0 0 hsla(var(--color-success-hs), 85%, 0), inset 5rem -1rem 1rem 0 hsla(var(--color-success-hs), 85%, 0), inset 10rem -1.5rem 1rem 0 hsla(var(--color-success-hs), 85%, 0), inset 15rem -2rem 1rem 0 hsla(var(--color-success-hs), 85%, 0), inset 20rem -2.5rem 1rem 0 hsla(var(--color-success-hs), 85%, 0), 0 0 0.15rem 0 hsla(var(--color-success-hs), 85%, 0);
-  transition: box-shadow 200ms ease-in-out, padding 200ms ease-in-out, margin 200ms ease-in-out, text-decoration-color 200ms ease-in-out;
+  transition: box-shadow 200ms ease-out, padding 200ms ease-out, margin 200ms ease-out, text-decoration-color 200ms ease-out;
   text-decoration-color: hsla(var(--color-success-hs), 85%, 85%);
   border-radius: 4px;
 }
@@ -6497,7 +6746,7 @@ a:not(button, .button).--warn {
   margin: 0 -2px;
   padding: 0 2px;
   box-shadow: inset 0 -0.095rem 0 0 hsla(var(--color-warn-hs), 85%, 0), inset 5rem -1rem 1rem 0 hsla(var(--color-warn-hs), 85%, 0), inset 10rem -1.5rem 1rem 0 hsla(var(--color-warn-hs), 85%, 0), inset 15rem -2rem 1rem 0 hsla(var(--color-warn-hs), 85%, 0), inset 20rem -2.5rem 1rem 0 hsla(var(--color-warn-hs), 85%, 0), 0 0 0.15rem 0 hsla(var(--color-warn-hs), 85%, 0);
-  transition: box-shadow 200ms ease-in-out, padding 200ms ease-in-out, margin 200ms ease-in-out, text-decoration-color 200ms ease-in-out;
+  transition: box-shadow 200ms ease-out, padding 200ms ease-out, margin 200ms ease-out, text-decoration-color 200ms ease-out;
   text-decoration-color: hsla(var(--color-warn-hs), 85%, 85%);
   border-radius: 4px;
 }
@@ -6514,10 +6763,9 @@ a:not(button, .button).--warn:hover {
 button,
 .button {
   display: flex;
-  flex: 0 1 auto;
   place-content: center;
   place-items: center;
-  color: var(--grey-4);
+  color: var(--grey-2);
   font-size: 16px;
   font-weight: 400;
   line-height: 1;
@@ -6527,21 +6775,23 @@ button,
   cursor: pointer;
   border-width: 1px;
   border-style: solid;
-  border-color: var(--grey-7);
-  border-bottom-width: 3px;
+  border-color: var(--grey-10);
   border-radius: 8px;
-  background: var(--grey-12);
-  transition: background 200ms ease-in-out, color 200ms ease-in-out, border-width 100ms ease-in-out;
+  background: linear-gradient(180deg, hsl(var(--color-grey-hs), 96%) var(--gradient-stop-1), hsl(var(--color-grey-hs), 84%) var(--gradient-stop-2));
+  transition: background 200ms ease-out, color 200ms ease-out, border-width 100ms ease-out, box-shadow 100ms ease-out, --gradient-stop-1 100ms ease-out, --gradient-stop-2 200ms ease-out;
 }
 button i,
 .button i {
   color: inherit;
   font-size: inherit;
 }
-button:hover,
-.button:hover {
+button:hover, button:active,
+.button:hover,
+.button:active {
   color: var(--grey-2);
-  background: var(--grey-10);
+  box-shadow: inset 0 0 8px 1px hsla(0, 0%, 0%, 0.15);
+  --gradient-stop-1: 0%;
+  --gradient-stop-2: 50%;
 }
 button,
 .button {
@@ -6573,16 +6823,16 @@ button.--float.--top-l,
 button.--float.--bottom-r,
 .button.--float.--bottom-r {
   right: 24px;
-  bottom: calc(116px);
+  bottom: 24px;
 }
 button.--float.--bottom-l,
 .button.--float.--bottom-l {
-  bottom: calc(116px);
+  bottom: 24px;
   left: 24px;
 }
 button.--float.--bottom-c,
 .button.--float.--bottom-c {
-  bottom: calc(116px);
+  bottom: 24px;
   left: 50%;
   transform: -50% 0;
 }
@@ -6614,90 +6864,82 @@ button,
 button.--primary,
 .button.--primary {
   color: var(--color-primary-2);
-  border-color: var(--color-primary-4);
-  background: var(--color-primary-11);
+  border-color: var(--color-primary-6);
+  background: linear-gradient(180deg, hsl(var(--color-primary-hs), 96%) var(--gradient-stop-1), hsl(var(--color-primary-hs), 84%) var(--gradient-stop-2));
 }
 button.--primary:hover,
 .button.--primary:hover {
   color: var(--color-primary-2);
-  background: var(--color-primary-8);
 }
 button.--primary--invert,
 .button.--primary--invert {
-  color: var(--color-primary-12);
-  border-color: var(--color-primary-4);
-  background: var(--color-primary-5);
+  color: var(--color-primary-1);
+  border-color: var(--color-primary-3);
+  background: linear-gradient(180deg, hsl(var(--color-primary-hs), 68%) var(--gradient-stop-1), hsl(var(--color-primary-hs), 44%) var(--gradient-stop-2));
 }
 button.--primary--invert:hover,
 .button.--primary--invert:hover {
-  color: var(--color-primary-11);
-  background: var(--color-primary-4);
+  color: var(--color-primary-1);
 }
 button.--secondary,
 .button.--secondary {
   color: var(--color-secondary-2);
   border-color: var(--color-secondary-6);
-  background: var(--color-secondary-11);
+  background: linear-gradient(180deg, hsl(var(--color-secondary-hs), 96%) var(--gradient-stop-1), hsl(var(--color-secondary-hs), 84%) var(--gradient-stop-2));
 }
 button.--secondary:hover,
 .button.--secondary:hover {
   color: var(--color-secondary-2);
-  background: var(--color-secondary-9);
 }
 button.--secondary--invert,
 .button.--secondary--invert {
-  color: var(--color-secondary-12);
+  color: var(--color-secondary-1);
   border-color: var(--color-secondary-3);
-  background: var(--color-secondary-5);
+  background: linear-gradient(180deg, hsl(var(--color-secondary-hs), 68%) var(--gradient-stop-1), hsl(var(--color-secondary-hs), 44%) var(--gradient-stop-2));
 }
 button.--secondary--invert:hover,
 .button.--secondary--invert:hover {
-  color: var(--color-secondary-10);
-  background: var(--color-secondary-4);
+  color: var(--color-secondary-1);
 }
 button.--success,
 .button.--success {
   color: var(--color-success-2);
   border-color: var(--color-success-8);
-  background: var(--color-success-11);
+  background: linear-gradient(180deg, hsl(var(--color-success-hs), 96%) var(--gradient-stop-1), hsl(var(--color-success-hs), 84%) var(--gradient-stop-2));
 }
 button.--success:hover,
 .button.--success:hover {
   color: var(--color-success-2);
-  background: var(--color-success-10);
 }
 button.--success--invert,
 .button.--success--invert {
-  color: var(--color-success-12);
+  color: white;
   border-color: var(--color-success-3);
-  background: var(--color-success-6);
+  background: linear-gradient(180deg, hsl(var(--color-success-hs), 68%) var(--gradient-stop-1), hsl(var(--color-success-hs), 44%) var(--gradient-stop-2));
 }
 button.--success--invert:hover,
 .button.--success--invert:hover {
-  color: var(--color-success-10);
-  background: var(--color-success-4);
+  color: white;
 }
 button.--warn,
 .button.--warn {
   color: var(--color-warn-2);
   border-color: var(--color-warn-7);
-  background: var(--color-warn-11);
+  background: linear-gradient(180deg, hsl(var(--color-warn-hs), 96%) var(--gradient-stop-1), hsl(var(--color-warn-hs), 84%) var(--gradient-stop-2));
 }
 button.--warn:hover,
 .button.--warn:hover {
   color: var(--color-warn-2);
-  background: var(--color-warn-9);
 }
 button.--warn--invert,
 .button.--warn--invert {
-  color: var(--color-warn-12);
+  color: white;
   border-color: var(--color-warn-3);
-  background: var(--color-warn-5);
+  background: linear-gradient(180deg, hsl(var(--color-warn-hs), 68%) var(--gradient-stop-1), hsl(var(--color-warn-hs), 44%) var(--gradient-stop-2));
 }
 button.--warn--invert:hover,
 .button.--warn--invert:hover {
-  color: var(--color-warn-10);
-  background: var(--color-warn-4);
+  color: white;
 }
 
 .label {
@@ -6717,7 +6959,7 @@ button.--warn--invert:hover,
   border-color: var(--grey-7);
   border-radius: 4px;
   background: var(--grey-12);
-  transition: background 200ms ease-in-out, color 200ms ease-in-out, border-width 100ms ease-in-out;
+  transition: background 200ms ease-out, color 200ms ease-out, border-width 100ms ease-out;
 }
 .label i {
   color: inherit;
@@ -6775,8 +7017,8 @@ button.--warn--invert:hover,
 -|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===/*/
 .form-container {
   padding: 20px 24px 28px;
-  border-radius: 16px;
-  transition: padding 200ms ease-in-out, box-shadow 200ms ease-in-out;
+  border-radius: 12px;
+  transition: padding 200ms ease-out, box-shadow 200ms ease-out;
 }
 .form-container:hover {
   box-shadow: 0 0 12px var(--grey-11);
@@ -6786,7 +7028,7 @@ button.--warn--invert:hover,
 }
 
 /*-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===
--| Form Elements
+-| Form elements
 -|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===/*/
 label {
   display: grid;
@@ -6802,10 +7044,10 @@ label input, label select, label textarea {
 }
 
 input, select, textarea {
-  padding: 12px 12px 10px;
-  border: 2px solid var(--grey-10);
-  border-radius: 8px;
-  transition: box-shadow 200ms ease-in-out, border 200ms ease-in-out;
+  padding: 8px 6px 6px;
+  border: 1px solid var(--grey-10);
+  border-radius: 4px;
+  transition: box-shadow 200ms ease-out, border 200ms ease-out;
 }
 input::placeholder, input > option:disabled, select::placeholder, select > option:disabled, textarea::placeholder, textarea > option:disabled {
   color: var(--grey-8);
@@ -6813,68 +7055,23 @@ input::placeholder, input > option:disabled, select::placeholder, select > optio
   font-style: italic;
 }
 input:focus, input:focus-visible, select:focus, select:focus-visible, textarea:focus, textarea:focus-visible {
-  border: 2px solid var(--color-secondary-8);
+  border: 1px solid var(--color-secondary-8);
   outline: none;
-  box-shadow: 0 0 8px 0 var(--color-secondary-10), inset 0 0 8px 0 var(--color-secondary-10);
+  box-shadow: inset 0 0 4px 0 var(--color-secondary-10);
 }
 
-/*-| Fieldsets |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Radio Buttons---+----+---+----+---+----+---+----+---*/
 fieldset {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  color: var(--grey-5);
-  font-size: 16px;
-  margin: 24px 0 0 0;
-  padding: 0 4px;
-  border: none;
 }
-fieldset:not(.lead-rating) {
-  flex-flow: column nowrap;
-}
-fieldset legend {
-  margin-block-end: 12px;
-}
-fieldset legend:has(+ .subtitle) {
-  margin-block-end: 4px;
-}
-fieldset .subtitle {
-  color: var(--grey-6);
-  font-size: 14px;
-  margin-block-end: 4px;
-}
-fieldset {
-  /*-| Lead Ratings View |-*/
-}
-fieldset.lead-rating div:has(> input[type=radio]) input {
-  width: 20px;
-  height: 20px;
-}
-fieldset {
-  /*-| Radio, Checkbox |-*/
-}
-fieldset div:has(> input[type=checkbox]), fieldset:not(.lead-rating) div:has(> input[type=radio]) {
-  display: grid;
-  grid-template-columns: min-content 1fr;
-  flex: 1 1 35%;
-  place-content: center stretch;
-  place-items: center stretch;
-  padding: 4px;
-}
-fieldset div:has(> input[type=checkbox]) input, fieldset:not(.lead-rating) div:has(> input[type=radio]) input {
-  width: 20px;
-  height: 20px;
-}
-fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:has(> input[type=radio]) label {
-  color: var(--grey-2);
-  min-width: max-content;
-  margin: 0;
+fieldset div:has(> input[type=radio]) input[type=radio] {
+  width: 24px;
+  height: 24px;
 }
 
-/*-| Checkbox |-*/
-/*-| Search |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Search---+----+---+----+---+----+---+----+---*/
 .search-wrap {
   position: relative;
 }
@@ -6890,7 +7087,7 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
 .search-wrap input.search {
   padding: 12px 20px;
   border-radius: 65px;
-  transition: border-radius 200ms ease-in-out;
+  transition: border-radius 200ms ease-out;
 }
 .search-wrap input.search:focus, .search-wrap input.search:focus-visible {
   border-radius: 8px;
@@ -6902,22 +7099,22 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
   gap: min(24px, 2vw);
   padding: 0 clamp(8px, 2px + 1.875vw, 32px) clamp(14px, 3.5px + 3.28125vw, 56px);
 }
-@media (min-width: 440px) {
+@media (min-width: 432px) {
   .lead-cards-container {
     grid-template-columns: repeat(1, minmax(400px, 1fr));
   }
 }
-@media (min-width: 880px) {
+@media (min-width: 864px) {
   .lead-cards-container {
     grid-template-columns: repeat(2, minmax(400px, 1fr));
   }
 }
-@media (min-width: 1320px) {
+@media (min-width: 1296px) {
   .lead-cards-container {
     grid-template-columns: repeat(3, minmax(400px, 1fr));
   }
 }
-@media (min-width: 1760px) {
+@media (min-width: 1728px) {
   .lead-cards-container {
     grid-template-columns: repeat(4, minmax(400px, 1fr));
   }
@@ -6927,64 +7124,83 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
   grid-template-rows: 1fr repeat(3, min-content);
   gap: clamp(8px, 6px + 0.625vw, 16px);
   align-items: start;
-  padding: 20px 20px;
+  padding: 12px 16px;
   border: 1px solid var(--grey-8);
   border-radius: 8px;
   outline: 1px solid rgba(0, 0, 0, 0);
-  transition: outline 100ms ease-in-out, background 400ms ease-in-out;
+  transition: outline 100ms ease-out, background 400ms ease-out;
 }
 .lead-cards-container .grid-card:hover, .lead-cards-container .lead-card:hover {
   outline: 1px solid var(--color-success-9);
   background: var(--color-success-12);
 }
-
-.lead-card .card-label {
+.lead-cards-container .lead-card {
+  padding-top: 8px;
+  padding-right: 8px;
+  padding-bottom: 8px;
+  background: white;
+}
+.lead-cards-container .lead-card .card-label {
   color: var(--grey-1);
   font-size: 14px;
   font-weight: 400;
   text-transform: uppercase;
 }
-.lead-card #name {
+.lead-cards-container .lead-card #name {
   font-size: 22px;
   font-weight: 500;
   line-height: 1;
   margin-block-end: 4px;
 }
-.lead-card #contact {
+.lead-cards-container .lead-card #contact {
   gap: 12px;
 }
-.lead-card #phone, .lead-card #email {
+.lead-cards-container .lead-card #phone, .lead-cards-container .lead-card #email {
   color: var(--color-success-4);
   font-size: 16px;
   font-weight: 300;
   min-width: max-content;
-  transition: background 100ms ease-in-out;
+  transition: background 100ms ease-out;
   text-decoration-line: underline;
   text-underline-offset: 2px;
   text-decoration-color: var(--color-success-11);
   text-decoration-thickness: 2px;
 }
-.lead-card #phone i, .lead-card #email i {
+.lead-cards-container .lead-card #phone i, .lead-cards-container .lead-card #email i {
   color: var(--color-success-8);
   font-size: 18px;
 }
-.lead-card #phone:hover, .lead-card #email:hover {
+.lead-cards-container .lead-card #phone:hover, .lead-cards-container .lead-card #email:hover {
   background: var(--color-success-12);
 }
-.lead-card #score {
+.lead-cards-container .lead-card #score {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(5, 28px);
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
 }
-.lead-card #score i {
+.lead-cards-container .lead-card #score #score-value {
+  grid-column: 1;
+  grid-row: 1;
+  place-self: center;
+  color: var(--color-secondary-3);
+  font-size: 16px;
+  font-weight: 700;
+  translate: 0 2px;
+}
+.lead-cards-container .lead-card #score i {
+  grid-column: 1;
+  grid-row: 1;
   color: var(--color-secondary-7);
-  font-size: 22px;
+  font-size: 34px;
+  line-height: 0;
 }
 .modal-backdrop {
   z-index: 10000;
   position: fixed;
-  top: 0;
+  top: 68px;
   right: 0;
-  bottom: 92px;
+  bottom: 0;
   left: 0;
   display: flex;
   place-content: stretch;
@@ -6999,20 +7215,20 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
   flex: 1 1 100%;
   place-content: flex-start center;
   place-items: flex-start center;
-  max-height: calc(100dvh - 92px);
+  max-height: calc(100dvh - 68px);
 }
 .modal-backdrop .modal-content {
   flex: 1 1 auto;
   max-width: 600px;
-  margin: clamp(16px, 8px + 2.5vw, 48px) clamp(16px, 4px + 3.75vw, 64px);
-  padding: clamp(16px, 8px + 2.5vw, 48px) clamp(16px, 4px + 3.75vw, 64px);
-  border-radius: 16px;
+  margin: clamp(12px, 6px + 1.875vw, 36px) clamp(12px, 3px + 2.8125vw, 48px);
+  padding: clamp(12px, 6px + 1.875vw, 36px) clamp(13px, 3.25px + 3.046875vw, 52px);
+  border-radius: 12px;
   background: white;
   box-shadow: 8px 8px 8px 2px rgba(0, 0, 0, 0.25);
 }
 
 .scanner-camera-container {
-  height: calc(100dvh - 92px) !important;
+  height: calc(100dvh - 68px) !important;
   background: var(--color-success-2);
 }
 
@@ -7023,7 +7239,7 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
 .qr-float-container {
   position: absolute !important;
   right: 16px;
-  bottom: 132px;
+  bottom: 108px;
   left: 16px;
   place-content: space-between;
   align-items: stretch;
@@ -7039,7 +7255,7 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
   font-size: 22px;
   font-weight: 500;
   padding: 24px;
-  border-radius: 16px;
+  border-radius: 12px;
   background: hsla(0, 0%, 0%, 0.35);
   backdrop-filter: blur(10px);
 }
@@ -7047,14 +7263,14 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
 .scan-placement-container {
   z-index: 10;
   position: absolute;
-  bottom: calc(60% + 92px);
+  bottom: calc(60% + 68px);
   left: 50%;
   aspect-ratio: 1;
   width: 65%;
   max-width: 500px;
   max-height: 80%;
   border: 4px solid var(--color-secondary-8);
-  border-radius: 16px;
+  border-radius: 12px;
   box-shadow: 0 0 8px var(--color-secondary-6), inset 0 0 8px var(--color-secondary-6);
   transform: translate(-50%, 65%);
 }
@@ -7112,10 +7328,94 @@ table tbody tr input:active, table tbody tr input:focus {
   background: var(--grey-12);
 }
 
+.nav-bar {
+  z-index: 10000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  height: 45px;
+  padding: 12px;
+  background-color: var(--color-primary-4);
+  box-shadow: 0 0 32px 12px rgba(0, 0, 0, 0.2);
+}
+.nav-bar #page-title {
+  color: white;
+  font-size: 22px;
+  font-weight: 500;
+  padding-left: 8px;
+}
+
+.sidebar--page-wrapper {
+  z-index: 99999;
+  position: fixed;
+  top: 68px;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  place-content: stretch;
+  width: 100dvw;
+  opacity: 1;
+  transition: translate 100ms ease-in-out, opacity 200ms ease-in-out, width 100ms ease-in-out;
+  translate: 0 0;
+  scale: 1;
+}
+.sidebar--page-wrapper.hide {
+  width: 35vw;
+  opacity: 0;
+  translate: -500px 0;
+}
+@media (min-width: 550px) {
+  .sidebar--page-wrapper {
+    max-width: 385px;
+  }
+}
+
+.sidebar--content-container {
+  display: flex;
+  flex: 1 1 auto;
+  flex-flow: column nowrap;
+  gap: 20px;
+  padding: 24px;
+  background: var(--color-primary-4);
+}
+
+.sidebar--nav-menu-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  flex: 1 1;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+.sidebar--nav-menu-wrapper .nav-buttons-grid--wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto-fill, 65px);
+  gap: 8px;
+}
+.sidebar--nav-menu-wrapper .nav-buttons-grid--wrapper .button {
+  flex-grow: 1;
+  justify-content: flex-start;
+  gap: 16px;
+  font-size: 18px;
+  padding: 16px;
+}
+.sidebar--nav-menu-wrapper .nav-buttons-grid--wrapper .button i {
+  font-size: 26px;
+}
+.sidebar--nav-menu-wrapper #sign-in, .sidebar--nav-menu-wrapper #sign-out {
+  margin-block-start: auto;
+}
+
 /*-| Setup |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-/*-| Layout |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Layout---+----+---+----+---+----+---+----+---*/
 .--full {
   max-width: 100%;
   margin: 0 !important;
@@ -7148,8 +7448,8 @@ table tbody tr input:active, table tbody tr input:focus {
   padding: 0;
 }
 
-/*-| Flex |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Flex
+---+----+---+----+---+----+---+----+---*/
 /*-| Columns by Breakpoint |-*/
 /*-| Columns |-*/
 .col-1-300 {
@@ -7162,7 +7462,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 300px) {
   .col-1-300 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -7171,18 +7473,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 300px) {
   .row-1-300 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -7197,7 +7493,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 300px) {
   .col-2-300 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -7206,18 +7504,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 300px) {
   .row-2-300 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -7232,7 +7524,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 300px) {
   .col-3-300 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -7241,18 +7535,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 300px) {
   .row-3-300 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -7267,7 +7555,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 300px) {
   .col-4-300 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -7276,18 +7566,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 300px) {
   .row-4-300 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -7302,7 +7586,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 300px) {
   .col-5-300 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -7311,18 +7597,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 300px) {
   .row-5-300 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -7337,7 +7617,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 300px) {
   .col-6-300 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -7346,18 +7628,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 300px) {
   .row-6-300 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -7372,7 +7648,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 300px) {
   .col-7-300 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -7381,18 +7659,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 300px) {
   .row-7-300 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -7407,7 +7679,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 300px) {
   .col-8-300 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -7416,18 +7690,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 300px) {
   .row-8-300 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -7442,7 +7710,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 300px) {
   .col-9-300 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -7451,18 +7721,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 300px) {
   .row-9-300 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -7477,7 +7741,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 300px) {
   .col-10-300 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -7486,18 +7752,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 300px) {
   .row-10-300 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -7512,7 +7772,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 300px) {
   .col-11-300 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -7521,18 +7783,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 300px) {
   .row-11-300 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -7547,7 +7803,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 300px) {
   .col-12-300 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -7556,18 +7814,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 300px) {
   .row-12-300 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -7582,7 +7834,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 400px) {
   .col-1-400 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -7591,18 +7845,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 400px) {
   .row-1-400 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -7617,7 +7865,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 400px) {
   .col-2-400 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -7626,18 +7876,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 400px) {
   .row-2-400 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -7652,7 +7896,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 400px) {
   .col-3-400 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -7661,18 +7907,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 400px) {
   .row-3-400 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -7687,7 +7927,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 400px) {
   .col-4-400 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -7696,18 +7938,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 400px) {
   .row-4-400 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -7722,7 +7958,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 400px) {
   .col-5-400 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -7731,18 +7969,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 400px) {
   .row-5-400 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -7757,7 +7989,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 400px) {
   .col-6-400 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -7766,18 +8000,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 400px) {
   .row-6-400 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -7792,7 +8020,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 400px) {
   .col-7-400 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -7801,18 +8031,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 400px) {
   .row-7-400 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -7827,7 +8051,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 400px) {
   .col-8-400 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -7836,18 +8062,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 400px) {
   .row-8-400 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -7862,7 +8082,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 400px) {
   .col-9-400 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -7871,18 +8093,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 400px) {
   .row-9-400 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -7897,7 +8113,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 400px) {
   .col-10-400 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -7906,18 +8124,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 400px) {
   .row-10-400 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -7932,7 +8144,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 400px) {
   .col-11-400 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -7941,18 +8155,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 400px) {
   .row-11-400 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -7967,7 +8175,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 400px) {
   .col-12-400 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -7976,18 +8186,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 400px) {
   .row-12-400 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -8002,7 +8206,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 500px) {
   .col-1-500 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -8011,18 +8217,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 500px) {
   .row-1-500 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -8037,7 +8237,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 500px) {
   .col-2-500 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -8046,18 +8248,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 500px) {
   .row-2-500 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -8072,7 +8268,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 500px) {
   .col-3-500 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -8081,18 +8279,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 500px) {
   .row-3-500 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -8107,7 +8299,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 500px) {
   .col-4-500 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -8116,18 +8310,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 500px) {
   .row-4-500 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -8142,7 +8330,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 500px) {
   .col-5-500 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -8151,18 +8341,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 500px) {
   .row-5-500 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -8177,7 +8361,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 500px) {
   .col-6-500 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -8186,18 +8372,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 500px) {
   .row-6-500 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -8212,7 +8392,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 500px) {
   .col-7-500 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -8221,18 +8403,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 500px) {
   .row-7-500 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -8247,7 +8423,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 500px) {
   .col-8-500 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -8256,18 +8434,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 500px) {
   .row-8-500 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -8282,7 +8454,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 500px) {
   .col-9-500 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -8291,18 +8465,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 500px) {
   .row-9-500 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -8317,7 +8485,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 500px) {
   .col-10-500 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -8326,18 +8496,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 500px) {
   .row-10-500 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -8352,7 +8516,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 500px) {
   .col-11-500 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -8361,18 +8527,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 500px) {
   .row-11-500 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -8387,7 +8547,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 500px) {
   .col-12-500 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -8396,18 +8558,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 500px) {
   .row-12-500 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -8422,7 +8578,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 600px) {
   .col-1-600 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -8431,18 +8589,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 600px) {
   .row-1-600 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -8457,7 +8609,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 600px) {
   .col-2-600 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -8466,18 +8620,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 600px) {
   .row-2-600 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -8492,7 +8640,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 600px) {
   .col-3-600 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -8501,18 +8651,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 600px) {
   .row-3-600 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -8527,7 +8671,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 600px) {
   .col-4-600 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -8536,18 +8682,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 600px) {
   .row-4-600 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -8562,7 +8702,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 600px) {
   .col-5-600 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -8571,18 +8713,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 600px) {
   .row-5-600 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -8597,7 +8733,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 600px) {
   .col-6-600 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -8606,18 +8744,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 600px) {
   .row-6-600 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -8632,7 +8764,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 600px) {
   .col-7-600 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -8641,18 +8775,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 600px) {
   .row-7-600 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -8667,7 +8795,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 600px) {
   .col-8-600 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -8676,18 +8806,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 600px) {
   .row-8-600 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -8702,7 +8826,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 600px) {
   .col-9-600 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -8711,18 +8837,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 600px) {
   .row-9-600 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -8737,7 +8857,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 600px) {
   .col-10-600 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -8746,18 +8868,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 600px) {
   .row-10-600 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -8772,7 +8888,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 600px) {
   .col-11-600 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -8781,18 +8899,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 600px) {
   .row-11-600 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -8807,7 +8919,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 600px) {
   .col-12-600 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -8816,18 +8930,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 600px) {
   .row-12-600 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -8842,7 +8950,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 700px) {
   .col-1-700 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -8851,18 +8961,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 700px) {
   .row-1-700 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -8877,7 +8981,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 700px) {
   .col-2-700 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -8886,18 +8992,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 700px) {
   .row-2-700 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -8912,7 +9012,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 700px) {
   .col-3-700 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -8921,18 +9023,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 700px) {
   .row-3-700 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -8947,7 +9043,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 700px) {
   .col-4-700 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -8956,18 +9054,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 700px) {
   .row-4-700 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -8982,7 +9074,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 700px) {
   .col-5-700 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -8991,18 +9085,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 700px) {
   .row-5-700 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -9017,7 +9105,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 700px) {
   .col-6-700 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -9026,18 +9116,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 700px) {
   .row-6-700 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -9052,7 +9136,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 700px) {
   .col-7-700 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -9061,18 +9147,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 700px) {
   .row-7-700 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -9087,7 +9167,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 700px) {
   .col-8-700 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -9096,18 +9178,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 700px) {
   .row-8-700 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -9122,7 +9198,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 700px) {
   .col-9-700 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -9131,18 +9209,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 700px) {
   .row-9-700 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -9157,7 +9229,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 700px) {
   .col-10-700 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -9166,18 +9240,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 700px) {
   .row-10-700 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -9192,7 +9260,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 700px) {
   .col-11-700 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -9201,18 +9271,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 700px) {
   .row-11-700 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -9227,7 +9291,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 700px) {
   .col-12-700 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -9236,18 +9302,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 700px) {
   .row-12-700 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -9262,7 +9322,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 800px) {
   .col-1-800 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -9271,18 +9333,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 800px) {
   .row-1-800 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -9297,7 +9353,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 800px) {
   .col-2-800 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -9306,18 +9364,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 800px) {
   .row-2-800 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -9332,7 +9384,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 800px) {
   .col-3-800 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -9341,18 +9395,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 800px) {
   .row-3-800 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -9367,7 +9415,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 800px) {
   .col-4-800 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -9376,18 +9426,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 800px) {
   .row-4-800 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -9402,7 +9446,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 800px) {
   .col-5-800 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -9411,18 +9457,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 800px) {
   .row-5-800 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -9437,7 +9477,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 800px) {
   .col-6-800 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -9446,18 +9488,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 800px) {
   .row-6-800 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -9472,7 +9508,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 800px) {
   .col-7-800 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -9481,18 +9519,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 800px) {
   .row-7-800 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -9507,7 +9539,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 800px) {
   .col-8-800 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -9516,18 +9550,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 800px) {
   .row-8-800 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -9542,7 +9570,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 800px) {
   .col-9-800 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -9551,18 +9581,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 800px) {
   .row-9-800 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -9577,7 +9601,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 800px) {
   .col-10-800 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -9586,18 +9612,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 800px) {
   .row-10-800 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -9612,7 +9632,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 800px) {
   .col-11-800 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -9621,18 +9643,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 800px) {
   .row-11-800 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -9647,7 +9663,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 800px) {
   .col-12-800 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -9656,18 +9674,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 800px) {
   .row-12-800 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -9682,7 +9694,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 900px) {
   .col-1-900 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -9691,18 +9705,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 900px) {
   .row-1-900 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -9717,7 +9725,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 900px) {
   .col-2-900 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -9726,18 +9736,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 900px) {
   .row-2-900 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -9752,7 +9756,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 900px) {
   .col-3-900 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -9761,18 +9767,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 900px) {
   .row-3-900 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -9787,7 +9787,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 900px) {
   .col-4-900 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -9796,18 +9798,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 900px) {
   .row-4-900 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -9822,7 +9818,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 900px) {
   .col-5-900 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -9831,18 +9829,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 900px) {
   .row-5-900 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -9857,7 +9849,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 900px) {
   .col-6-900 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -9866,18 +9860,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 900px) {
   .row-6-900 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -9892,7 +9880,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 900px) {
   .col-7-900 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -9901,18 +9891,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 900px) {
   .row-7-900 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -9927,7 +9911,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 900px) {
   .col-8-900 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -9936,18 +9922,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 900px) {
   .row-8-900 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -9962,7 +9942,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 900px) {
   .col-9-900 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -9971,18 +9953,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 900px) {
   .row-9-900 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -9997,7 +9973,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 900px) {
   .col-10-900 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -10006,18 +9984,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 900px) {
   .row-10-900 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -10032,7 +10004,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 900px) {
   .col-11-900 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -10041,18 +10015,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 900px) {
   .row-11-900 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -10067,7 +10035,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 900px) {
   .col-12-900 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -10076,18 +10046,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 900px) {
   .row-12-900 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -10102,7 +10066,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1000px) {
   .col-1-1000 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -10111,18 +10077,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1000px) {
   .row-1-1000 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -10137,7 +10097,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1000px) {
   .col-2-1000 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -10146,18 +10108,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1000px) {
   .row-2-1000 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -10172,7 +10128,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1000px) {
   .col-3-1000 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -10181,18 +10139,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1000px) {
   .row-3-1000 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -10207,7 +10159,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1000px) {
   .col-4-1000 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -10216,18 +10170,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1000px) {
   .row-4-1000 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -10242,7 +10190,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1000px) {
   .col-5-1000 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -10251,18 +10201,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1000px) {
   .row-5-1000 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -10277,7 +10221,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1000px) {
   .col-6-1000 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -10286,18 +10232,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1000px) {
   .row-6-1000 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -10312,7 +10252,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1000px) {
   .col-7-1000 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -10321,18 +10263,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1000px) {
   .row-7-1000 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -10347,7 +10283,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1000px) {
   .col-8-1000 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -10356,18 +10294,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1000px) {
   .row-8-1000 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -10382,7 +10314,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1000px) {
   .col-9-1000 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -10391,18 +10325,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1000px) {
   .row-9-1000 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -10417,7 +10345,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1000px) {
   .col-10-1000 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -10426,18 +10356,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1000px) {
   .row-10-1000 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -10452,7 +10376,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1000px) {
   .col-11-1000 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -10461,18 +10387,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1000px) {
   .row-11-1000 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -10487,7 +10407,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1000px) {
   .col-12-1000 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -10496,18 +10418,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1000px) {
   .row-12-1000 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -10522,7 +10438,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1100px) {
   .col-1-1100 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -10531,18 +10449,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1100px) {
   .row-1-1100 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -10557,7 +10469,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1100px) {
   .col-2-1100 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -10566,18 +10480,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1100px) {
   .row-2-1100 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -10592,7 +10500,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1100px) {
   .col-3-1100 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -10601,18 +10511,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1100px) {
   .row-3-1100 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -10627,7 +10531,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1100px) {
   .col-4-1100 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -10636,18 +10542,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1100px) {
   .row-4-1100 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -10662,7 +10562,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1100px) {
   .col-5-1100 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -10671,18 +10573,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1100px) {
   .row-5-1100 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -10697,7 +10593,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1100px) {
   .col-6-1100 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -10706,18 +10604,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1100px) {
   .row-6-1100 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -10732,7 +10624,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1100px) {
   .col-7-1100 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -10741,18 +10635,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1100px) {
   .row-7-1100 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -10767,7 +10655,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1100px) {
   .col-8-1100 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -10776,18 +10666,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1100px) {
   .row-8-1100 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -10802,7 +10686,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1100px) {
   .col-9-1100 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -10811,18 +10697,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1100px) {
   .row-9-1100 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -10837,7 +10717,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1100px) {
   .col-10-1100 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -10846,18 +10728,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1100px) {
   .row-10-1100 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -10872,7 +10748,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1100px) {
   .col-11-1100 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -10881,18 +10759,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1100px) {
   .row-11-1100 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -10907,7 +10779,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1100px) {
   .col-12-1100 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -10916,18 +10790,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1100px) {
   .row-12-1100 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -10942,7 +10810,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1200px) {
   .col-1-1200 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -10951,18 +10821,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1200px) {
   .row-1-1200 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -10977,7 +10841,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1200px) {
   .col-2-1200 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -10986,18 +10852,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1200px) {
   .row-2-1200 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -11012,7 +10872,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1200px) {
   .col-3-1200 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -11021,18 +10883,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1200px) {
   .row-3-1200 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -11047,7 +10903,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1200px) {
   .col-4-1200 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -11056,18 +10914,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1200px) {
   .row-4-1200 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -11082,7 +10934,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1200px) {
   .col-5-1200 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -11091,18 +10945,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1200px) {
   .row-5-1200 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -11117,7 +10965,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1200px) {
   .col-6-1200 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -11126,18 +10976,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1200px) {
   .row-6-1200 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -11152,7 +10996,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1200px) {
   .col-7-1200 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -11161,18 +11007,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1200px) {
   .row-7-1200 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -11187,7 +11027,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1200px) {
   .col-8-1200 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -11196,18 +11038,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1200px) {
   .row-8-1200 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -11222,7 +11058,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1200px) {
   .col-9-1200 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -11231,18 +11069,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1200px) {
   .row-9-1200 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -11257,7 +11089,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1200px) {
   .col-10-1200 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -11266,18 +11100,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1200px) {
   .row-10-1200 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -11292,7 +11120,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1200px) {
   .col-11-1200 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -11301,18 +11131,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1200px) {
   .row-11-1200 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -11327,7 +11151,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1200px) {
   .col-12-1200 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -11336,18 +11162,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1200px) {
   .row-12-1200 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -11362,7 +11182,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1300px) {
   .col-1-1300 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -11371,18 +11193,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1300px) {
   .row-1-1300 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -11397,7 +11213,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1300px) {
   .col-2-1300 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -11406,18 +11224,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1300px) {
   .row-2-1300 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -11432,7 +11244,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1300px) {
   .col-3-1300 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -11441,18 +11255,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1300px) {
   .row-3-1300 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -11467,7 +11275,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1300px) {
   .col-4-1300 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -11476,18 +11286,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1300px) {
   .row-4-1300 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -11502,7 +11306,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1300px) {
   .col-5-1300 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -11511,18 +11317,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1300px) {
   .row-5-1300 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -11537,7 +11337,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1300px) {
   .col-6-1300 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -11546,18 +11348,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1300px) {
   .row-6-1300 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -11572,7 +11368,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1300px) {
   .col-7-1300 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -11581,18 +11379,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1300px) {
   .row-7-1300 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -11607,7 +11399,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1300px) {
   .col-8-1300 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -11616,18 +11410,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1300px) {
   .row-8-1300 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -11642,7 +11430,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1300px) {
   .col-9-1300 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -11651,18 +11441,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1300px) {
   .row-9-1300 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -11677,7 +11461,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1300px) {
   .col-10-1300 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -11686,18 +11472,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1300px) {
   .row-10-1300 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -11712,7 +11492,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1300px) {
   .col-11-1300 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -11721,18 +11503,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1300px) {
   .row-11-1300 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -11747,7 +11523,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1300px) {
   .col-12-1300 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -11756,18 +11534,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1300px) {
   .row-12-1300 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -11782,7 +11554,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1400px) {
   .col-1-1400 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -11791,18 +11565,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1400px) {
   .row-1-1400 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -11817,7 +11585,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1400px) {
   .col-2-1400 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -11826,18 +11596,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1400px) {
   .row-2-1400 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -11852,7 +11616,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1400px) {
   .col-3-1400 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -11861,18 +11627,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1400px) {
   .row-3-1400 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -11887,7 +11647,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1400px) {
   .col-4-1400 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -11896,18 +11658,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1400px) {
   .row-4-1400 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -11922,7 +11678,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1400px) {
   .col-5-1400 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -11931,18 +11689,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1400px) {
   .row-5-1400 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -11957,7 +11709,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1400px) {
   .col-6-1400 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -11966,18 +11720,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1400px) {
   .row-6-1400 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -11992,7 +11740,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1400px) {
   .col-7-1400 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -12001,18 +11751,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1400px) {
   .row-7-1400 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -12027,7 +11771,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1400px) {
   .col-8-1400 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -12036,18 +11782,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1400px) {
   .row-8-1400 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -12062,7 +11802,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1400px) {
   .col-9-1400 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -12071,18 +11813,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1400px) {
   .row-9-1400 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -12097,7 +11833,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1400px) {
   .col-10-1400 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -12106,18 +11844,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1400px) {
   .row-10-1400 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -12132,7 +11864,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1400px) {
   .col-11-1400 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -12141,18 +11875,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1400px) {
   .row-11-1400 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -12167,7 +11895,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1400px) {
   .col-12-1400 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -12176,18 +11906,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1400px) {
   .row-12-1400 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -12202,7 +11926,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1500px) {
   .col-1-1500 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -12211,18 +11937,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1500px) {
   .row-1-1500 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -12237,7 +11957,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1500px) {
   .col-2-1500 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -12246,18 +11968,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1500px) {
   .row-2-1500 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -12272,7 +11988,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1500px) {
   .col-3-1500 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -12281,18 +11999,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1500px) {
   .row-3-1500 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -12307,7 +12019,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1500px) {
   .col-4-1500 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -12316,18 +12030,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1500px) {
   .row-4-1500 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -12342,7 +12050,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1500px) {
   .col-5-1500 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -12351,18 +12061,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1500px) {
   .row-5-1500 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -12377,7 +12081,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1500px) {
   .col-6-1500 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -12386,18 +12092,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1500px) {
   .row-6-1500 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -12412,7 +12112,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1500px) {
   .col-7-1500 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -12421,18 +12123,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1500px) {
   .row-7-1500 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -12447,7 +12143,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1500px) {
   .col-8-1500 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -12456,18 +12154,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1500px) {
   .row-8-1500 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -12482,7 +12174,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1500px) {
   .col-9-1500 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -12491,18 +12185,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1500px) {
   .row-9-1500 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -12517,7 +12205,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1500px) {
   .col-10-1500 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -12526,18 +12216,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1500px) {
   .row-10-1500 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -12552,7 +12236,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1500px) {
   .col-11-1500 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -12561,18 +12247,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1500px) {
   .row-11-1500 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -12587,7 +12267,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1500px) {
   .col-12-1500 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -12596,18 +12278,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1500px) {
   .row-12-1500 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -12622,7 +12298,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1600px) {
   .col-1-1600 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -12631,18 +12309,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1600px) {
   .row-1-1600 {
-    flex: 0 1 calc(100% * 1 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 1 / 12 - 8px);
   }
 }
 
@@ -12657,7 +12329,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1600px) {
   .col-2-1600 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -12666,18 +12340,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1600px) {
   .row-2-1600 {
-    flex: 0 1 calc(100% * 2 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 2 / 12 - 8px);
   }
 }
 
@@ -12692,7 +12360,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1600px) {
   .col-3-1600 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -12701,18 +12371,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1600px) {
   .row-3-1600 {
-    flex: 0 1 calc(100% * 3 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 3 / 12 - 8px);
   }
 }
 
@@ -12727,7 +12391,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1600px) {
   .col-4-1600 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -12736,18 +12402,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1600px) {
   .row-4-1600 {
-    flex: 0 1 calc(100% * 4 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 4 / 12 - 8px);
   }
 }
 
@@ -12762,7 +12422,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1600px) {
   .col-5-1600 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -12771,18 +12433,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1600px) {
   .row-5-1600 {
-    flex: 0 1 calc(100% * 5 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 5 / 12 - 8px);
   }
 }
 
@@ -12797,7 +12453,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1600px) {
   .col-6-1600 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -12806,18 +12464,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1600px) {
   .row-6-1600 {
-    flex: 0 1 calc(100% * 6 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 6 / 12 - 8px);
   }
 }
 
@@ -12832,7 +12484,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1600px) {
   .col-7-1600 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -12841,18 +12495,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1600px) {
   .row-7-1600 {
-    flex: 0 1 calc(100% * 7 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 7 / 12 - 8px);
   }
 }
 
@@ -12867,7 +12515,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1600px) {
   .col-8-1600 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -12876,18 +12526,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1600px) {
   .row-8-1600 {
-    flex: 0 1 calc(100% * 8 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 8 / 12 - 8px);
   }
 }
 
@@ -12902,7 +12546,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1600px) {
   .col-9-1600 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -12911,18 +12557,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1600px) {
   .row-9-1600 {
-    flex: 0 1 calc(100% * 9 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 9 / 12 - 8px);
   }
 }
 
@@ -12937,7 +12577,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1600px) {
   .col-10-1600 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -12946,18 +12588,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1600px) {
   .row-10-1600 {
-    flex: 0 1 calc(100% * 10 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 10 / 12 - 8px);
   }
 }
 
@@ -12972,7 +12608,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1600px) {
   .col-11-1600 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -12981,18 +12619,12 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1600px) {
   .row-11-1600 {
-    flex: 0 1 calc(100% * 11 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 11 / 12 - 8px);
   }
 }
 
@@ -13007,7 +12639,9 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 @media (min-width: 1600px) {
   .col-12-1600 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
@@ -13016,27 +12650,29 @@ table tbody tr input:active, table tbody tr input:focus {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
-  /*      & > *:not(.button,button) + .button,
-        & > *:not(.button,button) + button {
-          margin-block-start: $sp-4;
-        }
-       & > .button:has(+ *:not(.button, button)),
-        & > button:has(+ *:not(.button, button)) {
-          margin-block-end: $sp-6;
-        }*/
 }
 @media (min-width: 1600px) {
   .row-12-1600 {
-    flex: 0 1 calc(100% * 12 / 12 - 8px);
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: calc(100% * 12 / 12 - 8px);
   }
 }
 
-.--flex-grow {
-  flex-grow: 1;
+.--flex-grow-1 {
+  flex-grow: 1 !important;
 }
 
-.--flex-shrink {
-  flex-shrink: 1;
+.--flex-grow-0 {
+  flex-grow: 0 !important;
+}
+
+.--flex-shrink-1 {
+  flex-shrink: 1 !important;
+}
+
+.--flex-shrink-0 {
+  flex-shrink: 0 !important;
 }
 
 /*-| Position |-*/
@@ -13054,22 +12690,22 @@ table tbody tr input:active, table tbody tr input:focus {
   gap: min(24px, 2vw);
   padding: 0 clamp(8px, 2px + 1.875vw, 32px) clamp(14px, 3.5px + 3.28125vw, 56px);
 }
-@media (min-width: 340px) {
+@media (min-width: 332px) {
   .badge-select-grid {
     grid-template-columns: repeat(1, minmax(300px, 1fr));
   }
 }
-@media (min-width: 680px) {
+@media (min-width: 664px) {
   .badge-select-grid {
     grid-template-columns: repeat(2, minmax(300px, 1fr));
   }
 }
-@media (min-width: 1020px) {
+@media (min-width: 996px) {
   .badge-select-grid {
     grid-template-columns: repeat(3, minmax(300px, 1fr));
   }
 }
-@media (min-width: 1360px) {
+@media (min-width: 1328px) {
   .badge-select-grid {
     grid-template-columns: repeat(4, minmax(300px, 1fr));
   }
@@ -13079,11 +12715,11 @@ table tbody tr input:active, table tbody tr input:focus {
   grid-template-rows: 1fr repeat(auto-fill, min-content);
   gap: clamp(8px, 6px + 0.625vw, 16px);
   align-items: start;
-  padding: 20px 20px;
+  padding: 12px 16px;
   border: 1px solid var(--grey-8);
   border-radius: 8px;
   outline: 1px solid rgba(0, 0, 0, 0);
-  transition: outline 100ms ease-in-out, background 400ms ease-in-out;
+  transition: outline 100ms ease-out, background 400ms ease-out;
 }
 .badge-select-grid .grid-card:hover, .badge-select-grid .badge-select-wrap:hover {
   outline: 1px solid var(--color-success-9);
@@ -13178,22 +12814,22 @@ table tbody tr input:active, table tbody tr input:focus {
   gap: min(24px, 2vw);
   padding: clamp(1px, 0.25px + 0.234375vw, 4px);
 }
-@media (min-width: 440px) {
+@media (min-width: 432px) {
   .expo-select-container {
     grid-template-columns: repeat(1, minmax(400px, 1fr));
   }
 }
-@media (min-width: 880px) {
+@media (min-width: 864px) {
   .expo-select-container {
     grid-template-columns: repeat(2, minmax(400px, 1fr));
   }
 }
-@media (min-width: 1320px) {
+@media (min-width: 1296px) {
   .expo-select-container {
     grid-template-columns: repeat(3, minmax(400px, 1fr));
   }
 }
-@media (min-width: 1760px) {
+@media (min-width: 1728px) {
   .expo-select-container {
     grid-template-columns: repeat(4, minmax(400px, 1fr));
   }
@@ -13203,72 +12839,47 @@ table tbody tr input:active, table tbody tr input:focus {
   grid-template-rows: 1fr repeat(3, min-content);
   gap: clamp(8px, 6px + 0.625vw, 16px);
   align-items: start;
-  padding: 20px 20px;
+  padding: 12px 16px;
   border: 1px solid var(--grey-8);
   border-radius: 8px;
   outline: 1px solid rgba(0, 0, 0, 0);
-  transition: outline 100ms ease-in-out, background 400ms ease-in-out;
+  transition: outline 100ms ease-out, background 400ms ease-out;
 }
 .expo-select-container .grid-card:hover {
   outline: 1px solid var(--color-success-9);
   background: var(--color-success-12);
 }
 
-/*-| App Views |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| App Views
+---+----+---+----+---+----+---+----+---*/
 #app {
   position: relative;
   display: grid;
   overflow: hidden;
-  grid-template-rows: 1fr 92px;
+  grid-template-rows: 1fr;
   width: 100dvw;
-  height: 100dvh;
-}
-
-.nav-bar {
-  z-index: 10000;
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  flex-flow: row nowrap;
-  place-content: center;
-  place-items: center;
-  gap: 8px;
-  height: 60px;
-  padding: 16px;
-  background-color: var(--color-primary-5);
-}
-.nav-bar .button {
-  width: 20%;
-  min-width: 65px;
-  max-width: 85px;
-  opacity: 65%;
-}
-.nav-bar .button.--secondary {
-  opacity: 100% !important;
+  margin-block-start: 68px;
 }
 
 .view-mask {
   overflow: scroll;
   width: 100dvw;
   max-width: 100dvw;
-  height: calc(100dvh - 92px);
+  height: calc(100dvh - 68px);
   background: white;
 }
 .view-container {
   display: flex;
   flex-flow: column;
   height: 100%;
-  min-height: calc(100dvh - 92px);
+  min-height: calc(100dvh - 68px);
 }
 
-/*-| Views |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Views
+---+----+---+----+---+----+---+----+---*/
 .view-floor-plan {
   width: 100dvw;
-  height: calc(calc(100dvh - 92px) - 4px);
+  height: calc(calc(100dvh - 68px) - 4px);
   border: none !important;
 }
 

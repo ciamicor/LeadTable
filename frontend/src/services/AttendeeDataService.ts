@@ -37,7 +37,12 @@ const attendeeService = new AttendeeDataService()
 
 /*-| Create Attendees
 ---+----+---+----+---+----+---+----+---*/
-async function createAttendee_Service(attendee: any, client: any, year: any, upload: any = null) {
+async function createAttendee_Service(
+  attendee: any,
+  client: any,
+  year: any,
+  upload: any = null
+) {
   console.log('Create Attendee Service: ', attendee)
   const data = {
     expo_Client: client,
@@ -107,7 +112,7 @@ async function updateAttendee_Service(id: any, attendee: any) {
 async function getAllAttendees_Service(list: any) {
   try {
     let allAttendees = await attendeeService.getAll()
-    // console.log(allAttendees.addresses)
+    // console.log(allAttendees.data)
     return allAttendees.data
   } catch (e) {
     console.log(e)

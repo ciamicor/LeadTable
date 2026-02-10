@@ -1,7 +1,7 @@
 import { Lead } from "../models/index.js"
 import { Op } from 'sequelize';
 
-// Controller method to create a new lead
+// Create a new lead
 export const createLead = async ( req, res ) => {
     const {
         expo_Client,
@@ -124,7 +124,7 @@ export const getLeadById = async ( req, res ) => {
     }
 }
 
-// Controller method to update a lead by ID
+// Update a lead by ID
 export const updateLead = async ( req, res ) => {
     const id = req.params.id
 
@@ -175,7 +175,7 @@ export const updateLead = async ( req, res ) => {
     }
 }
 
-// Controller method to delete a lead by ID
+// Delete a lead by ID
 export const deleteLead = async ( req, res ) => {
     const id = req.params.id
     try {

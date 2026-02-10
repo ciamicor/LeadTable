@@ -14,10 +14,10 @@
 
 <script lang="ts"
         setup>
-import { useExpoLocalStore, useExhibitorLocalStore, useSessionStore } from '@/stores.js'
+import { useExpoLocalStore, useExhibitorLocalStore, useSessionStore } from '@/stores.ts'
 
 const sessionStore = useSessionStore()
-const companyLocal = useExhibitorLocalStore()
+const exhibitorLocal = useExhibitorLocalStore()
 const expoLocal = useExpoLocalStore()
 </script>
 

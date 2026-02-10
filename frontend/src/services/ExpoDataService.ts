@@ -4,18 +4,16 @@ class ExpoDataService {
   create(data: any) {
     return http.post('/expo', data)
   }
-
   getAll() {
     return http.get('/expo')
   }
-
   getExpo(client: string, year: any) {
     return http.get('/expo/client/' + client + '/year/' + year)
   }
 }
 
 /*-| Functions
-==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const expoService = new ExpoDataService()
 
 /*-| Get All Expos
@@ -24,7 +22,7 @@ async function getAllExpos_Service(exposList: any) {
   let expos = await expoService.getAll()
   try {
     exposList.value = expos.data
-    // console.log(response.addresses)
+    // console.log(response.data)
   } catch (e) {
     console.log(e)
   }
@@ -46,11 +44,11 @@ async function createExpo_Service(expoObject: any) {
     logoUrl_Color: expoObject.logoUrl_Color,
     logoUrl_Black: expoObject.logoUrl_Black,
   }
-  console.log('Creating expo with addresses: ', data)
+  console.log('Creating expo with data: ', data)
   try {
     let newExpo = await expoService.create(data)
     expoObject.id = newExpo.data.id
-    console.log('Expo created with addresses: ', newExpo.data)
+    console.log('Expo created with data: ', newExpo.data)
     expoObject = null
   } catch (e: any) {
     console.log(e)
@@ -59,13 +57,14 @@ async function createExpo_Service(expoObject: any) {
 
 /*-| Get by Client, Year
 ---+----+---+----+---+----+---+----+---*/
-async function getExpo_Service(client: any, year: any, expoObject: any) {
+async function getExpo_Service(client: string, year: number, expoObject: any) {
   try {
     let e = await expoService.getExpo(client, year)
-    console.log("Found Expo: ", e.data)
+    // console.log("Found Expo: ", response.data)
     expoObject.active = e.data.active
     expoObject.eventId = e.data.id
     expoObject.dateStart = e.data.dateStart
+    expoObject.expoInPast = new Date() > expoObject.dateStart.setDate(expoObject.dateStart + 1)
     expoObject.expo_Client = e.data.expo_Client
     expoObject.clientFull = e.data.clientFull
     expoObject.name = e.data.name
@@ -73,12 +72,13 @@ async function getExpo_Service(client: any, year: any, expoObject: any) {
     expoObject.expoFp_Id = e.data.expoFp_Id
     expoObject.expoFp_MapUrl = e.data.expoFp_MapUrl
     expoObject.paymentEnabled = e.data.paymentEnabled
+    expoObject.leadEnabled = e.data.leadEnabled
     expoObject.logoUrl_Color = e.data.logoUrl_Color
     expoObject.logoUrl_Black = e.data.logoUrl_Black
     expoObject.webpage = e.data.webpage
     expoObject.contactEmail = e.data.contactEmail
 
-    //expoObject.value = response.addresses
+    //expoObject.value = response.data
     // console.log('expo: ', expoObject.value)
   } catch (e) {
     console.log('That expo doesn\'t exist. ', e)

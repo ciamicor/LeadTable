@@ -15,7 +15,7 @@
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 @mixin adapt-grid(
   $grid-card-min-width: 400,
-  $grid-card-h-padding: 20,
+  $grid-card-h-padding: 16,
   $grid-padding: 0 $sp-v-8 $sp-v-14,
   $grid-card-rows: 3
 ) {
@@ -35,7 +35,7 @@
     grid-template-rows: 1fr repeat(#{$grid-card-rows}, min-content);
     gap:                f.clamp-spacing(8, 2);
     align-items:        start;
-    padding:            $sp-7 #{$grid-card-h-padding + "px"};
+    padding:            $sp-5 #{$grid-card-h-padding + "px"};
     border:             1px solid $grey-8;
     border-radius:      $item-border;
     outline:            1px solid rgba(0, 0, 0, 0);

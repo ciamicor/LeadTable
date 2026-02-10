@@ -5,19 +5,21 @@ import { Op } from 'sequelize';
 export const createCompany = async ( req, res ) => {
     const {
         id,
+        expoId,
+        expo_Client,
+        expo_Year,
         login_Url,
         name,
-        expo_Year,
-        expo_Client,
         lead_Ret
     } = req.body
     try {
         const newCompany = await Company.create( {
             id,
+            expoId,
+            expo_Client,
+            expo_Year,
             login_Url,
             name,
-            expo_Year,
-            expo_Client,
             lead_Ret
         } )
         res.status( 201 ).json( newCompany )

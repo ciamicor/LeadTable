@@ -57,8 +57,8 @@ function selectBadge( i ) {
   }
 }
 
-/*-| Modal |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Modal
+---+----+---+----+---+----+---+----+---*/
 const modalVisible = ref( false )
 
 function toggleModal() {
@@ -66,8 +66,8 @@ function toggleModal() {
   console.log( 'Editing ' + prop.attendee.name_First + ', id: ' + prop.attendee.id )
 }
 
-/*-| Formatting |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Formatting
+---+----+---+----+---+----+---+----+---*/
 /*function convertTZ( date, tzString ) {
   return new Date( (typeof date === "string" ? new Date( date ) : date).toLocaleString( "en-US",
     { timeZone: tzString } ) );
@@ -87,7 +87,6 @@ function formatDateTime( dt ) {
   } else if ( h <= 12 ) {
     t = t + ' AM'
   }
-
   return 'Created: ' + d + ' at ' + t
 }
 

@@ -25,7 +25,7 @@ export const getScan = async ( req, res ) => {
     }
 }
 
-// Controller method to create a new Scan
+// Create a new Scan
 export const createScan = async ( req, res ) => {
     const { expo_Year, company_Id, lead_Id, lead_Score, company_Comments } = req.body
     try {

@@ -12,6 +12,7 @@
         <div class="row-12-300 --align-items-center">
           <div class="col-5-300">
             <h3 class="--m-0">{{ expo.expo_Year }}</h3>
+            <h1>{{ expo.expo_Client }}</h1>
           </div>
           <div class="col-5-300">
             <!--            <span class="&#45;&#45;m-0">{{ expo.dateStart }}</span>-->
@@ -56,8 +57,8 @@ import { getAllExpos_Service } from '@/services/ExpoDataService.ts'
 import { onMounted, ref } from 'vue'
 import { useRouter } from "vue-router";
 
-/*-| Variables |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Variables
+---+----+---+----+---+----+---+----+---*/
 const router = useRouter()
 const expoLocal = useExpoLocalStore()
 const companyLocal = useExhibitorLocalStore()
@@ -65,8 +66,8 @@ const allExposList = ref()
 const archivedExposList = ref()
 const activeExposList = ref()
 
-/*-| Lifecycle |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Lifecycle
+---+----+---+----+---+----+---+----+---*/
 onMounted(() => {
   getAllExpos(allExposList)
 })

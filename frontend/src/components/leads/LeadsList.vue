@@ -66,10 +66,10 @@
     </div>
 
     <router-link
-      v-if="exhibitorLocal.lead_Ret === true"
-      class="button --stacked --float --bottom-r --success--invert"
+      v-if="exhibitorLocal.lead_Ret === true && expoLocal.expoInPast === false"
+      class="button --stacked --float --bottom-r --success--invert --p-t-4 --gap-2"
       to="scan-lead">
-      <i class="bi-qr-code-scan"></i>
+      <i class="bi-camera"></i>
       Scan
     </router-link>
   </div>
@@ -77,27 +77,21 @@
 </template>
 
 <script setup>
-import LoadingHolder from "@/components/LoadingHolder.vue";
-import {
-  useExhibitorLocalStore,
-  useExpoLocalStore,
-  useLeadsListLocal,
-  useSessionStore
-} from '@/stores.ts'
-import { getAllLeads_Service, getAllCompanyLeads_Service } from '../services/LeadDataService.js'
+import LoadingHolder from "@/components/elements/LoadingHolder.vue";
+import { useExhibitorLocalStore, useExpoLocalStore, useLeadsListLocal } from '@/stores.ts'
+import { getAllCompanyLeads_Service } from '../../services/LeadDataService.ts'
 import { onMounted, ref } from 'vue'
 import { getLocalExhibitor_Service } from '@/services/ExhibitorDataService.ts'
-import LeadCard from '@/components/LeadCard.vue'
-import LeadsExport from '@/components/LeadsExport.vue'
-import { db } from "@/db.js";
+import LeadCard from '@/components/leads/LeadCard.vue'
+import LeadsExport from '@/components/leads/LeadsExport.vue'
 
 const sessionStore = useSessionStore()
 const exhibitorLocal = useExhibitorLocalStore()
 const expoLocal = useExpoLocalStore()
 const leadListLocal = useLeadsListLocal()
 
-/*-| Hooks |-*/
-/*---+----+---+----+---+----+---+----+---*/
+/*-| Hooks
+==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 onMounted( async () => {
     await getLocalExhibitor_Service( exhibitorLocal )
     console.log( exhibitorLocal.id )
@@ -113,15 +107,13 @@ onMounted( async () => {
     console.log( listMap.get( 459 ) )
   }
 )
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-/*-| DB |-*/
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
+
+/*-| DB
+==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const status = ref( true )
 
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-/*-| Leads List |-*/
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-
+/*-| leads List
+==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const leadsList = ref( [] )
 const lead = ref(
   {

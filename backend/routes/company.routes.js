@@ -1,4 +1,4 @@
-import express from 'express';
+import express from "express";
 
 const router = express.Router();
 import * as companyController from '../controllers/company.controller.js'
@@ -15,4 +15,4 @@ router.get( '/:id', companyController.getCompanyById );
 // Route to update a Company by ID
 router.put( '/:id', companyController.updateCompanyLeadRet )
 
-export default router;
+export default router
