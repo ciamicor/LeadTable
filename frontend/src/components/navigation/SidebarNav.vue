@@ -3,7 +3,7 @@
        class="sidebar--page-wrapper">
     <div class="sidebar--content-container">
 
-      <span>{{ expoLocal.expo_Client }} {{ expoLocal.expo_Year }} Suppliers' Day</span>
+      <span>{{ expoLocal.clientFull }} {{ expoLocal.name }}</span>
       <h4 v-if="exhibitorLocal.name"> Hello, {{ exhibitorLocal.name }}</h4>
 
       <nav class="sidebar--nav-menu-wrapper">
@@ -23,7 +23,7 @@
             class="button"
             @click="$emit('closeNav')">
             <i class="bi-geo-alt-fill"/>
-            Map
+            Floor Map
           </router-link>
 
           <router-link
@@ -32,7 +32,7 @@
             class="button"
             @click="$emit('closeNav')">
             <i class="bi-person-circle"/>
-            Leads
+            My Leads
           </router-link>
 
           <router-link
@@ -41,7 +41,7 @@
             class="button"
             @click="$emit('closeNav')">
             <i class="bi-gear-fill"/>
-            Profile
+            Company Profile
           </router-link>
 
           <a v-if="exhibitorLocal.login_Url"

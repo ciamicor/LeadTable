@@ -1,44 +1,40 @@
 <template>
   <div v-if="sessionStore.logged_In === true"
        class="container --align-content-center --p-6">
-    <div>
-      <p class="--m-b-10">More profile features coming soon.</p>
-      <div class="row-12-300">
-        <a :href="`https://app.expofp.com${exhibitorLocal.login_Url}`"
-           class="button"
-           target="_blank">
-          ExpoFP
-          <i class="--m-l-4 bi-arrow-up-right-square"></i>
-        </a>
-        <a :href="`https://app.expofp.com${exhibitorLocal.login_Url.replace('edit?', 'editprofile?')}`"
-           class="button"
-           target="_blank">
-          Edit Profile
-          <i class="--m-l-4 bi-arrow-up-right-square"></i>
-        </a>
-        <ButtonSignOut
-          :extra-match="extraMatch"
-          :login-id-match="loginIdMatch"
-        />
-      </div>
+    <div class="row-12-300 --w-100 --justify-items-start">
+      <p class="--m-b-10 --flex-basis-100">More profile features coming soon.</p>
+      <a :href="`https://app.expofp.com${exhibitorLocal.login_Url}`"
+         class="button"
+         target="_blank">
+        ExpoFP Profile
+        <i class="--m-l-4 bi-arrow-up-right-square"></i>
+      </a>
+      <a :href="`https://app.expofp.com${exhibitorLocal.login_Url.replace('edit?', 'editprofile?')}`"
+         class="button"
+         target="_blank">
+        Edit Profile
+        <i class="--m-l-4 bi-arrow-up-right-square"></i>
+      </a>
+      <ButtonSignOut
+        :extra-match="extraMatch"
+        :login-id-match="loginIdMatch"
+        class="--justify-self-end"
+      />
     </div>
   </div>
   <!-- Login -->
   <!-------------------------->
   <div
     v-else
-    class="row --place-content-center --place-items-center">
+    class="row-12-300 --p-24-clamp --place-content-center --place-items-center">
     <div
-      class="col-12-300 --p-24-clamp">
-      class="--p-v-20 col-12-300 col-10-500 col-6-900 --flex-grow">
+      class="--p-v-20 col-12-300 --max-w-500 --flex-grow-1">
       <h4 class="--m-0">
         {{ expoLocal.clientFull }}
         {{ expoLocal.name }}
       </h4>
-      <h1>Exhibitor Login</h1>
-      <!--      <p>If you've already purchased lead retrieval, login here to access it.</p>
-            <p>To purchase lead retrieval, login to your ExpoFP Exhibitor profile here, and add it as a
-               booth extra.</p>-->
+      <h2>Company Login</h2>
+      <!-- TODO Add email for login parameter, check against private email in expoFP -->
       <label>
         Login ID
         <input id="loginId"
@@ -49,7 +45,6 @@
                placeholder="Enter your ID"
                type="tel"
                @keydown.enter="login">
-        >
       </label>
       <button class="--primary--invert"
               @click="login()">
@@ -57,11 +52,6 @@
       </button>
     </div>
   </div>
-  <!--  <router-link
-      v-if="sessionStore.logged_In === false"
-      class="&#45;&#45;place-self-center &#45;&#45;m-b-12"
-      to="/">Looking for a different Supplier's Day?
-    </router-link>-->
 
   <div v-if="debug"
        class="row">
@@ -123,7 +113,7 @@ import { object } from "better-auth";
 /*-| Variables
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const debug = ref(true)
-const testId = ref()// 13286979)
+const MWSCC26testId = ref(12603441) // DD Chemco
 
 const exhibitorExtras = ref()
 const loginIdMatch = ref(false)

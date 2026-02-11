@@ -145,7 +145,7 @@ import {
 } from '@/services/AttendeeDataService.ts'
 import { getAttendeeUploads_Service } from '@/services/UploadDataService.ts'
 import { sortLName_Service } from '@/services/SortService.ts'
-import LoadingHolder from "@/components/LoadingHolder.vue";
+import LoadingHolder from "@/components/elements/LoadingHolder.vue";
 
 /*-| States |-*/
 /*---+----+---+----+---+----+---+----+---*/

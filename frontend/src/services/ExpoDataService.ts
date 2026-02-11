@@ -4,9 +4,11 @@ class ExpoDataService {
   create(data: any) {
     return http.post('/expo', data)
   }
+
   getAll() {
     return http.get('/expo')
   }
+
   getExpo(client: string, year: any) {
     return http.get('/expo/client/' + client + '/year/' + year)
   }
@@ -60,11 +62,11 @@ async function createExpo_Service(expoObject: any) {
 async function getExpo_Service(client: string, year: number, expoObject: any) {
   try {
     let e = await expoService.getExpo(client, year)
-    // console.log("Found Expo: ", response.data)
+    // console.log('Found Expo: ', response.data)
     expoObject.active = e.data.active
     expoObject.eventId = e.data.id
     expoObject.dateStart = e.data.dateStart
-    expoObject.expoInPast = new Date() > expoObject.dateStart.setDate(expoObject.dateStart + 1)
+    // expoObject.expoInPast = new Date() > expoObject.dateStart.setDate(expoObject.dateStart + 1)
     expoObject.expo_Client = e.data.expo_Client
     expoObject.clientFull = e.data.clientFull
     expoObject.name = e.data.name

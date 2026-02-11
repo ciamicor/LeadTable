@@ -136,16 +136,7 @@ import {
   getExpoAttendees_Service,
   getAttendeesUploadId_Service
 } from '@/services/AttendeeDataService.ts'
-<<<<<<<< HEAD:frontend/src/components/admin/BadgePrint.vue
-import { getAttendeeUploads_Service } from '@/services/UploadDataService.ts'
-import { sortLName_Service } from '@/services/SortService.ts'
-import LoadingHolder from "@/components/LoadingHolder.vue";
-========
-import { getAttendeeUploads_Service } from '@/services/UploadDataService.js'
-import { sortLName_Service } from '@/services/SortService.js'
-import { toTitleCase_Service } from '@/services/functions/TextManipulationService.ts'
 import LoadingHolder from "@/components/elements/LoadingHolder.vue";
->>>>>>>> dev:frontend/src/components/admin/dashboard-views/Admin_BadgePrint.vue
 
 /*-| States |-*/
 /*---+----+---+----+---+----+---+----+---*/

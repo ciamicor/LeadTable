@@ -7028,7 +7028,7 @@ button.--warn--invert:hover,
 }
 
 /*-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===
--| Form elements
+-| Form Elements
 -|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===/*/
 label {
   display: grid;
@@ -7044,9 +7044,9 @@ label input, label select, label textarea {
 }
 
 input, select, textarea {
-  padding: 8px 6px 6px;
-  border: 1px solid var(--grey-10);
-  border-radius: 4px;
+  padding: 12px 12px 10px;
+  border: 2px solid var(--grey-10);
+  border-radius: 8px;
   transition: box-shadow 200ms ease-out, border 200ms ease-out;
 }
 input::placeholder, input > option:disabled, select::placeholder, select > option:disabled, textarea::placeholder, textarea > option:disabled {
@@ -7055,20 +7055,63 @@ input::placeholder, input > option:disabled, select::placeholder, select > optio
   font-style: italic;
 }
 input:focus, input:focus-visible, select:focus, select:focus-visible, textarea:focus, textarea:focus-visible {
-  border: 1px solid var(--color-secondary-8);
+  border: 2px solid var(--color-secondary-8);
   outline: none;
-  box-shadow: inset 0 0 4px 0 var(--color-secondary-10);
+  box-shadow: 0 0 8px 0 var(--color-secondary-10), inset 0 0 8px 0 var(--color-secondary-10);
 }
 
-/*-| Radio Buttons---+----+---+----+---+----+---+----+---*/
+/*-| Fieldsets |-*/
+/*---+----+---+----+---+----+---+----+---*/
 fieldset {
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
+  color: var(--grey-5);
+  font-size: 16px;
+  margin: 24px 0 0 0;
+  padding: 0 4px;
+  border: none;
 }
-fieldset div:has(> input[type=radio]) input[type=radio] {
-  width: 24px;
-  height: 24px;
+fieldset:not(.lead-rating) {
+  flex-flow: column nowrap;
+}
+fieldset legend {
+  margin-block-end: 12px;
+}
+fieldset legend:has(+ .subtitle) {
+  margin-block-end: 4px;
+}
+fieldset .subtitle {
+  color: var(--grey-6);
+  font-size: 14px;
+  margin-block-end: 4px;
+}
+fieldset {
+  /*-| Lead Ratings View |-*/
+}
+fieldset.lead-rating div:has(> input[type=radio]) input {
+  width: 20px;
+  height: 20px;
+}
+fieldset {
+  /*-| Radio, Checkbox |-*/
+}
+fieldset div:has(> input[type=checkbox]), fieldset:not(.lead-rating) div:has(> input[type=radio]) {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  flex: 1 1 35%;
+  place-content: center stretch;
+  place-items: center stretch;
+  padding: 4px;
+}
+fieldset div:has(> input[type=checkbox]) input, fieldset:not(.lead-rating) div:has(> input[type=radio]) input {
+  width: 20px;
+  height: 20px;
+}
+fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:has(> input[type=radio]) label {
+  color: var(--grey-2);
+  min-width: max-content;
+  margin: 0;
 }
 
 /*-| Search---+----+---+----+---+----+---+----+---*/
@@ -7331,21 +7374,23 @@ table tbody tr input:active, table tbody tr input:focus {
 .nav-bar {
   z-index: 10000;
   position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
+  top: 12px;
+  right: 12px;
+  left: 12px;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  height: 45px;
+  height: 68px;
   padding: 12px;
-  background-color: var(--color-primary-4);
+  border: 1px solid var(--color-primary-8);
+  border-radius: 16px;
+  background-color: white;
   box-shadow: 0 0 32px 12px rgba(0, 0, 0, 0.2);
 }
 .nav-bar #page-title {
-  color: white;
+  color: black;
   font-size: 22px;
   font-weight: 500;
   padding-left: 8px;
@@ -12881,6 +12926,10 @@ table tbody tr input:active, table tbody tr input:focus {
   width: 100dvw;
   height: calc(calc(100dvh - 68px) - 4px);
   border: none !important;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 /*# sourceMappingURL=main.css.map */

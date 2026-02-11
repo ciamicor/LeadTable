@@ -111,7 +111,7 @@ const routes = [
       },
       {
         path: 'register',
-        name: 'Register',
+        name: 'Registration',
         component: BadgeCreate,
       },
       {

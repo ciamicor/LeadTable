@@ -229,10 +229,10 @@
           <span>{{ field.subtitle }}</span>
         </label>
       </div>
-      <LoadingHolder :status="status"
+      <LoadingHolder :status="loading"
                      class="--place-self-center --m-t-12 --m-b-24"
                      message="Submitting..."/>
-      <button v-if="!showQr && !status"
+      <button v-if="!showQr && !loading"
               class="--success --m-t-12 --m-b-24"
               type="submit"
       >
@@ -273,8 +273,6 @@
         Print {{ attendee.name_First }}'s Badge
       </button>
 
-      <!-- MWSCC TEMP PAYMENT REMOVE -->
-      <!--v-if="attendee.customFields.events3 !== 'Social (6:00 PM - 10:00 PM) - $190'"-->
       <button
         class="--success --flex-grow"
         @click="resetForm">
@@ -311,7 +309,7 @@ import { sendRegConfirmEmail_Service } from "@/services/emails/RegistrationEmail
 import { useExhibitorLocalStore, useExpoLocalStore } from '@/stores.js'
 import { getUrlHost, getUrl_ClientYear } from "@/services/functions/UrlService.ts";
 import { countryCodes } from "@/services/addresses/AddressForm_Countries.js";
-import LoadingHolder from "@/components/LoadingHolder.vue";
+import LoadingHolder from "@/components/elements/LoadingHolder.vue";
 import QrCode from '@/components/QrCode.vue'
 import PaymentPayPal from "@/components/payment/PaymentPayPal.vue";
 
@@ -319,7 +317,7 @@ const urlData = ref( getUrl_ClientYear() )
 const host = getUrlHost()
 const companyLocal = useExhibitorLocalStore()
 const expoLocal = useExpoLocalStore()
-const status = ref( false )
+const loading = ref( false )
 
 function getImageUrl( name ) {
   return new URL( `../../public/logos/${ expoLocal.expo_Client.toString()
@@ -346,7 +344,7 @@ try {
 -|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===/*/
 async function submitForm() {
   attendee.value.contact_Phone = attendee.value.contact_Phone.replace( /\D/g, '' )
-  status.value = true
+  loading.value = true
   if ( paymentEnabled.value === true ) {
     console.log( "Payment form enabled" )
     paymentView.value = true
@@ -417,7 +415,7 @@ async function createAttendee( a ) {
   await createAttendee_Service( a, expoLocal.expo_Client, expoLocal.expo_Year )
   attendeeId.value = attendee.value.id.toString()
   console.log( 'New Attendee\'s ID is: ', typeof attendeeId.value, attendeeId.value )
-  status.value = false
+  loading.value = false
   showQr.value = true
 }
 
