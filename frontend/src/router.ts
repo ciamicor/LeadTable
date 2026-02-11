@@ -5,6 +5,7 @@ import ExpoMap from '@/components/elements/ExpoMap.vue'
 import ExpoSelect from '@/components/ExpoSelect.vue'
 import LeadAdd from '@/components/leads/LeadAdd.vue'
 import BadgeCreate from '@/components/BadgeCreate.vue'
+import BadgePrintQuickfix from "@/components/admin/BadgePrintQuickfix.vue";
 
 /*-| admin |-*/
 import Admin_Login from "@/components/admin/Admin_Login.vue";
@@ -100,8 +101,8 @@ const routes = [
       },
       {
         path: 'profile',
-        name: 'Exhibitor Profile',
-        component: ExhibitorProfile,
+        name: 'Company Profile',
+        component: CompanyProfile,
       },
       {
         path: 'create-badge',
@@ -115,7 +116,7 @@ const routes = [
       },
       {
         path: 'exhibitor-registration',
-        name: 'Exhibitor Registration',
+        name: 'Company Registration',
         component: CompanyCreate,
       },
       /*-| Admin Views |-*/
