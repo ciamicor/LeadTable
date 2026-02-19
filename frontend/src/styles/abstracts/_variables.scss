@@ -23,9 +23,10 @@ $max-page-width:       1600 !default;
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 $app-height:           100dvh !default;
 $app-width:            100dvw !default;
-$nav-height:           45px !default;
-$nav-padding:          12px !default;
-$nav-height-actual:    calc($nav-height + ($nav-padding * 2) - 1px) !default;
+$nav-toggle-button-w: 40px !default;
+$nav-height: 40px !default;
+$nav-v-padding:        12px !default;
+$nav-height-actual:    calc($nav-height + ($nav-v-padding * 2)) !default;
 $view-height:          calc($app-height - $nav-height-actual) !default;
 
 /*-| Components |-*/
@@ -92,7 +93,7 @@ $panel-border:         $sp-5 !default;
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Type |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-$font-xxs:              14px !default;
+$font-xxs:             14px !default;
 $font-xs:              16px !default;
 $font-sm:              18px !default;
 $font-md:              22px !default;

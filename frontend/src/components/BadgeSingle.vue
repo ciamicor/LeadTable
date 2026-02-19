@@ -30,9 +30,10 @@
 </template>
 <script setup>
 import QrCode from '@/components/QrCode.vue'
-import { useExpoLocalStore } from "@/stores.js";
 
-const expoLocal = useExpoLocalStore();
+import { useEventLocalStore } from "@/stores/event.ts";
+
+const expoLocal = useEventLocalStore();
 
 function getImageUrl( name ) {
   return new URL( `../../public/logos/${ expoLocal.expo_Client.toString()

@@ -98,17 +98,15 @@ import {
   getExhibitor_Service,
   updateExhibitor_Service
 } from '@/services/ExhibitorDataService.ts'
-import {
-  useExhibitorLocalStore,
-  useExpoLocalStore,
-  useSessionStore
-} from '@/stores.ts'
 import { ref } from 'vue'
 import { db } from '@/db.ts'
-import router from "@/router.ts";
-import { saveLogin_LocalDB } from "@/services/LocalDBService.ts";
+import router from '@/router.ts';
+import { saveLogin_LocalDB } from '@/services/LocalDBService.ts';
 import ButtonSignOut from '../Button_SignOut.vue'
-import { object } from "better-auth";
+import { object } from 'better-auth';
+import { useSessionStore } from '@/stores/session.ts';
+import { useEventLocalStore } from '@/stores/event.ts';
+import { useCompanyLocalStore } from '@/stores/company.ts';
 
 /*-| Variables
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
@@ -120,8 +118,8 @@ const loginIdMatch = ref(false)
 const extraMatch = ref(false)
 
 const sessionStore = useSessionStore()
-const exhibitorLocal = useExhibitorLocalStore()
-const expoLocal = useExpoLocalStore()
+const exhibitorLocal = useCompanyLocalStore()
+const expoLocal = useEventLocalStore()
 const status = ref()
 
 /*-| Login/Out |-*/
@@ -132,7 +130,7 @@ async function login() {
   /*-| Check if exhibitor is in server DB |-*/
   const serverExhibitor = await getExhibitor_Service(exhibitorLocal.id)
 
-  console.log("Expo in past:" + expoLocal.expoInPast)
+  console.log('Expo in past:' + expoLocal.expoInPast)
 
   /*-| If Expo has passed, only check the database. |-*/
   if (expoLocal.expoInPast) {
@@ -142,7 +140,7 @@ async function login() {
       login_Url: serverExhibitor.login_Url,
       lead_Ret: serverExhibitor.lead_Ret,
       expo_Year: serverExhibitor.expo_Year,
-      expo_Client: serverExhibitor.expo_Client,
+      expo_Client: serverExhibitor.expo_Client
     })
     await saveLogin_LocalDB(
       exhibitorLocal.id,
@@ -160,9 +158,9 @@ async function login() {
     const exhibFP = await getFPExhibitor(
       exhibitorLocal.id,
       expoLocal.expo_Client,
-      expoLocal.expo_Year,
+      expoLocal.expo_Year
     )
-    console.log("Got exhibitor company from ExpoFP: ", exhibFP)
+    console.log('Got exhibitor company from ExpoFP: ', exhibFP)
 
     exhibitorLocal.$patch({
       id: exhibFP.id,
@@ -170,7 +168,7 @@ async function login() {
       login_Url: exhibFP.autoLoginUrl,
       lead_Ret: extraMatch.value,
       expo_Year: expoLocal.expo_Year,
-      expo_Client: expoLocal.expo_Client,
+      expo_Client: expoLocal.expo_Client
     })
 
     /*-| Check for Lead Retrieval |-*/
@@ -193,7 +191,7 @@ async function login() {
       status
     )
     await createExhibitor_Service(exhibitorLocal)
-    console.log("GETTING DEBUG")
+    console.log('GETTING DEBUG')
     await getExhibitor_Service(exhibitorLocal.id)
   }
   sessionStore.logged_In = true
@@ -216,12 +214,12 @@ async function checkLeadRetPurch() {
     exhibitorLocal.id,
     expoLocal.expo_Client,
     expoLocal.expo_Year)
-  console.log("exhibitor extras are: ", exhibitorExtras.value)
+  console.log('exhibitor extras are: ', exhibitorExtras.value)
   /*-| Look for Lead Ret match |-*/
   extraMatch.value = await exhibitorExtras.value.some((e: any) =>
     e.name.toLowerCase().includes('lead retrieval')
   )
-  console.log("Lead retrieval purchased: ", extraMatch.value)
+  console.log('Lead retrieval purchased: ', extraMatch.value)
 }
 
 </script>

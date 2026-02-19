@@ -229,7 +229,7 @@
           <span>{{ field.subtitle }}</span>
         </label>
       </div>
-      <LoadingHolder :status="loading"
+      <StatusDisplay :status="loading"
                      class="--place-self-center --m-t-12 --m-b-24"
                      message="Submitting..."/>
       <button v-if="!showQr && !loading"
@@ -306,17 +306,18 @@ import { scaleFont } from "@/services/functions/TextManipulationService.ts";
 import { createAttendee_Service } from '@/services/AttendeeDataService.ts'
 import { getCustomFields_Service } from "@/services/CustomFieldsDataService.js";
 import { sendRegConfirmEmail_Service } from "@/services/emails/RegistrationEmailService.ts";
-import { useExhibitorLocalStore, useExpoLocalStore } from '@/stores.js'
 import { getUrlHost, getUrl_ClientYear } from "@/services/functions/UrlService.ts";
 import { countryCodes } from "@/services/addresses/AddressForm_Countries.js";
-import LoadingHolder from "@/components/elements/LoadingHolder.vue";
+import StatusDisplay from "@/components/elements/StatusDisplay.vue";
 import QrCode from '@/components/QrCode.vue'
 import PaymentPayPal from "@/components/payment/PaymentPayPal.vue";
+import { useEventLocalStore } from "@/stores/event.ts";
+import { useCompanyLocalStore } from "@/stores/company.ts";
 
 const urlData = ref( getUrl_ClientYear() )
 const host = getUrlHost()
-const companyLocal = useExhibitorLocalStore()
-const expoLocal = useExpoLocalStore()
+const companyLocal = useCompanyLocalStore()
+const expoLocal = useEventLocalStore()
 const loading = ref( false )
 
 function getImageUrl( name ) {

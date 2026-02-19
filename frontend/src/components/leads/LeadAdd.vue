@@ -116,13 +116,14 @@ import { createLead_Service } from '@/services/LeadDataService.ts'
 import AttendeeDataService from '@/services/AttendeeDataService.ts'
 import { inject, onBeforeMount, onMounted, ref } from 'vue'
 import router from '@/router.ts'
-import { useExhibitorLocalStore } from '@/stores.ts'
+
+import { useCompanyLocalStore } from "@/stores/company.ts";
 
 /*-| Variables
 ---+----+---+----+---+----+---+----+---*/
 const debug = false
 
-const exhibitorLocal = useExhibitorLocalStore()
+const exhibitorLocal = useCompanyLocalStore()
 
 /*-| Scanning |-*/
 const scanConfirm = ref( false )

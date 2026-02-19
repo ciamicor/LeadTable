@@ -9,9 +9,10 @@
 <script lang="js"
         setup>
 import { utils, writeFile } from 'xlsx'
-import { useExhibitorLocalStore } from '@/stores.ts'
 
-const exhibitorLocal = useExhibitorLocalStore()
+import { useCompanyLocalStore } from "@/stores/company.ts";
+
+const exhibitorLocal = useCompanyLocalStore()
 
 const props = defineProps( {
   leadsList: {

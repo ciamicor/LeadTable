@@ -7241,7 +7241,7 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
 .modal-backdrop {
   z-index: 10000;
   position: fixed;
-  top: 68px;
+  top: 64px;
   right: 0;
   bottom: 0;
   left: 0;
@@ -7258,7 +7258,7 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
   flex: 1 1 100%;
   place-content: flex-start center;
   place-items: flex-start center;
-  max-height: calc(100dvh - 68px);
+  max-height: calc(100dvh - 64px);
 }
 .modal-backdrop .modal-content {
   flex: 1 1 auto;
@@ -7271,7 +7271,7 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
 }
 
 .scanner-camera-container {
-  height: calc(100dvh - 68px) !important;
+  height: calc(100dvh - 64px) !important;
   background: var(--color-success-2);
 }
 
@@ -7282,7 +7282,7 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
 .qr-float-container {
   position: absolute !important;
   right: 16px;
-  bottom: 108px;
+  bottom: 104px;
   left: 16px;
   place-content: space-between;
   align-items: stretch;
@@ -7306,7 +7306,7 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
 .scan-placement-container {
   z-index: 10;
   position: absolute;
-  bottom: calc(60% + 68px);
+  bottom: calc(60% + 64px);
   left: 50%;
   aspect-ratio: 1;
   width: 65%;
@@ -7374,32 +7374,39 @@ table tbody tr input:active, table tbody tr input:focus {
 .nav-bar {
   z-index: 10000;
   position: fixed;
-  top: 12px;
-  right: 12px;
-  left: 12px;
+  top: 0;
+  right: 0;
+  left: 0;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  height: 68px;
-  padding: 12px;
-  border: 1px solid var(--color-primary-8);
-  border-radius: 16px;
+  height: 64px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-primary-8);
+  border-radius: 0;
   background-color: white;
-  box-shadow: 0 0 32px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.125);
 }
 .nav-bar #page-title {
+  flex-grow: 1;
   color: black;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 500;
-  padding-left: 8px;
+  line-height: 100%;
+  text-align: center;
+  padding-right: 40px;
+}
+.nav-bar #toggle-nav-button {
+  width: 40px;
+  height: 100%;
 }
 
 .sidebar--page-wrapper {
-  z-index: 99999;
+  z-index: 9999;
   position: fixed;
-  top: 68px;
+  top: 64px;
   bottom: 0;
   left: 0;
   display: flex;
@@ -7413,7 +7420,7 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 .sidebar--page-wrapper.hide {
   width: 35vw;
-  opacity: 0;
+  opacity: 1;
   translate: -500px 0;
 }
 @media (min-width: 550px) {
@@ -7427,8 +7434,11 @@ table tbody tr input:active, table tbody tr input:focus {
   flex: 1 1 auto;
   flex-flow: column nowrap;
   gap: 20px;
+  margin: 16px;
   padding: 24px;
-  background: var(--color-primary-4);
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 0 4px 1px hsla(0, 0%, 0%, 0.125), 0 4px 12px 0 hsla(0, 0%, 0%, 0.25);
 }
 
 .sidebar--nav-menu-wrapper {
@@ -12903,28 +12913,28 @@ table tbody tr input:active, table tbody tr input:focus {
   overflow: hidden;
   grid-template-rows: 1fr;
   width: 100dvw;
-  margin-block-start: 68px;
+  margin-block-start: 64px;
 }
 
 .view-mask {
   overflow: scroll;
   width: 100dvw;
   max-width: 100dvw;
-  height: calc(100dvh - 68px);
+  height: calc(100dvh - 64px);
   background: white;
 }
 .view-container {
   display: flex;
   flex-flow: column;
   height: 100%;
-  min-height: calc(100dvh - 68px);
+  min-height: calc(100dvh - 64px);
 }
 
 /*-| Views
 ---+----+---+----+---+----+---+----+---*/
 .view-floor-plan {
   width: 100dvw;
-  height: calc(calc(100dvh - 68px) - 4px);
+  height: calc(calc(100dvh - 64px) - 4px);
   border: none !important;
 }
 

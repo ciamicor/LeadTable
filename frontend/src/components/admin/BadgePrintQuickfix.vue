@@ -71,7 +71,7 @@
     </div>
 
     <div class="row-12-300">
-      <LoadingHolder :status="loading"/>
+      <StatusDisplay :status="loading"/>
       <div
         v-show="!loading"
         class="badge-select-grid"
@@ -130,7 +130,6 @@
 
 <script lang="js"
         setup>
-import { useExpoLocalStore } from "@/stores.ts";
 import { getUrlHost } from "@/services/functions/UrlService.ts";
 import { jsPDF } from 'jspdf'
 import QrCode from '@/components/QrCode.vue'
@@ -145,11 +144,12 @@ import {
 } from '@/services/AttendeeDataService.ts'
 import { getAttendeeUploads_Service } from '@/services/UploadDataService.ts'
 import { sortLName_Service } from '@/services/SortService.ts'
-import LoadingHolder from "@/components/elements/LoadingHolder.vue";
+import StatusDisplay from "@/components/elements/StatusDisplay.vue";
+import { useEventLocalStore } from "@/stores/event.ts";
 
 /*-| States |-*/
 /*---+----+---+----+---+----+---+----+---*/
-const expoLocal = useExpoLocalStore()
+const expoLocal = useEventLocalStore()
 
 /*-| Uploads |-*/
 const uploadsList = ref()

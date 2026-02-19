@@ -1,14 +1,14 @@
 <template>
-
-
+  <div v-show="props.status"
+       class="row">
+    <p>{{ props.message }}</p>
+  </div>
 </template>
-
 <script lang="ts"
         setup>
-import { defineProps } from 'vue';
-
 const props = defineProps({
-  message: {type: String, default: ''},
-})
+  status: Boolean,
+  message: {type: String, default: 'Loading...'},
 
+})
 </script>

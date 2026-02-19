@@ -7,9 +7,10 @@
 </template>
 <script lang="ts"
         setup>
-import {useExpoLocalStore} from "@/stores.ts";
 
-const expoLocalStore = useExpoLocalStore()
+import { useEventLocalStore } from '@/stores/event.ts';
+
+const expoLocalStore = useEventLocalStore()
 
 </script>
 

@@ -48,7 +48,7 @@
         <h2>{{ exhibitorLocal.name }}</h2>
       </div>
     </div>
-    <LoadingHolder :status="status"
+    <StatusDisplay :status="status"
                    class="--place-self-center"/>
     <div class="lead-cards-container">
       <p v-if="leadsList.length === 0"
@@ -77,17 +77,19 @@
 </template>
 
 <script setup>
-import LoadingHolder from "@/components/elements/LoadingHolder.vue";
-import { useExhibitorLocalStore, useExpoLocalStore, useLeadsListLocal } from '@/stores.ts'
+import StatusDisplay from "@/components/elements/StatusDisplay.vue";
 import { getAllCompanyLeads_Service } from '../../services/LeadDataService.ts'
 import { onMounted, ref } from 'vue'
 import { getLocalExhibitor_Service } from '@/services/ExhibitorDataService.ts'
 import LeadCard from '@/components/leads/LeadCard.vue'
 import LeadsExport from '@/components/leads/LeadsExport.vue'
+import { useEventLocalStore } from "@/stores/event.ts";
+import { useCompanyLocalStore } from "@/stores/company.ts";
+import { useLeadsListLocal } from "@/stores/leadList.ts";
 
 const sessionStore = useSessionStore()
-const exhibitorLocal = useExhibitorLocalStore()
-const expoLocal = useExpoLocalStore()
+const exhibitorLocal = useCompanyLocalStore()
+const expoLocal = useEventLocalStore()
 const leadListLocal = useLeadsListLocal()
 
 /*-| Hooks

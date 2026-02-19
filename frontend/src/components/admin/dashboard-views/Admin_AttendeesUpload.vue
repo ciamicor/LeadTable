@@ -41,14 +41,15 @@
 
 <script lang="ts"
         setup>
-import { ref } from "vue";
+import { ref } from 'vue';
 import { read, utils, writeFile } from 'xlsx'
 import { createAttendee_Service } from '@/services/AttendeeDataService.ts'
-import { useExpoLocalStore, useExhibitorLocalStore } from "@/stores.ts";
 import { createUpload_Service, getAttendeeUploads_Service } from '@/services/UploadDataService.ts'
+import { useEventLocalStore } from '@/stores/event.ts';
+import { useCompanyLocalStore } from '@/stores/company.ts';
 
-const exhibitorLocal = useExhibitorLocalStore()
-const expoLocal = useExpoLocalStore()
+const exhibitorLocal = useCompanyLocalStore()
+const expoLocal = useEventLocalStore()
 const currentUpload = ref()
 const status = ref(false)
 const uploadTitle = ref(new Date().toLocaleString())
@@ -84,20 +85,20 @@ async function handleFileAsync(e: any) {
 async function downloadTemplate() {
   const formattedLeads = [
     {
-      "": "",
-      "": "",
-      "": "",
-      "": "",
-      "": "",
-      "": "",
-      "": "",
-      "": "",
-      "": "",
-      "": "",
-      "": "",
-      "": "",
-      "": "",
-      "": "",
+      '': '',
+      '': '',
+      '': '',
+      '': '',
+      '': '',
+      '': '',
+      '': '',
+      '': '',
+      '': '',
+      '': '',
+      '': '',
+      '': '',
+      '': '',
+      '': ''
     }
   ]
   const worksheet = utils.json_to_sheet(formattedLeads)
@@ -118,7 +119,7 @@ async function downloadTemplate() {
       'address_City',
       'address_State',
       'address_Zip',
-      'address_Country',
+      'address_Country'
     ]
   ], {origin: 'A1'})
   writeFile(workbook, 'leadtable-upload-template.xlsx', {compression: true})

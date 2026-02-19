@@ -3,31 +3,39 @@
 .nav-bar {
   z-index:          10000;
   position:         fixed;
-  top:              12px;
-  right:            12px;
-  left:             12px;
+  top:              0; // 12px;
+  right:            0; // 12px;
+  left:             0; // 12px;
   display:          flex;
   flex-flow:        row nowrap;
   align-items:      center;
   justify-content:  space-between;
   gap:              $sp-4;
   height:           $nav-height-actual;
-  padding:          $nav-padding;
-  border:           1px solid $color-primary-8;
-  border-radius:    $sp-6;
+  padding:          $nav-v-padding $sp-6;
+  border-bottom:    1px solid $color-primary-8;
+  border-radius:    0; // $sp-6;
   background-color: white;
-  box-shadow:       0 0 32px 12px rgba(0, 0, 0, 0.2);
+  box-shadow:       0 0 12px 4px rgba(0, 0, 0, 0.125);
 
   #page-title {
-    color:        black;
-    font-size:    $font-md;
-    font-weight:  500;
-    padding-left: $sp-4;
+    flex-grow:     1;
+    color:         black;
+    font-size:     20px;
+    font-weight:   500;
+    line-height:   100%;
+    text-align:    center;
+    padding-right: $nav-toggle-button-w;
+  }
+
+  #toggle-nav-button {
+    width:  $nav-toggle-button-w;
+    height: 100%;
   }
 }
 
 .sidebar--page-wrapper {
-  z-index:       99999;
+  z-index:       9999;
   position:      fixed;
   top:           $nav-height-actual;
   bottom:        0;
@@ -45,7 +53,7 @@
 
   &.hide {
     width:     35vw;
-    opacity:   0;
+    opacity:   1;
     translate: -500px 0;
   }
 
@@ -55,14 +63,17 @@
 }
 
 .sidebar--content-container {
-  display:    flex;
-  flex:       1 1 auto;
-  flex-flow:  column nowrap;
-  gap:        $sp-7;
-  // margin:        $sp-6;
-  padding:    $sp-8;
-  // border-radius: $item-border;
-  background: $color-primary-4;
+  display:       flex;
+  flex:          1 1 auto;
+  flex-flow:     column nowrap;
+  gap:           $sp-7;
+  margin:        $sp-6;
+  padding:       $sp-8;
+  //border:        1px solid $color-primary-8;
+  border-radius: $item-border;
+  background:    white;
+  box-shadow:    0 0 4px 1px hsla(0, 0%, 0%, 0.125),
+                 0 4px 12px 0 hsla(0, 0%, 0%, 0.25);
 }
 
 .sidebar--nav-menu-wrapper {

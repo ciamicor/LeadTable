@@ -3,28 +3,29 @@
                @closeNav="toggleSidebarNav"/>
   <nav
     class="nav-bar">
-    <span id="page-title"
-          class="--m-0">
-      {{ route.name }}
-    </span>
+    <!--    {{ session.data.user.role }}-->
     <button
       v-if="route.path !== '/'"
-      id="toggle-nav"
+      id="toggle-nav-button"
       :class="showSidebarNav ? ' --warn ' : ' --primary ' "
-      class="button p-8"
+      class="button --p-v-4 --p-h-5 --font-size-18"
       @click="toggleSidebarNav">
       <i v-if="!showSidebarNav"
          class="bi-list"></i>
       <i v-if="showSidebarNav"
          class="bi-x-lg"></i>
     </button>
+    <span id="page-title"
+          class="--m-0">
+      {{ route.name }}
+    </span>
   </nav>
   <div class="view-mask">
     <div class="view-container">
-      <div v-if="loading"
-           class="--place-self-center --p-v-24">
-        loading...
-      </div>
+      <StatusDisplay
+        :status="loading"
+        class="--place-self-center --p-v-24 --h-100"
+      />
       <router-view v-if="!loading"/>
     </div>
   </div>
@@ -33,21 +34,21 @@
 <script
   setup>
 import SidebarNav from "@/components/navigation/SidebarNav.vue";
+import StatusDisplay from "@/components/elements/StatusDisplay.vue";
+
 import { db } from '@/db.js'
-import { onBeforeMount, ref } from 'vue'
-import { useExpoLocalStore, useExhibitorLocalStore, useSessionStore } from '@/stores.js'
+import { onBeforeMount, ref, watch } from 'vue'
 import { getUrl_ClientYear } from "@/services/functions/UrlService.ts";
 import { getExpo_Service } from "@/services/ExpoDataService.js";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute } from "vue-router";
+import { useEventLocalStore } from "@/stores/event.ts";
+import { useCompanyLocalStore } from "@/stores/company.ts";
+import { authClient } from "@/lib/auth-client.ts";
 
 const route = useRoute()
-const router = useRouter()
-
-/*-| Variables |-*/
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-const sessionStore = useSessionStore()
-const exhibitorLocal = useExhibitorLocalStore()
-const expoLocal = useExpoLocalStore()
+const exhibitorLocal = useCompanyLocalStore()
+const expoLocal = useEventLocalStore()
+const session = authClient.useSession()
 
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Hooks |-*/
@@ -58,9 +59,8 @@ const error = ref( null )
 
 async function fetchData( id ) {
   loading.value = true
-
   try {
-    await checkLoginState()
+    await checkCompanyState()
     let url = getUrl_ClientYear()
     expoLocal.$patch( {
       expo_Client: url[0],
@@ -75,19 +75,13 @@ async function fetchData( id ) {
   }
 }
 
-// TODO: improve with Vue Router data fetching?
-// https://router.vuejs.org/guide/advanced/data-fetching.html
-
 onBeforeMount( async () => {
   await fetchData()
-  /*if ( sessionStore.logged_In === true ) {
-    await checkExpoMatch()
-  }*/
 } )
 
 /*-| Get Company from Local |-*/
 /*---+----+---+----+---+----+---+----+---*/
-async function checkLoginState() {
+async function checkCompanyState() {
   try {
     let profile = await db.profile.get( 1 )
     if ( profile ) {
@@ -99,7 +93,6 @@ async function checkLoginState() {
         expo_Year: profile.expo_Year.toString(),
         expo_Client: profile.expo_Client.toString()
       } )
-      sessionStore.logged_In = true
     }
     return exhibitorLocal
   } catch ( e ) {
@@ -114,22 +107,6 @@ const showSidebarNav = ref( false )
 function toggleSidebarNav() {
   showSidebarNav.value = !showSidebarNav.value
 }
-
-/*-| Checks |-*/
-/*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-/*-| Check if URL matches login |-*/
-// TODO Move check into router beforeRoute function.
-/*async function checkExpoMatch() {
-  let clientMatch = expoLocal.expo_Client === companyLocal.expo_Client
-  let yearMatch = expoLocal.expo_Year === parseInt( companyLocal.expo_Year )
-  if ( !clientMatch || !yearMatch ) {
-    alert( `Your login does not match selected expo. You've selected ${ expoLocal.expo_Client } ${ expoLocal.expo_Year }, but are logged in for ${ companyLocal.expo_Client } ${ companyLocal.expo_Year }. You'll be redirected.` )
-    let url = getUrl_ClientYear()
-    await router.push( `/${ companyLocal.expo_Client }/${ companyLocal.expo_Year }/${ url.view }` )
-    url = getUrl_ClientYear()
-    await getExpo_Service( url.client, url.year, expoLocal )
-  }
-}*/
 
 </script>
 

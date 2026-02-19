@@ -195,7 +195,6 @@
         setup>
 // TODO Convert to TS
 import { ref, computed } from 'vue'
-import { useExhibitorLocalStore, useExpoLocalStore } from '@/stores.ts'
 import { getUrlHost, getURLParams } from "@/services/functions/UrlService.ts";
 import { countries } from "@/services/addresses/AddressForm_Countries.ts";
 import { formatSlug } from "@/services/functions/TextManipulationService.ts";
@@ -204,10 +203,12 @@ import {
   addFPExhibitorBooth,
   getFPExhibitorId
 } from "@/services/ExpoFPDataService.ts";
+import { useEventLocalStore } from "@/stores/event.ts";
+import { useCompanyLocalStore } from "@/stores/company.ts";
 
 const host = getUrlHost()
-const exhibitorLocal = useExhibitorLocalStore()
-const expoLocal = useExpoLocalStore()
+const exhibitorLocal = useCompanyLocalStore()
+const expoLocal = useEventLocalStore()
 
 // TODO add global status, add to global loading component where needed.
 const status = ref( 'Continue' )

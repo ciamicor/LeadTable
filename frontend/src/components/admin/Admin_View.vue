@@ -2,7 +2,7 @@
   <div class="container --place-content-start">
     <div class="row-12-300  --p-6">
       <RouterLink
-        :to="{name:'Dashboard'}"
+        :to="{name:'Admin Dashboard'}"
         active-class="--success--invert"
         class="button"
       >
