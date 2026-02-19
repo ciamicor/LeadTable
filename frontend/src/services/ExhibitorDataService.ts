@@ -1,21 +1,21 @@
-import http from '../http-common'
-import { db } from '@/db.ts'
+import http from "../http-common"
+import { db } from "@/db.ts"
 
 class ExhibitorDataService {
   create(data: any) {
-    return http.post('/company', data)
+    return http.post("/company", data)
   }
 
   getAll() {
-    return http.get('/company')
+    return http.get("/company")
   }
 
   get(cId: any) {
-    return http.get('/company/' + cId)
+    return http.get("/company/" + cId)
   }
 
   update(id: any, data: any) {
-    return http.put('/company/' + id, data)
+    return http.put("/company/" + id, data)
   }
 }
 
@@ -34,7 +34,7 @@ export async function createExhibitor_Service(companyObject: any) {
     name: companyObject.name,
     lead_Ret: companyObject.lead_Ret,
     expo_Year: companyObject.expo_Year,
-    expo_Client: companyObject.expo_Client,
+    expo_Client: companyObject.expo_Client
   }
   console.log(data)
   try {
@@ -51,17 +51,17 @@ export async function createExhibitor_Service(companyObject: any) {
 export async function getExhibitor_Service(cId: any, exhibitorObject: any = null) {
   try {
     let exhibitor = await exhibitorService.get(cId)
-    console.log('Exhibitor object: ', exhibitorObject)
-    console.log('response: ', exhibitor)
+    console.log("Exhibitor object: ", exhibitorObject)
+    console.log("response: ", exhibitor)
     if (exhibitorObject !== null) {
       exhibitorObject.value = exhibitor.data
-      console.log('company: ', exhibitorObject.value)
+      console.log("company: ", exhibitorObject.value)
     }
     else {
       return exhibitor.data
     }
   } catch (error) {
-    console.error('Error getting company by ID: ', error)
+    console.error("Error getting company by ID: ", error)
   }
 }
 
@@ -69,10 +69,10 @@ export async function getExhibitor_Service(cId: any, exhibitorObject: any = null
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 export async function getLocalExhibitor_Service(c: any) {
   try {
-    let profile = await db.profile.get(1)
+    let profile = await db.company.get(1)
     let exhibitorLocalHold: any = profile
-    console.log('Exhibitor LocalData Service: ', c)
-    console.log('Exhibitor LocalData Service: ', profile)
+    console.log("Exhibitor LocalData Service: ", c)
+    console.log("Exhibitor LocalData Service: ", profile)
 
     if (profile) {
       c.id = exhibitorLocalHold.ex_Id
@@ -85,7 +85,7 @@ export async function getLocalExhibitor_Service(c: any) {
       return c
     }
   } catch (error) {
-    console.error('I don\'t think there\'s a company stored locally.', error)
+    console.error("I don't think there's a company stored locally.", error)
   }
 }
 
@@ -96,7 +96,7 @@ export async function updateExhibitor_Service(id: any, retStatus: boolean) {
   const data = {
     lead_Ret: retStatus
   }
-  console.log('Updating Lead Retrieval to: ', data)
+  console.log("Updating Lead Retrieval to: ", data)
   try {
     await exhibitorService.update(id, data)
   } catch (e: any) {

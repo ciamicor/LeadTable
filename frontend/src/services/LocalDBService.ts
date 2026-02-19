@@ -14,7 +14,7 @@ export async function saveLogin_LocalDB(
   status: Ref<string>
 ) {
   try {
-    const id = await db.profile.add({
+    const id = await db.company.add({
       id: 1,
       ex_Id: exId || 0,
       name: name,

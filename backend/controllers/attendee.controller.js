@@ -1,5 +1,5 @@
 import { Attendee, Expo } from "../models/index.js"
-import { Op } from 'sequelize';
+import { Op } from "sequelize";
 
 // Get all attendees
 export const getAllAttendees = async ( req, res ) => {
@@ -7,10 +7,10 @@ export const getAllAttendees = async ( req, res ) => {
         const attendees = await Attendee.findAll()
         res.json( attendees )
     } catch ( error ) {
-        console.error( 'error in controller getAllAttendees: ', error )
+        console.error( "error in controller getAllAttendees: ", error )
         res.status( 500 ).json( {
-            error: 'Something went wrong with controller: getAllAttendees.',
-            details: error?.message || 'Unknown error'
+            error: "Something went wrong with controller: getAllAttendees.",
+            details: error?.message || "Unknown error"
         } )
     }
 }
@@ -60,17 +60,17 @@ export const createAttendee = async ( req, res ) => {
         } )
         res.status( 201 ).json( newAttendee )
     } catch ( error ) {
-        console.error( 'Error while creating lead: ', error )
-        if ( error.name === 'SequelizeUniqueConstraintError' ) {
+        console.error( "Error while creating lead: ", error )
+        if ( error.name === "SequelizeUniqueConstraintError" ) {
             return res.status( 400 ).json( {
-                error: 'Cannot create attendee',
-                message: 'Attendee with email ' + contact_Email + ' already exists.'
+                error: "Cannot create attendee",
+                message: "Attendee with email " + contact_Email + " already exists."
 
             } )
         }
         res.status( 500 ).json( {
-            error: 'Something went wrong on the server.',
-            details: error?.message || 'Unknown error',
+            error: "Something went wrong on the server.",
+            details: error?.message || "Unknown error",
             stack: error.stack
         } )
     }
@@ -123,16 +123,16 @@ export const createAttendeeBulk = async ( req, res ) => {
         } )
         res.status( 201 ).json( bulkAttendees )
     } catch ( error ) {
-        console.error( 'Error while creating lead: ', error )
-        if ( error.name === 'SequelizeUniqueConstraintError' ) {
+        console.error( "Error while creating lead: ", error )
+        if ( error.name === "SequelizeUniqueConstraintError" ) {
             return res.status( 400 ).json( {
-                error: 'Cannot create attendees',
+                error: "Cannot create attendees",
                 message: "Sorry, I didn't like that data. I'm not sure why."
             } )
         }
         res.status( 500 ).json( {
-            error: 'Something went wrong on the server.',
-            details: error?.message || 'Unknown error',
+            error: "Something went wrong on the server.",
+            details: error?.message || "Unknown error",
             stack: error.stack
         } )
     }
@@ -147,19 +147,20 @@ export const getExpoAttendees = async ( req, res ) => {
             {
                 where: {
                     [Op.and]: [ { expo_Client: client }, { expo_Year: year } ]
-                }
+                },
+                order: [ "name_Last" ]
             }
         )
         if ( expo ) {
             res.json( expo )
         } else {
-            res.status( 404 ).json( { error: 'Expo or year not found' } )
+            res.status( 404 ).json( { error: "Expo or year not found" } )
         }
     } catch ( error ) {
-        console.error( 'error in controller getExpoAttendees: ', error )
+        console.error( "error in controller getExpoAttendees: ", error )
         res.status( 500 ).json( {
-            error: 'Something went wrong while getting those attendees.',
-            details: error?.message || 'Unknown error'
+            error: "Something went wrong while getting those attendees.",
+            details: error?.message || "Unknown error"
         } )
     }
 }
@@ -179,13 +180,13 @@ export const getAttendeesBetweenDates = async ( req, res ) => {
         if ( attendees ) {
             res.json( attendees )
         } else {
-            res.status( 404 ).json( { error: 'No attendees created between those dates.' } )
+            res.status( 404 ).json( { error: "No attendees created between those dates." } )
         }
     } catch ( error ) {
-        console.error( 'error in controller getAttendeesBetweenDates: ', error )
+        console.error( "error in controller getAttendeesBetweenDates: ", error )
         res.status( 500 ).json( {
-            error: 'Something went wrong while getting those attendees.',
-            details: error?.message || 'Unknown error'
+            error: "Something went wrong while getting those attendees.",
+            details: error?.message || "Unknown error"
         } )
     }
 }
@@ -198,13 +199,13 @@ export const getAttendeeById = async ( req, res ) => {
         if ( attendee ) {
             res.json( attendee )
         } else {
-            res.status( 404 ).json( { error: 'Attendee ID not found' } )
+            res.status( 404 ).json( { error: "Attendee ID not found" } )
         }
     } catch ( error ) {
-        console.error( 'error in controller getAttendeeById: ', error )
+        console.error( "error in controller getAttendeeById: ", error )
         res.status( 500 ).json( {
-            error: 'Something went wrong with controller: getAttendeeById.',
-            details: error?.message || 'Unknown error'
+            error: "Something went wrong with controller: getAttendeeById.",
+            details: error?.message || "Unknown error"
         } )
     }
 }
@@ -223,13 +224,13 @@ export const getAttendeeByUploadId = async ( req, res ) => {
         if ( attendee ) {
             res.json( attendee )
         } else {
-            res.status( 404 ).json( { error: 'Attendee not found' } )
+            res.status( 404 ).json( { error: "Attendee not found" } )
         }
     } catch ( error ) {
-        console.error( 'error in controller getAttendeeByUploadId: ', error )
+        console.error( "error in controller getAttendeeByUploadId: ", error )
         res.status( 500 ).json( {
-            error: 'Something went wrong with controller: getAttendeeById.',
-            details: error?.message || 'Unknown error'
+            error: "Something went wrong with controller: getAttendeeById.",
+            details: error?.message || "Unknown error"
         } )
     }
 }
@@ -275,13 +276,13 @@ export const updateAttendee = async ( req, res ) => {
             await attendee.save()
             res.json( attendee )
         } else {
-            res.status( 404 ).json( { error: 'Attendee not found' } )
+            res.status( 404 ).json( { error: "Attendee not found" } )
         }
     } catch ( error ) {
-        console.error( 'error in controller updateAttendee: ', error )
+        console.error( "error in controller updateAttendee: ", error )
         res.status( 500 ).json( {
-            error: 'Something went wrong with controller: updateAttendee.',
-            details: error?.message || 'Unknown error'
+            error: "Something went wrong with controller: updateAttendee.",
+            details: error?.message || "Unknown error"
         } )
     }
 }
@@ -295,13 +296,13 @@ export const deleteAttendee = async ( req, res ) => {
             await attendee.destroy()
             res.json( attendee )
         } else {
-            res.status( 404 ).json( { error: 'Attendee not found' } )
+            res.status( 404 ).json( { error: "Attendee not found" } )
         }
     } catch ( error ) {
-        console.error( 'error in controller deleteAttendee: ', error )
+        console.error( "error in controller deleteAttendee: ", error )
         res.status( 500 ).json( {
-            error: 'Something went wrong with controller: deleteAttendee.',
-            details: error?.message || 'Unknown error'
+            error: "Something went wrong with controller: deleteAttendee.",
+            details: error?.message || "Unknown error"
         } )
     }
 }

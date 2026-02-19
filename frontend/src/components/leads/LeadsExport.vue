@@ -8,11 +8,11 @@
 
 <script lang="js"
         setup>
-import { utils, writeFile } from 'xlsx'
+import { utils, writeFile } from "xlsx"
 
 import { useCompanyLocalStore } from "@/stores/company.ts";
 
-const exhibitorLocal = useCompanyLocalStore()
+const companyLocal = useCompanyLocalStore()
 
 const props = defineProps( {
   leadsList: {
@@ -37,21 +37,21 @@ async function exportLeads() {
   utils.sheet_add_aoa( worksheet,
     [
       [
-        'First Name',
-        'Last Name',
-        'Title',
-        'Email',
-        'Phone',
-        'Employer',
-        'Address',
-        'Score',
-        'Comment',
-        'Scanned Date'
+        "First Name",
+        "Last Name",
+        "Title",
+        "Email",
+        "Phone",
+        "Employer",
+        "Address",
+        "Score",
+        "Comment",
+        "Scanned Date"
       ]
     ],
-    { origin: 'A1' } )
+    { origin: "A1" } )
   writeFile( workbook,
-    `${ exhibitorLocal.name }-Leads-${ exhibitorLocal.expo_Client }-Expo-${ exhibitorLocal.expo_Year }.xlsx`,
+    `${ companyLocal.name }-Leads-${ companyLocal.expo_Client }-Expo-${ companyLocal.expo_Year }.xlsx`,
     { compression: true } )
 }
 

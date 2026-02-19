@@ -7328,46 +7328,58 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
   overflow-x: auto;
 }
 
-table {
+.table-scroll-wrapper {
+  overflow-x: scroll;
+  max-width: 100%;
+  padding: 8px;
+}
+
+.attendee-table {
+  position: relative;
   text-align: left;
   padding: 8px;
   border-collapse: collapse;
   border: 1px solid var(--grey-8);
 }
-table th {
+.attendee-table th {
   padding: 8px 12px;
   border: 1px solid var(--grey-9);
+  background: var(--grey-10);
 }
-table tbody tr {
+.attendee-table tbody tr {
   border: 1px solid var(--grey-9);
   transition: background 200ms ease-in;
 }
-table tbody tr td {
+.attendee-table tbody tr td {
+  overflow: clip;
   line-height: 1;
   white-space: nowrap;
+  text-overflow: ellipsis;
   width: 5%;
+  max-width: 300px;
   padding: 8px 8px;
   border-right: 1px solid var(--grey-11);
   outline: 2px solid hsla(0, 0%, 0%, 0);
   transition: outline 200ms ease-out;
 }
-table tbody tr td:has(input) {
+.attendee-table tbody tr td:has(input) {
   padding: 4px;
 }
-table tbody tr td#comment {
+.attendee-table tbody tr td#comment {
   white-space: wrap;
 }
-table tbody tr:hover {
-  background: var(--grey-12);
+.attendee-table tbody tr:hover {
+  outline: 1px solid var(--color-primary-6);
+  background: var(--color-primary-10);
 }
-table tbody tr input {
+.attendee-table tbody tr input {
   width: calc(100% - 24px);
   max-width: 15ch;
   height: calc(100% - 24px);
   padding: 8px;
   background: hsla(0, 0%, 100%, 0.65);
 }
-table tbody tr input:active, table tbody tr input:focus {
+.attendee-table tbody tr input:active, .attendee-table tbody tr input:focus {
   background: var(--grey-12);
 }
 

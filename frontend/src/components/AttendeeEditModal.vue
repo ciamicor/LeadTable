@@ -115,13 +115,9 @@ import { updateAttendee_Service } from "@/services/AttendeeDataService.ts";
 import { countries } from "@/services/addresses/AddressForm_Countries.ts";
 
 const emit = defineEmits(["showModal"]);
-
 const props = defineProps({
-  attendee: {
-    type: Object, default: () => {
-    }
-  },
-  visible: {type: Boolean, default: false},
+  attendee: {type: Object, default: () => {}},
+  visible: {type: Boolean, default: false}
 })
 
 const attendeeLocal = ref(props.attendee)
@@ -136,7 +132,7 @@ const attendeeAddress = ref({
   address_City: props.attendee.address_City,
   address_State: props.attendee.address_State,
   address_Zip: props.attendee.address_Zip,
-  address_Country: props.attendee.address_Country,
+  address_Country: props.attendee.address_Country
 })
 const attendeeTitle = ref(props.attendee.title)
 
@@ -154,7 +150,7 @@ async function updateAttendee() {
     address_State: attendeeAddress.value.address_State,
     address_Zip: attendeeAddress.value.address_Zip,
     address_Country: attendeeAddress.value.address_Country,
-    title: attendeeTitle.value,
+    title: attendeeTitle.value
   }
   await updateAttendee_Service(attendeeLocal.value.id, data)
 }

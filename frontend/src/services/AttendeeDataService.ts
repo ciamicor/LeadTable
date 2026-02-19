@@ -1,32 +1,32 @@
-import http from '../http-common'
+import http from "../http-common"
 
 export default class AttendeeDataService {
   create(data: any) {
-    return http.post('/attendee', data)
+    return http.post("/attendee", data)
   }
 
   getAll() {
-    return http.get('/attendee')
+    return http.get("/attendee")
   }
 
   get(id: any) {
-    return http.get('/attendee/' + id)
+    return http.get("/attendee/" + id)
   }
 
   getUploadAttendee(id: any) {
-    return http.get('/attendee/upload/' + id)
+    return http.get("/attendee/upload/" + id)
   }
 
   getExpoAttendees(client: any, year: any) {
-    return http.get('/attendee/client/' + client + '/year/' + year)
+    return http.get("/attendee/client/" + client + "/year/" + year)
   }
 
   update(id: any, data: any) {
-    return http.put('/attendee/' + id, data)
+    return http.put("/attendee/" + id, data)
   }
 
   delete(id: any) {
-    return http.delete('/attendee/' + id)
+    return http.delete("/attendee/" + id)
   }
 }
 
@@ -43,7 +43,7 @@ async function createAttendee_Service(
   year: any,
   upload: any = null
 ) {
-  console.log('Create Attendee Service: ', attendee)
+  console.log("Create Attendee Service: ", attendee)
   const data = {
     expo_Client: client,
     expo_Year: year,
@@ -80,7 +80,7 @@ async function createAttendee_Service(
 /*-| Update Attendee
 ---+----+---+----+---+----+---+----+---*/
 async function updateAttendee_Service(id: any, attendee: any) {
-  console.log('Updating Attendee: ', attendee)
+  console.log("Updating Attendee: ", attendee)
   const data = {
     name_First: attendee.name_First,
     name_Last: attendee.name_Last,
@@ -96,7 +96,7 @@ async function updateAttendee_Service(id: any, attendee: any) {
     title: attendee.title,
     regType: attendee.regType,
     techSessions: attendee.techSessions,
-    customFields: attendee.customFields,
+    customFields: attendee.customFields
   }
   console.log("Update Attendee addresses: ", data)
   try {
@@ -141,11 +141,23 @@ async function getAttendeesUploadId_Service(id: any) {
   }
 }
 
+/*-| Delete an Attendee by ID
+---+----+---+----+---+----+---+----+---*/
+async function deleteAttendee_Service(id: any) {
+  try {
+    let lead = await attendeeService.delete(id)
+    console.log(lead.data)
+  } catch (e) {
+    console.log(e)
+  }
+}
+
 export {
   getAllAttendees_Service,
   createAttendee_Service,
   getAttendeesUploadId_Service,
   getExpoAttendees_Service,
-  updateAttendee_Service
+  updateAttendee_Service,
+  deleteAttendee_Service
 }
 

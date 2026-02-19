@@ -1,5 +1,5 @@
 // db.ts
-import Dexie, { type EntityTable } from 'dexie'
+import Dexie, { type EntityTable } from "dexie"
 
 interface Lead {
   id: number
@@ -16,7 +16,7 @@ interface Lead {
   comment: string
 }
 
-interface Profile {
+interface Company {
   id: number
   ex_Id: number
   name: string
@@ -34,15 +34,15 @@ interface UserSesh {
   role: string
 }
 
-const db = new Dexie('Leadtable') as Dexie & {
+const db = new Dexie("Leadtable") as Dexie & {
   leads: EntityTable<
-    Lead, 'id' // primary key "id" (for the typings only)
+    Lead, "id" // primary key "id" (for the typings only)
   >;
-  profile: EntityTable<
-    Profile, 'id'
+  company: EntityTable<
+    Company, "id"
   >;
   userSesh: EntityTable<
-    UserSesh, 'sId'
+    UserSesh, "sId"
   >
 }
 
@@ -50,9 +50,9 @@ const db = new Dexie('Leadtable') as Dexie & {
 db.version(3).stores({
   // leads: '++id, year, attendee_Id, scan_Company_Id, name_First, name_Last, email, phone, employer, score, comment',
   // exhibitors: 'id, name',
-  profile: 'id, &ex_Id, name, login_Url, lead_Ret, expo_Year, expo_Client',
-  userSesh: 'sId, uId, name, email, role'
+  company: "id, &ex_Id, name, login_Url, lead_Ret, expo_Year, expo_Client",
+  userSesh: "sId, uId, name, email, role"
 })
 
-export type { Lead, Profile, UserSesh }
+export type { Lead, Company, UserSesh }
 export { db }

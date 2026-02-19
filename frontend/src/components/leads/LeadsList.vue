@@ -34,9 +34,6 @@
         <LeadsExport v-if="leadsList.length > 0"
                      :leads-list="leadsList"
                      class=" --p-v-3"/>
-        <button class="--warn --p-v-3"
-                @click="logOut">Log Out
-        </button>
       </div>
 
       <div v-if="exhibitorLocal.name"
@@ -78,16 +75,15 @@
 
 <script setup>
 import StatusDisplay from "@/components/elements/StatusDisplay.vue";
-import { getAllCompanyLeads_Service } from '../../services/LeadDataService.ts'
-import { onMounted, ref } from 'vue'
-import { getLocalExhibitor_Service } from '@/services/ExhibitorDataService.ts'
-import LeadCard from '@/components/leads/LeadCard.vue'
-import LeadsExport from '@/components/leads/LeadsExport.vue'
+import { getAllCompanyLeads_Service } from "@/services/LeadDataService.ts"
+import { onMounted, ref } from "vue"
+import { getLocalExhibitor_Service } from "@/services/ExhibitorDataService.ts"
+import LeadCard from "@/components/leads/LeadCard.vue"
+import LeadsExport from "@/components/leads/LeadsExport.vue"
 import { useEventLocalStore } from "@/stores/event.ts";
 import { useCompanyLocalStore } from "@/stores/company.ts";
 import { useLeadsListLocal } from "@/stores/leadList.ts";
 
-const sessionStore = useSessionStore()
 const exhibitorLocal = useCompanyLocalStore()
 const expoLocal = useEventLocalStore()
 const leadListLocal = useLeadsListLocal()
@@ -123,30 +119,22 @@ const lead = ref(
     expo_Year: exhibitorLocal.expo_Year,
     attendee_Id: null,
     scan_Company_Id: exhibitorLocal.id,
-    name_First: '',
-    name_Last: '',
-    title: '',
-    email: '',
-    phone: '',
-    address_Line1: '',
-    address_Line2: '',
-    address_City: '',
-    address_State: '',
-    address_Zip: '',
-    address_Country: '',
-    employer: '',
+    name_First: "",
+    name_Last: "",
+    title: "",
+    email: "",
+    phone: "",
+    address_Line1: "",
+    address_Line2: "",
+    address_City: "",
+    address_State: "",
+    address_Zip: "",
+    address_Country: "",
+    employer: "",
     score: 0,
-    comment: ''
+    comment: ""
   }
 )
-
-async function logOut() {
-  // db.delete({ disableAutoOpen: false })
-  db.profile.delete( 1 )
-  sessionStore.logged_In = false
-  exhibitorLocal.$reset()
-  window.location.reload()
-}
 
 </script>
 
