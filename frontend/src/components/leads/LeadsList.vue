@@ -45,8 +45,8 @@
         <h2>{{ exhibitorLocal.name }}</h2>
       </div>
     </div>
-    <StatusDisplay :status="status"
-                   class="--place-self-center"/>
+    <StatusInline :status="status"
+                  class="--place-self-center"/>
     <div class="lead-cards-container">
       <p v-if="leadsList.length === 0"
          class="--place-self-center">
@@ -74,7 +74,7 @@
 </template>
 
 <script setup>
-import StatusDisplay from "@/components/elements/StatusDisplay.vue";
+import StatusInline from "@/components/elements/StatusInline.vue";
 import { getAllCompanyLeads_Service } from "@/services/LeadDataService.ts"
 import { onMounted, ref } from "vue"
 import { getLocalExhibitor_Service } from "@/services/ExhibitorDataService.ts"

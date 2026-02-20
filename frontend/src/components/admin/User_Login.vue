@@ -1,5 +1,5 @@
 <template>
-  <StatusDisplay :status="loadingStatus"/>
+  <StatusInline :status="loadingStatus"/>
   <div v-if="!loadingStatus"
        class="row-10-300 --place-items-center --place-content-center">
     <div class="col-10-300 --max-w-350 --gap-12">
@@ -61,16 +61,16 @@
 
 <script lang="ts"
         setup>
-import StatusDisplay from '@/components/elements/StatusDisplay.vue';
-import { ref } from 'vue';
-import { authClient } from '@/lib/auth-client.ts';
-import { authSignOut, authSignIn } from '@/services/functions/BetterAuthFunc.ts';
-import { useRouter } from 'vue-router';
+import StatusInline from "@/components/elements/StatusInline.vue";
+import { ref } from "vue";
+import { authClient } from "@/lib/auth-client.ts";
+import { authSignOut, authSignIn } from "@/services/functions/BetterAuthFunc.ts";
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-const loginEmail = ref('claire@iami411.org')
-const loginPass = ref('password1')
+const loginEmail = ref("claire@iami411.org")
+const loginPass = ref("password1")
 const rememberMe = ref(true)
 
 const session = ref(authClient.useSession())
@@ -82,11 +82,11 @@ async function authClientSignIn() {
   // @ts-ignore
   const sesh = await authClient.getSession()
   // @ts-ignore
-  if (sesh.data.user.role == 'admin') {
-    await router.push({name: 'Admin Dashboard'})
+  if (sesh.data.user.role == "admin") {
+    await router.push({name: "Admin Dashboard"})
   }
   else {
-    await router.push({name: 'Booth Map'})
+    await router.push({name: "Booth Map"})
   }
 }
 

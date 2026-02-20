@@ -143,7 +143,7 @@ export const getExpoAttendees = async ( req, res ) => {
     const client = req.params.client
     const year = req.params.year
     try {
-        const expo = await Attendee.findAll(
+        const attendees = await Attendee.findAll(
             {
                 where: {
                     [Op.and]: [ { expo_Client: client }, { expo_Year: year } ]
@@ -151,8 +151,8 @@ export const getExpoAttendees = async ( req, res ) => {
                 order: [ "name_Last" ]
             }
         )
-        if ( expo ) {
-            res.json( expo )
+        if ( attendees ) {
+            res.json( attendees )
         } else {
             res.status( 404 ).json( { error: "Expo or year not found" } )
         }

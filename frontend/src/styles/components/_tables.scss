@@ -5,13 +5,15 @@
 }
 
 .table-scroll-wrapper {
-  overflow-x: scroll;
-  max-width:  100%;
-  padding:    $sp-4;
+  position:   relative;
+  overflow:   scroll;
+  width:      1600px;
+  max-width:  calc(100vw - $sp-8);
+  max-height: calc(100vh - 300px);
+  margin:     0 $sp-8;
 }
 
 .attendee-table {
-  position:        relative;
   text-align:      left;
   padding:         $sp-4;
   border-collapse: collapse;
@@ -25,6 +27,29 @@
     tr {
       border:     1px solid $grey-9;
       transition: background 200ms ease-in;
+      .table-attendee-row {
+      }
+      .table-edit-buttons {
+        pointer-events:        none;
+        position:              sticky;
+        top:                   auto;
+        left:                  0;
+        display:               grid;
+        grid-template-columns: 1fr 1fr;
+        gap:                   $sp-2;
+        width:                 max-content;
+        padding:               $sp-4;
+        opacity:               0;
+        background:            $color-primary-10;
+        transition:            opacity 200ms ease-in;
+      }
+      &:hover .table-edit-buttons {
+        pointer-events: all;
+        opacity:        100%;
+      }
+      td, th {
+        height: 55px !important;
+      }
       td {
         overflow:      clip;
         line-height:   1;
@@ -46,16 +71,6 @@
       &:hover {
         outline:    1px solid $color-primary-6;
         background: $color-primary-10;
-      }
-      input {
-        width:      calc(100% - #{$sp-8});
-        max-width:  15ch;
-        height:     calc(100% - #{$sp-8});
-        padding:    $sp-4;
-        background: hsla(0, 0%, 100%, .65);
-        &:active, &:focus {
-          background: $grey-12;
-        }
       }
     }
   }

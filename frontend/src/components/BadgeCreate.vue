@@ -229,9 +229,9 @@
           <span>{{ field.subtitle }}</span>
         </label>
       </div>
-      <StatusDisplay :status="loading"
-                     class="--place-self-center --m-t-12 --m-b-24"
-                     message="Submitting..."/>
+      <StatusInline :status="loading"
+                    class="--place-self-center --m-t-12 --m-b-24"
+                    message="Submitting..."/>
       <button v-if="!showQr && !loading"
               class="--success --m-t-12 --m-b-24"
               type="submit"
@@ -299,17 +299,17 @@
 <script lang="js"
         setup>
 // TODO Convert to TS
-import { ref } from 'vue'
-import { jsPDF } from 'jspdf'
-import html2canvas from 'html2canvas'
+import { ref } from "vue"
+import { jsPDF } from "jspdf"
+import html2canvas from "html2canvas"
 import { scaleFont } from "@/services/functions/TextManipulationService.ts";
-import { createAttendee_Service } from '@/services/AttendeeDataService.ts'
+import { createAttendee_Service } from "@/services/AttendeeDataService.ts"
 import { getCustomFields_Service } from "@/services/CustomFieldsDataService.js";
 import { sendRegConfirmEmail_Service } from "@/services/emails/RegistrationEmailService.ts";
 import { getUrlHost, getUrl_ClientYear } from "@/services/functions/UrlService.ts";
 import { countryCodes } from "@/services/addresses/AddressForm_Countries.js";
-import StatusDisplay from "@/components/elements/StatusDisplay.vue";
-import QrCode from '@/components/QrCode.vue'
+import StatusInline from "@/components/elements/StatusInline.vue";
+import QrCode from "@/components/QrCode.vue"
 import PaymentPayPal from "@/components/payment/PaymentPayPal.vue";
 import { useEventLocalStore } from "@/stores/event.ts";
 import { useCompanyLocalStore } from "@/stores/company.ts";
@@ -344,7 +344,7 @@ try {
 -| Form Logic
 -|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===/*/
 async function submitForm() {
-  attendee.value.contact_Phone = attendee.value.contact_Phone.replace( /\D/g, '' )
+  attendee.value.contact_Phone = attendee.value.contact_Phone.replace( /\D/g, "" )
   loading.value = true
   if ( paymentEnabled.value === true ) {
     console.log( "Payment form enabled" )
@@ -415,7 +415,7 @@ async function createAttendee( a ) {
   await sendRegConfirmEmail_Service( attendee.value, expoLocal )
   await createAttendee_Service( a, expoLocal.expo_Client, expoLocal.expo_Year )
   attendeeId.value = attendee.value.id.toString()
-  console.log( 'New Attendee\'s ID is: ', typeof attendeeId.value, attendeeId.value )
+  console.log( "New Attendee's ID is: ", typeof attendeeId.value, attendeeId.value )
   loading.value = false
   showQr.value = true
 }
@@ -428,19 +428,19 @@ function resetForm() {
   attendee.value = {
     expo_Year: expoLocal.expo_Year,
     expo_Client: expoLocal.expo_Client,
-    name_First: '',
-    name_Last: '',
-    contact_Email: '',
-    contact_Phone: '',
-    contact_Employer: '',
-    address_Line1: '',
-    address_Line2: '',
-    address_City: '',
-    address_State: '',
-    address_Zip: '',
-    address_Country: '',
-    title: '',
-    regType: '',
+    name_First: "",
+    name_Last: "",
+    contact_Email: "",
+    contact_Phone: "",
+    contact_Employer: "",
+    address_Line1: "",
+    address_Line2: "",
+    address_City: "",
+    address_State: "",
+    address_Zip: "",
+    address_Country: "",
+    title: "",
+    regType: "",
     techSessions: null,
     customFields: {}
   }
@@ -460,7 +460,7 @@ async function select2Canvas( s, d ) {
     useCORS: true
   } ).then( canvas => {
     d.value = canvas.toDataURL(
-      'image/png' )
+      "image/png" )
     console.log( canvas )
   } )
 }
@@ -479,13 +479,13 @@ const pt2in = 0.0138888889
 // TODO merge with code from BadgePrint, then add to service file.
 async function badgeToPDF( a ) {
   console.log( "Creating badge for: " + a.name_First )
-  await select2Canvas( '#qr-code', qrData )
-  await select2Canvas( '#badge-logo', qrLogo )
+  await select2Canvas( "#qr-code", qrData )
+  await select2Canvas( "#badge-logo", qrLogo )
 
   /*-| Declare Badge |-*/
   const badgePdf = new jsPDF( {
-    orientation: 'landscape',
-    unit: 'in',
+    orientation: "landscape",
+    unit: "in",
     format: [ dim.w, dim.h ],
     putOnlyUsedFonts: true
   } )
@@ -497,56 +497,56 @@ async function badgeToPDF( a ) {
   const employSize = scaleFont( a.contact_Employer, 400, 16, 20 )
 
   // Name
-  badgePdf.setFont( 'Helvetica', 'normal', 'bold' );
+  badgePdf.setFont( "Helvetica", "normal", "bold" );
   badgePdf.setFontSize( nameSize )
   badgePdf.text( `${ a.name_First } ${ a.name_Last }`,
     dim.p,
     ((employSize * pt2in) / 3) + ((nameSize + employSize) * pt2in) + (dim.p / 2),
-    { align: 'left' } )
+    { align: "left" } )
 
   // Title
-  badgePdf.setFont( 'Helvetica', 'italic' );
+  badgePdf.setFont( "Helvetica", "italic" );
   badgePdf.setFontSize( titleSize )
   badgePdf.text(
     a.title,
     dim.p,
     +((nameSize * pt2in) / 3) + ((nameSize + employSize + titleSize) * pt2in) + dim.p,
-    { align: 'left' } )
+    { align: "left" } )
 
   // Employer
-  badgePdf.setFont( 'Helvetica', 'normal' );
+  badgePdf.setFont( "Helvetica", "normal" );
   badgePdf.setFontSize( employSize )
   badgePdf.text(
     a.contact_Employer,
     dim.p,
     dim.p * 2,
-    { align: 'left' } )
+    { align: "left" } )
 
   /*-| Add QR Code |-*/
   badgePdf.addImage(
     qrData.value,
-    'PNG',
+    "PNG",
     dim.p,
     dim.h - dim.imgH - dim.p,
     dim.imgH,
     dim.imgH,
-    'qr',
-    'FAST',
+    "qr",
+    "FAST",
     dim.rot )
 
   /*-| Add Logo |-*/
   badgePdf.addImage(
     qrLogo.value,
-    'PNG',
+    "PNG",
     dim.w - dim.p - dim.imgW,
     dim.h - dim.imgH - dim.p,
     dim.imgW,
     dim.imgH,
-    'logo',
-    'FAST',
+    "logo",
+    "FAST",
     dim.rot )
   setTimeout( () => {
-    badgePdf.output( 'dataurlnewwindow' )
+    badgePdf.output( "dataurlnewwindow" )
   }, 300 )
 }
 

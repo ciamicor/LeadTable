@@ -23,7 +23,7 @@
   </nav>
   <div class="view-mask">
     <div class="view-container">
-      <StatusDisplay
+      <StatusInline
         :status="loading"
         class="--place-self-center --p-v-24 --h-100"
       />
@@ -35,7 +35,7 @@
 <script
   setup>
 import SidebarNav from "@/components/navigation/SidebarNav.vue";
-import StatusDisplay from "@/components/elements/StatusDisplay.vue";
+import StatusInline from "@/components/elements/StatusInline.vue";
 
 import { db } from "@/db.js"
 import { onBeforeMount, ref, watch } from "vue"

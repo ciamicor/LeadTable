@@ -18,6 +18,7 @@ import Admin_UsersManage from "@/components/admin/dashboard-views/Admin_UsersMan
 import Admin_Dashboard from "@/components/admin/dashboard-views/Admin_Dashboard.vue";
 import CompanyCreate from "@/components/exhibitor/ExhibitorCreate.vue";
 import { authClient } from "@/lib/auth-client.ts";
+import Admin_AttendeesManage from "@/components/admin/dashboard-views/Admin_AttendeesManage.vue"
 
 const routes = [
   /*-| Redirects |-*/
@@ -70,6 +71,11 @@ const routes = [
         path: "manage-expo",
         name: "Manage Expo",
         component: Admin_ExpoManage
+      },
+      {
+        path: "manage-attendees",
+        name: "Manage Attendees",
+        component: Admin_AttendeesManage
       },
       {
         path: "badges",

@@ -33,10 +33,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue"
 import AttendeeEditModal from "@/components/AttendeeEditModal.vue";
 
-const emit = defineEmits( [ 'addBadge', 'removeBadge' ] )
+const emit = defineEmits( [ "addBadge", "removeBadge" ] )
 const prop = defineProps( {
   attendee: {
     type: Object, default: () => ({})
@@ -49,11 +49,11 @@ const badgeSelected = ref( false )
 function selectBadge( i ) {
   badgeSelected.value = !badgeSelected.value
   if ( badgeSelected.value ) {
-    console.log( 'add' )
-    emit( 'addBadge', i )
+    console.log( "add" )
+    emit( "addBadge", i )
   } else if ( !badgeSelected.value ) {
-    console.log( 'remove' )
-    emit( 'removeBadge', i.id )
+    console.log( "remove" )
+    emit( "removeBadge", i.id )
   }
 }
 
@@ -63,7 +63,7 @@ const modalVisible = ref( false )
 
 function toggleModal() {
   modalVisible.value = !modalVisible.value
-  console.log( 'Editing ' + prop.attendee.name_First + ', id: ' + prop.attendee.id )
+  console.log( "Editing " + prop.attendee.name_First + ", id: " + prop.attendee.id )
 }
 
 /*-| Formatting
@@ -83,11 +83,11 @@ function formatDateTime( dt ) {
   /*-| Get Hour |-*/
   if ( h > 12 ) {
     h = h - 12
-    t = h.toString() + t.slice( 2 ) + ' PM'
+    t = h.toString() + t.slice( 2 ) + " PM"
   } else if ( h <= 12 ) {
-    t = t + ' AM'
+    t = t + " AM"
   }
-  return 'Created: ' + d + ' at ' + t
+  return "Created: " + d + " at " + t
 }
 
 </script>

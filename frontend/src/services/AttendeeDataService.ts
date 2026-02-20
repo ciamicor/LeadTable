@@ -80,7 +80,7 @@ async function createAttendee_Service(
 /*-| Update Attendee
 ---+----+---+----+---+----+---+----+---*/
 async function updateAttendee_Service(id: any, attendee: any) {
-  console.log("Updating Attendee: ", attendee)
+  console.log("Updating Attendee: ", attendee.name_First)
   const data = {
     name_First: attendee.name_First,
     name_Last: attendee.name_Last,
@@ -98,10 +98,10 @@ async function updateAttendee_Service(id: any, attendee: any) {
     techSessions: attendee.techSessions,
     customFields: attendee.customFields
   }
-  console.log("Update Attendee addresses: ", data)
+  console.log("Attendee updated!")
   try {
     let updatedAttendee = await attendeeService.update(id, data)
-    console.log(updatedAttendee)
+    // console.log(updatedAttendee)
   } catch (e: any) {
     console.log(e)
   }
@@ -124,7 +124,7 @@ async function getAllAttendees_Service(list: any) {
 async function getExpoAttendees_Service(client: any, year: any) {
   try {
     let allAttendees = await attendeeService.getExpoAttendees(client, year)
-    console.log(allAttendees.data)
+    // console.log(allAttendees.data)
     return allAttendees.data
   } catch (e) {
     console.log(e)
@@ -134,7 +134,7 @@ async function getExpoAttendees_Service(client: any, year: any) {
 async function getAttendeesUploadId_Service(id: any) {
   try {
     let attendees = await attendeeService.getUploadAttendee(id)
-    console.log("Attendees in upload: ", attendees)
+    // console.log("Attendees in upload: ", attendees)
     return attendees.data
   } catch (e) {
     console.log(e)
@@ -145,8 +145,8 @@ async function getAttendeesUploadId_Service(id: any) {
 ---+----+---+----+---+----+---+----+---*/
 async function deleteAttendee_Service(id: any) {
   try {
-    let lead = await attendeeService.delete(id)
-    console.log(lead.data)
+    let attendee = await attendeeService.delete(id)
+    // console.log(attendee.data)
   } catch (e) {
     console.log(e)
   }

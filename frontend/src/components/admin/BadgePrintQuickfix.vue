@@ -22,7 +22,7 @@
         <button v-show="attendeeListSelected.length === 0 || attendeeListSelected.length > 1"
                 class="--secondary --p-4"
                 @click="printBadges">
-          Print {{ attendeeListSelected.length > 0 ? attendeeListSelected.length : 'All' }} Badges
+          Print {{ attendeeListSelected.length > 0 ? attendeeListSelected.length : "All" }} Badges
         </button>
         <button
           v-show="attendeeListSelected.length === 1"
@@ -71,7 +71,7 @@
     </div>
 
     <div class="row-12-300">
-      <StatusDisplay :status="loading"/>
+      <StatusInline :status="loading"/>
       <div
         v-show="!loading"
         class="badge-select-grid"
@@ -131,20 +131,20 @@
 <script lang="js"
         setup>
 import { getUrlHost } from "@/services/functions/UrlService.ts";
-import { jsPDF } from 'jspdf'
-import QrCode from '@/components/QrCode.vue'
-import html2canvas from 'html2canvas'
-import BadgeSingle from '@/components/BadgeSingle.vue'
-import AttendeeCard from '@/components/AttendeeCard.vue'
-import { useVueToPrint } from 'vue-to-print'
-import { onMounted, ref } from 'vue'
+import { jsPDF } from "jspdf"
+import QrCode from "@/components/QrCode.vue"
+import html2canvas from "html2canvas"
+import BadgeSingle from "@/components/BadgeSingle.vue"
+import AttendeeCard from "@/components/AttendeeCard.vue"
+import { useVueToPrint } from "vue-to-print"
+import { onMounted, ref } from "vue"
 import {
   getExpoAttendees_Service,
   getAttendeesUploadId_Service
-} from '@/services/AttendeeDataService.ts'
-import { getAttendeeUploads_Service } from '@/services/UploadDataService.ts'
-import { sortLName_Service } from '@/services/SortService.ts'
-import StatusDisplay from "@/components/elements/StatusDisplay.vue";
+} from "@/services/AttendeeDataService.ts"
+import { getAttendeeUploads_Service } from "@/services/UploadDataService.ts"
+import { sortLName_Service } from "@/services/SortService.ts"
+import StatusInline from "@/components/elements/StatusInline.vue";
 import { useEventLocalStore } from "@/stores/event.ts";
 
 /*-| States |-*/
@@ -161,7 +161,7 @@ const attendeeList = ref( {} )
 const attendeeListFull = ref( [] )
 const attendeeListSelected = ref( [] )
 const attendeeListGrouped = ref( [] )
-const searchTerm = ref( '' )
+const searchTerm = ref( "" )
 const printComponent = ref() // for Print component
 const displayAmountFirst = ref( 0 )
 const pageSize = ref( 750 )
@@ -232,7 +232,7 @@ async function refreshAttendees( client, year ) {
 async function getAllAttendees( client, year, getAll = false ) {
   attendeeList.value = await getExpoAttendees_Service( client, year )
   attendeeListFull.value = attendeeList.value
-  console.log( 'Attendees' )
+  console.log( "Attendees" )
   console.log( typeof attendeeList.value )
   // attendeeList.value = attendeeList.value.slice( 0, 10 )
   await sortLName_Service( attendeeList.value )
@@ -247,7 +247,7 @@ async function getAllAttendees( client, year, getAll = false ) {
 /*-| Search |-*/
 async function resetSearch() {
   attendeeList.value.slice( displayAmountFirst.value, displayAmountLast.value )
-  searchTerm.value = ''
+  searchTerm.value = ""
 }
 
 /*-| Chunk array for printing |-*/
@@ -274,9 +274,9 @@ async function chunkObject( a ) {
 
 function mergeSearchTerm( f, l ) {
   let fullName = f + l
-  return fullName.replace( ' ', '' )
+  return fullName.replace( " ", "" )
     .toUpperCase()
-    .includes( searchTerm.value.replace( ' ', '' ).toUpperCase() )
+    .includes( searchTerm.value.replace( " ", "" ).toUpperCase() )
 }
 
 async function calcTabNumber() {
@@ -296,7 +296,7 @@ async function updateTabDisplay( n ) {
   displayAmountFirst.value = displayAmountLast.value - pageSize.value
   console.log( displayAmountFirst.value )
   await getAllAttendees( expoLocal.expo_Client, expoLocal.expo_Year )
-  console.log( '' )
+  console.log( "" )
 }
 
 /*-| List Functions |-*/
@@ -331,7 +331,7 @@ Printing
 // TODO Use VueToPrint to generate single badge PDF for printing
 const { handlePrint } = useVueToPrint( {
   content: printComponent,
-  documentTitle: 'Badges'
+  documentTitle: "Badges"
 } )
 
 async function printBadges() {
@@ -356,7 +356,7 @@ async function select2Canvas( s, d ) {
     useCORS: true
   } ).then( canvas => {
     d.value = canvas.toDataURL(
-      'image/png' )
+      "image/png" )
     console.log( canvas )
   } )
 }
@@ -367,8 +367,8 @@ async function printBadge_Portrait3x4( a ) {
   console.log( typeof a )
   console.log( a.id )
   console.log( a.name_First )
-  await select2Canvas( '#qr-code', qrData )
-  await select2Canvas( '#badge-logo', qrLogo )
+  await select2Canvas( "#qr-code", qrData )
+  await select2Canvas( "#badge-logo", qrLogo )
   /*-| Store Badge Dimensions, Placement |-*/
   const dim = {
     h: 3,
@@ -380,8 +380,8 @@ async function printBadge_Portrait3x4( a ) {
   }
   /*-| Declare Badge |-*/
   const badgePdf = new jsPDF( {
-    orientation: 'portrait',
-    unit: 'in',
+    orientation: "portrait",
+    unit: "in",
     format: [ dim.w, dim.h ]
   } )
 
@@ -390,7 +390,7 @@ async function printBadge_Portrait3x4( a ) {
   try {
     badgePdf.text( a.contact_Employer, dim.p * 2, dim.w - dim.p, null, dim.rot )
   } catch ( e ) {
-    console.log( 'No employer!' )
+    console.log( "No employer!" )
   }
   badgePdf.setFontSize( 22 )
   badgePdf.text( `${ a.name_First } ${ a.name_Last }`,
@@ -401,32 +401,32 @@ async function printBadge_Portrait3x4( a ) {
   try {
     badgePdf.text( a.title, dim.p * 6, dim.w - dim.p, dim.rot )
   } catch ( e ) {
-    console.log( 'No title!' )
+    console.log( "No title!" )
   }
 
   /*-| Add QR Code |-*/
   badgePdf.addImage( qrData.value,
-    'PNG',
+    "PNG",
     dim.h - dim.p,
     dim.w - dim.imgH - dim.p,
     dim.imgH,
     dim.imgH,
-    'qr',
-    'FAST',
+    "qr",
+    "FAST",
     dim.rot )
   /*-| Add Logo |-*/
   badgePdf.addImage( qrLogo.value,
-    'PNG',
+    "PNG",
     dim.h - dim.p,
     dim.p * 4,
     dim.imgW,
     dim.imgH,
-    'logo',
-    'FAST',
+    "logo",
+    "FAST",
     dim.rot )
 
   setTimeout( () => {
-    badgePdf.output( 'dataurlnewwindow' )
+    badgePdf.output( "dataurlnewwindow" )
   }, 300 )
 }
 </script>

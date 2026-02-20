@@ -7329,13 +7329,15 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
 }
 
 .table-scroll-wrapper {
-  overflow-x: scroll;
-  max-width: 100%;
-  padding: 8px;
+  position: relative;
+  overflow: scroll;
+  width: 1600px;
+  max-width: calc(100vw - 24px);
+  max-height: calc(100vh - 300px);
+  margin: 0 24px;
 }
 
 .attendee-table {
-  position: relative;
   text-align: left;
   padding: 8px;
   border-collapse: collapse;
@@ -7349,6 +7351,27 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
 .attendee-table tbody tr {
   border: 1px solid var(--grey-9);
   transition: background 200ms ease-in;
+}
+.attendee-table tbody tr .table-edit-buttons {
+  pointer-events: none;
+  position: sticky;
+  top: auto;
+  left: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  width: max-content;
+  padding: 8px;
+  opacity: 0;
+  background: var(--color-primary-10);
+  transition: opacity 200ms ease-in;
+}
+.attendee-table tbody tr:hover .table-edit-buttons {
+  pointer-events: all;
+  opacity: 100%;
+}
+.attendee-table tbody tr td, .attendee-table tbody tr th {
+  height: 55px !important;
 }
 .attendee-table tbody tr td {
   overflow: clip;
@@ -7371,16 +7394,6 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
 .attendee-table tbody tr:hover {
   outline: 1px solid var(--color-primary-6);
   background: var(--color-primary-10);
-}
-.attendee-table tbody tr input {
-  width: calc(100% - 24px);
-  max-width: 15ch;
-  height: calc(100% - 24px);
-  padding: 8px;
-  background: hsla(0, 0%, 100%, 0.65);
-}
-.attendee-table tbody tr input:active, .attendee-table tbody tr input:focus {
-  background: var(--grey-12);
 }
 
 .nav-bar {
