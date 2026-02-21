@@ -34,7 +34,7 @@
 
 <script setup>
 import { ref } from "vue"
-import AttendeeEditModal from "@/components/AttendeeEditModal.vue";
+import AttendeeEditModal from "@/components/attendee/AttendeeEditModal.vue";
 
 const emit = defineEmits( [ "addBadge", "removeBadge" ] )
 const prop = defineProps( {

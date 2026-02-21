@@ -1,15 +1,15 @@
 <template>
   <p>This is the admin dashboard.</p>
-  {{allExpos}}
+  {{ allExpos }}
   <div v-for="expo in allExpos"
        :key="expo.expoFp_Id">
-    {{expo.expo_Client}}
+    {{ expo.expo_Client }}
   </div>
 </template>
 
 <script lang="ts"
         setup>
-import { getAllExpos_Service } from "@/services/ExpoDataService.ts";
+import { getAllExpos_Service } from "@/services/EventDataService.ts";
 import { ref } from "vue";
 import { onMounted } from "vue";
 

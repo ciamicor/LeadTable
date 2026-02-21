@@ -3,13 +3,13 @@
        class="sidebar--page-wrapper">
     <div class="sidebar--content-container">
 
-      <span>{{ expoLocal.clientFull }} {{ expoLocal.name }}</span>
-      <h4 v-if="exhibitorLocal.name"> Hello, {{ exhibitorLocal.name }}</h4>
+      <span>{{ eventStore.clientFull }} {{ eventStore.name }}</span>
+      <h4 v-if="companyStore.name"> Hello, {{ companyStore.name }}</h4>
 
       <nav class="sidebar--nav-menu-wrapper --flex-grow-1">
         <div class="nav-buttons-grid--wrapper">
           <router-link
-            :to="`/${expoLocal.expo_Client}/${expoLocal.expo_Year}/create-badge`"
+            :to="`/${eventStore.expo_Client}/${eventStore.expo_Year}/create-badge`"
             active-class="--secondary--invert"
             class="button"
             @click="$emit('closeNav')">
@@ -18,7 +18,7 @@
           </router-link>
 
           <router-link
-            :to="`/${expoLocal.expo_Client}/${expoLocal.expo_Year}/floor-plan`"
+            :to="`/${eventStore.expo_Client}/${eventStore.expo_Year}/floor-plan`"
             active-class="--secondary--invert"
             class="button"
             @click="$emit('closeNav')">
@@ -27,7 +27,7 @@
           </router-link>
 
           <router-link
-            :to="`/${expoLocal.expo_Client}/${expoLocal.expo_Year}/leads-list`"
+            :to="`/${eventStore.expo_Client}/${eventStore.expo_Year}/leads-list`"
             active-class="--secondary--invert"
             class="button"
             @click="$emit('closeNav')">
@@ -36,7 +36,7 @@
           </router-link>
 
           <router-link
-            :to="`/${expoLocal.expo_Client}/${expoLocal.expo_Year}/profile`"
+            :to="`/${eventStore.expo_Client}/${eventStore.expo_Year}/profile`"
             active-class="--secondary--invert"
             class="button"
             @click="$emit('closeNav')">
@@ -44,8 +44,8 @@
             Company Profile
           </router-link>
 
-          <a v-if="exhibitorLocal.login_Url"
-             :href="'https://app.expofp.com' + exhibitorLocal.login_Url"
+          <a v-if="companyStore.login_Url"
+             :href="'https://app.expofp.com' + companyStore.login_Url"
              class="button"
              target="_blank">
             <i class="bi-arrow-up-right-square"></i>
@@ -65,7 +65,7 @@
           Login
         </router-link>
         <router-link
-          :to="{name: 'Admin Dashboard'}"
+          :to="{name: 'Manage Attendees'}"
           class="button"
 
         >
@@ -81,20 +81,14 @@
 
 <script lang="ts"
         setup>
-import { authSignOut } from '@/services/functions/BetterAuthFunc.ts';
-import ButtonSignOut from '../Button_SignOut.vue'
-import { useEventLocalStore } from '@/stores/event.ts';
-import { useCompanyLocalStore } from '@/stores/company.ts';
+import ButtonSignOut from "../Button_SignOut.vue"
+import { useEventLocalStore } from "@/stores/event.ts";
+import { useCompanyLocalStore } from "@/stores/company.ts";
 
-const exhibitorLocal = useCompanyLocalStore()
-const expoLocal = useEventLocalStore()
+const companyStore = useCompanyLocalStore()
+const eventStore = useEventLocalStore()
 
 const props = defineProps({
   toggled: {type: Boolean, default: false}
 })
-
-async function authClientSignOut() {
-  await authSignOut()
-}
-
 </script>

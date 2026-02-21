@@ -4,21 +4,21 @@ import CompanyProfile from "@/components/exhibitor/ExhibitorProfile.vue";
 import ExpoMap from "@/components/elements/ExpoMap.vue"
 import ExpoSelect from "@/components/ExpoSelect.vue"
 import LeadAdd from "@/components/leads/LeadAdd.vue"
-import BadgeCreate from "@/components/BadgeCreate.vue"
+import AttendeeRegister from "@/components/attendee/AttendeeRegister.vue"
 import BadgePrintQuickfix from "@/components/admin/BadgePrintQuickfix.vue";
 
 /*-| admin |-*/
-import UserLogin from "@/components/admin/User_Login.vue";
+import UserLogin from "@/components/user/UserLogin.vue";
 import Admin_View from "@/components/admin/Admin_View.vue";
-import BadgePrint from "@/components/admin/dashboard-views/Admin_BadgePrint.vue"
-import AttendeesUpload from "@/components/admin/dashboard-views/Admin_AttendeesUpload.vue"
-import Admin_ExpoManage from "@/components/admin/dashboard-views/Admin_ExpoManage.vue";
-import Admin_BadgePrint from "@/components/admin/dashboard-views/Admin_BadgePrint.vue";
-import Admin_UsersManage from "@/components/admin/dashboard-views/Admin_UsersManage.vue";
-import Admin_Dashboard from "@/components/admin/dashboard-views/Admin_Dashboard.vue";
+import BadgePrint from "@/components/admin/Admin_BadgePrint.vue"
+import AttendeesUpload from "@/components/admin/Admin_AttendeesUpload.vue"
+import Admin_ExpoManage from "@/components/admin/Admin_ExpoManage.vue";
+import Admin_BadgePrint from "@/components/admin/Admin_BadgePrint.vue";
+import Admin_UsersManage from "@/components/admin/Admin_UsersManage.vue";
+import Admin_Dashboard from "@/components/admin/Admin_Dashboard.vue";
 import CompanyCreate from "@/components/exhibitor/ExhibitorCreate.vue";
 import { authClient } from "@/lib/auth-client.ts";
-import Admin_AttendeesManage from "@/components/admin/dashboard-views/Admin_AttendeesManage.vue"
+import Admin_AttendeesManage from "@/components/admin/Admin_AttendeesManage.vue"
 
 const routes = [
   /*-| Redirects |-*/
@@ -36,7 +36,6 @@ const routes = [
     name: "Select Expo",
     component: ExpoSelect
   },
-
   {
     path: "/login",
     name: "Login",
@@ -63,19 +62,19 @@ const routes = [
     },
     children: [
       {
-        path: "",
+        path: "admin-dashboard",
         name: "Admin Dashboard",
         component: Admin_Dashboard
+      },
+      {
+        path: "", // manage-attendee
+        name: "Manage Attendees",
+        component: Admin_AttendeesManage
       },
       {
         path: "manage-expo",
         name: "Manage Expo",
         component: Admin_ExpoManage
-      },
-      {
-        path: "manage-attendees",
-        name: "Manage Attendees",
-        component: Admin_AttendeesManage
       },
       {
         path: "badges",
@@ -118,12 +117,12 @@ const routes = [
       {
         path: "create-badge",
         name: "Create a Badge",
-        component: BadgeCreate
+        component: AttendeeRegister
       },
       {
         path: "register",
         name: "Registration",
-        component: BadgeCreate
+        component: AttendeeRegister
       },
       {
         path: "exhibitor-registration",
@@ -138,7 +137,7 @@ const routes = [
           {
             path: "create-badge",
             name: "Admin Badge Creation",
-            component: BadgeCreate
+            component: AttendeeRegister
           },
           {
             path: "print-badges",
@@ -151,7 +150,7 @@ const routes = [
             component: BadgePrintQuickfix
           },
           {
-            path: "upload-attendees",
+            path: "upload-attendee",
             name: "Upload Attendees",
             component: AttendeesUpload
           }

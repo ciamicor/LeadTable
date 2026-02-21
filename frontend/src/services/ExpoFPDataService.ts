@@ -1,7 +1,7 @@
-import axios from 'axios'
-import { getExpoToken_Service } from "@/services/ExpoDataService.ts";
+import axios from "axios"
+import { getExpoToken_Service } from "@/services/EventDataService.ts";
 
-const baseUrl = 'https://app.expofp.com/api/v1/'
+const baseUrl = "https://app.expofp.com/api/v1/"
 
 /*-| Get All Exhibitors
 ---+----+---+----+---+----+---+----+---*/
@@ -14,11 +14,11 @@ export async function getAllFPExhibitors(client: any, year: any) {
     }
     // await console.log('getAllExhibitors got token: ', token)
     let res = await axios({
-      method: 'post',
-      url: baseUrl + 'list-exhibitors',
+      method: "post",
+      url: baseUrl + "list-exhibitors",
       data: {
-        'token': expoData.token,
-        'eventId': 23706
+        "token": expoData.token,
+        "eventId": 23706
       }
     })
     console.log("Got all Exhibitors: ", res.data)
@@ -44,12 +44,12 @@ export async function getFPExhibitorId(
     console.log(`Getting id for externalId: ${externalId}`)
     console.log(expoData)
     let res = await axios({
-      method: 'post',
-      url: baseUrl + 'get-exhibitor-id',
+      method: "post",
+      url: baseUrl + "get-exhibitor-id",
       data: {
-        'eventId': expoData.expoId,
-        'externalId': externalId,
-        'token': expoData.token,
+        "eventId": expoData.expoId,
+        "externalId": externalId,
+        "token": expoData.token
       }
     })
     console.log("Got exhibitor: ", res.data)
@@ -74,11 +74,11 @@ export async function getFPExhibitor(
     }
     // console.log('getExhibitor got token: ',)
     let res = await axios({
-      method: 'post',
-      url: baseUrl + 'get-exhibitor',
+      method: "post",
+      url: baseUrl + "get-exhibitor",
       data: {
-        'token': expoData.token,
-        'id': id
+        "token": expoData.token,
+        "id": id
       }
     })
     console.log("Got exhibitor: ", res.data)
@@ -94,7 +94,7 @@ export async function getFPExhibitor(
 export async function getFPExhibitorExtras(
   id: any,
   client: any,
-  year: any,
+  year: any
 ) {
   try {
     const getData: any = await getExpoToken_Service(client, year)
@@ -104,11 +104,11 @@ export async function getFPExhibitorExtras(
     }
     // console.log('getExhibitor got token: ',)
     let res = await axios({
-      method: 'post',
-      url: baseUrl + 'list-exhibitor-extras',
+      method: "post",
+      url: baseUrl + "list-exhibitor-extras",
       data: {
-        'token': expoData.token,
-        'exhibitorId': id
+        "token": expoData.token,
+        "exhibitorId": id
       }
     })
     // console.log("exhibitor extras are: ", res.addresses)
@@ -138,11 +138,11 @@ export async function addFPExhibitor(
     exhibitor.expo_Year
   )
   // getExhibitorId returns a number
-  if (typeof existsId === 'number') {
+  if (typeof existsId === "number") {
     console.log(`Exhibitor ${existsId} already exists. Moving on.`)
     return "exhibitor already exists."
   }
-  else if (typeof existsId !== 'number') {
+  else if (typeof existsId !== "number") {
     console.log("exhibitor doesn't exist yet. I'll create that now.")
     try {
       const getData: any = await getExpoToken_Service(client, year)
@@ -152,26 +152,26 @@ export async function addFPExhibitor(
       }
       // console.log('getExhibitor got token: ',)
       let res = await axios({
-        method: 'post',
-        url: baseUrl + 'add-exhibitor',
+        method: "post",
+        url: baseUrl + "add-exhibitor",
         data: {
-          'token': expoData.token,
-          'eventId': expoData.expoId,
-          'name': exhibitor.name,
-          'description': exhibitor.description,
-          'country': exhibitor.country,
-          'address': exhibitor.address,
-          'address2': exhibitor.address2,
-          'city': exhibitor.city,
-          'state': exhibitor.state,
-          'zip': exhibitor.zip,
-          'phone1': exhibitor.phone1,
-          'publicEmail': exhibitor.publicEmail,
-          'privateEmail': exhibitor.privateEmail,
-          'website': exhibitor.website,
-          'contactName': exhibitor.contactName,
-          'contactPhone': exhibitor.contactPhone,
-          'externalId': exhibitor.externalId,
+          "token": expoData.token,
+          "eventId": expoData.expoId,
+          "name": exhibitor.name,
+          "description": exhibitor.description,
+          "country": exhibitor.country,
+          "address": exhibitor.address,
+          "address2": exhibitor.address2,
+          "city": exhibitor.city,
+          "state": exhibitor.state,
+          "zip": exhibitor.zip,
+          "phone1": exhibitor.phone1,
+          "publicEmail": exhibitor.publicEmail,
+          "privateEmail": exhibitor.privateEmail,
+          "website": exhibitor.website,
+          "contactName": exhibitor.contactName,
+          "contactPhone": exhibitor.contactPhone,
+          "externalId": exhibitor.externalId
         }
       })
       console.log("Added exhibitor: ", exhibitor.name)
@@ -203,13 +203,13 @@ export async function addFPExhibitorBooth(
     }
     // console.log('getExhibitor got token: ',)
     await axios({
-      method: 'post',
-      url: baseUrl + 'add-exhibitor-booth',
+      method: "post",
+      url: baseUrl + "add-exhibitor-booth",
       data: {
-        'eventId': expoData.expoId,
-        'boothName': boothName,
-        'exhibitorId': exhibitorId,
-        'token': expoData.token,
+        "eventId": expoData.expoId,
+        "boothName": boothName,
+        "exhibitorId": exhibitorId,
+        "token": expoData.token
       }
     })
     console.log("Added booth: ", boothName)

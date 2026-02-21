@@ -21,7 +21,7 @@
            for="name">
       Client Name
       <select id="select-client"
-              v-model="eventStore.name"
+              v-model="eventStore.expo_Client"
               name="select-client"
               @change="updateAdminOptions"
       >
@@ -57,11 +57,16 @@
         </option>
       </select>
     </label>
-    <button @click="getAttendees">Search</button>
+    <button id="search-expo"
+            :class="searchUpdated ? '--primary--invert' : ''"
+            @click="getAttendees"
+            @keydown.enter="getAttendees">
+      Search
+    </button>
     <span class="--flex-grow-1"/>
     <span v-if="attendeeList"
           class="--m-r-4">Total Attendees: {{ attendeeList.length }}</span>
-    <button class="--success--invert --justify-self-end"
+    <button class="--secondary--invert --justify-self-end"
             @click="exportAttendees">
       Export Attendees
     </button>
@@ -91,7 +96,8 @@
         <th>State</th>
         <th>ZIP</th>
         <th>Country</th>
-        <th v-for="(f, index) in customFields">
+        <th v-for="(f, index) in customFields"
+            :key="index">
           {{ f.displayTitle }}
         </th>
       </tr>
@@ -118,14 +124,17 @@ import { deleteAttendee_Service, getExpoAttendees_Service } from "@/services/Att
 import { useEventLocalStore } from "@/stores/event.ts"
 import { useStatusStore } from "@/stores/status.ts"
 import { utils, writeFile } from "xlsx"
-import AttendeeRow from "@/components/admin/dashboard-views/AttendeeRow.vue"
+import AttendeeRow from "@/components/attendee/AttendeeRow.vue"
 import { db } from "@/db.ts"
 import { getCustomFields_Service } from "@/services/CustomFieldsDataService.ts"
+import { getExpo_Service } from "@/services/EventDataService.ts"
 
 const attendeeList = ref()
 const displayList = ref()
 const eventStore = useEventLocalStore()
 const statusStore = useStatusStore()
+const searchUpdated = ref(false)
+
 const windowH = ref(window.innerHeight - 100)
 const rowH = ref(55)
 
@@ -189,22 +198,21 @@ onMounted(async () => {
   if (d) {
     db.adminOptions.get(1)
     console.log(db.adminOptions.get(1))
-    eventStore.name = d.clientSelected
+    eventStore.expo_Client = d.clientSelected
     eventStore.expo_Year = d.yearSelected
     await getAttendees()
   }
   else if (d === undefined) {
-    eventStore.name = "CSIFT"
+    eventStore.expo_Client = "CSIFT"
     eventStore.expo_Year = 2026
     await db.adminOptions.add({
       id: 1,
-      clientSelected: eventStore.name,
+      clientSelected: eventStore.expo_Client,
       yearSelected: eventStore.expo_Year,
       lastView: ""
     })
   }
   // console.log(attendeeList.value)
-  customFields.value = await getCustomFields_Service(5)
   statusStore.$reset()
   displayList.value = attendeeList.value
 })
@@ -214,18 +222,25 @@ onMounted(async () => {
 async function updateAdminOptions() {
   await db.adminOptions.put({
     id: 1,
-    clientSelected: eventStore.name,
+    clientSelected: eventStore.expo_Client,
     yearSelected: eventStore.expo_Year,
     lastView: ""
   })
+  await getExpo_Service(eventStore.expo_Client, eventStore.expo_Year, eventStore)
+  searchUpdated.value = true
+  const sButton = document.getElementById("search-expo")
+  sButton!.focus();
 }
 
 /*-| Attendees Functions
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 async function getAttendees() {
   statusStore.status = "Loading..."
-  attendeeList.value = await getExpoAttendees_Service(eventStore.name, eventStore.expo_Year)
+  attendeeList.value = await getExpoAttendees_Service(eventStore.expo_Client, eventStore.expo_Year)
+  displayList.value = attendeeList.value
+  customFields.value = await getCustomFields_Service(eventStore.eventId)
   statusStore.$reset()
+  searchUpdated.value = false
 }
 
 async function deleteAttendee(i: number, n: string) {
@@ -274,7 +289,7 @@ const flattenObj = (ob: object) => {
 };
 
 /*-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===
--| PAUSED: Flattening Attendee object for export to sheet!!
+-| TODO - PAUSED: Flattening Attendee object for export to sheet!!
 -|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===/*/
 function iterateList() {
   const l = () => {
@@ -306,7 +321,7 @@ async function exportAttendees() {
   console.log(formattedLeads)
   const worksheet = utils.json_to_sheet(formattedLeads)
   const workbook = utils.book_new()
-  utils.book_append_sheet(workbook, worksheet, `2025 Leads`)
+  utils.book_append_sheet(workbook, worksheet, `Attendees`)
   utils.sheet_add_aoa(worksheet,
     [
       [

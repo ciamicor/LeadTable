@@ -1,24 +1,24 @@
-import http from '../http-common'
+import http from "../http-common"
 
-class ExpoDataService {
+class EventDataService {
   create(data: any) {
-    return http.post('/expo', data)
+    return http.post("/expo", data)
   }
 
   getAll() {
-    return http.get('/expo')
+    return http.get("/expo")
   }
 
   getExpo(client: string, year: any) {
-    return http.get('/expo/client/' + client + '/year/' + year)
+    return http.get("/expo/client/" + client + "/year/" + year)
   }
 }
 
 /*-| Functions
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-const expoService = new ExpoDataService()
+const expoService = new EventDataService()
 
-/*-| Get All Expos
+/*-| Get All Events
 ---+----+---+----+---+----+---+----+---*/
 async function getAllExpos_Service(exposList: any) {
   let expos = await expoService.getAll()
@@ -30,7 +30,7 @@ async function getAllExpos_Service(exposList: any) {
   }
 }
 
-/*-| Create
+/*-| Create event
 ---+----+---+----+---+----+---+----+---*/
 async function createExpo_Service(expoObject: any) {
   const data = {
@@ -44,13 +44,13 @@ async function createExpo_Service(expoObject: any) {
     expoFp_MapUrl: expoObject.expoFp_MapUrl,
     paymentEnabled: expoObject.paymentEnabled,
     logoUrl_Color: expoObject.logoUrl_Color,
-    logoUrl_Black: expoObject.logoUrl_Black,
+    logoUrl_Black: expoObject.logoUrl_Black
   }
-  console.log('Creating expo with data: ', data)
+  console.log("Creating expo with data: ", data)
   try {
     let newExpo = await expoService.create(data)
     expoObject.id = newExpo.data.id
-    console.log('Expo created with data: ', newExpo.data)
+    console.log("Expo created with data: ", newExpo.data)
     expoObject = null
   } catch (e: any) {
     console.log(e)
@@ -83,7 +83,7 @@ async function getExpo_Service(client: string, year: number, expoObject: any) {
     //expoObject.value = response.data
     // console.log('expo: ', expoObject.value)
   } catch (e) {
-    console.log('That expo doesn\'t exist. ', e)
+    console.log("That expo doesn't exist. ", e)
   }
 }
 

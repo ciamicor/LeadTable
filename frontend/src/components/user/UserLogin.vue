@@ -83,7 +83,7 @@ async function authClientSignIn() {
   const sesh = await authClient.getSession()
   // @ts-ignore
   if (sesh.data.user.role == "admin") {
-    await router.push({name: "Admin Dashboard"})
+    await router.push({name: "Manage Attendees"})
   }
   else {
     await router.push({name: "Booth Map"})

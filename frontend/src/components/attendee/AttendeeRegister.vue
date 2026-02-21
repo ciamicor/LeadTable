@@ -8,7 +8,7 @@
   </div>
 
   <div
-    class="--flex-grow row-12-300 --gap-24 --place-content-center --p-4"
+    class="--flex-grow row-12-300 --gap-24 --place-content-center --p-4 --p-b-24-clamp"
   >
     <!-- Attendee Form -->
     <form
@@ -185,12 +185,14 @@
         <fieldset v-else-if="field.type === 'checkbox'">
           <legend>{{ field.title }}</legend>
           <span v-if="field.subtitle"
-                class="subtitle">{{ field.subtitle }}</span>
+                class="subtitle">
+            {{ field.subtitle }}
+          </span>
           <div v-for="(options, key) in field.options"
                :key>
             <input
               :id="options.id"
-              v-model="attendee.customFields[field.label + key]"
+              v-model="attendee.customFields[field.displayTitle][key]"
               :name="field.label"
               :true-value="options.value"
               :type="field.type"/>
@@ -208,7 +210,7 @@
                :key>
             <input
               :id="options.id"
-              v-model="attendee.customFields[field.label + key]"
+              v-model="attendee.customFields[field.displayTitle][key]"
               :name="field.label"
               :true-value="options.value"
               :type="field.type"/>
@@ -224,7 +226,7 @@
           <span v-if="field.subtitle"
                 class="subtitle">{{ field.subtitle }}</span>
           <input
-            v-model="attendee.customFields[field.label]"
+            v-model="attendee.customFields[field.displayTitle][key]"
             :type="field.type">
           <span>{{ field.subtitle }}</span>
         </label>
@@ -245,7 +247,7 @@
          class="col-12-300 col-8-600 col-8-900 --m-b-24">
       <button
         class="--flex-basis-20 --align-self-start --m-b-12"
-        @click="paymentView = false"
+        @click="paymentView = false; loading = false"
       ><i class="bi-arrow-left --m-r-4"/>Back to Form
       </button>
       <PaymentPayPal
@@ -299,15 +301,15 @@
 <script lang="js"
         setup>
 // TODO Convert to TS
-import { ref } from "vue"
+import { onBeforeMount, ref } from "vue"
 import { jsPDF } from "jspdf"
 import html2canvas from "html2canvas"
 import { scaleFont } from "@/services/functions/TextManipulationService.ts";
 import { createAttendee_Service } from "@/services/AttendeeDataService.ts"
-import { getCustomFields_Service } from "@/services/CustomFieldsDataService.js";
+import { getCustomFields_Service } from "@/services/CustomFieldsDataService.ts";
 import { sendRegConfirmEmail_Service } from "@/services/emails/RegistrationEmailService.ts";
 import { getUrlHost, getUrl_ClientYear } from "@/services/functions/UrlService.ts";
-import { countryCodes } from "@/services/addresses/AddressForm_Countries.js";
+import { countryCodes } from "@/services/addresses/AddressForm_Countries.ts";
 import StatusInline from "@/components/elements/StatusInline.vue";
 import QrCode from "@/components/QrCode.vue"
 import PaymentPayPal from "@/components/payment/PaymentPayPal.vue";
@@ -332,12 +334,6 @@ const paymentAccepted = ref( false )
 
 async function getCustomFields() {
   customFields.value = await getCustomFields_Service( expoLocal.eventId )
-}
-
-try {
-  getCustomFields()
-} catch ( error ) {
-  console.log( "I don't think theres any custom fields for this form.", error )
 }
 
 /*-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===
@@ -444,7 +440,25 @@ function resetForm() {
     techSessions: null,
     customFields: {}
   }
+  addCustomFields()
 }
+
+function addCustomFields() {
+  console.log( typeof customFields.value )
+  customFields.value.forEach( ( i ) => {
+    console.log( i.displayTitle )
+    attendee.value.customFields[i.displayTitle] = {}
+  } )
+}
+
+onBeforeMount( async () => {
+  try {
+    await getCustomFields()
+    addCustomFields()
+  } catch ( error ) {
+    console.log( "I don't think theres any custom fields for this form.", error )
+  }
+} )
 
 /*-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===
 -| Badge Printing

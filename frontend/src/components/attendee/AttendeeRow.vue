@@ -52,7 +52,13 @@
 <script lang="ts"
         setup>
 import { ref, defineEmits, onBeforeMount } from "vue"
-import AttendeeEditModal from "@/components/AttendeeEditModal.vue"
+import AttendeeEditModal from "@/components/attendee/AttendeeEditModal.vue"
+
+const props = defineProps({
+  attendee: {type: Object, default: () => ({}), required: true},
+  rowNum: {type: Number, default: 0},
+  toggleModal: {}
+})
 
 defineEmits(["deleteAttendee"])
 const modalVisible = ref(false)
@@ -63,22 +69,29 @@ function toggleModal() {
 
 const formattedField = ref()
 
+onBeforeMount(() => {})
+
 function formatCustomFields(o: object) {
   let array = Object.values(o)
   let output = ""
   let x = 0
   while (array.length > x) {
-    output += array[x] + ", "
+    // if only one item
+    if (array.length === 1) {
+      output += array[x] + " "
+    }
+    // for last item
+    else if (x === array.length - 1) {
+      output += array[x]
+    }
+    // for middle items
+    else {
+      output += array[x] + ", "
+    }
     x++
   }
   formattedField.value = output
   return output
 }
-
-const props = defineProps({
-  attendee: {type: Object, default: () => ({}), required: true},
-  rowNum: {type: Number, default: 0},
-  toggleModal: {}
-})
 
 </script>

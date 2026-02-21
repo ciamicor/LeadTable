@@ -1,7 +1,7 @@
 import { Attendee, Expo } from "../models/index.js"
 import { Op } from "sequelize";
 
-// Get all attendees
+// Get all attendee
 export const getAllAttendees = async ( req, res ) => {
     try {
         const attendees = await Attendee.findAll()
@@ -76,7 +76,7 @@ export const createAttendee = async ( req, res ) => {
     }
 }
 
-// Controller method to create batch of attendees
+// Controller method to create batch of attendee
 // https://sequelize.org/docs/v7/querying/insert/
 // TODO Add bulk attendee creation & related routes/services
 export const createAttendeeBulk = async ( req, res ) => {
@@ -126,7 +126,7 @@ export const createAttendeeBulk = async ( req, res ) => {
         console.error( "Error while creating lead: ", error )
         if ( error.name === "SequelizeUniqueConstraintError" ) {
             return res.status( 400 ).json( {
-                error: "Cannot create attendees",
+                error: "Cannot create attendee",
                 message: "Sorry, I didn't like that data. I'm not sure why."
             } )
         }
@@ -159,13 +159,13 @@ export const getExpoAttendees = async ( req, res ) => {
     } catch ( error ) {
         console.error( "error in controller getExpoAttendees: ", error )
         res.status( 500 ).json( {
-            error: "Something went wrong while getting those attendees.",
+            error: "Something went wrong while getting those attendee.",
             details: error?.message || "Unknown error"
         } )
     }
 }
 
-// Get attendees created between two dates
+// Get attendee created between two dates
 export const getAttendeesBetweenDates = async ( req, res ) => {
     const startDate = req.params.startDate
     const endDate = req.params.endDate
@@ -180,12 +180,12 @@ export const getAttendeesBetweenDates = async ( req, res ) => {
         if ( attendees ) {
             res.json( attendees )
         } else {
-            res.status( 404 ).json( { error: "No attendees created between those dates." } )
+            res.status( 404 ).json( { error: "No attendee created between those dates." } )
         }
     } catch ( error ) {
         console.error( "error in controller getAttendeesBetweenDates: ", error )
         res.status( 500 ).json( {
-            error: "Something went wrong while getting those attendees.",
+            error: "Something went wrong while getting those attendee.",
             details: error?.message || "Unknown error"
         } )
     }

@@ -135,7 +135,7 @@ import { jsPDF } from "jspdf"
 import QrCode from "@/components/QrCode.vue"
 import html2canvas from "html2canvas"
 import BadgeSingle from "@/components/BadgeSingle.vue"
-import AttendeeCard from "@/components/AttendeeCard.vue"
+import AttendeeCard from "@/components/attendee/AttendeeCard.vue"
 import { useVueToPrint } from "vue-to-print"
 import { onMounted, ref } from "vue"
 import {

@@ -134,7 +134,7 @@ async function getExpoAttendees_Service(client: any, year: any) {
 async function getAttendeesUploadId_Service(id: any) {
   try {
     let attendees = await attendeeService.getUploadAttendee(id)
-    // console.log("Attendees in upload: ", attendees)
+    // console.log("Attendees in upload: ", attendee)
     return attendees.data
   } catch (e) {
     console.log(e)

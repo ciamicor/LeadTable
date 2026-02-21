@@ -60,7 +60,7 @@ import { deleteAttendee_Service, getExpoAttendees_Service } from "@/services/Att
 import { useEventLocalStore } from "@/stores/event.ts"
 import { useStatusStore } from "@/stores/status.ts"
 import { utils, writeFile } from "xlsx"
-import AttendeeRow from "@/components/admin/dashboard-views/AttendeeRow.vue"
+import AttendeeRow from "@/components/attendee/AttendeeRow.vue"
 
 const attendeeList = ref()
 const eventStore = useEventLocalStore()

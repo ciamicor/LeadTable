@@ -40,7 +40,7 @@ import StatusInline from "@/components/elements/StatusInline.vue";
 import { db } from "@/db.js"
 import { onBeforeMount, ref, watch } from "vue"
 import { getUrl_ClientYear } from "@/services/functions/UrlService.ts";
-import { getExpo_Service } from "@/services/ExpoDataService.js";
+import { getExpo_Service } from "@/services/EventDataService.ts";
 import { useRoute } from "vue-router";
 import { useEventLocalStore } from "@/stores/event.ts";
 import { useCompanyLocalStore } from "@/stores/company.ts";
