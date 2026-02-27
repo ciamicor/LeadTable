@@ -3,10 +3,9 @@
   "type": "module",
   "version": "1.0.0",
   "main": "app.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "tsx auth.ts && node app.js"
   },
   "author": "Claire Mooney, IAMI",
   "license": "ISC",
@@ -25,6 +24,7 @@
     "serve-static": "^2.2.0"
   },
   "devDependencies": {
-    "sequelize-cli": "^6.6.3"
+    "sequelize-cli": "^6.6.3",
+    "tsx": "^4.21.0"
   }
 }
