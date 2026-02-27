@@ -117,7 +117,7 @@ const routes = [
       {
         path: "create-badge",
         name: "Create a Badge",
-        component: AttendeeRegister
+        redirect: {name: "Registration"}
       },
       {
         path: "register",

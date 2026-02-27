@@ -18,8 +18,7 @@
       Find Attendees
     </button>
     <span class="--flex-grow-1"/>
-    <button class="--success--invert --justify-self-end"
-            @click="exportAttendees">
+    <button class="--success--invert --justify-self-end">
       Export Attendees
     </button>
   </div>
@@ -59,7 +58,6 @@ import { onMounted, ref } from "vue";
 import { deleteAttendee_Service, getExpoAttendees_Service } from "@/services/AttendeeDataService.ts"
 import { useEventLocalStore } from "@/stores/event.ts"
 import { useStatusStore } from "@/stores/status.ts"
-import { utils, writeFile } from "xlsx"
 import AttendeeRow from "@/components/attendee/AttendeeRow.vue"
 
 const attendeeList = ref()
@@ -78,55 +76,4 @@ onMounted(async () => {
 async function getAttendees() {
   attendeeList.value = await getExpoAttendees_Service(eventStore.name, eventStore.expo_Year)
 }
-
-async function deleteAttendee(i: number, n: string) {
-  statusStore.status = "Deleting..."
-  if (window.confirm(`Are you sure you'd like to delete ${n}? This cannot be undone.`)) {
-    await deleteAttendee_Service(i)
-    attendeeList.value = attendeeList.value.filter(a => a.id !== i)
-  }
-  else {
-    console.log("I won't delete that then.")
-  }
-  statusStore.$reset()
-}
-
-async function exportAttendees() {
-  const formattedLeads = attendeeList.value
-    .map(({
-      id,
-      expo_Client,
-      expo_Year,
-      updatedAt,
-      upload_Id,
-      createdAt,
-      ...item
-    }) => item)
-  const worksheet = utils.json_to_sheet(formattedLeads)
-  const workbook = utils.book_new()
-  utils.book_append_sheet(workbook, worksheet, `2025 Leads`)
-  utils.sheet_add_aoa(worksheet,
-    [
-      [
-        "First Name",
-        "Last Name",
-        "Title",
-        "Email",
-        "Phone",
-        "Employer",
-        "Address Line 1",
-        "Address Line 2",
-        "City",
-        "State",
-        "ZIP",
-        "Country",
-        "Registration Type"
-      ]
-    ],
-    {origin: "A1"})
-  writeFile(workbook,
-    `${eventStore.name}-${eventStore.expo_Year}-Expo-Attendees.xlsx`,
-    {compression: true})
-}
-
 </script>

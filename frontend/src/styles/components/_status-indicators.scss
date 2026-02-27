@@ -1,0 +1,13 @@
+@use "../abstracts/index" as *;
+
+#status-global {
+  z-index:       99999;
+  position:      fixed;
+  top:           $nav-height-actual + 12px;
+  left:          50%;
+  height:        min-content;
+  padding:       $sp-3 $sp-6;
+  border-radius: $sp-4;
+  background:    $color-primary-7;
+  translate:     -50% 0;
+}

@@ -1,4 +1,7 @@
 <template>
+  <StatusGlobal
+    :status-global="statusStore.statusGlobal"
+  />
   <sidebar-nav :toggled="showSidebarNav"
                @closeNav="toggleSidebarNav"/>
   <nav
@@ -19,15 +22,10 @@
           class="--m-0">
       {{ route.name }}
     </span>
-    <span class="--position-absolute --right-8">{{ statusStore.status }}</span>
   </nav>
   <div class="view-mask">
     <div class="view-container">
-      <StatusInline
-        :status="loading"
-        class="--place-self-center --p-v-24 --h-100"
-      />
-      <router-view v-if="!loading"/>
+      <router-view v-if="!statusStore.loading"/>
     </div>
   </div>
 </template>
@@ -35,7 +33,7 @@
 <script
   setup>
 import SidebarNav from "@/components/navigation/SidebarNav.vue";
-import StatusInline from "@/components/elements/StatusInline.vue";
+import StatusGlobal from "@/components/elements/StatusGlobal.vue";
 
 import { db } from "@/db.js"
 import { onBeforeMount, ref, watch } from "vue"
@@ -58,12 +56,11 @@ const session = authClient.useSession()
 /*-| Hooks |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 
-const loading = ref( false )
 const error = ref( null )
 
 async function fetchData( id ) {
-  loading.value = true
-  statusStore.status = "Loading..."
+  statusStore.loading = true
+  statusStore.statusGlobal = "Loading..."
   try {
     await checkCompanyState()
     let url = getUrl_ClientYear()
@@ -76,7 +73,7 @@ async function fetchData( id ) {
   } catch ( err ) {
     error.value = err.toString()
   } finally {
-    loading.value = false
+    statusStore.loading = false
     statusStore.$reset()
   }
 }

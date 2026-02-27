@@ -62,7 +62,7 @@
           :to="{name: 'Login'}"
           class="button"
         >
-          Login {{ session }}
+          Login
         </router-link>
         <router-link
           v-if="session.data !== null && session.data.user.role === 'admin'"

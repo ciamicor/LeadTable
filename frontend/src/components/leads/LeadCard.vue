@@ -9,8 +9,8 @@
         <span id="score-value">{{ lead.score }}</span>
       </div>
     </div>
-    <span id="employment">{{ lead.title ? lead.title : '' }}</span>
-    <span id="employment">{{ lead.employer ? 'at ' + lead.employer : '' }}</span>
+    <span id="employment">{{ lead.title ? lead.title : "" }}</span>
+    <span id="employment">{{ lead.employer ? "at " + lead.employer : "" }}</span>
   </div>
   <div id="contact"
        class="row-12-300 --gap-col-10">
@@ -55,6 +55,8 @@ const props = defineProps({
   }
 })
 
+const emit = defineEmits(["showModal"]);
+
 const modalVisible = ref(false)
 
 function toggleModal() {
@@ -67,7 +69,7 @@ const confirmDelete = ref(false)
 
 async function deleteLead(id: number) {
   await deleteLead_Service(id)
-  emit('showModal')
+  emit("showModal")
 }
 
 </script>

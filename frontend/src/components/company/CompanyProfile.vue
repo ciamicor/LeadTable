@@ -108,7 +108,7 @@
 import {
   getFPExhibitor,
   getFPExhibitorExtras
-} from "@/services/ExpoFpDataService"
+} from "@/services/ExpoFPDataService.ts"
 import {
   createExhibitor_Service,
   getCompany_Service

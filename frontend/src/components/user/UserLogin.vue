@@ -38,10 +38,11 @@
         </label>
         <!-- Auth Buttons -->
         <div class="row-12-300 --m-t-5">
-          <button
-            class="--success--invert --flex-grow-1 --flex-basis-45"
-          >Create Account
-          </button>
+          <!--          TODO Add Create Account functionality-->
+          <!--          <button
+                      class="&#45;&#45;success&#45;&#45;invert &#45;&#45;flex-grow-1 &#45;&#45;flex-basis-45"
+                    >Create Account
+                    </button>-->
           <button
             class="--primary--invert --flex-grow-1 --flex-basis-45"
             type="submit">

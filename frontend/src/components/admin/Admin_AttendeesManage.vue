@@ -80,7 +80,7 @@
           class="--m-r-4">Total Attendees: {{ attendeeList.length }}</span>
     <button class="--secondary--invert --justify-self-end"
             @click="exportAttendees">
-      Export Attendees
+      Export All
     </button>
   </div>
   <div id="scroller-box"
@@ -89,7 +89,9 @@
     <!--       @scroll="handleScroll($event)">-->
     <!--    <div
           :style="`height:${topPad}px;`"/>-->
-    <table class="attendee-table">
+    <table
+      v-if="displayList && displayList.length !== 0"
+      class="attendee-table">
       <tbody>
       <tr>
         <th></th>
@@ -126,6 +128,10 @@
       </tr>
       </tbody>
     </table>
+    <div v-else-if="statusStore.statusGlobal === '' && displayList"
+         class="row-12-300 --place-content-center">
+      <p>No attendees are registered for this expo yet.</p>
+    </div>
     <!--    <div
           :style="`height:${bottomPad}px;`"/>-->
   </div>
@@ -150,8 +156,8 @@ const eventStore = useEventLocalStore()
 const statusStore = useStatusStore()
 const searchUpdated = ref(false)
 
-const windowH = ref(window.innerHeight - 100)
-const rowH = ref(55)
+/*const windowH = ref(window.innerHeight - 100)
+const rowH = ref(55)*/
 
 const customFields = ref()
 
@@ -207,7 +213,7 @@ function handleScroll(e: any) {
 /*-| Lifecycle
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 onMounted(async () => {
-  statusStore.status = "Loading..."
+  statusStore.statusGlobal = "Loading..."
   const d = await db.adminOptions.get(1)
   // Check if local admin options exist, then set or add.
   if (d) {
@@ -216,7 +222,6 @@ onMounted(async () => {
     eventStore.expo_Client = d.clientSelected
     eventStore.expo_Year = d.yearSelected
     await getExpo_Service(eventStore.expo_Client, eventStore.expo_Year, eventStore)
-    await getAttendees()
   }
   else if (d === undefined) {
     eventStore.expo_Client = "CSIFT"
@@ -228,8 +233,8 @@ onMounted(async () => {
       lastView: ""
     })
     await getExpo_Service(eventStore.expo_Client, eventStore.expo_Year, eventStore)
-    await getAttendees()
   }
+  await getAttendees()
   // console.log(attendeeList.value)
   displayList.value = attendeeList.value
   statusStore.$reset()
@@ -254,12 +259,15 @@ async function updateAdminOptions() {
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 async function getAttendees() {
   try {
-    statusStore.status = "Loading..."
+    statusStore.statusGlobal = "Loading..."
     customFields.value = await getCustomFields_Service(eventStore.eventId)
     console.log(customFields.value)
     attendeeList.value = await getExpoAttendees_Service(eventStore.expo_Client, eventStore.expo_Year)
+    console.log("got attendee list.")
     displayList.value = attendeeList.value
+    console.log("updated display list.")
     statusStore.$reset()
+    console.log("reset status.")
     searchUpdated.value = false
     console.log(attendeeList.value)
   } catch (e) {
@@ -268,10 +276,10 @@ async function getAttendees() {
 }
 
 async function deleteAttendee(i: number, n: string) {
-  statusStore.status = "Deleting..."
+  statusStore.statusGlobal = "Deleting..."
   if (window.confirm(`Are you sure you'd like to delete ${n}? This cannot be undone.`)) {
     await deleteAttendee_Service(i)
-    attendeeList.value = attendeeList.value.filter(a => a.id !== i)
+    attendeeList.value = attendeeList.value.filter((a: { id: number }) => a.id !== i)
     displayList.value = attendeeList.value
   }
   else {
@@ -282,8 +290,8 @@ async function deleteAttendee(i: number, n: string) {
 
 /*-| Custom Fields
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-function flattenCustomFields(obj: object) {
-  let flat = {}
+function flattenCustomFields(obj: any) {
+  let flat: any = {}
   // Loop through attendee obj
   Object.keys(obj).forEach((key) => {
     // Loop through keys with objects, like custom fields.
@@ -294,8 +302,6 @@ function flattenCustomFields(obj: object) {
         let fieldObject = cFields[key]
         let fieldValues = Object.values(fieldObject)
         let fieldHold = ""
-        console.log("Title: " + fieldTitle)
-        console.log("Values: " + fieldValues)
         let x = 0
         while (fieldValues.length > x && fieldValues[x] !== false) {
           // if only one item, or last item
@@ -315,26 +321,33 @@ function flattenCustomFields(obj: object) {
       flat[key] = obj[key]
     }
   })
-  console.log(flat)
   return flat
 }
 
 async function exportAttendees() {
   console.log(typeof attendeeList.value)
-  let flatList = []
+  let flatList: any = []
   attendeeList.value.forEach((attendee: object) => {
     flatList.push(flattenCustomFields(attendee))
   })
   console.log(flatList)
   const sheetFormatLeads = flatList
     .map(({
+      // @ts-ignore
       id,
+      // @ts-ignore
       expo_Client,
+      // @ts-ignore
       expo_Year,
+      // @ts-ignore
       updatedAt,
+      // @ts-ignore
       upload_Id,
+      // @ts-ignore
       createdAt,
+      // @ts-ignore
       techSessions,
+      // @ts-ignore
       customFields,
       ...item
     }) => item)
