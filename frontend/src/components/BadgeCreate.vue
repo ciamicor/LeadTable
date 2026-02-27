@@ -8,7 +8,7 @@
   </div>
 
   <div
-    class="--flex-grow row-12-300 --gap-24 --place-content-center --p-4"
+    class="--flex-grow row-12-300 --gap-24 --place-content-center --p-4 --p-b-24-clamp"
   >
     <!-- Attendee Form -->
     <form
@@ -173,10 +173,11 @@
                :key>
             <input
               :id="options.id"
-              v-model="paymentEnabled"
+              v-model="attendee.customFields[field.displayTitle][key]"
               :name="field.label"
-              :true-value="true"
-              type="checkbox"/>
+              :true-value="options.value"
+              type="checkbox"
+              @change="paymentEnabled === true ? paymentEnabled = false : paymentEnabled = true"/>
             <label :for="options.id">
               {{ options.value }}
             </label>
@@ -185,12 +186,14 @@
         <fieldset v-else-if="field.type === 'checkbox'">
           <legend>{{ field.title }}</legend>
           <span v-if="field.subtitle"
-                class="subtitle">{{ field.subtitle }}</span>
+                class="subtitle">
+            {{ field.subtitle }}
+          </span>
           <div v-for="(options, key) in field.options"
                :key>
             <input
               :id="options.id"
-              v-model="attendee.customFields[field.label + key]"
+              v-model="attendee.customFields[field.displayTitle][key]"
               :name="field.label"
               :true-value="options.value"
               :type="field.type"/>
@@ -208,7 +211,7 @@
                :key>
             <input
               :id="options.id"
-              v-model="attendee.customFields[field.label + key]"
+              v-model="attendee.customFields[field.displayTitle][key]"
               :name="field.label"
               :true-value="options.value"
               :type="field.type"/>
@@ -224,7 +227,7 @@
           <span v-if="field.subtitle"
                 class="subtitle">{{ field.subtitle }}</span>
           <input
-            v-model="attendee.customFields[field.label]"
+            v-model="attendee.customFields[field.displayTitle][key]"
             :type="field.type">
           <span>{{ field.subtitle }}</span>
         </label>
@@ -245,7 +248,7 @@
          class="col-12-300 col-8-600 col-8-900 --m-b-24">
       <button
         class="--flex-basis-20 --align-self-start --m-b-12"
-        @click="paymentView = false"
+        @click="paymentView = false; status = false"
       ><i class="bi-arrow-left --m-r-4"/>Back to Form
       </button>
       <PaymentPayPal
@@ -273,8 +276,6 @@
         Print {{ attendee.name_First }}'s Badge
       </button>
 
-      <!-- MWSCC TEMP PAYMENT REMOVE -->
-      <!--v-if="attendee.customFields.events3 !== 'Social (6:00 PM - 10:00 PM) - $190'"-->
       <button
         class="--success --flex-grow"
         @click="resetForm">
@@ -301,18 +302,18 @@
 <script lang="js"
         setup>
 // TODO Convert to TS
-import { ref } from 'vue'
-import { jsPDF } from 'jspdf'
-import html2canvas from 'html2canvas'
+import { onBeforeMount, ref } from "vue"
+import { jsPDF } from "jspdf"
+import html2canvas from "html2canvas"
 import { scaleFont } from "@/services/functions/TextManipulationService.ts";
-import { createAttendee_Service } from '@/services/AttendeeDataService.ts'
+import { createAttendee_Service } from "@/services/AttendeeDataService.ts"
 import { getCustomFields_Service } from "@/services/CustomFieldsDataService.js";
 import { sendRegConfirmEmail_Service } from "@/services/emails/RegistrationEmailService.ts";
-import { useExhibitorLocalStore, useExpoLocalStore } from '@/stores.js'
+import { useExhibitorLocalStore, useExpoLocalStore } from "@/stores.js"
 import { getUrlHost, getUrl_ClientYear } from "@/services/functions/UrlService.ts";
 import { countryCodes } from "@/services/addresses/AddressForm_Countries.js";
 import LoadingHolder from "@/components/LoadingHolder.vue";
-import QrCode from '@/components/QrCode.vue'
+import QrCode from "@/components/QrCode.vue"
 import PaymentPayPal from "@/components/payment/PaymentPayPal.vue";
 
 const urlData = ref( getUrl_ClientYear() )
@@ -345,7 +346,7 @@ try {
 -| Form Logic
 -|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===/*/
 async function submitForm() {
-  attendee.value.contact_Phone = attendee.value.contact_Phone.replace( /\D/g, '' )
+  attendee.value.contact_Phone = attendee.value.contact_Phone.replace( /\D/g, "" )
   status.value = true
   if ( paymentEnabled.value === true ) {
     console.log( "Payment form enabled" )
@@ -416,7 +417,7 @@ async function createAttendee( a ) {
   await sendRegConfirmEmail_Service( attendee.value, expoLocal )
   await createAttendee_Service( a, expoLocal.expo_Client, expoLocal.expo_Year )
   attendeeId.value = attendee.value.id.toString()
-  console.log( 'New Attendee\'s ID is: ', typeof attendeeId.value, attendeeId.value )
+  console.log( "New Attendee's ID is: ", typeof attendeeId.value, attendeeId.value )
   status.value = false
   showQr.value = true
 }
@@ -429,23 +430,41 @@ function resetForm() {
   attendee.value = {
     expo_Year: expoLocal.expo_Year,
     expo_Client: expoLocal.expo_Client,
-    name_First: '',
-    name_Last: '',
-    contact_Email: '',
-    contact_Phone: '',
-    contact_Employer: '',
-    address_Line1: '',
-    address_Line2: '',
-    address_City: '',
-    address_State: '',
-    address_Zip: '',
-    address_Country: '',
-    title: '',
-    regType: '',
+    name_First: "",
+    name_Last: "",
+    contact_Email: "",
+    contact_Phone: "",
+    contact_Employer: "",
+    address_Line1: "",
+    address_Line2: "",
+    address_City: "",
+    address_State: "",
+    address_Zip: "",
+    address_Country: "",
+    title: "",
+    regType: "",
     techSessions: null,
     customFields: {}
   }
+  addCustomFields()
 }
+
+function addCustomFields() {
+  console.log( typeof customFields.value )
+  customFields.value.forEach( ( i ) => {
+    console.log( i.displayTitle )
+    attendee.value.customFields[i.displayTitle] = {}
+  } )
+}
+
+onBeforeMount( async () => {
+  try {
+    await getCustomFields()
+    addCustomFields()
+  } catch ( error ) {
+    console.log( "I don't think theres any custom fields for this form.", error )
+  }
+} )
 
 /*-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===
 -| Badge Printing
@@ -461,7 +480,7 @@ async function select2Canvas( s, d ) {
     useCORS: true
   } ).then( canvas => {
     d.value = canvas.toDataURL(
-      'image/png' )
+      "image/png" )
     console.log( canvas )
   } )
 }
@@ -480,13 +499,13 @@ const pt2in = 0.0138888889
 // TODO merge with code from BadgePrint, then add to service file.
 async function badgeToPDF( a ) {
   console.log( "Creating badge for: " + a.name_First )
-  await select2Canvas( '#qr-code', qrData )
-  await select2Canvas( '#badge-logo', qrLogo )
+  await select2Canvas( "#qr-code", qrData )
+  await select2Canvas( "#badge-logo", qrLogo )
 
   /*-| Declare Badge |-*/
   const badgePdf = new jsPDF( {
-    orientation: 'landscape',
-    unit: 'in',
+    orientation: "landscape",
+    unit: "in",
     format: [ dim.w, dim.h ],
     putOnlyUsedFonts: true
   } )
@@ -498,56 +517,56 @@ async function badgeToPDF( a ) {
   const employSize = scaleFont( a.contact_Employer, 400, 16, 20 )
 
   // Name
-  badgePdf.setFont( 'Helvetica', 'normal', 'bold' );
+  badgePdf.setFont( "Helvetica", "normal", "bold" );
   badgePdf.setFontSize( nameSize )
   badgePdf.text( `${ a.name_First } ${ a.name_Last }`,
     dim.p,
     ((employSize * pt2in) / 3) + ((nameSize + employSize) * pt2in) + (dim.p / 2),
-    { align: 'left' } )
+    { align: "left" } )
 
   // Title
-  badgePdf.setFont( 'Helvetica', 'italic' );
+  badgePdf.setFont( "Helvetica", "italic" );
   badgePdf.setFontSize( titleSize )
   badgePdf.text(
     a.title,
     dim.p,
     +((nameSize * pt2in) / 3) + ((nameSize + employSize + titleSize) * pt2in) + dim.p,
-    { align: 'left' } )
+    { align: "left" } )
 
   // Employer
-  badgePdf.setFont( 'Helvetica', 'normal' );
+  badgePdf.setFont( "Helvetica", "normal" );
   badgePdf.setFontSize( employSize )
   badgePdf.text(
     a.contact_Employer,
     dim.p,
     dim.p * 2,
-    { align: 'left' } )
+    { align: "left" } )
 
   /*-| Add QR Code |-*/
   badgePdf.addImage(
     qrData.value,
-    'PNG',
+    "PNG",
     dim.p,
     dim.h - dim.imgH - dim.p,
     dim.imgH,
     dim.imgH,
-    'qr',
-    'FAST',
+    "qr",
+    "FAST",
     dim.rot )
 
   /*-| Add Logo |-*/
   badgePdf.addImage(
     qrLogo.value,
-    'PNG',
+    "PNG",
     dim.w - dim.p - dim.imgW,
     dim.h - dim.imgH - dim.p,
     dim.imgW,
     dim.imgH,
-    'logo',
-    'FAST',
+    "logo",
+    "FAST",
     dim.rot )
   setTimeout( () => {
-    badgePdf.output( 'dataurlnewwindow' )
+    badgePdf.output( "dataurlnewwindow" )
   }, 300 )
 }
 
