@@ -1,12 +1,12 @@
-import '@dotenvx/dotenvx/config';
+import "@dotenvx/dotenvx/config";
 import Sequelize from "./config/config.js";
 import express from "express";
 import path from "path";
-import cors from 'cors';
+import cors from "cors";
 
 // Better Auth
 import { toNodeHandler } from "better-auth/node";
-import { auth } from "./auth.ts";
+import { auth } from "./auth/auth.js";
 
 // Init Routes
 import leadRoutes from "./routes/lead.routes.js"
@@ -22,7 +22,6 @@ import techSessionRoutes from "./routes/techSession.routes.js"
 // Nodemailer
 import mailRoutes from "./email/email.routes.js"
 
-
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Init DB |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
@@ -31,7 +30,7 @@ import mailRoutes from "./email/email.routes.js"
 
 Sequelize.authenticate()
     .then( () => console.log( `Database ${ process.env.DB_NAME } connected` ) )
-    .catch( ( err ) => console.error( 'Error connecting to database:', err ) )
+    .catch( ( err ) => console.error( "Error connecting to database:", err ) )
 Sequelize.sync( {} )
     .then( async () => {
     } )
@@ -55,33 +54,33 @@ app.use( cors( {
 } ) )
 
 // Better Auth handler
-app.all( '/api/auth/*', toNodeHandler( auth ) );
+app.all( "/api/auth/*", toNodeHandler( auth ) );
 
 // Middleware to parse JSON requests
 app.use( express.json() )
 
 const PORT = process.env.PORT || 8080
-const HOST = process.env.HOST || 'localhost'
-const frontend_root = 'dist'
+const HOST = process.env.HOST || "localhost"
+const frontend_root = "dist"
 
-app.use( '/api/lead', leadRoutes )
-app.use( '/api/company', companyRoutes )
-app.use( '/api/attendee', attendeeRoutes )
-app.use( '/api/upload', uploadRoutes )
-app.use( '/api/expo', expoRoutes )
-app.use( '/api/techsession', techSessionRoutes )
-app.use( '/api/customfield', customFieldRoutes )
-app.use( '/api/paymentprocessor', paymentProcessorRoutes )
-app.use( '/api/product', productRoutes )
-app.use( '/api/payment', paymentRoutes )
-app.use( '/api/emailer', mailRoutes )
+app.use( "/api/lead", leadRoutes )
+app.use( "/api/company", companyRoutes )
+app.use( "/api/attendee", attendeeRoutes )
+app.use( "/api/upload", uploadRoutes )
+app.use( "/api/expo", expoRoutes )
+app.use( "/api/techsession", techSessionRoutes )
+app.use( "/api/customfield", customFieldRoutes )
+app.use( "/api/paymentprocessor", paymentProcessorRoutes )
+app.use( "/api/product", productRoutes )
+app.use( "/api/payment", paymentRoutes )
+app.use( "/api/emailer", mailRoutes )
 
 // Adjust _dirname for ES6 modules
 const __dirname = import.meta.dirname;
 
 app.use( express.static( path.join( __dirname, frontend_root ) ) )
-app.get( '*', ( req, res ) => {
-    res.sendFile( path.join( __dirname, frontend_root, 'index.html' ) )
+app.get( "*", ( req, res ) => {
+    res.sendFile( path.join( __dirname, frontend_root, "index.html" ) )
 } )
 
 /*-| Handle Errors |-*/
@@ -92,10 +91,10 @@ app.use( ( req, res, next ) => {
     next( error )
 } )
 app.use( ( err,
-           req,
-           res,
-           next ) => {
-    console.error( 'Uncaught Error:', {
+    req,
+    res,
+    next ) => {
+    console.error( "Uncaught Error:", {
         message: err.message,
         stack: err.stack,
         route: req.originalUrl,
@@ -104,7 +103,7 @@ app.use( ( err,
     } )
 
     res.status( err.status || 500 ).json( {
-        error: 'Whoa. Internal Server Error',
+        error: "Whoa. Internal Server Error",
         message: err.message
     } )
 } )

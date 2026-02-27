@@ -1,9 +1,7 @@
 import { betterAuth } from "better-auth";
-import { admin as AdminPlugin } from "better-auth/plugins"
+import { admin as AdminPlugin } from "better-auth/plugins";
 // import { ac, admin } from "./auth/permissions";
-
 import Database from "better-sqlite3";
-
 export const auth = betterAuth({
     database: new Database("./sqlite.db"),
     baseURL: "https://leadtable.app",
@@ -28,4 +26,5 @@ export const auth = betterAuth({
                        }*/
         })
     ]
-})
+});
+//# sourceMappingURL=auth.js.map
