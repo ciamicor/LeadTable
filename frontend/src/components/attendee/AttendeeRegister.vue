@@ -162,6 +162,7 @@
           <option value="Both">Both</option>
         </select>
       </label>
+      {{ attendee.customFields }}
       <div v-for="(field, key) in customFields"
            :key>
         <!-- If payment -->
@@ -173,10 +174,11 @@
                :key>
             <input
               :id="options.id"
-              v-model="paymentEnabled"
+              v-model="attendee.customFields[field.displayTitle][key]"
               :name="field.label"
-              :true-value="true"
-              type="checkbox"/>
+              :true-value="options.value"
+              type="checkbox"
+              @change="paymentEnabled === true ? paymentEnabled = false : paymentEnabled = true"/>
             <label :for="options.id">
               {{ options.value }}
             </label>

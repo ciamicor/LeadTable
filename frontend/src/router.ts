@@ -1,6 +1,6 @@
 import { createWebHistory, createRouter } from "vue-router"
 import LeadsList from "@/components/leads/LeadsList.vue"
-import CompanyProfile from "@/components/exhibitor/ExhibitorProfile.vue";
+import CompanyProfile from "@/components/company/CompanyProfile.vue";
 import ExpoMap from "@/components/elements/ExpoMap.vue"
 import ExpoSelect from "@/components/ExpoSelect.vue"
 import LeadAdd from "@/components/leads/LeadAdd.vue"
@@ -16,7 +16,7 @@ import Admin_ExpoManage from "@/components/admin/Admin_ExpoManage.vue";
 import Admin_BadgePrint from "@/components/admin/Admin_BadgePrint.vue";
 import Admin_UsersManage from "@/components/admin/Admin_UsersManage.vue";
 import Admin_Dashboard from "@/components/admin/Admin_Dashboard.vue";
-import CompanyCreate from "@/components/exhibitor/ExhibitorCreate.vue";
+import CompanyCreate from "@/components/company/CompanyCreate.vue";
 import { authClient } from "@/lib/auth-client.ts";
 import Admin_AttendeesManage from "@/components/admin/Admin_AttendeesManage.vue"
 
@@ -125,7 +125,7 @@ const routes = [
         component: AttendeeRegister
       },
       {
-        path: "exhibitor-registration",
+        path: "company-registration",
         name: "Company Registration",
         component: CompanyCreate
       },

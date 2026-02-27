@@ -20,6 +20,7 @@ interface Company {
   id: number
   ex_Id: number
   name: string
+  emailPrivate: string
   login_Url: string
   lead_Ret: boolean
   expo_Year: number
@@ -60,7 +61,7 @@ const db = new Dexie("Leadtable") as Dexie & {
 db.version(3).stores({
   // leads: '++id, year, attendee_Id, scan_Company_Id, name_First, name_Last, email, phone, employer, score, comment',
   // exhibitors: 'id, name',
-  company: "id, &ex_Id, name, login_Url, lead_Ret, expo_Year, expo_Client",
+  company: "id, &ex_Id, name, emailPrivate, login_Url, lead_Ret, expo_Year, expo_Client",
   userSesh: "sId, uId, name, email, role",
   adminOptions: "id, clientSelected, yearSelected, lastView"
 })

@@ -1,5 +1,5 @@
 import { Lead } from "../models/index.js"
-import { Op } from 'sequelize';
+import { Op } from "sequelize";
 
 // Create a new lead
 export const createLead = async ( req, res ) => {
@@ -23,7 +23,7 @@ export const createLead = async ( req, res ) => {
         score,
         comment
     } = req.body
-    console.log( 'Creating Lead: ', req.body )
+    console.log( "Creating Lead: ", req.body )
     try {
         const newLead = await Lead.create( {
             expo_Client,
@@ -47,18 +47,18 @@ export const createLead = async ( req, res ) => {
         } )
         res.status( 201 ).json( newLead )
     } catch ( error ) {
-        console.error( 'Error while creating lead: ', error )
+        console.error( "Error while creating lead: ", error )
 
-        if ( error.name === 'SequelizeForeignKeyConstraintError' ) {
+        if ( error.name === "SequelizeForeignKeyConstraintError" ) {
             return res.status( 400 ).json( {
-                error: 'Invalid foreign key',
-                message: 'Referenced attendee or company does not exist'
+                error: "Invalid foreign key",
+                message: "Referenced attendee or company does not exist"
             } )
         }
 
         res.status( 500 ).json( {
-            error: 'Something went wrong on the server.',
-            details: error?.message || 'Unknown error',
+            error: "Something went wrong on the server.",
+            details: error?.message || "Unknown error",
             stack: error.stack
         } )
     }
@@ -71,18 +71,18 @@ export const getAllLeads = async ( req, res ) => {
         if ( leads ) {
             res.json( leads )
         } else {
-            res.status( 404 ).json( { error: 'No leads found.' } )
+            res.status( 404 ).json( { error: "No leads found." } )
         }
     } catch ( error ) {
-        console.error( 'error in controller: ', error )
+        console.error( "error in controller: ", error )
         res.status( 500 ).json( {
-            error: 'Something went wrong.',
-            details: error?.message || 'Unknown error'
+            error: "Something went wrong.",
+            details: error?.message || "Unknown error"
         } )
     }
 }
 
-// Get all leads by exhibitor
+// Get all leads by company
 export const getAllExhibitorLeads = async ( req, res ) => {
     const company_Id = req.params.id
     try {
@@ -94,13 +94,13 @@ export const getAllExhibitorLeads = async ( req, res ) => {
         if ( leads ) {
             res.json( leads )
         } else {
-            res.status( 404 ).json( { error: 'No leads found for this company.' } )
+            res.status( 404 ).json( { error: "No leads found for this company." } )
         }
     } catch ( error ) {
-        console.error( 'error in controller getAllExhibitorLeads: ', error )
+        console.error( "error in controller getAllExhibitorLeads: ", error )
         res.status( 500 ).json( {
-            error: 'Something went wrong with getAllExhibitorLeads.',
-            details: error?.message || 'Unknown error'
+            error: "Something went wrong with getAllExhibitorLeads.",
+            details: error?.message || "Unknown error"
         } )
     }
 }
@@ -113,13 +113,13 @@ export const getLeadById = async ( req, res ) => {
         if ( lead ) {
             res.json( lead )
         } else {
-            res.status( 404 ).json( { error: 'Lead not found' } )
+            res.status( 404 ).json( { error: "Lead not found" } )
         }
     } catch ( error ) {
-        console.error( 'error in controller: ', error )
+        console.error( "error in controller: ", error )
         res.status( 500 ).json( {
-            error: 'Something went wrong.',
-            details: error?.message || 'Unknown error'
+            error: "Something went wrong.",
+            details: error?.message || "Unknown error"
         } )
     }
 }
@@ -164,13 +164,13 @@ export const updateLead = async ( req, res ) => {
             await lead.save()
             res.json( lead )
         } else {
-            res.status( 404 ).json( { error: 'Lead not found' } )
+            res.status( 404 ).json( { error: "Lead not found" } )
         }
     } catch ( error ) {
-        console.error( 'error in controller: ', error )
+        console.error( "error in controller: ", error )
         res.status( 500 ).json( {
-            error: 'Something went wrong.',
-            details: error?.message || 'Unknown error'
+            error: "Something went wrong.",
+            details: error?.message || "Unknown error"
         } )
     }
 }
@@ -184,13 +184,13 @@ export const deleteLead = async ( req, res ) => {
             await lead.destroy()
             res.json( lead )
         } else {
-            res.status( 404 ).json( { error: 'Lead not found' } )
+            res.status( 404 ).json( { error: "Lead not found" } )
         }
     } catch ( error ) {
-        console.error( 'error in controller: ', error )
+        console.error( "error in controller: ", error )
         res.status( 500 ).json( {
-            error: 'Something went wrong.',
-            details: error?.message || 'Unknown error'
+            error: "Something went wrong.",
+            details: error?.message || "Unknown error"
         } )
     }
 }

@@ -53,27 +53,25 @@
           </a>
         </div>
       </nav>
-      <!--        v-if="session.data.user.role === 'admin'"-->
       <div
         class="col-12-300 --flex-basis-5 --justify-content-end"
         @click="$emit('closeNav')"
       >
         <router-link
+          v-if="session.data === null"
           :to="{name: 'Login'}"
           class="button"
         >
-          Login
+          Login {{ session }}
         </router-link>
         <router-link
+          v-if="session.data !== null && session.data.user.role === 'admin'"
           :to="{name: 'Manage Attendees'}"
           class="button"
-
         >
           Admin Dashboard
         </router-link>
-        <ButtonSignOut
-
-        />
+        <ButtonSignOut/>
       </div>
     </div>
   </div>
@@ -84,6 +82,9 @@
 import ButtonSignOut from "../Button_SignOut.vue"
 import { useEventLocalStore } from "@/stores/event.ts";
 import { useCompanyLocalStore } from "@/stores/company.ts";
+import { authClient } from "@/lib/auth-client.ts"
+
+const session = authClient.useSession()
 
 const companyStore = useCompanyLocalStore()
 const eventStore = useEventLocalStore()

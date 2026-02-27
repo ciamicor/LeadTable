@@ -17,9 +17,8 @@
       bottomPad : {{ bottomPad }}
     </div>-->
   <div class="row-12-300 --align-items-center --m-h-10-clamp --p-b-4-clamp">
-    <label class="--flex-grow-0"
+    <label class="--flex-grow-0 --m-0"
            for="name">
-      Client Name
       <select id="select-client"
               v-model="eventStore.expo_Client"
               name="select-client"
@@ -27,7 +26,19 @@
       >
         <option
           selected
+          value="ASIFT">ASIFT
+        </option>
+        <option
+          selected
           value="CSIFT">CSIFT
+        </option>
+        <option
+          selected
+          value="LEIFT">LEIFT
+        </option>
+        <option
+          selected
+          value="MNIFT">MNIFT
         </option>
         <option
           value="MWSCC">MWSCC
@@ -40,9 +51,8 @@
         </option>
       </select>
     </label>
-    <label class="--flex-grow-0"
+    <label class="--flex-grow-0 --m-0"
            for="expo-year">
-      Expo Year
       <select id="select-client"
               v-model="eventStore.expo_Year"
               name="select-client"
@@ -52,16 +62,18 @@
           selected
           value="2026">2026
         </option>
-        <option
-          value="2025">2025
-        </option>
       </select>
     </label>
     <button id="search-expo"
-            :class="searchUpdated ? '--primary--invert' : ''"
+            :class="searchUpdated ? ' --primary--invert ' : ' --color-grey-7 '"
             @click="getAttendees"
             @keydown.enter="getAttendees">
       Search
+    </button>
+    <button
+      @click="getAttendees"
+    >
+      <i class="bi-arrow-counterclockwise"></i>
     </button>
     <span class="--flex-grow-1"/>
     <span v-if="attendeeList"
@@ -81,6 +93,7 @@
       <tbody>
       <tr>
         <th></th>
+        <th>#</th>
         <th>Registered On</th>
         <th>ID #</th>
         <th>Year</th>
@@ -106,7 +119,8 @@
           class="table-attendee-row">
         <AttendeeRow
           :attendee="attendee"
-          :rowNum="index"
+          :custom-fields="customFields"
+          :rowNum="index + 1"
           @delete-attendee="deleteAttendee(attendee.id, `${attendee.name_First} ${attendee.name_Last}`)"
         />
       </tr>
@@ -128,6 +142,7 @@ import AttendeeRow from "@/components/attendee/AttendeeRow.vue"
 import { db } from "@/db.ts"
 import { getCustomFields_Service } from "@/services/CustomFieldsDataService.ts"
 import { getExpo_Service } from "@/services/EventDataService.ts"
+import { object } from "better-auth"
 
 const attendeeList = ref()
 const displayList = ref()
@@ -200,6 +215,7 @@ onMounted(async () => {
     console.log(db.adminOptions.get(1))
     eventStore.expo_Client = d.clientSelected
     eventStore.expo_Year = d.yearSelected
+    await getExpo_Service(eventStore.expo_Client, eventStore.expo_Year, eventStore)
     await getAttendees()
   }
   else if (d === undefined) {
@@ -211,10 +227,12 @@ onMounted(async () => {
       yearSelected: eventStore.expo_Year,
       lastView: ""
     })
+    await getExpo_Service(eventStore.expo_Client, eventStore.expo_Year, eventStore)
+    await getAttendees()
   }
   // console.log(attendeeList.value)
-  statusStore.$reset()
   displayList.value = attendeeList.value
+  statusStore.$reset()
 })
 
 /*-| Admin Functions
@@ -235,12 +253,18 @@ async function updateAdminOptions() {
 /*-| Attendees Functions
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 async function getAttendees() {
-  statusStore.status = "Loading..."
-  attendeeList.value = await getExpoAttendees_Service(eventStore.expo_Client, eventStore.expo_Year)
-  displayList.value = attendeeList.value
-  customFields.value = await getCustomFields_Service(eventStore.eventId)
-  statusStore.$reset()
-  searchUpdated.value = false
+  try {
+    statusStore.status = "Loading..."
+    customFields.value = await getCustomFields_Service(eventStore.eventId)
+    console.log(customFields.value)
+    attendeeList.value = await getExpoAttendees_Service(eventStore.expo_Client, eventStore.expo_Year)
+    displayList.value = attendeeList.value
+    statusStore.$reset()
+    searchUpdated.value = false
+    console.log(attendeeList.value)
+  } catch (e) {
+    console.log("I wasn't able to get those attendees.")
+  }
 }
 
 async function deleteAttendee(i: number, n: string) {
@@ -256,58 +280,53 @@ async function deleteAttendee(i: number, n: string) {
   statusStore.$reset()
 }
 
-// Declare a flatten function that takes
-// object as parameter and returns the
-// flatten object
-const flattenObj = (ob: object) => {
-
-  // The object which contains the
-  // final result
-  let result = {};
-
-  // loop through the object "ob"
-  for (const i in ob) {
-
-    // We check the type of the i using
-    // typeof() function and recursively
-    // call the function again
-    if ((typeof ob[i]) === "object" && !Array.isArray(ob[i])) {
-      const temp = flattenObj(ob[i]);
-      for (const j in temp) {
-
-        // Store temp in result
-        result[i + "." + j] = temp[j];
-      }
+/*-| Custom Fields
+==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+function flattenCustomFields(obj: object) {
+  let flat = {}
+  // Loop through attendee obj
+  Object.keys(obj).forEach((key) => {
+    // Loop through keys with objects, like custom fields.
+    if (key === "customFields" || typeof obj[key] === "object" && obj[key] !== null) {
+      let cFields = obj[key]
+      Object.keys(cFields).forEach(key => {
+        let fieldTitle = key
+        let fieldObject = cFields[key]
+        let fieldValues = Object.values(fieldObject)
+        let fieldHold = ""
+        console.log("Title: " + fieldTitle)
+        console.log("Values: " + fieldValues)
+        let x = 0
+        while (fieldValues.length > x && fieldValues[x] !== false) {
+          // if only one item, or last item
+          if (fieldValues.length === 1 || x === fieldValues.length - 1) {
+            fieldHold += fieldValues[x]
+          }
+          // for middle items
+          else {
+            fieldHold += fieldValues[x] + ", "
+          }
+          x++
+        }
+        flat[fieldTitle] = fieldHold
+      })
     }
-
-    // Else store ob[i] in result directly
-    else {
-      result[i] = ob[i];
+    else if (typeof obj[key] !== "object" && obj[key] !== null) {
+      flat[key] = obj[key]
     }
-  }
-  return result;
-};
-
-/*-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===
--| TODO - PAUSED: Flattening Attendee object for export to sheet!!
--|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===/*/
-function iterateList() {
-  const l = () => {
-    for (let key in attendeeList.value
-      ) {
-      if (attendeeList.value.hasOwnProperty(key)) {
-        flattenObj(attendeeList.value)
-      }
-    }
-  }
-  return l
+  })
+  console.log(flat)
+  return flat
 }
 
 async function exportAttendees() {
   console.log(typeof attendeeList.value)
-  let test = iterateList()
-  console.log(test)
-  const formattedLeads = attendeeList.value
+  let flatList = []
+  attendeeList.value.forEach((attendee: object) => {
+    flatList.push(flattenCustomFields(attendee))
+  })
+  console.log(flatList)
+  const sheetFormatLeads = flatList
     .map(({
       id,
       expo_Client,
@@ -316,10 +335,11 @@ async function exportAttendees() {
       upload_Id,
       createdAt,
       techSessions,
+      customFields,
       ...item
     }) => item)
-  console.log(formattedLeads)
-  const worksheet = utils.json_to_sheet(formattedLeads)
+  console.log(sheetFormatLeads)
+  const worksheet = utils.json_to_sheet(sheetFormatLeads)
   const workbook = utils.book_new()
   utils.book_append_sheet(workbook, worksheet, `Attendees`)
   utils.sheet_add_aoa(worksheet,
@@ -341,9 +361,9 @@ async function exportAttendees() {
       ]
     ],
     {origin: "A1"})
-  /*writeFile(workbook,
-    `${eventStore.name}-${eventStore.expo_Year}-Expo-Attendees.xlsx`,
-    {compression: true})*/
+  writeFile(workbook,
+    `${eventStore.expo_Client}-${eventStore.expo_Year}-Expo-Attendees.xlsx`,
+    {compression: true})
 }
 
 </script>

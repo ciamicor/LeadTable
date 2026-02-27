@@ -111,11 +111,11 @@
 </template>
 
 <script setup>
-import { QrcodeStream } from 'vue-qrcode-reader'
-import { createLead_Service } from '@/services/LeadDataService.ts'
-import AttendeeDataService from '@/services/AttendeeDataService.ts'
-import { inject, onBeforeMount, onMounted, ref } from 'vue'
-import router from '@/router.ts'
+import { QrcodeStream } from "vue-qrcode-reader"
+import { createLead_Service } from "@/services/LeadDataService.ts"
+import AttendeeDataService from "@/services/AttendeeDataService.ts"
+import { inject, onBeforeMount, onMounted, ref } from "vue"
+import router from "@/router.ts"
 
 import { useCompanyLocalStore } from "@/stores/company.ts";
 
@@ -128,7 +128,7 @@ const exhibitorLocal = useCompanyLocalStore()
 /*-| Scanning |-*/
 const scanConfirm = ref( false )
 const scanCodeFound = ref( false )
-const scanTarget = ref( 'Loading' )
+const scanTarget = ref( "Loading" )
 
 /*-| General |-*/
 let ratings = [ 1, 2, 3, 4, 5 ]
@@ -140,24 +140,24 @@ let attendee = ref(
   {
     expo_Year: exhibitorLocal.expo_Year,
     expo_Client: exhibitorLocal.expo_Client,
-    name_First: '',
-    name_Last: '',
-    contact_Email: '',
-    contact_Phone: '',
-    contact_Employer: '',
-    title: '',
-    regType: '',
-    techSessions: '',
-    address_Line1: '',
-    address_Line2: '',
-    address_City: '',
-    address_State: '',
-    address_Zip: '',
-    address_Country: '',
+    name_First: "",
+    name_Last: "",
+    contact_Email: "",
+    contact_Phone: "",
+    contact_Employer: "",
+    title: "",
+    regType: "",
+    techSessions: "",
+    address_Line1: "",
+    address_Line2: "",
+    address_City: "",
+    address_State: "",
+    address_Zip: "",
+    address_Country: "",
   }
 )
 
-/*-| exhibitor Service |-*/
+/*-| company Service |-*/
 let company = ref(
   {
     id: exhibitorLocal.id,
@@ -202,7 +202,7 @@ async function getAttendee( id ) {
   await attendeeService.get( id )
     .then( ( response ) => {
       attendee.value = response.data
-      console.log( 'attendee: ', attendee.value )
+      console.log( "attendee: ", attendee.value )
     } )
     .catch( ( e ) => {
       console.log( e )
@@ -223,7 +223,7 @@ function updateScore( r ) {
 /*-| Manage Lead Data
 ---+----+---+----+---+----+---+----+---*/
 function resetScanning() {
-  scanTarget.value = 'Scanning'
+  scanTarget.value = "Scanning"
   scanConfirm.value = false
   scanCodeFound.value = false
 }
@@ -265,12 +265,12 @@ async function loadLead() {
 /*-| Get ID from QR Code |-*/
 async function getQrId( e ) {
   let url = e[0].rawValue
-  let id = new URL( url ).searchParams.get( 'id' )
-  console.log( 'id scanned is: ', id )
+  let id = new URL( url ).searchParams.get( "id" )
+  console.log( "id scanned is: ", id )
   if ( id ) {
     await getAttendee( id )
     scanCodeFound.value = true
-    scanTarget.value = attendee.value.name_First + ' ' + attendee.value.name_Last
+    scanTarget.value = attendee.value.name_First + " " + attendee.value.name_Last
   }
 }
 

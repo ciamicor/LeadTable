@@ -2,7 +2,7 @@
   <button v-if="session.data"
           :class="props.css_classes + '--warn--invert'"
           @click="signOut()">
-    Sign Out (Auth)
+    Sign Out
   </button>
   <button v-if="session.data"
           :class="props.css_classes + '--warn--invert'"
@@ -40,13 +40,13 @@ async function signOut() {
 }
 
 async function logOut() {
-  console.log("exhibitor local:", companyLocal.name)
+  console.log("company local:", companyLocal.name)
   console.log("loginId match:", props.loginIdMatch)
   console.log("extras match:", props.extraMatch)
   db.company.clear()
   sessionStore.logged_In = false
   companyLocal.$reset()
-  console.log("exhibitor local:", companyLocal.name)
+  console.log("company local:", companyLocal.name)
   console.log("loginId match:", props.loginIdMatch)
   console.log("extras match:", props.extraMatch)
 }

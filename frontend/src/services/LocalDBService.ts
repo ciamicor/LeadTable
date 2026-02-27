@@ -7,6 +7,7 @@ import type { Ref } from "vue";
 export async function saveLogin_LocalDB(
   exId: any,
   name: string,
+  emailPrivate: string,
   loginUrl: string,
   leadRet: boolean,
   expoClient: string,
@@ -17,6 +18,7 @@ export async function saveLogin_LocalDB(
     const id = await db.company.add({
       id: 1,
       ex_Id: exId || 0,
+      emailPrivate: emailPrivate,
       name: name,
       login_Url: loginUrl,
       lead_Ret: leadRet,

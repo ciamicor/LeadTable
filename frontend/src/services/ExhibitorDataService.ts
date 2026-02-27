@@ -23,7 +23,7 @@ class ExhibitorDataService {
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const exhibitorService = new ExhibitorDataService()
 
-/*-| Create exhibitor
+/*-| Create company
 ---+----+---+----+---+----+---+----+---*/
 export async function createExhibitor_Service(companyObject: any) {
   console.log("Creating company: ", companyObject)
@@ -46,9 +46,9 @@ export async function createExhibitor_Service(companyObject: any) {
   }
 }
 
-/*-| Get by exhibitor & Expo ID
+/*-| Get by company & Expo ID
 ---+----+---+----+---+----+---+----+---*/
-export async function getExhibitor_Service(cId: any, exhibitorObject: any = null) {
+export async function getCompany_Service(cId: any, exhibitorObject: any = null) {
   try {
     let exhibitor = await exhibitorService.get(cId)
     console.log("Exhibitor object: ", exhibitorObject)
@@ -89,7 +89,7 @@ export async function getLocalExhibitor_Service(c: any) {
   }
 }
 
-/*-| Update exhibitor in Database
+/*-| Update company in Database
 ---+----+---+----+---+----+---+----+---*/
 export async function updateExhibitor_Service(id: any, retStatus: boolean) {
   console.log("Updating company: ", id)

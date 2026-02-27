@@ -29,7 +29,7 @@ export async function getAllFPExhibitors(client: any, year: any) {
   }
 }
 
-/*-| Get exhibitor ID
+/*-| Get company ID
 ---+----+---+----+---+----+---+----+---*/
 export async function getFPExhibitorId(
   externalId: any,
@@ -52,7 +52,7 @@ export async function getFPExhibitorId(
         "token": expoData.token
       }
     })
-    console.log("Got exhibitor: ", res.data)
+    console.log("Got company: ", res.data)
     expoData.token = ""
     return res.data.id
   } catch (e) {
@@ -60,7 +60,7 @@ export async function getFPExhibitorId(
   }
 }
 
-/*-| Get exhibitor Details
+/*-| Get company Details
 ---+----+---+----+---+----+---+----+---*/
 export async function getFPExhibitor(
   id: any,
@@ -81,7 +81,7 @@ export async function getFPExhibitor(
         "id": id
       }
     })
-    console.log("Got exhibitor: ", res.data)
+    console.log("Got company: ", res.data)
     expoData.token = ""
     return res.data
   } catch (e) {
@@ -89,7 +89,7 @@ export async function getFPExhibitor(
   }
 }
 
-/*-| Get exhibitor Extras
+/*-| Get company Extras
 ---+----+---+----+---+----+---+----+---*/
 export async function getFPExhibitorExtras(
   id: any,
@@ -111,7 +111,7 @@ export async function getFPExhibitorExtras(
         "exhibitorId": id
       }
     })
-    // console.log("exhibitor extras are: ", res.addresses)
+    // console.log("company extras are: ", res.addresses)
     expoData.token = ""
     return res.data
   } catch (e) {
@@ -120,7 +120,7 @@ export async function getFPExhibitorExtras(
 
 }
 
-/*-| Add exhibitor
+/*-| Add company
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 export async function addFPExhibitor(
   client: any,
@@ -129,7 +129,7 @@ export async function addFPExhibitor(
 ) {
   /*-| Check if exists in ExpoFP already
   ---+----+---+----+---+----+---+----+---*/
-  console.log("exhibitor is:")
+  console.log("company is:")
   console.log(exhibitor)
   // TODO getExhibitorId runs more times than necessary
   const existsId = await getFPExhibitorId(
@@ -140,10 +140,10 @@ export async function addFPExhibitor(
   // getExhibitorId returns a number
   if (typeof existsId === "number") {
     console.log(`Exhibitor ${existsId} already exists. Moving on.`)
-    return "exhibitor already exists."
+    return "company already exists."
   }
   else if (typeof existsId !== "number") {
-    console.log("exhibitor doesn't exist yet. I'll create that now.")
+    console.log("company doesn't exist yet. I'll create that now.")
     try {
       const getData: any = await getExpoToken_Service(client, year)
       let expoData: { expoId: number, token: string } = {
@@ -174,10 +174,10 @@ export async function addFPExhibitor(
           "externalId": exhibitor.externalId
         }
       })
-      console.log("Added exhibitor: ", exhibitor.name)
+      console.log("Added company: ", exhibitor.name)
       console.log(exhibitor)
       // expoData.token = ""
-      return "exhibitor created!"
+      return "company created!"
     } catch (e) {
       console.log(`Error! ${e}`)
     }
@@ -187,7 +187,7 @@ export async function addFPExhibitor(
 // TODO isolate get token function, so that it only runs once
 //  when calling multiple API calls.
 
-/*-| Add exhibitor Booth
+/*-| Add company Booth
 ---+----+---+----+---+----+---+----+---*/
 export async function addFPExhibitorBooth(
   client: any,
