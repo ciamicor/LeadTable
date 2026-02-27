@@ -6,7 +6,7 @@ import cors from "cors";
 
 // Better Auth
 import { toNodeHandler } from "better-auth/node";
-import { auth } from "./auth/auth.js";
+import { auth } from "./build/auth.js";
 
 // Init Routes
 import leadRoutes from "./routes/lead.routes.js"
