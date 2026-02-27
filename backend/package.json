@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsx auth.ts && node app.js"
+    "build": "tsc",
+    "start": "node app.js"
   },
   "author": "Claire Mooney, IAMI",
   "license": "ISC",
