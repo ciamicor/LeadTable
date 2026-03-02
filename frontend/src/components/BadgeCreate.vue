@@ -449,8 +449,9 @@ function resetForm() {
   addCustomFields()
 }
 
-function addCustomFields() {
+async function addCustomFields() {
   console.log( typeof customFields.value )
+  console.log( customFields.value )
   customFields.value.forEach( ( i ) => {
     console.log( i.displayTitle )
     attendee.value.customFields[i.displayTitle] = {}
@@ -460,7 +461,7 @@ function addCustomFields() {
 onBeforeMount( async () => {
   try {
     await getCustomFields()
-    addCustomFields()
+    await addCustomFields()
   } catch ( error ) {
     console.log( "I don't think theres any custom fields for this form.", error )
   }

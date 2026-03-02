@@ -1,4 +1,4 @@
-'use strict'
+"use strict"
 import { Model, DataTypes } from "sequelize";
 import sequelize from "../config/config.js";
 
@@ -16,6 +16,7 @@ class CustomField extends Model {
 CustomField.init( {
         eventId: DataTypes.INTEGER,
         label: DataTypes.STRING,
+        displayTitle: DataTypes.STRING,
         title: DataTypes.STRING,
         subtitle: DataTypes.STRING,
         placeholder: DataTypes.STRING,
@@ -28,7 +29,7 @@ CustomField.init( {
     },
     {
         sequelize,
-        modelName: 'CustomField'
+        modelName: "CustomField"
     } )
 
 export default CustomField
