@@ -2,6 +2,8 @@ import { betterAuth } from "better-auth";
 import { admin as AdminPlugin } from "better-auth/plugins"
 // import { ac, admin } from "./auth/permissions";
 
+// CMD "npx tsc" to build TS files for production deployment.
+
 import Database from "better-sqlite3";
 
 export const auth: unknown = betterAuth({
