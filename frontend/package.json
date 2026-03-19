@@ -24,7 +24,7 @@
     "dexie": "^4.0.11",
     "express": "^5.1.0",
     "html2canvas": "^1.4.1",
-    "jspdf": "^4.0.0",
+    "jspdf": "4.2.1",
     "pdfmake": "^0.2.18",
     "pinia": "^3.0.1",
     "qrcode.vue": "^3.6.0",
