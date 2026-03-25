@@ -22,28 +22,40 @@
         <button
           class="qr-float-confirm --primary --flex-basis-65"
           @click="scanConfirm = true">
-          <i class="bi-plus-lg --m-r-4"/> Add Lead
+          <i class="bi-plus-lg --m-r-4"/> Continue Adding
         </button>
       </div>
     </div>
   </div>
   <div v-if="scanConfirm"
-       class="row">
+       class="row --w-100 --max-w-650">
     <div
-      class="col-12-300 --gap-2 --m-h-8 --m-v-12">
+      class="col-12-300 --flex-grow --gap-2 --m-h-8 --m-v-12">
       <h3 class="--m-b-3">Confirm Lead</h3>
       <span class="--color-grey-6">Name: </span>
       <div class="--m-b-2 --m-l-4">
         {{ attendee.name_First }} {{ attendee.name_Last }}
       </div>
-      <span class="--color-grey-6">Email: </span>
-      <div class="--m-b-2 --m-l-4">{{ attendee.contact_Email }}</div>
-      <span class="--color-grey-6">Phone: </span>
-      <div class="--m-b-2 --m-l-4">{{ attendee.contact_Phone }}</div>
-      <span class="--color-grey-6">Employer: </span>
-      <div class="--m-b-2 --m-l-4">{{ attendee.contact_Employer }}</div>
-      <span class="--color-grey-6">Title: </span>
-      <div class="--m-b-2 --m-l-4">{{ attendee.title }}</div>
+      <div class="row-12-300 --m-v-4">
+        <div class="col-6-300">
+          <span class="--color-grey-6">Email: </span>
+          <div class="--m-b-2 --m-l-4">{{ attendee.contact_Email }}</div>
+        </div>
+        <div class="col-6-300">
+          <span class="--color-grey-6">Phone: </span>
+          <div class="--m-b-2 --m-l-4">{{ attendee.contact_Phone }}</div>
+        </div>
+      </div>
+      <div class="row-12-300 --m-v-4">
+        <div class="col-6-300">
+          <span class="--color-grey-6">Employer: </span>
+          <div class="--m-b-2 --m-l-4">{{ attendee.contact_Employer }}</div>
+        </div>
+        <div class="col-6-300">
+          <span class="--color-grey-6">Title: </span>
+          <div class="--m-b-2 --m-l-4">{{ attendee.title }}</div>
+        </div>
+      </div>
       <span class="--color-grey-6">Address<!---->: </span>
       <div class="--m-l-4">
         <div>{{ `${ attendee.address_Line1 }, ${ attendee.address_Line2 }` }}</div>
@@ -82,18 +94,14 @@
       </form>
       <div class="row-12-300 --no-space --m-t-12">
         <button
-          class="--primary--invert --flex-basis-100 --p-11"
-          @click="createLead(lead); router.push(`/${companyLocal.expo_Client}/${companyLocal.expo_Year}/leads-list`)">
-          Add {{ lead.name_First }}
-        </button>
-        <button
-          class="--warn --flex-basis-30 --flex-grow --p-10"
+          class="--flex-basis-30 --flex-grow --p-10"
           @click="resetScanning">
-          Go Back
+          Cancel
         </button>
         <button
-          class="--success --flex-basis-65 --flex-grow --p-10"
-          @click="createLead(lead)">Add & Scan Another
+          class="--primary--invert --flex-basis-65 --p-11"
+          @click="createLead(lead)">
+          {{ status.message ? status.message : `Add ${ lead.name_First }` }}
         </button>
       </div>
     </div>
@@ -112,12 +120,12 @@
 </template>
 
 <script setup>
-import { QrcodeStream } from 'vue-qrcode-reader'
-import { createLead_Service } from '@/services/LeadDataService.js'
-import AttendeeDataService from '@/services/AttendeeDataService.ts'
-import { inject, onBeforeMount, onMounted, ref } from 'vue'
-import router from '@/router.js'
-import { useExhibitorLocalStore } from '@/stores.js'
+import { QrcodeStream } from "vue-qrcode-reader"
+import { createLead_Service } from "@/services/LeadDataService.js"
+import { getAttendee_Service } from "@/services/AttendeeDataService.ts"
+import { inject, onBeforeMount, onMounted, reactive, ref } from "vue"
+import router from "@/router.js"
+import { useExhibitorLocalStore } from "@/stores.js"
 
 /*-| Variables |-*/
 /*---+----+---+----+---+----+---+----+---*/
@@ -126,34 +134,37 @@ const debug = false
 const companyLocal = useExhibitorLocalStore()
 
 /*-| Scanning |-*/
+const status = reactive( {
+  state: undefined,
+  message: undefined
+} )
 const scanConfirm = ref( false )
 const scanCodeFound = ref( false )
-const scanTarget = ref( 'Loading' )
+const scanTarget = ref( "Loading" )
 
 /*-| General |-*/
 let ratings = [ 1, 2, 3, 4, 5 ]
 const commentRef = ref( null )
 
 /*-| Lead Service |-*/
-const attendeeService = new AttendeeDataService()
 let attendee = ref(
   {
     expo_Year: companyLocal.expo_Year,
     expo_Client: companyLocal.expo_Client,
-    name_First: '',
-    name_Last: '',
-    contact_Email: '',
-    contact_Phone: '',
-    contact_Employer: '',
-    title: '',
-    regType: '',
-    techSessions: '',
-    address_Line1: '',
-    address_Line2: '',
-    address_City: '',
-    address_State: '',
-    address_Zip: '',
-    address_Country: '',
+    name_First: "",
+    name_Last: "",
+    contact_Email: "",
+    contact_Phone: "",
+    contact_Employer: "",
+    title: "",
+    regType: "",
+    techSessions: "",
+    address_Line1: "",
+    address_Line2: "",
+    address_City: "",
+    address_State: "",
+    address_Zip: "",
+    address_Country: "",
   }
 )
 
@@ -196,18 +207,35 @@ let lead = ref(
 onBeforeMount( () => {
 } )
 
+/*-| Check for Error |-*/
+function checkError( x ) {
+  console.log( `** Checking for error **` )
+  // console.log( x )
+  if ( x.error ) {
+    console.error( `I've got an error.` )
+    throw Error( "Error detected!" )
+  } else {
+    console.log( "Nice. No error found." )
+  }
+}
+
 /*-| Manage Related Data |-*/
 /*---+----+---+----+---+----+---+----+---*/
 async function getAttendee( id ) {
-  await attendeeService.get( id )
-    .then( ( response ) => {
-      attendee.value = response.data
-      console.log( 'attendee: ', attendee.value )
-    } )
-    .catch( ( e ) => {
-      console.log( e )
-    } )
-  await loadLead()
+  try {
+    attendee.value = await getAttendee_Service( id )
+    console.log( "attendee: ", attendee.value )
+    checkError( attendee.value )
+    console.log( `Got attendee ${ attendee.value.id }` )
+    await loadLead()
+  } catch ( e ) {
+    console.error( `Error getting attendee` )
+    console.log( e )
+    if ( e === "Request failed with status code 500" ) {
+      console.log( "Caught on network error." )
+    }
+    return { error: `error: ${ e }` }
+  }
 }
 
 /*-| Manage Scan Data |-*/
@@ -223,7 +251,7 @@ function updateScore( r ) {
 /*-| Manage Lead Data |-*/
 /*---+----+---+----+---+----+---+----+---*/
 function resetScanning() {
-  scanTarget.value = 'Scanning'
+  scanTarget.value = "Scanning"
   scanConfirm.value = false
   scanCodeFound.value = false
 }
@@ -263,21 +291,39 @@ async function loadLead() {
 }
 
 /*-| Get ID from QR Code |-*/
-async function getQrId( e ) {
-  let url = e[0].rawValue
-  let id = new URL( url ).searchParams.get( 'id' )
-  console.log( 'id scanned is: ', id )
+async function getQrId( x ) {
+  let url = x[0].rawValue
+  let id = new URL( url ).searchParams.get( "id" )
+  console.log( "id scanned is: ", id )
   if ( id ) {
-    await getAttendee( id )
-    scanCodeFound.value = true
-    scanTarget.value = attendee.value.name_First + ' ' + attendee.value.name_Last
+    try {
+      await getAttendee( id )
+      checkError( attendee.value )
+      scanCodeFound.value = true
+      scanTarget.value = attendee.value.name_First + " " + attendee.value.name_Last
+    } catch ( e ) {
+      console.error( `error with QR code.` )
+      // Wait, then retry on error.
+      setTimeout( async () => {
+        await getQrId( x )
+      }, 1500 )
+    }
   }
 }
 
 /*-| Create Lead |-*/
 async function createLead( l ) {
-  await createLead_Service( l )
-  await resetLead()
-  resetScanning()
+  status.message = "Loading..."
+  try {
+    const newLead = await createLead_Service( l )
+    console.log( newLead )
+    checkError( newLead )
+    await resetLead()
+    resetScanning()
+    await router.push( `/${ companyLocal.expo_Client }/${ companyLocal.expo_Year }/leads-list` )
+  } catch ( e ) {
+    console.error( `Error adding that lead.` )
+    status.message = "Network Error. Try Again?"
+  }
 }
 </script>

@@ -23,7 +23,7 @@
         <button v-show="attendeeListSelected.length === 0 || attendeeListSelected.length > 1"
                 class="--secondary --p-4"
                 @click="printBadges">
-          Print {{ attendeeListSelected.length > 0 ? attendeeListSelected.length : 'All' }} Badges
+          Print {{ attendeeListSelected.length > 0 ? attendeeListSelected.length : "All" }} Badges
         </button>
         <button
           v-show="attendeeListSelected.length === 1"
@@ -124,20 +124,20 @@
         setup>
 import { useExpoLocalStore } from "@/stores.ts";
 import { getUrlHost } from "@/services/functions/UrlService.ts";
-import { jsPDF } from 'jspdf'
+import { jsPDF } from "jspdf"
 import { scaleFont } from "@/services/functions/TextManipulationService.ts";
-import QrCode from '@/components/QrCode.vue'
-import html2canvas from 'html2canvas'
-import BadgeSingle from '@/components/BadgeSingle.vue'
-import AttendeeCard from '@/components/AttendeeCard.vue'
-import { useVueToPrint } from 'vue-to-print'
-import { onMounted, ref } from 'vue'
+import QrCode from "@/components/QrCode.vue"
+import html2canvas from "html2canvas"
+import BadgeSingle from "@/components/BadgeSingle.vue"
+import AttendeeCard from "@/components/AttendeeCard.vue"
+import { useVueToPrint } from "vue-to-print"
+import { onMounted, ref } from "vue"
 import {
   getExpoAttendees_Service,
   getAttendeesUploadId_Service
-} from '@/services/AttendeeDataService.ts'
-import { getAttendeeUploads_Service } from '@/services/UploadDataService.ts'
-import { sortLName_Service } from '@/services/SortService.ts'
+} from "@/services/AttendeeDataService.ts"
+import { getAttendeeUploads_Service } from "@/services/UploadDataService.ts"
+import { sortLName_Service } from "@/services/SortService.ts"
 import LoadingHolder from "@/components/LoadingHolder.vue";
 
 /*-| States |-*/
@@ -153,7 +153,7 @@ const loading = ref( false )
 const attendeeList = ref( {} )
 const attendeeListSelected = ref( [] )
 const attendeeListGrouped = ref( [] )
-const searchTerm = ref( '' )
+const searchTerm = ref( "" )
 const printComponent = ref() // for Print component
 
 /*-| Get Image |-*/
@@ -221,7 +221,7 @@ async function getAllAttendees( client, year ) {
 
 /*-| Search |-*/
 async function resetSearch() {
-  searchTerm.value = ''
+  searchTerm.value = ""
 }
 
 /*-| Chunk array for printing |-*/
@@ -248,9 +248,9 @@ async function chunkObject( a ) {
 
 function mergeSearchTerm( f, l ) {
   let fullName = f + l
-  return fullName.replace( ' ', '' )
+  return fullName.replace( " ", "" )
     .toUpperCase()
-    .includes( searchTerm.value.replace( ' ', '' ).toUpperCase() )
+    .includes( searchTerm.value.replace( " ", "" ).toUpperCase() )
 }
 
 /*-| List Functions |-*/
@@ -285,7 +285,7 @@ Printing
 // TODO Use VueToPrint to generate single badge PDF for printing
 const { handlePrint } = useVueToPrint( {
   content: printComponent,
-  documentTitle: 'Badges'
+  documentTitle: "Badges"
 } )
 
 async function printBadges() {
@@ -309,9 +309,11 @@ async function select2Canvas( s, d ) {
     useCORS: true
   } ).then( canvas => {
     d.value = canvas.toDataURL(
-      'image/png' )
+      "image/png" )
     console.log( canvas )
   } )
+  console.log( selector )
+  console.log( d )
 }
 
 /*-| Store Badge Dimensions, Placement |-*/
@@ -328,13 +330,13 @@ const pt2in = 0.0138888889
 // TODO merge with code from BadgeCreate, then add to service file.
 async function badgeToPDF( a ) {
   console.log( "Creating badge for: " + a.name_First )
-  await select2Canvas( '#qr-code', qrData )
-  await select2Canvas( '#badge-logo', qrLogo )
+  await select2Canvas( "#qr-code", qrData )
+  await select2Canvas( "#badge-logo", qrLogo )
 
   /*-| Declare Badge |-*/
   const badgePdf = new jsPDF( {
-    orientation: 'landscape',
-    unit: 'in',
+    orientation: "landscape",
+    unit: "in",
     format: [ dim.w, dim.h ],
     putOnlyUsedFonts: true
   } )
@@ -346,57 +348,57 @@ async function badgeToPDF( a ) {
   const employSize = scaleFont( a.contact_Employer, 400, 16, 20 )
 
   // Name
-  badgePdf.setFont( 'Helvetica', 'normal', 'bold' );
+  badgePdf.setFont( "Helvetica", "normal", "bold" );
   badgePdf.setFontSize( nameSize )
   badgePdf.text( `${ a.name_First } ${ a.name_Last }`,
     dim.p,
     ((employSize * pt2in) / 3) + ((nameSize + employSize) * pt2in) + (dim.p / 2),
-    { align: 'left' } )
+    { align: "left" } )
 
   // Title
-  badgePdf.setFont( 'Helvetica', 'italic' );
+  badgePdf.setFont( "Helvetica", "italic" );
   badgePdf.setFontSize( titleSize )
   badgePdf.text(
     a.title,
     dim.p,
     +((nameSize * pt2in) / 3) + ((nameSize + employSize + titleSize) * pt2in) + dim.p,
-    { align: 'left' } )
+    { align: "left" } )
 
   // Employer
-  badgePdf.setFont( 'Helvetica', 'normal' );
+  badgePdf.setFont( "Helvetica", "normal" );
   badgePdf.setFontSize( employSize )
   badgePdf.text(
     a.contact_Employer,
     dim.p,
     dim.p * 2,
-    { align: 'left' } )
+    { align: "left" } )
 
   /*-| Add QR Code |-*/
   badgePdf.addImage(
     qrData.value,
-    'PNG',
+    "PNG",
     dim.p,
     dim.h - dim.imgH - dim.p,
     dim.imgH,
     dim.imgH,
-    'qr',
-    'FAST',
+    "qr",
+    "FAST",
     dim.rot )
 
   /*-| Add Logo |-*/
   badgePdf.addImage(
     qrLogo.value,
-    'PNG',
+    "PNG",
     dim.w - dim.p - dim.imgW,
     dim.h - dim.imgH - dim.p,
     dim.imgW,
     dim.imgH,
-    'logo',
-    'FAST',
+    "logo",
+    "FAST",
     dim.rot )
 
   setTimeout( () => {
-    badgePdf.output( 'dataurlnewwindow' )
+    badgePdf.output( "dataurlnewwindow" )
   }, 300 )
 }
 </script>

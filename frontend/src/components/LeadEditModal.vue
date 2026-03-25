@@ -49,13 +49,8 @@
             <input id="phone"
                    v-model="leadLocal.phone"/>
           </label>
-          <label>
-            <span><i class="bi-map --p-r-2"/> Address</span>
-            <input id="address"
-                   v-model="leadLocal.address"/>
-          </label>
           <label class="row-12-300">
-            <span class="--flex-basis-100">Your Address</span>
+            <span class="--flex-basis-100"><i class="bi-map --p-r-2"/> Address</span>
             <input
               v-model="leadLocal.address_Line1"
               autocomplete="address-line1"
@@ -148,7 +143,7 @@ const props = defineProps({
     type: Object, default: () => {
     }
   },
-  visible: {type: Boolean, default: false},
+  visible: {type: Boolean, default: false}
 })
 const leadLocal = ref(props.lead)
 
@@ -159,7 +154,7 @@ const scoreCount = computed(() => {
 
 async function deleteLead(id: number) {
   await deleteLead_Service(id)
-  emit('showModal')
+  emit("showModal")
 }
 
 </script>

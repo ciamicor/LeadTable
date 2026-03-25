@@ -13,22 +13,27 @@
     font-weight:    400;
     text-transform: uppercase;
   }
-  #details {
+  &--details {
   }
-  #name {
+  &--name {
     font-size:        $font-md;
     font-weight:      500;
     line-height:      1;
     margin-block-end: $sp-2;
   }
-  #contact {
-    gap: 12px;
+  &--contact {
+    display:   flex;
+    flex-flow: row wrap;
+    gap:       12px 32px;
   }
-  #phone, #email {
+  &--phone, &--email {
+    overflow:                  hidden;
     color:                     $color-success-4;
     font-size:                 $font-xs;
     font-weight:               300;
-    min-width:                 max-content;
+    white-space:               nowrap;
+    text-overflow:             ellipsis;
+    width:                     150px;
     transition:                background $trans-100;
     text-decoration-line:      underline;
     text-underline-offset:     $sp-1;
@@ -42,7 +47,14 @@
       background: $color-success-12;
     }
   }
-  #score {
+  &--address {
+    flex: 1 1 90%;
+    & i {
+      color:     $color-success-8;
+      font-size: $font-sm;
+    }
+  }
+  &--score {
     display:               grid;
     grid-template-columns: repeat(5, 28px);
     & i {
@@ -50,6 +62,6 @@
       font-size: $font-md;
     }
   }
-  #comment {
+  &--comment {
   }
 }

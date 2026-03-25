@@ -1,36 +1,36 @@
-import http from '../http-common'
+import http from "../http-common"
 
 class LeadDataService {
   create(data: any) {
-    return http.post('/lead', data)
+    return http.post("/lead", data)
   }
 
   getAll() {
-    return http.get('/lead')
+    return http.get("/lead")
   }
 
   getAllExhibLeads(id: any) {
-    return http.get('/lead/exhibitor/' + id)
+    return http.get("/lead/exhibitor/" + id)
   }
 
   get(id: any) {
-    return http.get('/lead/' + id)
+    return http.get("/lead/" + id)
   }
 
   update(id: any, data: any) {
-    return http.put('/lead/' + id, data)
+    return http.put("/lead/" + id, data)
   }
 
   delete(id: any) {
-    return http.delete('/lead/' + id)
+    return http.delete("/lead/" + id)
   }
 
   deleteAll() {
-    return http.delete('/lead')
+    return http.delete("/lead")
   }
 
   findByTitle(title: any) {
-    return http.get('/lead?title=${title}')
+    return http.get("/lead?title=${title}")
   }
 }
 
@@ -41,7 +41,7 @@ const leadService = new LeadDataService()
 /*-| Create Leads
 ---+----+---+----+---+----+---+----+---*/
 async function createLead_Service(lead: any) {
-  console.log('Lead Service: ', lead)
+  console.log("Lead Service: ", lead)
   const data = {
     expo_Client: lead.expo_Client,
     expo_Year: lead.expo_Year,
@@ -64,19 +64,22 @@ async function createLead_Service(lead: any) {
   }
   console.log(data)
   try {
+    // return {error: "Debugging!"}
     let newLead = await leadService.create(data)
     lead.id = newLead.data.id
+    console.log(lead)
     console.log(newLead.data)
-    lead = null
+    return lead
   } catch (e: any) {
     console.log(e)
+    return {error: e}
   }
 }
 
 /*-| Update Lead
 ---+----+---+----+---+----+---+----+---*/
 async function updateLead_Service(id: any, lead: any) {
-  console.log('Updating Lead: ', lead)
+  console.log("Updating Lead: ", lead)
   const data = {
     name_First: lead.name_First,
     name_Last: lead.name_Last,

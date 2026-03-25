@@ -6944,38 +6944,50 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
   font-weight: 400;
   text-transform: uppercase;
 }
-.lead-card #name {
+.lead-card--name {
   font-size: 22px;
   font-weight: 500;
   line-height: 1;
   margin-block-end: 4px;
 }
-.lead-card #contact {
-  gap: 12px;
+.lead-card--contact {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 12px 32px;
 }
-.lead-card #phone, .lead-card #email {
+.lead-card--phone, .lead-card--email {
+  overflow: hidden;
   color: var(--color-success-4);
   font-size: 16px;
   font-weight: 300;
-  min-width: max-content;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 150px;
   transition: background 100ms ease-in-out;
   text-decoration-line: underline;
   text-underline-offset: 2px;
   text-decoration-color: var(--color-success-11);
   text-decoration-thickness: 2px;
 }
-.lead-card #phone i, .lead-card #email i {
+.lead-card--phone i, .lead-card--email i {
   color: var(--color-success-8);
   font-size: 18px;
 }
-.lead-card #phone:hover, .lead-card #email:hover {
+.lead-card--phone:hover, .lead-card--email:hover {
   background: var(--color-success-12);
 }
-.lead-card #score {
+.lead-card--address {
+  flex: 1 1 90%;
+}
+.lead-card--address i {
+  color: var(--color-success-8);
+  font-size: 18px;
+}
+.lead-card--score {
   display: grid;
   grid-template-columns: repeat(5, 28px);
 }
-.lead-card #score i {
+.lead-card--score i {
   color: var(--color-secondary-7);
   font-size: 22px;
 }
