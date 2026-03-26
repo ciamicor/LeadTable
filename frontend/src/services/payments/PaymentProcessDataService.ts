@@ -1,8 +1,8 @@
-import http from '../../http-common'
+import http from "../../http-common"
 
 export default class PaymentProcessorDataService {
   getPaymentProcessor(eventId: number) {
-    return http.get('/paymentprocessor/event/' + eventId)
+    return http.get("/paymentprocessor/event/" + eventId)
   }
 }
 
@@ -16,7 +16,7 @@ const paymentProcessorService = new PaymentProcessorDataService()
 async function getPaymentProcessor_Service(eventId: number) {
   try {
     let paymentProcessor = await paymentProcessorService.getPaymentProcessor(eventId)
-    console.log(paymentProcessor.data)
+    // console.log(paymentProcessor.data)
     return paymentProcessor.data
   } catch (e) {
     console.log(e)

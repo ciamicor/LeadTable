@@ -1,10 +1,12 @@
 <template>
   <!-- Dev Info -->
   <div v-if="dev"
-       class="row-12-300 --flex-basis-5 --gap-10 --p-8 --h-5">
+       class="row-12-300 --flex-basis-5 --gap-10 --p-8 --h-10">
     <div class="--color-success-6">payment enabled : {{ paymentEnabled }}</div>
     <div class="--color-success-6">payment view : {{ paymentView }}</div>
     <div class="--color-success-6">payment accepted : {{ paymentAccepted }}</div>
+    <span>attendeeId: {{ attendeeId }}</span>
+    <div>{{ attendee }}</div>
   </div>
 
   <div
@@ -21,11 +23,7 @@
         {{ expoLocal.name }}
       </h4>
       <h1 id="attendee-reg">{{ expoLocal.name }} Registration</h1>
-      <!-- Remove Teamworks TEMP fix     -->
-      <p v-if="expoLocal.expo_Client.toLowerCase() === 'mwscc'">
-        Register to attend our seminars, expo, social night, and volunteering
-      </p>
-      <p v-else>Register to attend the expo or create booth personnel badges.</p>
+      <p>Register to attend the expo or create booth personnel badges.</p>
 
       <div class="row-12-300 --no-space">
         <label>
@@ -247,12 +245,14 @@
     <div v-show="expoLocal.paymentEnabled && paymentView && !paymentAccepted"
          class="col-12-300 col-8-600 col-8-900 --m-b-24">
       <button
-        class="--flex-basis-20 --align-self-start --m-b-12"
+        v-if="dev"
+        class="--flex-basis-20 --align-self-start --m-b-12 --warn--invert"
         @click="paymentView = false; status = false"
-      ><i class="bi-arrow-left --m-r-4"/>Back to Form
+      ><i class="bi-arrow-left --m-r-4"/>Back to Form (DEV)
       </button>
       <PaymentPayPal
         :attendee="attendee"
+        :attendee-id="attendeeId"
         :email="attendee.contact_Email"
         :event="expoLocal"
         :f-name="attendee.name_First"
@@ -348,12 +348,14 @@ try {
 async function submitForm() {
   attendee.value.contact_Phone = attendee.value.contact_Phone.replace( /\D/g, "" )
   status.value = true
+  await createAttendee( attendee.value )
   if ( paymentEnabled.value === true ) {
     console.log( "Payment form enabled" )
     paymentView.value = true
   } else if ( paymentEnabled.value === false ) {
     console.log( "No payment, creating attendee!" )
-    await createAttendee( attendee.value )
+    status.value = false
+    showQr.value = true
   }
 }
 
@@ -362,8 +364,10 @@ async function submitForm() {
 -|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===/*/
 async function onPaymentAccepted() {
   console.log( "Payment Accepted!" )
+  // await createAttendee( attendee.value )
   paymentAccepted.value = true
-  await createAttendee( attendee.value )
+  status.value = false
+  showQr.value = true
 }
 
 /*-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===
@@ -373,7 +377,7 @@ const dev = ref( window.location.host === "localhost:8081" )
 
 const showQr = ref( false )
 const attendeeId = ref()
-/*const attendee = ref( {
+const attendee = ref( {
   expo_Year: expoLocal.expo_Year,
   expo_Client: expoLocal.expo_Client,
   name_First: "Claire",
@@ -391,9 +395,9 @@ const attendeeId = ref()
   regType: "Attendee",
   techSessions: null,
   customFields: {}
-} )*/
+} )
 
-const attendee = ref( {
+/*const attendee = ref( {
   expo_Year: expoLocal.expo_Year,
   expo_Client: expoLocal.expo_Client,
   name_First: "",
@@ -411,15 +415,13 @@ const attendee = ref( {
   regType: "",
   techSessions: null,
   customFields: {}
-} )
+} )*/
 
 async function createAttendee( a ) {
   await sendRegConfirmEmail_Service( attendee.value, expoLocal )
   await createAttendee_Service( a, expoLocal.expo_Client, expoLocal.expo_Year )
   attendeeId.value = attendee.value.id.toString()
   console.log( "New Attendee's ID is: ", typeof attendeeId.value, attendeeId.value )
-  status.value = false
-  showQr.value = true
 }
 
 function resetForm() {
@@ -462,6 +464,7 @@ onBeforeMount( async () => {
   try {
     await getCustomFields()
     await addCustomFields()
+    console.log( "Got those fields, m'lady." )
   } catch ( error ) {
     console.log( "I don't think theres any custom fields for this form.", error )
   }

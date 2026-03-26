@@ -15,8 +15,9 @@
     </div>
   </div>
 
-  <div id="paypal-buttons"
-       class="--m-t-10"/>
+  <div
+    ref="paypal-buttons"
+    class="--m-t-10"/>
 
   <div v-if="processorInfo.enableSandbox"
        class="col-12-300">
@@ -26,24 +27,22 @@
 
 <script lang="ts"
         setup>
-import { onBeforeMount, defineProps, ref, computed } from "vue";
+import { onBeforeMount, useTemplateRef, defineProps, ref, computed, onMounted } from "vue";
 import { loadScript } from "@paypal/paypal-js";
 import { getPaymentProcessor_Service } from "@/services/payments/PaymentProcessDataService.ts";
 import { getProduct_Service } from "@/services/payments/ProductDataService.ts";
 import { createPayment_Service } from "@/services/payments/PaymentDataService.ts";
 
 // TS specific prop definition
-const emit = defineEmits(['paidFor'])
+const emit = defineEmits(["paidFor"])
 
 const props = defineProps(
-  ['attendee', 'event', 'fName', 'lName', 'email']/*{
-  attendee: {type: Object, default: () => {}},
-  event: {type: Object, default: () => {}}
-}*/)
+  ["attendee", "attendeeId", "event", "fName", "lName", "email"])
 
 const syncedFName = computed(() => props.fName);
 const syncedLName = computed(() => props.lName);
 const syncedEmail = computed(() => props.email);
+const syncedId = computed(() => props.attendeeId);
 
 /*-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===
 -| PayPal
@@ -68,7 +67,7 @@ const product = ref({
 const payInfo = ref({
   nameFirst: syncedFName, // props.attendee.name_First,
   nameLast: syncedLName, // props.attendee.name_Last,
-  attendeeId: null, // props.attendee.id,
+  attendeeId: syncedId, // props.attendee.id,
   payerEmail: syncedEmail, // props.attendee.contact_Email,
   eventId: props.event.eventId,
   eventClient: props.event.expo_Client,
@@ -76,7 +75,7 @@ const payInfo = ref({
   productId: product.value.id,
   processorId: processorInfo.value.id,
   paymentSuccess: true,
-  isSandbox: processorInfo.value.enableSandbox,
+  isSandbox: processorInfo.value.enableSandbox
 })
 
 async function getProduct(eId: number) {
@@ -101,7 +100,9 @@ async function getPaymentProcessor(eId: number) {
   payInfo.value.isSandbox = processorInfo.value.enableSandbox
 }
 
-onBeforeMount(async () => {
+const ppButton = useTemplateRef("paypal-buttons")
+
+onMounted(async () => {
   try {
     await getPaymentProcessor(props.event.eventId)
     await getProduct(props.event.eventId)
@@ -134,13 +135,12 @@ onBeforeMount(async () => {
                       admin_area_1: "", // state code here
                       admin_area_2: props.attendee.address_City,
                       country_code: props.attendee.address_Country,
-                      postal_code: props.attendee.address_Zip,
+                      postal_code: props.attendee.address_Zip
                     },
                     name: {fullName: props.attendee.name_First + props.attendee.name_Last},
                     email_address: props.attendee.contact_Email
                   }
-
-                },
+                }
               ],
               // deprecated...but works while 'payment_source' doesn't
               payer: {
@@ -150,8 +150,8 @@ onBeforeMount(async () => {
                   phone_number: {
                     national_number: props.attendee.contact_Phone
                   }
-                },
-              },
+                }
+              }
               /*payment_source: {
                 paypal: {
                   experience_context: {
@@ -186,7 +186,7 @@ onBeforeMount(async () => {
           },
           onApprove: async (data: any, actions: any) => {
             const order = await actions.order.capture()
-            emit('paidFor')
+            emit("paidFor")
             console.log(order)
             await createPayment_Service(payInfo.value, order)
           },
@@ -197,15 +197,18 @@ onBeforeMount(async () => {
 
           }
         }
-      ).render("#paypal-buttons");
+      ).render(ppButton.value);
+      //  .render("#paypal-buttons");
     } catch (error) {
       console.error("failed to render the PayPal Buttons", error);
     }
+    console.log("I HAVE SUMMONED PAYPAL")
   }
+  console.log("I HAVE LEFT PAYPAL")
 })
 
 function parseIssue(i: string) {
-  let x = i.toLowerCase().replace("_", ' ')
+  let x = i.toLowerCase().replace("_", " ")
   return `Oops, ${x}`
 }
 </script>
