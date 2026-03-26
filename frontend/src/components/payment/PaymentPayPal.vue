@@ -15,8 +15,9 @@
     </div>
   </div>
 
+  <!--    ref="paypal-buttons"-->
   <div
-    ref="paypal-buttons"
+    id="paypal-buttons"
     class="--m-t-10"/>
 
   <div v-if="processorInfo.enableSandbox"
@@ -100,7 +101,7 @@ async function getPaymentProcessor(eId: number) {
   payInfo.value.isSandbox = processorInfo.value.enableSandbox
 }
 
-const ppButton = useTemplateRef("paypal-buttons")
+// const ppButton = useTemplateRef("paypal-buttons")
 
 onMounted(async () => {
   try {
@@ -197,8 +198,8 @@ onMounted(async () => {
 
           }
         }
-      ).render(ppButton.value);
-      //  .render("#paypal-buttons");
+      ).render("#paypal-buttons");
+      // .render(ppButton.value);
     } catch (error) {
       console.error("failed to render the PayPal Buttons", error);
     }
