@@ -71,9 +71,9 @@
 
 <script
   setup>
-import { db } from '@/db.js'
-import { onBeforeMount, ref } from 'vue'
-import { useExpoLocalStore, useExhibitorLocalStore, useSessionStore } from '@/stores.js'
+import { db } from "@/db.js"
+import { onBeforeMount, ref } from "vue"
+import { useExpoLocalStore, useExhibitorLocalStore, useSessionStore } from "@/stores.js"
 import { getUrl_ClientYear } from "@/services/functions/UrlService.ts";
 import { getExpo_Service } from "@/services/ExpoDataService.js";
 import { useRoute, useRouter } from "vue-router";
@@ -105,11 +105,13 @@ async function fetchData( id ) {
       expo_Year: url[1]
     } )
     await getExpo_Service( url.client, url.year, expoLocal )
-    console.log( 'Expo is: ', expoLocal )
+    console.log( "Expo is: ", expoLocal )
   } catch ( err ) {
     error.value = err.toString()
   } finally {
-    loading.value = false
+    setTimeout( () => {
+      loading.value = false
+    }, 200 )
   }
 }
 
