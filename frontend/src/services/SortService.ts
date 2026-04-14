@@ -24,13 +24,12 @@ async function sortFName_Service(i: Array<{}>) {
 
 // By first name
 async function sortLName_Service(i: Array<{}>) {
-
   i.sort((
     a: any,
     b: any
   ) => {
-    const nameA = a.name_Last.toUpperCase() // ignore upper and lowercase
-    const nameB = b.name_Last.toUpperCase() // ignore upper and lowercase
+    const nameA = a.name_Last.toUpperCase().trim() // ignore upper and lowercase
+    const nameB = b.name_Last.toUpperCase().trim() // ignore upper and lowercase
     if (nameA < nameB) {
       return -1
     }
@@ -40,7 +39,8 @@ async function sortLName_Service(i: Array<{}>) {
     // names must be equal
     return 0
   })
-  console.log('Sorted by last name.')
+  console.log("Sorted by last name.")
+  return i
 }
 
 // By Created Date
