@@ -7358,7 +7358,7 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
   top: auto;
   left: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 4px;
   width: max-content;
   padding: 8px;

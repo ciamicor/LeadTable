@@ -122,6 +122,7 @@
         <AttendeeRow
           :attendee="attendee"
           :custom-fields="customFields"
+          :event="eventStore"
           :rowNum="index + 1"
           @delete-attendee="deleteAttendee(attendee.id, `${attendee.name_First} ${attendee.name_Last}`)"
         />

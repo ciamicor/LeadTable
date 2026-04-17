@@ -6,11 +6,19 @@
   <div class="table-edit-buttons">
     <button
       class="--p-4"
+      title="Edit attendee"
       @click="toggleModal">
       <i class="bi-pencil"></i>
     </button>
     <button
+      class="--p-4"
+      title="Resend confirmation email"
+      @click="resendConfirmation">
+      <i class="bi-envelope"></i>
+    </button>
+    <button
       class="--p-4 --warn--invert"
+      title="Delete attendee"
       @click="$emit('deleteAttendee')">
       <i class="bi-trash3"></i>
     </button>
@@ -53,10 +61,13 @@
 <script lang="ts"
         setup>
 import { ref, defineEmits } from "vue"
+import { sendRegConfirmEmail_Service } from "@/services/emails/RegistrationEmailService.ts"
 import AttendeeEditModal from "@/components/attendee/AttendeeEditModal.vue"
+import { useStatusStore } from "@/stores/status.ts"
 
 const props = defineProps({
   attendee: {type: Object, default: () => ({}), required: true},
+  event: {type: Object, default: () => ({}), required: true},
   rowNum: {type: Number, default: 0},
   customFields: {type: Object, default: () => ({}), required: true},
   toggleModal: {}
@@ -65,11 +76,12 @@ const props = defineProps({
 defineEmits(["deleteAttendee"])
 const modalVisible = ref(false)
 
+const statusStore = useStatusStore()
+const formattedField = ref()
+
 function toggleModal() {
   modalVisible.value = !modalVisible.value
 }
-
-const formattedField = ref()
 
 // Runs once for each custom field related to the event.
 // If no custom fields match, it returns null.
@@ -103,6 +115,19 @@ function formatCustomFields(c: { displayTitle: string }, a: any) {
   // console.log("Formatted Output: " + output)
   formattedField.value = output
   return output
+}
+
+/*-| Resend Confirmation Email
+==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+async function resendConfirmation() {
+  statusStore.statusGlobal = `Sending confirmation email to ${props.attendee.contact_Email}...`
+  if (window.confirm(`Resend confirmation email to ${props.attendee.name_First} at ${props.attendee.contact_Email}?`)) {
+    await sendRegConfirmEmail_Service(props.attendee, props.event)
+  }
+  else {
+    console.log("Nevermind, I won't send that confirmation email.")
+  }
+  statusStore.$reset()
 }
 
 </script>
