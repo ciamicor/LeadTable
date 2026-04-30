@@ -1,8 +1,8 @@
-import http from '../../http-common'
+import http from "../../http-common"
 
 export default class RegistrationEmailDataService {
   create(data: any) {
-    return http.post('/emailer/send', data)
+    return http.post("/emailer/send", data)
   }
 }
 
@@ -13,8 +13,8 @@ const regEmailService = new RegistrationEmailDataService()
 
 /*-| Create Attendees
 ---+----+---+----+---+----+---+----+---*/
-async function sendRegConfirmEmail_Service(a: any, e: any,) {
-  console.log('Sending confirmation email to ', a.name_First)
+async function sendRegConfirmEmail_Service(a: any, e: any) {
+  console.log("Sending confirmation email to ", a.name_First)
   const data = {
     attendee: a,
     event: {
@@ -26,13 +26,14 @@ async function sendRegConfirmEmail_Service(a: any, e: any,) {
       "expoFp_MapUrl": e.expoFp_MapUrl,
       "webpage": e.webpage,
       "logoUrl_Color": e.logoUrl_Color,
-    },
+      "paymentEnabled": e.paymentEnabled
+    }
   }
   console.log(data)
   try {
-    console.log('Trying email on the frontend')
+    console.log("Trying email on the frontend")
     let newEmail = await regEmailService.create(data)
-    console.log('Email sent!')
+    console.log("Email sent!")
     console.log(newEmail.data)
   } catch (e: any) {
     console.error("Ouch. I got an error when sending that email. ");

@@ -259,6 +259,9 @@ async function updateAdminOptions() {
 /*-| Attendees Functions
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 async function getAttendees() {
+  customFields.value = undefined
+  attendeeList.value = undefined
+  displayList.value = undefined
   try {
     statusStore.statusGlobal = "Loading..."
     customFields.value = await getCustomFields_Service(eventStore.eventId)

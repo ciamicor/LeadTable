@@ -1,4 +1,6 @@
-import nodemailer from 'nodemailer'
+import nodemailer from "nodemailer"
+import { Payment, PaymentProcessor } from "../models/index.js";
+import { Op } from "sequelize";
 
 /*-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===
 -| Nodemailer
@@ -20,34 +22,74 @@ export const sendEmail = async ( req, res ) => {
         event
     } = req.body
     try {
-        console.log( 'Server email attempt...' )
-        // Send an email using async/await
+        console.log( "Server email attempt..." )
+        /*-| Add Payment Information to email
+        ---+----+---+----+---+----+---+----+---*/
+        if ( event.paymentEnabled ) {
+            console.log( "Payment enabled...searching for attendee payment." )
+            try {
+                attendee.paymentInfo = await Payment.findOne(
+                    {
+                        where: {
+                            attendeeId: attendee.id
+                        }
+                    },
+                )
+                console.log( attendee.paymentInfo.details.purchase_units[0]["description"] )
+            } catch ( e ) {
+                console.log( `No payment found. Error Message: ${ e }` )
+            }
+        }
+        // If payment found, format into email HTML.
+        let paymentLayout = ""
+        if ( attendee.paymentInfo ) {
+            paymentLayout = email_PaymentTable( attendee.paymentInfo )
+        }
+
+        /*-|  TODO Format Custom Fields
+        ---+----+---+----+---+----+---+----+---*/
+        /*-| Send an email using async/await
+        ---+----+---+----+---+----+---+----+---*/
         await (async () => {
         })();
         const info = await transporter.sendMail( {
-            from: `"${ event.clientFull }" <${ process.env.REG_EMAIL_USER }>`,
+            from: `"Leadtable - ${ event.clientFull }" <${ process.env.REG_EMAIL_USER }>`,
             to: `${ attendee.contact_Email }`,
             subject: `${ attendee.name_First }, you're going to ${ event.name }!`,
             text: `You've registered for this event, we're excited to see you!`, // Plain-text version of the message
-            html: email_RegConfirm( attendee, event ) // HTML version of the message
+            html: email_RegConfirm( attendee, event, paymentLayout ) // HTML version of the message
         } );
         console.log( "Message sent:", info.messageId );
         console.log( info );
         res.status( 201 ).json( info )
     } catch ( error ) {
-        console.error( 'Error while sending email: ', error )
+        console.error( "Error while sending email: ", error )
 
         res.status( 500 ).json( {
-            error: 'Something went wrong on the server.',
-            details: error?.message || 'Unknown error',
+            error: "Something went wrong on the server.",
+            details: error?.message || "Unknown error",
             stack: error.stack
         } )
     }
 }
 
+function email_PaymentTable( p ) {
+    const unit = p.details.purchase_units[0]
+    return `
+    <tr style="background-color: hsl(0, 0%, 95%);">
+        <td colspan="2" style="font-weight: 600; padding: 8px;">${ unit["description"] }</td>
+    </tr>
+    <tr>
+        <td style="padding: 8px;">Cost</td>
+        <td style="padding: 8px;">${ "$" + unit["amount"]["value"] } ${ unit["amount"]["currency_code"] }</td>
+    </tr>
+`
+}
+
 function email_RegConfirm(
     a,
-    e ) {
+    e,
+    paymentInfo ) {
     const options = {
         weekday: "long",
         year: "numeric",
@@ -113,6 +155,7 @@ function email_RegConfirm(
                        ${ a.address_Country }<br>
                     </td>
                 </tr>
+                ${ paymentInfo }
                 <tr>
                     <td style="padding-top: 16px;">
                         <button style="width:100%; padding: 8px 16px; border: none; font-size: 16px; background-color: hsl(45, 80%, 56%);">
@@ -133,7 +176,5 @@ function email_RegConfirm(
             </table>
       </body>
     </html>
-
-        
     `
 }

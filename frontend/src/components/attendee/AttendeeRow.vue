@@ -127,7 +127,8 @@ async function resendConfirmation() {
   else {
     console.log("Nevermind, I won't send that confirmation email.")
   }
-  statusStore.$reset()
+  statusStore.statusGlobal = `Email sent to ${props.attendee.contact_Email}!`
+  setTimeout(() => {statusStore.$reset()}, 2000)
 }
 
 </script>
