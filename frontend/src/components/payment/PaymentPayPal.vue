@@ -205,7 +205,6 @@ onMounted(async () => {
     }
     console.log("I HAVE SUMMONED PAYPAL")
   }
-  console.log("I HAVE LEFT PAYPAL")
 })
 
 function parseIssue(i: string) {

@@ -39,29 +39,29 @@ const attendeeService = new AttendeeDataService()
 ---+----+---+----+---+----+---+----+---*/
 async function createAttendee_Service(attendee: any, client: any, year: any, upload: any = null) {
   console.log("Create Attendee Service: ", attendee)
-  const data = {
+  const attendeeNew = {
     expo_Client: client,
     expo_Year: year,
-    name_First: attendee.name_First, // titleCase(attendee.name_First).trim(),
-    name_Last: attendee.name_Last, // titleCase(attendee.name_Last).trim(),
-    contact_Email: attendee.contact_Email, // typeof undefined ? '' : attendee.contact_Email.toLowerCase().trim(),
-    contact_Phone: attendee.contact_Phone, // typeof undefined ? '' : attendee.contact_Phone.trim(),
-    contact_Employer: attendee.contact_Employer, // typeof undefined ? '' : attendee.contact_Employer.trim(),
-    address_Line1: attendee.address_Line1, // typeof undefined ? '' : attendee.address_Line1.trim(),
-    address_Line2: attendee.address_Line2, // typeof undefined ? '' : attendee.address_Line2.trim(),
-    address_City: attendee.address_City, // typeof undefined ? '' : attendee.address_City.trim(),
-    address_State: attendee.address_State, // typeof undefined ? '' : attendee.address_State.trim(),
-    address_Zip: attendee.address_Zip, // typeof undefined ? '' : attendee.address_Zip.trim(),
-    address_Country: attendee.address_Country, // attendee.address_Country,
-    title: attendee.title, // typeof undefined ? '' : attendee.title.trim(),
-    regType: attendee.regType, // typeof undefined ? '' : attendee.regType,
-    techSessions: attendee.techSessions, // typeof undefined ? '' : attendee.techSessions,
+    name_First: attendee.name_First.trim(),
+    name_Last: attendee.name_Last.trim(),
+    contact_Email: attendee.contact_Email,
+    contact_Phone: attendee.contact_Phone,
+    contact_Employer: attendee.contact_Employer,
+    address_Line1: attendee.address_Line1,
+    address_Line2: attendee.address_Line2,
+    address_City: attendee.address_City,
+    address_State: attendee.address_State,
+    address_Zip: attendee.address_Zip,
+    address_Country: attendee.address_Country,
+    title: attendee.title,
+    regType: attendee.regType,
+    techSessions: attendee.techSessions,
     customFields: attendee.customFields,
     upload_Id: upload
   }
-  console.log(data)
+  console.log(attendeeNew)
   try {
-    let newAttendee = await attendeeService.create(data)
+    let newAttendee = await attendeeService.create(attendeeNew)
     attendee.id = newAttendee.data.id
     console.log(newAttendee.data)
     return attendee = newAttendee.data

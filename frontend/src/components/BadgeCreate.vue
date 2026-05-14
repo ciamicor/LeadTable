@@ -242,7 +242,7 @@
     </form>
 
     <!-- Payment Buttons -->
-    <div v-show="expoLocal.paymentEnabled && paymentView && !paymentAccepted"
+    <div v-if="expoLocal.paymentEnabled && paymentView && !paymentAccepted"
          class="col-12-300 col-8-600 col-8-900 --m-b-24">
       <button
         v-if="dev"
@@ -380,15 +380,15 @@ const attendeeId = ref()
 /*const attendee = ref( {
   expo_Year: expoLocal.expo_Year,
   expo_Client: expoLocal.expo_Client,
-  name_First: "Claire",
-  name_Last: "Mooney",
-  contact_Email: "claire@iami411.org",
+  name_First: "   Claire",
+  name_Last: "Mooney      ",
+  contact_Email: "claire@iami411.org           ",
   contact_Phone: "(404) 707-8088",
   contact_Employer: "IAMI",
   address_Line1: "126325 Street St.",
   address_Line2: "\#567",
-  address_City: "Portland",
-  address_State: "Oregon",
+  address_City: "Portland  ",
+  address_State: " Oregon",
   address_Zip: "97214",
   address_Country: "US",
   title: "Developer",

@@ -330,8 +330,8 @@ const pt2in = 0.0138888889
 // TODO merge with code from BadgeCreate, then add to service file.
 async function badgeToPDF( a ) {
   console.log( "Creating badge for: " + a.name_First )
-  await select2Canvas( "#qr-code", qrData )
-  await select2Canvas( "#badge-logo", qrLogo )
+
+  console.log( "Leads enabled? " + expoLocal.leadEnabled )
 
   /*-| Declare Badge |-*/
   const badgePdf = new jsPDF( {
@@ -373,23 +373,30 @@ async function badgeToPDF( a ) {
     dim.p * 2,
     { align: "left" } )
 
+  let logoX = 0
+
   /*-| Add QR Code |-*/
-  badgePdf.addImage(
-    qrData.value,
-    "PNG",
-    dim.p,
-    dim.h - dim.imgH - dim.p,
-    dim.imgH,
-    dim.imgH,
-    "qr",
-    "FAST",
-    dim.rot )
+  if ( expoLocal.leadEnabled ) {
+    await select2Canvas( "#qr-code", qrData )
+    badgePdf.addImage(
+      qrData.value,
+      "PNG",
+      dim.p,
+      dim.h - dim.imgH - dim.p,
+      dim.imgH,
+      dim.imgH,
+      "qr",
+      "FAST",
+      dim.rot )
+    logoX = dim.w - dim.p - dim.imgW
+  }
 
   /*-| Add Logo |-*/
+  await select2Canvas( "#badge-logo", qrLogo )
   badgePdf.addImage(
     qrLogo.value,
     "PNG",
-    dim.w - dim.p - dim.imgW,
+    logoX,
     dim.h - dim.imgH - dim.p,
     dim.imgW,
     dim.imgH,
