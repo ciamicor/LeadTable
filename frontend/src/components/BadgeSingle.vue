@@ -15,9 +15,9 @@
       {{ attendee.title }}
     </p>
   </div>
-  <div v-if="expoLocal.expo_Client !== 'WISE'"
-       class="badge--images-container">
+  <div class="badge--images-container">
     <QrCode
+      v-if="expoLocal.leadEnabled"
       :size="215"
       :url-value="attendee.id.toString()"
       class="badge--qr"
@@ -29,7 +29,7 @@
   <!--  </div>-->
 </template>
 <script setup>
-import QrCode from '@/components/QrCode.vue'
+import QrCode from "@/components/QrCode.vue"
 import { useExpoLocalStore } from "@/stores.js";
 
 const expoLocal = useExpoLocalStore();

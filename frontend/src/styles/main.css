@@ -13123,6 +13123,7 @@ table tbody tr input:active, table tbody tr input:focus {
 
 .badge-grid-container {
   display: grid;
+  overflow: hidden;
   grid-template-columns: 4in 4in;
   grid-template-rows: repeat(auto-fill, 3in);
   width: 8.375in;

@@ -139,6 +139,7 @@ import {
 import { getAttendeeUploads_Service } from "@/services/UploadDataService.ts"
 import { sortLName_Service } from "@/services/SortService.ts"
 import LoadingHolder from "@/components/LoadingHolder.vue";
+import { badgeToPDF_Service } from "@/services/badges/badgeToPDF.js";
 
 /*-| States |-*/
 /*---+----+---+----+---+----+---+----+---*/
@@ -300,112 +301,9 @@ async function printBadges() {
 /*-| Print Single Badge
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 const qrData = ref()
-const qrLogo = ref()
+const logoData = ref()
 
-async function select2Canvas( s, d ) {
-  const selector = document.querySelector( s )
-  await html2canvas( selector, {
-    allowTaint: true,
-    useCORS: true
-  } ).then( canvas => {
-    d.value = canvas.toDataURL(
-      "image/png" )
-    console.log( canvas )
-  } )
-  console.log( selector )
-  console.log( d )
-}
-
-/*-| Store Badge Dimensions, Placement |-*/
-const dim = {
-  h: 3,
-  w: 4,
-  p: 0.1875,
-  imgW: 1.9375,
-  imgH: 1.1875,
-  rot: 0
-}
-const pt2in = 0.0138888889
-
-// TODO merge with code from BadgeCreate, then add to service file.
 async function badgeToPDF( a ) {
-  console.log( "Creating badge for: " + a.name_First )
-
-  console.log( "Leads enabled? " + expoLocal.leadEnabled )
-
-  /*-| Declare Badge |-*/
-  const badgePdf = new jsPDF( {
-    orientation: "landscape",
-    unit: "in",
-    format: [ dim.w, dim.h ],
-    putOnlyUsedFonts: true
-  } )
-
-  /*-| Add Elements
-  ---+----+---+----+---+----+---+----+---*/
-  const nameSize = scaleFont( a.name_First + a.name_Last, 400 )
-  const titleSize = scaleFont( a.title, 400, 14, 20 )
-  const employSize = scaleFont( a.contact_Employer, 400, 16, 20 )
-
-  // Name
-  badgePdf.setFont( "Helvetica", "normal", "bold" );
-  badgePdf.setFontSize( nameSize )
-  badgePdf.text( `${ a.name_First } ${ a.name_Last }`,
-    dim.p,
-    ((employSize * pt2in) / 3) + ((nameSize + employSize) * pt2in) + (dim.p / 2),
-    { align: "left" } )
-
-  // Title
-  badgePdf.setFont( "Helvetica", "italic" );
-  badgePdf.setFontSize( titleSize )
-  badgePdf.text(
-    a.title,
-    dim.p,
-    +((nameSize * pt2in) / 3) + ((nameSize + employSize + titleSize) * pt2in) + dim.p,
-    { align: "left" } )
-
-  // Employer
-  badgePdf.setFont( "Helvetica", "normal" );
-  badgePdf.setFontSize( employSize )
-  badgePdf.text(
-    a.contact_Employer,
-    dim.p,
-    dim.p * 2,
-    { align: "left" } )
-
-  let logoX = 0
-
-  /*-| Add QR Code |-*/
-  if ( expoLocal.leadEnabled ) {
-    await select2Canvas( "#qr-code", qrData )
-    badgePdf.addImage(
-      qrData.value,
-      "PNG",
-      dim.p,
-      dim.h - dim.imgH - dim.p,
-      dim.imgH,
-      dim.imgH,
-      "qr",
-      "FAST",
-      dim.rot )
-    logoX = dim.w - dim.p - dim.imgW
-  }
-
-  /*-| Add Logo |-*/
-  await select2Canvas( "#badge-logo", qrLogo )
-  badgePdf.addImage(
-    qrLogo.value,
-    "PNG",
-    logoX,
-    dim.h - dim.imgH - dim.p,
-    dim.imgW,
-    dim.imgH,
-    "logo",
-    "FAST",
-    dim.rot )
-
-  setTimeout( () => {
-    badgePdf.output( "dataurlnewwindow" )
-  }, 300 )
+  await badgeToPDF_Service( a, expoLocal, qrData, logoData )
 }
 </script>

@@ -315,6 +315,7 @@ import { countryCodes } from "@/services/addresses/AddressForm_Countries.js";
 import LoadingHolder from "@/components/LoadingHolder.vue";
 import QrCode from "@/components/QrCode.vue"
 import PaymentPayPal from "@/components/payment/PaymentPayPal.vue";
+import { badgeToPDF_Service } from "@/services/badges/badgeToPDF.js";
 
 const urlData = ref( getUrl_ClientYear() )
 const host = getUrlHost()
@@ -348,6 +349,15 @@ try {
 async function submitForm() {
   attendee.value.contact_Phone = attendee.value.contact_Phone.replace( /\D/g, "" )
   status.value = true
+  /* Trim spaces, if any. */
+  for ( let [ key, val ] of Object.entries( attendee.value ) ) {
+    console.log( key, val );
+    if ( typeof attendee.value[key] === "string" && attendee.value[key] ) {
+      attendee.value[key] = attendee.value[key].trim()
+    }
+    console.log( attendee.value[key] )
+  }
+  /* Then create attendee. */
   await createAttendee( attendee.value )
   if ( paymentEnabled.value === true ) {
     console.log( "Payment form enabled" )
@@ -380,15 +390,15 @@ const attendeeId = ref()
 /*const attendee = ref( {
   expo_Year: expoLocal.expo_Year,
   expo_Client: expoLocal.expo_Client,
-  name_First: "   Claire",
-  name_Last: "Mooney      ",
-  contact_Email: "claire@iami411.org           ",
+  name_First: "Claire",
+  name_Last: "Mooney",
+  contact_Email: "claire@iami411.org",
   contact_Phone: "(404) 707-8088",
   contact_Employer: "IAMI",
   address_Line1: "126325 Street St.",
   address_Line2: "\#567",
-  address_City: "Portland  ",
-  address_State: " Oregon",
+  address_City: "Portland",
+  address_State: "Oregon",
   address_Zip: "97214",
   address_Country: "US",
   title: "Developer",
@@ -475,103 +485,11 @@ onBeforeMount( async () => {
 -|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===/*/
 
 const qrData = ref()
-const qrLogo = ref()
-
-async function select2Canvas( s, d ) {
-  const selector = document.querySelector( s )
-  await html2canvas( selector, {
-    allowTaint: true,
-    useCORS: true
-  } ).then( canvas => {
-    d.value = canvas.toDataURL(
-      "image/png" )
-    console.log( canvas )
-  } )
-}
-
-/*-| Store Badge Dimensions, Placement |-*/
-const dim = {
-  h: 3,
-  w: 4,
-  p: 0.1875,
-  imgW: 1.9375,
-  imgH: 1.1875,
-  rot: 0
-}
-const pt2in = 0.0138888889
+const logoData = ref()
 
 // TODO merge with code from BadgePrint, then add to service file.
 async function badgeToPDF( a ) {
-  console.log( "Creating badge for: " + a.name_First )
-  await select2Canvas( "#qr-code", qrData )
-  await select2Canvas( "#badge-logo", qrLogo )
-
-  /*-| Declare Badge |-*/
-  const badgePdf = new jsPDF( {
-    orientation: "landscape",
-    unit: "in",
-    format: [ dim.w, dim.h ],
-    putOnlyUsedFonts: true
-  } )
-
-  /*-| Add Elements
-  ---+----+---+----+---+----+---+----+---*/
-  const nameSize = scaleFont( a.name_First + a.name_Last, 400 )
-  const titleSize = scaleFont( a.title, 400, 14, 20 )
-  const employSize = scaleFont( a.contact_Employer, 400, 16, 20 )
-
-  // Name
-  badgePdf.setFont( "Helvetica", "normal", "bold" );
-  badgePdf.setFontSize( nameSize )
-  badgePdf.text( `${ a.name_First } ${ a.name_Last }`,
-    dim.p,
-    ((employSize * pt2in) / 3) + ((nameSize + employSize) * pt2in) + (dim.p / 2),
-    { align: "left" } )
-
-  // Title
-  badgePdf.setFont( "Helvetica", "italic" );
-  badgePdf.setFontSize( titleSize )
-  badgePdf.text(
-    a.title,
-    dim.p,
-    +((nameSize * pt2in) / 3) + ((nameSize + employSize + titleSize) * pt2in) + dim.p,
-    { align: "left" } )
-
-  // Employer
-  badgePdf.setFont( "Helvetica", "normal" );
-  badgePdf.setFontSize( employSize )
-  badgePdf.text(
-    a.contact_Employer,
-    dim.p,
-    dim.p * 2,
-    { align: "left" } )
-
-  /*-| Add QR Code |-*/
-  badgePdf.addImage(
-    qrData.value,
-    "PNG",
-    dim.p,
-    dim.h - dim.imgH - dim.p,
-    dim.imgH,
-    dim.imgH,
-    "qr",
-    "FAST",
-    dim.rot )
-
-  /*-| Add Logo |-*/
-  badgePdf.addImage(
-    qrLogo.value,
-    "PNG",
-    dim.w - dim.p - dim.imgW,
-    dim.h - dim.imgH - dim.p,
-    dim.imgW,
-    dim.imgH,
-    "logo",
-    "FAST",
-    dim.rot )
-  setTimeout( () => {
-    badgePdf.output( "dataurlnewwindow" )
-  }, 300 )
+  badgeToPDF_Service( a, expoLocal, qrData, logoData )
 }
 
 </script>

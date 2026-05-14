@@ -42,8 +42,8 @@ async function createAttendee_Service(attendee: any, client: any, year: any, upl
   const attendeeNew = {
     expo_Client: client,
     expo_Year: year,
-    name_First: attendee.name_First.trim(),
-    name_Last: attendee.name_Last.trim(),
+    name_First: attendee.name_First,
+    name_Last: attendee.name_Last,
     contact_Email: attendee.contact_Email,
     contact_Phone: attendee.contact_Phone,
     contact_Employer: attendee.contact_Employer,
