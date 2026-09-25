@@ -5,18 +5,18 @@
     <div
       class="col-12-300 col-10-500 col-5-800">
       <h1>Looking for Leads?</h1>
-      <span v-if="exhibitorLocal.name !== ''">
+      <div v-if="exhibitorLocal.name !== ''">
         <p>If you haven't purchased access, you can do in your
-         ExpoFP Exhibitor Portal.
-        <a v-if="exhibitorLocal.login_Url"
-           :href="'https://app.expofp.com' + exhibitorLocal.login_Url"
-           target="_blank"> Click here to view your
-                            portal.</a>
-         Scroll down to "Booths &
-         Extras," click "Reserve More,"
-         and select the option for lead
-         retrieval.</p>
-      </span>
+           ExpoFP Exhibitor Portal.
+          <a v-if="exhibitorLocal.login_Url"
+             :href="'https://app.expofp.com' + exhibitorLocal.login_Url"
+             target="_blank"> Click here to view your
+                              portal.</a>
+           Scroll down to "Booths &
+           Extras," click "Reserve More,"
+           and select the option for lead
+           retrieval.</p>
+      </div>
       <p v-else-if="exhibitorLocal.name === ''">
         You'll need your login ID to access lead retrieval.
       </p>
@@ -31,9 +31,13 @@
   <div v-if="exhibitorLocal.lead_Ret === true">
     <div class="col-12-300 --p-10-clamp">
       <div class="row-12-300 --justify-content-space-between --m-b-6">
-        <LeadsExport v-if="leadsList.length > 0"
-                     :leads-list="leadsList"
+        <LeadsExport v-if="leadsLocalDB.length > 0"
+                     :lead-count="leadsLocalDB.length"
+                     :leads-list="leadsLocalDB"
                      class=" --p-v-3"/>
+        <span v-if="unsyncedLocalLeads > 0">
+          {{ unsyncedLocalLeads }} Unsynced Leads
+        </span>
         <button class="--warn --p-v-3"
                 @click="logOut">Log Out
         </button>
@@ -51,17 +55,20 @@
     <LoadingHolder :status="status"
                    class="--place-self-center"/>
     <div class="lead-cards-container">
-      <p v-if="leadsList.length === 0"
+      <p v-if="!leadsLocalDB"
          class="--place-self-center">
         No leads yet.
       </p>
-      <div v-for="(lead,index) in leadsList"
+      <!--      <div v-for="(lead,index) in leadsList"-->
+      <div v-for="(lead,index) in leadsLocalDB"
            :key="index"
            :data-attendee-id="lead.attendee_Id"
            :data-company-scan="lead.scan_Company_Id"
            class="lead-card"
       >
-        <LeadCard :lead="lead"/>
+        <LeadCard
+          :lead="lead"
+        />
       </div>
     </div>
 
@@ -73,7 +80,6 @@
       Scan
     </router-link>
   </div>
-
 </template>
 
 <script setup>
@@ -81,68 +87,206 @@ import LoadingHolder from "@/components/LoadingHolder.vue";
 import {
   useExhibitorLocalStore,
   useExpoLocalStore,
-  useLeadsListLocal,
   useSessionStore
-} from '@/stores.ts'
-import { getAllLeads_Service, getAllCompanyLeads_Service } from '../services/LeadDataService.js'
-import { onMounted, ref } from 'vue'
-import { getLocalExhibitor_Service } from '@/services/ExhibitorDataService.ts'
-import LeadCard from '@/components/LeadCard.vue'
-import LeadsExport from '@/components/LeadsExport.vue'
+} from "@/stores.ts"
+import {
+  createLead_Service,
+  getAllCompanyLeads_Service,
+  saveLocal_Lead
+} from "../services/LeadDataService.js"
+import { onBeforeMount, onBeforeUnmount, onMounted, ref } from "vue"
+import { getLocalExhibitor_Service } from "@/services/ExhibitorDataService.ts"
+import LeadCard from "@/components/LeadCard.vue"
+import LeadsExport from "@/components/LeadsExport.vue"
 import { db } from "@/db.js";
+import { liveQuery } from "dexie";
+import { checkError } from "@/services/ErrorService.ts";
 
 const sessionStore = useSessionStore()
 const exhibitorLocal = useExhibitorLocalStore()
 const expoLocal = useExpoLocalStore()
-const leadListLocal = useLeadsListLocal()
+
+const leadsLocalDB = ref( [] )
+const leadsServer = ref( [] )
+const unsyncedLocalLeads = ref( 0 )
+const isDBSubbed = ref( false )
 
 /*-| Hooks |-*/
 /*---+----+---+----+---+----+---+----+---*/
+onBeforeMount( async () => {
+} )
+
+const leadsQuery = liveQuery( () => db.leads.toArray() )
+/*const leadsSubscribe = */
+leadsQuery.subscribe( {
+  next: ( result ) => {
+    console.log( "leads from local DB: ", result );
+    leadsLocalDB.value = result
+  },
+  error: ( error ) => console.error( error )
+} );
+
 onMounted( async () => {
     await getLocalExhibitor_Service( exhibitorLocal )
     console.log( exhibitorLocal.id )
-    await getAllCompanyLeads_Service( exhibitorLocal.id, leadsList )
+
+    /*-| Get Server Leads
+    ---+----+---+----+---+----+---+----+---*/
+    await getAllCompanyLeads_Service( exhibitorLocal.id, leadsServer )
     status.value = false
-    console.log( typeof leadsList )
-    console.log( leadsList.value )
-    console.log( " Mapping array..." )
-    const listMap = new Map( leadsList.value.map( ( l ) => [ l.id, l ] ) )
-    // arr.map((obj) => [obj.key, obj.value])
-    console.log( typeof listMap )
-    console.log( listMap )
-    console.log( listMap.get( 459 ) )
+    console.log( "leads from server: ", leadsServer.value )
+
+    /*-| Compare Server Leads to Local
+    ---+----+---+----+---+----+---+----+---*/
+    let localDBHold = leadsLocalDB
+
+    const leadsServerLength = leadsServer.value.length
+    const leadsLocalLength = localDBHold.value.length
+
+    for ( let x = 0; x < leadsLocalLength; x++ ) {
+      let matchFound = false;
+      let localLead = localDBHold.value[x]
+      let localId = localLead.id;
+
+      /*-| If lead is unsynced |-*/
+      /*if ( local.synced === false ) {
+        try {
+          await attemptSync( local )
+        } catch ( e ) {
+          console.log( e )
+        }
+      }*/
+
+      // console.log( "Checking server leads" )
+      if ( leadsServerLength >= 1 ) {
+        for ( let y = 0; y < leadsServerLength; y++ ) {
+          let server = leadsServer.value[y]
+          // console.log( y + " Server" )
+          // console.log( server )
+          if ( localLead.scan_Company_Id === server.scan_Company_Id
+            && localLead.contact_Email === server.contact_Email
+            && localLead.name_First === server.name_First
+            && localLead.name_Last === server.name_Last
+            && localLead.id === server.id ) {
+            matchFound = true
+          }
+        }
+      } else {
+        matchFound = false
+        console.log( "No leads found on the server." )
+      }
+      console.log( `Server match found for local ${ localLead.name_First }, ${ localLead.id }?`,
+        matchFound )
+      /*-| Upload Local Lead if NO MATCH |-*/
+      if ( !matchFound ) {
+        try {
+          let localLeadUpload = await createLead_Service( localLead )
+          console.log( "uploaded lead id with new id:", localLeadUpload.id )
+          await db.leads.update( localId, { id: localLeadUpload.id, synced: true } );
+          localDBHold.value[x].synced = true
+          console.log( `updated local id: ${ localId } to new server id: ${ localLeadUpload.id }` )
+        } catch ( e ) {
+          console.error( e )
+        }
+      }
+    }
+
+    /*-| Compare Local Leads to Server
+    ---+----+---+----+---+----+---+----+---*/
+    for ( let x = 0; x < leadsServerLength; x++ ) {
+      let matchFound = false;
+      let serverLead = leadsServer.value[x]
+      // console.log( x )
+      // console.log( server )
+
+      // console.log( "Checking local leads" )
+      for ( let y = 0; y < leadsLocalLength; y++ ) {
+        let local = leadsLocalDB.value[y]
+        // console.log( y + " Server" )
+        // console.log( local )
+        if ( local.scan_Company_Id === serverLead.scan_Company_Id
+          && local.contact_Email === serverLead.contact_Email
+          && local.name_First === serverLead.name_First
+          && local.name_Last === serverLead.name_Last
+          && local.id === serverLead.id ) {
+          matchFound = true
+        }
+      }
+      console.log( `Local match found for server ${ serverLead.name_First }, ${ serverLead.id }?`,
+        matchFound )
+      if ( !matchFound ) {
+        await saveLocal_Lead( serverLead.id, serverLead, true )
+      }
+    }
+    // await queryLocalLeads()
+    // leadsSubscribe.unsubscribe();
   }
 )
+
+onBeforeUnmount( async () => {
+  // await queryLocalLeads( "unsub" )
+} )
+
+/*-| Query Local Leads |-*/
+async function queryLocalLeads( request = "sub" ) {
+  const leadsQuery = liveQuery( () => db.leads.toArray() )
+  const leadsSubscribe = leadsQuery.subscribe( {
+    next: ( result ) => {
+      console.log( "leads from local DB: ", result );
+    },
+    error: ( error ) => console.error( error )
+  } );
+  isDBSubbed.value = true;
+  if ( isDBSubbed && request === "unsub" ) {
+    leadsSubscribe.unsubscribe();
+    console.log( "unsubscribed to local DB" )
+  }
+  return leadsSubscribe
+}
+
+/*-| Re-Attempt Lead Sync |-*/
+async function attemptSync( l ) {
+  console.log( "attempting to sync lead:", l )
+  const idHold = l.id
+  try {
+    const leadAttempt = await createLead_Service( l )
+    checkError( leadAttempt )
+    console.log( "lead id is:", l.id )
+    await db.leads.update( idHold,
+      { id: leadAttempt.id, synced: true }
+    )
+    l.synced = true
+  } catch ( e ) {
+    console.error( e )
+    unsyncedLocalLeads.value++
+  }
+}
+
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| DB |-*/
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 const status = ref( true )
 
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-/*-| Leads List |-*/
-/*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
-
-const leadsList = ref( [] )
 const lead = ref(
   {
     expo_Client: exhibitorLocal.expo_Client,
     expo_Year: exhibitorLocal.expo_Year,
     attendee_Id: null,
     scan_Company_Id: exhibitorLocal.id,
-    name_First: '',
-    name_Last: '',
-    title: '',
-    email: '',
-    phone: '',
-    address_Line1: '',
-    address_Line2: '',
-    address_City: '',
-    address_State: '',
-    address_Zip: '',
-    address_Country: '',
-    employer: '',
+    name_First: "",
+    name_Last: "",
+    title: "",
+    email: "",
+    phone: "",
+    address_Line1: "",
+    address_Line2: "",
+    address_City: "",
+    address_State: "",
+    address_Zip: "",
+    address_Country: "",
+    employer: "",
     score: 0,
-    comment: ''
+    comment: ""
   }
 )
 

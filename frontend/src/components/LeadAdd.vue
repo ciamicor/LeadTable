@@ -121,7 +121,7 @@
 
 <script setup>
 import { QrcodeStream } from "vue-qrcode-reader"
-import { createLead_Service } from "@/services/LeadDataService.js"
+import { createLead_Service, saveLocal_Lead } from "@/services/LeadDataService.js"
 import { getAttendee_Service } from "@/services/AttendeeDataService.ts"
 import { inject, onBeforeMount, onMounted, reactive, ref } from "vue"
 import router from "@/router.js"
@@ -313,17 +313,27 @@ async function getQrId( x ) {
 
 /*-| Create Lead |-*/
 async function createLead( l ) {
+  let syncStatus = false
+  let leadId
   status.message = "Loading..."
   try {
+    console.log( "lead is", l )
     const newLead = await createLead_Service( l )
     console.log( newLead )
     checkError( newLead )
-    await resetLead()
-    resetScanning()
-    await router.push( `/${ companyLocal.expo_Client }/${ companyLocal.expo_Year }/leads-list` )
+    syncStatus = true
+    return leadId = l.id
   } catch ( e ) {
     console.error( `Error adding that lead.` )
     status.message = "Network Error. Try Again?"
+    // If failed, generate local ID for lead
+    return leadId = Date.now() + Math.random()
+  } finally {
+    console.log( "syncStatus is:", syncStatus )
+    await saveLocal_Lead( leadId, l, syncStatus )
+    await resetLead()
+    resetScanning()
+    await router.push( `/${ companyLocal.expo_Client }/${ companyLocal.expo_Year }/leads-list` )
   }
 }
 </script>

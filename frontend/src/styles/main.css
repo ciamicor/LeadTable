@@ -6937,7 +6937,13 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
   outline: 1px solid var(--color-success-9);
   background: var(--color-success-12);
 }
+.lead-cards-container {
+  padding-bottom: 135px;
+}
 
+.lead-card {
+  padding: 8px 12px 12px !important;
+}
 .lead-card .card-label {
   color: var(--grey-1);
   font-size: 14px;
@@ -7000,7 +7006,7 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
   left: 0;
   display: flex;
   place-content: stretch;
-  place-items: stretch;
+  place-items: center;
   background: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(4px);
 }
@@ -7016,6 +7022,7 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
 .modal-backdrop .modal-content {
   flex: 1 1 auto;
   max-width: 600px;
+  height: fit-content;
   margin: clamp(16px, 8px + 2.5vw, 48px) clamp(16px, 4px + 3.75vw, 64px);
   padding: clamp(16px, 8px + 2.5vw, 48px) clamp(16px, 4px + 3.75vw, 64px);
   border-radius: 16px;
@@ -13049,6 +13056,14 @@ table tbody tr input:active, table tbody tr input:focus {
 
 .--flex-shrink {
   flex-shrink: 1;
+}
+
+.--flex-nowrap {
+  flex-flow: nowrap;
+}
+
+.--flex-wrap {
+  flex-flow: wrap;
 }
 
 /*-| Position |-*/

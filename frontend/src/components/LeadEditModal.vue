@@ -115,12 +115,12 @@
           <textarea id="comment"
                     v-model="leadLocal.comment"/>
         </label>
-        <div class="row-12-300 --place-content-space-between --place-items-space-between --p-t-6-clamp">
-          <button class="col-12-300 col-6-500 col-5-800"
+        <div class="row-12-300 --place-content-space-between --place-items-space-between --p-t-8">
+          <button class="col-5-300"
                   @click="$emit('showModal')">Cancel
           </button>
-          <button class="--primary--invert col-12-300 col-6-500 col-5-800"
-                  @click="updateLead_Service(leadLocal.id, leadLocal); $emit('showModal')">
+          <button class="--primary--invert col-7-300"
+                  @click="updateLead(leadLocal); $emit('showModal')">
             Save Changes
           </button>
         </div>
@@ -132,7 +132,11 @@
 <script lang="ts"
         setup>
 import { defineProps, computed, defineEmits, ref } from "vue";
-import { updateLead_Service, deleteLead_Service } from "@/services/LeadDataService.ts";
+import {
+  updateLead_Service,
+  deleteLead_Service,
+  updateLocal_Lead
+} from "@/services/LeadDataService.ts";
 import { countries } from "@/services/addresses/AddressForm_Countries.ts";
 
 const confirmDelete = ref(false)
@@ -155,6 +159,11 @@ const scoreCount = computed(() => {
 async function deleteLead(id: number) {
   await deleteLead_Service(id)
   emit("showModal")
+}
+
+async function updateLead(l: any) {
+  await updateLead_Service(l.id, l)
+  await updateLocal_Lead(l)
 }
 
 </script>

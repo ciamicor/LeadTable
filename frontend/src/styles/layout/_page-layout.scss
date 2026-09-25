@@ -90,6 +90,14 @@
   flex-shrink: 1;
 }
 
+.--flex-nowrap {
+  flex-flow: nowrap;
+}
+
+.--flex-wrap {
+  flex-flow: wrap;
+}
+
 /*-| Position |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 .--pos-fixed {

@@ -2,21 +2,22 @@
   <button
     class="button --primary"
     @click="exportLeads">
-    Download Leads
+    Download {{ leadCount }} Leads
   </button>
 </template>
 
 <script lang="js"
         setup>
-import { utils, writeFile } from 'xlsx'
-import { useExhibitorLocalStore } from '@/stores.js'
+import { utils, writeFile } from "xlsx"
+import { useExhibitorLocalStore } from "@/stores.js"
 
 const companyLocal = useExhibitorLocalStore()
 
 const props = defineProps( {
   leadsList: {
     type: Array, default: []
-  }
+  },
+  leadCount: { type: Number, default: null },
 } )
 
 async function exportLeads() {
@@ -28,27 +29,33 @@ async function exportLeads() {
       scan_Company_Id,
       attendee_Id,
       updatedAt,
+      synced,
       ...item
     } ) => item )
   const worksheet = utils.json_to_sheet( formattedLeads )
   const workbook = utils.book_new()
-  utils.book_append_sheet( workbook, worksheet, `2025 Leads` )
+  utils.book_append_sheet( workbook, worksheet, `Leads` )
   utils.sheet_add_aoa( worksheet,
     [
       [
-        'First Name',
-        'Last Name',
-        'Title',
-        'Email',
-        'Phone',
-        'Employer',
-        'Address',
-        'Score',
-        'Comment',
-        'Scanned Date'
+        "First Name",
+        "Last Name",
+        "Email",
+        "Phone",
+        "Employer",
+        "Address Line 1",
+        "Address Line 2",
+        "City",
+        "State",
+        "ZIP",
+        "Country",
+        "Title",
+        "Score",
+        "Comment",
+        "Scanned Date"
       ]
     ],
-    { origin: 'A1' } )
+    { origin: "A1" } )
   writeFile( workbook,
     `${ companyLocal.name }-Leads-${ companyLocal.expo_Client }-Expo-${ companyLocal.expo_Year }.xlsx`,
     { compression: true } )

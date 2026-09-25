@@ -3,10 +3,12 @@
 
 .lead-cards-container {
   @include adapt-grid;
+  padding-bottom: 135px;
 }
 
 .lead-card {
   @extend .grid-card;
+  padding: $sp-4 $sp-5 $sp-5 !important;
   .card-label {
     color:          $grey-1;
     font-size:      $font-xs - 2px;
