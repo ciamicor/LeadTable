@@ -1,10 +1,11 @@
-import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { defineStore } from "pinia"
+import { ref } from "vue"
 
 /*-| Session Store
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-const useSessionStore = defineStore('sessionStore', () => {
+const useSessionStore = defineStore("sessionStore", () => {
   const logged_In = ref(false)
+  const devSesh = ref(false)
 
   function $reset() {
     logged_In.value = false
@@ -12,49 +13,49 @@ const useSessionStore = defineStore('sessionStore', () => {
 
   return {
     logged_In,
-    $reset,
+    $reset
   }
 })
 
 /*-| Event Store
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-const useExpoLocalStore = defineStore('expoLocal', () => {
+const useExpoLocalStore = defineStore("expoLocal", () => {
   const active = ref(false)
   const eventId = ref(0)
   const dateStart = ref(null)
-  const expo_Client = ref('')
-  const contactEmail = ref('')
-  const clientFull = ref('')
-  const name = ref('')
+  const expo_Client = ref("")
+  const contactEmail = ref("")
+  const clientFull = ref("")
+  const name = ref("")
   const expo_Year = ref(0)
   const expoFp_Id = ref(0)
-  const logoUrl_Color = ref('')
-  const logoUrl_Black = ref('')
-  const expoFp_MapUrl = ref('')
+  const logoUrl_Color = ref("")
+  const logoUrl_Black = ref("")
+  const expoFp_MapUrl = ref("")
   const customFields = ref(null)
   const techSessions = ref(null)
   const paymentEnabled = ref(false)
   const leadEnabled = ref(false)
-  const webpage = ref('')
+  const webpage = ref("")
 
   function $reset() {
     active.value = false
     eventId.value = 0
     dateStart.value = null
-    expo_Client.value = ''
-    contactEmail.value = ''
-    clientFull.value = ''
-    name.value = ''
+    expo_Client.value = ""
+    contactEmail.value = ""
+    clientFull.value = ""
+    name.value = ""
     expo_Year.value = 0
     expoFp_Id.value = 0
-    logoUrl_Color.value = ''
-    logoUrl_Black.value = ''
-    expoFp_MapUrl.value = ''
+    logoUrl_Color.value = ""
+    logoUrl_Black.value = ""
+    expoFp_MapUrl.value = ""
     customFields.value = null
     techSessions.value = null
     paymentEnabled.value = false
     leadEnabled.value = false
-    webpage.value = ''
+    webpage.value = ""
   }
 
   return {
@@ -74,27 +75,27 @@ const useExpoLocalStore = defineStore('expoLocal', () => {
     expoFp_MapUrl,
     customFields,
     webpage,
-    $reset,
+    $reset
   }
 })
 
 /*-| Company Store
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-const useExhibitorLocalStore = defineStore('companyLocal', () => {
+const useExhibitorLocalStore = defineStore("companyLocal", () => {
   const id = ref(null)
-  const name = ref('')
-  const login_Url = ref('')
+  const name = ref("")
+  const login_Url = ref("")
   const lead_Ret = ref(false)
   const expo_Year = ref(0)
-  const expo_Client = ref('')
+  const expo_Client = ref("")
 
   function $reset() {
     id.value = null
-    name.value = ''
-    login_Url.value = ''
+    name.value = ""
+    login_Url.value = ""
     lead_Ret.value = false
     expo_Year.value = 0
-    expo_Client.value = ''
+    expo_Client.value = ""
   }
 
   return {
@@ -110,7 +111,7 @@ const useExhibitorLocalStore = defineStore('companyLocal', () => {
 
 /*-| Leads List Store
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
-const useLeadsListLocal = defineStore('companyLocal', () => {
+const useLeadsListLocal = defineStore("companyLocal", () => {
   const map = ref(null)
 
   function $reset() {

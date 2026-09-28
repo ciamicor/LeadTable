@@ -125,7 +125,7 @@ async function login() {
     expo_Client: expoLocal.expo_Client
   })
   console.log(exhibitorLocal)
-  // TODO - Check to see if lead retrieval has changed.
+
   /*-| Check for Lead Retrieval
   ---+----+---+----+---+----+---+----+---*/
   try {

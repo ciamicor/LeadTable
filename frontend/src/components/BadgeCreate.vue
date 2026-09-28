@@ -55,7 +55,6 @@
             autocomplete="organization"
             name="employer"
             placeholder="Employer"
-            required
             type="text"></label>
         <label>
           Position/Title
@@ -64,7 +63,6 @@
             autocomplete="organization-title"
             name="title"
             placeholder="Position/Title"
-            required
             type="text">
         </label>
       </div>
@@ -181,7 +179,7 @@
             </label>
           </div>
         </fieldset>
-        <fieldset v-else-if="field.type === 'checkbox'">
+        <fieldset v-else-if="field.type === 'checkbox' && attendee.customFields[field.displayTitle]">
           <legend>{{ field.title }}</legend>
           <span v-if="field.subtitle"
                 class="subtitle">
@@ -201,7 +199,7 @@
           </div>
         </fieldset>
         <!-- If radio -->
-        <fieldset v-else-if="field.type === 'radio'">
+        <fieldset v-else-if="field.type === 'radio' && attendee.customFields[field.displayTitle][key]">
           <legend>{{ field.title }}</legend>
           <span v-if="field.subtitle"
                 class="subtitle">{{ field.subtitle }}</span>
@@ -394,8 +392,8 @@ const attendeeId = ref()
   name_Last: "Mooney",
   contact_Email: "claire@iami411.org",
   contact_Phone: "(404) 707-8088",
-  contact_Employer: "IAMI",
-  address_Line1: "126325 Street St.",
+  // contact_Employer: "IAMI",
+  // address_Line1: "126325 Street St.",
   address_Line2: "\#567",
   address_City: "Portland",
   address_State: "Oregon",
