@@ -9,9 +9,11 @@
       <button class="--justify-self-end --p-4"
               @click.stop="toggleModal"><i class="bi-pencil"/></button>
     </div>
-    <AttendeeEditModal :attendee="attendee"
-                       :visible="modalVisible"
-                       @show-modal="toggleModal"/>
+    <AttendeeEditModal
+      v-if="a"
+      :attendee="a"
+      :visible="modalVisible"
+      @show-modal="toggleModal"/>
     <div>
       <span class="--font-size-14 --color-grey-7">
         Created: {{
@@ -33,10 +35,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from "vue"
 import AttendeeEditModal from "@/components/AttendeeEditModal.vue";
 
-const emit = defineEmits( [ 'addBadge', 'removeBadge' ] )
+const emit = defineEmits( [ "addBadge", "removeBadge" ] )
 const prop = defineProps( {
   attendee: {
     type: Object, default: () => ({})
@@ -45,15 +47,16 @@ const prop = defineProps( {
 } )
 
 const badgeSelected = ref( false )
+const a = ref()
 
 function selectBadge( i ) {
   badgeSelected.value = !badgeSelected.value
   if ( badgeSelected.value ) {
-    console.log( 'add' )
-    emit( 'addBadge', i )
+    console.log( "add" )
+    emit( "addBadge", i )
   } else if ( !badgeSelected.value ) {
-    console.log( 'remove' )
-    emit( 'removeBadge', i.id )
+    console.log( "remove" )
+    emit( "removeBadge", i.id )
   }
 }
 
@@ -62,8 +65,12 @@ function selectBadge( i ) {
 const modalVisible = ref( false )
 
 function toggleModal() {
+  a.value = prop.attendee
   modalVisible.value = !modalVisible.value
-  console.log( 'Editing ' + prop.attendee.name_First + ', id: ' + prop.attendee.id )
+  if ( !modalVisible.value ) {
+    a.value = null
+  }
+  console.log( "Editing " + a.value.name_First + ", id: " + a.value.id )
 }
 
 /*-| Formatting |-*/
@@ -83,12 +90,12 @@ function formatDateTime( dt ) {
   /*-| Get Hour |-*/
   if ( h > 12 ) {
     h = h - 12
-    t = h.toString() + t.slice( 2 ) + ' PM'
+    t = h.toString() + t.slice( 2 ) + " PM"
   } else if ( h <= 12 ) {
-    t = t + ' AM'
+    t = t + " AM"
   }
 
-  return 'Created: ' + d + ' at ' + t
+  return "Created: " + d + " at " + t
 }
 
 </script>

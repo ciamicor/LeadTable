@@ -110,7 +110,15 @@
 </template>
 <script lang="ts"
         setup>
-import { defineProps, computed, defineEmits, ref, onBeforeMount } from "vue";
+import {
+  defineProps,
+  computed,
+  defineEmits,
+  ref,
+  onBeforeMount,
+  onBeforeUnmount,
+  onUpdated
+} from "vue";
 import { updateAttendee_Service } from "@/services/AttendeeDataService.ts";
 import { countries } from "@/services/addresses/AddressForm_Countries.ts";
 
@@ -121,10 +129,22 @@ const props = defineProps({
     type: Object, default: () => {
     }
   },
-  visible: {type: Boolean, default: false},
+  visible: {type: Boolean, default: false}
 })
 
-const attendeeLocal = ref(props.attendee)
+onBeforeMount(() => {
+  attendeeLocal.value = props.attendee
+})
+
+onUpdated(() => {
+  attendeeLocal.value = props.attendee
+})
+
+onBeforeUnmount(() => {
+  attendeeLocal.value = {}
+})
+
+const attendeeLocal = ref()
 const attendeeFName = ref(props.attendee.name_First)
 const attendeeLName = ref(props.attendee.name_Last)
 const attendeeContact_Email = ref(props.attendee.contact_Email)
@@ -136,7 +156,7 @@ const attendeeAddress = ref({
   address_City: props.attendee.address_City,
   address_State: props.attendee.address_State,
   address_Zip: props.attendee.address_Zip,
-  address_Country: props.attendee.address_Country,
+  address_Country: props.attendee.address_Country
 })
 const attendeeTitle = ref(props.attendee.title)
 
@@ -154,7 +174,7 @@ async function updateAttendee() {
     address_State: attendeeAddress.value.address_State,
     address_Zip: attendeeAddress.value.address_Zip,
     address_Country: attendeeAddress.value.address_Country,
-    title: attendeeTitle.value,
+    title: attendeeTitle.value
   }
   await updateAttendee_Service(attendeeLocal.value.id, data)
 }
