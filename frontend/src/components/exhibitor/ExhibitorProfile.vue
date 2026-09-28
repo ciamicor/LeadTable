@@ -67,15 +67,15 @@
 import {
   getFPExhibitor,
   getFPExhibitorExtras
-} from '../../services/ExpoFPDataService.ts'
+} from "../../services/ExpoFPDataService.ts"
 import {
   createExhibitor_Service,
   getExhibitor_Service,
   updateExhibitor_Service
-} from '@/services/ExhibitorDataService.ts'
-import { ref } from 'vue'
-import { db } from '@/db.ts'
-import { useExhibitorLocalStore, useExpoLocalStore, useSessionStore } from '@/stores.ts'
+} from "@/services/ExhibitorDataService.ts"
+import { ref } from "vue"
+import { db } from "@/db.ts"
+import { useExhibitorLocalStore, useExpoLocalStore, useSessionStore } from "@/stores.ts"
 import router from "@/router.ts";
 
 /*-| Variables
@@ -101,16 +101,16 @@ const status = ref()
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 async function login() {
   /*-| Get Exhibitor |-*/
-  console.log('Getting Exhibitor...')
+  console.log("Getting Exhibitor...")
   let getCompany
   getCompany = await getExhibitor_Service(exhibitorLocal.id)
 
   if (!getCompany) {
-    console.log('No Company')
+    console.log("No Company")
     getCompany = await getFPExhibitor(
       exhibitorLocal.id,
       expoLocal.expo_Client,
-      expoLocal.expo_Year,
+      expoLocal.expo_Year
     )
   }
   console.log("Got exhibitor company:")
@@ -122,14 +122,14 @@ async function login() {
     login_Url: getCompany.autoLoginUrl || getCompany.login_Url,
     lead_Ret: getCompany.lead_Ret || extraMatch.value,
     expo_Year: expoLocal.expo_Year,
-    expo_Client: expoLocal.expo_Client,
+    expo_Client: expoLocal.expo_Client
   })
   console.log(exhibitorLocal)
   // TODO - Check to see if lead retrieval has changed.
   /*-| Check for Lead Retrieval
   ---+----+---+----+---+----+---+----+---*/
   try {
-    console.log('Matching extras...')
+    console.log("Matching extras...")
     exhibitorExtras.value = await getFPExhibitorExtras(
       exhibitorLocal.id,
       expoLocal.expo_Client,
@@ -138,9 +138,13 @@ async function login() {
     console.log("Company extras are: ", exhibitorExtras.value)
     /*-| Look for Lead Ret match |-*/
     extraMatch.value = await exhibitorExtras.value.some((e: any) =>
-      e.name.toLowerCase().includes('lead retrieval')
+      e.name.toLowerCase().includes("lead retrieval")
     )
     console.log("Lead retrieval purchased: ", extraMatch.value)
+    if (extraMatch.value) {
+      await updateExhibitor_Service(exhibitorLocal.id, extraMatch.value)
+    }
+
   } catch (e) {
     console.log(e)
   }
@@ -150,7 +154,7 @@ async function login() {
   // console.log('loginUrl is: ', companyLocal.login_Url)
 
   /*-| Save to local DB |-*/
-  console.log('Saving company to Local DB...')
+  console.log("Saving company to Local DB...")
   await saveDbLogin()
   await createExhibitor_Service(exhibitorLocal)
   /*-| Check if Company is in server DB |-*/
@@ -158,7 +162,7 @@ async function login() {
 
   sessionStore.logged_In = true
   // window.location.reload()
-  router.push({name: 'Leadtable'})
+  router.push({name: "Leadtable"})
 }
 
 async function saveDbLogin() {

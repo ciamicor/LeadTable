@@ -31,27 +31,27 @@
           @click="badgeToPDF(attendeeListSelected[0])">
           Print Single
         </button>
-        <router-link
-          class="button --success --p-4"
-          to="upload-attendees">
-          <i class="bi-upload --m-r-4"/>Upload Attendees
-        </router-link>
+        <!--        <router-link
+                  class="button &#45;&#45;success &#45;&#45;p-4"
+                  to="upload-attendees">
+                  <i class="bi-upload &#45;&#45;m-r-4"/>Upload Attendees
+                </router-link>-->
         <router-link
           :to="`/${expoLocal.expo_Client}/${expoLocal.expo_Year}/admin/create-badge`"
           class="button --primary --p-4">
           <i class="bi-plus-lg --m-r-4"/>New Badge
         </router-link>
       </div>
-      <div class="row-12-300 --align-items-center --gap-3">
-        <span class="">View upload:</span>
-        <button
-          v-for="(upload, i) in uploadsList"
-          :key="i"
-          class="--p-4 --font-size-14 --place-self-center"
-          @click="getAttendees_SelectedUpload(upload.id)"
-        >
-          {{ upload.createdAt.slice( 0, 10 ) }}
-        </button>
+      <div class="row-12-300 --justify-content-space-between --align-items-center --gap-3">
+
+        <div class="row-8-300 --align-items-center">
+          <span>Sorting:</span>
+          <button @click="sortCreatedDate_Earliest_Service( attendeeList)">Date: Earliest</button>
+          <button @click="sortCreatedDate_Latest_Service( attendeeList)">Date: Latest</button>
+          <button @click="sortFName_Service( attendeeList )">Name: First</button>
+          <button @click="sortLName_Service( attendeeList )">Name: Last</button>
+        </div>
+
         <button
           class="--p-2 --p-h-4 --primary --font-size-14"
           @click="refreshAttendees(expoLocal.expo_Client, expoLocal.expo_Year, attendeeList)"
@@ -59,6 +59,19 @@
           <i class="bi-arrow-clockwise --font-size-20 --m-r-3"></i>
           Reset
         </button>
+        <div v-if="uploadsList && uploadsList.length > 0"
+        >
+          <span class="--m-r-3">View upload:</span>
+          <span
+            v-for="(upload, i) in uploadsList"
+            :key="i"
+            class="button --p-h-4 --p-v-2 --font-size-14 --place-self-center "
+            style="display: inline-block"
+            @click="getAttendees_SelectedUpload(upload.id)"
+          >
+          {{ upload.createdAt.slice( 0, 10 ) }}
+        </span>
+        </div>
       </div>
     </div>
 
@@ -137,7 +150,11 @@ import {
   getAttendeesUploadId_Service
 } from "@/services/AttendeeDataService.ts"
 import { getAttendeeUploads_Service } from "@/services/UploadDataService.ts"
-import { sortLName_Service } from "@/services/SortService.ts"
+import {
+  sortCreatedDate_Earliest_Service,
+  sortCreatedDate_Latest_Service, sortFName_Service,
+  sortLName_Service
+} from "@/services/SortService.ts"
 import LoadingHolder from "@/components/LoadingHolder.vue";
 import { badgeToPDF_Service } from "@/services/badges/badgeToPDF.js";
 
@@ -194,6 +211,7 @@ async function makeMap() {
 /*-| Get by Upload |-*/
 async function getAllAttendeeUploads( client ) {
   uploadsList.value = await getAttendeeUploads_Service( client )
+  uploadsList.value = uploadsList.value.filter( u => u.expo_Year === expoLocal.expo_Year )
   console.log( "uploads list: ", uploadsList.value )
 }
 

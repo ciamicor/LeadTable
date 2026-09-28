@@ -108,6 +108,7 @@ const expoLocal = useExpoLocalStore()
 
 const leadsLocalDB = ref( [] )
 const leadsServer = ref( [] )
+const leadsTempHold = ref( [] );
 const unsyncedLocalLeads = ref( 0 )
 const isDBSubbed = ref( false )
 
@@ -116,7 +117,9 @@ const isDBSubbed = ref( false )
 onBeforeMount( async () => {
 } )
 
-const leadsQuery = liveQuery( () => db.leads.toArray() )
+const leadsQuery = liveQuery( () => db.leads.where(
+  { scan_Company_Id: exhibitorLocal.id }
+).toArray() )
 /*const leadsSubscribe = */
 leadsQuery.subscribe( {
   next: ( result ) => {
@@ -148,16 +151,6 @@ onMounted( async () => {
       let localLead = localDBHold.value[x]
       let localId = localLead.id;
 
-      /*-| If lead is unsynced |-*/
-      /*if ( local.synced === false ) {
-        try {
-          await attemptSync( local )
-        } catch ( e ) {
-          console.log( e )
-        }
-      }*/
-
-      // console.log( "Checking server leads" )
       if ( leadsServerLength >= 1 ) {
         for ( let y = 0; y < leadsServerLength; y++ ) {
           let server = leadsServer.value[y]
@@ -177,29 +170,34 @@ onMounted( async () => {
       }
       console.log( `Server match found for local ${ localLead.name_First }, ${ localLead.id }?`,
         matchFound )
-      /*-| Upload Local Lead if NO MATCH |-*/
+      /*-| Hold Local Lead if NO MATCH |-*/
       if ( !matchFound ) {
-        try {
-          let localLeadUpload = await createLead_Service( localLead )
-          console.log( "uploaded lead id with new id:", localLeadUpload.id )
-          await db.leads.update( localId, { id: localLeadUpload.id, synced: true } );
-          localDBHold.value[x].synced = true
-          console.log( `updated local id: ${ localId } to new server id: ${ localLeadUpload.id }` )
-        } catch ( e ) {
-          console.error( e )
-        }
+        leadsTempHold.value.push( localLead )
+        console.log( "holding temp lead", localLead )
       }
     }
+    // Upload held Local Leads!
+    for ( let y = 0; y < leadsTempHold.value.length; y++ ) {
+      const id = leadsTempHold.value[y].id
+      const leadHold = leadsTempHold.value[y]
+      try {
+        let localLeadUpload = await createLead_Service( leadHold )
+        console.log( "uploaded lead id with new id:", localLeadUpload.id )
+        await db.leads.update( id, { id: localLeadUpload.id, synced: true } );
+        localDBHold.value[y].synced = true
+        console.log( `updated local id: ${ id } to new server id: ${ localLeadUpload.id }` )
+      } catch ( e ) {
+        console.error( e )
+      }
+    }
+    leadsTempHold.value = []
 
     /*-| Compare Local Leads to Server
     ---+----+---+----+---+----+---+----+---*/
     for ( let x = 0; x < leadsServerLength; x++ ) {
       let matchFound = false;
       let serverLead = leadsServer.value[x]
-      // console.log( x )
-      // console.log( server )
 
-      // console.log( "Checking local leads" )
       for ( let y = 0; y < leadsLocalLength; y++ ) {
         let local = leadsLocalDB.value[y]
         // console.log( y + " Server" )
@@ -218,8 +216,6 @@ onMounted( async () => {
         await saveLocal_Lead( serverLead.id, serverLead, true )
       }
     }
-    // await queryLocalLeads()
-    // leadsSubscribe.unsubscribe();
   }
 )
 

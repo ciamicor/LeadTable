@@ -3,27 +3,7 @@
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 
 // By first name
-async function sortFName_Service(i: Array<{}>) {
-
-  i.sort((
-    a: any,
-    b: any
-  ) => {
-    const nameA = a.name_First.toUpperCase() // ignore upper and lowercase
-    const nameB = b.name_First.toUpperCase() // ignore upper and lowercase
-    if (nameA < nameB) {
-      return -1
-    }
-    if (nameA > nameB) {
-      return 1
-    }
-    // names must be equal
-    return 0
-  })
-}
-
-// By first name
-async function sortLName_Service(i: Array<{}>) {
+export async function sortLName_Service(i: Array<{}>) {
   i.sort((
     a: any,
     b: any
@@ -43,14 +23,13 @@ async function sortLName_Service(i: Array<{}>) {
   return i
 }
 
-// By Created Date
-async function sortCreatedDate_Service(i: Array<{}>) {
+export async function sortFName_Service(i: Array<{}>) {
   i.sort((
     a: any,
     b: any
   ) => {
-    const nameA = a.name_Last.toUpperCase() // ignore upper and lowercase
-    const nameB = b.name_Last.toUpperCase() // ignore upper and lowercase
+    const nameA = a.name_First.toUpperCase().trim() // ignore upper and lowercase
+    const nameB = b.name_First.toUpperCase().trim() // ignore upper and lowercase
     if (nameA < nameB) {
       return -1
     }
@@ -60,6 +39,44 @@ async function sortCreatedDate_Service(i: Array<{}>) {
     // names must be equal
     return 0
   })
+  console.log("Sorted by first name.")
+  return i
 }
 
-export { sortFName_Service, sortLName_Service, sortCreatedDate_Service }
+// By Created Date
+export async function sortCreatedDate_Earliest_Service(i: Array<{}>) {
+  i.sort((
+    a: any,
+    b: any
+  ) => {
+    const dateA = a.createdAt // ignore upper and lowercase
+    const dateB = b.createdAt // ignore upper and lowercase
+    if (dateA < dateB) {
+      return -1
+    }
+    if (dateA > dateB) {
+      return 1
+    }
+    // dates must be equal
+    return 0
+  })
+}
+
+export async function sortCreatedDate_Latest_Service(i: Array<{}>) {
+  i.sort((
+    a: any,
+    b: any
+  ) => {
+    const dateA = a.createdAt // ignore upper and lowercase
+    const dateB = b.createdAt // ignore upper and lowercase
+    if (dateA > dateB) {
+      return -1
+    }
+    if (dateA < dateB) {
+      return 1
+    }
+    // dates must be equal
+    return 0
+  })
+}
+
