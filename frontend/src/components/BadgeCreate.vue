@@ -24,6 +24,7 @@
       </h4>
       <h1 id="attendee-reg">{{ expoLocal.name }} Registration</h1>
       <p>Register to attend the expo or create booth personnel badges.</p>
+      <p>These details will be shared when your badge is scanned for Lead Retrieval.</p>
 
       <div class="row-12-300 --no-space">
         <label>
@@ -84,13 +85,12 @@
             autocomplete="tel"
             name="phone"
             placeholder="+0 (000) 000-0000"
-            required
             type="tel"/>
         </label>
       </div>
       <div class="row-12-300 --no-space">
         <label class="row-12-300">
-          <span class="--flex-basis-100">Your Address</span>
+          <span class="--flex-basis-100">Address</span>
           <input
             v-model="attendee.address_Line1"
             autocomplete="address-line1"
@@ -131,7 +131,7 @@
                   required>
             <option disabled
                     selected
-                    value="">Select Country
+                    value="US">United States
             </option>
             <option v-for="(c, index) in countryCodes"
                     :key="index"
