@@ -1,14 +1,15 @@
-import { createWebHistory, createRouter } from 'vue-router'
-import LeadsList from '@/components/LeadsList.vue'
-import CompanyProfile from '@/components/exhibitor/ExhibitorProfile.vue'
-import BadgePrint from '@/components/admin/BadgePrint.vue'
-import BadgePrintQuickfix from '@/components/admin/BadgePrintQuickfix.vue'
-import ExpoMap from '@/components/ExpoMap.vue'
-import ExpoSelect from '@/components/ExpoSelect.vue'
-import LeadAdd from '@/components/LeadAdd.vue'
-import BadgeCreate from '@/components/BadgeCreate.vue'
-import AttendeesUpload from '@/components/AttendeesUpload.vue'
+import { createWebHistory, createRouter } from "vue-router"
+import LeadsList from "@/components/LeadsList.vue"
+import CompanyProfile from "@/components/exhibitor/ExhibitorProfile.vue"
+import BadgePrint from "@/components/admin/BadgePrint.vue"
+import BadgePrintQuickfix from "@/components/admin/BadgePrintQuickfix.vue"
+import ExpoMap from "@/components/ExpoMap.vue"
+import ExpoSelect from "@/components/ExpoSelect.vue"
+import LeadAdd from "@/components/LeadAdd.vue"
+import BadgeCreate from "@/components/BadgeCreate.vue"
+import AttendeesUpload from "@/components/AttendeesUpload.vue"
 import CompanyCreate from "@/components/exhibitor/ExhibitorCreate.vue";
+import ExhibitorsList from "@/components/exhibitor/ExhibitorsList.vue"
 
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 /*-| Routes |-*/
@@ -18,94 +19,103 @@ const routes = [
   /*-| Redirects |-*/
   /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
   {
-    path: '/profile',
-    redirect: '/',
+    path: "/profile",
+    redirect: "/"
   },
   {
-    path: '/leads-list',
-    redirect: '/',
+    path: "/leads-list",
+    redirect: "/"
   },
   /*-| Routes |-*/
   /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
   {
-    path: '/',
-    name: 'ExpoSelect',
-    component: ExpoSelect,
+    path: "/",
+    name: "ExpoSelect",
+    component: ExpoSelect
   },
   /*-| Expo Users |-*/
   /*---+----+---+----+---+----+---+----+---*/
   {
-    path: '/:client/:year/',
+    path: "/:client/:year/",
     children: [
       {
         path: "",
         name: "ExpoMap",
-        component: ExpoMap,
+        component: ExpoMap
       },
       {
-        path: 'leads-list',
-        name: 'Leadtable',
-        component: LeadsList,
+        path: "leads-list",
+        name: "Leadtable",
+        component: LeadsList
       },
       {
-        path: 'scan-lead',
-        name: 'LeadAdd',
-        component: LeadAdd,
+        path: "scan-lead",
+        name: "LeadAdd",
+        component: LeadAdd
       },
       {
-        path: 'floor-plan',
-        name: 'ExpoMap',
-        component: ExpoMap,
+        path: "floor-plan",
+        name: "ExpoMap",
+        component: ExpoMap
       },
       {
-        path: 'profile',
-        name: 'CompanyProfile',
-        component: CompanyProfile,
+        path: "profile",
+        name: "CompanyProfile",
+        component: CompanyProfile
       },
       {
-        path: 'create-badge',
-        name: 'BadgeCreate',
-        component: BadgeCreate,
+        path: "create-badge",
+        name: "BadgeCreate",
+        component: BadgeCreate
       },
       {
-        path: 'register',
-        name: 'Register',
-        component: BadgeCreate,
+        path: "register",
+        name: "Register",
+        component: BadgeCreate
       },
       {
-        path: 'exhibitor-registration',
-        name: 'Exhibitor Registration',
-        component: CompanyCreate,
+        path: "exhibitor-registration",
+        name: "Exhibitor Registration",
+        component: CompanyCreate
+      },
+      {
+        path: "exhibitors-list",
+        name: "Exhibitor List",
+        component: ExhibitorsList
       },
       /*-| Admin Views |-*/
       /*---+----+---+----+---+----+---+----+---*/
       {
-        path: 'admin',
+        path: "admin",
         children: [
           {
-            path: 'create-badge',
-            name: 'Admin Badge Creator',
-            component: BadgeCreate,
+            path: "create-badge",
+            name: "Admin Badge Creator",
+            component: BadgeCreate
           },
           {
-            path: 'print-badges',
-            name: 'BadgePrint',
+            path: "print-badges",
+            name: "BadgePrint",
             component: BadgePrint
           },
           {
-            path: 'print-badges-quickfix',
-            name: 'Badge Print Quickfix',
+            path: "print-badges-quickfix",
+            name: "Badge Print Quickfix",
             component: BadgePrintQuickfix
           },
           {
-            path: 'upload-attendees',
-            name: 'AttendeesUpload',
+            path: "upload-attendees",
+            name: "AttendeesUpload",
             component: AttendeesUpload
           }
         ]
       }
     ]
   },
+  {
+    path: "/:pathMatch(.*)*",
+    component: ExpoMap
+  }
 ]
 
 const router = createRouter({
@@ -118,8 +128,8 @@ const router = createRouter({
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!/*/
 router.beforeEach((to, from) => {
   /*-| Reroute when 'undefined' |-*/
-  if ((to.params.client === 'undefined' || to.params.year === 'undefined' && to.name !== 'ExpoSelect') && to.name !== 'ExpoSelect') {
-    return {name: 'ExpoSelect'}
+  if ((to.params.client === "undefined" || to.params.year === "undefined" && to.name !== "ExpoSelect") && to.name !== "ExpoSelect") {
+    return {name: "ExpoSelect"}
   }
 })
 

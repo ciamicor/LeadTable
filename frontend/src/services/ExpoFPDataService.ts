@@ -1,11 +1,11 @@
-import axios from 'axios'
+import axios from "axios"
 import { getExpoToken_Service } from "@/services/ExpoDataService.ts";
 
-const baseUrl = 'https://app.expofp.com/api/v1/'
+const baseUrl = "https://app.expofp.com/api/v1/"
 
 /*-| Get All Exhibitors
 ---+----+---+----+---+----+---+----+---*/
-export async function getAllFPExhibitors(client: any, year: any) {
+export async function getAllFPExhibitors(client: any, year: any, expoFPid: any) {
   try {
     const getData: any = await getExpoToken_Service(client, year)
     let expoData: { expoId: number, token: string } = {
@@ -14,16 +14,45 @@ export async function getAllFPExhibitors(client: any, year: any) {
     }
     // await console.log('getAllExhibitors got token: ', token)
     let res = await axios({
-      method: 'post',
-      url: baseUrl + 'list-exhibitors',
+      method: "post",
+      url: baseUrl + "list-exhibitors",
       data: {
-        'token': expoData.token,
-        'eventId': 23706
+        "token": expoData.token,
+        "eventId": expoFPid
       }
     })
     console.log("Got all Exhibitors: ", res.data)
     expoData.token = ""
     return res.data
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+/*-| Bulk Read Exhibitors
+---+----+---+----+---+----+---+----+---*/
+
+// https://app.expofp.com/api/v1/bulk-read-exhibitors
+export async function bulkReadExpoFPExhibitors(client: any, year: any, expoFPid: any) {
+  try {
+    const getData: any = await getExpoToken_Service(client, year)
+    let expoData: { expoId: number, token: string } = {
+      token: getData.token,
+      expoId: getData.expoId
+    }
+    console.log(expoData)
+    let res = await axios({
+      method: "post",
+      url: baseUrl + "bulk-read-exhibitors",
+      data: {
+        "token": expoData.token,
+        "expoId": expoFPid,
+        "responseItemTemplate": null
+      }
+    })
+    console.log("Got all Exhibitors: ", res.data.items)
+    expoData.token = ""
+    return res.data.items
   } catch (e) {
     console.log(e)
   }
@@ -44,12 +73,12 @@ export async function getFPExhibitorId(
     console.log(`Getting id for externalId: ${externalId}`)
     console.log(expoData)
     let res = await axios({
-      method: 'post',
-      url: baseUrl + 'get-exhibitor-id',
+      method: "post",
+      url: baseUrl + "get-exhibitor-id",
       data: {
-        'eventId': expoData.expoId,
-        'externalId': externalId,
-        'token': expoData.token,
+        "eventId": expoData.expoId,
+        "externalId": externalId,
+        "token": expoData.token
       }
     })
     console.log("Got Exhibitor: ", res.data)
@@ -74,11 +103,11 @@ export async function getFPExhibitor(
     }
     // console.log('getExhibitor got token: ',)
     let res = await axios({
-      method: 'post',
-      url: baseUrl + 'get-exhibitor',
+      method: "post",
+      url: baseUrl + "get-exhibitor",
       data: {
-        'token': expoData.token,
-        'id': id
+        "token": expoData.token,
+        "id": id
       }
     })
     console.log("Got Exhibitor: ", res.data)
@@ -94,7 +123,7 @@ export async function getFPExhibitor(
 export async function getFPExhibitorExtras(
   id: any,
   client: any,
-  year: any,
+  year: any
 ) {
   try {
     const getData: any = await getExpoToken_Service(client, year)
@@ -104,11 +133,11 @@ export async function getFPExhibitorExtras(
     }
     // console.log('getExhibitor got token: ',)
     let res = await axios({
-      method: 'post',
-      url: baseUrl + 'list-exhibitor-extras',
+      method: "post",
+      url: baseUrl + "list-exhibitor-extras",
       data: {
-        'token': expoData.token,
-        'exhibitorId': id
+        "token": expoData.token,
+        "exhibitorId": id
       }
     })
     // console.log("Exhibitor extras are: ", res.addresses)
@@ -138,11 +167,11 @@ export async function addExhibitor(
     exhibitor.expo_Year
   )
   // getExhibitorId returns a number
-  if (typeof existsId === 'number') {
+  if (typeof existsId === "number") {
     console.log(`Exhibitor ${existsId} already exists. Moving on.`)
     return "Exhibitor already exists."
   }
-  else if (typeof existsId !== 'number') {
+  else if (typeof existsId !== "number") {
     console.log("Exhibitor doesn't exist yet. I'll create that now.")
     try {
       const getData: any = await getExpoToken_Service(client, year)
@@ -152,26 +181,26 @@ export async function addExhibitor(
       }
       // console.log('getExhibitor got token: ',)
       let res = await axios({
-        method: 'post',
-        url: baseUrl + 'add-exhibitor',
+        method: "post",
+        url: baseUrl + "add-exhibitor",
         data: {
-          'token': expoData.token,
-          'eventId': expoData.expoId,
-          'name': exhibitor.name,
-          'description': exhibitor.description,
-          'country': exhibitor.country,
-          'address': exhibitor.address,
-          'address2': exhibitor.address2,
-          'city': exhibitor.city,
-          'state': exhibitor.state,
-          'zip': exhibitor.zip,
-          'phone1': exhibitor.phone1,
-          'publicEmail': exhibitor.publicEmail,
-          'privateEmail': exhibitor.privateEmail,
-          'website': exhibitor.website,
-          'contactName': exhibitor.contactName,
-          'contactPhone': exhibitor.contactPhone,
-          'externalId': exhibitor.externalId,
+          "token": expoData.token,
+          "eventId": expoData.expoId,
+          "name": exhibitor.name,
+          "description": exhibitor.description,
+          "country": exhibitor.country,
+          "address": exhibitor.address,
+          "address2": exhibitor.address2,
+          "city": exhibitor.city,
+          "state": exhibitor.state,
+          "zip": exhibitor.zip,
+          "phone1": exhibitor.phone1,
+          "publicEmail": exhibitor.publicEmail,
+          "privateEmail": exhibitor.privateEmail,
+          "website": exhibitor.website,
+          "contactName": exhibitor.contactName,
+          "contactPhone": exhibitor.contactPhone,
+          "externalId": exhibitor.externalId
         }
       })
       console.log("Added exhibitor: ", exhibitor.name)
@@ -203,13 +232,13 @@ export async function addExhibitorBooth(
     }
     // console.log('getExhibitor got token: ',)
     await axios({
-      method: 'post',
-      url: baseUrl + 'add-exhibitor-booth',
+      method: "post",
+      url: baseUrl + "add-exhibitor-booth",
       data: {
-        'eventId': expoData.expoId,
-        'boothName': boothName,
-        'exhibitorId': exhibitorId,
-        'token': expoData.token,
+        "eventId": expoData.expoId,
+        "boothName": boothName,
+        "exhibitorId": exhibitorId,
+        "token": expoData.token
       }
     })
     console.log("Added booth: ", boothName)

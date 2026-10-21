@@ -183,8 +183,10 @@ onMounted( async () => {
       try {
         let localLeadUpload = await createLead_Service( leadHold )
         console.log( "uploaded lead id with new id:", localLeadUpload.id )
-        await db.leads.update( id, { id: localLeadUpload.id, synced: true } );
-        localDBHold.value[y].synced = true
+        if ( localLeadUpload.id ) {
+          await db.leads.update( id, { id: localLeadUpload.id, synced: true } );
+          localDBHold.value[y].synced = true
+        }
         console.log( `updated local id: ${ id } to new server id: ${ localLeadUpload.id }` )
       } catch ( e ) {
         console.error( e )
