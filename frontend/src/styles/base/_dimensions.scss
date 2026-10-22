@@ -10,6 +10,10 @@ $sizing-list: (
                 max-content
               );
 
+.--flex-basis-auto {
+  flex-basis: auto !important;
+}
+
 @each $size in $sizing-list {
   .--h-#{$size} {
     height: #{$size};

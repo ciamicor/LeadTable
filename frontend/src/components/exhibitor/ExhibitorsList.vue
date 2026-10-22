@@ -1,17 +1,18 @@
 <template>
-  <div class="--p-h-12 --p-t-12">
+  <div class="--p-h-12 --p-t-12 row-12-300 --justify-content-space-between --flex-basis-auto">
     <input id="search"
            v-model="searchTerm"
            name="search"
            placeholder="Search for Exhibitor"
            type="text">
-    {{ searchTerm }}
+    <LoadingHolder :status="status"
+                   class="--place-self-center"/>
+    <exhibitors-export v-if="exhibitorList"
+                       :exhibitors-list="exhibitorList"
+    />
   </div>
 
   <div class="lead-cards-container --align-content-start --justify-content-center --p-12 --gap-12 --m-b-24">
-    <LoadingHolder :status="status"
-                   class="--place-self-center"/>
-
     <div v-for="(exhib, index) in displayExhibList"
          v-if="exhibitorList"
          :key="index"
@@ -60,6 +61,7 @@ import {
 import { computed, onBeforeMount, ref } from "vue"
 import { bulkReadExpoFPExhibitors } from "@/services/ExpoFPDataService.ts"
 import { onMounted } from "vue"
+import ExhibitorsExport from "@/components/exhibitor/ExhibitorsExport.vue"
 
 const sessionStore = useSessionStore()
 const exhibitorLocal = useExhibitorLocalStore()
@@ -75,13 +77,16 @@ onBeforeMount(async () => {
   exhibitorList.value = await bulkReadExpoFPExhibitors(expoLocal.expo_Client, expoLocal.expo_Year, expoLocal.expoFp_Id)
   exhibitorList.value = await sortExpoFPExhibs(exhibitorList.value)
   status.value = false
-  console.log(exhibitorList.value)
-  console.log(displayExhibList.value)
 })
 
 const displayExhibList = computed(() => {
   return exhibitorList.value.filter((e: any) => {
-    return e.name.toUpperCase().trim().includes(searchTerm.value.toUpperCase().trim())
+    return e.name.replace(/[^a-zA-z0-9]/g, "")
+      .toUpperCase()
+      .trim()
+      .includes(searchTerm.value.replace(/[^a-zA-z0-9]/g, "").toUpperCase().trim())
+    // || e.name.toUpperCase().trim().includes(searchTerm.value.toUpperCase().trim())
+
   })
 })
 
