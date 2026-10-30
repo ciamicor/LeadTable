@@ -119,6 +119,7 @@ fieldset {
     scale:         .85;
   }
   input.search {
+    field-sizing: content;
     padding:       $sp-5 $sp-7;
     border-radius: 65px;
     transition:    border-radius $trans-200;

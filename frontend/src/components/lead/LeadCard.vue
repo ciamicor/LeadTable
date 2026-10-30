@@ -78,7 +78,7 @@
 <script lang="ts"
         setup>
 import { defineProps, computed, ref } from "vue";
-import LeadEditModal from "@/components/LeadEditModal.vue";
+import LeadEditModal from "@/components/lead/LeadEditModal.vue";
 import {
   createLead_Service,
   deleteLead_Service,

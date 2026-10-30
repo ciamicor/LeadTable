@@ -1,5 +1,6 @@
 <template>
-  <div v-show="props.status">
+  <div v-show="props.status"
+       class="--w-max-content">
     <p>{{ props.message }}</p>
   </div>
 </template>
@@ -7,7 +8,7 @@
         setup>
 const props = defineProps({
   status: Boolean,
-  message: {type: String, default: 'Loading...'},
+  message: {type: String, default: "Loading..."}
 
 })
 </script>

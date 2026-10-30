@@ -1,13 +1,13 @@
 import { createWebHistory, createRouter } from "vue-router"
-import LeadsList from "@/components/LeadsList.vue"
+import LeadsList from "@/components/lead/LeadsList.vue"
 import CompanyProfile from "@/components/exhibitor/ExhibitorProfile.vue"
 import BadgePrint from "@/components/admin/BadgePrint.vue"
 import BadgePrintQuickfix from "@/components/admin/BadgePrintQuickfix.vue"
 import ExpoMap from "@/components/ExpoMap.vue"
 import ExpoSelect from "@/components/ExpoSelect.vue"
-import LeadAdd from "@/components/LeadAdd.vue"
+import LeadAdd from "@/components/lead/LeadAdd.vue"
 import BadgeCreate from "@/components/BadgeCreate.vue"
-import AttendeesUpload from "@/components/AttendeesUpload.vue"
+import AttendeesUpload from "@/components/attendee/AttendeesUpload.vue"
 import CompanyCreate from "@/components/exhibitor/ExhibitorCreate.vue";
 import ExhibitorsList from "@/components/exhibitor/ExhibitorsList.vue"
 

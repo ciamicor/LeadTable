@@ -121,11 +121,11 @@
 
 <script setup>
 import { QrcodeStream } from "vue-qrcode-reader"
-import { createLead_Service, saveLocal_Lead } from "@/services/LeadDataService.js"
+import { createLead_Service, saveLocal_Lead } from "@/services/LeadDataService.ts"
 import { getAttendee_Service } from "@/services/AttendeeDataService.ts"
 import { inject, onBeforeMount, onMounted, reactive, ref } from "vue"
-import router from "@/router.js"
-import { useExhibitorLocalStore } from "@/stores.js"
+import router from "@/router.ts"
+import { useExhibitorLocalStore } from "@/stores.ts"
 
 /*-| Variables |-*/
 /*---+----+---+----+---+----+---+----+---*/

@@ -9,7 +9,7 @@
 <script lang="js"
         setup>
 import { utils, writeFile } from "xlsx"
-import { useExhibitorLocalStore } from "@/stores.js"
+import { useExhibitorLocalStore } from "@/stores.ts"
 
 const companyLocal = useExhibitorLocalStore()
 

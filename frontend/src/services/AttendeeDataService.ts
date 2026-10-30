@@ -96,7 +96,8 @@ async function updateAttendee_Service(id: any, attendee: any) {
   console.log("Update Attendee addresses: ", data)
   try {
     let updatedAttendee = await attendeeService.update(id, data)
-    console.log(updatedAttendee)
+    console.log(updatedAttendee.data)
+    return updatedAttendee.data
   } catch (e: any) {
     console.log(e)
   }
@@ -144,6 +145,17 @@ async function getAttendeesUploadId_Service(id: any) {
     let attendees = await attendeeService.getUploadAttendee(id)
     console.log("Attendees in upload: ", attendees)
     return attendees.data
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+/*-| Delete an Attendee by ID
+---+----+---+----+---+----+---+----+---*/
+export async function deleteAttendee_Service(id: any) {
+  try {
+    let attendee = await attendeeService.delete(id)
+    console.log("deleted attendee from server: ", attendee.data)
   } catch (e) {
     console.log(e)
   }

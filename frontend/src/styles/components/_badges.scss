@@ -1,19 +1,33 @@
 @use "../abstracts/index" as *;
+// @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+.badge-admin-bar {
+  position:   fixed;
+  top:        0;
+  right:      0;
+  left:       0;
+  background: white;
+}
 
 /*-| Badges for Selecting |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 .badge-select-grid {
-  margin-top: $sp-8;
   @include adapt-grid($grid-card-min-width: 300, $grid-card-rows: auto-fill);
+  grid-template-columns: 1fr;
+  gap:                   0;
+  width:                 100%;
+  margin-top:            215px;
   .badge-select-wrap {
     @extend .grid-card;
-    grid-template-columns: min-content 1fr;
+    grid-template-columns: min-content 1fr min-content;
     align-items:           stretch;
     gap:                   $sp-6;
-    padding:               $sp-v-4;
+    padding:               $sp-4;
+    border-radius:         4px;
     & .select-toggle {
       display:         flex;
-      flex-flow:       column nowrap;
+      flex-flow:       row nowrap;
       justify-content: space-between;
       gap:             $sp-4;
     }
@@ -39,18 +53,20 @@
   //outline:               1px dashed black;
   & .badge-wrap {
     display:            grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr min-content;
     /*width:              4in;
     height:             3in;*/
-    padding:            0.165in 0.165in 0.325in;
-    //outline:            1px dashed $grey-4;
+    padding:            0.165in 0.165in 0.1875in;
+    outline:            1px dashed $grey-4;
+    background:         white;
     & .--attendee-info-container {
       display:            grid;
       grid-template-rows: repeat(3, min-content );
-      gap:                $sp-4;
+      gap:                $sp-5;
+      font-family:        "Encode Sans Condensed", sans-serif;
       width:              100%;
       * {
-        line-height:    1;
+        line-height:    100%;
         text-transform: capitalize;
         margin:         0;
       }
@@ -58,36 +74,53 @@
         padding: 0 !important;
         border:  none;
       }
-      & .--employer {
-        color:                   $color-primary-4;
-        font-size:               1.25rem;
-        font-variation-settings: "wght" 300, "wdth" 100, "opsz" 15;
-      }
       & .--name {
-        font-size:               $font-xl;
-        font-variation-settings: "wght" 600, "wdth" 100, "opsz" 15;
+        font-size:   var(--font-size);
+        font-weight: 600;
+        --font-size: 38px;
+        .svg-name {
+          letter-spacing: -0.5px;
+          max-width:      100%;
+          max-height:     var(--font-size);
+        }
+      }
+      & .--employer {
+        font-size:   var(--font-size);
+        // letter-spacing:          -0.5px;
+        font-weight: 400;
+        --font-size: 28px;
       }
       & .--title {
         color:                   $grey-5;
-        font-size:               1.25rem;
+        font-size:               var(--font-size);
         font-style:              italic;
-        font-variation-settings: "wght" 300, "wdth" 100, "opsz" 15;
+        // letter-spacing:          0.5px;
+        --font-size:             24px;
+        font-variation-settings: "wght" 300, "wdth" 100, "opsz" 48;
+        /*        .svg-name {
+                  letter-spacing: -0.5px;
+                  max-width:      100%;
+                  max-height:     var(--font-size);
+                }*/
       }
     }
     & .badge--images-container {
       display:               grid;
       grid-template-columns: .65fr 1fr;
-      grid-template-rows: 1.175in;
       place-content:         center;
+      // grid-template-rows: 1.175in;
       place-items:           center start;
+      --img-ht:              65px;
       .badge--qr {
-        width:      115px !important;
-        height:     115px !important;
+        place-self: end start;
+        width:      var(--img-ht) !important;
+        height:     var(--img-ht) !important;
         background: $grey-10;
       }
       img {
-        width:  185px;
-        height: auto;
+        place-self: end;
+        width:      auto;
+        height:     calc(var(--img-ht) + 10px);
       }
     }
   }

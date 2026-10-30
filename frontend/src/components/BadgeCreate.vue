@@ -487,7 +487,7 @@ const logoData = ref()
 
 // TODO merge with code from BadgePrint, then add to service file.
 async function badgeToPDF( a ) {
-  badgeToPDF_Service( a, expoLocal, qrData, logoData )
+  await badgeToPDF_Service( a, expoLocal, qrData, logoData )
 }
 
 </script>

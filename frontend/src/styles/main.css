@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap");
 /*-| Import |-*/
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -6085,6 +6086,14 @@ template {
 /*-| Generate
 /==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 /*-| Font Size Classes |-*/
+.--font-size-10 {
+  font-size: 10px;
+}
+
+.--font-size-12 {
+  font-size: 12px;
+}
+
 .--font-size-14 {
   font-size: 14px;
 }
@@ -6143,14 +6152,6 @@ template {
 
 .--font-size-42 {
   font-size: 42px;
-}
-
-.--font-size-44 {
-  font-size: 44px;
-}
-
-.--font-size-46 {
-  font-size: 46px;
 }
 
 .--color-primary-1 {
@@ -6892,6 +6893,7 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
   scale: 0.85;
 }
 .search-wrap input.search {
+  field-sizing: content;
   padding: 12px 20px;
   border-radius: 65px;
   transition: border-radius 200ms ease-in-out;
@@ -13076,10 +13078,17 @@ table tbody tr input:active, table tbody tr input:focus {
   position: fixed;
 }
 
+.badge-admin-bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background: white;
+}
+
 /*-| Badges for Selecting |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 .badge-select-grid {
-  margin-top: 24px;
   display: grid;
   grid-template-rows: auto;
   gap: min(24px, 2vw);
@@ -13120,15 +13129,22 @@ table tbody tr input:active, table tbody tr input:focus {
   outline: 1px solid var(--color-success-9);
   background: var(--color-success-12);
 }
+.badge-select-grid {
+  grid-template-columns: 1fr;
+  gap: 0;
+  width: 100%;
+  margin-top: 215px;
+}
 .badge-select-grid .badge-select-wrap {
-  grid-template-columns: min-content 1fr;
+  grid-template-columns: min-content 1fr min-content;
   align-items: stretch;
   gap: 16px;
-  padding: clamp(4px, 1px + 0.9375vw, 16px);
+  padding: 8px;
+  border-radius: 4px;
 }
 .badge-select-grid .badge-select-wrap .select-toggle {
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row nowrap;
   justify-content: space-between;
   gap: 8px;
 }
@@ -13152,19 +13168,22 @@ table tbody tr input:active, table tbody tr input:focus {
 }
 .badge-grid-container .badge-wrap {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr min-content;
   /*width:              4in;
   height:             3in;*/
-  padding: 0.165in 0.165in 0.325in;
+  padding: 0.165in 0.165in 0.1875in;
+  outline: 1px dashed var(--grey-4);
+  background: white;
 }
 .badge-grid-container .badge-wrap .--attendee-info-container {
   display: grid;
   grid-template-rows: repeat(3, min-content);
-  gap: 8px;
+  gap: 12px;
+  font-family: "Encode Sans Condensed", sans-serif;
   width: 100%;
 }
 .badge-grid-container .badge-wrap .--attendee-info-container * {
-  line-height: 1;
+  line-height: 100%;
   text-transform: capitalize;
   margin: 0;
 }
@@ -13172,36 +13191,50 @@ table tbody tr input:active, table tbody tr input:focus {
   padding: 0 !important;
   border: none;
 }
-.badge-grid-container .badge-wrap .--attendee-info-container .--employer {
-  color: var(--color-primary-4);
-  font-size: 1.25rem;
-  font-variation-settings: "wght" 300, "wdth" 100, "opsz" 15;
-}
 .badge-grid-container .badge-wrap .--attendee-info-container .--name {
-  font-size: 30px;
-  font-variation-settings: "wght" 600, "wdth" 100, "opsz" 15;
+  font-size: var(--font-size);
+  font-weight: 600;
+  --font-size: 38px;
+}
+.badge-grid-container .badge-wrap .--attendee-info-container .--name .svg-name {
+  letter-spacing: -0.5px;
+  max-width: 100%;
+  max-height: var(--font-size);
+}
+.badge-grid-container .badge-wrap .--attendee-info-container .--employer {
+  font-size: var(--font-size);
+  font-weight: 400;
+  --font-size: 28px;
 }
 .badge-grid-container .badge-wrap .--attendee-info-container .--title {
   color: var(--grey-5);
-  font-size: 1.25rem;
+  font-size: var(--font-size);
   font-style: italic;
-  font-variation-settings: "wght" 300, "wdth" 100, "opsz" 15;
+  --font-size: 24px;
+  font-variation-settings: "wght" 300, "wdth" 100, "opsz" 48;
+  /*        .svg-name {
+            letter-spacing: -0.5px;
+            max-width:      100%;
+            max-height:     var(--font-size);
+          }*/
 }
 .badge-grid-container .badge-wrap .badge--images-container {
   display: grid;
   grid-template-columns: 0.65fr 1fr;
-  grid-template-rows: 1.175in;
   place-content: center;
   place-items: center start;
+  --img-ht: 65px;
 }
 .badge-grid-container .badge-wrap .badge--images-container .badge--qr {
-  width: 115px !important;
-  height: 115px !important;
+  place-self: end start;
+  width: var(--img-ht) !important;
+  height: var(--img-ht) !important;
   background: var(--grey-10);
 }
 .badge-grid-container .badge-wrap .badge--images-container img {
-  width: 185px;
-  height: auto;
+  place-self: end;
+  width: auto;
+  height: calc(var(--img-ht) + 10px);
 }
 
 .expo-select-container {

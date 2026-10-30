@@ -122,7 +122,7 @@ import {
 import { updateAttendee_Service } from "@/services/AttendeeDataService.ts";
 import { countries } from "@/services/addresses/AddressForm_Countries.ts";
 
-const emit = defineEmits(["showModal"]);
+const emit = defineEmits(["showModal", "update"]);
 
 const props = defineProps({
   attendee: {
@@ -176,7 +176,8 @@ async function updateAttendee() {
     address_Country: attendeeAddress.value.address_Country,
     title: attendeeTitle.value
   }
-  await updateAttendee_Service(attendeeLocal.value.id, data)
+  let updated = await updateAttendee_Service(attendeeLocal.value.id, data)
+  emit("update", updated)
 }
 
 </script>

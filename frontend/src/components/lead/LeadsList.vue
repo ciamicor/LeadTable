@@ -93,12 +93,12 @@ import {
   createLead_Service,
   getAllCompanyLeads_Service,
   saveLocal_Lead
-} from "../services/LeadDataService.js"
+} from "../../services/LeadDataService.ts"
 import { onBeforeMount, onBeforeUnmount, onMounted, ref } from "vue"
 import { getLocalExhibitor_Service } from "@/services/ExhibitorDataService.ts"
-import LeadCard from "@/components/LeadCard.vue"
-import LeadsExport from "@/components/LeadsExport.vue"
-import { db } from "@/db.js";
+import LeadCard from "@/components/lead/LeadCard.vue"
+import LeadsExport from "@/components/lead/LeadsExport.vue"
+import { db } from "@/db.ts";
 import { liveQuery } from "dexie";
 import { checkError } from "@/services/ErrorService.ts";
 
