@@ -1,7 +1,8 @@
 <template>
 
   <!-- Visible Container, Components -->
-  <div class="container --align-content-start ">
+  <div
+    class="container --align-content-start ">
     <div class="--p-v-4 --p-h-6 row-12-300 badge-admin-bar --gap-8">
       <div
         class="search-wrap --place-self-center">
@@ -175,7 +176,7 @@ import html2canvas from "html2canvas"
 import BadgeSingle from "@/components/BadgeSingle.vue"
 import AttendeeCard from "@/components/attendee/AttendeeCard.vue"
 import { useVueToPrint } from "vue-to-print"
-import { onMounted, ref } from "vue"
+import { onBeforeMount, ref } from "vue"
 import {
   getExpoAttendees_Service,
   getAttendeesUploadId_Service
@@ -225,22 +226,21 @@ function getImageUrl( name ) {
 /*-| Hooks |-*/
 /*/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 /*-| WAIT for App.vue to get the expo info |-*/
-onMounted( () => {
+onBeforeMount( async () => {
   loading.value = true
-  setTimeout(
-    async () => {
-      console.log( expoLocal )
-      await getAllAttendees( expoLocal.expo_Client, expoLocal.expo_Year )
-      await getAllAttendeeUploads( expoLocal.expo_Client )
-    }, 600
-  )
-  console.log( "attendees list is: " + typeof attendeeList )
+  console.log( expoLocal )
+  await getAllAttendees( expoLocal.expo_Client, expoLocal.expo_Year )
+  await getAllAttendeeUploads( expoLocal.expo_Client )
+  await calcTabNumber()
   console.log( attendeeList )
-  setTimeout( async () => {
-    await calcTabNumber()
-    loading.value = false
+  loading.value = false
+  setTimeout(
+    () => {
+    }, 800
+  )
+  setTimeout( () => {
     // makeMap()
-  }, 1200 )
+  }, 850 )
 } )
 
 /*-| Pagination
