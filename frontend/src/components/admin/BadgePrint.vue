@@ -228,17 +228,17 @@ function getImageUrl( name ) {
 onMounted( () => {
   loading.value = true
   setTimeout(
-    () => {
+    async () => {
       console.log( expoLocal )
-      getAllAttendees( expoLocal.expo_Client, expoLocal.expo_Year )
-      getAllAttendeeUploads( expoLocal.expo_Client )
+      await getAllAttendees( expoLocal.expo_Client, expoLocal.expo_Year )
+      await getAllAttendeeUploads( expoLocal.expo_Client )
     }, 600
   )
   console.log( "attendees list is: " + typeof attendeeList )
   console.log( attendeeList )
-  setTimeout( () => {
+  setTimeout( async () => {
+    await calcTabNumber()
     loading.value = false
-    calcTabNumber()
     // makeMap()
   }, 1200 )
 } )
