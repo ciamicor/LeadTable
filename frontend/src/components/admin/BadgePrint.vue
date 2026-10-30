@@ -2,7 +2,7 @@
 
   <!-- Visible Container, Components -->
   <div class="container --align-content-start ">
-    <div class="--p-v-4 --p-h-6 row-12-300 badge-admin-bar">
+    <div class="--p-v-4 --p-h-6 row-12-300 badge-admin-bar --gap-8">
       <div
         class="search-wrap --place-self-center">
         <button
@@ -18,11 +18,29 @@
                placeholder="Search this Page"
                type="text">
       </div>
+
+      <div
+        class="row --p-h-6 --gap-2 --p-v-0 --place-content-center --place-items-center">
+        <span>Page:</span>
+        <button v-for="n in tabNumber"
+                :key="n"
+                :class="currentPage === n ? '--success' : ''"
+                class="--p-h-6 --p-v-4"
+                @click="updateTabDisplay(n)">
+          {{ n }}
+        </button>
+      </div>
+
+      <span
+        class="--m-h-8 --flex-grow --place-self-center">
+        Displaying attendees #{{ displayIdx_FIRST }}-{{ displayIdx_LAST }}
+      </span>
+
       <LoadingHolder :message="printProgressMsg"
                      :status="printIsRendering"
                      class="--place-self-center --flex-grow row-1-300 --place-items-center --place-content-center"/>
 
-      <div class="row-5-300 --flex-grow --justify-content-end --align-content-center">
+      <div class="row --p-0 --flex-grow --justify-content-end --align-content-center">
         <button v-show="attendeeListSelected.length === 0 || attendeeListSelected.length > 1"
                 class="--secondary --p-4"
                 @click="printBadges">
@@ -34,69 +52,54 @@
           @click="badgeToPDF(attendeeListSelected[0])">
           Print Single
         </button>
-        <!--        <router-link
-                  class="button &#45;&#45;success &#45;&#45;p-4"
-                  to="upload-attendees">
-                  <i class="bi-upload &#45;&#45;m-r-4"/>Upload Attendees
-                </router-link>-->
-      </div>
-      <div class="row-12-300 --justify-content-space-between --align-items-center --gap-3">
-
-        <div class="row-10-300 --align-items-center">
-          <span>Sort by</span>
-          <span>DATE:</span>
-          <button class="--p-h-4 --p-v-3"
-                  @click="sortCreatedDate_Earliest_Service( attendeeList)">Earliest
-          </button>
-          <button class="--p-h-4 --p-v-3"
-                  @click="sortCreatedDate_Latest_Service( attendeeList)">Latest
-          </button>
-          <span>NAME:</span>
-          <button class="--p-h-4 --p-v-3"
-                  @click="sortFName_Service( attendeeList )">First
-          </button>
-          <button class="--p-h-4 --p-v-3"
-                  @click="sortLName_Service( attendeeList )">Last
-          </button>
-        </div>
-
         <button
           class="--p-2 --p-h-4 --primary --font-size-14"
           @click="refreshAttendees(expoLocal.expo_Client, expoLocal.expo_Year, attendeeList)"
         >
           <i class="bi-arrow-clockwise --font-size-20"></i>
         </button>
+        <!--        <router-link
+                  class="button &#45;&#45;success &#45;&#45;p-4"
+                  to="upload-attendees">
+                  <i class="bi-upload &#45;&#45;m-r-4"/>Upload Attendees
+                </router-link>-->
       </div>
+      <div v-if="!loading.value"
+           class="row-12-300 --p-0 --align-items-center --gap-2">
 
-      <div class="row-12-300">
-        <div
-          class="row --p-h-6 --p-v-0 --place-content-center --place-items-center">
-          <span>Page:</span>
-          <button v-for="n in tabNumber"
-                  :key="n"
-                  :class="currentPage === n ? '--success' : ''"
-                  class=""
-                  @click="updateTabDisplay(n)">
-            {{ n }}
+        <div class="row --align-items-center --justify-content-start --gap-4">
+          <span>Sort by</span>
+          <span>DATE:</span>
+          <button class="--p-h-4 --p-v-3"
+                  @click="sortCreatedDate_Earliest">Earliest
           </button>
-          <span
-            class="--m-l-16 --flex-grow">
-        Displaying attendees #{{ displayIdx_FIRST }}-{{ displayIdx_LAST }}
-      </span>
+          <button class="--p-h-4 --p-v-3"
+                  @click="sortCreatedDate_Latest">Latest
+          </button>
+          <span>NAME:</span>
+          <button class="--p-h-4 --p-v-3"
+                  @click="sortFName_First">First
+          </button>
+          <button class="--p-h-4 --p-v-3"
+                  @click="sortLName_Last">Last
+          </button>
         </div>
-        <div v-if="uploadsList && uploadsList.length > 0"
-        >
-          <span class="--m-r-3">View upload:</span>
-          <span
-            v-for="(upload, i) in uploadsList"
-            :key="i"
-            class="button --p-h-4 --p-v-2 --font-size-14 --place-self-center "
-            style="display: inline-block"
-            @click="getAttendees_SelectedUpload(upload.id)"
+        <div class="row">
+          <div v-if="uploadsList && uploadsList.length > 0"
           >
+            <span class="--m-r-3">View upload:</span>
+            <span
+              v-for="(upload, i) in uploadsList"
+              :key="i"
+              class="button --p-h-4 --p-v-2 --font-size-14 --place-self-center "
+              style="display: inline-block"
+              @click="getAttendees_SelectedUpload(upload.id)"
+            >
           {{ upload.upload_Title }}
         </span>
+          </div>
         </div>
+
       </div>
     </div>
 
@@ -256,8 +259,10 @@ async function updateTabDisplay( n ) {
   displayIdx_LAST.value = pageSize.value
 
   displayIdx_LAST.value = displayIdx_LAST.value * n
-  if ( displayIdx_LAST.value > attendeeListLn.value ) displayIdx_LAST.value = attendeeListLn.value
   displayIdx_FIRST.value = displayIdx_LAST.value - pageSize.value
+
+  if ( displayIdx_LAST.value > attendeeListLn.value ) displayIdx_LAST.value = attendeeListLn.value
+
   attendeeList.value = attendeeListFull.value.slice( displayIdx_FIRST.value,
     displayIdx_LAST.value )
 }
@@ -375,6 +380,33 @@ async function removeBadge( i ) {
 function removeAttendee_List( i ) {
   console.log( "deleting" + i )
   attendeeList.value.splice( i, 1 )
+  attendeeListLn.value -= 1
+}
+
+/*-| Sorting
+==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
+function sortCreatedDate_Earliest() {
+  sortCreatedDate_Earliest_Service( attendeeListFull.value )
+  updateTabDisplay( 1 )
+  console.log( currentPage )
+}
+
+function sortCreatedDate_Latest() {
+  sortCreatedDate_Latest_Service( attendeeListFull.value )
+  updateTabDisplay( 1 )
+  console.log( currentPage )
+}
+
+function sortFName_First() {
+  sortFName_Service( attendeeListFull.value )
+  updateTabDisplay( 1 )
+  console.log( currentPage )
+}
+
+function sortLName_Last() {
+  sortLName_Service( attendeeListFull.value )
+  updateTabDisplay( 1 )
+  console.log( currentPage )
 }
 
 /*/===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!

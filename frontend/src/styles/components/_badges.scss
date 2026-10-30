@@ -22,7 +22,7 @@
     @extend .grid-card;
     grid-template-columns: min-content 1fr min-content;
     align-items:           stretch;
-    gap:                   $sp-6;
+    gap:                   $sp-4;
     padding:               $sp-4;
     border-radius:         4px;
     & .select-toggle {

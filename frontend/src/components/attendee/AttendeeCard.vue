@@ -34,8 +34,8 @@
       </p>
       <span class="--flex-grow --font-size-12 --color-grey-7 --justify-self-end"
             style="text-align: end;">
-        Created: {{
-          makeDate( attendee.createdAt )
+        {{
+          makeDate( attendee.createdAt ).toString().replace( /\:\d\d ([PM|AM])/, " $1" )
         }}
       </span>
     </div>
