@@ -103,10 +103,10 @@
       </div>
     </div>
 
-    <div class="row-12-300">
+    <div v-if="attendeeList && !loading"
+         class="row-12-300">
       <LoadingHolder :status="loading"/>
       <div
-        v-show="!loading"
         class="badge-select-grid"
       >
         <!-- TODO: Change list to use Map       -->
