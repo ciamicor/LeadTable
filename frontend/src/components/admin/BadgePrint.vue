@@ -69,8 +69,8 @@
       </div>
 
       <div class="row-12-300">
-        <div v-if="tabNumber > 1"
-             class="row --p-h-6 --p-v-0 --place-content-center --place-items-center">
+        <div
+          class="row --p-h-6 --p-v-0 --place-content-center --place-items-center">
           <span>Page:</span>
           <button v-for="n in tabNumber"
                   :key="n"
