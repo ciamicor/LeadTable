@@ -13172,7 +13172,6 @@ table tbody tr input:active, table tbody tr input:focus {
   /*width:              4in;
   height:             3in;*/
   padding: 0.165in 0.165in 0.1875in;
-  outline: 1px dashed var(--grey-4);
   background: white;
 }
 .badge-grid-container .badge-wrap .--attendee-info-container {
