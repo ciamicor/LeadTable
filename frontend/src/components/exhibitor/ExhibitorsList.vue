@@ -22,6 +22,14 @@
       <div class="row-12-300 --font-size-14">
         {{ exhib.details.city }} {{ exhib.details.state }}, {{ exhib.details.country }}
       </div>
+      <div class="row-12-300 --font-size-14">
+        Booth: {{ exhib.booths }}
+        <span v-for="booth in exhib.booths"
+              :key="booth.name"
+        >
+          {{ booth.name }}
+      </span>
+      </div>
       <div v-if="exhib.details.description"
            class="row-12-300 --font-size-14">
         {{
@@ -77,6 +85,7 @@ onBeforeMount(async () => {
   exhibitorList.value = await bulkReadExpoFPExhibitors(expoLocal.expo_Client, expoLocal.expo_Year, expoLocal.expoFp_Id)
   exhibitorList.value = await sortExpoFPExhibs(exhibitorList.value)
   status.value = false
+  // console.log(exhibitorList.value)
 })
 
 const displayExhibList = computed(() => {

@@ -27,7 +27,17 @@ function flattenObject( ob ) {
   // console.log( "-------" )
   for ( let k in ob ) {
     // console.log( "key: " + k )
-    if ( k === "booths" ) continue
+    if ( k === "booths" ) {
+      let boothStr = ""
+      // console.log( ob.booths )
+      for ( let i = 0; i < ob.booths.length; i++ ) {
+        // console.log( "booth ", ob.booths[i] )
+        let b = ob.booths[i]
+        boothStr += b.name
+        if ( i < ob.booths.length - 1 ) boothStr += ", "
+      }
+      ob.booths = boothStr
+    }
     if ( !ob.hasOwnProperty( k ) ) continue
     if ( (typeof ob[k]) == "object" && ob[k] !== null ) {
       // console.log( "Flattening child..." + k )
