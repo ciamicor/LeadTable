@@ -1,4 +1,5 @@
 import http from "../http-common"
+import { toTitleCase_Service } from "@/services/functions/TextManipulationService.ts"
 
 export default class AttendeeDataService {
   create(data: any) {
@@ -21,6 +22,10 @@ export default class AttendeeDataService {
     return http.get("/attendee/client/" + client + "/year/" + year)
   }
 
+  checkExpoAttendeeDupe(client: any, year: any, email: string) {
+    return http.get(`/attendee/match/client/${client}/year/${year}?email=${email}`)
+  }
+
   update(id: any, data: any) {
     return http.put("/attendee/" + id, data)
   }
@@ -39,12 +44,16 @@ const attendeeService = new AttendeeDataService()
 ---+----+---+----+---+----+---+----+---*/
 async function createAttendee_Service(attendee: any, client: any, year: any, upload: any = null) {
   console.log("Create Attendee Service: ", attendee)
+  const fname = attendee.name_First ? toTitleCase_Service(attendee.name_First) : attendee.name_First
+  const lname = attendee.name_Last ? toTitleCase_Service(attendee.name_Last) : attendee.name_Last
+  const email = attendee.contact_Email ? attendee.contact_Email.toLowerCase() : attendee.contact_Email
+  const title = attendee.title ? toTitleCase_Service(attendee.title) : attendee.title
   const attendeeNew = {
     expo_Client: client,
     expo_Year: year,
-    name_First: attendee.name_First,
-    name_Last: attendee.name_Last,
-    contact_Email: attendee.contact_Email,
+    name_First: fname,
+    name_Last: lname,
+    contact_Email: email,
     contact_Phone: attendee.contact_Phone,
     contact_Employer: attendee.contact_Employer,
     address_Line1: attendee.address_Line1,
@@ -53,7 +62,7 @@ async function createAttendee_Service(attendee: any, client: any, year: any, upl
     address_State: attendee.address_State,
     address_Zip: attendee.address_Zip,
     address_Country: attendee.address_Country,
-    title: attendee.title,
+    title: title,
     regType: attendee.regType,
     techSessions: attendee.techSessions,
     customFields: attendee.customFields,
@@ -135,6 +144,18 @@ async function getExpoAttendees_Service(client: any, year: any) {
     let allAttendees = await attendeeService.getExpoAttendees(client, year)
     console.log(allAttendees.data)
     return allAttendees.data
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+/*-| Check Attendee Dupe in Expo
+---+----+---+----+---+----+---+----+---*/
+export async function checkExpoAttendeeDupe_Service(client: any, year: any, email: string) {
+  try {
+    let dupe = await attendeeService.checkExpoAttendeeDupe(client, year, email)
+    console.log("Duplicate check result: ", dupe.data)
+    return dupe.data
   } catch (e) {
     console.log(e)
   }

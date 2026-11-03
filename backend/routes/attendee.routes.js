@@ -13,7 +13,7 @@ router.get( "/", attendeeController.getAllAttendees )
 router.get( "/client/:client/year/:year", attendeeController.getExpoAttendees )
 
 // Check for attendee match
-router.get( "/client/:client/year/:year", attendeeController.checkAttendeeDupe )
+router.get( "/match/client/:client/year/:year", attendeeController.checkAttendeeDupe )
 
 // Get Attendees created between dates
 router.get( "/start/:startDate/end/:endDate", attendeeController.getAttendeesBetweenDates )

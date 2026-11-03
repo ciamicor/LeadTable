@@ -228,10 +228,10 @@
           <span>{{ field.subtitle }}</span>
         </label>
       </div>
-      <LoadingHolder :status="status"
-                     class="--place-self-center --m-t-12 --m-b-24"
-                     message="Submitting..."/>
-      <button v-if="!showQr && !status"
+      <LoadingHolder :message="statusMsg"
+                     :status="status"
+                     class="--place-self-center --m-t-12 --m-b-4 --max-w-600"/>
+      <button v-if="!showQr && !status || dupeFound"
               class="--success --m-t-12 --m-b-24"
               type="submit"
       >
@@ -301,10 +301,10 @@
         setup>
 // TODO Convert to TS
 import { onBeforeMount, ref } from "vue"
-import { jsPDF } from "jspdf"
-import html2canvas from "html2canvas"
-import { scaleFont } from "@/services/functions/TextManipulationService.ts";
-import { createAttendee_Service } from "@/services/AttendeeDataService.ts"
+import {
+  createAttendee_Service,
+  checkExpoAttendeeDupe_Service
+} from "@/services/AttendeeDataService.ts"
 import { getCustomFields_Service } from "@/services/CustomFieldsDataService.js";
 import { sendRegConfirmEmail_Service } from "@/services/emails/RegistrationEmailService.ts";
 import { useExhibitorLocalStore, useExpoLocalStore } from "@/stores.js"
@@ -320,6 +320,8 @@ const host = getUrlHost()
 const companyLocal = useExhibitorLocalStore()
 const expoLocal = useExpoLocalStore()
 const status = ref( false )
+const statusMsg = ref( "Submitting..." )
+const dupeFound = ref( false )
 
 function getImageUrl( name ) {
   return new URL( `../../public/logos/${ expoLocal.expo_Client.toString()
@@ -345,6 +347,7 @@ try {
 -| Form Logic
 -|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===/*/
 async function submitForm() {
+  statusMsg.value = "Submitting..."
   attendee.value.contact_Phone = attendee.value.contact_Phone.replace( /\D/g, "" )
   status.value = true
   /* Trim spaces, if any. */
@@ -355,6 +358,18 @@ async function submitForm() {
     }
     console.log( attendee.value[key] )
   }
+
+  let dupeCheck = await checkExpoAttendeeDupe_Service(
+    expoLocal.expo_Client,
+    expoLocal.expo_Year,
+    attendee.value.contact_Email )
+  if ( dupeCheck.length !== 0 ) {
+    console.log( "I found a duplicate. ", dupeCheck )
+    dupeFound.value = true
+    statusMsg.value = `There's already someone registered for this event with email ${ attendee.value.contact_Email.toLowerCase() }. Would you like to try a different one?`
+    return
+  }
+
   /* Then create attendee. */
   await createAttendee( attendee.value )
   if ( paymentEnabled.value === true ) {
@@ -365,6 +380,7 @@ async function submitForm() {
     status.value = false
     showQr.value = true
   }
+  statusMsg.value = ""
 }
 
 /*-|===!===!===!===!===!===!===!===!===!===!===!===!===!===!===!===
@@ -388,18 +404,18 @@ const attendeeId = ref()
 /*const attendee = ref( {
   expo_Year: expoLocal.expo_Year,
   expo_Client: expoLocal.expo_Client,
-  name_First: "Claire",
-  name_Last: "Mooney",
-  contact_Email: "claire@iami411.org",
+  name_First: "CLAIRE",
+  name_Last: "MooneY",
+  contact_Email: "CLAIRE@iami411.org",
   contact_Phone: "(404) 707-8088",
-  // contact_Employer: "IAMI",
-  // address_Line1: "126325 Street St.",
+  contact_Employer: "IAMI",
+  address_Line1: "126325 Street St.",
   address_Line2: "\#567",
   address_City: "Portland",
   address_State: "Oregon",
   address_Zip: "97214",
   address_Country: "US",
-  title: "Developer",
+  title: "Developer & maker",
   regType: "Attendee",
   techSessions: null,
   customFields: {}

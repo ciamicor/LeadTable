@@ -168,7 +168,8 @@ export const getExpoAttendees = async ( req, res ) => {
 export const checkAttendeeDupe = async ( req, res ) => {
     const client = req.params.client
     const year = req.params.year
-    const { fName, lName, email } = req.query
+    const { fname, lname, email } = req.query
+    console.log( fname, lname, email )
     // const fName = req.params.fName.replace( /[^a-zA-z0-9]/g, "" ).toUpperCase().trim()
     // const lName = req.params.lName.replace( /[^a-zA-z0-9]/g, "" ).toUpperCase().trim()
     // const email = req.params.email.replace( /[^a-zA-z0-9]/g, "" ).toUpperCase().trim()
@@ -176,7 +177,11 @@ export const checkAttendeeDupe = async ( req, res ) => {
         const attendee = await Attendee.findAll(
             {
                 where: {
-                    [Op.and]: [ { expo_Client: client }, { expo_Year: year } ]
+                    [Op.and]: [
+                        { expo_Client: client },
+                        { expo_Year: year },
+                        { contact_Email: email }
+                    ]
                 }
             }
         )
