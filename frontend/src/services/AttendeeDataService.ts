@@ -47,7 +47,6 @@ async function createAttendee_Service(attendee: any, client: any, year: any, upl
   const fname = attendee.name_First ? toTitleCase_Service(attendee.name_First) : attendee.name_First
   const lname = attendee.name_Last ? toTitleCase_Service(attendee.name_Last) : attendee.name_Last
   const email = attendee.contact_Email ? attendee.contact_Email.toLowerCase() : attendee.contact_Email
-  const title = attendee.title ? toTitleCase_Service(attendee.title) : attendee.title
   const attendeeNew = {
     expo_Client: client,
     expo_Year: year,
@@ -62,7 +61,7 @@ async function createAttendee_Service(attendee: any, client: any, year: any, upl
     address_State: attendee.address_State,
     address_Zip: attendee.address_Zip,
     address_Country: attendee.address_Country,
-    title: title,
+    title: attendee.title,
     regType: attendee.regType,
     techSessions: attendee.techSessions,
     customFields: attendee.customFields,
