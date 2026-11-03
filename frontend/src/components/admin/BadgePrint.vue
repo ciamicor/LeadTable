@@ -34,7 +34,7 @@
 
       <span
         class="--m-h-8 --flex-grow --place-self-center">
-        Displaying attendees #{{ displayIdx_FIRST }}-{{ displayIdx_LAST }}
+        Attendees #{{ displayIdx_FIRST !== 0 ? displayIdx_FIRST : 1 }}-{{ displayIdx_LAST }}
       </span>
 
       <LoadingHolder :message="printProgressMsg"
@@ -169,10 +169,7 @@
         setup>
 import { useExpoLocalStore } from "@/stores.ts";
 import { getUrlHost } from "@/services/functions/UrlService.ts";
-import { jsPDF } from "jspdf"
-import { scaleFont } from "@/services/functions/TextManipulationService.ts";
 import QrCode from "@/components/QrCode.vue"
-import html2canvas from "html2canvas"
 import BadgeSingle from "@/components/BadgeSingle.vue"
 import AttendeeCard from "@/components/attendee/AttendeeCard.vue"
 import { useVueToPrint } from "vue-to-print"
@@ -313,9 +310,14 @@ async function getAttendees_SelectedUpload( id ) {
 }
 
 async function refreshAttendees( client, year ) {
-  window.location.reload()
-  attendeeList.value = await getAllAttendees( client, year )
+  // window.location.reload()
+  loading.value = true
+  attendeeList.value = []
+  attendeeListSelected.value = []
+  await getAllAttendees( client, year )
+  // attendeeList.value = await getAllAttendees( client, year )
   console.log( attendeeList.value )
+  loading.value = false
 }
 
 /*-| Search |-*/
@@ -440,6 +442,10 @@ const qrData = ref()
 const logoData = ref()
 
 async function badgeToPDF( a ) {
+  printIsRendering.value = true
+  printProgressMsg.value = "Rendering badge..."
   await badgeToPDF_Service( a, expoLocal, qrData, logoData )
+  printIsRendering.value = false
+  printProgressMsg.value = ""
 }
 </script>

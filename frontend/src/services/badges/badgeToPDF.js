@@ -21,8 +21,8 @@ const badge = {
   h: 3,
   w: 4,
   p: 0.1875,
-  imgW: 1.9375,
-  imgH: 1.1875,
+  imgW: 1.45,
+  imgH: 0.875,
   rot: 0
 }
 
@@ -45,24 +45,15 @@ export async function badgeToPDF_Service( a, expo, qr, logo ) {
   /*-| Add Elements
   ---+----+---+----+---+----+---+----+---*/
   const nameSize = scaleFont( a.name_First + a.name_Last, 400 )
-  const titleSize = scaleFont( a.title, 400, 14, 20 )
-  const employSize = scaleFont( a.contact_Employer, 400, 16, 20 )
+  const titleSize = scaleFont( a.title, 400, 14, 18 )
+  const employSize = scaleFont( a.contact_Employer, 400, 16, 22 )
 
   // Name
   badgePdf.setFont( "Helvetica", "normal", "bold" );
   badgePdf.setFontSize( nameSize )
   badgePdf.text( `${ a.name_First } ${ a.name_Last }`,
     badge.p,
-    ((employSize * pt2in) / 3) + ((nameSize + employSize) * pt2in) + (badge.p / 2),
-    { align: "left" } )
-
-  // Title
-  badgePdf.setFont( "Helvetica", "italic" );
-  badgePdf.setFontSize( titleSize )
-  badgePdf.text(
-    a.title,
-    badge.p,
-    +((nameSize * pt2in) / 3) + ((nameSize + employSize + titleSize) * pt2in) + badge.p,
+    badge.p * 3,
     { align: "left" } )
 
   // Employer
@@ -71,7 +62,16 @@ export async function badgeToPDF_Service( a, expo, qr, logo ) {
   badgePdf.text(
     a.contact_Employer,
     badge.p,
-    badge.p * 2,
+    ((nameSize + employSize) * pt2in) + (badge.p * 2),
+    { align: "left" } )
+
+  // Title
+  badgePdf.setFont( "Helvetica", "italic" );
+  badgePdf.setFontSize( titleSize )
+  badgePdf.text(
+    a.title,
+    badge.p,
+    ((nameSize + employSize + titleSize) * pt2in) + (badge.p * 3),
     { align: "left" } )
 
   let logoX = 0

@@ -3,12 +3,12 @@
 import { limitNumberWithinRange } from "@/services/functions/mathService.ts";
 
 export function titleCase(w: string): string {
-  const list: string[] = w.split(' ')
-  let r: string = ''
+  const list: string[] = w.split(" ")
+  let r: string = ""
   for (let i = 0; i < list.length; i++) {
     console.log(list[i])
     const s: string = list[i].charAt(0).toUpperCase() + list[i].slice(1).toLowerCase()
-    r += ' ' + s
+    r += " " + s
   }
   return r
 }
@@ -22,9 +22,9 @@ export function formatSlug(s: string): string {
   let clean2 = clean1
     .trim()
     .replace(/\s/g, "-")
-    .replace(/-+/g, '-')
+    .replace(/-+/g, "-")
     .toLowerCase()
-  if (clean2.charAt(clean2.length - 1) === '-') {
+  if (clean2.charAt(clean2.length - 1) === "-") {
     return clean2.substring(0, clean2.length - 1)
   }
   else return clean2
@@ -39,7 +39,7 @@ export function toTitleCase_Service(str: string): string {
 
 /*-| Scaling
 ---+----+---+----+---+----+---+----+---*/
-export function scaleFont(phrase: string, docWidth: number, minSize: number = 18, maxSize: number = 30) {
+export function scaleFont(phrase: string, docWidth: number, minSize: number = 18, maxSize: number = 32) {
   const c = phrase.length
   const cw = (docWidth / c) + 2
   console.log(c)
