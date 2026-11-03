@@ -2,6 +2,8 @@ import { jsPDF } from "jspdf";
 import { scaleFont } from "@/services/functions/TextManipulationService.ts";
 import html2canvas from "html2canvas";
 
+// convert fonts for use: https://parallax.github.io/jsPDF/fontconverter/fontconverter.html
+
 async function select2Canvas( s, d ) {
   const selector = document.querySelector( s )
   await html2canvas( selector, {
@@ -10,10 +12,10 @@ async function select2Canvas( s, d ) {
   } ).then( canvas => {
     d.value = canvas.toDataURL(
       "image/png" )
-    console.log( canvas )
+    // console.log( canvas )
   } )
-  console.log( selector )
-  console.log( d )
+  // console.log( selector )
+  // console.log( d )
 }
 
 /*-| Store Badge Dimensions, Placement |-*/
@@ -21,18 +23,30 @@ const badge = {
   h: 3,
   w: 4,
   p: 0.1875,
-  imgW: 1.45,
-  imgH: 0.875,
+  imgW: 1.12,
+  imgH: 0.6771,
   rot: 0
 }
 
 const pt2in = 0.0138888889
 
+import {
+  import_EncodeSansCond_Bold
+} from "@/services/badges/jsPDF-custom-fonts/EncodeSansCondensed-Bold-normal.js";
+import {
+  import_EncodeSansCond_Regular
+} from "@/services/badges/jsPDF-custom-fonts/EncodeSansCondensed-Regular-normal.js";
+import {
+  import_EncodeSansCond_Med
+} from "@/services/badges/jsPDF-custom-fonts/EncodeSansCondensed-Medium-normal.js";
+
+import_EncodeSansCond_Bold()
+import_EncodeSansCond_Regular()
+import_EncodeSansCond_Med()
+
 /*-| Print the dang Badge. |-*/
 export async function badgeToPDF_Service( a, expo, qr, logo ) {
   console.log( "Creating badge for: " + a.name_First )
-
-  console.log( "Leads enabled? " + expo.leadEnabled )
 
   /*-| Declare Badge |-*/
   const badgePdf = new jsPDF( {
@@ -45,11 +59,11 @@ export async function badgeToPDF_Service( a, expo, qr, logo ) {
   /*-| Add Elements
   ---+----+---+----+---+----+---+----+---*/
   const nameSize = scaleFont( a.name_First + a.name_Last, 400 )
-  const titleSize = scaleFont( a.title, 400, 14, 18 )
-  const employSize = scaleFont( a.contact_Employer, 400, 16, 22 )
+  let titleSize = 0
+  let employSize = 0
 
   // Name
-  badgePdf.setFont( "Helvetica", "normal", "bold" );
+  badgePdf.setFont( "EncodeSansCondensed-Bold"/*, "normal", "bold" */ );
   badgePdf.setFontSize( nameSize )
   badgePdf.text( `${ a.name_First } ${ a.name_Last }`,
     badge.p,
@@ -57,22 +71,30 @@ export async function badgeToPDF_Service( a, expo, qr, logo ) {
     { align: "left" } )
 
   // Employer
-  badgePdf.setFont( "Helvetica", "normal" );
-  badgePdf.setFontSize( employSize )
-  badgePdf.text(
-    a.contact_Employer,
-    badge.p,
-    ((nameSize + employSize) * pt2in) + (badge.p * 2),
-    { align: "left" } )
+  if ( a.contact_Employer ) {
+    console.log( "employed! ", a.contact_Employer )
+    employSize = scaleFont( a.contact_Employer, 400, 16, 22 )
+    badgePdf.setFont( "EncodeSansCondensed-Medium", /*"normal"*/ );
+    badgePdf.setFontSize( employSize )
+    badgePdf.text(
+      a.contact_Employer,
+      badge.p,
+      ((nameSize + employSize) * pt2in) + (badge.p * 2),
+      { align: "left" } )
+  }
 
   // Title
-  badgePdf.setFont( "Helvetica", "italic" );
-  badgePdf.setFontSize( titleSize )
-  badgePdf.text(
-    a.title,
-    badge.p,
-    ((nameSize + employSize + titleSize) * pt2in) + (badge.p * 3),
-    { align: "left" } )
+  if ( a.title ) {
+    titleSize = scaleFont( a.title, 400, 14, 18 )
+    badgePdf.setTextColor( "#52637a" )
+    badgePdf.setFont( "EncodeSansCondensed-Regular", "italic" );
+    badgePdf.setFontSize( titleSize )
+    badgePdf.text(
+      a.title,
+      badge.p,
+      ((nameSize + employSize + titleSize) * pt2in) + (badge.p * 3),
+      { align: "left" } )
+  }
 
   let logoX = 0
 
