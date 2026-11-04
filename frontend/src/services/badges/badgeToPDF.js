@@ -58,7 +58,7 @@ export async function badgeToPDF_Service( a, expo, qr, logo ) {
 
   /*-| Add Elements
   ---+----+---+----+---+----+---+----+---*/
-  const nameSize = scaleFont( a.name_First + a.name_Last, 400 )
+  const nameSize = scaleFont( a.name_First + a.name_Last, 400, 18, 32 )
   let titleSize = 0
   let employSize = 0
 
@@ -73,7 +73,7 @@ export async function badgeToPDF_Service( a, expo, qr, logo ) {
   // Employer
   if ( a.contact_Employer ) {
     console.log( "employed! ", a.contact_Employer )
-    employSize = scaleFont( a.contact_Employer, 400, 16, 22 )
+    employSize = scaleFont( a.contact_Employer, 400, 14, 22 )
     badgePdf.setFont( "EncodeSansCondensed-Medium", /*"normal"*/ );
     badgePdf.setFontSize( employSize )
     badgePdf.text(

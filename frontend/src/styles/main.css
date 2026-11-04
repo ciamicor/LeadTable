@@ -6928,15 +6928,16 @@ fieldset div:has(> input[type=checkbox]) label, fieldset:not(.lead-rating) div:h
   top: 50%;
   right: 24px;
   border: 1px solid var(--grey-8);
-  border-radius: 65px;
-  translate: 45% -50%;
-  scale: 0.85;
+  border-radius: 8px;
+  translate: 65% -50%;
+  scale: 0.75;
 }
 .search-wrap input.search {
-  field-sizing: content;
-  padding: 12px 20px;
-  border-radius: 65px;
+  min-width: 100px;
+  padding: 8px 40px 8px 8px;
+  border-radius: 8px;
   transition: border-radius 200ms ease-in-out;
+  field-sizing: content;
 }
 .search-wrap input.search:focus, .search-wrap input.search:focus-visible {
   border-radius: 8px;

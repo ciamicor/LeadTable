@@ -3,7 +3,7 @@
   <!-- Visible Container, Components -->
   <div
     class="container --align-content-start ">
-    <div class="--p-v-4 --p-h-6 row-12-300 badge-admin-bar --gap-8">
+    <div class="--p-v-4 --p-h-6 row-12-300 badge-admin-bar --gap-8 --font-size-14">
       <div
         class="search-wrap --place-self-center">
         <button
@@ -17,24 +17,29 @@
                class="search"
                name="searchAttendees"
                placeholder="Search this Page"
+               size="85"
                type="text">
       </div>
 
       <div
+
         class="row --p-h-6 --gap-2 --p-v-0 --place-content-center --place-items-center">
         <span>Page:</span>
         <button v-for="n in tabNumber"
                 :key="n"
                 :class="currentPage === n ? '--success' : ''"
-                class="--p-h-6 --p-v-4"
+                class="--p-h-4 --p-v-2"
                 @click="updateTabDisplay(n)">
           {{ n }}
         </button>
       </div>
 
       <span
+        v-show="!printIsRendering && displayIdx_LAST"
         class="--m-h-8 --flex-grow --place-self-center">
-        Attendees #{{ displayIdx_FIRST !== 0 ? displayIdx_FIRST : 1 }}-{{ displayIdx_LAST }}
+        Showing {{ displayIdx_FIRST !== 0 ? displayIdx_FIRST : 1 }}-{{
+          displayIdx_LAST
+        }} of {{ attendeeListLn }} attendees
       </span>
 
       <LoadingHolder :message="printProgressMsg"
@@ -54,7 +59,7 @@
           Print Single
         </button>
         <button
-          class="--p-2 --p-h-4 --primary --font-size-14"
+          class="--p-2 --p-h-4 --primary"
           @click="refreshAttendees(expoLocal.expo_Client, expoLocal.expo_Year, attendeeList)"
         >
           <i class="bi-arrow-clockwise --font-size-20"></i>
@@ -66,35 +71,40 @@
                 </router-link>-->
       </div>
       <div v-if="!loading.value"
-           class="row-12-300 --p-0 --align-items-center --gap-2">
+           class="row-12-300 --p-0 --align-items-center --gap-2 --font-size-14">
 
         <div class="row --align-items-center --justify-content-start --gap-4">
           <span>Sort by</span>
           <span>DATE:</span>
-          <button class="--p-h-4 --p-v-3"
+          <button :class="currentView === 'CreatedDate_Earliest' ? '--success' : ''"
+                  class="--p-h-4 --p-v-2"
                   @click="sortCreatedDate_Earliest">Earliest
           </button>
-          <button class="--p-h-4 --p-v-3"
+          <button :class="currentView === 'CreatedDate_Latest' ? '--success' : ''"
+                  class="--p-h-4 --p-v-2"
                   @click="sortCreatedDate_Latest">Latest
           </button>
           <span>NAME:</span>
-          <button class="--p-h-4 --p-v-3"
+          <button :class="currentView === 'FName_First' ? '--success' : ''"
+                  class="--p-h-4 --p-v-2"
                   @click="sortFName_First">First
           </button>
-          <button class="--p-h-4 --p-v-3"
+          <button :class="currentView === 'LName_Last' ? '--success' : ''"
+                  class="--p-h-4 --p-v-2"
                   @click="sortLName_Last">Last
           </button>
         </div>
         <div class="row">
           <div v-if="uploadsList && uploadsList.length > 0"
           >
-            <span class="--m-r-3">View upload:</span>
+            <span class="--m-r-3">Group:</span>
             <span
               v-for="(upload, i) in uploadsList"
               :key="i"
+              :class="currentView === upload.upload_Title ? '--success' : ''"
               class="button --p-h-4 --p-v-2 --font-size-14 --place-self-center "
               style="display: inline-block"
-              @click="getAttendees_SelectedUpload(upload.id)"
+              @click="getAttendees_SelectedUpload(upload.id, upload.upload_Title)"
             >
           {{ upload.upload_Title }}
         </span>
@@ -114,7 +124,7 @@
         <!--          v-for="[key, attendee] in mapList"-->
         <AttendeeCard
           v-for="(attendee, key) in attendeeList"
-          v-show="mergeSearchTerm(attendee.name_First, attendee.name_Last)"
+          v-if="mergeSearchTerm(attendee.name_First, attendee.name_Last)"
           :key="attendee.name_First + key"
           :attendee="attendee"
           :idx="key"
@@ -209,9 +219,10 @@ const printComponent = ref() // for Print component
 const attendeeListLn = ref( 0 )
 const pageSize = ref( 750 )
 const displayIdx_FIRST = ref( 0 )
-const displayIdx_LAST = ref( pageSize.value )
+const displayIdx_LAST = ref()
 const tabNumber = ref( 0 )
 const currentPage = ref( 1 )
+const currentView = ref( "LName_Last" )
 
 /*-| Get Image |-*/
 /*---+----+---+----+---+----+---+----+---*/
@@ -227,6 +238,7 @@ onBeforeMount( async () => {
   loading.value = true
   console.log( expoLocal )
   await getAllAttendees( expoLocal.expo_Client, expoLocal.expo_Year )
+  await updateTabDisplay( currentPage.value )
   await getAllAttendeeUploads( expoLocal.expo_Client )
   await calcTabNumber()
   console.log( attendeeList )
@@ -243,11 +255,12 @@ onBeforeMount( async () => {
 /*-| Pagination
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 async function calcTabNumber() {
-  let r = Math.round( attendeeListFull.value.length / pageSize.value )
-  console.log( attendeeList.value.length )
-  console.log( attendeeListFull.value.length )
-  tabNumber.value = r
-  console.log( tabNumber.value )
+  tabNumber.value = Math.round( attendeeListFull.value.length / pageSize.value )
+  if ( attendeeListFull.value.length / pageSize.value > tabNumber.value ) tabNumber.value += 1
+  console.log( "page size: ", pageSize.value )
+  console.log( "all attendees count: ", attendeeListFull.value.length )
+  console.log( "actual tab number: ", attendeeListFull.value.length / pageSize.value )
+  console.log( "tab amount: ", tabNumber.value )
 }
 
 async function updateTabDisplay( n ) {
@@ -258,6 +271,7 @@ async function updateTabDisplay( n ) {
   displayIdx_LAST.value = displayIdx_LAST.value * n
   displayIdx_FIRST.value = displayIdx_LAST.value - pageSize.value
 
+  if ( attendeeListFull.value.length < pageSize.value ) displayIdx_LAST.value = attendeeListFull.value.length
   if ( displayIdx_LAST.value > attendeeListLn.value ) displayIdx_LAST.value = attendeeListLn.value
 
   attendeeList.value = attendeeListFull.value.slice( displayIdx_FIRST.value,
@@ -301,12 +315,13 @@ async function getAllAttendeeUploads( client ) {
 }
 
 /*-| Get Selected Upload |-*/
-async function getAttendees_SelectedUpload( id ) {
+async function getAttendees_SelectedUpload( id, title ) {
   selectedUploadId.value = id
   console.log( "Selected upload: ", selectedUploadId.value )
   attendeeList.value = await getAttendeesUploadId_Service( id )
   await sortLName_Service( attendeeList.value )
   console.log( attendeeList.value )
+  currentView.value = title
 }
 
 async function refreshAttendees( client, year ) {
@@ -389,24 +404,28 @@ function removeAttendee_List( i ) {
 ==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/==/*/
 function sortCreatedDate_Earliest() {
   sortCreatedDate_Earliest_Service( attendeeListFull.value )
+  currentView.value = "CreatedDate_Earliest"
   updateTabDisplay( 1 )
   console.log( currentPage )
 }
 
 function sortCreatedDate_Latest() {
   sortCreatedDate_Latest_Service( attendeeListFull.value )
+  currentView.value = "CreatedDate_Latest"
   updateTabDisplay( 1 )
   console.log( currentPage )
 }
 
 function sortFName_First() {
   sortFName_Service( attendeeListFull.value )
+  currentView.value = "FName_First"
   updateTabDisplay( 1 )
   console.log( currentPage )
 }
 
 function sortLName_Last() {
   sortLName_Service( attendeeListFull.value )
+  currentView.value = "LName_Last"
   updateTabDisplay( 1 )
   console.log( currentPage )
 }
@@ -431,8 +450,8 @@ async function printBadges() {
     await chunkObject( attendeeListSelected )
     handlePrint()
     attendeeListSelected.value = []
-    printIsRendering.value = false
     printProgressMsg.value = ""
+    printIsRendering.value = false
   }, 500 )
 }
 
@@ -445,7 +464,7 @@ async function badgeToPDF( a ) {
   printIsRendering.value = true
   printProgressMsg.value = "Rendering badge..."
   await badgeToPDF_Service( a, expoLocal, qrData, logoData )
-  printIsRendering.value = false
   printProgressMsg.value = ""
+  printIsRendering.value = false
 }
 </script>

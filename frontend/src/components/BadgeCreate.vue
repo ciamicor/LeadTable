@@ -31,6 +31,7 @@
           First Name
           <input
             v-model="attendee.name_First"
+            :maxlength="34 - attendee.name_Last.length"
             autocomplete="given-name"
             name="name-first"
             placeholder="First Name"
@@ -41,27 +42,39 @@
           Last Name
           <input
             v-model="attendee.name_Last"
+            :maxlength="34 - attendee.name_First.length"
             autocomplete="family-name"
             name="name-last"
             placeholder="Last Name"
             required
             type="text">
         </label>
+        <span v-show="attendee.name_First.length + attendee.name_Last.length >= 34"
+              class="--font-size-14 --color-secondary-6">Sorry, but names longer than 34 characters won't print well on a badge.
+          </span>
       </div>
       <div class="row-12-300 --no-space">
         <label>
           Employer
+          <span v-show="attendee.contact_Employer.length >= 45"
+                class="--font-size-14 --color-secondary-6">You've reached the 45 character limit for Employer name.
+          </span>
           <input
             v-model="attendee.contact_Employer"
             autocomplete="organization"
+            maxlength="45"
             name="employer"
             placeholder="Employer"
             type="text"></label>
         <label>
           Position/Title
+          <span v-show="attendee.title.length >= 45"
+                class="--font-size-14 --color-secondary-6">You've reached the 45 character limit for Title.
+          </span>
           <input
             v-model="attendee.title"
             autocomplete="organization-title"
+            maxlength="45"
             name="title"
             placeholder="Position/Title"
             type="text">

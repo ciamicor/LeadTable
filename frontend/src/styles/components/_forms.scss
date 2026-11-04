@@ -114,15 +114,16 @@ fieldset {
     top:           50%;
     right:         $sp-8;
     border:        1px solid $grey-8;
-    border-radius: 65px;
-    translate:     45% -50%;
-    scale:         .85;
+    border-radius: 8px;
+    translate:     65% -50%;
+    scale:         .75;
   }
   input.search {
-    field-sizing: content;
-    padding:       $sp-5 $sp-7;
-    border-radius: 65px;
+    min-width:     100px;
+    padding:       $sp-4 $sp-12 $sp-4 $sp-4;
+    border-radius: $item-border;
     transition:    border-radius $trans-200;
+    field-sizing:  content;
     &:focus, &:focus-visible {
       border-radius: $item-border;
     }
