@@ -120,10 +120,10 @@
             type="text"/>
           <input
             v-model="attendee.address_City"
+            :required="paymentEnabled"
             autocomplete="address-level2"
             name="city"
             placeholder="City"
-            required
             type="text"/>
           <input
             v-model="attendee.address_State"
@@ -139,9 +139,9 @@
             type="text"/>
           <select id="selectCountry"
                   v-model="attendee.address_Country"
+                  :required="paymentEnabled"
                   autocomplete="country-name"
-                  name="selectCountry"
-                  required>
+                  name="selectCountry">
             <option disabled
                     selected
                     value="US">United States

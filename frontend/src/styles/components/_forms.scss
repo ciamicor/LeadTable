@@ -30,6 +30,16 @@ label {
   & input, select, textarea {
     flex: 1 1 auto;
   }
+  &:has( > input[required]),
+  &:has( > select[required]) {
+    &::before {
+      position:    relative;
+      color:       $color-warn-7;
+      line-height: 0;
+      content:     "*";
+      translate:   -1ch 100%;
+    }
+  }
 }
 
 input, select, textarea {

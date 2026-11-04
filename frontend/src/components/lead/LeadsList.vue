@@ -18,7 +18,8 @@
            retrieval.</p>
       </div>
       <p v-else-if="exhibitorLocal.name === ''">
-        You'll need your login ID to access lead retrieval.
+        You'll need your login ID from ExpoFP to access lead retrieval.
+        If you can't find it, check your email or ask for help at registration.
       </p>
       <router-link
         class="button --primary"

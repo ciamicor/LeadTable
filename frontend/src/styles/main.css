@@ -6845,6 +6845,13 @@ label {
 label input, label select, label textarea {
   flex: 1 1 auto;
 }
+label:has(> input[required])::before, label:has(> select[required])::before {
+  position: relative;
+  color: var(--color-warn-7);
+  line-height: 0;
+  content: "*";
+  translate: -1ch 100%;
+}
 
 input, select, textarea {
   padding: 12px 12px 10px;
