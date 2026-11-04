@@ -14,14 +14,15 @@ import { useExhibitorLocalStore } from "@/stores.ts"
 const companyLocal = useExhibitorLocalStore()
 
 const props = defineProps( {
-  exhibitorsList: {
+  leadsList: {
     type: Array, default: []
   },
   leadCount: { type: Number, default: null },
 } )
 
 async function exportLeads() {
-  const formattedLeads = props.exhibitorsList
+  console.log( "exporting leads...", props.leadsList )
+  const formattedLeads = props.leadsList
     .map( ( {
       id,
       expo_Client,
