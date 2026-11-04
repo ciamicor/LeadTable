@@ -124,7 +124,7 @@
         <!--          v-for="[key, attendee] in mapList"-->
         <AttendeeCard
           v-for="(attendee, key) in attendeeList"
-          v-if="mergeSearchTerm(attendee.name_First, attendee.name_Last)"
+          v-show="mergeSearchTerm(attendee.name_First, attendee.name_Last)"
           :key="attendee.name_First + key"
           :attendee="attendee"
           :idx="key"
